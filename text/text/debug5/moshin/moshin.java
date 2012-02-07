@@ -20,7 +20,7 @@ class moshin {
     public double getY() {return y;}
     public double getTheta() {return theta;}
 
-    void LimitTheta() { /* theta$B$NCM$r(B0$B$+$i(B2$B&P$N4V$KJ]$D(B */
+    void LimitTheta() { /* thetaの値を0から2πの間に保つ */
 		if (theta < 0.0) {
 			theta += 2 * Math.PI;
 		} else if (theta >= 2 * Math.PI) {
@@ -94,7 +94,7 @@ class moshin {
 		double	target = Delta2Theta(cx - x, cy - y);
 
 		switch (phase) {
-			case	SEARCH: /* $B2sE>$7$F%^%&%9%+!<%=%k$NJ}$r8~$/(B */
+			case	SEARCH: /* 回転してマウスカーソルの方を向く */
 			++count;
 			if (0 != InRange(theta, target, MUKU)) {
 				if (WAIT < count) {
@@ -106,11 +106,11 @@ class moshin {
 				LimitTheta();
 			}
 			break;
-			case	ATTACK: /* $B??$CD>$KLT?J$7$F$$$/(B */
-			if (0 < ForBack(theta, target)) { /* $BA0J}$K$$$l$P2CB.(B */
+			case	ATTACK: /* 真っ直に猛進していく */
+			if (0 < ForBack(theta, target)) { /* 前方にいれば加速 */
 				r += ACCEL;
 				if (r > MAXSPEED) r = MAXSPEED;
-			} else { /* $B8eJ}$K$$$l$P8:B.Dd;_(B */
+			} else { /* 後方にいれば減速停止 */
 				if (r > ACCEL) {
 					r -= ACCEL;
 				} else {
@@ -118,7 +118,7 @@ class moshin {
 					phase = SEARCH;
 				}
 			}
-			if (0 != NextStep()) { /* $B30OH$K>WFM$7$?$H$-$ODd;_(B */
+			if (0 != NextStep()) { /* 外枠に衝突したときは停止 */
 				r = 0;
 				phase = SEARCH;
 			}

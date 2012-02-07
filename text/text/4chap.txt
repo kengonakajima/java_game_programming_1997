@@ -1,49 +1,49 @@
 
 
-$BBh(B4$B>O!"(BJava$B$K47$l$k(B
+第4章、Javaに慣れる
 
-$B$3$N>O$+$i!"$$$h$$$h(BJava$B%W%m%0%i%_%s%0$r;O$a$^$9!#NcBj$rCf?4$H$7!"Nc$r$$$m$$(B
-$B$m(B $B$$$8$/$C$F$$$k$&$A$KM}2r$,?J$`$h$&$K$J$C$F$$$^$9!#K\=q$NNcBj$O(BCD-ROM$B$K5-(B
-$BO?$5$l$F(B $B$$$^$9$,!"$=$l$i$r%3%T!<$9$k$N$G$O$J$/$F!"$<$R<+J,$N<j$G%(%G%#%?$r(B
-$B;H$C$FF~NO$7!"(B Java$B$N%3%s%Q%$%i$d%"%W%l%C%H%S%e%"$H$H3JF.$7$F$/$@$5$$!#$=$N(B
-$BBN83$,9|$H$J$j!"Fy$H(B $B$J$C$F$$$/$O$:$G$9!#(B
-
-
-
-4.1 $B:GDc8B$NJ8K!CN<1(B
-
-     $BK\=q$O!"(BJava$B8@8l$N2r@b=q$G$O$"$j$^$;$s!#$$$+$KLLGr$$%2!<%`$r:n$k$+!"$H(B
-     $B$$$&(B $B$3$H$rDI5Z$7$F$$$^$9!#$=$7$F!"K\=q$G;HMQ$9$k8@8l$,!"$?$^$?$^(BJava$B8@(B
-     $B8l$G$"$k$@$1$G$9!#(B
-     $B%2!<%`$r:n$k$?$a$K$O!"(BJava$B8@8l$NA4BN$N$&$A!"0lIt$@$1$rM}2r$9$l$P!"(B $B==J,(B
-     $B$G$9!#$=$NI,MW$JItJ,$@$1$r$7$C$+$jM}2r$G$-$l$P!"$I$s$J%2!<%`$G$b:n$l$^(B
-     $B$9!#(B $B$3$N>O$G$O!"$=$N!VI,MW$JItJ,!W$K$D$$$F!"2r@b$7$^$9!#(B
-     $B$3$3$G@bL@$9$kJ8K!;v9`$O!"8e$K<B:]$K%W%m%0%i%`$7$F$$$/;~$K!"$7$P$7$PFI(B
-     $B$_$J$*$9(B $B$3$H$,$"$k$H;W$$$^$9!#8e$N$[$&$G$o$+$i$J$/$J$C$F$b!"3N<B$K$3$N(B
-     $B>O$G@bL@$7$F$$$k(B $B$3$H$7$+;H$o$J$$$N$G!"$3$3$r$b$&$$$A$IFI$a$PM}2r$G$-$k(B
-     $B$O$:$G$9!#(B $B$^$?!"<BNc$H$7$F5s$,$C$F$$$k%W%m%0%i%`$O!"%F%-%9%H%(%G%#%?$G(B
-     $BBG$A$3$s$G%3%s%Q%$%k(B $B$7$F<B9T$9$k$3$H$,$G$-$k$h$&$K$J$C$F$$$^$9$N$G!"$R(B
-     $B$H$D$R$H$DBG$A$3$s$G;n$7$F$_$F(B $B$/$@$5$$!#$=$N:]$K!"$$$m$$$mJQ99$7$F$I$N(B
-     $B$h$&$K$J$k$N$+<B83$7$F$/$@$5$$!#J]B8$9$k%U%!%$%k(B $BL>$r!"4V0c$($J$$$h$&$K(B
-     $BCm0U$7$F$/$@$5$$!#$^$?!"$=$l$>$l$N%"%W%l%C%H$rF0$+$9$?$a$N(B HTML$B$N%U%!%$(B
-     $B%k$NNc$b7G:\$7$F$"$j$^$9!#JL$N%U%!%$%k$H$7$F:n@.$7$F$/$@$5$$!#(B $B$b$7%(%i(B
-     $B!<$,=P$?>l9g$O!"K\>O$N:G8e$K$"$k%(%i!<%a%C%;!<%8$N@bL@$,;29M$K$J$k$G$7(B
-     $B$g$&!#(B
+この章から、いよいよJavaプログラミングを始めます。例題を中心とし、例をいろい
+ろ いじくっているうちに理解が進むようになっています。本書の例題はCD-ROMに記
+録されて いますが、それらをコピーするのではなくて、ぜひ自分の手でエディタを
+使って入力し、 Javaのコンパイラやアプレットビュアとと格闘してください。その
+体験が骨となり、肉と なっていくはずです。
 
 
-       4.1.1 $B%"%W%l%C%H$,F0:n$9$k$?$a$KI,MW$J$b$N(B
 
-          JDK$B$,$-$A$s$H%$%s%9%H!<%k$5$l$F$$$k$J$i!"(B $B$R$H$D0J>e$N!V%/%i%9%U%!(B
-          $B%$%k!W$H$R$H$D$N!V(BHTML$B%U%!%$%k!W$,$"$l$P!"%"%W%l%C%H$rF0$+$9(B $B$3$H(B
-          $B$,$G$-$^$9!#(B $B!V%/%i%9%U%!%$%k!W$r:n$k$?$a$K$O!"(BJava$B$N!V%=!<%9%U%!(B
-          $B%$%k!W$,I,MW$G$9!#(B $B!V%/%i%9%U%!%$%k!W$O!"!V%=!<%9%U%!%$%k!W$r%3%s(B
-          $B%Q%$%k$9$k$H:n@.$5$l$^$9!#$"$J$?$O!"(B $B!V%/%i%9%U%!%$%k!W$NCf?H$,$I(B
-          $B$&$J$C$F$$$k$N$+$OCN$kI,MW$,$"$j$^$;$s!#(B
-          $B$7$?$,$C$F!"$"$J$?$O!"%(%G%#%?$r;H$C$F!"!V%=!<%9%U%!%$%k!W$H!V(BHTML
-          $B%U%!%$%k!W$r:n$k(B $B$3$H$K$J$j$^$9!#(B
-          $B!V%=!<%9%U%!%$%k!W$N3HD%;R(B($B%U%!%$%kL>$NKvHx(B)$B$O!"(B.java$B$G!"(B $B!V(BHTML$B%U(B
-          $B%!%$%k!W$N3HD%;R$O!"(B.html$B$G$9!#$3$l$i$N%U%!%$%k$NBeI=E*$JNc$O<!$N(B
-          $B$h$&$J$b$N$G$9!#(B
+4.1 最低限の文法知識
+
+     本書は、Java言語の解説書ではありません。いかに面白いゲームを作るか、と
+     いう ことを追及しています。そして、本書で使用する言語が、たまたまJava言
+     語であるだけです。
+     ゲームを作るためには、Java言語の全体のうち、一部だけを理解すれば、 十分
+     です。その必要な部分だけをしっかり理解できれば、どんなゲームでも作れま
+     す。 この章では、その「必要な部分」について、解説します。
+     ここで説明する文法事項は、後に実際にプログラムしていく時に、しばしば読
+     みなおす ことがあると思います。後のほうでわからなくなっても、確実にこの
+     章で説明している ことしか使わないので、ここをもういちど読めば理解できる
+     はずです。 また、実例として挙がっているプログラムは、テキストエディタで
+     打ちこんでコンパイル して実行することができるようになっていますので、ひ
+     とつひとつ打ちこんで試してみて ください。その際に、いろいろ変更してどの
+     ようになるのか実験してください。保存するファイル 名を、間違えないように
+     注意してください。また、それぞれのアプレットを動かすための HTMLのファイ
+     ルの例も掲載してあります。別のファイルとして作成してください。 もしエラ
+     ーが出た場合は、本章の最後にあるエラーメッセージの説明が参考になるでし
+     ょう。
+
+
+       4.1.1 アプレットが動作するために必要なもの
+
+          JDKがきちんとインストールされているなら、 ひとつ以上の「クラスファ
+          イル」とひとつの「HTMLファイル」があれば、アプレットを動かす こと
+          ができます。 「クラスファイル」を作るためには、Javaの「ソースファ
+          イル」が必要です。 「クラスファイル」は、「ソースファイル」をコン
+          パイルすると作成されます。あなたは、 「クラスファイル」の中身がど
+          うなっているのかは知る必要がありません。
+          したがって、あなたは、エディタを使って、「ソースファイル」と「HTML
+          ファイル」を作る ことになります。
+          「ソースファイル」の拡張子(ファイル名の末尾)は、.javaで、 「HTMLフ
+          ァイル」の拡張子は、.htmlです。これらのファイルの代表的な例は次の
+          ようなものです。
 
 
 File name: first.java
@@ -66,54 +66,54 @@ File name: test.html
 <applet code=first.class width=200 height=200></applet>
 ----------------------------------------------------------------
 
-#$B?^(B4.1.1-1 <DONE>        $BF0:n7k2L(B(first.java)
+#図4.1.1-1 <DONE>        動作結果(first.java)
 
 
 
-          $B%U%!%$%k$,$4$A$c$4$A$c$K$J$C$F$7$^$o$J$$$h$&$K!"$3$l$i$N%U%!%$%k$r(B
-          $B:n$k;~$K$O!"(B $B%G%#%l%/%H%j(B($B%U%)%k%@(B)$B$r?7$7$/:n$C$F$*$$$F!"$=$NCf$K(B
-          $BJ]B8$9$k$h$&$K$7$^$9!#(B
-          $B$^$:(Bfirst.java$B$rF~NO$7$FJ]B8$7$^$9!#$=$l$r(B javac(Macintosh$B$N>l9g$O(B
-          java compiler$B$G$9(B) $B$r;H$C$F%3%s%Q%$%k$7$^$9!#4V0c$$$,$"$l$P!"%3%s(B
-          $B%Q%$%i$,%(%i!<$r=P$7$^$9!#(B $B%(%i!<$,$J$$>l9g$O!"(Bjavac$B$O2?$b2hLL$K=P(B
-          $B$7$^$;$s!#(B
-          $B0J>e$,@.8y$9$k$H!"(Bfirst.class$B$H$$$&%U%!%$%k$,$G$-$^$9!#(B test.html
-          $B$K=q$+$l$F$$$k(Bfirst.class$B$O!"$3$N%/%i%9%U%!%$%k$r(B $BFI$_$3$a!"$H$$$&(B
-          $B;XNa$G$9!#(B $B:G8e$K(Bappletviewer$B$r5/F0$7$F!"%"%W%l%C%H$r<B9T$5$;$^(B
-          $B$9!#(BWindows95$B$d(B UNIX$B$N>l9g$O!"(BMS-DOS$B%W%m%s%W%H$^$?$OC<Kv%(%_%e%l!<(B
-          $B%?$NCf$G(B
+          ファイルがごちゃごちゃになってしまわないように、これらのファイルを
+          作る時には、 ディレクトリ(フォルダ)を新しく作っておいて、その中に
+          保存するようにします。
+          まずfirst.javaを入力して保存します。それを javac(Macintoshの場合は
+          java compilerです) を使ってコンパイルします。間違いがあれば、コン
+          パイラがエラーを出します。 エラーがない場合は、javacは何も画面に出
+          しません。
+          以上が成功すると、first.classというファイルができます。 test.html
+          に書かれているfirst.classは、このクラスファイルを 読みこめ、という
+          指令です。 最後にappletviewerを起動して、アプレットを実行させま
+          す。Windows95や UNIXの場合は、MS-DOSプロンプトまたは端末エミュレー
+          タの中で
 
           C:\java\myfolder\>appletviewer test.html
 
-          $B$N$h$&$K$7$^$9!#(BMacintosh$B$N>l9g$O!"(Bappletviewer$B$N%"%$%3%s$N>e$K(B $B$"(B
-          $B$J$?$,:n@.$7$?(BHTML$B%U%!%$%k(Btest.html$B$r=E$M$^$9!#$=$&$9$k$H<B9T$,$O(B
-          $B$8$^$j$^$9!#(B $B2hLL$K$O>.$5$J%&%$%s%I%&$,=P8=$7!"Cf$KJ8;z$,=P$^$9!#(B
+          のようにします。Macintoshの場合は、appletviewerのアイコンの上に あ
+          なたが作成したHTMLファイルtest.htmlを重ねます。そうすると実行がは
+          じまります。 画面には小さなウインドウが出現し、中に文字が出ます。
 
 
-       4.1.2 Java$B$N%W%m%0%i%`$H$O(B
+       4.1.2 Javaのプログラムとは
 
-          Java$B$N%W%m%0%i%`$O!"(B.java$B$H$$$&L>A0$N%=!<%9%U%!%$%k$G!"$=$NCf$K(B
-          $B$O!"(B $B!V%/%i%9$N@k8@!W$,$R$H$D0J>e=q$+$l$F$$$^$9!#%/%i%9@k8@$H$O!"(B
-          class$B$d(B public class $B$G;O$^$j!"Cf3g8L$G$/$/$i$l$F$$$kItJ,$G$9!#%/(B
-          $B%i%9@k8@$NCf$K$O$$$m$$$m$J%W%m%0%i%`(B $B$r=q$/$3$H$,$G$-$^$9$,!"30$K(B
-          $B$O(Bimport$B$H(Bpackage$B$NItJ,0J30$O=q$/$3$H$O$G$-$^$;$s!#(B(import$B$H(Bpackage
-		  $B$K$D$$$F$O!"K\J8$G$O@bL@$7$^$;$s!#4,Kv$N%j%U%!%l%s%9$r;2>H$7$F$/$@(B
-		  $B$5$$!#(B)
+          Javaのプログラムは、.javaという名前のソースファイルで、その中に
+          は、 「クラスの宣言」がひとつ以上書かれています。クラス宣言とは、
+          classや public class で始まり、中括弧でくくられている部分です。ク
+          ラス宣言の中にはいろいろなプログラム を書くことができますが、外に
+          はimportとpackageの部分以外は書くことはできません。(importとpackage
+		  については、本文では説明しません。巻末のリファレンスを参照してくだ
+		  さい。)
 
-#$B?^(B4.1.2-1<NOT YET>        Java$B$N%W%m%0%i%`$N9=B$(B
+#図4.1.2-1<NOT YET>        Javaのプログラムの構造
 
 
-          $B$3$3$G!"%W%m%0%i%_%s%0$GF|>oE*$K;H$o$l$k!"!VCf!"30!W$H$+!V%M%9%H!W(B
-          $B$H$$$C$?8@MU$N0UL#$r2r@b$7$^$9!#(B
-          $B!VCf!W$H$+!V30!W$H$$$&$N$O!"<g$K!"3g8L5-9f(B"{"$B$H(B"}" $B$H$G$/$/$i$l$F(B
-          $B$$$kItJ,$NCf$+30$+$H$$$&0UL#$G;H$$$^$9!#(B $BNc$($P<!$N$h$&$J%W%m%0%i(B
-          $B%`$N>l9g!"(B
+          ここで、プログラミングで日常的に使われる、「中、外」とか「ネスト」
+          といった言葉の意味を解説します。
+          「中」とか「外」というのは、主に、括弧記号"{"と"}" とでくくられて
+          いる部分の中か外かという意味で使います。 例えば次のようなプログラ
+          ムの場合、
 
 
 File name:hoge.java
 ----------------------------------------------------------------
-//$B$I$3$G$b!"(B//$B$r;H$C$F!"Cp<a$rIU$1$k$3$H$,$G$-$^$9!#(B
-//$B$3$N%W%m%0%i%`$r%(%G%#%?$GF~NO$9$k$H$-$O!"9THV9f$rF~NO$9$kI,MW$O$"$j$^$;$s!#(B
+//どこでも、//を使って、註釈を付けることができます。
+//このプログラムをエディタで入力するときは、行番号を入力する必要はありません。
  1:import java.awt.*;
  2:public class hoge extends java.applet.Applet
  3:{
@@ -126,7 +126,7 @@ File name:hoge.java
 10:}
 11:class tamesi
 12:{
-13:    //$BFbMF$O$J$$$1$l$I!"$3$l$b%/%i%9@k8@!#(B
+13:    //内容はないけれど、これもクラス宣言。
 14:}
 ----------------------------------------------------------------
 
@@ -135,34 +135,34 @@ File name: test.html
 <applet code=hoge.class width=200 height=200></applet>
 ----------------------------------------------------------------
 
-#$B?^(B4.1.2-2 <DONE>         $BF0:n7k2L(B(hoge.java)
+#図4.1.2-2 <DONE>         動作結果(hoge.java)
 
 
 
           int i=0;
-          $B$O!"%/%i%9@k8@$NCf$K$"$k$o$1$G$9!#(B
+          は、クラス宣言の中にあるわけです。
           import java.applet.Applet;
-          $B$O%/%i%9@k8@$N30$G$9!#Cf3g8L$O$$$/$D(B $B=E$J$C$F$b$h$$$N$G!"(BC$B$b%/%i%9(B
-          $B@k8@$NCf$G$9!#$^$?(BC$B$O(Bif$BJ8$NCf$H$b(B $B8@$($^$9!#(B(if$BJ8$K$D$$$F$O!"8e$[(B
-          $B$I@bL@$7$^$9(B) $B$3$N$h$&$KCf3g8L(B"{"$B$,$?$/$5$s$"$k$H!"$I$s$I$s!VCf!W(B
-          $B$KF~$C$F$$$-$^$9!#(B $B$I$l$@$1!VCf!W$N$[$&$G$"$k$+!"$H$$$&$3$H$r!"(B
-          $B!V?<$5!W$H$b8@$$$^$9!#(B
+          はクラス宣言の外です。中括弧はいくつ 重なってもよいので、Cもクラス
+          宣言の中です。またCはif文の中とも 言えます。(if文については、後ほ
+          ど説明します) このように中括弧"{"がたくさんあると、どんどん「中」
+          に入っていきます。 どれだけ「中」のほうであるか、ということを、
+          「深さ」とも言います。
           int i=0;
-          $B$N$H$3$m$O?<$5(B1$B$G!"(B
+          のところは深さ1で、
           g.drawLine( 30,30,60,100 )
-          $B$N$H$3$m$O?<$5(B2$B$H8@$($^$9!#$h$/8@$&$N$O!"!V2?CJ%M%9%H$7$F$$$k!W(B $B$H(B
-          $B$$$&I=8=$G$9!#(B g.drawLine( 30,30,60,100 )
-          $B$N$H$3$m$O!"!V(B2$BCJ%M%9%H$7$F$$$k!W$H$$$&$o$1$G$9!#(B $B%W%m%0%i%`$N308+(B
-          $B>e$b!"(B $B$=$N9T$K=q$/%W%m%0%i%`$,$I$l$@$1%M%9%H$7$F$$$k$+$I$&$+$,0l(B
-          $BL\8+$F$o$+$k(B $B$h$&$K!"%?%V(B(Tab)$B%-!<$r;H$C$F!"%M%9%H$N?<$5$NJ,$@$11&(B
-          $B$K$:$i$7$^$9!#(B $B%W%m%0%i%`$r$9$k;~$K$O!"8e$G8+$d$9$$$h$&$K$7$F$*$/(B
-          $B$H$$$&$3$H$,(B $BHs>o$K=EMW$K$J$C$F$-$^$9!#$=$l$O!"$"$kDxEY$NBg$-$5$N(B
-          $B%W%m%0%i%`$r=q$/(B $B$h$&$K$J$k$H!"$9$0$K$o$+$k$3$H$H;W$$$^$9!#(B
+          のところは深さ2と言えます。よく言うのは、「何段ネストしている」 と
+          いう表現です。 g.drawLine( 30,30,60,100 )
+          のところは、「2段ネストしている」というわけです。 プログラムの外見
+          上も、 その行に書くプログラムがどれだけネストしているかどうかが一
+          目見てわかる ように、タブ(Tab)キーを使って、ネストの深さの分だけ右
+          にずらします。 プログラムをする時には、後で見やすいようにしておく
+          ということが 非常に重要になってきます。それは、ある程度の大きさの
+          プログラムを書く ようになると、すぐにわかることと思います。
 
-#$B?^(B4.1.2-3<NOT YET>        $B%$%s%G%s%H(B
+#図4.1.2-3<NOT YET>        インデント
 
 
-          $B0J2<$N$h$&$K1x$$%$%s%G%s%H$K$7$?>l9g$O!"8e$G:$$k$3$H$&$1$"$$$G$9!#(B
+          以下のように汚いインデントにした場合は、後で困ることうけあいです。
 
 
 File name: hoge.java
@@ -175,31 +175,31 @@ public void paint( Graphics g
 class tamesi{}
 ----------------------------------------------------------------
 
-          $B$J$*!"$3$N%W%m%0%i%`$r<B9T$9$k$K$O!"(Bappletviewer $B$G!"(Btest.html$B$r;X(B
-          $BDj$7$F$/$@$5$$!#(B
-          $B$3$NNc$+$i$b$o$+$k$h$&$K!"(B $B$R$H$D$N%=!<%9%U%!%$%k$NCf$K$$$/$D$G$b(B
-          $B%/%i%9$r=q$/$3$H$,$G$-$^$9!#(B $B$=$l$r%3%s%Q%$%k$9$k$H!"(B $B$$$/$D$b$N%/(B
-          $B%i%9%U%!%$%k$,$G$-$^$9!#$^$?!"$?$/$5$s$N%/%i%9$r0l$D$N(B $B%U%!%$%k$K(B
-          $B=q$$$F$$$/$H!"$I$s$I$s%U%!%$%k$,Bg$-$/$J$C$F$$$C$F$7$^$&(B $B$N$G!"$=(B
-          $B$&$$$&>l9g$O!"$$$/$D$+$N(B $B%U%!%$%k$KJ,$1$FJL!9$K%3%s%Q%$%k$7$F$b$+(B
-          $B$^$$$^$;$s!#$=$N>l9g$O!"(B $B$R$H$D$N%/%i%9$N%=!<%9$r$$$/$D$b$N%U%!%$(B
-          $B%k$KJ,$1$k$3$H$O$G$-$^$;$s(B $B$N$GCm0U$7$F$/$@$5$$!#$^$?!"$$$/$D$+$K(B
-          $BJ,$1$F$b!":G$b<gMW$J%/%i%9$r(B $B%3%s%Q%$%k$9$l$P!"<+F0E*$KJ,$1$?B>$N(B
-          $B%=!<%9%3!<%I$b%3%s%Q%$%k$5$l$k(B $B$h$&$K$J$C$F$$$^$9!#(B
-          $B%=!<%9%U%!%$%k$NCf$K2?$i$+$N4V0c$$$,$"$C$?>l9g!"%3%s%Q%$%k$OCfCG$7(B
-          $B$^$9!#$=$7$F(B $B%/%i%9%U%!%$%k$O:n$i$l$^$;$s!#0JA0$K$G$-$?%/%i%9%U%!(B
-          $B%$%k$O;D$C$F$$$^$9$N$G!"(B $BCm0U$,I,MW$G$9!#%3%s%Q%$%k$,CfCG$5$l$?>l(B
-          $B9g$O!"%3%s%Q%$%i$O%(%i!<%a%C%;!<%8$r(B $B=PNO$7$^$9!#$=$N%(%i!<%a%C%;(B
-          $B!<%8$N0UL#$K$D$$$F$O!"K\>O$N:G8e$K2r@b$,$"$j$^$9!#(B
+          なお、このプログラムを実行するには、appletviewer で、test.htmlを指
+          定してください。
+          この例からもわかるように、 ひとつのソースファイルの中にいくつでも
+          クラスを書くことができます。 それをコンパイルすると、 いくつものク
+          ラスファイルができます。また、たくさんのクラスを一つの ファイルに
+          書いていくと、どんどんファイルが大きくなっていってしまう ので、そ
+          ういう場合は、いくつかの ファイルに分けて別々にコンパイルしてもか
+          まいません。その場合は、 ひとつのクラスのソースをいくつものファイ
+          ルに分けることはできません ので注意してください。また、いくつかに
+          分けても、最も主要なクラスを コンパイルすれば、自動的に分けた他の
+          ソースコードもコンパイルされる ようになっています。
+          ソースファイルの中に何らかの間違いがあった場合、コンパイルは中断し
+          ます。そして クラスファイルは作られません。以前にできたクラスファ
+          イルは残っていますので、 注意が必要です。コンパイルが中断された場
+          合は、コンパイラはエラーメッセージを 出力します。そのエラーメッセ
+          ージの意味については、本章の最後に解説があります。
 
 
-       4.1.3 $B%W%m%0%i%`$N?J9T(B($B%a%=%C%I(B)
+       4.1.3 プログラムの進行(メソッド)
 
-          $B%W%m%0%i%`$O!"FC$K2?$b;XDj$7$J$$$H!">e$+$i2<$X<B9T$5$l$F$$$-$^$9!#(B
-          $BF1$89T$N(B $BCf$G$O!":8$+$i1&$X<B9T$5$l$^$9!#$3$l$OF|K\8l$d1Q8l$J$I$N(B
-          $B?J$_$+$?$HF1$8$G$9!#(B $B$b$A$m$s!"La$7$?$jHt$P$7$?$j$9$k$?$a$NL?Na$b(B
-          $BMQ0U$5$l$F$$$k$N$G!"B?:L$J(B $B<B9T$r$5$;$k$3$H$,$G$-$^$9!#(B
-          $B%5%s%W%k%W%m%0%i%`$r8+$F$/$@$5$$!#(B
+          プログラムは、特に何も指定しないと、上から下へ実行されていきます。
+          同じ行の 中では、左から右へ実行されます。これは日本語や英語などの
+          進みかたと同じです。 もちろん、戻したり飛ばしたりするための命令も
+          用意されているので、多彩な 実行をさせることができます。
+          サンプルプログラムを見てください。
 
 
 
@@ -207,7 +207,7 @@ File name:shinkou.java
 ------------------------------------------------------------
  1:import java.applet.Applet;  
  2:import java.awt.*;
- 3:public class shinkou extends Applet  //$B?t;z$rI=<($9$k(B
+ 3:public class shinkou extends Applet  //数字を表示する
  4:{
  5:   int i=0,r=0;;
  6:   public void init()
@@ -231,54 +231,54 @@ File name: test.html
 <applet code=sinkou.class width=200 height=300></applet>
 ------------------------------------------------------------
 
-#$B?^(B4.1.3-1<DONE>	  $BF0:n7k2L(B(shinkou.java)
+#図4.1.3-1<DONE>	  動作結果(shinkou.java)
 
 
-          $B$=$l$>$l$N%/%i%9@k8@$NCf$G$O!"0lCJ%M%9%H$7$F$$$^$9$,!"$A$g$&$I0lCJ(B
-          $B$N(B $B%M%9%H$K$J$C$F$$$k9T(B(5,6,7,10,11,12,14,15,16,18$B9T(B)$B$K(B
+          それぞれのクラス宣言の中では、一段ネストしていますが、ちょうど一段
+          の ネストになっている行(5,6,7,10,11,12,14,15,16,18行)に
           public void init()
           public void paint( Graphics g )
           int tasu(int a , int b )
-          $B$N(B3$B9T$,$"$j$^$9!#(B
-          $B%W%m%0%i%`$N<B9T$O!"$3$N$h$&$JItJ,$+$i;O$^$j$^$9!#(B $B$3$N%W%m%0%i%`(B
-          $B$N>l9g$O!":G=i$K(B
-          public void init() $B$+$i;O$^$j$^$9!#$3$N9T$N<!$N9T$KCf3g8L$,;O$^$C(B
-          $B$F$$$^$9$,!"(B $B$3$NCf3g8L$,JD$8$k$^$G$,0l$D$N%W%m%0%i%`$N<B9T$NC10L(B
-          $B$K$J$C$F$$$^$9!#$D$^$j(B
+          の3行があります。
+          プログラムの実行は、このような部分から始まります。 このプログラム
+          の場合は、最初に
+          public void init() から始まります。この行の次の行に中括弧が始まっ
+          ていますが、 この中括弧が閉じるまでが一つのプログラムの実行の単位
+          になっています。つまり
             6:public void init()
             7:{
             8:     int k=2;
             9:     k = k + 2; r = tasu( k , i );
            10:}
 
-          $B$,0l$D$NC10L$G$9!#$3$N<B9TC10L$r!V%a%=%C%I!W$H8F$S$^$9!#(B Java$B$N%W(B
-          $B%m%0%i%`(B $B$O!"%a%=%C%IC10L$GF0$$$F$$$k$H$$$&$3$H$G$9!#(B
-          $B$R$H$D$N%/%i%9@k8@$NCf$K$O!"J#?t$N%a%=%C%I$r4^$a$k$3$H$,$G$-$^$9!#(B
-          $B>e$NNc$G$O!"(Bpublic void init()$B$H$$$&%a%=%C%I$H!"(B public void
-          paint(Graphics g )$B$H$$$&%a%=%C%I$H!"(B int tasu(int a, int b )$B$H$$$&(B
-          $B%a%=%C%I$N#3$D$,(B $B$"$k$o$1$G$9!#%a%=%C%I$O2?==8D$"$C$F$b(BOK$B$G$9!#$$(B
-          $B$/$D$b(B $B%a%=%C%I$,$"$k>l9g$O!"$I$N%a%=%C%I$,$I$N$h$&$J=gHV$G8F$P$l(B
-          $B$k$+$r<+(B $BJ,$G7h$a$F$$$/I,MW$,$"$j$^$9!#(B $B0lHV:G=i$K8F$S$@$5$l$k$N(B
-          $B$O!"(Bpublic void init() $B$H$$$&%a%=%C%I(B $B$G$9!#$^$?!"$3$N%W%m%0%i%`$G(B
-          $B$O!"(Bpublic void init() $B$r<B9T$7$F$$$k:GCf$K!"(B 9$B9T!"(Br=tasu(k,i);$B$N(B
-          $B$h$&$K=q$/$3$H$K$h$C$F(B int tasu(int a,int b)$B%a%=%C%I$r8F$S$@$7$F$$(B
-          $B$^$9!#(B $B%W%m%0%i%`$NN.$l$O!"$^$:(Bpublic void init() $B$N:G=i$N9T$+$i;O(B
-          $B$^$j!"(B8$B9T$^$G<B9T$7!"$=$NESCf$G(B int tasu(int a , int b ) $B%a%=%C%I(B
-          $B$N:G=i$N9T(B(15$B9T(B)$B$KHt$S!"$3$N%a%=%C%I$r<B9T$7=*$o$C$?$i!"$U$?$?$S(B
-          public void init()$B$N(B9$B9T(B $B$KLa$C$F$/$k!"$H$$$&46$8$K$J$C$F$$$^$9!#$=(B
-          $B$7$F(B10$B9T$^$G<B9T$9$k$H!"(B public void init()$B$N<B9T$O=*N;$7$^$9!#(B
-          $B%a%=%C%I$NL>A0$O!"4pK\E*$K<+J,$G(B $B<+M3$K7h$a$k$3$H$,$G$-$^$9$,!"%7(B
-          $B%9%F%`$K$h$C$FL>A0$,5,Dj$5$l$F$$$k(B $B$b$N$b$"$j$^$9!#$=$l$O$=$l$>$l(B
-          $B$,EP>l$7$F$-$?$H$-$K@bL@$7$^$9!#(B
+          が一つの単位です。この実行単位を「メソッド」と呼びます。 Javaのプ
+          ログラム は、メソッド単位で動いているということです。
+          ひとつのクラス宣言の中には、複数のメソッドを含めることができます。
+          上の例では、public void init()というメソッドと、 public void
+          paint(Graphics g )というメソッドと、 int tasu(int a, int b )という
+          メソッドの３つが あるわけです。メソッドは何十個あってもOKです。い
+          くつも メソッドがある場合は、どのメソッドがどのような順番で呼ばれ
+          るかを自 分で決めていく必要があります。 一番最初に呼びだされるの
+          は、public void init() というメソッド です。また、このプログラムで
+          は、public void init() を実行している最中に、 9行、r=tasu(k,i);の
+          ように書くことによって int tasu(int a,int b)メソッドを呼びだしてい
+          ます。 プログラムの流れは、まずpublic void init() の最初の行から始
+          まり、8行まで実行し、その途中で int tasu(int a , int b ) メソッド
+          の最初の行(15行)に飛び、このメソッドを実行し終わったら、ふたたび
+          public void init()の9行 に戻ってくる、という感じになっています。そ
+          して10行まで実行すると、 public void init()の実行は終了します。
+          メソッドの名前は、基本的に自分で 自由に決めることができますが、シ
+          ステムによって名前が規定されている ものもあります。それはそれぞれ
+          が登場してきたときに説明します。
 
 
        4.1.4 System.out.println()
 
-          Java$B$G$O!"4JC1$KJ8;z$r2hLL$KI=<($9$k$3$H$,$G$-$^$9!#$=$N$?$a$K$O!"(B
-          System.out.println( $BI=<($7$?$$$b$N(B )$B$H$$$&%a%=%C%I$r;H$$$^$9!#(B $BK\(B
-          $BMh$O!"J8;z$rI=<($9$k$H$$$&$3$H$OJ8K!$N@bL@$G$O$J$$$N$G$9$,!"(B $B0J9_(B
-          $B$NJ8K!$N@bL@$G(BSystem.out.println()$B$OHs>o$KLr$K$?$D(B $B$N$G!"$3$3$G@b(B
-          $BL@$7$^$9!#%5%s%W%k%W%m%0%i%`$rF~NO$7$F$_$F$/$@$5$$!#(B 
+          Javaでは、簡単に文字を画面に表示することができます。そのためには、
+          System.out.println( 表示したいもの )というメソッドを使います。 本
+          来は、文字を表示するということは文法の説明ではないのですが、 以降
+          の文法の説明でSystem.out.println()は非常に役にたつ ので、ここで説
+          明します。サンプルプログラムを入力してみてください。 
 
 
 File name: printTest.java
@@ -297,7 +297,7 @@ File name: test.html
 <applet code=prinTest.class width=200 height=200></applet>
 ------------------------------------------------------------
 
-#$B?^(B4.1.4-1<DONE>	  $BF0:n7k2L(B(printTest.java)
+#図4.1.4-1<DONE>	  動作結果(printTest.java)
 
 ------------
 $ 
@@ -307,53 +307,53 @@ hello!
 ------------
 
 
-          $B$3$NNc$N>l9g$O!"I=<($7$?$$$b$N$,J8;zNs$G$"$k$?$a!"(BJava$B$NJ8K!$K=>$C(B
-          $B$F!V(B"$B!W$G0O$C$F$$$^$9!#(B $B<B9T$5$;$k$H!"2hLL$K$I$N$h$&$JJQ2=$,(B $B$"$k(B
-          $B$G$7$g$&$+!)$^$:?7$7$$%&%#%s%I%&$,=P8=$7$^$9!#(B $B$=$l$H$OJL$N%&%$%s(B
-          $B%I%&$K!"(Bhello! $B$H$$$&J8;z$,I=<($5$l$F$$$k$H;W$$$^$9!#(B $BI,$:$I$3$+$N(B
-          $B%&%$%s%I%&$KI=<($5$l$F$$$k$O$:$G$9$N$G!"C5$7$F$_$F$/$@$5$$!#(B
-          hello!$B$HI=<($5$l$F$$$k%&%$%s%I%&$,!"!VI8=`=PNO!W$G$9!#I8=`=PNO$H(B
-          $B$O!"(B System.out.println()$B%a%=%C%I$K$h$C$FJ8;z$,=P$F$/$k%&%$%s%I%&(B
-          $B$N$3$H$G$9!#(B $B$=$l$O5!<o$K$h$C$F0c$$$^$9$,!"I,$:$"$j$^$9!#(B $B0J2<!"(B
-          $B!VI8=`=PNO$KI=<($9$k!W$H$$$&>l9g!"(BSystem.out.println $B$r;H$C$F!"J8(B
-          $B;z$r=P$9$3$H$r0UL#$7$^$9!#$3$&$d$C$F4JC1$KJ8;z$r=P$;$k(B $B$N$G!"%G%P(B
-          $B%C%0$,MF0W$K$J$C$F$$$^$9!#$3$&$d$C$F2hLL$KJ8;z$r=P$9$3$H$r!"(B
-		  $B!VI8=`=PNO$X!"=PNO$9$k!#!W$H$$$&$U$&$KI=8=$7$^$9!#(B
+          この例の場合は、表示したいものが文字列であるため、Javaの文法に従っ
+          て「"」で囲っています。 実行させると、画面にどのような変化が ある
+          でしょうか？まず新しいウィンドウが出現します。 それとは別のウイン
+          ドウに、hello! という文字が表示されていると思います。 必ずどこかの
+          ウインドウに表示されているはずですので、探してみてください。
+          hello!と表示されているウインドウが、「標準出力」です。標準出力と
+          は、 System.out.println()メソッドによって文字が出てくるウインドウ
+          のことです。 それは機種によって違いますが、必ずあります。 以下、
+          「標準出力に表示する」という場合、System.out.println を使って、文
+          字を出すことを意味します。こうやって簡単に文字を出せる ので、デバ
+          ッグが容易になっています。こうやって画面に文字を出すことを、
+		  「標準出力へ、出力する。」というふうに表現します。
 
-		 * Visual J++ $B$r$*;H$$$NJ}$X(B
+		 * Visual J++ をお使いの方へ
 
-		  Visual J++ $B$G%"%W%l%C%H$rF0:n$5$;$F$b!"$I$3$K$b(B"hello!"$B$H$OI=<((B
-          $B$5$l$^$;$s!#(BVisual J++$B$O!"%"%W%l%C%H$r<B9T$5$;$k$?$a$K(BInternet
-		  Explorer$B$r;HMQ$7$F$$$F!"(BInternetExplorer$B$OI8=`=PNO$r;}$?$J$$$+$i(B
-          $B$G$9!#$?$@$7!"(BInternet Explorer$B$N%a%K%e!<$N!VI=<(!W(B->$B!V>\:Y!W(B
-		  $B$NCf$K!"!V(BJAVA$B%m%0!W$N9`L\$,$"$j$^$9$N$G!"$=$N%A%'%C%/%\%C%/%9$K(B
-		  $B0u$r$D$1$k$3$H$G!"(BC:\WINDOWS\JAVA\JAVALOG.TXT$B$H$$$&(B0$B%P%$%H$N%5%$%:(B
-	      $B$NCf$K!"I8=`=PNO$K=PNO$5$l$k$O$:$@$C$?FbMF$r!"J]B8$5$;$k$3$H$,$G$-(B
-          $B$^$9!#I8=`=PNO$O!"%W%m%0%i%_%s%0$NJY6/$K$H$C$F$OHs>o$K=EMW$G$9$N$G!"(B
-		  $B2?$H$+$7$FI8=`=PNO$r8+$kJ}K!$r0J2<$K5s$2$^$9!#(B
+		  Visual J++ でアプレットを動作させても、どこにも"hello!"とは表示
+          されません。Visual J++は、アプレットを実行させるためにInternet
+		  Explorerを使用していて、InternetExplorerは標準出力を持たないから
+          です。ただし、Internet Explorerのメニューの「表示」->「詳細」
+		  の中に、「JAVAログ」の項目がありますので、そのチェックボックスに
+		  印をつけることで、C:\WINDOWS\JAVA\JAVALOG.TXTという0バイトのサイズ
+	      の中に、標準出力に出力されるはずだった内容を、保存させることができ
+          ます。標準出力は、プログラミングの勉強にとっては非常に重要ですので、
+		  何とかして標準出力を見る方法を以下に挙げます。
 
-		  o C:\WINDOWS\JAVA\JAVALOG.TXT $B$NFbMF$r!"<B9T$5$;$k$?$S$K%A%'%C%/(B
-		  $B$9$k!#$3$l$O$R$I$/HK;($J$N$G$*$9$9$a$G$-$^$;$s!#(B
+		  o C:\WINDOWS\JAVA\JAVALOG.TXT の内容を、実行させるたびにチェック
+		  する。これはひどく繁雑なのでおすすめできません。
 
-	      o Visual J++ $B0J30$K!"(BJDK$B$b%$%s%9%H!<%k$7$F!"(BVisual J++$B$O9bB.$J(B
-		  $B%3%s%Q%$%i$D$-%(%G%#%?$H$7$F;H$&!#(B
-		  $B$3$N>l9g$O!"(BMS-DOS$B%W%m%s%W%H$r$b$&$R$H$D(B
-		  $B3+$$$F$*$/I,MW$,$"$j$^$9!#I.<T$O!"(BMicrosoft developer studio$B$O$J$+(B
-		  $B$J$+A`:n@-$,$h$$$N$G!"$3$NJ}K!$O$J$+$J$+$$$$$N$G$O$J$$$+$H;W$$$^$9!#(B
+	      o Visual J++ 以外に、JDKもインストールして、Visual J++は高速な
+		  コンパイラつきエディタとして使う。
+		  この場合は、MS-DOSプロンプトをもうひとつ
+		  開いておく必要があります。筆者は、Microsoft developer studioはなか
+		  なか操作性がよいので、この方法はなかなかいいのではないかと思います。
 
-		  o $BK\=q$NIUO?$G>R2p$7$F$$$k!"I.<T:n$N(BConsole$B%/%i%972$r;H$&!#$3$NJ}K!$r(B
-		  $B;H$&$H!"%"%W%l%C%H$N%W%m%0%i%`$K>/$7$NJQ99$r2C$($k$@$1$G!"(BVisual J++
-		  $B$N4D6-$G$bI8=`=PNO(B($B$N$h$&$J$b$N(B)$B$,;H$($k$h$&$K$J$j$^$9!#$3$l$r2DG=(B
-	 	  $B$K$9$k$?$a$K$O!"B?>/@_Dj$r$7$F$d$kI,MW$,$"$k$N$H!"(BCD-ROM$B$+$i%U%!%$%k(B
-		  $B$r%3%T!<$9$kI,MW$,$"$j$^$9!#$=$l$K$D$$$F$O!"IUO?$r;2>H$7$F$/$@$5$$!#(B
+		  o 本書の付録で紹介している、筆者作のConsoleクラス群を使う。この方法を
+		  使うと、アプレットのプログラムに少しの変更を加えるだけで、Visual J++
+		  の環境でも標準出力(のようなもの)が使えるようになります。これを可能
+	 	  にするためには、多少設定をしてやる必要があるのと、CD-ROMからファイル
+		  をコピーする必要があります。それについては、付録を参照してください。
 
-		  $B%W%m%0%i%`$O!"0J2<$N$h$&$KJQ99$9$k$@$1$G$9!#$3$N>O$G=P$F$/$kA4$F$N(B
-		  $BNc$r!"0J2<$NNc$K=>$C$FJQ99$9$l$P!"(BVisual J++$B$G$bI8=`=PNO(B($B$N$h$&$J(B
-		  $B$b$N(B)$B$r;H$C$F!"%W%m%0%i%`$N%G%P%C%0$r$9$k$3$H$,$G$-$^$9!#8=:_$O!"(B
-		  $BNc30$,H/@8$7$?$H$-$N%a%C%;!<%8$,=PNO$5$l$^$;$s$,!"(BVisual J++$B$,(B
-		  JDK1.1$B$K$J$k$H!"(B  $B$G$-$k$h$&$K$J$j$^$9!#(B($BIUO?$r;2>H!#(B)
+		  プログラムは、以下のように変更するだけです。この章で出てくる全ての
+		  例を、以下の例に従って変更すれば、Visual J++でも標準出力(のような
+		  もの)を使って、プログラムのデバッグをすることができます。現在は、
+		  例外が発生したときのメッセージが出力されませんが、Visual J++が
+		  JDK1.1になると、  できるようになります。(付録を参照。)
 
-		  $B85$N%W%m%0%i%`(B:
+		  元のプログラム:
 
 File name: before.java
 -------------------------------------------------
@@ -364,91 +364,91 @@ public class before extends java.applet.Applet
 	}
 }
 -------------------------------------------------
-		  $BJQ998e$N%W%m%0%i%`!'(B
+		  変更後のプログラム：
 File name: after.java
 -------------------------------------------------
-import ringo.*;		// $B$^$:!"%Q%C%1!<%8(B 'ringo'$B$r(Bimport$B$7$^$9!#(B
+import ringo.*;		// まず、パッケージ 'ringo'をimportします。
 public class after extends java.applet.Applet
 {
 	public void init(){
-		// System$B$r!"(BConsole$B$KJQ$($^$9!#(B
+		// Systemを、Consoleに変えます。
 		Console.out.println("This is normal applet program.");
 	}
 }
 -------------------------------------------------
-		$B%W%m%0%i%`$r$3$N$h$&$KJQ99$9$k$H!"(BConsole.out.println(...)$B$H$7$?;~$K(B
-	 	$B2hLL$K>.$5$$%&%$%s%I%&$,8=$l$F!"$=$NCf$KFbMF$,I=<($5$l$^$9!#%U%!%$%k$K(B
-		$BJ]B8$9$k5!G=$bIU$1$^$7$?$N$G!"Lr$K$?$D$3$H$H;W$$$^$9!#3hMQ$7$F$/$@$5$$!#(B
+		プログラムをこのように変更すると、Console.out.println(...)とした時に
+	 	画面に小さいウインドウが現れて、その中に内容が表示されます。ファイルに
+		保存する機能も付けましたので、役にたつことと思います。活用してください。
 
-#$B?^(B4.1.4-2<DONE>		Console$B%/%i%9$r;H$C$?;~$N2hLL(B
-
-
+#図4.1.4-2<DONE>		Consoleクラスを使った時の画面
 
 
-       4.1.5 $B%G!<%?9=B$(B
-
-          $B%G!<%?9=B$$H$$$&$N$O!"MM!9$J>pJs$r4IM}$9$k$d$j$+$?$N$3$H$G$9!#(B
-          $B>pJs$,$?$/$5$s$"$k>l9g!"$=$l$rMp;($KCV$$$F$*$$$?$N$G$O!"=hM}$9$k$3(B
-          $B$H$,(B $B$G$-$^$;$s!#$=$l$rKI$0$?$a$K$O!">pJs$r=g=xN)$F$F@0M}$7$?$jJ,(B
-          $BN`$7$?$j$9$k(B $BI,MW$,$"$j$^$9!#(B $BNc$($P!"IaDL$K>pJs$rI=$K$7$FJB$Y$k$H(B
-          $B$$$&J}K!$,$"$j$^$9$M!#(B
-
-#$BI=(B4.1.5<DONE>        $B%I%i%/%($_$?$$$JE($N%Q%i%a!<%?$NI=(B
 
 
-               $BL>A0(B  $BBNNO(B   $B967bNO(B
+       4.1.5 データ構造
+
+          データ構造というのは、様々な情報を管理するやりかたのことです。
+          情報がたくさんある場合、それを乱雑に置いておいたのでは、処理するこ
+          とが できません。それを防ぐためには、情報を順序立てて整理したり分
+          類したりする 必要があります。 例えば、普通に情報を表にして並べると
+          いう方法がありますね。
+
+#表4.1.5<DONE>        ドラクエみたいな敵のパラメータの表
+
+
+               名前  体力   攻撃力
 ---------------------------------------
-           $B%9%i%$%`(B     4        2
-           $B%4!<%9%H(B    12        6
-           $B$,$$$3$D(B    34       22
-           $B%I%i%4%s(B   104       72
+           スライム     4        2
+           ゴースト    12        6
+           がいこつ    34       22
+           ドラゴン   104       72
 ---------------------------------------
 
-          $BB>$K$b!"<-=q$G$O!"B?$/$N>pJs$r!"8!:w$7$d$9$$$h$&$K%"%k%U%!%Y%C%H$N(B
-          $B=g$G(B $BJB$Y$F$"$j$^$9!#$b$7$b$0$A$c$0$A$c$J=gHV$GC18l$,JB$s$G$$$?(B
-          $B$i!";H$($J$$(B $B<-=q$K$J$C$F$7$^$$$^$9!#(B
-          $B%3%s%T%e!<%?!<>e$N%W%m%0%i%`$O!"$3$N%G!<%?9=B$$K4p$E$$$F!"$"$k7h$^(B
-          $B$C$?(B $B=hM}$r$7$^$9!#$@$+$i%G!<%?9=B$$O%W%m%0%i%_%s%0$K$*$$$F$OHs>o(B
-          $B$K=EMW$G$9!#(B $B%G!<%?9=B$$,0c$&$@$1$G!"7k2L$OF1$8$J$N$K!"<B9TB.EY$,(B
-          100$BG\0c$&$J$s$F(B $B$3$H$b5/$3$j$^$9!#%W%m%0%i%_%s%0$K$*$$$F$O!"%G!<%?(B
-          $B9=B$$N%G%6%$%s$,(B $BH>J,0J>e$r@j$a$k!"$H8@$C$F$h$$$+$b$7$l$^$;$s!#(B
-          $B$G$O<!$K!"%G!<%?9=B$$r:n$k:G>.C10L!VJQ?t!W$K$D$$$F!#(B
+          他にも、辞書では、多くの情報を、検索しやすいようにアルファベットの
+          順で 並べてあります。もしもぐちゃぐちゃな順番で単語が並んでいた
+          ら、使えない 辞書になってしまいます。
+          コンピューター上のプログラムは、このデータ構造に基づいて、ある決ま
+          った 処理をします。だからデータ構造はプログラミングにおいては非常
+          に重要です。 データ構造が違うだけで、結果は同じなのに、実行速度が
+          100倍違うなんて ことも起こります。プログラミングにおいては、データ
+          構造のデザインが 半分以上を占める、と言ってよいかもしれません。
+          では次に、データ構造を作る最小単位「変数」について。
 
 
-       4.1.6 $BJQ?t(B
+       4.1.6 変数
 
-          $BJQ?t$O!"%G!<%?$NF~$l$b$N!#(B
+          変数は、データの入れもの。
 
-          $B%W%m%0%i%`$H$O!"%G!<%?$r07$&J}K!$r5-=R$7$?$b$N$G$9!#%W%m%0%i%`$N(B
-          $BCf$G$O!"2?$i$+$NJ}K!$G!"%G!<%?$rJ]B8$7!"5-=R$7$J$1$l$P$J$j$^$;$s!#(B
-          $B$=$NJ]B8$N$d$j$+$?$r!"!V%G!<%?9=B$!W$H8F$V$N$G$7$?!#(B Java$B$G$O!"%G(B
-          $B!<%?$r07$&$?$a$K!"JQ?t$H$$$&$b$N$r;H$$$^$9!#Cf3X$d(B $B9b9;$G$O!"?t3X(B
-          $B$N<x6H$G!"(Bx$B$H$+(By$B$H$+!"$=$&$$$&J8;z$r;H$C$F!"JQ?t$r(B $BI=$7$F$$$^$7$?(B
-          $B$,!"$=$l$HF1$8$h$&$K!"JQ?t$r;H$$$^$9!#(B
-          $B$?$H$($P!"?M4V$NF,$NCf$G!"(B10$B$H(B20$B$rB-$97W;;$r$9$k$H$7$^$7$g$&!#(B $B$=(B
-          $B$N;~$O!">/$J$/$F$b!"(B10$B$H(B20$B$H$$$&$U$?$D$N?t;z$rF,$N$I$3$+$K5-21(B $B$7(B
-          $B$F$*$/I,MW$,$"$j$^$9$M!#<B:]$K$d$C$F$_$F$P$o$+$k$H;W$$$^$9$,!#(B $B$=(B
-          $B$l$HF1$8$h$&$K!"$=$N7W;;$r%W%m%0%i%`$G$d$k;~$K$b!"$I$3$+$K3P$($F(B
-          $B$*$/I,MW$,$"$j$^$9!#JQ?t$O$=$N$?$a$K$b;H$($^$9$7!"$5$i$KJ#;($J7W;;(B
-          $B$r$9$k$?$a$K$O!"$I$&$7$F$bI,MW$K$J$C$F$-$^$9!#(B
+          プログラムとは、データを扱う方法を記述したものです。プログラムの
+          中では、何らかの方法で、データを保存し、記述しなければなりません。
+          その保存のやりかたを、「データ構造」と呼ぶのでした。 Javaでは、デ
+          ータを扱うために、変数というものを使います。中学や 高校では、数学
+          の授業で、xとかyとか、そういう文字を使って、変数を 表していました
+          が、それと同じように、変数を使います。
+          たとえば、人間の頭の中で、10と20を足す計算をするとしましょう。 そ
+          の時は、少なくても、10と20というふたつの数字を頭のどこかに記憶 し
+          ておく必要がありますね。実際にやってみてばわかると思いますが。 そ
+          れと同じように、その計算をプログラムでやる時にも、どこかに覚えて
+          おく必要があります。変数はそのためにも使えますし、さらに複雑な計算
+          をするためには、どうしても必要になってきます。
 
-          Java$B$G>pJs$r5-21$9$k$K$O!"5-21$7$?$$>pJs$N<oN`$K1~$8$F!"!V7?!W$r(B
-          $B;H$$$o$1$^$9!#@0?t$rF~$l$k$?$a$NJQ?t!"J8;z$rF~$l$k$?$a$NJQ?t!"(B $B$H(B
-          $B$$$&$h$&$K!#(BJava$B$G$O!"?tCM$d!"J8;z$J$I$N4pK\E*$J>pJs$NC10L$r5-21$7(B
-          $B$F$*$/(B $B$?$a$NJQ?t$H$7$F!"!V4pK\7?!W$r$$$/$D$+MQ0U$7$F$$$^$9!#(B
-          $B4pK\7?$K$O!"@0?t7?$G$"$k(Bbyte$B!"(Bshort$B!"(Bint$B!"(B long$B!"J8;z7?$G$"$k(B
-          char$B!"IbF0>.?t7?$G$"$k(Bfloat$B!"(B double$B!"??56CM7?$G$"$k(Bboolean$B$,$"$j(B
-          $B$^$9!#(B $B$=$l$>$l$NCM$NHO0O$H$+$K$D$$$F$N>\$7$$$3$H$O!"8@8l;EMM$N%j(B
-          $B%U%!%l%s%9(B $B%Z!<%8$r8+$F$/$@$5$$!#(B
+          Javaで情報を記憶するには、記憶したい情報の種類に応じて、「型」を
+          使いわけます。整数を入れるための変数、文字を入れるための変数、 と
+          いうように。Javaでは、数値や、文字などの基本的な情報の単位を記憶し
+          ておく ための変数として、「基本型」をいくつか用意しています。
+          基本型には、整数型であるbyte、short、int、 long、文字型である
+          char、浮動小数型であるfloat、 double、真偽値型であるbooleanがあり
+          ます。 それぞれの値の範囲とかについての詳しいことは、言語仕様のリ
+          ファレンス ページを見てください。
 
-          $B%2!<%`%W%m%0%i%`$r$9$k$H$-$K$O!"JQ?t$r;H$C$F!"8=:_<g?M8x$O(Bx$B:BI8$,(B
-          120$B!"(By$B:BI8$,(B100$B$N0LCV$K$$$k!"$H$$$&$3$H$r4IM}$9$k$o$1$G$9!#?tCM(B
-          $B$O!"(B $BE@?t$d:BI8$r07$&;~$KI,MW$G$9!#%2!<%`$G=P$F$/$k$[$H$s$I$N?tCM(B
-          $B$O!"(Bint$B$r;H$($P(B $B;v$,B-$j$k$H$$$&$3$H$,$o$+$j$^$9$M!#=>$C$F!"@0?t$r(B
-          $B07$&>l9g$O!"2?$b9M$($:$K(Bint $B$r;H$C$F0l8~$K9=$$$^$;$s!#<B:]I.<T$b%2(B
-          $B!<%`$r:n$k$H$-$O$=$&$7$F$$$^$9!#(B
+          ゲームプログラムをするときには、変数を使って、現在主人公はx座標が
+          120、y座標が100の位置にいる、ということを管理するわけです。数値
+          は、 点数や座標を扱う時に必要です。ゲームで出てくるほとんどの数値
+          は、intを使えば 事が足りるということがわかりますね。従って、整数を
+          扱う場合は、何も考えずにint を使って一向に構いません。実際筆者もゲ
+          ームを作るときはそうしています。
 
-          $B4pK\7?$r;H$C$?%W%m%0%i%`$NNc$r<($7$^$9!#(B
+          基本型を使ったプログラムの例を示します。
 
 
 File name: kihon.java
@@ -457,29 +457,29 @@ public class kihon extends java.applet.Applet
 {
 	public void init()
 	{
-		int i = 200,ia = 808;  // int$B$O@0?t$rF~$l$kJQ?t!#(B
-		System.out.println( i );  //$BI=<($7$^$9(B
-		System.out.println( i + ia );// $BB-$7;;$N7k2L$rI=<($7$^$9(B
+		int i = 200,ia = 808;  // intは整数を入れる変数。
+		System.out.println( i );  //表示します
+		System.out.println( i + ia );// 足し算の結果を表示します
 
-		short s = -8008;// int$B$,(B32$B%S%C%H$KBP$7$F!"(Bshort$B$O(B16$B%S%C%H!#(B
+		short s = -8008;// intが32ビットに対して、shortは16ビット。
 		System.out.println( s );
 
-		long l = 9096060680808080808L;// long$B$O$3$s$JBg$-$J?t$bF~$k(B
+		long l = 9096060680808080808L;// longはこんな大きな数も入る
 		System.out.println( l );
 
-		byte y = (byte)808;// $B8B3&$r1[$($?CM$rF~$l$k$H$I$&$J$k$N$G$7$g$&!)(B
+		byte y = (byte)808;// 限界を越えた値を入れるとどうなるのでしょう？
 		System.out.println( y );
 
-		char b = 'a';// char $B$O(B1$BJ8;z$rF~$l$kJQ?t!#$3$N$h$&$K$7$F;H$$$^$9!#(B
+		char b = 'a';// char は1文字を入れる変数。このようにして使います。
 		System.out.println( b );
 
-		boolean t = false;// boolean$B7?$O!"(Btrue$B$H(Bfalse$B$N(B2$B<oN`$7$+CM$,$"$j$^$;$s(B
+		boolean t = false;// boolean型は、trueとfalseの2種類しか値がありません
 		System.out.println( t );
 
-		double d = 3.1415926;// double$B$O<B?t$rF~$l$kJQ?t!#(B
+		double d = 3.1415926;// doubleは実数を入れる変数。
 		System.out.println( d );
 
-		float f = (float)1.41421356;// float$B$O!"(Bdouble$B$N@:EY$,Dc$$$b$N$G$9!#(B
+		float f = (float)1.41421356;// floatは、doubleの精度が低いものです。
 		System.out.println( f );
 	}
 }
@@ -490,7 +490,7 @@ File name: test.html
 <applet code=kihon.class width=200 height=200></applet>
 ------------------------------------------------------------
 
-#$B?^(B4.1.6-1 <DONE>   $BF0:n7k2L(B(kihon.java)
+#図4.1.6-1 <DONE>   動作結果(kihon.java)
 
 --------
 $ 
@@ -507,34 +507,34 @@ false
 
 --------
 
-		  $B?tCM$rD>@\%W%m%0%i%`$K=q$/>l9g$O!"?tCM$N8e$m$K!"(Bfloat$B$K$7$?$$>l9g$O(B
-		  F,long$B$K$7$?$$>l9g$O(BL$B$r;XDj$7$^$9!#2?$b;XDj$7$J$$>l9g$O!"(B
-		  $B@0?t$J$i(Bint$B$K!">.?t$J$i(Bdouble$B$K;XDj$7$?$3$H$K$J$j$^$9!#Nc$G(B
+		  数値を直接プログラムに書く場合は、数値の後ろに、floatにしたい場合は
+		  F,longにしたい場合はLを指定します。何も指定しない場合は、
+		  整数ならintに、小数ならdoubleに指定したことになります。例で
 
 		  long l = 9096060680808080808L;
-		  $B$H$7$F$$$k$H$3$m$O!"8e$m$K(BL$B$H$$$&5-9f$,I,MW$G$9!#(B
-		  9096060680808080808$B$H$$$&CM$O(Bint$B$NHO0O$r1[$($F$$$k$+$i$G$9!#(B
+		  としているところは、後ろにLという記号が必要です。
+		  9096060680808080808という値はintの範囲を越えているからです。
 		  
-		  $B$=$l$+$i!"(B
+		  それから、
 		  byte y = (byte)808;
-		  $B$d(B
+		  や
 		  float f = (float)1.41421356;
-		  $B$N9T$N$h$&$K!"7?$rJQ49$9$k$3$H$,$G$-$^$9!#$=$l$K$O!"JQ49$7$?$$?tCM$N(B
-          $B:8B&$K!"(B(byte)$B$H$+(B(float)$B$H$+(B(char)$B$H$$$&$h$&$K!"7?$r3g8L$G$/$/$C$F(B
-		  $BI=8=$7$^$9!#$3$NNc$G$O!"(B808$B$HD>@\=q$$$?$b$N$O<+F0E*$K(Bint$B$K$J$k$N$G!"(B
-		  byte$B7?$NJQ?t$G$"$k(By$B$KBeF~$9$k$K$O!"$^$:(Bbyte$B7?$K$7$F$d$kI,MW$,$"$k(B
-		  $B$?$a!"JQ49$7$F$$$^$9!#$^$?(B1.41421356$B$HD>@\%W%m%0%i%`$K=q$$$?>l9g$O!"(B
-		  $B<+F0E*$K(Bdouble$B$H$7$F07$o$l$k$?$a!"(Bfloat$B7?$NJQ?t(Bf$B$KBeF~$9$k$?$a$K!"(B
-		  (float)$B$r;H$C$F!"(Bfloat$B7?$KJQ49$7$F$$$^$9!#(B
-          $B$3$N$h$&$KJQ?t$N7?$rJQ49$9$k$3$H$r!"!V%-%c%9%H$9$k!W$H8@$$$^$9!#(B
-		  $B!V%-%c%9%H!W$O!"<!$K@bL@$9$k;2>H7?$G$b;H$($^$9!#(B
+		  の行のように、型を変換することができます。それには、変換したい数値の
+          左側に、(byte)とか(float)とか(char)というように、型を括弧でくくって
+		  表現します。この例では、808と直接書いたものは自動的にintになるので、
+		  byte型の変数であるyに代入するには、まずbyte型にしてやる必要がある
+		  ため、変換しています。また1.41421356と直接プログラムに書いた場合は、
+		  自動的にdoubleとして扱われるため、float型の変数fに代入するために、
+		  (float)を使って、float型に変換しています。
+          このように変数の型を変換することを、「キャストする」と言います。
+		  「キャスト」は、次に説明する参照型でも使えます。
 
-          $B4pK\7?$K2C$($F!"!V;2>H7?!W$H8F$P$l$kJQ?t$,$"$j$^$9!#;2>H7?$O(B
-          $B4pK\7?(B $B$H$A$,$C$FL5?t$K<oN`$,$"$j!"$^$?<+J,$G$b:n$k$3$H$,$G$-$^(B
-          $B$9!#$=$NCf$G$b(BSun$B$,(B $BDs6!$7$F$$$k$b$N$O!"%/%i%9%i%$%V%i%j$N%^%K%e%"(B
-          $B%k$KA4It:\$C$F$$$^$9!#;2>H7?$N(B $BL>A0$OBgJ8;z$G;O$^$C$F$$$k$N$G!"4p(B
-          $BK\7?$H8+J,$1$,$D$-$^$9!#$3$3$G3X$s$G$[$7$$(B $B;2>H7?$O<!$N(BString$B7?$G(B
-          $B$9!#(BString$B7?$O!"J8;zNs$r(B $B5-21$7$F$*$/$?$a$N7?$G$9!#Nc$r<($7$^$9!#(B
+          基本型に加えて、「参照型」と呼ばれる変数があります。参照型は
+          基本型 とちがって無数に種類があり、また自分でも作ることができま
+          す。その中でもSunが 提供しているものは、クラスライブラリのマニュア
+          ルに全部載っています。参照型の 名前は大文字で始まっているので、基
+          本型と見分けがつきます。ここで学んでほしい 参照型は次のString型で
+          す。String型は、文字列を 記憶しておくための型です。例を示します。
 
 
 File name: str.java
@@ -543,9 +543,9 @@ public class str extends java.applet.Applet
 {
     public void init()
 	{
-		String hoge="I am a";	//$B$3$&$d$C$FJ8;zNs$rF~$l$k(B
-		String hoge2 = hoge + "boy";    //$BB-$7;;$9$k$H!"$D$J$,$j$^$9!#(B
-		System.out.println(hoge2+".");	// $B$I$s$I$s$D$J$2$k!#(B
+		String hoge="I am a";	//こうやって文字列を入れる
+		String hoge2 = hoge + "boy";    //足し算すると、つながります。
+		System.out.println(hoge2+".");	// どんどんつなげる。
 	}
 }
 ------------------------------------------------------------
@@ -555,7 +555,7 @@ File name: test.html
 <applet code=str.class width=200 height=200></applet>
 ------------------------------------------------------------
 
-#$B?^(B4.1.6-2 <DONE>    $BF0:n7k2L(B(str.java)
+#図4.1.6-2 <DONE>    動作結果(str.java)
 
 ---------		  
 $
@@ -564,17 +564,17 @@ I am aboy.
 $ 
 ---------		  
 
-          $B%W%m%0%i%`Cf$GJ8;zNs$r07$&$H$-$O!V(B"$B!W$G0O$`$3$H$H!"B-$7;;$,$G$-$k(B
-          $B$3$H$,!"(B $BBg$-$JFCD'$G$9!#$$$m$$$m;n$7$F$_$F$/$@$5$$!#(B
+          プログラム中で文字列を扱うときは「"」で囲むことと、足し算ができる
+          ことが、 大きな特徴です。いろいろ試してみてください。
 		 
 
 
 
-       4.1.7 $BG[NsJQ?t(B
+       4.1.7 配列変数
 
-		Java$B$G$O!"F1$87?$NJQ?t$rJB$Y$F4IM}$9$k$3$H$,$G$-$^$9!#$=$l$K$O<!$N(B
-          $B$h$&$K$7$^$9!#(B $B$^$:$O!"4pK\7?$NG[Ns$NNc$G$9!#%W%m%0%i%`$NCf$N@bL@(B
-		  $B$r8+$F$/$@$5$$!#(B
+		Javaでは、同じ型の変数を並べて管理することができます。それには次の
+          ようにします。 まずは、基本型の配列の例です。プログラムの中の説明
+		  を見てください。
 
 
 File name: hairetu1.java
@@ -583,31 +583,31 @@ public class hairetu1 extends java.applet.Applet
 {
     public void init()
     {
-    	// $B4pK\7?$N>l9g(B
+    	// 基本型の場合
 		
-		// $B$H$j$"$($:(B10$B8DJ,$NNN0h$r3NJ]$7$^$9!#(B
+		// とりあえず10個分の領域を確保します。
 		int ia[] = new int[10]; 
-		//$B:G=i$KCM$rF~$l$F$*$/$3$H$,$G$-$^$9!#(B
+		//最初に値を入れておくことができます。
 		int ib[] = { 111, 2, 3, 4, 5, 6, 7, 8, 999 };
-		// [] $B$NCf$N?t;z$r!"!VE:;z(B($B$=$($8(B)$B!W$H8@$$$^$9!#(B
+		// [] の中の数字を、「添字(そえじ)」と言います。
 		System.out.println( ib[0] );    
 		System.out.println( ib[8] );
 
-		// $B0J2<$N$h$&$K!"(B2$B<!85(B($BI=!"9TNs(B)$B$K$b$G$-$^$9!#(B
+		// 以下のように、2次元(表、行列)にもできます。
 		char  ic[][] = new char[100][200]; 
 		short id[][] = {
-			{ 606, 707, 808, 909 } ,  // 2$B<!85$N=i4|2=$O$3$N$h$&$K$7$^$9!#(B
-			{ 123, 234, 345, 456 } ,  // 2$B<!850J>e!"$$$/$i$G$b$G$-$^$9!#(B
+			{ 606, 707, 808, 909 } ,  // 2次元の初期化はこのようにします。
+			{ 123, 234, 345, 456 } ,  // 2次元以上、いくらでもできます。
 			{ 0, 1, 2, 3 }
 		};
 		System.out.println( id[2][2] );
 		
-		// $B<!$N9T$O<B9T$5$;$k$H%(%i!<!#$=$s$JHV9f$NMWAG$O$J$$!#(B
-		System.out.println( id[5][6] );    //$B%3%a%s%H%"%&%H(B
+		// 次の行は実行させるとエラー。そんな番号の要素はない。
+		System.out.println( id[5][6] );    //コメントアウト
 
-		// boolean$B$O!"(B2$B<oN`$NCM$7$+$J$$!#(B
+		// booleanは、2種類の値しかない。
 		boolean ba[] = { true , false , true , true };  
-		// $BG[Ns$N%5%$%:$rF@$k$K$O<!$N$h$&$K$7$^$9!#(B
+		// 配列のサイズを得るには次のようにします。
 		System.out.println( ba.length );   
    }
 }
@@ -618,7 +618,7 @@ File name: test.html
 <applet code=hairetu1.class width=200 height=200></applet>
 ------------------------------------------------------------
 
-#$B?^(B4.1.7-1<DONE>        $BF0:n7k2L(B(hairetu1.java)
+#図4.1.7-1<DONE>        動作結果(hairetu1.java)
 
 ----------
 $
@@ -631,22 +631,22 @@ java.lang.ArrayIndexOutOfBoundsException: 5
         at sun.applet.AppletPanel.run(AppletPanel.java:251)
         at java.lang.Thread.run(Thread.java)
 ----------		
-		System.out.println( id[5][6] );   $B$N9T$r%3%a%s%H%"%&%H$7$F!"(B
-		$B<B9T$5$;$F$_$F$/$@$5$$!#(B
+		System.out.println( id[5][6] );   の行をコメントアウトして、
+		実行させてみてください。
 
 
-#$B?^(B4.1.7-2<NOT YET>         $BG[Ns(Bib$B$N>u67(B(hairetu1.java)
+#図4.1.7-2<NOT YET>         配列ibの状況(hairetu1.java)
 
-#$B?^(B4.1.7-3<NOT YET> 		  $BG[Ns(Bic$B$N9=B$(B(hairetu1.java)
+#図4.1.7-3<NOT YET> 		  配列icの構造(hairetu1.java)
 		  
 
-          $B$3$3$G(Bnew$B$H$$$&%-!<%o!<%I$N;H$$$+$?$KCm0U$7$F$/$@$5$$!#(Bnew $B$O!"(B
-          $B!V%a%b%j!<>e$K!"%G!<%?$r4IM}$9$k$?$a$N>l=j$r3NJ]$9$k$h!<!W$H$$$&0U(B
-          $BL#$G$9!#(B $BG[Ns$bJQ?t$J$N$G!":G=i$K@k8@$9$kI,MW$,$"$j$^$9!#@k8@$N;~(B
-          $B$K$O!"$I$l$@$1$NMWAG$r;}$D(B $BG[Ns$K$9$k$N$+$r!"!VMWAG?t!W$G;XDj$7$^(B
-          $B$9!#;H$&;~$K$O!"!V2?HVL\$NMWAG$+!W$r!"(B0$B$+$i(B $B;O$^$kCM$G;XDj$7$^$9!#(B
-          $B;2>H7?$NG[Ns$r;H$&$H$-$K$O!":G=i$O>/$78MOG$&$3$H$,$"$k$+$b$7$l$^$;(B
-          $B$s!#$^$:$ONc$r(B $B8+$F$/$@$5$$!#(B
+          ここでnewというキーワードの使いかたに注意してください。new は、
+          「メモリー上に、データを管理するための場所を確保するよー」という意
+          味です。 配列も変数なので、最初に宣言する必要があります。宣言の時
+          には、どれだけの要素を持つ 配列にするのかを、「要素数」で指定しま
+          す。使う時には、「何番目の要素か」を、0から 始まる値で指定します。
+          参照型の配列を使うときには、最初は少し戸惑うことがあるかもしれませ
+          ん。まずは例を 見てください。
 
 
 File name: hairetu2.java
@@ -656,16 +656,16 @@ public class hairetu2 extends java.applet.Applet
     public void init()
     {
 
-		//$BJ8;zNs$OFCJL$K!"<!$N$h$&$K$7$F=i4|2=$G$-$^$9!#(B
+		//文字列は特別に、次のようにして初期化できます。
 		String sb[] = { "this" , "is" , "a" , "test.\n" };
-		// $BJ8;zNs$NB-$7;;$O4pK\!#(B
+		// 文字列の足し算は基本。
 		System.out.println( sb[0] + sb[1] + sb[2] + sb[3] );
-		// $BJ8;zNs$NG[Ns!#(B
+		// 文字列の配列。
 		String sa[] = new String[4];    
-		// null$B$HI=<($5$l$^$9!#FbMF$,$J$$!"$H$$$&0UL#$G$9!#(B
+		// nullと表示されます。内容がない、という意味です。
 		System.out.println( sa[2] );    
-		sa[2] = "Music";// $B$3$&$d$C$FFbMF$rF~$l$F!"(B
-		System.out.println( sa[2] );    // $BI=<($9$k$H(B....
+		sa[2] = "Music";// こうやって内容を入れて、
+		System.out.println( sa[2] );    // 表示すると....
 	}
 }
 ------------------------------------------------------------
@@ -675,7 +675,7 @@ File name: test.html
 <applet code=hairetu2.class width=200 height=200></applet>
 ------------------------------------------------------------
 
-#$B?^(B4.1.7-4 <DONE>         $B<B9T7k2L(B(hairetu2.java)
+#図4.1.7-4 <DONE>         実行結果(hairetu2.java)
 
 ------------
 $ 
@@ -688,10 +688,10 @@ Music
 ------------
 
 
-       4.1.8 $B%9%3!<%W(B
+       4.1.8 スコープ
 
-          $B!V%9%3!<%W!W$H$O!"JQ?t$N8+$($k(B($B;H$($k(B)$BHO0O$N$3$H$G$9!#(B
-			$B$^$:$O<!$NNc$r8+$F$/$@$5$$!#(B
+          「スコープ」とは、変数の見える(使える)範囲のことです。
+			まずは次の例を見てください。
 
 
 File name:scope.java
@@ -708,7 +708,7 @@ public class scope extends java.applet.Applet
 	public boolean keyDown(Event e , int c )
 	{
      	System.out.println("B:" + i );
-     	System.out.println("C:" + j );  // $B$3$l$O%3%s%Q%$%k$G$-$J$$!#(B
+     	System.out.println("C:" + j );  // これはコンパイルできない。
 		return true;
 	}
 }
@@ -720,10 +720,10 @@ File name: test.html
 <applet code=scope.class width=200 height=200></applet>
 ------------------------------------------------------------
 
-     	System.out.println("C:" + j );  $B$3$N9T$r%3%a%s%H$K$7$F%3%s%Q%$%k$7$F(B
-		$B<B9T$9$k$H<!$N$h$&$J=PNO$rF@$^$9!#(B
+     	System.out.println("C:" + j );  この行をコメントにしてコンパイルして
+		実行すると次のような出力を得ます。
 
-#$B?^(B4.1.8-1 <DONE>        $BF0:n7k2L(B(scope.java)
+#図4.1.8-1 <DONE>        動作結果(scope.java)
 
 
 --------
@@ -736,22 +736,22 @@ B:20
 $
 --------
 
-          $BJQ?t$O!"%/%i%9$N%U%#!<%k%IJQ?t$H!"%a%=%C%I$NCf$N%m!<%+%kJQ?t$KJ,$1(B
-          $B$k$3$H$,$G$-$^$9!#(B $B%/%i%9$N%U%#!<%k%IJQ?t(B($B$3$NNc$G$O(B20$B$,BeF~$5$l$F(B
-          $B$$$k(Bi$B$G$9(B)$B$O$9$Y$F!"(B $B$=$l$>$l$N%a%=%C%I$N30(B($BCf3g8L$N30(B)$B$K=q$+$l$F(B
-          $B$$$^$9!#$3$NJQ?t$O!"$I$N%a%=%C%I$+$i$b(B $B8+$($^$9!#(B($B$9$Y$F$N%a%=%C%I(B
-          $B$NCf$G;H$($k$H$$$&$3$H$G$9!#(B) $B$H$3$m$,!"$=$l$>$l$N%a%=%C%I$NCf$G@k(B
-          $B8@$5$l$F$$$k%m!<%+%kJQ?t(B $B$O!"B>$N%a%=%C%I$NCf$G$O;H$($^$;$s!#$=$N(B
-          $B>Z5r$K!">e$N%W%m%0%i%`$r$=$N$^$^%3%s%Q%$%k$9$k$H!"(B keyDown$B%a%=%C%I(B
-          $B$NCf$G(Bj$B$r;H$C$F$$$k$H$3$m$,%3%s%Q%$%k$G$-(B $B$^$;$s!#F1$8$h$&$K!"(Binit
-          $B%a%=%C%I$NCf$G$O!"(BkeyDown$B%a%=%C%I$N(B $BCf$G;H$&$3$H$,$G$-$?(Be$B$H(Bc$B$O;H(B
-          $B$&$3$H$,$G$-$^$;$s!#(B
-          $B$3$N$h$&$K!"JQ?t$NL>A0$r!"$=$l$>$l$N%a%=%C%I$NCf$G$7$+;H$($J$$$h$&(B
-          $B$K$9$k$3$H$K$h$C$F!"(B $B$=$l$>$l$N%a%=%C%I$NFHN)@-$r9b$a$k$3$H$,$G(B
-          $B$-!"L>A0$N>WFM$bKI$0$3$H$,$G$-$k$h$&$K$J$j$^$9!#(B
-          $B%U%#!<%k%IJQ?t$H%m!<%+%kJQ?t$NL>A0$,F1$8>l9g$O!"Cm0U$,I,MW$G$9!#<!(B
-          $B$NNc$r<B9T$7$F$_$F(B $B$/$@$5$$!#%W%m%0%i%`$r8+$?$@$1$G7k2L$,$o$+$j$^(B
-          $B$9$+!)(B
+          変数は、クラスのフィールド変数と、メソッドの中のローカル変数に分け
+          ることができます。 クラスのフィールド変数(この例では20が代入されて
+          いるiです)はすべて、 それぞれのメソッドの外(中括弧の外)に書かれて
+          います。この変数は、どのメソッドからも 見えます。(すべてのメソッド
+          の中で使えるということです。) ところが、それぞれのメソッドの中で宣
+          言されているローカル変数 は、他のメソッドの中では使えません。その
+          証拠に、上のプログラムをそのままコンパイルすると、 keyDownメソッド
+          の中でjを使っているところがコンパイルでき ません。同じように、init
+          メソッドの中では、keyDownメソッドの 中で使うことができたeとcは使
+          うことができません。
+          このように、変数の名前を、それぞれのメソッドの中でしか使えないよう
+          にすることによって、 それぞれのメソッドの独立性を高めることがで
+          き、名前の衝突も防ぐことができるようになります。
+          フィールド変数とローカル変数の名前が同じ場合は、注意が必要です。次
+          の例を実行してみて ください。プログラムを見ただけで結果がわかりま
+          すか？
 
 
 File name: scope2.java
@@ -772,7 +772,7 @@ File name: test.html
 ------------------------------------------------------------
 <applet code=scope2.class width=200 height=200></applet>
 ------------------------------------------------------------
-#$B?^(B4.1.8-2 <DONE>	$B<B9T7k2L(B(scope2.java)
+#図4.1.8-2 <DONE>	実行結果(scope2.java)
 
 ---------
 $
@@ -782,13 +782,13 @@ $ appletviewer test.html
 $ 
 ---------
 
-          $B:G=i$NI=<($G$O!"$^$@%m!<%+%kJQ?t(Bi$B$r@k8@$7$F$$$J$$$N$G!"%U%#!<%k%I(B
-          $BJQ?t$,(B $B8+$($F$$$k$N$G$9$,!"(B2$B2sL\$NI=<($G$O!"%m!<%+%kJQ?t$N@k8@$N8e(B
-          $B$J$N$G!"%m!<%+%kJQ?t$N(B $BFbMF$,8+$($F$$$k$N$G$9!#$H$3$m$,!"%m!<%+%k(B
-          $BJQ?t$r@k8@$7$?8e$O%U%#!<%k%IJQ?t$,;H$($J$/(B $B$J$k$N$G$O:$$k$3$H$b$"(B
-          $B$j$^$9!#%-!<%o!<%I(Bthis$B$r;H$($P!"%m!<%+%kJQ?t$r@k8@(B $B$7$?8e$G$b!"%U(B
-          $B%#!<%k%IJQ?t$r;H$&$3$H$,$G$-$^$9!#@h$[$I$N%5%s%W%k%W%m%0%i%`$N(Binit
-          $B%a%=%C%I$r!"<!$N$h$&$KJQ99$7$F<B9T$7$F$_$F$/$@$5$$!#(B
+          最初の表示では、まだローカル変数iを宣言していないので、フィールド
+          変数が 見えているのですが、2回目の表示では、ローカル変数の宣言の後
+          なので、ローカル変数の 内容が見えているのです。ところが、ローカル
+          変数を宣言した後はフィールド変数が使えなく なるのでは困ることもあ
+          ります。キーワードthisを使えば、ローカル変数を宣言 した後でも、フ
+          ィールド変数を使うことができます。先ほどのサンプルプログラムのinit
+          メソッドを、次のように変更して実行してみてください。
 
 ------------------------------------------------------------
 public void init()
@@ -800,7 +800,7 @@ public void init()
 }
 ------------------------------------------------------------
 
-#$B?^(B4.1.8-3 <DONE>    $B<B9T7k2L(B(scope2.java(2))
+#図4.1.8-3 <DONE>    実行結果(scope2.java(2))
 
 
 ----------
@@ -812,15 +812,15 @@ $ appletviewer test.html
 $ 
 ----------
 
-          this$B$H$$$&$N$O!"!V<+J,<+?H!W$H$$$&0UL#$G!"<+J,$N%U%#!<%k%IJQ?t$@(B
-          $B$h!"$H$$$&$3$H$r(B $B;XDj$7$F$$$k$N$G$9!#(B
+          thisというのは、「自分自身」という意味で、自分のフィールド変数だ
+          よ、ということを 指定しているのです。
 
 
-       4.1.9 $B1i;;;R(B
+       4.1.9 演算子
 
-          $B?tCM$J$i$P!"IaCJ;H$&$h$&$J;MB'1i;;$,<+M3$K$G$-$^$9!#1i;;;R$H$O!";M(B
-          $BB'1i;;B>$N(B $B7W;;$r$5$;$k$?$a$N5-9f$N$3$H$G$9!#<!$N%5%s%W%k$r8+$F!"(B
-          $BBgBN$N46$8$r$D$+$s$G$/$@$5$$!#(B
+          数値ならば、普段使うような四則演算が自由にできます。演算子とは、四
+          則演算他の 計算をさせるための記号のことです。次のサンプルを見て、
+          大体の感じをつかんでください。
 
 
 File name: keisan.java
@@ -829,38 +829,38 @@ public class keisan extends java.applet.Applet
 {
 	public void init()
 	{
-		// $B8e$G;H$&M=Dj$NJQ?t$O!";H$&A0$K@k8@$7$J$1$l$P$J$j$^$;$s!#(B
-		// $B@k8@$O!"7?L>(B $BL>A0(B[,$BL>A0(B,...];$B$H$9$k$3$H$G$G$-$^$9!#(B
-		// $B@k8@$7$F$$$J$$JQ?t$r;H$*$&$H$9$k$H!"%3%s%Q%$%k;~$K%(%i!<$,=P$^$9!#(B
+		// 後で使う予定の変数は、使う前に宣言しなければなりません。
+		// 宣言は、型名 名前[,名前,...];とすることでできます。
+		// 宣言していない変数を使おうとすると、コンパイル時にエラーが出ます。
 		int ia = 100;
 		int ib = 808;
 		int ic = -20000;
 		int id = 1;
-		double da = 100.0; // $BBeF~$K$O!"(B'='$B$r;H$&!#(B
+		double da = 100.0; // 代入には、'='を使う。
 		double db = 3.0 ;
 
-		System.out.println( ia + ib );  // $BB-$7;;(B
-		System.out.println( ia - ib );  // $B0z$-;;(B
-		System.out.println( ia * ib );  // $B$+$1;;(B
-		System.out.println( ia / ib );  // $B3d$j;;(B($B@0?t(B)
-		System.out.println( da / db );  // $B3d$j;;(B($B>.?tE@(B)
-		System.out.println( ib % ia );  // $B3d$j;;$NM>$j(B
-		System.out.println( ( ia * ib) + ic );  // $B3g8L$b;H$($k!#(B
-		//$B3g8L$,B?$/$J$C$F$b!"?t3X$N$h$&$JCf3g8L$O;H$o$J$$!#(B
+		System.out.println( ia + ib );  // 足し算
+		System.out.println( ia - ib );  // 引き算
+		System.out.println( ia * ib );  // かけ算
+		System.out.println( ia / ib );  // 割り算(整数)
+		System.out.println( da / db );  // 割り算(小数点)
+		System.out.println( ib % ia );  // 割り算の余り
+		System.out.println( ( ia * ib) + ic );  // 括弧も使える。
+		//括弧が多くなっても、数学のような中括弧は使わない。
 		System.out.println( ( ( (id+1) *(id+1) + 1) * (id+1)) + 1);
 
-		// $BEy$7$$$+$I$&$+$rH=Dj$9$k!#$3$l$OBeF~$H$O0c$$!"(B'=='$B$r;H$&!#(B
+		// 等しいかどうかを判定する。これは代入とは違い、'=='を使う。
 		System.out.println(  ia == 100 );
-		// $B0[$J$C$F$$$k$+$I$&$+$rH=Dj$9$k!#(B
+		// 異なっているかどうかを判定する。
 		System.out.println(  ia != ib );
-		// $BBg>.4X78$rHf3S$9$k!#(B
+		// 大小関係を比較する。
 		System.out.println( ia > 808 );
-		// $BC1$KH]Dj$9$k!#(B
+		// 単に否定する。
 		System.out.println( !false );
 
-		// $B<!$N9T$N$h$&$K$9$k$H!"%3%s%Q%$%k$G$-$^$;$s!#$J$<$G$7$g$&$+!)(B
+		// 次の行のようにすると、コンパイルできません。なぜでしょうか？
 		//int ii = ( 100 > 200);  
-		// $B1&JU$,(Bboolean$B7?$G!":8JU$,(Bint$B7?$J$N$G!"BeF~$G$-$J$$$N$G$9!#(B
+		// 右辺がboolean型で、左辺がint型なので、代入できないのです。
 	}
 }
 ------------------------------------------------------------
@@ -870,7 +870,7 @@ File name: test.html
 <applet code=keisan.class width=200 height=200></applet>
 ------------------------------------------------------------
 
-#$B?^(B4.1.9-1<DONE>          $BF0:n7k2L(B(keisan.java)
+#図4.1.9-1<DONE>          動作結果(keisan.java)
 
 --------
 $   
@@ -891,33 +891,33 @@ $
 --------
 
 
-          $B1i;;;R$GCm0U$,I,MW$J$N$O!"BeF~1i;;;R$G$9!#?t3X$G$O!"(B"="$B$H$$$&5-9f(B
-          $B$O!"(B $B!VN>JU$,Ey$7$$!W$H$$$&0UL#$G$9$,!"(BJava$B$G$O!"(B"="$B$O!"!V1&JU$N$b(B
-          $B$N$r:8JU$NJQ?t$K(B $BBeF~$9$k!W$H$$$&0UL#$K$J$j$^$9$N$G!"<!$N$h$&$J%W(B
-          $B%m%0%i%`$,2DG=$K$J$j$^$9!#(B($BD6=EMW!*(B)
+          演算子で注意が必要なのは、代入演算子です。数学では、"="という記号
+          は、 「両辺が等しい」という意味ですが、Javaでは、"="は、「右辺のも
+          のを左辺の変数に 代入する」という意味になりますので、次のようなプ
+          ログラムが可能になります。(超重要！)
 
           a = a + 3;
 
-          $B$3$N9T$,<B9T$5$l$k;~$K$O!"$^$:1&JU$N7W;;$r$7$F$+$i$=$NCM$r:8JU$KBe(B
-          $BF~$7$^$9$+$i!"(B $B$b$7JQ?t(Ba$B$NCM$,:G=i(B10$B$@$C$?$H$7$?$i!"$3$N9T$r<B9T$7(B
-          $B=*$o$C$?$"$H$O(B a$B$NCM$O(B13$B$K$J$C$F$$$^$9!#!VN>JU$,Ey$7$$!W$+$I$&$+$r(B
-          $BH=Dj$9$k$?$a(B $B$K$O!"(B"=="$B$r;H$$$^$9!#Cm0U$7$F$/$@$5$$!#(B $B$^$?!";MB'1i(B
-          $B;;0J30$K!"(B==,!=,>$B$,=P$F$-$^$7$?$,(B $B$3$l$i$N1i;;;R$O!"7W;;$7$?7k2L(B
-          int$B7?$G$O$J$/(Bboolean $B7?$K$J$j$^$9!#$=$N$?$a!"I=<($5$l$?J8;zNs$O?t(B
-          $BCM$G$O$J$/(Btrue$B$^$?$O(B false$B$K$J$C$F$$$^$9!#(B $B$3$3$G=P$F$-$F$$$J$$$b(B
-          $B$N$b$"$j$^$9$N$G!"4,Kv$N%j%U%!%l%s%9$b8+$F$/$@$5$$!#(B $B1i;;;R$NM%@h(B
-          $B=g0L$K$D$$$F$b5-=R$,$"$j$^$9!#(B
+          この行が実行される時には、まず右辺の計算をしてからその値を左辺に代
+          入しますから、 もし変数aの値が最初10だったとしたら、この行を実行し
+          終わったあとは aの値は13になっています。「両辺が等しい」かどうかを
+          判定するため には、"=="を使います。注意してください。 また、四則演
+          算以外に、==,!=,>が出てきましたが これらの演算子は、計算した結果
+          int型ではなくboolean 型になります。そのため、表示された文字列は数
+          値ではなくtrueまたは falseになっています。 ここで出てきていないも
+          のもありますので、巻末のリファレンスも見てください。 演算子の優先
+          順位についても記述があります。
 
 
-      4.1.10 $B%W%m%0%i%`$NN.$l$r@)8f$9$k(B($B%U%m!<@)8f(B)
+      4.1.10 プログラムの流れを制御する(フロー制御)
 	  
-          $B$$$/$D$+A0$N@a$G!"!VFC$K;XDj$7$J$1$l$P%W%m%0%i%`$O>e$+$i2<$X<B9T$5(B
-          $B$l$F$$$/!W$H@bL@(B $B$7$^$7$?!#$3$3$G$O!"!VFC$K;XDj$9$k!WJ}K!$r@bL@$7(B
-          $B$^$9!#%W%m%0%i%`$OJ*;v$r7+$j$+$($7$F(B $B=hM}$7$?$j$9$k$3$H$,B?$$$?(B
-          $B$a!">e$+$i2<$X$H<B9T$5$l$F$$$/$@$1$G$J$/!"La$C$?$jHt$P$7$?$j(B $B$$$m(B
-          $B$$$m$KN.$l$r@)8f$9$k$?$a$N$d$j$+$?$,$"$j$^$9!#A4<oN`$rLVMe$9$k@bL@(B
-          $B$O%j%U%!%l%s%9(B $B$KG$$;$F!"$3$3$G$O!"(Bwhile$B$H(Bif$B$H(Bbreak $B$r@bL@$7$^$9!#(B
-          $B<!$N%5%s%W%k%W%m%0%i%`$r8+$F$/$@$5$$!#(B
+          いくつか前の節で、「特に指定しなければプログラムは上から下へ実行さ
+          れていく」と説明 しました。ここでは、「特に指定する」方法を説明し
+          ます。プログラムは物事を繰りかえして 処理したりすることが多いた
+          め、上から下へと実行されていくだけでなく、戻ったり飛ばしたり いろ
+          いろに流れを制御するためのやりかたがあります。全種類を網羅する説明
+          はリファレンス に任せて、ここでは、whileとifとbreak を説明します。
+          次のサンプルプログラムを見てください。
 
 
 File name: flow.java
@@ -928,9 +928,9 @@ public class flow extends java.applet.Applet
 	{
 		int i = 0;
 		while(true ){
-			i ++;					// i$B$K(B1$B$r2C$($k(B ....(A)
+			i ++;					// iに1を加える ....(A)
 			if( i > 10 ){
-				break;  			// i$B$,(B10$B$h$jBg$-$/$J$C$?$iH4$1$k!#(B
+				break;  			// iが10より大きくなったら抜ける。
   			}
 			System.out.println( i );	// ... (B)
 		}
@@ -944,7 +944,7 @@ File name: test.html
 ------------------------------------------------------------
 <applet code=flow.class width=200 height=200></applet>
 ------------------------------------------------------------
-#$B?^(B4.1.10-1<DONE>        $BF0:n7k2L(B(flow.java)
+#図4.1.10-1<DONE>        動作結果(flow.java)
 
 ----------
 $   
@@ -963,70 +963,70 @@ End!
 $ 
 ----------
 
-#$B?^(B4.1.10-2<NOT YET>          $B$3$N%W%m%0%i%`$N%U%m!<%A%c!<%H(B
+#図4.1.10-2<NOT YET>          このプログラムのフローチャート
 
 
-          $B$3$3$G$N%-!<%o!<%I$O!"(Bwhile$B$H!"(Bif$B$H!"(Bbreak $B$G$9!#(B while( $B>r7o(B )
-           $BFbMF(B }$B$H=q$/$3$H$K$h$C$F!"!V>r7o!W$,@.$j$?$C$F(B $B$$$k4V(B($B$D$^$j(Btrue
-          $B$N4V(B)$B!"!VFbMF!W$r<B9T$7B3$1$k$H$$$&$h$&$K(B $B%W%m%0%i%`$OF0:n$7$^$9!#(B
-          $B$3$NNc$N>l9g$O!"(Bwhile(true)$B$H$$$&$h$&$K(Btrue $B$rD>@\5-F~$7$F$$$k$N(B
-          $B$G!"(B(A)$B$+$i(B(B)$B$,1J1s$K<B9T$5$l$^$9!#(B(B)$B$,=*$o$k$H!"(B $B$^$?(B(A)$B$KLa$j(B
-          $B$^$9!#$5$i$K@53N$K8@$&$H!"(B(A)$B$NA0$N9T$KLa$j$^$9!#$3$N$h$&$K!"(B $B7+$j(B
-          $B$+$($7F1$8=hM}$r$5$;$k$3$H$r!"!V%k!<%W(B($BNX(B)$B!W$H8@$$$^$9!#(Bwhile $B$O!"(B
-          $BBeI=E*$J%k!<%WL?Na$G$9!#B>$K$b$$$m$$$m$J%k!<%WL?Na$,$"$j$^$9$,!"$=(B
-          $B$l$i$K$D$$$F(B $B$O!"%j%U%!%l%s%9$r;2>H$7$F$/$@$5$$!#(B $B$G$O(Bif$B$O$I$N$h$&(B
-          $B$JF/$-$r$9$k$N$G$7$g$&$+!)(Bif($B1Q8l(B) $B$rLu$9$H!V$b$7$b!W$G$9$,!"(BJava
-          $B$K$*$$$F$bF1$80UL#$G$9!#(B
+          ここでのキーワードは、whileと、ifと、break です。 while( 条件 )
+           内容 }と書くことによって、「条件」が成りたって いる間(つまりtrue
+          の間)、「内容」を実行し続けるというように プログラムは動作します。
+          この例の場合は、while(true)というようにtrue を直接記入しているの
+          で、(A)から(B)が永遠に実行されます。(B)が終わると、 また(A)に戻り
+          ます。さらに正確に言うと、(A)の前の行に戻ります。このように、 繰り
+          かえし同じ処理をさせることを、「ループ(輪)」と言います。while は、
+          代表的なループ命令です。他にもいろいろなループ命令がありますが、そ
+          れらについて は、リファレンスを参照してください。 ではifはどのよう
+          な働きをするのでしょうか？if(英語) を訳すと「もしも」ですが、Java
+          においても同じ意味です。
 
-          if($B>r7o(B){
-                  $BFbMF(BA
+          if(条件){
+                  内容A
           } else {
-                  $BFbMF(BB
+                  内容B
           }
 
-          $B$H=q$/$H!"!V$b$7$b!">r7o$,(Btrue$B$J$i$P!"FbMF(BA$B$r!"$=$&$G$J$$$J$i$P(B $BFb(B
-          $BMF(BB$B$r<B9T$;$h!W$H$$$&$3$H$K$J$j$^$9!#(Belse$B0J2<$NItJ,$O>JN,$9$k(B $B$3$H(B
-          $B$,$G$-$^$9!#(B
+          と書くと、「もしも、条件がtrueならば、内容Aを、そうでないならば 内
+          容Bを実行せよ」ということになります。else以下の部分は省略する こと
+          ができます。
 
-          if($B>r7o(B){
-                  $BFbMF(B
+          if(条件){
+                  内容
           }
 
-          $B$3$N$h$&$K$G$-$k$o$1$G$9!#(B
-          $B:G8e$K!"(Bbreak$B$K$D$$$F$G$9$,!"$3$l$O!"!V%k!<%W$+$i=P$k!W(B $B$H$$$&0UL#(B
-          $B$G$9!#$3$N>l9g$O!"(B(C)$B$XHt$S$^$9!#(B $B0J>e$N(B3$B$D$NL?Na$,AH$_$"$o$5$k$3(B
-          $B$H$G!"!V(B1$B$+$i(B10$B$^$G$N?t;z$rI=<($9$k!W$H$$$&(B $B$3$H$r<B8=$7$F$$$^$9!#(B
+          このようにできるわけです。
+          最後に、breakについてですが、これは、「ループから出る」 という意味
+          です。この場合は、(C)へ飛びます。 以上の3つの命令が組みあわさるこ
+          とで、「1から10までの数字を表示する」という ことを実現しています。
 
-          ($BH/E8(B)
-          $B4,Kv$N%j%U%!%l%s%9$N%k!<%WL?Na$K!"(Bfor$B$,$"$j$^$9!#$3$l$r;H$&$H!"(B $BF1(B
-          $B$8$3$H$,$b$C$H4JC1$K<B8=$G$-$^$9!#$d$C$F$_$F$/$@$5$$!#(B
+          (発展)
+          巻末のリファレンスのループ命令に、forがあります。これを使うと、 同
+          じことがもっと簡単に実現できます。やってみてください。
 
 
-      4.1.11 $B>r7o(B(boolean)
+      4.1.11 条件(boolean)
 
-          $BA0$N@a$G!"!VN.$l$r@)8f$9$k!W$H$$$&$3$H$K$D$$$F@bL@$7$^$7$?$,!"$=$3(B
-          $B$G=EMW$J$N$,!"(B $B!V>r7o$K$h$C$F!W$H$$$&$H$3$m$G$9!#(BJava$B$G$O!">r7o$H(B
-          $B$O!"(Btrue($B??(B)$B$H(B false($B56(B)$B$N(B2$B<oN`$GI=$7$^$9!#!V$I$A$i$G$b$J$$!W$H$$(B
-          $B$&>u67$O(B $BB8:_$7$^$;$s!#(Bwhile$B$b!"(Bif$B$b!"(Btrue$B$+(B false$B$+!"$H$$$&$3$H$K(B
-          $B$h$C$F=hM}$rJ,4t$5$;$k$N$G$9!#(B
-          $B>r7o$O!"<!$N1i;;;R$r;H$C$F7W;;$9$k$3$H$,$G$-$^$9!#(B($BBg3X$NO@M}3X$N(B
-          $B<x6H$G(B $B=,$C$?J}$bB?$$$+$b$7$l$^$;$s$M!*(B)$B$3$l$i$N1i;;;R$O!"!VO@M}1i(B
-          $B;;;R!W$H8F$P$l$F(B $B$$$^$9!#$3$N1i;;;R$N?6$k$^$$$NI=$r!V??56CMI=!W$H(B
-          $B8@$$!"$=$l$O4,Kv$N(B $B%j%U%!%l%s%9$K$"$j$^$9!#(B
+          前の節で、「流れを制御する」ということについて説明しましたが、そこ
+          で重要なのが、 「条件によって」というところです。Javaでは、条件と
+          は、true(真)と false(偽)の2種類で表します。「どちらでもない」とい
+          う状況は 存在しません。whileも、ifも、trueか falseか、ということに
+          よって処理を分岐させるのです。
+          条件は、次の演算子を使って計算することができます。(大学の論理学の
+          授業で 習った方も多いかもしれませんね！)これらの演算子は、「論理演
+          算子」と呼ばれて います。この演算子の振るまいの表を「真偽値表」と
+          言い、それは巻末の リファレンスにあります。
 
-#$BI=(B4.1.11 <DONE>        $BO@M}1i;;;R$H$=$NFI$_$+$?$NI=(B
+#表4.1.11 <DONE>        論理演算子とその読みかたの表
 
 ------------------------------------------------
-           $B5-K!(B       $BL>A0(B   $BFI$_$+$?(B($BF|K\8l(B)
+           記法       名前   読みかた(日本語)
 
-             &&     $BO@M}@Q(B   $B%"%s%I(B($B$+$D(B)
-             ||     $BO@M}OB(B   $B%*%"(B($B$^$?$O(B)
-              !       $BH]Dj(B   $B%N%C%H(B($B!A$G$J$$(B)
+             &&     論理積   アンド(かつ)
+             ||     論理和   オア(または)
+              !       否定   ノット(〜でない)
 ------------------------------------------------
 
 
-          $B%5%s%W%k%W%m%0%i%`$r8+$F!"$=$7$F2~B$$7!"$I$N$h$&$JF0:n$r(B $B$9$k$N(B
-          $B$+!"3NG'$7$F$_$F$/$@$5$$!#(B
+          サンプルプログラムを見て、そして改造し、どのような動作を するの
+          か、確認してみてください。
 
 
 File name: bool.java
@@ -1052,7 +1052,7 @@ File name: test.html
 <applet code=bool.class width=200 height=200></applet>
 ------------------------------------------------------------
 
-#$B?^(B4.1.11 <DONE>        $BF0:n7k2L(B(bool.java)
+#図4.1.11 <DONE>        動作結果(bool.java)
 
 ----------
 $ appletviewer test.html
@@ -1066,29 +1066,29 @@ $
 ----------
 
 
-      4.1.12 $B%S%C%H1i;;(B
+      4.1.12 ビット演算
 
-          $B%S%C%H$H$O!"%3%s%T%e!<%?!<$K$*$$$F:G$b4pK\E*$J>pJs$NC10L$G$9!#(B0$B$+(B1
-          $B$+$H$$$&!"%G%8%?%k=hM}$N4pK\(B $B$G$9!#$3$N%S%C%H$r07$&1i;;$,!"%S%C%H(B
-          $B1i;;$G$9!#%S%C%H1i;;$rM}2r$9$k$K$O!"%3%s%T%e!<%?$NCf$G?tCM$,(B $B$I$N(B
-          $B$h$&$K07$o$l$F$$$k$+$rCN$i$J$1$l$P$J$j$^$;$s!#(B
-          int$B7?$N>l9g!"(BJava$B$G$O!"4pK\7?$N@a$G$b?($l$F$$$?$h$&$K!"(B32$B%S%C%H$N(B
-          $BI}$,$"$j$^$9!#(B int$B7?$NJQ?t$r0l$D5-21$7$F$*$/$?$a$K$O!"(B32$B8D$N%S%C%H(B
-          $B$,I,MW$@!"$H$$$&$3$H$G$9!#(B int$B7?$NJQ?t$O!"%a%b%j>e$K<!$N$h$&$K3JG<(B
-          $B$5$l$F$$$^$9!#(B
+          ビットとは、コンピューターにおいて最も基本的な情報の単位です。0か1
+          かという、デジタル処理の基本 です。このビットを扱う演算が、ビット
+          演算です。ビット演算を理解するには、コンピュータの中で数値が どの
+          ように扱われているかを知らなければなりません。
+          int型の場合、Javaでは、基本型の節でも触れていたように、32ビットの
+          幅があります。 int型の変数を一つ記憶しておくためには、32個のビット
+          が必要だ、ということです。 int型の変数は、メモリ上に次のように格納
+          されています。
 
-#$B?^(B4.1.12-1 <NOT YET>      8$B8D$NH"$N%;%C%H$,(B4$B8D$^$H$^$C$F(B32$B8D(B
+#図4.1.12-1 <NOT YET>      8個の箱のセットが4個まとまって32個
 
 
-          $B$=$l$>$l$NH"$,%S%C%H$G$9!#A4It(B0$B$J$i!"(B32$B8D$^$H$a$?(Bint$B7?$H$7$F$NCM$b(B
-          0$B!"$H$$$&$h$&$K(B $BLsB+$7$F$"$k$o$1$G$9!#(B
-          $B?tCM$r$3$N$h$&$K8+$k>l9g!"(B2$B?J?t$,JXMx$G$9!#(B2$B?J?t$O!"B-$7$F(B2$B$K$J$C(B
-          $B$?$i:8$N7e$,(B1$B7+$j>e$,$j$^$9!#(B $B<!$NI=$r8+$F$/$@$5$$!#(B
+          それぞれの箱がビットです。全部0なら、32個まとめたint型としての値も
+          0、というように 約束してあるわけです。
+          数値をこのように見る場合、2進数が便利です。2進数は、足して2になっ
+          たら左の桁が1繰り上がります。 次の表を見てください。
 
-#$BI=(B4.1.12-1<DONE>	10$B?J?t$H(B2$B?J?t$NBP1~(B
+#表4.1.12-1<DONE>	10進数と2進数の対応
 
 --------------------------------------------------------
-           10$B?J?t(B     2$B?J?t(B(32bit)
+           10進数     2進数(32bit)
 
            0          0000 0000 0000 0000 0000 0000 0000 0000
            1          0000 0000 0000 0000 0000 0000 0000 0001
@@ -1107,53 +1107,53 @@ $
            -1         1111 1111 1111 1111 1111 1111 1111 1111
 --------------------------------------------------------
 
-          int$B7?$N>l9g!":G>e0L%S%C%H0J30$,(B1$B$N?t!"$D$^$j(B2147483647$B$K(B1$B$r(B $BB-$9(B
-          $B$H!"(B2147483648$B$K$J$k$O$:$,!"(B-2147483648$B$K$J$k$H!"!VLsB+!W$,7h$a$i(B
-          $B$l$F$$$^$9!#(B $B$3$NLsB+$r<i$C$F?tCM$rI=8=$9$k$3$H$r!V(B2$B$NJd?tI=8=!W$H(B
-          $B$$$&$N$G$9$,!"(B $B$3$N$3$H$K$h$C$F!"Ii$N?t$r4JC1$K07$($^$9!#I=$N(B-1$B$K(B1
-          $B$rB-$7$F$_$F$/$@$5$$!#(B $B$"$U$l$F$/$k:8C<$N(B33$B%S%C%HL\$rL5;k$9$l$P!"(B
-          $B$-$l$$$K$9$Y$F(B0$B$K$J$j!"I=$N0lHV>e$N(B 0$B$H0lCW$9$k$3$H$,$o$+$k$H;W$$(B
-          $B$^$9!#(B
+          int型の場合、最上位ビット以外が1の数、つまり2147483647に1を 足す
+          と、2147483648になるはずが、-2147483648になると、「約束」が決めら
+          れています。 この約束を守って数値を表現することを「2の補数表現」と
+          いうのですが、 このことによって、負の数を簡単に扱えます。表の-1に1
+          を足してみてください。 あふれてくる左端の33ビット目を無視すれば、
+          きれいにすべて0になり、表の一番上の 0と一致することがわかると思い
+          ます。
 
-          $B%S%C%H1i;;$K$O<!$N$h$&$J1i;;;R$,$"$j$^$9!#(B($BO@M}1i;;$G$O$J$$$N$G!"(B
-          $B!V$^$?$O!W(B $B$H$+!V$+$D!W$H$$$&$h$&$K$OFI$_$^$;$s!#(B)
+          ビット演算には次のような演算子があります。(論理演算ではないので、
+          「または」 とか「かつ」というようには読みません。)
 
-#$BI=(B4.1.12-2 <DONE>  $B%S%C%H1i;;$NI=(B
+#表4.1.12-2 <DONE>  ビット演算の表
 
 --------------------------------------
-           $B5-9f(B  $BL>A0(B             $BFI$_$+$?(B
+           記号  名前             読みかた
 
-           &     $B@Q(B               $B%"%s%I(B
-           |     $BOB(B               $B%*%"(B
-           >>    $B1&%7%U%H(B         $B1&%7%U%H(B
-           >>>   $BId9f$J$71&%7%U%H(B $B1&%7%U%H(B  
-           <<    $B:8%7%U%H(B         $B:8%7%U%H(B
+           &     積               アンド
+           |     和               オア
+           >>    右シフト         右シフト
+           >>>   符号なし右シフト 右シフト  
+           <<    左シフト         左シフト
 --------------------------------------
 
-          "&"$B$H(B"|"$B$N7W;;$NJ}K!$O!"$=$l$>$l$N?tCM$N3F%S%C%H$r!"(B1$B$J$i??(B(true
-          )$B!"(B 0$B$J$i56(B(false)$B$H8+$J$7$F!"JL!9$KO@M}1i;;$9$k$@$1$G$9!#$^$?!"%7(B
-          $B%U%H7W;;$O!"(B $B$=$l$>$l$N%S%C%H$r<B:]$K$:$i$9$@$1$G$9!#$=$N;~$K!"1&(B
-          $B%7%U%H$N>l9g$O:8C<$K!":8C<$K$b$H$b$H(B $B$"$C$?%S%C%H$HF1$8%S%C%H$,A^(B
-          $BF~$5$l$^$9!#Nc$($P1&$K(B1$B%S%C%H%7%U%H$9$l$P(B
+          "&"と"|"の計算の方法は、それぞれの数値の各ビットを、1なら真(true
+          )、 0なら偽(false)と見なして、別々に論理演算するだけです。また、シ
+          フト計算は、 それぞれのビットを実際にずらすだけです。その時に、右
+          シフトの場合は左端に、左端にもともと あったビットと同じビットが挿
+          入されます。例えば右に1ビットシフトすれば
 
-          0100 1101(10$B?J?t$G(B141) -> 0010 0110(10$B?J?t$G(B70)
+          0100 1101(10進数で141) -> 0010 0110(10進数で70)
 
-          1110 0011(10$B?J?t$G(B-29) -> 1111 0001(10$B?J?t$G(B-15)
+          1110 0011(10進数で-29) -> 1111 0001(10進数で-15)
 
-	      $B$3$N$h$&$K$J$j$^$9!#$A$g$&$I!"?tCM$G$$$&$H!"$I$A$i$N>l9g$b!"(B
-		  2$B$G3d$C$?$h$&$K$J$C$F$$$^$9!#$3$N$3$H$+$i!"(B">>"$B1i;;;R$O!"3d$j;;$H(B
-		  $B$7$F$b;H$$$&$3$H$,$G$-$k$3$H$,$o$+$j$^$9!#$7$+$7!"Id9f$J$71&%7%U%H(B
-	  	  ">>>"$B$N>l9g$O!"(B
+	      このようになります。ちょうど、数値でいうと、どちらの場合も、
+		  2で割ったようになっています。このことから、">>"演算子は、割り算と
+		  しても使いうことができることがわかります。しかし、符号なし右シフト
+	  	  ">>>"の場合は、
 	  	  
-		  1110 0011(10$B?J?t$G(B-29) -> 0111 0001(10$B?J?t$G(B113)
+		  1110 0011(10進数で-29) -> 0111 0001(10進数で113)
 	
-		  $B$H$J$j$^$9!#3d$j;;$K$O;H$($^$;$s!#$3$N1i;;;R$O!"?tCM$r?tCM$H$7$F(B
-		  $B$G$O$J$/!"%S%C%HNs$H$7$F07$$$?$$$h$&$J>l9g$K$7$+;H$$$^$;$s!#(B
+		  となります。割り算には使えません。この演算子は、数値を数値として
+		  ではなく、ビット列として扱いたいような場合にしか使いません。
 
-          $B1&%7%U%H$K$O!"Id9f$D$-$HId9f$J$7$N(B2$B<oN`$,$"$j$^$9$,!"(B
-	      $B:8%7%U%H$N>l9g$O!"1&C<$K$O>o$K(B0$B$,A^F~$5$l$^$9!#(B $B<!$N%5%s%W%k%W%m%0(B
-          $B%i%`$O!"%S%C%H1i;;$NMM!9$JNc$G$9!#1&%7%U%H$d:8%7%U%H$O!"3d$j;;$d$+(B
-          $B$1;;$N8z2L$,$"$k$3$H$,$o$+$k$H;W$$$^$9!#(B 
+          右シフトには、符号つきと符号なしの2種類がありますが、
+	      左シフトの場合は、右端には常に0が挿入されます。 次のサンプルプログ
+          ラムは、ビット演算の様々な例です。右シフトや左シフトは、割り算やか
+          け算の効果があることがわかると思います。 
 
 
 File name: bit.java
@@ -1170,7 +1170,7 @@ public class bit extends java.applet.Applet
 		System.out.println( 430 << 4 );
 		System.out.println(  100 >> 1 );
 		System.out.println(  -200 >> 1 );
-		System.out.println(  -200 >>> 1 ); // $B$3$l$O2?$G$7$g$&!)(B
+		System.out.println(  -200 >>> 1 ); // これは何でしょう？
 	}
 }
 ------------------------------------------------------------
@@ -1180,7 +1180,7 @@ File name: test.html
 <applet code=bit.class width=200 height=200></applet>
 ------------------------------------------------------------
 
-#$B?^(B4.1.12-2 <DONE>  $B<B9T7k2L(B(bit.java)
+#図4.1.12-2 <DONE>  実行結果(bit.java)
 
 ---------
 $
@@ -1197,37 +1197,37 @@ $
 
 
 
-      4.1.13 $B<+J,$G?7$7$$;2>H7?(B($B%/%i%9(B)$B$r:n$k(B
+      4.1.13 自分で新しい参照型(クラス)を作る
 
 
-          $B%W%m%0%i%`$r?J$a$F$$$/$K$O!"<+J,$G%G!<%?9=B$$r%G%6%$%s$9$k$3$H$,I,(B
-          $BMW$K$J$C$F$-$^$9!#(B $B$3$3$G$O!"<+J,$@$1$N%/%i%9$r:n$j$^$9!#(B
-		  $B?7$7$/%/%i%9$r:n$k$K$O!"0l$+$i<+J,$G:n$kJ}K!$H!"B>$N%/%i%9$K>/$7(B
-		  $B<j$r2C$($FJQ$($?$b$N$r:n$kJ}K!$N(B2$B$D$,$"$j$^$9!#(B
+          プログラムを進めていくには、自分でデータ構造をデザインすることが必
+          要になってきます。 ここでは、自分だけのクラスを作ります。
+		  新しくクラスを作るには、一から自分で作る方法と、他のクラスに少し
+		  手を加えて変えたものを作る方法の2つがあります。
 
-		  * $B0l$+$i<+J,$G:n$k(B
+		  * 一から自分で作る
 		  
-          $B%/%i%9$K$O!">pJs$r3JG<$7$F$*$/$?$a$N!V%a%s%P!<JQ?t!W$H!"$=$N>pJs$r(B
-          $B=hM}$9$k$?$a$N(B $B!V%a%=%C%I!W$,4^$^$l$^$9!#0l$+$i:n$k$N$G$9$+$i!"(B
-		  $B$=$l$i$NL>A0$bA4It<+J,$G$D$1$F$d$kI,MW$,$"$j$^$9!#(B
-		  $B0l$+$i?7$7$$%/%i%9$r:n$k$K$O!"0J2<$N<j=g$rF'$_$^$9!#(B
+          クラスには、情報を格納しておくための「メンバー変数」と、その情報を
+          処理するための 「メソッド」が含まれます。一から作るのですから、
+		  それらの名前も全部自分でつけてやる必要があります。
+		  一から新しいクラスを作るには、以下の手順を踏みます。
 		
-		  1) $BDj5A$N:G=i$N9T$H!"%V%m%C%/$r=q$-$^$9!#(B
-          class $BL>A0(B
+		  1) 定義の最初の行と、ブロックを書きます。
+          class 名前
 	 	  {
-			$B$3$l$+$i=q$/ItJ,(B
+			これから書く部分
 		  }
 
-		  2) $B=i4|2=$N;~$KI,MW$J=hM}$,$"$l$P!"%3%s%9%H%i%/%?(B($BL>A0$HF1$8L>A0$N(B
-		  $B%a%=%C%I(B)$B$rDj5A$7$^$9!#$3$N%a%=%C%I$O!"%/%i%9$,(Bnew$B$5$l$k;~$K(B
-	      $B<+F0E*$K8F$S$@$5$l!"0z?t$b<+M3$K<h$l$^$9!#(B
+		  2) 初期化の時に必要な処理があれば、コンストラクタ(名前と同じ名前の
+		  メソッド)を定義します。このメソッドは、クラスがnewされる時に
+	      自動的に呼びだされ、引数も自由に取れます。
 
-		  3) $B?7$7$/:n$k%/%i%9$K4^$^$l$kJQ?t$d%a%=%C%I$rDj5A$7$^$9!#(B
+		  3) 新しく作るクラスに含まれる変数やメソッドを定義します。
 
 
-		  $BNc$H$7$F!"0lI$J,$NE(%-%c%i%/%?!<$r$"$i$o$9%/%i%9$r:n$C$F$_$^$7$g$&!#(B
-		  $B<!$K<($9%W%m%0%i%`$O!"0lI$$NE(%-%c%i%/%?!<$G$9$,!"%"%W%l%C%H$G$O$J$$(B
-  	 	  $B$N$G!"%3%s%Q%$%k$O$G$-$^$9$,$3$l<+BN$G$OF0:n$7$^$;$s!#(B
+		  例として、一匹分の敵キャラクターをあらわすクラスを作ってみましょう。
+		  次に示すプログラムは、一匹の敵キャラクターですが、アプレットではない
+  	 	  ので、コンパイルはできますがこれ自体では動作しません。
 		
 
 File name: enemyClass.java
@@ -1240,9 +1240,9 @@ class enemyClass
 	int score;
 	int hp;
 
-	// $B%3%s%9%H%i%/%?(B
+	// コンストラクタ
 	enemyClass(int x , int y ,int xsiz , int ysiz ,int hp,int score){
-		// $B$H$K$+$/=i4|2=$r$9$k(B
+		// とにかく初期化をする
 		this.x = x;            
 		this.y = y;
 		this.xsiz = xsiz;
@@ -1252,7 +1252,7 @@ class enemyClass
 		this.hp = hp;
 	}
 
-	// $B%/%i%9$N%a%=%C%I(B
+	// クラスのメソッド
 	public void moveOnce()
 	{
 		x += dx;
@@ -1262,22 +1262,22 @@ class enemyClass
 }
 ------------------------------------------------------------
 		
-		$B$3$3$G$O!"%7%e!<%F%#%s%0%2!<%`$K=P$F$/$kE($rA[Dj$7$F$$$^$9!#E($K$O!"(B
-	    $B0LCV(B(x,y)$B$d!"0\F0NL%Y%/%H%k(B(dx,dy)$B$d!"BNNO(B(hp)$B$H$$$C$?(B
-		$B$5$^$6$^$J>pJs$,4XO"$7$F$$$^$9$+$i!"$=$l$>$l$r5-21$7$F$*$/$?$a$K!"(B
-		$B%/%i%9Fb$NJQ?t$H$7$F@k8@$7$^$9!#(BenemyClass(...)$B$O(B
-		$B$3$N%/%i%9$N%3%s%9%H%i%/%?$G!":G=i$K=i4|CM$rBeF~$7$^$9!#(B
-		$B%a%=%C%I(BmoveOnce()$B$O!"$3$N%-%c%i%/%?$,0\F0$9$k;~$K8F$S$@$5$l$^$9!#(B
+		ここでは、シューティングゲームに出てくる敵を想定しています。敵には、
+	    位置(x,y)や、移動量ベクトル(dx,dy)や、体力(hp)といった
+		さまざまな情報が関連していますから、それぞれを記憶しておくために、
+		クラス内の変数として宣言します。enemyClass(...)は
+		このクラスのコンストラクタで、最初に初期値を代入します。
+		メソッドmoveOnce()は、このキャラクタが移動する時に呼びだされます。
 
-		* $BB>$N%/%i%9$r<jD>$7$7$F?7$7$$%/%i%9$r:n$k(B
+		* 他のクラスを手直しして新しいクラスを作る
 		
-		enemyClass$B%/%i%9$O!"$=$l$@$1$G$O$[$H$s$I;H$$$b$N$K$J$j$^$;$s!#(B
-		$B$d$O$jE($G$"$k$+$i$K$O!"<g?M8x$KBP$7$F967b$7$F$-$?$j!"$=$&$$$&$3$H$r(B
-		$B$5$;$?$$$b$N$G$9!#$I$NE($b!"(BenemyClass$B$K4^$^$l$F$$$k$h$&$J(B
-		$B>pJs$r;}$C$F$$$k$3$H$O3N<B$G$9$+$i!"A4$F$NE($K6&DL$JItJ,$r(B
-		enemyClass$B$G;}$A!"6&DL$G$J$$ItJ,$r(BenemyClass$B$K2C$($k$h$&$K$9$l$P!"(B
-		$B%W%m%0%i%`$O$0$C$H$9$C$-$j$7$^$9!#<!$K!"(BenemyClass$B$K?7$7$$FCD'$r$D$1(B
-		$B2C$($F!"?7$7$$%/%i%9$r:n$kNc$r<($7$^$9!#(B
+		enemyClassクラスは、それだけではほとんど使いものになりません。
+		やはり敵であるからには、主人公に対して攻撃してきたり、そういうことを
+		させたいものです。どの敵も、enemyClassに含まれているような
+		情報を持っていることは確実ですから、全ての敵に共通な部分を
+		enemyClassで持ち、共通でない部分をenemyClassに加えるようにすれば、
+		プログラムはぐっとすっきりします。次に、enemyClassに新しい特徴をつけ
+		加えて、新しいクラスを作る例を示します。
 
 
 
@@ -1285,7 +1285,7 @@ File name: missile.java
 ------------------------------------------------------------
 import java.awt.*;
 
-class missile extends enemyClass    // $B$3$N(Bextends$B$,=EMW!#(B
+class missile extends enemyClass    // このextendsが重要。
 {
 	missile(int x , int y)
 	{
@@ -1300,27 +1300,27 @@ class missile extends enemyClass    // $B$3$N(Bextends$B$,=EMW!#(B
 }
 ------------------------------------------------------------
 
-		missile$B%/%i%9$O!"(BenemyClass$B$r(Bextends($B3HD%(B)$B$9$k$3$H$K$h$C$F!"$h$j(B
-		$B6qBNE*$J5!G=$r2L$?$9$h$&$K$J$C$F$$$k$N$G$9!#$3$N>l9g$N(BenemyClass$B$r(B
-		$B!V%9!<%Q!<%/%i%9!W!"(Bmissile$B%/%i%9$r!V%5%V%/%i%9!W$H8F$S$^$9!#(B
-		$B!V%_%5%$%k!W$O!"!VE(!W$h$j$b6qBNE*$J$N$G!"$h$j6qBNE*$K$9$k$h$&$J(B
-		$B>pJs$r!"(Bmissile.java$B$K=q$1$P$h$$$3$H$K$J$j$^$9!#6&DL$JItJ,$O(B
-		enemyClass$B$K!V$/$/$j=P$5$l$F$$$k!W$H8@$&$3$H$b$"$j$^$9!#(B
-		dx,dy$B$d(Bscore$B$H$$$C$?JQ?t$d!"(BmoveOnce$B$H$$$C$?%a%=%C%I$O!"(B
-		$B$9$G$K(BenemyClass$B$GDj5A$5$l$F$$$k(B($B$/$/$j$@$5$l$F$$$k(B)$B$N$G!"(B
-		missile.java$B$NCf$G?7$7$/Dj5A$7$F$d$kI,MW$O$"$j$^$;$s!#$7$+$7(B
-		$B?7$7$/Dj5A$9$k$3$H$b$G$-$^$9!#$=$N>l9g$O!"(BenemyClass$B$GDj5A$5$l$F$$$k(B
-		$B$b$N$HCV$-$+$($i$l$^$9!#(B
-		  $B$^$?!"B>$K$bE($,$$$k$N$G$"$l$P!"$=$NE($4$H$K(BenemyClass$B$r(Bextends$B$7$F!"(B
-		$B6&DL$G$J$$ItJ,$@$1$r?7$7$/%W%m%0%i%`$9$l$P$h$$$N$G$9!#(B
+		missileクラスは、enemyClassをextends(拡張)することによって、より
+		具体的な機能を果たすようになっているのです。この場合のenemyClassを
+		「スーパークラス」、missileクラスを「サブクラス」と呼びます。
+		「ミサイル」は、「敵」よりも具体的なので、より具体的にするような
+		情報を、missile.javaに書けばよいことになります。共通な部分は
+		enemyClassに「くくり出されている」と言うこともあります。
+		dx,dyやscoreといった変数や、moveOnceといったメソッドは、
+		すでにenemyClassで定義されている(くくりだされている)ので、
+		missile.javaの中で新しく定義してやる必要はありません。しかし
+		新しく定義することもできます。その場合は、enemyClassで定義されている
+		ものと置きかえられます。
+		  また、他にも敵がいるのであれば、その敵ごとにenemyClassをextendsして、
+		共通でない部分だけを新しくプログラムすればよいのです。
 
-		($B;29M(B)$B$$$D$b(BApplet$B$r(Bextends$B$7$F$$$^$9$M!#$3$l$O!"$9$Y$F$N%"%W%l%C%H$K(B
-		$B6&DL$JItJ,$r$L$-$@$7$?(BApplet$B$H$$$&%/%i%9$,(BSun$B$K$h$C$FDs6!$5$l$F$$$F!"(B
-		$B$=$l$H6&DL$G$J$$JQ?t$d%a%=%C%I$r?7$7$/Dj5A$9$k$3$H$K$h$C$F!"$=$l$>$l$N(B
-		$B%"%W%l%C%H$N5!G=$r<B8=$9$k$h$&$K$J$C$F$$$k$N$G$9!#(B
+		(参考)いつもAppletをextendsしていますね。これは、すべてのアプレットに
+		共通な部分をぬきだしたAppletというクラスがSunによって提供されていて、
+		それと共通でない変数やメソッドを新しく定義することによって、それぞれの
+		アプレットの機能を実現するようになっているのです。
 		
-		$B$G$O:G8e$K!"%^%&%9$r2!$9$4$H$K?J$`%_%5%$%k(B($B$?$@$N;M3Q$$H"$G$9$,(B)$B$r(B
-		$B<B8=$7$?%"%W%l%C%H$N%W%m%0%i%`$r<($7$^$9!#(B
+		では最後に、マウスを押すごとに進むミサイル(ただの四角い箱ですが)を
+		実現したアプレットのプログラムを示します。
 
 
 File name: missilemove.java
@@ -1347,18 +1347,18 @@ File name: test.html
 <applet code=missilemove.class width=200 height=200></applet>
 ------------------------------------------------------------
 
-#$B?^(B4.1.13-1 <DONE>	$BF0:n7k2L(B(missilemove.java)
+#図4.1.13-1 <DONE>	動作結果(missilemove.java)
 
 
-		($BCm0U(B)
-          $B%/%i%9$NG[Ns$r:n$k$H$-$O!"Cm0U$7$^$7$g$&!#(B
-		  $B4pK\7?$NG[Ns$O!"(B int ia[] = new int[20];$B$H$9$k$@$1$GG[Ns$NNN0h$,(B
-	 	  $B3NJ]$5$l$^$9$,!"%/%i%9$N>l9g$O!"(B
-		  $B$^$:(BMyClass mc[] = new MyClass[10];$B$N$h$&$K!"(B10$B8D$NMWAG(B
-          $B$r;}$D(B $BG[Ns$r:n$C$?$@$1$G$O%a%b%j>e$KNN0h$O3NJ]$5$l$^$;$s!#(B
-		  $B%3%s%9%H%i%/%?$b8F$P$l$^$;$s!#$G$9$+$i!"(B
-          $B;H$&A0$K!"<!$N$h$&$K$9$kI,MW$,$"$j$^$9!#<B:]$K$O<!(B
-          $B$N$h$&$K$7$^$9!#(B
+		(注意)
+          クラスの配列を作るときは、注意しましょう。
+		  基本型の配列は、 int ia[] = new int[20];とするだけで配列の領域が
+	 	  確保されますが、クラスの場合は、
+		  まずMyClass mc[] = new MyClass[10];のように、10個の要素
+          を持つ 配列を作っただけではメモリ上に領域は確保されません。
+		  コンストラクタも呼ばれません。ですから、
+          使う前に、次のようにする必要があります。実際には次
+          のようにします。
 
 
 File name: hairetu3.java
@@ -1368,16 +1368,16 @@ public class hairetu3 extends java.applet.Applet
 	public void init()
 	{
 		MyClass mca[] = new MyClass[3];
-		mca[0] = new MyClass(); // 1$B$D$E$D%3%s%9%H%i%/%?$r8F$V(B
+		mca[0] = new MyClass(); // 1つづつコンストラクタを呼ぶ
 		mca[1] = new MyClass();
 		mca[2] = new MyClass();
-		// for$B%k!<%WL?Na$r;H$&$N$b$h$$9M$($G$9!#0J2<$O>e$HF1$80UL#$G$9!#(B
+		// forループ命令を使うのもよい考えです。以下は上と同じ意味です。
 		for(int i = 0 ; i < 3 ; i++ ){
 			mca[i] = new MyClass();
 		}
 	}
 }
-class MyClass     // $BCf?H$,$J$$$1$I!"%/%i%9!#(B
+class MyClass     // 中身がないけど、クラス。
 {
 }
 ------------------------------------------------------------
@@ -1386,23 +1386,23 @@ File name: test.html
 ------------------------------------------------------------
 <applet code=hairetu3.class width=200 height=200></applet>
 ------------------------------------------------------------
-		$B$3$NNc$O!"FC$K=PNO$O$"$j$^$;$s!#(B
+		この例は、特に出力はありません。
 
 
 
-      4.1.14 $B%"%W%l%C%H$N0l@8(B
+      4.1.14 アプレットの一生
 
 
-          $B%"%W%l%C%H$,5/F0$5$l$F$+$i!"$I$N$h$&$J=gHV$G$=$l$>$l$N%a%=%C%I$,(B
-          $B8F$S$@$5$l$k$N$+$O!"7h$^$C$F$$$^$9!#%"%W%l%C%H$,%m!<%I$5$l$F$+$i!"(B
-          $B$=$l$>$l$N%a%=%C%I(B $B$,$I$N$h$&$K8F$S$@$5$l$k$N$+$r!"<!$N%5%s%W%k%W(B
-          $B%m%0%i%`$r<B9T$7$F!"3NG'$7$F$/$@$5$$!#(B $B$=$N:]$K!"%a%K%e!<%P!<$+$i(B
-          Reload$B$rA*Br$7$?$j!"%&%$%s%I%&$r2hLL30$K=P$7$F$_$?$j!"$$$m$$$m(B $B<B(B
-          $B83$7$F$_$F$/$@$5$$!#$b$72DG=$J$i$P!"(BJDK$B$N(Bappletviewer$B$G$O$J$/!"(B
-          Netscape$B$J$I$N%V%i%&%6!<$G$b<B9T$7$F$_$F$/$@$5$$!#%V%i%&%6!<>e$G<B(B
-          $B9T$9$k>l9g$O!"(B Back$B$J$I$NB>$N%Z!<%8$K0\F0$9$k;~$KCmL\$7$F$_$F$/$@(B
-          $B$5$$!#(B($BCm0U!*%V%i%&%6!<$G$O!"(B $BI8=`=PNO$O!"(BShow Java Console$B$J$I$N(B
-          $B%a%K%e!<$+$iFCJL$KA*$P$J$$$HI=<($5$l$^$;$s!#(B) 
+          アプレットが起動されてから、どのような順番でそれぞれのメソッドが
+          呼びだされるのかは、決まっています。アプレットがロードされてから、
+          それぞれのメソッド がどのように呼びだされるのかを、次のサンプルプ
+          ログラムを実行して、確認してください。 その際に、メニューバーから
+          Reloadを選択したり、ウインドウを画面外に出してみたり、いろいろ 実
+          験してみてください。もし可能ならば、JDKのappletviewerではなく、
+          Netscapeなどのブラウザーでも実行してみてください。ブラウザー上で実
+          行する場合は、 Backなどの他のページに移動する時に注目してみてくだ
+          さい。(注意！ブラウザーでは、 標準出力は、Show Java Consoleなどの
+          メニューから特別に選ばないと表示されません。) 
 
 
 File name: life.java
@@ -1438,41 +1438,41 @@ File name: test.html
 <applet code=life.class width=200 height=200></applet>
 ------------------------------------------------------------
 
-#$B?^(B4.1.14 <DONE>	$B<B9T7k2L(B(life.java)
+#図4.1.14 <DONE>	実行結果(life.java)
 
 ---------
-$ appletviewer test.html    <- $B5/F0(B
+$ appletviewer test.html    <- 起動
 init
 start     
 paint
-stop            <-$B$3$3$G%a%K%e!<$+$i(BReload$B$rA*Br(B
+stop            <-ここでメニューからReloadを選択
 destroy
 init
 start
 paint
-stop			<-$B$3$3$G%a%K%e!<$+$i(BClose$B$rA*Br(B
+stop			<-ここでメニューからCloseを選択
 destroy
 $ 
 ---------
-          $B<B9T7k2L$O!"$I$N$h$&$K$J$j$^$7$?$+!)$^$:(Binit$B$,8F$P$l!"<!$K(Bstart
-          $B$G!"$=$l$+$i(Bpaint$B$d$=$NB>$N%a%=%C%I$N=g$G$9$M!#%V%i%&%6!<$G%Z!<%8(B
-          $B$r(B $B0\$k$H!"(Bstop$B$,8F$P$l$?$O$:$G$9!#$^$?!"(Bappletviewer$B$G(BReload$B$7$?(B
-          $B;~$O!"(B destroy$B%a%=%C%I$,8F$S$@$5$l$^$9!#(B
-          $B%2!<%`$N%W%m%0%i%`$K$*$$$F$O!"(Binit$B%a%=%C%I$^$?$O(Bstart $B%a%=%C%I$NCf(B
-          $B$G!":G=i$KI,MW$J2hA|$rFI$_$3$`$J$I$N=hM}$r$9$k$h$&$K$7$^$9!#(B $B$^(B
-          $B$?!"%Z!<%8$r0\$C$?$H$-$N$?$a$K!"(Bstop$B%a%=%C%I$NCf$G$O!"%2!<%`$N(B $B<B(B
-          $B9T$r;_$a$k$h$&$J=hM}$r=q$$$F$*$-$^$9!#(B
+          実行結果は、どのようになりましたか？まずinitが呼ばれ、次にstart
+          で、それからpaintやその他のメソッドの順ですね。ブラウザーでページ
+          を 移ると、stopが呼ばれたはずです。また、appletviewerでReloadした
+          時は、 destroyメソッドが呼びだされます。
+          ゲームのプログラムにおいては、initメソッドまたはstart メソッドの中
+          で、最初に必要な画像を読みこむなどの処理をするようにします。 ま
+          た、ページを移ったときのために、stopメソッドの中では、ゲームの 実
+          行を止めるような処理を書いておきます。
 
 
-      4.1.15 $B%9%l%C%I(B
+      4.1.15 スレッド
 	
-		$B$3$l$^$G$N%5%s%W%k%W%m%0%i%`$O!"$9$Y$F!"%^%&%9$r2!$7$?;~$d!"(B
-		$B%-!<%\!<%I$r2!$7$?;~$KH?1~$7$F!"2?$+$N=hM}$r$9$k$H$$$&Iw$K$J$C$F$$(B
-		$B$^$9!#$7$+$7!"$=$l$G$O!"%W%l%$%d!<$,2?$bA`:n$7$J$/$F$bF0$/%-%c%i%/%?!<(B
-		$B$r<B8=$G$-$^$;$s!#(B
-		$B%9%l%C%I$r;H$&$H!"2?$+$N=PMh;v(B($B%$%Y%s%H(B)$B$KH?1~$9$k$P$+$j$G$J$/!"J|$C$F(B
-		$B$*$$$F$bF0$/%W%m%0%i%`$r:n$k$3$H$,$G$-$^$9!#$=$NE57?E*$JNc$r<!$K(B
-		$B<($7$^$9!#(B
+		これまでのサンプルプログラムは、すべて、マウスを押した時や、
+		キーボードを押した時に反応して、何かの処理をするという風になってい
+		ます。しかし、それでは、プレイヤーが何も操作しなくても動くキャラクター
+		を実現できません。
+		スレッドを使うと、何かの出来事(イベント)に反応するばかりでなく、放って
+		おいても動くプログラムを作ることができます。その典型的な例を次に
+		示します。
 
 
 File name: thread.java
@@ -1481,31 +1481,31 @@ import java.awt.*;
 
 public class thread extends java.applet.Applet implements Runnable   
 {
-	Thread th;				// Thread$B7?$NJQ?t$r@k8@(B
+	Thread th;				// Thread型の変数を宣言
 
 	public void init()
 	{
-		th = new Thread( this);	// $B%9%l%C%I$r%9%?!<%H$9$k(B
+		th = new Thread( this);	// スレッドをスタートする
 		th.start();
 	}
 	public void paint(Graphics g)
 	{
-		// $B?t;z$rJ8;z$KJQ49$9$k$K$O!"(BInteger$B%/%i%9$r;H$$$^$9!#(B
+		// 数字を文字に変換するには、Integerクラスを使います。
 		g.drawString( Integer.toString( i ) , 100 , 100 );
 	}
 
 	public boolean mouseDown( Event e , int x , int y )
 	{
-		// ....... $B%^%&%9$r2!$7$?;~$N=hM}$bIaDL$K=q$$$F$*$1$k!#(B
+		// ....... マウスを押した時の処理も普通に書いておける。
 		return true;
 	}
 
 	int i=0;
-	public void run() // $B$3$N%a%=%C%I$,I,MW!#(B
+	public void run() // このメソッドが必要。
 	{
-		while(true){       // $B$:$C$HB3$1$k>l9g$O!"%k!<%W$5$;$kI,MW$,$"$j$^$9!#(B
+		while(true){       // ずっと続ける場合は、ループさせる必要があります。
 			i++;
-			try{			// $B$3$N(B3$B9T$,=EMW$G$9!#(B
+			try{			// この3行が重要です。
 				Thread.sleep(100 );
 			}catch( InterruptedException e) {}
 			repaint();
@@ -1519,54 +1519,54 @@ File name: test.html
 <applet code=thread.class width=200 height=200></applet>
 --------------------------------------------------
 
-#$B?^(B4.1.15-1 <DONE> 	$BF0:n7k2L(B(thread.java)
+#図4.1.15-1 <DONE> 	動作結果(thread.java)
 
 
-		$B$3$N$h$&$K$9$l$P!"%\%?%s$r2!$7$?$j%^%&%9$rF0$+$7$?$j$7$J$/$F$b!"(B
-		$B?t;z$,O"B3E*$KI=<($5$l$F$$$k$N$,$o$+$j$^$9!#$b$A$m$s!"%^%&%9$r(B
-		$B2!$7$?;~$N=hM}$O!"$$$D$b$HF1$8$h$&$K=q$$$F$*$1$P(BOK$B$G$9!#%9%l%C%I$r;H$&(B
-		$B$?$a$KI,MW$J%W%m%0%i%`$O!"(B
+		このようにすれば、ボタンを押したりマウスを動かしたりしなくても、
+		数字が連続的に表示されているのがわかります。もちろん、マウスを
+		押した時の処理は、いつもと同じように書いておけばOKです。スレッドを使う
+		ために必要なプログラムは、
 
-		1) $B%"%W%l%C%H%/%i%9$N@k8@;~$K!"(B implements Runnable 
-		$B$rKvHx$K$D$1$?$7$^$9!#(B
+		1) アプレットクラスの宣言時に、 implements Runnable 
+		を末尾につけたします。
 
-		2) $B%"%W%l%C%H$N%U%#!<%k%IJQ?t$K!"(B Thread$B7?$NJQ?t$r@k8@$7$^$9!#$3$NNc$G(B
-		$B$O!"JQ?t(Bth$B$,$=$l$G$9!#(B
+		2) アプレットのフィールド変数に、 Thread型の変数を宣言します。この例で
+		は、変数thがそれです。
 	
-		3) $B=i4|2=%a%=%C%I(B public void init() $B$NCf$G!"Nc$G<($7$F$$$k$h$&$K(B
-		Thread$B7?$NJQ?t$r=i4|2=$7$F(Bstart() $B%a%=%C%I$r8F$S$@$7$^$9!#(B
+		3) 初期化メソッド public void init() の中で、例で示しているように
+		Thread型の変数を初期化してstart() メソッドを呼びだします。
 
-		4) public void run() $B%a%=%C%I$rDj5A$7$^$9!#$=$NCf$G7QB3E*$J=hM}$r$7$?$$(B
-		$B>l9g$O!"(Bwhile()$B$J$I$r;H$C$F%k!<%W$r:n$j$^$9!#(B
+		4) public void run() メソッドを定義します。その中で継続的な処理をしたい
+		場合は、while()などを使ってループを作ります。
 		
-		5) $B7+$j$+$($7$NB.EY$r;XDj$9$k$?$a$K!"(B
+		5) 繰りかえしの速度を指定するために、
 
 		try{
-			Thread.sleep( $B%_%jIC(B(long) );
+			Thread.sleep( ミリ秒(long) );
 		}catch( InterruptedException e ){}
 		
-		$B$N(B3$B9T$r2C$($^$9!#!V%_%jIC!W$K;XDj$7$?;~4V!"(BThread.sleep()$B$O;_$^$C$F(B
-		$B$$$^$9!#Nc$G$O(B100$B$r;XDj$7$F$$$k$N$G!"(B0.1$BIC$4$H$K%k!<%W$,0l2sE>$9$k$3$H(B
-		$B$K$J$j$^$9!#%2!<%`$G$O!"FbMF$K$h$j$^$9$,!"$@$$$?$$(B50$B$+$i(B80$B$r;XDj$9$k(B
-		$B$H$h$$$G$7$g$&!#(Btry{ $B$d!"(B catch( InterruptedException e){} $B$K$D$$$F$O!"(B
-		$B<!$N@a$G07$$$^$9!#(B
+		の3行を加えます。「ミリ秒」に指定した時間、Thread.sleep()は止まって
+		います。例では100を指定しているので、0.1秒ごとにループが一回転すること
+		になります。ゲームでは、内容によりますが、だいたい50から80を指定する
+		とよいでしょう。try{ や、 catch( InterruptedException e){} については、
+		次の節で扱います。
 
-		6) $B7QB3E*$K9T$J$$$?$$=hM}$r!"(Bpublic void run()$B%a%=%C%I$NCf$N(B
-		$B%k!<%W$K=q$1$P!"$=$N=hM}$O!"%$%Y%s%H$J$7$G$bF0$-B3$1$^$9!#(B
+		6) 継続的に行ないたい処理を、public void run()メソッドの中の
+		ループに書けば、その処理は、イベントなしでも動き続けます。
 		
-		$BE($rF0$+$9=hM}$J$I$O!"%9%l%C%I$r;H$C$F=hM}$7$?$$BeI=E*$J;vJA$G$9$M!#(B
+		敵を動かす処理などは、スレッドを使って処理したい代表的な事柄ですね。
 
 
-		$B%9%l%C%I$K4X$7$F$O!"0J>e$N$3$H$,M}2r$G$-$F$$$l$P!"%2!<%`$r:n$k$3$H$,$G(B
-		$B$-$k$N$G$9$,!"$b$C$HCN$j$?$$$H$$$&?M$b$$$k$G$7$g$&$+$i!"$b$&$9$3$7F'$_(B
-		$B$3$s$G2r@b$7$^$9!#$H$j$"$($:?J$_$?$$!"$H$$$&?M$O!"Ht$P$7$F$7$^$C$F(B
-		$B7k9=$G$9!#(B
+		スレッドに関しては、以上のことが理解できていれば、ゲームを作ることがで
+		きるのですが、もっと知りたいという人もいるでしょうから、もうすこし踏み
+		こんで解説します。とりあえず進みたい、という人は、飛ばしてしまって
+		結構です。
 		
-		Java$B$O%^%k%A%9%l%C%I$N%7%9%F%`$G$9!#%^%k%A%9%l%C%I$H$O!"J8;zDL$j(B
-		$B%9%l%C%I$,$?$/$5$s$"$k!"$H$$$&0UL#$G$9!#(BJava$B$G$O!"@h$[$I$N(BThread
-		$B%*%V%8%'%/%H$rJ#?t:n$k$3$H$G!"B?$/$N%9%l%C%I$,F1;~$KF0$-B3$1$k!"$H$$$&(B
-		$B$3$H$r<B8=$9$k$3$H$,$G$-$^$9!#<!$NNc$G$O!"J#?t$N%9%l%C%I(B(10$B8D(B)
-		$B$,F1;~$KF0:n$7!"JL!9$K?t$r%+%&%s%H$7$F$$$-$^$9!#(B
+		Javaはマルチスレッドのシステムです。マルチスレッドとは、文字通り
+		スレッドがたくさんある、という意味です。Javaでは、先ほどのThread
+		オブジェクトを複数作ることで、多くのスレッドが同時に動き続ける、という
+		ことを実現することができます。次の例では、複数のスレッド(10個)
+		が同時に動作し、別々に数をカウントしていきます。
 
 
 File name: multi.java 
@@ -1615,11 +1615,11 @@ public class multi extends java.applet.Applet
 						 20 , 20 + i*20  );
 		}
 		try{      
-			Thread.sleep(50);    // $B$3$3$G(B50$B%_%jICBT$D!#(B
+			Thread.sleep(50);    // ここで50ミリ秒待つ。
 		}catch( InterruptedException e ){}
 
-		repaint();  // $BIA2h$,=*$o$C$?$i$b$&$$$A$IIA2h$9$k$?$a$N<jH4$-%3!<%I!#(B
-					// $B$3$l$G!"O"B3E*$KIA2h$5$l$k$3$H$K$J$j$^$9!#(B
+		repaint();  // 描画が終わったらもういちど描画するための手抜きコード。
+					// これで、連続的に描画されることになります。
 			
 	}
 	public boolean mouseDown( Event e , int x , int y)
@@ -1635,92 +1635,92 @@ File name: test.html
 <applet code=multi.class width=200 height=300></applet>
 ------------------------------------------------------------
 
-#$B?^(B4.1.15-2 <DONE>	$B<B9T7k2L(B(multi.java)
+#図4.1.15-2 <DONE>	実行結果(multi.java)
 
 	
-	$B?7$7$$%9%l%C%I$O!"(BRunnable$B%$%s%?!<%U%'!<%9$r(Bimplements$B$7$F$$$F!"(B
-	public void run()$B%a%=%C%I$r<BAu$7$F$$$k$h$&$J%/%i%9$r!"(B
-	Thread$B%/%i%9$N%3%s%9%H%i%/%?$N0z?t$K$7$F8F$S$@$9$@$1$G:n$k$3$H(B
-	$B$,$G$-$^$9!#$=$&$7$FF@$i$l$?(BThread$B%/%i%9$N%$%s%9%?%s%9$KBP$7$F(B
-	start()$B%a%=%C%I$r8F$S$@$;$P!"$=$N%9%l%C%I$N<B9T$,;O$^$j$^$9!#(B
-	$B$3$NNc$G$O!"A0$NNc(B(thread.java)$B$H$O0[$J$j!"%"%W%l%C%H<+?H$O(B
-	Runnable$B$r(Bimplements$B$7$F$$$^$;$s!#$=$N$+$o$j$K!"(Bcounter$B$H$$$&%/%i(B
-	$B%9$,(BRunnable$B$r(BImplements$B$7$F(Bpublic void run()$B$rDj5A$7$F$$$^$9!#(B
-	$B%"%W%l%C%H$O!"(Binit()$B%a%=%C%I$NCf$G(Bcounter$B%/%i%9$r=i4|2=$7$F!"(B
-	paint()$B$NCf$G$=$l$>$l$NCM$rFI$_$@$7$F$$$k$@$1$G$9!#(B
+	新しいスレッドは、Runnableインターフェースをimplementsしていて、
+	public void run()メソッドを実装しているようなクラスを、
+	Threadクラスのコンストラクタの引数にして呼びだすだけで作ること
+	ができます。そうして得られたThreadクラスのインスタンスに対して
+	start()メソッドを呼びだせば、そのスレッドの実行が始まります。
+	この例では、前の例(thread.java)とは異なり、アプレット自身は
+	Runnableをimplementsしていません。そのかわりに、counterというクラ
+	スがRunnableをImplementsしてpublic void run()を定義しています。
+	アプレットは、init()メソッドの中でcounterクラスを初期化して、
+	paint()の中でそれぞれの値を読みだしているだけです。
 	
-	counter$B%/%i%9$N%3%s%9%H%i%/%?$r8F$S$@$9$H!"$^$:%9%l%C%I$,=i4|2=$5$l$F(B
-	$B<B9T$,;O$^$j$^$9!#$=$7$F!"$=$l$>$l$N%9%l%C%I$O!"(BThread.sleep(long)
-	$B$,8F$S$@$5$l$k$H!"B>$N%9%l%C%I$K8rBe$7$^$9!#%9%l%C%I$OF1;~$K<B9T$5(B
-	$B$l$k$H8@$C$F$b!"<B:]$K$O(BCPU$B$O0l$D$7$+$J$$$N$G$9$+$i!"Hs>o$K:Y@Z$l(B
-	$B$K;~4V$r6h@Z$C$F!"8rBe$G<B9T$7$F$$$k$N$G$9!#(B($BBh(B1$B>O!"(B3$B@a$r;2>H(B)
+	counterクラスのコンストラクタを呼びだすと、まずスレッドが初期化されて
+	実行が始まります。そして、それぞれのスレッドは、Thread.sleep(long)
+	が呼びだされると、他のスレッドに交代します。スレッドは同時に実行さ
+	れると言っても、実際にはCPUは一つしかないのですから、非常に細切れ
+	に時間を区切って、交代で実行しているのです。(第1章、3節を参照)
 	
-#$B?^(B4.1.15-3 <NOT YET>	10$B8D$N%9%l%C%I$,=gHV$K<B9T$5$l$k(B
+#図4.1.15-3 <NOT YET>	10個のスレッドが順番に実行される
 
 
-	Java$B$G$O!"%9%l%C%I$N8rBe$N=gHV$r$$$m$$$mJQ$($?$j!"%0%k!<%WJL$K4IM}$7$?$j!"(B
-	$B$$$m$$$m6E$C$?$3$H$,$G$-$k$h$&$K$J$C$F$$$^$9!#$3$NNc$G$O!"%9%l%C%I$K$h$C$F(B
-	Thread.sleep(long)$B$KM?$($F$$$kBT$A;~4V$,0[$J$k$N$G!"<B:]$K$O?^$h$j$b$d$d(B
-	$B$3$7$$=gHV$G<B9T$5$l$F$$$^$9!#(B
+	Javaでは、スレッドの交代の順番をいろいろ変えたり、グループ別に管理したり、
+	いろいろ凝ったことができるようになっています。この例では、スレッドによって
+	Thread.sleep(long)に与えている待ち時間が異なるので、実際には図よりもやや
+	こしい順番で実行されています。
 
-	$B%9%l%C%I$,=g$0$j$K<B9T$5$l$F$$$/$3$H$OM}2r$G$-$?$H;W$$$^$9$,!"=gHV$r2s$9(B
-	$B$H$$$&E@$K4X$7$FCm0U$9$k$3$H$,I,MW$G$9!#$=$l$O!"(B
-	Thread.sleep(long)$B$d(BThread.yield()$B$J$I!"%9%l%C%I$N<B9T$rB>$K(B
-	$B>y$k$h$&$JL?Na$r;H$C$F$d$i$J$$8B$j!"B>$N%9%l%C%I$O<B9T$9$k=gHV$,2s$C$F(B
-	$B$3$J$$$H$$$&$3$H$G$9!#;n$7$K!"(Bmulti.java$B$N(Bcounter$B%/%i%9$K$"$k(B
-	Thread.sleep(milisec)$B$r4^$`(B3$B9T$r:o=|$7$F$_$F$/$@$5$$!#2hLL$K$O2?$bI=<((B
-	$B$5$l$^$;$s!#(Bappletviewer$B$NA`:n$b$G$-$J$$$h$&$K$J$j$^$9!#(B
-	$B$7$+$7!"?t;z$,?J$s$G$$$+$J$$$@$1$J$i$o$+$j$^$9$,!"$J$<!"(Bappletviewer
-	$B$NA`:n$b$G$-$J$$$h$&$K$J$C$F$7$^$&$N$G$7$g$&$+!)(B
+	スレッドが順ぐりに実行されていくことは理解できたと思いますが、順番を回す
+	という点に関して注意することが必要です。それは、
+	Thread.sleep(long)やThread.yield()など、スレッドの実行を他に
+	譲るような命令を使ってやらない限り、他のスレッドは実行する順番が回って
+	こないということです。試しに、multi.javaのcounterクラスにある
+	Thread.sleep(milisec)を含む3行を削除してみてください。画面には何も表示
+	されません。appletviewerの操作もできないようになります。
+	しかし、数字が進んでいかないだけならわかりますが、なぜ、appletviewer
+	の操作もできないようになってしまうのでしょうか？
 	
-	* appletviewer$B$N%a%+%K%:%`(B
+	* appletviewerのメカニズム
 
-	$B<B$O!"(Bappletviewer$B$O!"(Bjava$B$N$R$H$D$N%/%i%9$G$9!#%3%^%s%I%i%$%s$+$i(B
+	実は、appletviewerは、javaのひとつのクラスです。コマンドラインから
 	appletviwer test.html
-	$B$HF~NO$9$k$3$H$O!"(B
+	と入力することは、
 	java sun.applet.AppletViewer test.html
-	$B$HF~NO$9$k$3$H$HF1$8$J$N$G$9!#(Bsun.applet.AppletViewer$B$H$$$&%/%i%9(B
-	$B$O!"(BJDK1.0.2$B$N>l9g$O!"(BJDK$B$N%G%#%l%/%H%j$NCf$N(B classes/sun/applet/$B$K!"(B
-	JDK1.1$B$N>l9g$O!"(BJDK$B$N%G%#%l%/%H%j$NCf$N(B lib/classes.zip$B$H$$$&05=L%U%!%$%k(B
-	$B$NCf$KKd$a$3$^$l$F$$$^$9!#(B
+	と入力することと同じなのです。sun.applet.AppletViewerというクラス
+	は、JDK1.0.2の場合は、JDKのディレクトリの中の classes/sun/applet/に、
+	JDK1.1の場合は、JDKのディレクトリの中の lib/classes.zipという圧縮ファイル
+	の中に埋めこまれています。
 
-	sun.applet.AppletViewer$B$NCf$G$O!"$^$:!"(Btest.html$B$NCf$K=q$+$l$F$$$k(B
-	$B%/%i%9$rFI$_$3$s$G%&%$%s%I%&$r=P$7$^$9!#$=$7$F!"(B
-	$B%^%&%9$N>u67$rD4$Y$?$j!"%-!<%\!<%I$N>u67$rD4$Y$?$j$9$k%k!<%W$r<B9T$9$k(B
-	$B0l$D$N%9%l%C%I$,5/F0$5$l$^$9!#$=$7$F!"$=$N%9%l%C%I$NCf$+$i!"%$%Y%s%H$NH/@8(B
-	$B$K1~$8$F!"$"$J$?$N:n$C$?%/%i%9$GDj5A$5$l$F$$$k(Binit$B$d!"(Bstart,keyDown,
-	paint,$B$=$NB>$N%a%=%C%I$,8F$S$@$5$l$k$N$G$9!#(Bappletviewer$B$NA`:n%a%K%e!<(B
-	$B$J$I$b!"$3$N%9%l%C%I$G=hM}$5$l$^$9!#$D$^$j!"$"$J$?$,0U<1$7$F$$$J$$(B
-	$B4V$K!"%9%l%C%I$,0l$D!":n@.$5$l$F$$$?$3$H$K$J$j$^$9!#(B
-	$B$H$3$m$,!"$"$J$?$NDj5A$7$F$$$k!"Nc$($P(BmouseDown$B$H$$$&%a%=%C%I$NCf$K!"(B
+	sun.applet.AppletViewerの中では、まず、test.htmlの中に書かれている
+	クラスを読みこんでウインドウを出します。そして、
+	マウスの状況を調べたり、キーボードの状況を調べたりするループを実行する
+	一つのスレッドが起動されます。そして、そのスレッドの中から、イベントの発生
+	に応じて、あなたの作ったクラスで定義されているinitや、start,keyDown,
+	paint,その他のメソッドが呼びだされるのです。appletviewerの操作メニュー
+	なども、このスレッドで処理されます。つまり、あなたが意識していない
+	間に、スレッドが一つ、作成されていたことになります。
+	ところが、あなたの定義している、例えばmouseDownというメソッドの中に、
 	
 	while(true){
-		// $B2?$b$7$J$$(B
+		// 何もしない
 	}
 		
-	$B$H$$$&$h$&$J!"B>$N%9%l%C%I$K<B9T$N=gHV$r2s$5$J$$$h$&$J%W%m%0%i%`$,=q$+$l(B
-	$B$F$$$l$P!"$I$&$J$k$G$7$g$&$+!)(B $B$=$&!":#$^$G$"$C$?(Bappletviewer$B$N$?$a$N(B
-	$B%9%l%C%I$,!"=gHV$rBT$C$?$^$^$K$J$C$F$7$^$&$N$G$9!#$=$7$F!"%a%K%e!<$J$I$N(B
-	$BIA2h$b9T$o$l$J$$$h$&$K$J$C$F$7$^$&$N$G$9!#(B
-	$B$G$9$+$i!"(BmouseDown$B$d!"(Bpaint$B$d!"$=$NB>A4$F$N>l=j$K$*$$$F!"D9$$4V=*$o$i$J$$(B
-	$B=hM}$r!"(BThread.sleep(long)$B$J$7$G<B9T$9$k$N$O!"$d$a$^$7$g$&!#(B
-	$BNc$($P!"$"$kBg$-$J2hA|$r=hM}$9$k$?$a$K!"D9$$;~4V$,$+$+$j$=$&$G$"$l$P!"(B
-	$B;~!9(BThread.sleep$B$7$F$d$k$[$&$,$h$$$G$7$g$&!#(B
+	というような、他のスレッドに実行の順番を回さないようなプログラムが書かれ
+	ていれば、どうなるでしょうか？ そう、今まであったappletviewerのための
+	スレッドが、順番を待ったままになってしまうのです。そして、メニューなどの
+	描画も行われないようになってしまうのです。
+	ですから、mouseDownや、paintや、その他全ての場所において、長い間終わらない
+	処理を、Thread.sleep(long)なしで実行するのは、やめましょう。
+	例えば、ある大きな画像を処理するために、長い時間がかかりそうであれば、
+	時々Thread.sleepしてやるほうがよいでしょう。
 
-	Java$B$N%^%k%A%9%l%C%I5!G=$O!"(BJava$B$,Hs>o$KJXMx$G$"$kBg$-$JM}M3$K$J$C$F$$(B
-	$B$^$9!#(B
-	$B%f!<%6$,2wE,$K;H$($k%"%W%j%1!<%7%g%s$r!"4JC1$K:n$k$3$H$,$G$-$k$N$G$9!#(B
-	$B%2!<%`!&%W%m%0%i%_%s%0$G$O!"$=$l$[$I$?$/$5$s$N%9%l%C%I$,I,MW$J$o$1$G$O$"$j(B
-	$B$^$;$s$,!"%9%l%C%I$NCN<1$O!"$-$C$H>-Mh$N%W%m%0%i%_%s%0$K$*$$$FLr$K$?$D(B
-	$B$G$7$g$&!#(B
+	Javaのマルチスレッド機能は、Javaが非常に便利である大きな理由になってい
+	ます。
+	ユーザが快適に使えるアプリケーションを、簡単に作ることができるのです。
+	ゲーム・プログラミングでは、それほどたくさんのスレッドが必要なわけではあり
+	ませんが、スレッドの知識は、きっと将来のプログラミングにおいて役にたつ
+	でしょう。
 		
 
 
 
-      4.1.16 $BNc30=hM}(B
+      4.1.16 例外処理
 
-	$B%W%m%0%i%`$N<B9TCf$K!"0[>o$J>uBV$,H/@8$9$k$3$H$,$"$j$^$9!#0[>o$J>uBV(B
-	$B$NBeI=A*<j$O!"<!$NNc$G<($9$h$&$J$b$N$G$9!#$^$:<B9T$7$F$_$F$/$@$5$$!#(B
+	プログラムの実行中に、異常な状態が発生することがあります。異常な状態
+	の代表選手は、次の例で示すようなものです。まず実行してみてください。
 
 
 File name: exception.java
@@ -1728,7 +1728,7 @@ File name: exception.java
 public class exception extends java.applet.Applet
 {
 
-	int array[] = new int[5];    // 10$B8D$NMWAG$r;}$DG[Ns(B
+	int array[] = new int[5];    // 10個の要素を持つ配列
 
 	public void init()
 	{
@@ -1746,10 +1746,10 @@ File name: test.html
 <applet code=exception.class width=200 height=200></applet>
 ------------------------------------------------------------
 
-#$B?^(B4.1.16-1 <DONE>	$BF0:n7k2L(B(exception.java)
+#図4.1.16-1 <DONE>	動作結果(exception.java)
 
 
-	$B<B9T$5$;$k$H!"I8=`=PNO$K!"<!$N$h$&$J%a%C%;!<%8$,=P$?$O$:$G$9!#(B
+	実行させると、標準出力に、次のようなメッセージが出たはずです。
 
 ------------------
 loop
@@ -1764,22 +1764,22 @@ java.lang.ArrayIndexOutOfBoundsException: 5
         at java.lang.Thread.run(Thread.java)
 ------------------
 
-	$B$3$l$O!"!VG[Ns$N(B100$BHVL\$NMWAG$r%"%/%;%9$7$h$&$H$7$?$,!"$=$l$OHO0O30(B
-	$B$@$>!#!W$H$$$&0UL#$G$9!#(Bint$B7?$NG[Ns(Barray$B$O!"(B 5$B8D$NMWAG$r;}$C$F$$$F!"(B
-	$B$=$NHV9f$O(B0$B$+$i;O$^$k$N$G!"(B4$BHVL\$^$G$7$+$J$$$+$i$G$9!#$3$l$OL@$i$+$K(B
-	$B%W%m%0%i%`$K$H$C$F$ONc30E*$G!"$3$l0J>e<B9T$rB3$1$k$K$OCWL?E*$J>uBV(B
-	$B$J$N$G!"%9%l%C%I$O$3$3$G;_$^$C$F$7$^$$$^$9!#(B"end."$B$H$$$&J8;zNs$OI=<((B
-	$B$5$l$J$+$C$?$O$:$G$9!#(B(appletviewer$B$N%9%l%C%I$O;_$^$i$J$$$N$G!"(Bappletviewer
-	$B$NA`:n$O$G$-$^$9$M!#%9%l%C%I$K$D$$$F$O!"A0@a$N8eH>$r;2>H(B)
-	$B$3$N$h$&$J>u67$r!"!VNc30!W$H8F$S$^$9!#1Q8l$G$O!"(B
-	"exception"$B$H8@$$$^$9!#$3$NNc$NNc30$NL>A0$O!"(BJava$B$G$O!"(B
+	これは、「配列の100番目の要素をアクセスしようとしたが、それは範囲外
+	だぞ。」という意味です。int型の配列arrayは、 5個の要素を持っていて、
+	その番号は0から始まるので、4番目までしかないからです。これは明らかに
+	プログラムにとっては例外的で、これ以上実行を続けるには致命的な状態
+	なので、スレッドはここで止まってしまいます。"end."という文字列は表示
+	されなかったはずです。(appletviewerのスレッドは止まらないので、appletviewer
+	の操作はできますね。スレッドについては、前節の後半を参照)
+	このような状況を、「例外」と呼びます。英語では、
+	"exception"と言います。この例の例外の名前は、Javaでは、
 	ArrayIndexOutOfBoundsException
-	$B$H8F$S$^$9!#D>Lu$9$k$H(B $B!VG[NsHV9fHO0O30Nc30!W$H$$$C$?46$8$G$9!#(B
+	と呼びます。直訳すると 「配列番号範囲外例外」といった感じです。
 
-	$B%W%m%0%i%`$N%_%9$d!"$=$NB>$N860x$G!"$3$N$h$&$J>u67$,5/$3$k$3$H$O!"(B
-	$B$h$/$"$k$3$H$G$9!#(BJava$B$G$O!"$3$NLdBj$K0BA4$K<h$j$/$`$3$H$,$G$-$^$9!#(B
-	$B>e$N%W%m%0%i%`$O!"<!$N$h$&$K2~B$$9$l$P!"Nc30$K$h$C$F;_$^$k$3$H$r2sHr(B
-	$B$G$-$^$9!#(B
+	プログラムのミスや、その他の原因で、このような状況が起こることは、
+	よくあることです。Javaでは、この問題に安全に取りくむことができます。
+	上のプログラムは、次のように改造すれば、例外によって止まることを回避
+	できます。
 
 
 File name: trycatch.java
@@ -1787,16 +1787,16 @@ File name: trycatch.java
 public class trycatch extends java.applet.Applet
 {
 
-	int array[] = new int[5];    // 10$B8D$NMWAG$r;}$DG[Ns(B
+	int array[] = new int[5];    // 10個の要素を持つ配列
 
 	public void init()
 	{
 		for(int i=0;i<10;i++){
 			System.out.println("loop");
-			try{        		// try$B@a;O$^$j(B
+			try{        		// try節始まり
 				array[i] = 500;
 				System.out.println("it is ok");
-			}catch( ArrayIndexOutOfBoundsException e ){  // catch$B@a;O$^$j(B
+			}catch( ArrayIndexOutOfBoundsException e ){  // catch節始まり
 				System.out.println( "exception");
 			}
 		}
@@ -1810,7 +1810,7 @@ File name: test.html
 <applet code=trycatch.java width=200 height=200></applet>
 ------------------------------------------------------------
 
-#$B?^(B4.1.16-2 <DONE>	$B<B9T7k2L(B(trycatch.java)
+#図4.1.16-2 <DONE>	実行結果(trycatch.java)
 
 --------------
 loop
@@ -1836,54 +1836,54 @@ exception
 end.
 --------------
 
-		$B0[>o$J>uBV$,H/@8$9$k$+$b$7$l$J$$>l=j$r!"(B
+		異常な状態が発生するかもしれない場所を、
 
 		try{
-			$B0[>o$J>uBV$rH/@8$9$k$+$b$7$l$J$$%3!<%I(B
-		} catch( $BH/@8$9$k$+$b$7$l$J$$Nc30(B  $B$=$NL>A0(B ){
+			異常な状態を発生するかもしれないコード
+		} catch( 発生するかもしれない例外  その名前 ){
 		}
-		$B$H$$$&$h$&$K$7$F0O$a$P!"Nc30$,H/@8$7$?;~E@$G!"(Bcatch$B@a$NCf$KHt$S$^$9!#(B
-		$B$=$7$F!"(Btry$B@a(B $B$NCf$N;D$j$NItJ,$OHt$P$5$l$^$9!#$3$NNc$G$O(B
-		"it is ok"$B$rI=<($9$kItJ,$,Ht$P$5$l$F$$$^$9$M!#$=$7$F!"(Bcatch$B@a$N(B
-		$B<B9T$,=*$o$l$P!"2?;v$b$J$+$C$?$+$N$h$&$K<B9T$,B3$-$^$9!#(B
-		$B$^$:L\$K$9$k(Btry$B!A(Bcatch$B$N;H$$$+$?$O!"%9%l%C%I$N=j$G=P$F$-$?(B
+		というようにして囲めば、例外が発生した時点で、catch節の中に飛びます。
+		そして、try節 の中の残りの部分は飛ばされます。この例では
+		"it is ok"を表示する部分が飛ばされていますね。そして、catch節の
+		実行が終われば、何事もなかったかのように実行が続きます。
+		まず目にするtry〜catchの使いかたは、スレッドの所で出てきた
 
 		try{
 			Thread.sleep(100);
 		}catch( InterruptedException e ){}
 
-		$B$H$$$C$?;H$$$+$?$@$m$&$H;W$$$^$9!#$H$j$"$($:$O$3$N;H$$$+$?$@$1$G(B
-		$B==J,$G$9$,!"(Btry $B!A(B catch $B$r@Q6KE*$K;H$C$F$$$/$H!"%W%m%0%i%`$N9=B$$r(B
-		$B$+$J$j%7%s%W%k$K$9$k$3$H$,$G$-$^$9!#$=$N$"$?$j$N%3%D$O!"(B
-		$B0J9_$N%W%m%0%i%`Nc$r;29M$K$7$F3X$s$G$$$C$F$/$@$5$$!#(B
+		といった使いかただろうと思います。とりあえずはこの使いかただけで
+		十分ですが、try 〜 catch を積極的に使っていくと、プログラムの構造を
+		かなりシンプルにすることができます。そのあたりのコツは、
+		以降のプログラム例を参考にして学んでいってください。
 
 
 
-	  4.1.17 JDK1.1$B0J9_$N%$%Y%s%H=hM}(B
+	  4.1.17 JDK1.1以降のイベント処理
 	
-	  $B$3$N@a$O!";O$a$OHt$P$7$F$7$^$C$F9=$$$^$;$s!#$R$H$H$*$j%"%W%l%C%H$N(B
-	  $B%W%m%0%i%`$,$G$-$k$h$&$K$J$C$F$+$i!"FI$s$G$_$F$/$@$5$$!#(B
+	  この節は、始めは飛ばしてしまって構いません。ひととおりアプレットの
+	  プログラムができるようになってから、読んでみてください。
 
 
-	    JDK1.1$B$K$J$C$F!"$3$l$^$G07$C$F$-$?$h$&$J(BmouseDown,keyDown$B$H$$$C$?(B
-	  $B%$%Y%s%H=hM}$,!"$+$J$jJQ99$5$l$^$7$?!#5lMh$N%W%m%0%i%`$bF0:n$9$k$h$&$K!"(B	
-	  mouseDown$B$d(BkeyDown$B$N$h$&$J%a%=%C%I$b;D$5$l$F$$$^$9$,!"$G$-$k$@$1!"(B
-	  $B?7$7$$J}$N$d$j$+$?$r$9$k$h$&$K!"$H;X<($5$l$F$$$^$9!#K\=q$G$O!"(B
+	    JDK1.1になって、これまで扱ってきたようなmouseDown,keyDownといった
+	  イベント処理が、かなり変更されました。旧来のプログラムも動作するように、	
+	  mouseDownやkeyDownのようなメソッドも残されていますが、できるだけ、
+	  新しい方のやりかたをするように、と指示されています。本書では、
 
-	  o $B$^$@(BJDK1.1$B$,MxMQ$G$-$J$$%f!<%6$bB?$$(B
-	  o JDK1.1$B$G$O$I$A$i$N%3!<%I$bF0$/(B
-	  o $B%W%m%0%i%`$,B?>/J#;($K$J$k(B
-	  o WWW$B>e$KB8:_$9$k%"%W%l%C%H$NB?$/$,!"$$$^$@$K5l<0$N%W%m%0%i%`$G$"$k!#(B
+	  o まだJDK1.1が利用できないユーザも多い
+	  o JDK1.1ではどちらのコードも動く
+	  o プログラムが多少複雑になる
+	  o WWW上に存在するアプレットの多くが、いまだに旧式のプログラムである。
 
-	  $B0J>e$N(B4$B$D$NM}M3$K$h$j!"5lMh$NJ}K!$G@bL@$7$F$$$^$9$,!"(B
-	  $B?7$7$$J}$N%W%m%0%i%`$K=q$-$+$($kJ}K!(B
-	  $B$r$3$3$G2r@b$7$F$*$-$^$9!#$R$H$H$*$j!V5l<0$N!W%W%m%0%i%`$,M}2r$G$-$?$i!"(B
-	  $B<+J,$,:n$C$?%W%m%0%i%`$r?7$7$$J}K!$r;H$&$h$&$KJQ99$7$F$_$F$/$@$5$$!#(B
-	  $B$=$N%7%9%F%`$N0c$$$,$h$/M}2r$G$-$k$3$H$H;W$$$^$9!#(B
+	  以上の4つの理由により、旧来の方法で説明していますが、
+	  新しい方のプログラムに書きかえる方法
+	  をここで解説しておきます。ひととおり「旧式の」プログラムが理解できたら、
+	  自分が作ったプログラムを新しい方法を使うように変更してみてください。
+	  そのシステムの違いがよく理解できることと思います。
 
-	  $B$^$::G=i$K!"F1$8F0:n$r$9$kFs$D$N%"%W%l%C%H$NNc$rJB$Y$F<($7$^$9!#(B
-	  $B$3$N%W%m%0%i%`$O!"(BJDK1.1$B$G$O!"N>J}$H$b@5$7$/F0:n$7$^$9!#(BmeventNew.java
-	  $B$NJ}$O!"(BJDK1.0.2$B$G$O!"%3%s%Q%$%k$b<B9T$b$G$-$^$;$s!#(B
+	  まず最初に、同じ動作をする二つのアプレットの例を並べて示します。
+	  このプログラムは、JDK1.1では、両方とも正しく動作します。meventNew.java
+	  の方は、JDK1.0.2では、コンパイルも実行もできません。
 
 
 File name: meventOld.java
@@ -1943,77 +1943,77 @@ File name: test.html
 <applet code=meventNew.class width=200 height=200></applet>
 ---------------------------------------------------------	
 
-#$B?^(B 4.1.17-1 <DONE>  	$BF0:n7k2L(B(mevent.java)
+#図 4.1.17-1 <DONE>  	動作結果(mevent.java)
 
 
-	  $B!V5l<0$N!W%"%W%l%C%H$N%W%m%0%i%`$r!V?7<0$N!W$b$N$KJQ99$9$k<j=g$r0J2<$K(B
-	  $B<($7$^$9!#(B
+	  「旧式の」アプレットのプログラムを「新式の」ものに変更する手順を以下に
+	  示します。
 	
-	  1) java.awt.event.* $B$r(Bimport$B$9$k!#(B ( *1)
-	  2) $BI,MW$J%$%Y%s%H$K1~$8$?%$%s%?!<%U%'!<%9$r(Bimplements$B$9$k!#(B(*2)
-	  3) init()$B%a%=%C%I$NCf$G!"%$%Y%s%H$K1~$8$F!"(B addMouseListener( this)$B$d(B
-	  addKeyListener(this)$B$r9T$J$&!#(B (*3)
-	  4) $B$=$N%$%s%?!<%U%'!<%9$G@k8@$5$l$F$$$k$9$Y$F$N%a%=%C%I$rDj5A$9$k!#(B (*4)
-	  5) $B$=$l$>$l$N%a%=%C%I$NCf$K=hM}FbMF$r=q$/!#(B(*5)
+	  1) java.awt.event.* をimportする。 ( *1)
+	  2) 必要なイベントに応じたインターフェースをimplementsする。(*2)
+	  3) init()メソッドの中で、イベントに応じて、 addMouseListener( this)や
+	  addKeyListener(this)を行なう。 (*3)
+	  4) そのインターフェースで宣言されているすべてのメソッドを定義する。 (*4)
+	  5) それぞれのメソッドの中に処理内容を書く。(*5)
 
-	  $B0J>e$N<j=g$rF'$a$P!"JQ99$9$k$3$H$,$G$-$^$9!#%^%&%9%$%Y%s%H$K$b%-!<%\!<%I(B
-  	  $B%$%Y%s%H$K$bH?1~$7$?$$!"$H$$$&;~$K$O!"(B  
+	  以上の手順を踏めば、変更することができます。マウスイベントにもキーボード
+  	  イベントにも反応したい、という時には、  
 
-	  1) $BF1$8(B
-      2) implements KeyListener,MouseListener $B$N$h$&$KJB$Y$k!#(B
+	  1) 同じ
+      2) implements KeyListener,MouseListener のように並べる。
 	  3) addMouseListener( this );
          addKeyListener( this );
-	     $B$H$$$&Iw$KJ#?tJB$Y$k!#(B
-	  4) MouseListener$B%$%s%?!<%U%'!<%9$G@k8@$5$l$F$$$k(B mouse....$B$K2C$($F!"(B
-	     keyPressed , keyReleased,....$B$H$$$C$?(B KeyListener$B$G@k8@$5$l$F$$$k(B
-    	 $B%a%=%C%I$r$9$Y$FDj5A$7$^$9!#(B
-	  5) $BF1$8!#(B
+	     という風に複数並べる。
+	  4) MouseListenerインターフェースで宣言されている mouse....に加えて、
+	     keyPressed , keyReleased,....といった KeyListenerで宣言されている
+    	 メソッドをすべて定義します。
+	  5) 同じ。
 
 
-	  $B$N$h$&$K$J$j$^$9!#(B1.1$B0J9_$N$d$j$+$?$G$O!"ITI,MW$J%a%=%C%I$bDj5A$7$J$1$l$P(B
-	  $B$J$i$J$$$N$G!"%W%m%0%i%`$,>iD9$K$J$C$F$7$^$&$H$$$&$3$H$G$9!#$7$+$7!"(B
-	  $BBg5,LO$J%W%m%0%i%`$r:n$k>l9g$O!"5U$K!"%W%m%0%i%`$OHs>o$K4JN,2=$5$l$^$9!#(B
-	  MouseListener$B$d(BKeyListener$B$NB>$K$b!"$5$^$6$^$J(B
-	  $B%$%s%?!<%U%'!<%9$,MQ0U$5$l$F$$$^$9!#(BJDK1.0.2$B0JA0$NJ}K!$G;H$C$F(B
-	  $B$$$?%$%Y%s%H$H!"?7$7$$%$%Y%s%H$O!"L>A0$bJQ$o$C$F$$$^$9$+$i!"$=$NBP1~$r(B
-	  $BD4$Y$kI,MW$,$"$j$^$9!#$3$NNc$G$O(B mouseUp$B$O(B mouseReleased$B$K!"(B
-	  mouseDown$B$O(B mousePressed$B$K!"JQ99$5$l$F$$$^$9!#(B
-	  JDK1.1$B$N(BHTML$B%I%-%e%a%s%H(B(1997$BG/(B2$B7n8=:_$O1Q8lHG$7$+(B
-	  $B$"$j$^$;$s(B)$B$K5-$5$l$F$$$k!"%$%Y%s%H$NBP1~I=$r!"K\=q$NKvHx$KIUO?$H$7$F(B
-	  $B7G:\$7$^$9$N$G!"LrN)$F$F$/$@$5$$!#(B
+	  のようになります。1.1以降のやりかたでは、不必要なメソッドも定義しなければ
+	  ならないので、プログラムが冗長になってしまうということです。しかし、
+	  大規模なプログラムを作る場合は、逆に、プログラムは非常に簡略化されます。
+	  MouseListenerやKeyListenerの他にも、さまざまな
+	  インターフェースが用意されています。JDK1.0.2以前の方法で使って
+	  いたイベントと、新しいイベントは、名前も変わっていますから、その対応を
+	  調べる必要があります。この例では mouseUpは mouseReleasedに、
+	  mouseDownは mousePressedに、変更されています。
+	  JDK1.1のHTMLドキュメント(1997年2月現在は英語版しか
+	  ありません)に記されている、イベントの対応表を、本書の末尾に付録として
+	  掲載しますので、役立ててください。
 
 
 
-      4.1.18 $B$^$H$a(B
+      4.1.18 まとめ
 
-      Java$B$N4pK\;v9`$r!"Nc$r<($7$J$,$i2r@b$7$^$7$?!#$3$3$G<($7(B
-      $B$F$$$J$$%-!<%o!<%I$J$I$K(B $B$D$$$F$O!"4,Kv$N%j%U%!%l%s%9$r8+$J$,$i!"(B
-      $B$$$m$$$m%W%m%0%i%`$r$$$8$C$FD4::!&<B83$7$F$_$F$/$@$5$$!#(B $B$?$/$5$sD4::$9(B
-      $B$l$P$9$k$[$I!"$"$J$?$N%W%m%0%i%_%s%0%;%s%9$OKa$+$l$F$$$/$3$H$G$7$g(B
-      $B$&!#(B $B0J9_$N@a$G$O!"4pK\E*$JFbMF$OM}2r$7$F$$$k$b$N$H$7$FOC$r?J$a$^(B
-      $B$9$N$G!"$o$+$i$J$$$3$H$,(B $B=P$F$-$?$i!"I,$:La$C$F3NG'$7$F$/$@$5$$!#(B
-
-
-  4.2 $B%2!<%`%W%m%0%i%`$N9=B$(B
-
-     $B%2!<%`$N%W%m%0%i%`$O!"$@$$$?$$$I$s$J%2!<%`$G$b!"9|$NItJ,$O;w$?$j$h$C$?(B
-     $B$j$N$b$N(B $B$K$J$j$^$9!#$=$3$G!"K\=q$G$O!"$=$N9|$NItJ,(B($B%=%U%H3+H/$N;~$K$h(B
-     $B$/;H$o$l$kMQ8l$G!"(B $B$:$P$j!V%9%1%k%H%s!W$H8@$$$^$9!#(B)$B$r$^$:Ds<($7!"$=$l(B
-     $B$KBP$7$FJQ99$r2C$($F$$$/(B $B$H$$$&J}K!$r<h$j$^$9!#(B
-     $B$3$N%9%1%k%H%s$K$O!"$H$3$m$I$3$m$K!"!VJQ992DG=8D=j!W$,$"$j$^$9!#(B $B$3$NIt(B
-     $BJ,$O$_$J$5$s$K?'!9JQ99$7$F$b$i$$(B $B$?$$>l=j$G$9!#$3$3$N?tCM$rJQ$($?$j!"A0(B
-     $B@a$G3X$s$@$h$&$JJ8K!$K=>$C$?%W%m%0%i%`$r(B $B?7$7$/2C$($?$j$7$F!"$$$m$$$m<B(B
-     $B83$7$F$_$F$/$@$5$$!#JY6/$,?J$a$P!"%9%1%k%H%s$N(B $BLV$+$1$G$J$$$H$3$m$rJQ99(B
-     $B$7$F$$$/$3$H$bLLGr$$$G$7$g$&!#(B
-
-      Memo: Visual J++$BEy$NE}9g3+H/4D6-$G$b!"$3$N$h$&$J%9%1%k%H%s$r:n@.$7$F(B
-      $B$/$l$^$9$M!#$=$7$F(B $B!V$3$3%W%m%0%i%`$r=q$$$F$/$@$5$$!W$H$$$&$h$&$K$J$C(B
-      $B$F$$$^$9!#$=$l$H(B $B9M$($+$?$O4pK\E*$KF1$8$G$G$9!#(BVJ++$B$N$O0lHLE*$J%"%W%l(B
-      $B%C%HMQ$N$b$N$G$9$,!"(B $B$3$3$K7G:\$7$F$$$k$N$O!"$h$j%2!<%`$KFC2=$7$?$h$&(B
-      $B$J9=B$$K$J$C$F$$$^$9!#(B
+      Javaの基本事項を、例を示しながら解説しました。ここで示し
+      ていないキーワードなどに ついては、巻末のリファレンスを見ながら、
+      いろいろプログラムをいじって調査・実験してみてください。 たくさん調査す
+      ればするほど、あなたのプログラミングセンスは磨かれていくことでしょ
+      う。 以降の節では、基本的な内容は理解しているものとして話を進めま
+      すので、わからないことが 出てきたら、必ず戻って確認してください。
 
 
-     * $B%2!<%`$N%9%1%k%H%s%W%m%0%i%`(B
+  4.2 ゲームプログラムの構造
+
+     ゲームのプログラムは、だいたいどんなゲームでも、骨の部分は似たりよった
+     りのもの になります。そこで、本書では、その骨の部分(ソフト開発の時によ
+     く使われる用語で、 ずばり「スケルトン」と言います。)をまず提示し、それ
+     に対して変更を加えていく という方法を取ります。
+     このスケルトンには、ところどころに、「変更可能個所」があります。 この部
+     分はみなさんに色々変更してもらい たい場所です。ここの数値を変えたり、前
+     節で学んだような文法に従ったプログラムを 新しく加えたりして、いろいろ実
+     験してみてください。勉強が進めば、スケルトンの 網かけでないところを変更
+     していくことも面白いでしょう。
+
+      Memo: Visual J++等の統合開発環境でも、このようなスケルトンを作成して
+      くれますね。そして 「ここプログラムを書いてください」というようになっ
+      ています。それと 考えかたは基本的に同じでです。VJ++のは一般的なアプレ
+      ット用のものですが、 ここに掲載しているのは、よりゲームに特化したよう
+      な構造になっています。
+
+
+     * ゲームのスケルトンプログラム
 
 File name: game.java
 ------------------------------------------------------------
@@ -2029,8 +2029,8 @@ public class game extends java.applet.Applet implements Runnable
 	Graphics dg;
 
 	int cron=0;
-	int width,height; // $BC10L$O%T%/%;%k(B
-	int interval = 500 ; // $B%_%jIC(B
+	int width,height; // 単位はピクセル
+	int interval = 500 ; // ミリ秒
 
 	public void init()
 	{
@@ -2040,7 +2040,7 @@ public class game extends java.applet.Applet implements Runnable
 		double_buffer = createImage( width , height );
 		dg = double_buffer.getGraphics();
 		thread.start();
-		//$BJQ992DG=8D=j(B
+		//変更可能個所
 	}
 
 	public void paint( Graphics g )
@@ -2067,8 +2067,8 @@ public class game extends java.applet.Applet implements Runnable
 	}
 	void doIt()
 	{
-		// $BJQ992DG=8D=j(B
-		// $B$3$3$K%W%m%0%i%`$r2C$($F$$$C$F$_$^$7$g$&!#(B
+		// 変更可能個所
+		// ここにプログラムを加えていってみましょう。
 		dg.drawString( Integer.toString( cron ) , 50 ,cron*10  );
 	}
 }
@@ -2079,69 +2079,69 @@ File name: test.html
 <applet code=game.class width=400 height=400></applet>
 ------------------------------------------------------------
 
-     $B$^$:$3$N%W%m%0%i%`$r!"%(%G%#%?$GF~NO$7$F$_$^$7$g$&!#IUO?$N(BCD-ROM$B$K(B $B$3$N(B
-     $B%W%m%0%i%`$b<}O?$5$l$F$$$^$9$,!"$3$3$O$R$H$D!"%(%G%#%?$K47$l$k(B $B$?$a$K(B
-     $B$b!"<j$GBG$A$3$s$G$_$F$/$@$5$$!#%M%9%H$9$k;~$K$O!"(BTab$B%-!<$r(B $B;H$&$3$H$r(B
-     $BK:$l$:$K(B! $BBG$A$3$_=*$o$C$?$i!"%3%s%Q%$%k$7$^$7$g$&!#%3%s%Q%$%k$N$d$j$+(B
-     $B$?$O!"(B $B$=$l$>$l$N5!<oJL$N$H$3$m$r;2>H$7$F$/$@$5$$!#(Bjavac$B$^$?$O!"(B
-     JavaCompiler $B$r;H$$$^$9!#%3%s%Q%$%k$9$k;~$K%(%i!<$,=P$?$i!"$=$l$O$-$C$H(B
-     $BBG$A(B $B$^$A$,$$$J$N$G!"%(%i!<%a%C%;!<%8$r8+$F!"D>$7$^$7$g$&!#(B($B%(%i!<%a%C(B
-     $B%;!<%8(B $B$N@bL@$O!"$3$N>O$N!V%(%i!<%a%C%;!<%8!W$N$H$3$m$r;2>H$7$F$/$@$5(B
-     $B$$!#(B
-     $B$=$7$F$$$h$$$h<B9T$G$9!#<B9T$K$O!"(Bappletviewer$B$r;H$$$^$9!#<B9T$NA0$K(B
-     $B$O!"(B test.html$B$r:n$C$F$*$/$3$H$rK:$l$:$K!#(B test.html$B$NFbMF$,4V0c$C$F$$(B
-     $B$J$1$l$P!"<B9T$9$k;~$K$O!"%(%i!<$O=P$^$;$s!#(B $B$&$^$/F0$-$^$7$?$+!)@5$7$/(B
-     $BF0$1$P!"2hLL$K%&%#%s%I%&$,$R$H$D8=$l$F!"(B $B?t;z$,0l$D$E$DA}$($F$$$/I=<($,(B
-     $B$5$l$k$O$:$G$9!#(B
+     まずこのプログラムを、エディタで入力してみましょう。付録のCD-ROMに この
+     プログラムも収録されていますが、ここはひとつ、エディタに慣れる ために
+     も、手で打ちこんでみてください。ネストする時には、Tabキーを 使うことを
+     忘れずに! 打ちこみ終わったら、コンパイルしましょう。コンパイルのやりか
+     たは、 それぞれの機種別のところを参照してください。javacまたは、
+     JavaCompiler を使います。コンパイルする時にエラーが出たら、それはきっと
+     打ち まちがいなので、エラーメッセージを見て、直しましょう。(エラーメッ
+     セージ の説明は、この章の「エラーメッセージ」のところを参照してくださ
+     い。
+     そしていよいよ実行です。実行には、appletviewerを使います。実行の前に
+     は、 test.htmlを作っておくことを忘れずに。 test.htmlの内容が間違ってい
+     なければ、実行する時には、エラーは出ません。 うまく動きましたか？正しく
+     動けば、画面にウィンドウがひとつ現れて、 数字が一つづつ増えていく表示が
+     されるはずです。
 
-#$B?^(B4.2-1<DONE>     $BF0:n7k2L(B(game.java)
-
-
-     * $B<B9T$5$;$?8e$N;_$a$+$?(B
-
-     $B<B9T$7$F$$$k;~!"%&%$%s%I%&$N:8>e$NJ}$K!"(BApplet$B$H=q$+$l$?%a%K%e!<$,$"$j(B
-     $B$^$9$+$i!"$=$NCf$+$i(BQuit$B$rA*$Y$P;_$a$k$3$H$,$G$-$^$9!#(B
-
-#$B?^(B4.2-2 <DONE>     $B%a%K%e!<$+$i(Bquit$B$rA*$V(B
+#図4.2-1<DONE>     動作結果(game.java)
 
 
-     UNIX$B$d(BWindows$B$N(BDOS$BAk$+$i;H$C$F$$$k$H$-$K$O!"(Bappletviewer$B$r5/F0$7$?(B $B%&%$(B
-     $B%s%I%&$G%3%s%H%m!<%k%-!<$r2!$7$J$,$i(BC$B%-!<$r2!$;$P;_$^$j$^$9!#(B
+     * 実行させた後の止めかた
 
-#$B?^(B4.2-3 <DONE>     Ctrl-C$B$G;_$a$k(B
+     実行している時、ウインドウの左上の方に、Appletと書かれたメニューがあり
+     ますから、その中からQuitを選べば止めることができます。
 
-     $B<!$N@a$G!"$3$N%9%1%k%H%s%W%m%0%i%`$NFbMF$rM}2r$9$k$?$a$KI,MW$J;vJA$r2r(B
-     $B@b$7$^$9!#(B
-
-
-  4.3 $BI=<($N4pAC(B
-
-     $B%2!<%`$r:n$C$F$$$/$N$J$i!"I=<($OHs>o$K=EMW$JMWAG$J$N$G!"%3%s%T%e!<%?!<(B
-     $B$N2hLL(B $B$,$I$N$h$&$K9=@.$5$l$F$$$k$N$+$K$D$$$F!"4pACE*$JCN<1$,I,MW$G$9!#(B
-     $B$^$?$3$NCN<1$O!";HMQ8@8l$H$+5!<o$H$+(BOS$B$H$+$K4X$o$i$:DLMQ$9$kCN<1$G$9!#(B
+#図4.2-2 <DONE>     メニューからquitを選ぶ
 
 
-       4.3.1 $B%I%C%H(B
+     UNIXやWindowsのDOS窓から使っているときには、appletviewerを起動した ウイ
+     ンドウでコントロールキーを押しながらCキーを押せば止まります。
 
-          $B%3%s%T%e!<%?!<$N2hLL$O!"$9$Y$F>.$5$J%I%C%H$N=8$^$j$G9=@.$5$l$F$$$^(B
-          $B$9!#(B $B$=$l$>$l$N%I%C%H$O!"HV9f(B($B:BI8(B)$B$G<1JL$9$k$3$H$,$G$-$^$9!#(B
-          $B?t3X$G$O!"%0%i%U$O(BX$B$O1&J}8~$,@5!"(BY$B$O>eJ}8~$,@5$G$7$?$,!"%3%s%T%e!<(B
-          $B%?!<(B $B$N2hLL$G$O!"(BX$B$OF1$8$G(BY$B$@$12<J}8~$,@5$H$J$C$F$$$^$9!#(B
-          $BNc$($P2hA|=hM}$N(B $B%W%m%0%i%`$NCf$G$O!"2hLL$N>pJs$r(B1$B%I%C%H$E$D8+$F$$(B
-          $B$/$3$H$K$J$j$^$9$,!"(B $B$=$N:]$K$O!":G$b>e$NCJ$N:8C<$+$i1&C<$XD4$Y!"(B
-          $B<!$K$=$N0lCJ2<$N:8C<$+$i(B $B1&C<$X!"$5$i$K$=$N2<$NCJ$N(B.....$B$H$$$&=gHV(B
-          $B$K$J$j$^$9!#(B $B$3$N=g$GD4$Y$k$3$H$r!"(B"TopDownLeftRight"$B$H8F$S$^$9!#(B
-          $B0J9_$3$NC18l$r(B $B;H$$$^$9!#%0%i%U%#%C%/%9%a%b%j$K$b!"$3$N=gHV$G2hA|(B
-          $B$N>pJs$,3JG<$5$l$F$$$k(B $B$N$G$9!#(B
+#図4.2-3 <DONE>     Ctrl-Cで止める
 
-#$B?^(B4.3.1-1<NOT YET>          TDLR$B$N?^$HHV9f$N?6$j$+$?(B
+     次の節で、このスケルトンプログラムの内容を理解するために必要な事柄を解
+     説します。
 
 
-          $B$G$O!"<B:]$K2hLL$K!"(BTopDownLeftRight$B$G%I%C%H$rBG$D%W%m%0%i%`$r(B $B<B(B
-          $B9T$5$;$F$_$^$7$g$&!#$J$*!"(BSun$B$,Ds6!$7$F$$$k(BJDK$B$N5!G=$K$O!"(B $B!VE@$r(B
-          $BBG$D!W$H$$$&5!G=$,$J$$$?$a!"E@$+$iF1$8E@$^$G!"@~$r0z$/$H$$$&(B $B$3$H(B
-          $B$K$h$C$FE@$rBG$C$F$$$^$9!#$J$<(BdrawPoint$B$,$J$$$N$+$O!"(B $B;DG0$J$,$i$o(B
-          $B$+$j$^$;$s!#(B 
+  4.3 表示の基礎
+
+     ゲームを作っていくのなら、表示は非常に重要な要素なので、コンピューター
+     の画面 がどのように構成されているのかについて、基礎的な知識が必要です。
+     またこの知識は、使用言語とか機種とかOSとかに関わらず通用する知識です。
+
+
+       4.3.1 ドット
+
+          コンピューターの画面は、すべて小さなドットの集まりで構成されていま
+          す。 それぞれのドットは、番号(座標)で識別することができます。
+          数学では、グラフはXは右方向が正、Yは上方向が正でしたが、コンピュー
+          ター の画面では、Xは同じでYだけ下方向が正となっています。
+          例えば画像処理の プログラムの中では、画面の情報を1ドットづつ見てい
+          くことになりますが、 その際には、最も上の段の左端から右端へ調べ、
+          次にその一段下の左端から 右端へ、さらにその下の段の.....という順番
+          になります。 この順で調べることを、"TopDownLeftRight"と呼びます。
+          以降この単語を 使います。グラフィックスメモリにも、この順番で画像
+          の情報が格納されている のです。
+
+#図4.3.1-1<NOT YET>          TDLRの図と番号の振りかた
+
+
+          では、実際に画面に、TopDownLeftRightでドットを打つプログラムを 実
+          行させてみましょう。なお、Sunが提供しているJDKの機能には、 「点を
+          打つ」という機能がないため、点から同じ点まで、線を引くという こと
+          によって点を打っています。なぜdrawPointがないのかは、 残念ながらわ
+          かりません。 
 
 
 File name: tdlr.java
@@ -2178,25 +2178,25 @@ File name: test.html
 <applet code=tdlr.class width=600 height=400></applet>
 ------------------------------------------------------------
 
-#$B?^(B4.3.1-2<DONE>       $BF0$$$F$$$k:GCf$N(Btdlr.class (tdlr.java)
+#図4.3.1-2<DONE>       動いている最中のtdlr.class (tdlr.java)
 
-          $B>e$+$i=g!9$KE@$rBG$C$F$$$/$N$,8+$($^$9$M!#(B
-          $B2hLL$KE@$rBG$D$3$H$,$G$-$5$($9$l$P!"$I$s$J2hA|$bI=<($9$k$3$H$,$G$-(B
-          $B$k(B $B$O$:$G$9$M!#$7$+$7!"B?$/$N%^%7%s$G$O!"$=$s$J$3$H$r$7$F$$$?$N$G(B
-          $B$O(B $B;~4V$,$+$+$C$F$7$h$&$,$J$$$G$9$+$i!"(B
+          上から順々に点を打っていくのが見えますね。
+          画面に点を打つことができさえすれば、どんな画像も表示することができ
+          る はずですね。しかし、多くのマシンでは、そんなことをしていたので
+          は 時間がかかってしようがないですから、
 
           g.fillRect(0,0,size().width,size().height);
 	
-		  $B$N$h$&$K$7$F!"NN0h$r0lH/$GEI$j$D$V$9J}K!$bMQ0U$5$l$F$$$^$9!#(B
+		  のようにして、領域を一発で塗りつぶす方法も用意されています。
 
 
-       4.3.2 $B%"%K%a!<%7%g%s(B
+       4.3.2 アニメーション
 
-          $B%2!<%`$N2hLL$O>o$KF0$$$F$$$k$N$G!"0l<o$N%"%K%a!<%7%g%s$@$H8@$($^(B
-          $B$9!#K\=q$G$O!"(B $B%"%K%a!<%7%g%s$H$$$&I=8=$r!"F0$/2hLL$H$$$&0UL#$G;H(B
-          $B$$$^$9!#(B
-          Java$B$G%"%K%a!<%7%g%s$5$;$k$K$O!"<!$N$h$&$K%W%m%0%i%`$7$^$9!#$3$NNc(B
-          $B$G$O!"(B $B9u$$;M3Q$rF0$+$7$F$_$^$9!#(B
+          ゲームの画面は常に動いているので、一種のアニメーションだと言えま
+          す。本書では、 アニメーションという表現を、動く画面という意味で使
+          います。
+          Javaでアニメーションさせるには、次のようにプログラムします。この例
+          では、 黒い四角を動かしてみます。
 
 
 File name: anime.java
@@ -2232,50 +2232,50 @@ File name: test.html
 <applet code=anime.class width=300 height=300></applet>
 ------------------------------------------------------------
 
-#$B?^(B4.3.2-1 <DONE>          $BF0:n7k2L(B(anime.java)
+#図4.3.2-1 <DONE>          動作結果(anime.java)
 
-          tdlr.java$B$G$b=P$F$-$^$7$?$,!"(BThread$B!"(BThread.sleep$B!"(B
-           implements Runnable$B!"(Brun $B$N(B4$B$D$O!"(B $B%^%k%A%9%l%C%I5!G=$r;H$&$?$a(B
-          $B$KI,MW$G$9!#$3$N5!G=$O%"%K%a!<%7%g%s$r<B8=$9$k$?$a$K$O(B
-          $BI,?\$N5!G=$J$N$G$9$,!"$H$j$"$($:$3$3$G$O$=$&$$$&5!G=$,$"$k(B $B$H$$$&(B
-          $B$3$H$K$7$F$*$-$^$9!#>\$7$$@bL@$O%3%i%`$r;2>H$7$F$/$@$5$$!#(B try$B!"(B
-          catch$B!"(BInterruptedException $B$3$N(B3$B$D$H!"(BThread.sleep($B?t;z(B)$B$r;H$&$3(B
-          $B$H$K$h$C$F!"%"%W%l%C%H(B $B$NF0:n$9$kB.EY$r7h$a$k$3$H$,$G$-$^$9!#(B100$B$H(B
-          $B$$$&?t;z$rJQ99$9$k$3$H$K$h$C$F!"(B $B%9%T!<%I$rD4@a$7$^$9!#$3$N?t;z$N(B
-          $BC10L$O%_%jIC$G!"(B0.1$BIC$4$H$K(B1$B%I%C%H$E$D0\F0(B $B$7$F$$$/$o$1$G$9!#(Bsleep
-          $B$N0UL#$O!"!V(B100$B%_%jIC$@$1!";_$^$C$F$m!W(B $B$H$$$&0UL#$G$9!#(B100$B%_%jIC(B
-          $B$@$1;_$^$C$F!"$^$?(Brepaint$B$7$F!"$r(B $B7+$j$+$($9$N$G$9!#(B
+          tdlr.javaでも出てきましたが、Thread、Thread.sleep、
+           implements Runnable、run の4つは、 マルチスレッド機能を使うため
+          に必要です。この機能はアニメーションを実現するためには
+          必須の機能なのですが、とりあえずここではそういう機能がある という
+          ことにしておきます。詳しい説明はコラムを参照してください。 try、
+          catch、InterruptedException この3つと、Thread.sleep(数字)を使うこ
+          とによって、アプレット の動作する速度を決めることができます。100と
+          いう数字を変更することによって、 スピードを調節します。この数字の
+          単位はミリ秒で、0.1秒ごとに1ドットづつ移動 していくわけです。sleep
+          の意味は、「100ミリ秒だけ、止まってろ」 という意味です。100ミリ秒
+          だけ止まって、またrepaintして、を 繰りかえすのです。
 
           try{
-                  Thread.sleep($B?tCM(B);
+                  Thread.sleep(数値);
           }catch( InterruptedException e ) {}
 
-          $B$H$$$&I=8=$O$h$/;H$$$^$9$N$G!"3P$($F$*$$$F$/$@$5$$!#$=$l$+$i!"(B $B$3(B
-          $B$3$G(Btry$B$H(Bcatch$B$O!"(BThread.sleep $B$N<B9TCf$K2?$i$+$N%(%i!<$dNc30>uBV(B
-          $B$,@8$8$?$H$-$KBP1~$9$k=hM}$r=q$/$H$-(B $B$NJ8K!$G$9!#EvJ,$3$l0J30$N;H(B
-          $B$$$+$?$O$7$J$$$N$G!"$3$3$G$O@bL@$r>JN,$7$^$9!#(B $B$^$?!"$3$N?tCM$ND4(B
-          $B@0$K$h$C$F%2!<%`$N?J$`%9%T!<%I$rD4@a$9$k$3$H$,$G$-$^$9(B $B$,!"Fq$7$$(B
-          $B$N$O!"$3$N%"%W%l%C%H$rF0$+$9%^%7%s$N@-G=$O!"$9$Y$F$,$"$J$?$N(B $B%^%7(B
-          $B%s$HF1$8$G$O$J$$$H$$$&$3$H$G$9!#Nc$($P(BSGI$B$N(Bindy$B$H$$$&%^%7%s$G(B $BF0$+(B
-          $B$7$?$H$-$K$O!"(B10$B%_%jIC$K@_Dj$7$F$b(B(1$BIC$K(B100$B2sF0$/(B)$B==J,F0:n$7$^$9(B
-          $B$,!"(B Pentium$B$h$jA0$N(BCPU$B$r@Q$s$G$$$k(BPC/AT$B8_495!$@$H!"(B200$B%_%jIC$G$b(B
-          $B6l$7$$$/$i$$(B $B$G$9!#D4@0$9$k$K$O!"%2!<%`$NFbMF$b9M$($F!"$@$$$?$$$I(B
-          $B$N%^%7%s$G$bF0$/(B $B$h$&$JE,EY$J@_Dj$K$7$F$/$@$5$$!#(B
+          という表現はよく使いますので、覚えておいてください。それから、 こ
+          こでtryとcatchは、Thread.sleep の実行中に何らかのエラーや例外状態
+          が生じたときに対応する処理を書くとき の文法です。当分これ以外の使
+          いかたはしないので、ここでは説明を省略します。 また、この数値の調
+          整によってゲームの進むスピードを調節することができます が、難しい
+          のは、このアプレットを動かすマシンの性能は、すべてがあなたの マシ
+          ンと同じではないということです。例えばSGIのindyというマシンで 動か
+          したときには、10ミリ秒に設定しても(1秒に100回動く)十分動作します
+          が、 Pentiumより前のCPUを積んでいるPC/AT互換機だと、200ミリ秒でも
+          苦しいくらい です。調整するには、ゲームの内容も考えて、だいたいど
+          のマシンでも動く ような適度な設定にしてください。
 
 
-       4.3.3 $B$A$i$D$-KI;_(B
+       4.3.3 ちらつき防止
 
-          $B%2!<%`$G$O!"%-%c%i%/%?!<$rF0$+$9$o$1$G$9$,!"$=$N$H$-$K!"%V%i%&%s4I(B
-          $B$N(B $BAv::$NET9g>eHr$1$FDL$k$3$H$N$G$-$J$$LdBj$,@8$8$^$9!#$=$l$,$A$i(B
-          $B$D$-(B $B$G$9!#A0$N;M3Q$rF0$+$9Nc$G$b!"F0$-$J$,$i$A$i$A$i$7$F$$$?$O$:(B
-          $B$G$9!#(B $B$A$i$D$-$O!"L\$rHh$l$5$;$k860x$K$J$k$7!"@5$7$/%-%c%i%/%?!<(B
-          $B$rG'<1$G$-$J$$(B $B860x$K$b$J$j$^$9!#(B
-          $B$3$l$r2r7h$9$k$K$O!"Fs$D$NBP:v$r9V$8$J$1$l$P$J$j$^$;$s!#$^$:!"(BJava
-          $B$N(BApplet $B$K$*$$$F<+F0E*$KF/$/5!G=$N!"(Brepaint$B$,8F$S$@$5$l$?;~$K(B $B%"(B
-          $B%W%l%C%HA4BN$r3%?'$GEI$j$D$V$7$F$7$^$&5!G=$r;&$9$3$H$G$9!#<!$K!"<B(B
-          $B:]$K$O(B $B2hLL$KI=<($5$l$J$$2>A[2hLL$rMQ0U$7$F!"IA2h$O$9$Y$F$=$l$KBP(B
-          $B$7$F9T$&$h$&$K(B $B$9$k$H$$$&$3$H$G$9!#$^$:$O:G=i$NBP:v$r;\$7$?%5%s%W(B
-          $B%k%W%m%0%i%`$r8+$F$/$@$5$$!#(B
+          ゲームでは、キャラクターを動かすわけですが、そのときに、ブラウン管
+          の 走査の都合上避けて通ることのできない問題が生じます。それがちら
+          つき です。前の四角を動かす例でも、動きながらちらちらしていたはず
+          です。 ちらつきは、目を疲れさせる原因になるし、正しくキャラクター
+          を認識できない 原因にもなります。
+          これを解決するには、二つの対策を講じなければなりません。まず、Java
+          のApplet において自動的に働く機能の、repaintが呼びだされた時に ア
+          プレット全体を灰色で塗りつぶしてしまう機能を殺すことです。次に、実
+          際には 画面に表示されない仮想画面を用意して、描画はすべてそれに対
+          して行うように するということです。まずは最初の対策を施したサンプ
+          ルプログラムを見てください。
 
 
 File name: NoUpdate.java
@@ -2296,7 +2296,7 @@ public class NoUpdate extends java.applet.Applet implements Runnable
 	}
 	public void update( Graphics g )
 	{
-		// $B2?$b<j$r2C$($J$$$H!"$3$3$K>C5n$9$k%W%m%0%i%`$,4^$^$l$k$N$G$9!#(B
+		// 何も手を加えないと、ここに消去するプログラムが含まれるのです。
 		paint( g );
 	}
 	public void run()
@@ -2317,14 +2317,14 @@ File name: test.html
 <applet code=NoUpdate.class width=300 height=300></applet>
 ------------------------------------------------------------
 
-#$B?^(B4.3.3-1 <DONE>	$B<B9T7k2L(B(NoUpdate.java)
+#図4.3.3-1 <DONE>	実行結果(NoUpdate.java)
 
 
-          $B<B9T7k2L$O$I$&$G$7$?$+!)>C$95!G=$,;&$5$l$F$$$k$N$G!"9u$$;M3Q$,(B $B?-(B
-          $B$S$F$$$/$h$&$K$J$j$^$7$?$M!#$7$+$7!"$3$l$G$O!";M3Q$r!VF0$+$7$F$$(B
-          $B$k!W$H$O(B $B$H$F$b8@$($^$;$s!#$G$9$+$i!"<!$K!"$-$l$$$KF0$$$F$$$k$h$&(B
-		  $B$K8+$($k$h$&$K$9$k$?$a$N(B $B$H$C$F$*$-$N5;$r;H$$$^$9!#(B
-          $B:#EY$OJQ99ItJ,$,B?$$$N$GCm0U$7$FFI$s$G$/$@$5$$!#(B
+          実行結果はどうでしたか？消す機能が殺されているので、黒い四角が 伸
+          びていくようになりましたね。しかし、これでは、四角を「動かしてい
+          る」とは とても言えません。ですから、次に、きれいに動いているよう
+		  に見えるようにするための とっておきの技を使います。
+          今度は変更部分が多いので注意して読んでください。
 
 
 File name: OffScr.java
@@ -2334,24 +2334,24 @@ public class OffScr extends java.applet.Applet implements Runnable
 {
 	Thread t;
 	int x = 0;
-	Image ofscr; // $B2>A[2hLL(B($B%*%U%9%/%j!<%s!"%@%V%k%P%C%U%!$H$b$$$&(B)
-	Graphics ofscr_g;       // $B2>A[2hLL$rA`:n$9$k$?$a$N(BGraphics
+	Image ofscr; // 仮想画面(オフスクリーン、ダブルバッファともいう)
+	Graphics ofscr_g;       // 仮想画面を操作するためのGraphics
 
 	public void init()
 	{
 		t = new Thread( this );
 		t.start();
-		// $B<!$N9T$K$h$j!"2>A[2hLL$O!"??$CGr$^$?$O??$C9u$K=i4|2=$5$l$^$9!#(B
-		// $B;H$&A0$K!"I,MW$J?'$GEI$j$D$V$7$F$d$kI,MW$,$"$j$^$9!#(B
+		// 次の行により、仮想画面は、真っ白または真っ黒に初期化されます。
+		// 使う前に、必要な色で塗りつぶしてやる必要があります。
 		ofscr = createImage( 300,300);  
 		ofscr_g = ofscr.getGraphics();
 	}
 	public void paint( Graphics g )
 	{
 		ofscr_g.setColor( Color.white);
-		ofscr_g.fillRect( 0 , 0 , 300, 300 );   // $BA42hLL$r>C$9!#(B
+		ofscr_g.fillRect( 0 , 0 , 300, 300 );   // 全画面を消す。
 		ofscr_g.setColor( Color.black );
-		ofscr_g.fillRect( x,50,200,200);        // $BL\E*$N;M3Q$rIA2h$9$k!#(B
+		ofscr_g.fillRect( x,50,200,200);        // 目的の四角を描画する。
 		g.drawImage( ofscr , 0 , 0 , null );
 	}
 	public void update( Graphics g )
@@ -2376,40 +2376,40 @@ File name: test.html
 <applet code=OffScr.class width=300 height=300></applet>
 ------------------------------------------------------------
 
-#$B?^(B4.3.3-2 <DONE>          $BF0:n7k2L(B(OffScr.java)
+#図4.3.3-2 <DONE>          動作結果(OffScr.java)
 
-          init$B%a%=%C%I$NCf$G!"$^$:2>A[2hLL$r:n$j$^$9!#$=$7$F!"A4$F$N(B $BIA2h(B
-          $B$O!"2>A[2hLL$KBP$7$F9T$J$$$^$9!#MM!9$JIA2h$r9T$J$&$?$a$K!"(B
-          getGraphics $B$r;H$C$F!"(BGraphics$B%/%i%9$X$N;2>H$r<h$j$@$7$^$9!#0J9_$N(B
-          $BIA2h$O!"(B $B$3$N(Bofscr_g$B$KBP$7$F9T$J$&$o$1$G$9!#2>A[2hLL$r;H$o$J$$>l(B
-          $B9g!"(B $B%V%i%&%s4I$NIA2h$N%?%$%_%s%0>e!">C5n:n6H$NESCf$d;M3Q$r=q$$$F(B
-          $B$$$kESCf$K(B $B%V%i%&%s4I$,<!$NAv::$r;O$a$F$7$^$&$3$H$K$J$j!"$A$i$D$/(B
-          $B$o$1$G$9$,!"2>A[2hLL$r(B $B;H$&$H$=$l$i$N%?%$%_%s%0$NLdBj$r2sHr$G$-$k(B
-          $B$H$$$&$o$1$G$9!#(B
+          initメソッドの中で、まず仮想画面を作ります。そして、全ての 描画
+          は、仮想画面に対して行ないます。様々な描画を行なうために、
+          getGraphics を使って、Graphicsクラスへの参照を取りだします。以降の
+          描画は、 このofscr_gに対して行なうわけです。仮想画面を使わない場
+          合、 ブラウン管の描画のタイミング上、消去作業の途中や四角を書いて
+          いる途中に ブラウン管が次の走査を始めてしまうことになり、ちらつく
+          わけですが、仮想画面を 使うとそれらのタイミングの問題を回避できる
+          というわけです。
 
-#$B?^(B4.3.3-3 <NOT YET>        $B%V%i%&%s4IIA2h%?%$%_%s%0(B
-
-
-          ($BCm0U(B)$BHs>o$K%O%^$j$d$9$$%]%$%s%H$H$7$F!"(BgetGraphics$B%a%=%C%I(B $B$r;H$C(B
-          $B$F(BImage$B%/%i%9$NJQ?t$+$i(BGraphics$B$r<h$k$3$H(B $B$,$G$-$k$N$O!"$3$NNc$G<((B
-          $B$7$?$h$&$K(BcreateImage$B$7$?;~$@$1$@$H$$$&(B $B$3$H$G$9!#(BgetImage$B$d!"(B
-          memoryImageSource$B$r;H$C$F(B $B:n$j$@$7$?2hA|$+$i$O!"(BgetGraphics$B$G$-$^(B
-          $B$;$s!#<B:]!"(BAPI $B%^%K%e%"%k$K$O!"(BcreateImage$B$O!"!V%@%V%k%P%C%U%!%j(B
-          $B%s%0$N$?$a$K(B $B;H$&!W$H$$$&$h$&$K=q$+$l$F$$$^$9!#FCJL$KDs6!$5$l$F$$(B
-          $B$k5!G=$N$h$&$G$9!#(B $B%*%U%9%/%j!<%s$r;H$($P!"I=<($rHs>o$K3j$i$+$K$9(B
-          $B$k$3$H$,$G$-$k$N$G!"(B $B%2!<%`$r:n$k$K$O$[$\I,?\$N%F%/%K%C%/$H8@$($^(B
-          $B$9!#(B $B0J>e$G%9%1%k%H%s%W%m%0%i%`$NFbMF$O$9$Y$FLVMe$7$^$7$?!#9|$,$G(B
-          $B$-$?$N$G!"$"$H$O!"(B $BMM!9$JFy$r$D$1$F$$$/$3$H$K$J$j$^$9!#Fy$H$O!"%-(B
-          $B%c%i%/%?!<$r0\F0$5$;$?$j!"(B $B2hA|$rI=<($7$?$j!"2;$r=P$7$?$j$9$k$3$H(B
-          $B$r0UL#$7$F$$$^$9!#(B
+#図4.3.3-3 <NOT YET>        ブラウン管描画タイミング
 
 
-4.4 $B2hLL$K2hA|$r=P$9%W%m%0%i%`(B
+          (注意)非常にハマりやすいポイントとして、getGraphicsメソッド を使っ
+          てImageクラスの変数からGraphicsを取ること ができるのは、この例で示
+          したようにcreateImageした時だけだという ことです。getImageや、
+          memoryImageSourceを使って 作りだした画像からは、getGraphicsできま
+          せん。実際、API マニュアルには、createImageは、「ダブルバッファリ
+          ングのために 使う」というように書かれています。特別に提供されてい
+          る機能のようです。 オフスクリーンを使えば、表示を非常に滑らかにす
+          ることができるので、 ゲームを作るにはほぼ必須のテクニックと言えま
+          す。 以上でスケルトンプログラムの内容はすべて網羅しました。骨がで
+          きたので、あとは、 様々な肉をつけていくことになります。肉とは、キ
+          ャラクターを移動させたり、 画像を表示したり、音を出したりすること
+          を意味しています。
 
-     $B%2!<%`$NCf$G3($r07$&$?$a$K$O!"$=$N3($N>pJs$r$I$3$+$+$i<h$C$F$3$J$/$F$O(B
-     $B$J$j$^$;$s!#(B $B$=$N$?$a$K$O!"(BgetImage$B$r;H$$$^$9!#<!$N%5%s%W%k$O!"2hA|$r<h(B
-     $B$j$@$7$F!"(B $BI=<($7$^$9!#2hA|%U%)!<%^%C%H$O!"(BGIF$B$H(BJPEG$B$,8=:_$N$H$3$m(B
-	$BI8=`$G;H$($^$9!#(B
+
+4.4 画面に画像を出すプログラム
+
+     ゲームの中で絵を扱うためには、その絵の情報をどこかから取ってこなくては
+     なりません。 そのためには、getImageを使います。次のサンプルは、画像を取
+     りだして、 表示します。画像フォーマットは、GIFとJPEGが現在のところ
+	標準で使えます。
 
 
 File name: getimage.java
@@ -2435,48 +2435,48 @@ File name: test.html
 <applet code=getimage.class width=300 height=300></applet>
 ------------------------------------------------------------
 
-#$B?^(B4.4-1 <DONE>  $BF0:n7k2L(B(GETIMAGE.JAVA)$BI=<($5$l$k>l9g$H!"$5$l$J$$>l9g$,$"$k(B
+#図4.4-1 <DONE>  動作結果(GETIMAGE.JAVA)表示される場合と、されない場合がある
 
 
-     $B$3$NNc$N>l9g!"$"$J$?$N%G%#%9%/$NCf$N!"%/%i%9%U%!%$%k(BGETIAMGE.CLASS $B$,CV(B
-     $B$+$l$F$$$k=j$HF1$8%G%#%l%/%H%j$K$"$k$O$:$N!"(BKAWAI.JPG$B$H$$$&2hA|(B $B%U%!%$%k(B
-     $B$r<h$j$@$=$&$H$7$F$$$^$9!#(B($B$3$N%U%!%$%k$O!"IUO?$N(BCD-ROM$B$KF~$C$F$$$^$9(B
-     $B$N$G!"%3%T!<$7$F$*;H$$$/$@$5$$(B)$B%$%s%?!<%M%C%H$rDL$7$FC/$+$,$3$N%"%W%l%C(B
-     $B%H$r(B $B%@%&%s%m!<%I$7$?;~$b!"F1$8%G%#%l%/%H%j$KCV$+$l$F$$$k%U%!%$%k$,%$%s(B
-     $B%?!<%M%C%H$r(B $BDL$7$FFI$_$3$^$l$^$9!#(B
-     APPLETVIEWER$B$r5/F0$7$F$b2hA|$,=P$F$3$J$$>l9g$H!"=P$F$/$k>l9g$H$,$"$j$^(B
-     $B$9!#(B $B=P$F$3$J$+$C$?>l9g$b!"(BAPPLETVIEWER$B$N%a%K%e!<$N!"(BRESTART$B$r(B $BA*Br$9$k(B
-     $B$HI=<($5$l$^$9(B.$B$3$N860x$K$D$$$F$O!"<!$N@a$G@bL@$7$^$9!#(B
+     この例の場合、あなたのディスクの中の、クラスファイルGETIAMGE.CLASS が置
+     かれている所と同じディレクトリにあるはずの、KAWAI.JPGという画像 ファイル
+     を取りだそうとしています。(このファイルは、付録のCD-ROMに入っています
+     ので、コピーしてお使いください)インターネットを通して誰かがこのアプレッ
+     トを ダウンロードした時も、同じディレクトリに置かれているファイルがイン
+     ターネットを 通して読みこまれます。
+     APPLETVIEWERを起動しても画像が出てこない場合と、出てくる場合とがありま
+     す。 出てこなかった場合も、APPLETVIEWERのメニューの、RESTARTを 選択する
+     と表示されます.この原因については、次の節で説明します。
 
-     $B2hA|$O!"<!$N?^$N$h$&$J%W%m%;%9$r7P$F!"I=<($5$l$^$9!#(B
+     画像は、次の図のようなプロセスを経て、表示されます。
 
-#$B?^(B4.4-2 <NOT YET>    $B%m!<%I;X<(!"%m!<%I3+;O!"%a%b%jE83+!"IA2h$N=g(B
+#図4.4-2 <NOT YET>    ロード指示、ロード開始、メモリ展開、描画の順
 
 
-     $B2hA|I=<($G=i?4<T$,$h$/%O%^$k%]%$%s%H$r5s$2$F$_$^$7$g$&!#(B
+     画像表示で初心者がよくハマるポイントを挙げてみましょう。
 
-        o getImage$B$7$F$b!"<B:]$K$O%m!<%I$O;O$^$i$J$$!#(B
-        o $B=i$a$F(BdrawImage$B$7$?;~$K%m!<%I$,3+;O$5$l$k!#(B
-        o $B85$,05=L%U%!%$%k$J$N$G!"%m!<%I$,40N;$7$F$+$i!"%a%b%j$X$NE83+$K;~4V(B
-          $B$,$+$+$k!#(B
+        o getImageしても、実際にはロードは始まらない。
+        o 初めてdrawImageした時にロードが開始される。
+        o 元が圧縮ファイルなので、ロードが完了してから、メモリへの展開に時間
+          がかかる。
 
-     $B$3$NNc$N>l9g$O!"%"%W%l%C%H$N%/%i%9%U%!%$%k$,(Bappletviewer$B$KFI$_$3$^$l$?(B
-     $BD>8e$G!"(B $B$^$@2hA|%U%!%$%k$N%m!<%I$O=*$o$C$F$$$J$$>uBV$N;~$K!"0l2sL\$N(B
-     paint $B%a%=%C%I$,8F$S$@$5$l$k$3$H$,LdBj$G$9!#%7%9%F%`$NET9g$G0l2sL\$N(B
-     drawImage$B$,!"2hA|$N%m!<%I$H%a%b%jE83+$,=*$o$C$F$+$i<B9T$5$l$?>l9g$O(B $BIA(B
-     $B2h$5$l!"$?$^$?$^%m!<%I$d%a%b%jE83+$,=*$o$C$F$$$J$+$C$?>l9g$OIA2h$5$l$J(B
-     $B$$$N$G$9!#(B ($BESCf$^$G%a%b%j$KE83+$5$l$F$$$k>l9g$O!"2hA|$N>e$+$i0lItJ,$,(B
-     $BIA2h$5$l$^$9!#(B) restart$B$9$k$H!"2hA|%G!<%?$,!"E83+$5$l$?7A$G(Bappletviewer
-     $BFb$N%a%b%j%-%c%C%7%e$K;D$C$F(B $B$$$k$?$a!"I,$:IA2h$5$l$k$N$G$9!#$7$+$7!"$3(B
-     $B$N$^$^$G$O2?$+$HITJX$G$9!#%W%m%0%i%`$,(B $B<+J,$N4IM}$N85$G2hA|$r%m!<%I$7$?(B
-     $B$j$7$?$$$b$N$G$9!#$=$l$r<B8=$9$k$?$a$N%/%i%9$,(B Sun$B$K$h$C$FDs6!$5$l$F$$(B
-     $B$^$9!#(B
+     この例の場合は、アプレットのクラスファイルがappletviewerに読みこまれた
+     直後で、 まだ画像ファイルのロードは終わっていない状態の時に、一回目の
+     paint メソッドが呼びだされることが問題です。システムの都合で一回目の
+     drawImageが、画像のロードとメモリ展開が終わってから実行された場合は 描
+     画され、たまたまロードやメモリ展開が終わっていなかった場合は描画されな
+     いのです。 (途中までメモリに展開されている場合は、画像の上から一部分が
+     描画されます。) restartすると、画像データが、展開された形でappletviewer
+     内のメモリキャッシュに残って いるため、必ず描画されるのです。しかし、こ
+     のままでは何かと不便です。プログラムが 自分の管理の元で画像をロードした
+     りしたいものです。それを実現するためのクラスが Sunによって提供されてい
+     ます。
 
-     * MediaTracker$B%/%i%9(B
+     * MediaTrackerクラス
 
-     MediaTracker$B%/%i%9$O!"2hA|$d2;@<$r!"0U?^E*$J%?%$%_%s%0$G%m!<%I$9$k$?$a(B
-     $B$N(B $B%/%i%9$G$9!#<!$N$h$&$K$7$F;H$$$^$9!#Bh(B1$B>O$G=P$F$-$?!"!V%G%^%s%I%m!<(B
-     $B%G%#%s%0!W$r<B8=(B $B$9$k$K$O!"(BMediaTracker$B%/%i%9$r;H$$$^$9!#(B
+     MediaTrackerクラスは、画像や音声を、意図的なタイミングでロードするため
+     の クラスです。次のようにして使います。第1章で出てきた、「デマンドロー
+     ディング」を実現 するには、MediaTrackerクラスを使います。
 
 
 File name: mt.java
@@ -2484,16 +2484,16 @@ File name: mt.java
 import java.awt.*;
 public class mt extends java.applet.Applet
 {
-	MediaTracker m;      // $B$^$:(BMediaTracker$B%/%i%9$N%$%s%9%?%s%9$r:n$k(B
+	MediaTracker m;      // まずMediaTrackerクラスのインスタンスを作る
 	Image img;
 
 	public void init()
 	{
-		img = getImage( getDocumentBase() , "kawai.jpg"); // $B$3$3$OF1$8(B
+		img = getImage( getDocumentBase() , "kawai.jpg"); // ここは同じ
 		m = new MediaTracker(this);
-		m.addImage( img, 0); // MediaTracker$B$N;E;v%j%9%H$K2C$($k!#(B
+		m.addImage( img, 0); // MediaTrackerの仕事リストに加える。
 		try{
-			m.waitForID(0);      // $B%m!<%I$,=*$o$k$^$GBT$D!#(B($B6/@)%m!<%I(B)
+			m.waitForID(0);      // ロードが終わるまで待つ。(強制ロード)
 		}catch( InterruptedException e ){}
 	}
 	public void paint(Graphics g){
@@ -2507,18 +2507,18 @@ File name: test.html
 <applet code=mt.class width=300 height=300></applet>
 ------------------------------------------------------------
 
-#$B?^(B4.4-3 <DONE>     $BF0:n7k2L(B(mt.java)
+#図4.4-3 <DONE>     動作結果(mt.java)
 
-     $B$"$k2hA|$N%m!<%G%#%s%0$rA`:n$9$k$K$O!"(BMediaTracker$B%/%i%9$N%$%s%9%?%s%9(B
-     $B$N%a%=%C%I$G$"$k(B addImage( Image , ID )$B$r;H$$$^$9!#(BID$B$H$$$&$N$O!"(B
-     MediaTracker $B%/%i%9$N;E;v$N$&$A!"2?HV$N;E;v$@$h!"$H;XDj$7$F$"$2$k$N$G(B
-     $B$9!#$=$&$9$k$3$H$K$h$C$F!"(B waitForID( ID)$B$r;H$C$FHV9f$r;XDj$7$F%m!<%I$5(B
-     $B$;$k$3$H$,2DG=$K$J$k$N$G$9!#(B ID$B$O!"F1$8HV9f$r$$$/$D$G$b?6$k$3$H$,$G$-$k(B
-     $B$N$G!"$$$/$D$+$N2hA|%U%!%$%k$r%0%k!<%W(B $BJ,$1$7$F4IM}$9$k$3$H$b$G$-$^$9!#(B
-     $B%2!<%`$N>l9g$O!"(BMediaTracker$B$r;H$C$F!"(B $B%2!<%`$KI,MW$J%-%c%i%/%?!<$N2hA|(B
-     $B$,B7$&$^$G!"(B"Now Loading..."$B$J$I$HI=<($7$F$*$/$h$&$K$9$k(B $B$N$,$h$$$G$7$g(B
-     $B$&!#<!$,$=$NNc$G$9!#(B($B$3$NNc$O!"2hA|%U%!%$%k$r$"$J$?$N%G%#%9%/$+$iD>@\(B
-     $B%m!<%I$9$k>l9g$O!"B.$9$.$F8+$($J$$$+$b$7$l$^$;$s!#(B)
+     ある画像のローディングを操作するには、MediaTrackerクラスのインスタンス
+     のメソッドである addImage( Image , ID )を使います。IDというのは、
+     MediaTracker クラスの仕事のうち、何番の仕事だよ、と指定してあげるので
+     す。そうすることによって、 waitForID( ID)を使って番号を指定してロードさ
+     せることが可能になるのです。 IDは、同じ番号をいくつでも振ることができる
+     ので、いくつかの画像ファイルをグループ 分けして管理することもできます。
+     ゲームの場合は、MediaTrackerを使って、 ゲームに必要なキャラクターの画像
+     が揃うまで、"Now Loading..."などと表示しておくようにする のがよいでしょ
+     う。次がその例です。(この例は、画像ファイルをあなたのディスクから直接
+     ロードする場合は、速すぎて見えないかもしれません。)
 
 
 File name: loading.java
@@ -2535,7 +2535,7 @@ public class loading extends java.applet.Applet implements Runnable
 		t = new Thread( this );
 		m = new MediaTracker(this);
 		for(int i = 0 ; i < 10 ; i++ ){
-			String name = "image" + i + ".gif"; //$B%U%!%$%kL>$r:n$k(B
+			String name = "image" + i + ".gif"; //ファイル名を作る
 			img[i] = getImage( getDocumentBase() , name );
 			m.addImage( img[i] , i );
 		}
@@ -2543,9 +2543,9 @@ public class loading extends java.applet.Applet implements Runnable
 	public void paint( Graphics g )
 	{
 		if( loaded ){
-			// $B$b$&%m!<%I$,=*$o$C$F$k$N$G!"$3$3$KFbMF$r=q$/!#(B
+			// もうロードが終わってるので、ここに内容を書く。
 		} else {
-			// $B$^$@%m!<%I$,=*$o$C$F$$$J$$!#(B
+			// まだロードが終わっていない。
 			g.drawString("Now loading...",100,100);
 		}
 
@@ -2569,24 +2569,24 @@ File name: test.html
 <applet code=loading.class width=300 height=300></applet>
 ------------------------------------------------------------
 
-#$B?^(B4.4-4 <DONE>     $BF0:n7k2L(B(loading.java)
+#図4.4-4 <DONE>     動作結果(loading.java)
 
-     $B$3$NNc$G(BThread$B$r;H$C$F$$$k$N$O!"(Brepaint$B$r;H$C$FI=<($r$9$k(B $B$?$a$G$9!#(B
-     repaint$B$rDj4|E*$K8F$S$@$7$F$d$k$K$O!"(BThread$B$r(B $B;H$o$J$1$l$P$J$j$^$;$s!#(B
+     この例でThreadを使っているのは、repaintを使って表示をする ためです。
+     repaintを定期的に呼びだしてやるには、Threadを 使わなければなりません。
 
 
 
-4.5 $B?^7A$rIA2h$9$k(B
+4.5 図形を描画する
 
-     $BA0$N@a$G!"2hA|$rIA2h$9$kJ}K!$H%m!<%I$9$kJ}K!$K$D$$$F3X$S$^$7$?!#:#EY(B
-     $B$O!"%"%W%l%C%H$NCf$K(B $B@~$r0z$$$?$j!"EI$j$D$V$7$??^7A$rIA$$$?$j$7$^$9!#$3(B
-     $B$NJ}K!$GIA2h$9$k$H!"2hLL$OCOL#$J$b$N$K(B $B$J$j$d$9$$$N$G$9$,!"2hA|$rI=<($9(B
-     $B$k$h$j$b9bB.$J$N$G!";H$$$+$?$K$h$C$F$O!"$h$$8z2L$r@8$_$@$7(B $B$^$9!#<!$NNc(B
-     $B$G$O!"2hLL$NCf$r!"$5$^$6$^$J(B $B?^7A$,F0$-$^$o$j$^$9!#A0$K?($l$?!"$A$i$D$-(B
-     $BKI;_$N%F%/%K%C%/$O;H$C$F$$$J$$$N$G!"(B $B$A$i$D$-$^$9!#<+J,$G2~B$$7$F!"2>A[(B
-     $B2hLL$r;H$&$h$&$K$7$F$_$F$/$@$5$$!#(B $B$^$?!"$3$NNc$O!"$$$/$D$b$N$b$N$rF1;~(B
-     $B$KF0$+$9%5%s%W%k$K$b$J$C$F$$$^$9!#(B $BMp?t$N;H$$$+$?$K$b?($l$F$$$^$9!#%]%$(B
-     $B%s%H$,$?$/$5$s$"$k$N$G!"$f$C$/$jFI$s$G$/$@$5$$!#(B 
+     前の節で、画像を描画する方法とロードする方法について学びました。今度
+     は、アプレットの中に 線を引いたり、塗りつぶした図形を描いたりします。こ
+     の方法で描画すると、画面は地味なものに なりやすいのですが、画像を表示す
+     るよりも高速なので、使いかたによっては、よい効果を生みだし ます。次の例
+     では、画面の中を、さまざまな 図形が動きまわります。前に触れた、ちらつき
+     防止のテクニックは使っていないので、 ちらつきます。自分で改造して、仮想
+     画面を使うようにしてみてください。 また、この例は、いくつものものを同時
+     に動かすサンプルにもなっています。 乱数の使いかたにも触れています。ポイ
+     ントがたくさんあるので、ゆっくり読んでください。 
 
 
 File name: move.java
@@ -2609,7 +2609,7 @@ public class move extends java.applet.Applet implements Runnable
 		t = new Thread( this );
 		t.start();
 
-		//$B%"%W%l%C%H$N??$sCf$N:BI8$r5a$a$k(B
+		//アプレットの真ん中の座標を求める
 		Dimension d = size();
 
 		for(int i  = 0 ; i < 6 ; i++){
@@ -2636,7 +2636,7 @@ public class move extends java.applet.Applet implements Runnable
 			for(int i = 0 ; i < 6; i++){
 				x[i] = x[i] + vx[i];
 				y[i] = y[i] + vy[i];
-				// $BC<$G$O$M$+$($k=hM}(B
+				// 端ではねかえる処理
 				if(x[i] <0 || x[i]>size().width) vx[i]= -vx[i];
 				if(y[i] <0 || y[i]>size().height) vy[i]= -vy[i];
 			}
@@ -2652,28 +2652,28 @@ File name: test.html
 <applet code=move.class width=300 height=300></applet>
 ------------------------------------------------------------
 
-#$B?^(B4.5-1 <DONE>     $BF0:n7k2L(B(move.java)
+#図4.5-1 <DONE>     動作結果(move.java)
 
-     Thread$B$r;H$C$F$$$k$N$O!"!VDj4|E*$K!W(Brepaint$B%a%=%C%I$r(B $B8F$S=P$9$?$a$@$1(B
-     $B$J$N$G!"$3$NNc$N%F!<%^$N0l$D$G$"$k!"!VF1;~$K$$$/$D$b$N$b$N$rF0$+$9!W(B $B$H(B
-     $B$O4X78$"$j$^$;$s!#(B
-     $B!VF1;~$K!WF0$$$F$$$k$h$&$K8+$($^$9$,!"<B:]$K$OF1;~$G$O$J$/!"!V0l=V$N$&(B
-     $B$A$K!W(B $B<B$OJL!9$KF0$+$7$F$$$k$N$G$9!#?M4V$K$H$C$F!"!VF1;~!W$H46$8$k$K==(B
-     $BJ,$J$N$G$9!#(B
+     Threadを使っているのは、「定期的に」repaintメソッドを 呼び出すためだけ
+     なので、この例のテーマの一つである、「同時にいくつものものを動かす」 と
+     は関係ありません。
+     「同時に」動いているように見えますが、実際には同時ではなく、「一瞬のう
+     ちに」 実は別々に動かしているのです。人間にとって、「同時」と感じるに十
+     分なのです。
 
-#$B?^(B4.5-2 <NOT YET>     $B$$$/$D$b$N$b$N$rO"B3E*$K7+$jJV$7F0$+$9(B
+#図4.5-2 <NOT YET>     いくつものものを連続的に繰り返し動かす
 
 
-     $B$=$l$G$O!"%W%m%0%i%`$r8+$F$_$^$7$g$&!#(B
-     $B$^$:!"F0$/E@$,(B20$B8D$"$k$N$G$9$+$i!"$=$l$i$NE@$N:BI8$N>pJs$r$9$Y$F4IM}$7(B
-     $B$J$1$l$P$J$j(B $B$^$;$s!#$H$3$m$,!"$=$N$?$a$KJQ?t$r(B20$B8D$bMQ0U$7$F$$$k$HBgJQ(B
-     $B$G$9!#(B(20$B<oN`$K$D$$$F!"(B $BJL$NJQ?tL>$GF1$8$h$&$J%3!<%I$r$?$/$5$s=q$+$J$1(B
-     $B$l$P$J$j$^$;$s!#(B)$B$G$9$+$i!"$3$3$O(B $BHV9f$GF1$8<oN`$N%G!<%?$r4IM}$G$-$k(B
-     $B!VG[NsJQ?t!W$r;H$$$^$9!#(B $B$3$N%G!<%?9=B$$K$7$F$*$1$P!"A4$F$NE@$K!"5,B'@5(B
-     $B$7$/JB$s$@0LCV$N>pJs$rF~$l$k(B $B$H$$$C$?$3$H$,4JC1$K$G$-$^$9!#(B $B%5%s%W%k%W(B
-     $B%m%0%i%`$G$O!"%"%W%l%C%H$N%5%$%:$rF@$F!"$A$g$&$I%"%W%l%C%H$N??$sCf$K$J(B
-     $B$k(B $B$h$&$K:G=i$NE@$N0LCV$r7h$a$F$$$^$9!#(B
-     $B$=$NItJ,$O<!$N$h$&$K$J$C$F$$$^$9!#(B
+     それでは、プログラムを見てみましょう。
+     まず、動く点が20個あるのですから、それらの点の座標の情報をすべて管理し
+     なければなり ません。ところが、そのために変数を20個も用意していると大変
+     です。(20種類について、 別の変数名で同じようなコードをたくさん書かなけ
+     ればなりません。)ですから、ここは 番号で同じ種類のデータを管理できる
+     「配列変数」を使います。 このデータ構造にしておけば、全ての点に、規則正
+     しく並んだ位置の情報を入れる といったことが簡単にできます。 サンプルプ
+     ログラムでは、アプレットのサイズを得て、ちょうどアプレットの真ん中にな
+     る ように最初の点の位置を決めています。
+     その部分は次のようになっています。
 
 ------------------------------------------------------------
      Dimension d = size();
@@ -2683,46 +2683,46 @@ File name: test.html
      }
 ------------------------------------------------------------
 
-     size()$B%a%=%C%I$O!"(BComponent$B%/%i%9$GDj5A$5$l$F$$$k%a%=%C%I(B $B$G!"%"%W%l%C(B
-     $B%H$=$NB>$N%5%$%:$rF@$k$3$H$,$G$-$^$9!#$=$NJV$jCM$O!"(B Dimension$B%/%i%9$G(B
-     $B$9!#$3$N%/%i%9$NCf$K$"$k(Bwidth$BJQ?t$G(B $BI}$r!"(Bheight$BJQ?t$G9b$5$rF@$F$$$^(B
-     $B$9!#(B
-     init()$B%a%=%C%I$NCf$G$O!":G=i$N0LCV$r7h$a$kB>$K!"0\F0$NJ}8~$b(B $B7h$a$F$$$^(B
-     $B$9!#$I$l$@$10\F0$9$k$+$r!"(Bvx,vy$B$H$$$&(B $BG[NsJQ?t$K3JG<$7$F$$$^$9!#$3$N(B
-     $B!V0\F0NL!W$O!"0l2s0\F0$9$kEY$K2?%I%C%H?J$`$+!"(B $B$H$$$&>pJs$G$9!#(B($B9b9;$G(B
-     $BJ*M}$r=,$C$?$3$H$,$"$k?M$O!"$3$N(Bvx$B$O!"!VB.EY%Y%/%H%k!W(B $B$N$3$H$G$"$k$H$$(B
-     $B$&$3$H$,!"$9$0$K$o$+$k$3$H$H;W$$$^$9!#(B)$B$=$l$>$l$,F1$8F0$-(B $B$r$7$F$b$D$^(B
-     $B$i$J$$$N$G!"$3$3$G$O!"%i%s%@%`$JJ}8~$K;6$k$h$&$K!"(Bvx $B$H(Bvy$B$K!"Mp?t$rF~$l(B
-     $B$F$$$^$9!#(B
+     size()メソッドは、Componentクラスで定義されているメソッド で、アプレッ
+     トその他のサイズを得ることができます。その返り値は、 Dimensionクラスで
+     す。このクラスの中にあるwidth変数で 幅を、height変数で高さを得ていま
+     す。
+     init()メソッドの中では、最初の位置を決める他に、移動の方向も 決めていま
+     す。どれだけ移動するかを、vx,vyという 配列変数に格納しています。この
+     「移動量」は、一回移動する度に何ドット進むか、 という情報です。(高校で
+     物理を習ったことがある人は、このvxは、「速度ベクトル」 のことであるとい
+     うことが、すぐにわかることと思います。)それぞれが同じ動き をしてもつま
+     らないので、ここでは、ランダムな方向に散るように、vx とvyに、乱数を入れ
+     ています。
 
      Random ran;
      ran = new Random();
 
-     $B$3$N(B2$B9T$G!"$^$:Mp?t$r@8@.$9$k$?$a$N%/%i%9$r:n$j$^$9!#$=$N>e$G(B
+     この2行で、まず乱数を生成するためのクラスを作ります。その上で
 
      ran.nextInt();
 
-     $B$r<B9T$9$k$H!"?7$7$$Mp?t$,0l$D$E$D:n$i$l$F$$$-$^$9!#$3$l$G=P$F$/$kMp?t(B
-     $B$O!"(Bint $B7?$NCM$N8B3&$$$C$Q$$$NI}$,$"$k$N$G!"$=$l$r(B-3$B$+$i(B+3$B$^$G$K$J$k$h(B
-     $B$&$K!"3d$j;;$NM>$j$r5a$a$k(B $B1i;;;R(B'%'$B$r;H$C$FD4@0$7$^$9!#(B
+     を実行すると、新しい乱数が一つづつ作られていきます。これで出てくる乱数
+     は、int 型の値の限界いっぱいの幅があるので、それを-3から+3までになるよ
+     うに、割り算の余りを求める 演算子'%'を使って調整します。
 
      vx[i] = ran.nextInt() % 4
      vy[i] = ran.nextInt() % 4
 
-     4$B$G3d$C$?M>$j$O!"Ii$N?t$b4^$a$k$H(B-3$B$+$i(B3$B$K$J$j$^$9!#$3$N(B4$B$r$$$m$$$m$KJQ(B
-     $B$($F!"<B9T$7$F(B $B$_$F$/$@$5$$!#(B
-     $B$5$F!"<!$K!"(Bpaint$B%a%=%C%I$NCf$r8+$F$_$^$7$g$&!#$3$NCf$G$O!"(Bx$B!"(B y$B$NCM$r(B
-     $B;H$C$F!"<B:]$KIA2h$7$F$$$^$9!#(B $BIA2h$9$k%a%=%C%I$O$?$/$5$s$N<oN`$,$"$j$^(B
-     $B$9!#$3$3$G;H$C$F$$$k$N$O(B5$B<oN`$G$9$,!"(B $BB>$N$b$N$K$D$$$F$O!"%j%U%!%l%s%9(B
-     $B$r8+$F$/$@$5$$!#(B
+     4で割った余りは、負の数も含めると-3から3になります。この4をいろいろに変
+     えて、実行して みてください。
+     さて、次に、paintメソッドの中を見てみましょう。この中では、x、 yの値を
+     使って、実際に描画しています。 描画するメソッドはたくさんの種類がありま
+     す。ここで使っているのは5種類ですが、 他のものについては、リファレンス
+     を見てください。
 
 
-4.6 $B9%$-$J?'$r:n$k(B
+4.6 好きな色を作る
 
-     $B$3$l$^$G$NNc$G$O!"3%?'$K9u$$@~$H$$$C$?!"C1D4$J(B $B?'$r;H$C$F$-$^$7$?$,!"$3(B
-     $B$3$G$O<+J,$G?'$r:n$j$@$9$3$H$rJY6/$7$^$9!#?'4X78$N(B $B$3$H$O!"(BColor$B%/%i%9(B
-     $B$r;H$$$^$9!#(B $B<!$N%5%s%W%k%W%m%0%i%`$O!"%^%&%9$rF0$+$9$H!"%i%s%@%`$J?'$N(B
-     $B;M3Q$r$I$s$I$s(B $BIA$$$F$$$-$^$9!#(B
+     これまでの例では、灰色に黒い線といった、単調な 色を使ってきましたが、こ
+     こでは自分で色を作りだすことを勉強します。色関係の ことは、Colorクラス
+     を使います。 次のサンプルプログラムは、マウスを動かすと、ランダムな色の
+     四角をどんどん 描いていきます。
 
 
 File name: color.java
@@ -2769,43 +2769,43 @@ File name: test.html
 <applet code=color.class width=200 height=200>k</applet>
 ------------------------------------------------------------
 
-#$B?^(B4.6-1 <DONE>     $BF0:n7k2L(B(color.java)
+#図4.6-1 <DONE>     動作結果(color.java)
 
-     $B$3$N%5%s%W%k%W%m%0%i%`$N%]%$%s%H$O!"(BsetColor$B$H!"(Bnew Color( c ) $B$N$H$3$m(B
-     $B$G$9!#(B
-     Java$B$G$O!"(BGraphics$B%/%i%9$r;H$C$F!"(Bg.drawLine(...)$B$N$h$&$K(B $B$9$l$PIA2h$9(B
-     $B$k$3$H$,$G$-$^$9(B($BA0@a;2>H(B)$B$,!"$=$l$>$l$NIA2h$r$9$kA0$K!"(Bg.setColor $B$H$7(B
-     $B$F!"$3$l$+$iIA2h$9$k:]$N?'$r;XDj$G$-$k$N$G$9!#$A$g$&$I!"I.$K?'$r$D$1$F(B
-     $B$+$i(B $B=q$/$H$$$&46$8$G$9!#%5%s%W%k%W%m%0%i%`$NCf$G$O!"(BfillRect$B$GIA2h$9$k(B
-     $BA0$K!"(B setColor$B$G?'$r;XDj$7$F$$$^$9$M!#(B
+     このサンプルプログラムのポイントは、setColorと、new Color( c ) のところ
+     です。
+     Javaでは、Graphicsクラスを使って、g.drawLine(...)のように すれば描画す
+     ることができます(前節参照)が、それぞれの描画をする前に、g.setColor とし
+     て、これから描画する際の色を指定できるのです。ちょうど、筆に色をつけて
+     から 書くという感じです。サンプルプログラムの中では、fillRectで描画する
+     前に、 setColorで色を指定していますね。
 
      RGB
 
-     $B0lHLE*$K2hLL$KI=<($9$k?'$O!"(BRed($B@V(B)$B$H(BGreen($BNP(B)$B$H(BBlue($B@D(B)$B$KJ,$1$k$3$H$,(B
-     $B$G$-$^$9!#$3$N(B3$B?'(B $B$r!"!V8w$N(B3$B86?'!W$H8@$$$^$9!#$3$N(B3$B?'$rAH$_$"$o$;$k$3(B
-     $B$H$G!"$I$s$J?'$G$b:n$k$3$H$,$G$-$^$9!#(B $B$=$l$>$l$N?'$O!"(B0$B$+$i(B255$B$^$G$N(B
-     256$BCJ3,$K@_Dj$9$k$3$H$,$G$-$^$9!#%W%m%0%i%`Cf$N(B new Color(....)$B$H$7$F$$(B
-     $B$k$H$3$m$G$b!"0z?t$r(B3$B$D;XDj$7$F!"$=$l$>$l$N@.J,$r(B $B@_Dj$7$F$$$^$9!#(B $B0lHL(B
-     $BE*$K=q$1$P!"(B new Color( $B@V@.J,(B ,$BNP@.J,(B,$B@D@.J,(B) $B$G?'$,F@$i$l$k!"$H$$$&$3(B
-     $B$H$G$9!#(B
+     一般的に画面に表示する色は、Red(赤)とGreen(緑)とBlue(青)に分けることが
+     できます。この3色 を、「光の3原色」と言います。この3色を組みあわせるこ
+     とで、どんな色でも作ることができます。 それぞれの色は、0から255までの
+     256段階に設定することができます。プログラム中の new Color(....)としてい
+     るところでも、引数を3つ指定して、それぞれの成分を 設定しています。 一般
+     的に書けば、 new Color( 赤成分 ,緑成分,青成分) で色が得られる、というこ
+     とです。
 
-#$B?^(B4.6-2 <NOT YET>	 256$BCJ3,$E$D$N@.J,$K$J$C$F$$$k(B
-
-
-	 256$B?'$7$+I=<($G$-$J$$%7%9%F%`$G$O!"(B 256$B?'0J>e$N?'$r;H(B
-     $B$&$3$H$O$G$-$J$$$N$G!"2?$i$+$NJ}K!$G?'$,8:$i$5$l$^$9!#(B
+#図4.6-2 <NOT YET>	 256段階づつの成分になっている
 
 
-4.7 $B2;$r=P$9(B
+	 256色しか表示できないシステムでは、 256色以上の色を使
+     うことはできないので、何らかの方法で色が減らされます。
 
-     Java$B$G$O!"2;$r=P$9$3$H$bHs>o$K4JC1$G$9!#$=$l$K!"5!<o$K$b$h$j$^$9$,!"2;(B
-     $B$r<+F0E*$K(B $B=E$M$"$o$;$?$j!"7+$j$+$($7$?$j$,<+M3$K$G$-$k$N$G$9!#%$%s%?!<(B
-     $B%M%C%H>e$G%P%s%I$r(B $B1iAU$9$k!"$H$$$C$?$3$H$b2DG=$K$J$k$N$G$O$J$$$G$7$g$&(B
-     $B$+!)<!$NNc$O!"(BAudioClip $B$r;H$C$F2;$r=P$7$^$9!#%&%$%s%I%&$NCf$G%^%&%9$r(B
-     $B%/%j%C%/$9$k$H2;$,=P$^$9!#%-!<%\!<%I(B $B$r2!$9$H!"2;$,CfCG$7$^$9!#$=$l$i$,(B
-     $B9T$J$o$l$F$$$k4V!"$D$M$K2;3Z$,LD$C$F$$$^$9!#(B $B%o!<%/%9%F!<%7%g%s$J$I$G(B
-     $B$O!"2;$,LD$i$J$$$b$N$b$"$j$^$9!#(B $B2;$,LD$i$J$$>l9g$O!"4IM}<T$N?M$KAjCL$7(B
-     $B$F$_$F$/$@$5$$!#(B
+
+4.7 音を出す
+
+     Javaでは、音を出すことも非常に簡単です。それに、機種にもよりますが、音
+     を自動的に 重ねあわせたり、繰りかえしたりが自由にできるのです。インター
+     ネット上でバンドを 演奏する、といったことも可能になるのではないでしょう
+     か？次の例は、AudioClip を使って音を出します。ウインドウの中でマウスを
+     クリックすると音が出ます。キーボード を押すと、音が中断します。それらが
+     行なわれている間、つねに音楽が鳴っています。 ワークステーションなどで
+     は、音が鳴らないものもあります。 音が鳴らない場合は、管理者の人に相談し
+     てみてください。
 
 
 File name: sound.java
@@ -2821,16 +2821,16 @@ public class sound extends Applet
 	{
 		a = getAudioClip( getDocumentBase() , "hi.au");
 		music = getAudioClip( getDocumentBase() , "spacemusic.au");
-		music.loop();   // $B7+$j$+$($7$FLD$i$7$O$8$a$k(B
+		music.loop();   // 繰りかえして鳴らしはじめる
 	}
 	public boolean mouseDown( Event e , int x , int y )
 	{
-		a.play();       // $BLD$i$9!#(B
+		a.play();       // 鳴らす。
 		return true;
 	}
 	public boolean keyDown( Event e , int c )
 	{
-		a.stop();       // $B;_$a$k!#(B
+		a.stop();       // 止める。
 		return true;
 	}
 }
@@ -2842,25 +2842,25 @@ File name: test.html
 <applet code=sound.class width=300 height=300></applet>
 ------------------------------------------------------------
 
-#$B?^(B4.7-1 <DONE>     $BF0:n7k2L(B(sound.java)
+#図4.7-1 <DONE>     動作結果(sound.java)
 
-     Java$B$G07$&$3$H$,$G$-$k2;@<$N%U%!%$%k$O!"(B.au$B$H$$$&3HD%;R$,$D$$$F$$$k(B $B%U(B
-     $B%!%$%k$G$9!#$3$N7A<0$N%U%!%$%k$O!"2;<A$O$"$^$j$h$/$"$j$^$;$s$,!"9-$/;H(B
-     $B$o$l$F$$$k(B $B$b$N$G$9!#$3$NNc$G;H$&%U%!%$%k$O!"(BCD-ROM$B$K<}$a$i$l$F$$$^$9!#(B
-	 $B2hA|$r%m!<%I$9$k$N$H$[$H$s$IF1$8$d$j$+$?$G!"%m!<%I$G$-$^$9$M!#(B
+     Javaで扱うことができる音声のファイルは、.auという拡張子がついている フ
+     ァイルです。この形式のファイルは、音質はあまりよくありませんが、広く使
+     われている ものです。この例で使うファイルは、CD-ROMに収められています。
+	 画像をロードするのとほとんど同じやりかたで、ロードできますね。
 
 
 
-4.8 HTML$B$K=q$+$l$F$$$k@_Dj$r<h$j$@$9(B
+4.8 HTMLに書かれている設定を取りだす
 
-     ($BCm0U(B)$B$3$N5!G=$O!"(BNetscape$B$N%P!<%8%g%s(B3.0$B$G$O!"A4$/F/$+$J$$$N$G!"Cm(B $B0U(B
-     $B$,I,MW$G$9!#;n$9$K$O!"(BJDK$B$KImB0$7$F$$$k(Bappletviewer$B$+!"B>$N%V%i%&%6$r(B
-     $B;H$&I,MW$,$"$j$^$9!#(B
+     (注意)この機能は、Netscapeのバージョン3.0では、全く働かないので、注 意
+     が必要です。試すには、JDKに附属しているappletviewerか、他のブラウザを
+     使う必要があります。
 
-     $B%"%W%l%C%H$O!"(BWWW$B%Z!<%8>e$KCV$+$l$k$3$H$,A0Ds$K$J$C$F$$$k$?$a!"(B $B$=$l$>(B
-     $B$l$N%"%W%l%C%H$,4^$^$k(BHTML$B%U%!%$%k$NCf$K!"%"%W%l%C%H$KBP$9$k@_Dj$r(B $B=q$/(B
-     $B$3$H$,$G$-$k$h$&$K$J$C$F$$$^$9!#(BHTML$B%U%!%$%k$K=q$+$l$F$$$k@_Dj$r(B $B%"%W%l(B
-     $B%C%H$N%W%m%0%i%`$NJ}$GMxMQ$9$k$K$O!"(BgetParameter$B%a%=%C%I$r;H$$$^$9!#(B
+     アプレットは、WWWページ上に置かれることが前提になっているため、 それぞ
+     れのアプレットが含まるHTMLファイルの中に、アプレットに対する設定を 書く
+     ことができるようになっています。HTMLファイルに書かれている設定を アプレ
+     ットのプログラムの方で利用するには、getParameterメソッドを使います。
 
 
 File name:param.java
@@ -2875,7 +2875,7 @@ public class param extends java.applet.Applet
 	{
 		String s , t;
 
-		s = getParameter( "yoko");  // name=yoko$B$KH?1~$9$k(B
+		s = getParameter( "yoko");  // name=yokoに反応する
 		t = getParameter( "tate");  // name=tate
 		x = Integer.parseInt( s );
 		y = Integer.parseInt( t );
@@ -2898,60 +2898,60 @@ File name: test.html
 </applet>
 ------------------------------------------------------------
 
-#$B?^(B4.8-1 <DONE>     $BF0:n7k2L(B(param.java)
+#図4.8-1 <DONE>     動作結果(param.java)
 
-     HTML$B%U%!%$%k$K$O!"(B<applet>$B%?%0$H(B</applet>$B%?%0(B $B$N4V$K!"@_Dj$9$k9`L\$NL>(B
-     $BA0$H!"$=$NCM$r!"<!$N$h$&$J7A(B $B$GNs5s$7$^$9!#(B($BNc$NDL$j(B)
+     HTMLファイルには、<applet>タグと</applet>タグ の間に、設定する項目の名
+     前と、その値を、次のような形 で列挙します。(例の通り)
 
      <param name=yoko value=100>
 
-     HTML$B%U%!%$%k$K$3$N$h$&$K=q$+$l$F$$$l$P!"$"$H$O!"(BgetParam$B%a%=%C%I$K(B $B$h$C(B
-     $B$F!"=q$+$l$F$$$kJ8;zNs$r(B String$B%/%i%9$N7A$G%W%m%0%i%`Fb$KFI$_$3$`$3$H$,(B
-     $B$G$-$k$N$G!"(B $B$"$H$O!"E,Ev$K$=$NCM$r;H$($P$h$$$N$G$9!#(B $B$3$3$G;H$C$F$$(B
-     $B$k!"(BString $B%/%i%9$r?tCM$KJQ49$9$k(BInteger.parseInt$B%a%=%C%I$N=q$-$+$?(B
-     $B$O!"5-21$KCM$7$^$9!#(B
+     HTMLファイルにこのように書かれていれば、あとは、getParamメソッドに よっ
+     て、書かれている文字列を Stringクラスの形でプログラム内に読みこむことが
+     できるので、 あとは、適当にその値を使えばよいのです。 ここで使ってい
+     る、String クラスを数値に変換するInteger.parseIntメソッドの書きかた
+     は、記憶に値します。
 
 
 
-4.9 $B%^%&%9$NF~NO(B
+4.9 マウスの入力
 
-     $B!V2;$r=P$9!W$N@a$G$b>/$707$$$^$7$?$,!"%^%&%9$NF~NO$r$9$k$K$O!"(B
-     mouseDown$B!"(B mouseDrag$B!"(BmouseEnter$B!"(B mouseExit$B!"(BmouseMove$B!"(BmouseUp $B$r;H(B
-     $B$$$^$9!#$=$l$>$l$N%a%=%C%I$O!"%^%&%9$,<!$NI=$N$h$&$JF0:n$r$7$?$H$-$K(B $B<+(B
-     $BF0E*$K8F$P$l$^$9!#$3$N$3$H$r!"!V%$%Y%s%H(B($B=PMh;v(B)$B$,H/@8$9$k!W$H8@$$$^(B
-     $B$9!#%W%m%0%i%`(B $B$O!"$=$l$>$l$N%$%Y%s%H$KH?1~$9$kItJ,$@$1$r=q$1$P$h$$$3$H(B
-     $B$K$J$j$^$9!#(B $B$=$l$>$l$N%a%=%C%I$N0z?t$O!"(BmouseDown(Event evt , int x ,
-     int y ) $B$H$J$C$F$$$^$9!#(Bevt$B$K$O!"5/$3$C$?%$%Y%s%H$N<oN`$,F~$j$^$9!#$^(B
-     $B$?!"(B x$B$H(By$B$K$O!"$=$N%$%Y%s%H$,5/$3$C$?0LCV$,F~$j$^$9!#(B $B$3$N%"%W%l%C%H$r(B
-     $BF0$+$7$F!"$$$m$$$m$J>l=j$G%/%j%C%/$7$F!"(B $B%$%Y%s%H$NH/@8>u67$rD4$Y$F$_$F(B
-     $B$/$@$5$$!#(B($B%"%W%l%C%H$NC<$d30$b;n$7$F$_$F$/$@$5$$!#(B) $B$^$?!"$=$l$>$l$N%a(B
-     $B%=%C%I$O!"JV$jCM$,(Bboolean$B7?$K;XDj$5$l$F$$$^$9$N$G!"(B return true$B$J$I$H$7(B
-     $B$FE,Ev$KJV$jCM$rJV$7$F$*$/$3$H$,I,MW$G$9!#(B
+     「音を出す」の節でも少し扱いましたが、マウスの入力をするには、
+     mouseDown、 mouseDrag、mouseEnter、 mouseExit、mouseMove、mouseUp を使
+     います。それぞれのメソッドは、マウスが次の表のような動作をしたときに 自
+     動的に呼ばれます。このことを、「イベント(出来事)が発生する」と言いま
+     す。プログラム は、それぞれのイベントに反応する部分だけを書けばよいこと
+     になります。 それぞれのメソッドの引数は、mouseDown(Event evt , int x ,
+     int y ) となっています。evtには、起こったイベントの種類が入ります。ま
+     た、 xとyには、そのイベントが起こった位置が入ります。 このアプレットを
+     動かして、いろいろな場所でクリックして、 イベントの発生状況を調べてみて
+     ください。(アプレットの端や外も試してみてください。) また、それぞれのメ
+     ソッドは、返り値がboolean型に指定されていますので、 return trueなどとし
+     て適当に返り値を返しておくことが必要です。
 
 
-#$BI=(B4.9  <DONE>	$B%^%&%9%"%/%7%g%s$NI=(B
+#表4.9  <DONE>	マウスアクションの表
 
 -----------------------------------------------------------------
-      $B%a%=%C%I$NL>A0(B         $B%?%$%_%s%0(B                  x,y$B$N0UL#(B
+      メソッドの名前         タイミング                  x,yの意味
 
-      mouseDown     $B%^%&%9$N%\%?%s$,2!$5$l$?$H(B  $B%\%?%s$,2!$5$l$?:BI8(B
-                    $B$-(B
+      mouseDown     マウスのボタンが押されたと  ボタンが押された座標
+                    き
 
-      mouseDrag     $B%^%&%9$,$N%\%?%s$,2!$5$l$?(B  $B0\F0$7$?@h$N:BI8(B
-                    $B$^$^0\F0$7$?$H$-(B
-                    $B%^%&%9%+!<%=%k$,!"%"%W%l%C(B
-      mouseEnter    $B%H$N%&%$%s%I%&$NCf$KF~$C$?(B  $B=i$a$FCf$KF~$C$?0LCV$N:BI8(B
-                    $B$H$-(B
-                                                $B%&%$%s%I%&$N30$K=P$?D>8e$N(B
-      mouseExit     $B%^%&%9%+!<%=%k$,!"%"%W%l%C(B  $B:BI8(B($B$@$+$iIi$K$J$k$3$H$b$"(B
-                    $B%H$N%&%$%s%I%&$+$i=P$?$H$-(B
-                                                $B$k(B)
+      mouseDrag     マウスがのボタンが押された  移動した先の座標
+                    まま移動したとき
+                    マウスカーソルが、アプレッ
+      mouseEnter    トのウインドウの中に入った  初めて中に入った位置の座標
+                    とき
+                                                ウインドウの外に出た直後の
+      mouseExit     マウスカーソルが、アプレッ  座標(だから負になることもあ
+                    トのウインドウから出たとき
+                                                る)
 
-      mouseMove     $B%^%&%9%+!<%=%k$,(B1$B%I%C%H$G(B   $BF0$$$?@h$N:BI8(B
-                    $B$bF0$$$?$H$-(B
+      mouseMove     マウスカーソルが1ドットで   動いた先の座標
+                    も動いたとき
 
-      mouseUp       $B%^%&%9$N%\%?%s$,N%$5$l$?$H(B  $B%\%?%s$,N%$5$l$?0LCV$N:BI8(B
-                    $B$-(B
+      mouseUp       マウスのボタンが離されたと  ボタンが離された位置の座標
+                    き
 -----------------------------------------------------------------
 
 
@@ -2968,7 +2968,7 @@ public class mouse extends java.applet.Applet
 	{
 		offscreen = createImage( size().width , size().height);
 		og = offscreen.getGraphics();
-		// $B%*%U%9%/%j!<%s$rEI$j$D$V$9(B
+		// オフスクリーンを塗りつぶす
 		og.setColor( Color.white );
 		og.fillRect( 0 , 0 , size().width , size().height);
 	}
@@ -3014,73 +3014,73 @@ File name: test.html
 <applet code=mouse.class width=200 height=200>k</applet>
 ------------------------------------------------------------
 
-#$B?^(B4.9-1 <DONE>     $BF0:n7k2L(B(mouse.java)
+#図4.9-1 <DONE>     動作結果(mouse.java)
 
 ---------
 $ 
 $ appletviewer test.html
-Mouse enter X:197 Y:95    <- $B%"%W%l%C%H$NCf$K%^%&%9$,F~$C$?(B
-Mouse move X:181 Y:80	  <- $BE,Ev$KF0$$$F(B....
+Mouse enter X:197 Y:95    <- アプレットの中にマウスが入った
+Mouse move X:181 Y:80	  <- 適当に動いて....
 Mouse move X:176 Y:77
 Mouse move X:172 Y:76
 Mouse move X:167 Y:76
-Mouse down! X:162 Y:78	  <- $B%\%?%s$r2!$7$?(B
-Mouse drag X:161 Y:78	  <- $B2!$7$?$^$^>/$7F0$$$?(B
-Mouse up X:161 Y:78       <- $B%\%?%s$rN%$7$?(B
-Mouse move X:160 Y:79     <- $B$^$?F0$$$?(B
-Mouse down! X:160 Y:79	  <- $B$^$?2!$7$?(B
-Mouse drag X:159 Y:79	  <- $B$=$N$^$^F0$$$F$$$k(B
+Mouse down! X:162 Y:78	  <- ボタンを押した
+Mouse drag X:161 Y:78	  <- 押したまま少し動いた
+Mouse up X:161 Y:78       <- ボタンを離した
+Mouse move X:160 Y:79     <- また動いた
+Mouse down! X:160 Y:79	  <- また押した
+Mouse drag X:159 Y:79	  <- そのまま動いている
 Mouse drag X:159 Y:82
 Mouse drag X:157 Y:84
 Mouse drag X:156 Y:85
-Mouse up X:156 Y:85		  <- $BN%$7$?(B
-Mouse move X:158 Y:85	  <- $B$^$?F0$$$F(B...
+Mouse up X:156 Y:85		  <- 離した
+Mouse move X:158 Y:85	  <- また動いて...
 Mouse move X:175 Y:84
 Mouse move X:189 Y:86
-Mouse exit X:207 Y:89	  <- $B$D$$$K%"%W%l%C%H$+$i=P$?!#(B
+Mouse exit X:207 Y:89	  <- ついにアプレットから出た。
 
 ---------
-	 $B<B9T7k2L$N:BI8$H!"%"%W%l%C%H$N%5%$%:$KCmL\$7$F$/$@$5$$!#(B
+	 実行結果の座標と、アプレットのサイズに注目してください。
 
-     $B%^%&%9$r$$$m$$$m$KA`:n$9$k$H!"$I$N$h$&$J%$%Y%s%H$,5/$3$C$F$$$k$N$+$,(B $B$o(B
-     $B$+$k$H;W$$$^$9!#(BOS$B$d!"%^%7%s$N>u67$K$h$j$^$9$,!"(B mouseMove$B$N$h$&$KO"B3(B
-     $BE*$K(B $B5/$3$k%$%Y%s%H$O!"(B1$BIC$K(B50$B2sDxEY8F$S$@$5$l$^$9!#(BmouseMove$B$N$H$3$m$K(B
-     $B$"$s$^$j;~4V$N$+$+$k=hM}$rF~$l$k$H!"F0:n$,CY$/$J$C$F$7$^$$$^$9$N$G!"(B $BCm(B
-     $B0U$7$F$/$@$5$$!#(B
-     $B$^$?!"%^%&%9$rF0$+$9$H!"2hLL$K9u$$;M3Q$,IA2h$5$l$^$9$,!"3j$i$+$KIA2h(B $B$5(B
-     $B$;$k$?$a$K!"!V%@%V%k%P%C%U%!%j%s%0!W$H$$$&<jK!(B($B%9%1%k%H%s%W%m%0%i%`$G$b(B
-     $B;H$C$F$$$^$9(B)$B$r:NMQ$7$F$$$^$9!#%@%V%k%P%C%U%!%j%s%0$NE57?E*$J;H$$$+$?(B
-     $B$G$9!#(Bupdate$B%a%=%C%I$NItJ,$r$J$/$9$H!"0l5$$KI=<($,Mp$l$F$7(B $B$^$&$3$H$KCm(B
-     $B0U$7$F$/$@$5$$!#(B ($BH/E8(B)$B>e5-$N%5%s%W%k%W%m%0%i%`$G$O!"%$%Y%s%H$,5/$3$C$?(B
-     $B:BI8$@$1$rI=<($7$F(B $B$$$^$9!#%2!<%`$K$*$$$F$O$=$NDxEY$N>pJs$G==J,$@$+$i$G(B
-     $B$9!#$G$b!"$=$l$>$l$N(B $B%$%Y%s%H$N$b$C$H>\$7$$>pJs$r!"<!$N$h$&$K$7$FCN$k$3(B
-     $B$H$,$G$-$^$9!#(B System.out.println$B$NItJ,$r!"<!$N$h$&$KCV$-$+$($F$_$F$/$@(B
-     $B$5$$!#(B System.out.println( e ); $B$3$3$G$O!"(BEvent$B7?$NJQ?t$rD>@\I=<($7$F$$(B
-     $B$^$9!#I=<($5$l$?(B $B7k2L$r8+$F$_$F$/$@$5$$!#(B
+     マウスをいろいろに操作すると、どのようなイベントが起こっているのかが わ
+     かると思います。OSや、マシンの状況によりますが、 mouseMoveのように連続
+     的に 起こるイベントは、1秒に50回程度呼びだされます。mouseMoveのところに
+     あんまり時間のかかる処理を入れると、動作が遅くなってしまいますので、 注
+     意してください。
+     また、マウスを動かすと、画面に黒い四角が描画されますが、滑らかに描画 さ
+     せるために、「ダブルバッファリング」という手法(スケルトンプログラムでも
+     使っています)を採用しています。ダブルバッファリングの典型的な使いかた
+     です。updateメソッドの部分をなくすと、一気に表示が乱れてし まうことに注
+     意してください。 (発展)上記のサンプルプログラムでは、イベントが起こった
+     座標だけを表示して います。ゲームにおいてはその程度の情報で十分だからで
+     す。でも、それぞれの イベントのもっと詳しい情報を、次のようにして知るこ
+     とができます。 System.out.printlnの部分を、次のように置きかえてみてくだ
+     さい。 System.out.println( e ); ここでは、Event型の変数を直接表示してい
+     ます。表示された 結果を見てみてください。
 
 
 
-4.10 $B%-!<%\!<%I$NF~NO(B
+4.10 キーボードの入力
 
-     $B%-!<%\!<%I$NF~NO$b!"4pK\E*$K%^%&%9$H;w$F$$$^$9!#%^%&%9$O!"%+!<%=%k$N0L(B
-     $BCV$N>pJs$,(B $BHs>o$K=EMW$G$7$?$,!"%-!<%\!<%I$G$O!"!V$I$N%-!<$r2!$7$?$+!W$,(B
-     $BF1$8$h$&$K=EMW$G$9!#(B $B$H$$$&$o$1$G!"%-!<%\!<%I$N%a%=%C%I$O!"2!$7$?%-!<$N(B
-     $BHV9f$r(Bint$B7?$NJQ?t(B $B$GD>@\F@$k$3$H$,$G$-$k$h$&$K$J$C$F$$$^$9!#(B
-     $B%-!<%\!<%I4XO"$N%a%=%C%I$O<!$N(B2$B<oN`$G$9!#(B
+     キーボードの入力も、基本的にマウスと似ています。マウスは、カーソルの位
+     置の情報が 非常に重要でしたが、キーボードでは、「どのキーを押したか」が
+     同じように重要です。 というわけで、キーボードのメソッドは、押したキーの
+     番号をint型の変数 で直接得ることができるようになっています。
+     キーボード関連のメソッドは次の2種類です。
 
-	($BCm0U(B)Windows 95$BMQ$N(BJDK1.1beta2$B$G$O!"%-!<%\!<%I$K4X$9$k%$%Y%s%H$,A4$/(B
-	$BH/@8$7$J$$>l9g$,$"$k$h$&$G$9!#<B:]!"I.<T$N<~$j$N4D6-$G$O!"$9$Y$F$N4D6-$G!"(B
-	$B%$%Y%s%H$,$-$A$s$HH/@8$7$J$+$C$?$?$a$K!"Bh(B6$B>O$N%5%s%W%k%2!<%`$G$O!"(B
-	$B%^%&%9$G$bA`:n$G$-$k$h$&$K2~B$$7$F$$$^$9!#(B
+	(注意)Windows 95用のJDK1.1beta2では、キーボードに関するイベントが全く
+	発生しない場合があるようです。実際、筆者の周りの環境では、すべての環境で、
+	イベントがきちんと発生しなかったために、第6章のサンプルゲームでは、
+	マウスでも操作できるように改造しています。
 
-#$BI=(B4.10-1 <DONE>	$B%-!<%\!<%I%$%Y%s%H$NI=(B
+#表4.10-1 <DONE>	キーボードイベントの表
 
 -----------------------------------------------------------------
-      $B%a%=%C%I$NL>A0(B                 $B0UL#(B
-      keyDown           $B%"%W%l%C%H$NCf$G%-!<$,2!$5$l$?!#(B
-      keyUp             $B%"%W%l%C%H$NCf$G%-!<$,N%$5$l$?!#(B
+      メソッドの名前                 意味
+      keyDown           アプレットの中でキーが押された。
+      keyUp             アプレットの中でキーが離された。
 -----------------------------------------------------------------
-     $B$3$l$i$N%a%=%C%I$r;H$C$?4JC1$JNc$G$9!#(B
+     これらのメソッドを使った簡単な例です。
 
 
 
@@ -3107,41 +3107,41 @@ File name: test.html
 <applet code=keydown.class width=200 height=200></applet>
 ------------------------------------------------------------
 
-#$B?^(B4.10-1 <DONE>     $BF0:n7k2L(B(keydown.java)
+#図4.10-1 <DONE>     動作結果(keydown.java)
 
 ----------
 $ 
 $ appletviewer test.html
-keydown97		<- A$B%-!<$r2!$7$?(B
+keydown97		<- Aキーを押した
 keyup97
-keydown98		<- B$B%-!<$r2!$7$?(B
+keydown98		<- Bキーを押した
 keyup98
-keydown99		<- C$B%-!<$r2!$7$?(B
+keydown99		<- Cキーを押した
 keyup99
-keydown1004		<- $B%+!<%=%k%-!<$N>e$r2!$7$?(B
+keydown1004		<- カーソルキーの上を押した
 keyup1004
 $ 
 ----------
 
-     $B$3$NNc$G$O!"%-!<$r2!$7$?=V4V$^$?$ON%$7$?=V4V$K(B keyDown$B%a%=%C%I$,8F$P(B
-     $B$l!"$=$N%-!<HV9f$,(B $BI8=`=PNO$KI=<($5$l$^$9!#(B($B%-!<HV9f$K$D$$$F$O!"IUO?(B
-	 $B$r;2>H$7$F$/$@$5$$!#(B)
+     この例では、キーを押した瞬間または離した瞬間に keyDownメソッドが呼ば
+     れ、そのキー番号が 標準出力に表示されます。(キー番号については、付録
+	 を参照してください。)
 
-     $B$3$N$h$&$K(BJava$B$G$O!"%-!<%\!<%I$r!V2!$9!W!VN%$9!W$H$$$&F0:n$4$H$K%$%Y%s(B
-     $B%H$,(B $BH/@8$9$k$h$&$K$J$C$F$$$^$9!#$7$+$7!"$[$H$s$I$N%7%9%F%`$K$O!"!V%-!<(B
-     $B%j%T!<%H!W(B $B$H$$$&$d$C$+$$$J5!G=$,$D$$$F$$$^$9!#$3$N5!G=$N$*$+$2$G!"%f!<(B
-     $B%6!<$,%-!<$rO"BG$7$F(B $B$$$k$N$+!"2!$7B3$1$F$$$k$N$+!"%"%W%l%C%H$+$i$OCN$k(B
-     $B$3$H$,$G$-$J$$$N$G$9!#(B $B%"%/%7%g%s%2!<%`$G$O!"!V%-!<$r2!$7$F$$$k4V$@$1!"(B
-     $BF0$/!W$H$$$&$h$&$K$J$C$F$$$k(B $B$b$N$,$[$H$s$I$G$9$,!"$=$N$h$&$J%2!<%`$O:n(B
-     $B$l$J$$$H$$$&$3$H$G$9!#$7$+$7!"(B $B%-!<%j%T!<%H$,$"$k$H8@$C$F$b!"$"$kDxEY$^(B
-     $B$G$NA`:n@-$r<B8=$9$k$3$H$O$G$-$^$9!#(B keyDown$B%a%=%C%I$H(BkeyUp$B%a%=%C%I$NN>(B
-     $BJ}$rMxMQ$7$F<!$N%5%s%W%k(B $B$N$h$&$J%W%m%0%i%`$r$9$l$P!"$"$kDxEY$NA`:n$r$9(B
-     $B$k$3$H$,$G$-$^$9!#$3$N%5%s%W%k$O!"(B $B%-!<%\!<%I$N==;z%-!<$r2!$9$H!"9u$$;M(B
-     $B3Q$rF0$+$7$^$9!#(B
+     このようにJavaでは、キーボードを「押す」「離す」という動作ごとにイベン
+     トが 発生するようになっています。しかし、ほとんどのシステムには、「キー
+     リピート」 というやっかいな機能がついています。この機能のおかげで、ユー
+     ザーがキーを連打して いるのか、押し続けているのか、アプレットからは知る
+     ことができないのです。 アクションゲームでは、「キーを押している間だけ、
+     動く」というようになっている ものがほとんどですが、そのようなゲームは作
+     れないということです。しかし、 キーリピートがあると言っても、ある程度ま
+     での操作性を実現することはできます。 keyDownメソッドとkeyUpメソッドの両
+     方を利用して次のサンプル のようなプログラムをすれば、ある程度の操作をす
+     ることができます。このサンプルは、 キーボードの十字キーを押すと、黒い四
+     角を動かします。
 
-     ($BCm0U(B)Macintosh$BHG$N(BJDK1.0.2$B$G$O!"(B keyUp$B%a%=%C%I$,H/@8$7$J$$$?$a$3$N(B
-	$B%"%W%l%C%H$OF0:n$7$^$;$s!#(BMacintosh$B$r$*;H$$$NJ}$O!"(BNetscape $B$J$I$r(B
-	$B;H$C$F8+$F$/$@$5$$!#(B
+     (注意)Macintosh版のJDK1.0.2では、 keyUpメソッドが発生しないためこの
+	アプレットは動作しません。Macintoshをお使いの方は、Netscape などを
+	使って見てください。
 
 
 File name: key.java
@@ -3152,13 +3152,13 @@ public class key extends java.applet.Applet implements Runnable
 {
 	Image offscr;
 	Graphics og;
-	int x , y;      // $BF0$/;M3Q$N0LCV(B
-	boolean down[] = new boolean [4]; // down[0]$B$,>e!"0J2<1&2s$j(B
+	int x , y;      // 動く四角の位置
+	boolean down[] = new boolean [4]; // down[0]が上、以下右回り
 
 	int houkou;
-	Thread t;        // $B%-%c%i$r7QB3E*$KF0$+$9$?$a$K%9%l%C%I$r;H$&!#(B
-	final int UP = 1004; // $BDj?t$O$3$N$h$&$K:G=i$KDj5A$7$F$*$-$^$7$g$&!#(B
-	final int DOWN = 1005; // int$B$NA0$K(Bfinal$B$r$D$1$k$H!"Dj?t$N0UL#$K$J$j$^$9!#(B
+	Thread t;        // キャラを継続的に動かすためにスレッドを使う。
+	final int UP = 1004; // 定数はこのように最初に定義しておきましょう。
+	final int DOWN = 1005; // intの前にfinalをつけると、定数の意味になります。
 	final int LEFT = 1006; 
 	final int RIGHT = 1007;
 	final int STOP = 0;
@@ -3169,8 +3169,8 @@ public class key extends java.applet.Applet implements Runnable
 		og.setColor( Color.white );
 		og.fillRect( 0 , 0 , size().width , size().height);
 
-		houkou = STOP;  // $B:G=i$O;_$^$C$F$$$k!#(B
-		x = size().width/2;  // $B:G=i$O??$sCf$K$$$k!#(B
+		houkou = STOP;  // 最初は止まっている。
+		x = size().width/2;  // 最初は真ん中にいる。
 		y = size().height/2;
 
 		for(int i = 0 ; i < 4 ; i++) down[i] = false;
@@ -3180,7 +3180,7 @@ public class key extends java.applet.Applet implements Runnable
 	}
 	public boolean keyDown( Event e , int key){
 
-		//$B==;z%-!<$r2!$9$H!"JQ?t(Bkey$B$K2!$7$?%-!<$NHV9f$,F@$i$l$^$9!#(B
+		//十字キーを押すと、変数keyに押したキーの番号が得られます。
 		System.out.println( key );      
 		if( key == UP ) down[0] = true;
 		if( key == RIGHT ) down[1] = true;
@@ -3202,7 +3202,7 @@ public class key extends java.applet.Applet implements Runnable
 	{
 		while(true){
 
-			if( down[0]) y = y - 4; //$B$=$l$>$l$N%-!<$,2!$5$l$F$$$k$+!)(B
+			if( down[0]) y = y - 4; //それぞれのキーが押されているか？
 			if( down[1]) x = x + 4;
 			if( down[2] ) y = y + 4;
 			if( down[3] ) x = x - 4;
@@ -3237,43 +3237,43 @@ File name: test.html
 <applet code=key.class width=200 height=200>k</applet>
 ------------------------------------------------------------
 
-#$B?^(B4.10-2 <DONE>     $BF0:n7k2L(B(key.java)
+#図4.10-2 <DONE>     動作結果(key.java)
 
-     $B$3$N%W%m%0%i%`$G$O!"9u$$;M3Q$r%2!<%`$N<g?M8x$K8+N)$F$F!"%-!<%\!<%I$K$h(B
-     $B$C$F(B $B0\F0$5$;$F$$$^$9!#$3$N0\F0$N=hM}$b$3$l$^$?E57?E*$J=hM}$J$N$G!"5-21(B
-     $B$KCM$7$^$9!#(B $B%$%Y%s%H$O!"$=$l$,5/$3$C$?$H$-$K!V0l2s$@$1!WH/@8$9$k$b$N$J(B
-     $B$N$G!"2!$7$F$$$k(B $B4VCf%-%c%i$rF0$+$7B3$1$k$H$$$&$3$H$,$G$-$^$;$s!#$=$N$?(B
-     $B$a!"%9%l%C%I$r;H$$$^$9!#(B $B$3$l$O%"%K%a!<%7%g%s$5$;$k$H$3$m$G$d$C$?DL$j$G(B
-     $B$9!#(B
-
-
-
-4.11 $B%2!<%`%W%m%0%i%_%s%0$H%3%s%]!<%M%s%H(B
-
-     $B%"%W%l%C%H$G$O!"%\%?%s$d%9%/%m!<%k%P!<$J$I$O$h$/;H$o$l$^$9!#(B
-
-#$B?^(B4.11-1 <DONE>	$B%"%W%l%C%H$G$O$h$/%\%?%s$J$I$,;H$o$l$^$9(B
+     このプログラムでは、黒い四角をゲームの主人公に見立てて、キーボードによ
+     って 移動させています。この移動の処理もこれまた典型的な処理なので、記憶
+     に値します。 イベントは、それが起こったときに「一回だけ」発生するものな
+     ので、押している 間中キャラを動かし続けるということができません。そのた
+     め、スレッドを使います。 これはアニメーションさせるところでやった通りで
+     す。
 
 
-     $B%\%?%s$d$=$NB>$N!"%"%W%l%C%H$r9=@.$7$F$$$kItIJ$O!"!V%3%s%]!<%M(B
-     $B%s%H(B($BItIJ(B)$B!W(B $B$H8F$P$l$F$$$^$9!#%3%s%]!<%M%s%H$O!"(BJava$B$NHFMQ@-$r9b$a$k$?(B
-     $B$a$K!"Hs>o$K=EMW$J(B $BLr3d$r2L$?$7$F$$$^$9!#$H$3$m$,!"$3$l$i$O%2!<%`%W%m%0(B
-     $B%i%_%s%0$K$OI,$:$7$b(B $BLr$K$?$D$H$O8@$($J$$$N$G$9!#$H$$$&$N$O!"%3%s%]!<%M(B
-     $B%s%H$N308+$dA`:n46$O!"5!<o$d(B $B%V%i%&%6!<$4$H$K0c$&$b$N$K$J$k$+$i$G$9!#$=(B
-     $B$l$K2C$($F!"$A$i$D$-$rKI$0!"(B $B!V2>A[2hLL!W$N5;=Q$b;H$&$N$,:$Fq$K$J$j$^(B
-     $B$9!#(B $B%2!<%`$K$*$$$F$O!"2hLL=PNO$H$=$l$KH?1~$9$k?M4V$NF~NO$,=EMW$J$N$K!"(B
-     $B%3%s%]!<%M%s%H(B $B$r;H$&$H4N?4$N=PNO$r$3$^$+$/%3%s%H%m!<%k$G$-$J$/$J$k$N$G(B
-     $B$9!#(B $B$H$$$&$o$1$G!"K\=q$G$O!"4pK\E*$K2>A[2hLL$K2hA|$d?^7A$rD>@\IA2h$7!"(B
-     $B$=$N2>A[2hLL$r(B $B<B:]$N2hLL$KE>Aw$9$k!"$H$$$&7A$r<h$j$^$9!#$7$?$,$C$F%\%?(B
-     $B%s$d%9%/%m!<%k%P!<$N(B $B@bL@$O$P$C$5$j>J$-$^$9!#(B($BB?$/$N!V%"%W%l%C%H%W%m%0(B
-     $B%i%_%s%0!W$H$$$&$h$&$JK\$G$O!"(B $B%\%?%s$=$NB>$N%3%s%]!<%M%s%H$K$D$$$F@bL@(B
-     $B$r$7$F$$$^$9$N$G!"%3%s%]!<%M%s%H$K6=L#$,$"$k(B $BJ}$O!"$=$A$i$r;2>H$7$F$/$@(B
-     $B$5$$!#(B)
-     $B$3$3$G$O!"!V$b$&$R$H$DJL$J%&%$%s%I%&$r=P$9!W$H$$$&=hM}$K$D$$$F!"%5%s%W(B
-     $B%k%W%m%0%i%`(B $B$r<($7$^$9!#$=$N%&%$%s%I%&$NCfMQ$KJL$J2>A[2hLL$rMQ0U$9$l(B
-     $B$P!"$3$^$+$/I=<($r%3%s%H%m!<%k(B $B$9$k$3$H$,$G$-$^$9!#%W%l%$%d!<$KB?$/$N>p(B
-     $BJs$rI=<($7$J$1$l$P$J$i$J$$$h$&$J%2!<%`(B ($BNc$($P%7%_%e%l!<%7%g%s%2!<%`$H(B
-     $B$+!"(BRPG$B$H$+(B)$B$G$O!"$3$N$h$&$J=hM}$,I,MW$K$J$C$F$/$k(B $B$3$H$b$"$k$G$7$g$&!#(B
+
+4.11 ゲームプログラミングとコンポーネント
+
+     アプレットでは、ボタンやスクロールバーなどはよく使われます。
+
+#図4.11-1 <DONE>	アプレットではよくボタンなどが使われます
+
+
+     ボタンやその他の、アプレットを構成している部品は、「コンポーネ
+     ント(部品)」 と呼ばれています。コンポーネントは、Javaの汎用性を高めるた
+     めに、非常に重要な 役割を果たしています。ところが、これらはゲームプログ
+     ラミングには必ずしも 役にたつとは言えないのです。というのは、コンポーネ
+     ントの外見や操作感は、機種や ブラウザーごとに違うものになるからです。そ
+     れに加えて、ちらつきを防ぐ、 「仮想画面」の技術も使うのが困難になりま
+     す。 ゲームにおいては、画面出力とそれに反応する人間の入力が重要なのに、
+     コンポーネント を使うと肝心の出力をこまかくコントロールできなくなるので
+     す。 というわけで、本書では、基本的に仮想画面に画像や図形を直接描画し、
+     その仮想画面を 実際の画面に転送する、という形を取ります。したがってボタ
+     ンやスクロールバーの 説明はばっさり省きます。(多くの「アプレットプログ
+     ラミング」というような本では、 ボタンその他のコンポーネントについて説明
+     をしていますので、コンポーネントに興味がある 方は、そちらを参照してくだ
+     さい。)
+     ここでは、「もうひとつ別なウインドウを出す」という処理について、サンプ
+     ルプログラム を示します。そのウインドウの中用に別な仮想画面を用意すれ
+     ば、こまかく表示をコントロール することができます。プレイヤーに多くの情
+     報を表示しなければならないようなゲーム (例えばシミュレーションゲームと
+     か、RPGとか)では、このような処理が必要になってくる こともあるでしょう。
 
 
 File name: win.java
@@ -3314,7 +3314,7 @@ class MyWindow extends Frame
 		xsize = x;
 		ysize = y;
 		resize( xsize,ysize);
-		show();  // createImage$B$9$k$h$j@h$K(Bshow$B$,$"$kI,MW$,$"$k!#(B
+		show();  // createImageするより先にshowがある必要がある。
 		offscr = createImage( xsize , ysize );
 		offscr_g = offscr.getGraphics();
 	}
@@ -3349,43 +3349,43 @@ File name: test.html
 <applet code=win.class width=200 height=200></applet>
 ------------------------------------------------------------
 
-#$B?^(B4.11-2 <DONE>     $BF0:n7k2L(B(win.java)
+#図4.11-2 <DONE>     動作結果(win.java)
 
-     $B$3$NNc$G$O!"%"%W%l%C%H$NCf$G%-!<$r2!$9$H!"$$$m$$$m$J$3$H$,5/$3$j$^$9!#(B
+     この例では、アプレットの中でキーを押すと、いろいろなことが起こります。
 
-        o 's': $B>.$5$J%&%$%s%I%&$rI=<($7$^$9!#(B
-        o 'c': $B>.$5$J%&%$%s%I%&$rJD$8$^$9!#(B
-        o 'h': $B9u$$;M3Q$r:8$X0\F0$7$^$9!#(B
-        o 'j': $B9u$$;M3Q$r2<$X0\F0$7$^$9!#(B
-        o 'k': $B9u$$;M3Q$r>e$X0\F0$7$^$9!#(B
-        o 'l': $B9u$$;M3Q$r1&$X0\F0$7$^$9!#(B
+        o 's': 小さなウインドウを表示します。
+        o 'c': 小さなウインドウを閉じます。
+        o 'h': 黒い四角を左へ移動します。
+        o 'j': 黒い四角を下へ移動します。
+        o 'k': 黒い四角を上へ移動します。
+        o 'l': 黒い四角を右へ移動します。
 
-     $B%&%$%s%I%&$rJL$K=P$9$h$&$J%"%W%l%C%H$G$O!"$^$:(Binit$B%a%=%C%I(B $B$NCf$G;H$&2D(B
-     $BG=@-$N$"$k%&%$%s%I%&$N%/%i%9$r(Bnew$B$7$F$*$-$^$9!#(B $B$=$7$F!"$=$N8e!"I,MW$K(B
-     $B1~$8$F(Bshow$B$d(Bhide$B$9$k$h$&$K(B $B$7$^$9!#$3$N$h$&$K$9$k$N$O$J$<$+$H$$$&$H!"(B
-     new$B$9$k=hM}$O(B Java$B$G$O$1$C$3$&;~4V$,$+$+$k$+$i$G$9!#(Bshow$B$d(Bhide $B$N=hM}$O(B
-     $B0l=V$K$7$F:Q$_$^$9!#%\%?%s$r2!$7$?;~$K!V$Q$C!W$H=P$F$-$?(B $BJ}$,5$;}$A$,$h(B
-     $B$$$b$N$G$9!#$3$NNc$G$O!"%a%$%s$N%"%W%l%C%H$NJ}$N%-!<A`:n$r(B $BJL$J%&%$%s%I(B
-     $B%&$NJ}$KH?1G$5$;$kJ}K!$r<($7$^$7$?!#$A$J$_$K!">.$5$$J}$N%&%$%s%I%&(B $B$NCf(B
-     $B$G2?$+%-!<$r2!$9$H!"%&%$%s%I%&$OJD$8$^$9!#(B
-     $B%W%m%0%i%`E*$K$O!"$3$N%5%s%W%k%W%m%0%i%`$O!"(BMyWindow$B$H$$$&!"(BFrame$B%/%i%9(B
-     $B$r(Bextends$B$7$F$$$k(B $B?7$7$$%/%i%9$rMQ0U$7$F!"$=$NCf$G2?$b$+$b$d$C$F$$$k$H(B
-     $B$3$m$,=EMW$G$9!#(B Frame$B%/%i%9$O%3%s%]!<%M%s%H$N0l<o$G$9$+$i!"(BkeyDown
-     $B$d(BcreateImage$B$J$I!"(BApllet$B%/%i%9$HF1$8$h$&$J(B $B%a%=%C%I$,;H$($FHs>o$KJXMx(B
-     $B$G$9!#(B
-     $B$H$3$m$G!"(BComponent$B%/%i%9$N%a%=%C%I$K!"$=$l<+BN$r(B $B0\F0$5$;$k(Bmove$B$H$$$&(B
-     $B%a%=%C%I$,$"$j$^$9!#$3$l$r;H$($P!"%&%$%s%I%&$r(B $B<+M3$J>l=j$K0\F0$5$;$k$3(B
-     $B$H$,$G$-$k$O$:$J$N$G$9$,!"B?$/$N4D6-$G(B(Windows95$B$b(B)$B$3$l$O@5$7$/F0$-$^(B
-     $B$;$s!#%&%$%s%I%&$N0LCV$O!"%7%9%F%`$NB&$G7h$a$i$l$F$7$^$&$h$&$G$9!#$3$N(B
-     $B%5%s%W%k%W%m%0%i%`$G$b!"=P$7$?$j>C$7$?$j$9$kEY$K!"0c$&0LCV$KHt$P$5$l$F(B
-     $B$7$^$$$^$9!#(B
-     $B%&%$%s%I%&$O!";H$$$+$?$K$h$C$F$O%2!<%`$NI=8=$rHs>o$KK-$+$K$7$^$9!#$<$R(B
-     $B3hMQ(B $B$7$F$/$@$5$$!#(B
+     ウインドウを別に出すようなアプレットでは、まずinitメソッド の中で使う可
+     能性のあるウインドウのクラスをnewしておきます。 そして、その後、必要に
+     応じてshowやhideするように します。このようにするのはなぜかというと、
+     newする処理は Javaではけっこう時間がかかるからです。showやhide の処理は
+     一瞬にして済みます。ボタンを押した時に「ぱっ」と出てきた 方が気持ちがよ
+     いものです。この例では、メインのアプレットの方のキー操作を 別なウインド
+     ウの方に反映させる方法を示しました。ちなみに、小さい方のウインドウ の中
+     で何かキーを押すと、ウインドウは閉じます。
+     プログラム的には、このサンプルプログラムは、MyWindowという、Frameクラス
+     をextendsしている 新しいクラスを用意して、その中で何もかもやっていると
+     ころが重要です。 Frameクラスはコンポーネントの一種ですから、keyDown
+     やcreateImageなど、Aplletクラスと同じような メソッドが使えて非常に便利
+     です。
+     ところで、Componentクラスのメソッドに、それ自体を 移動させるmoveという
+     メソッドがあります。これを使えば、ウインドウを 自由な場所に移動させるこ
+     とができるはずなのですが、多くの環境で(Windows95も)これは正しく動きま
+     せん。ウインドウの位置は、システムの側で決められてしまうようです。この
+     サンプルプログラムでも、出したり消したりする度に、違う位置に飛ばされて
+     しまいます。
+     ウインドウは、使いかたによってはゲームの表現を非常に豊かにします。ぜひ
+     活用 してください。
 
-	($BCm0U(B)
-	 Java$B$N!V$4$_=8$a5!9=!W$,F/$/$?$a$K!"0J2<$N$h$&$J%3!<%I$O$-$A$s$HF0$$$F(B
-	 $B$/$l$J$$>l9g$,$"$j$^$9!#%&%$%s%I%&$r=P$7$?$j$9$k%W%m%0%i%`$G$O!"(B
-	 $BCm0U$7$F$/$@$5$$!#(B
+	(注意)
+	 Javaの「ごみ集め機構」が働くために、以下のようなコードはきちんと動いて
+	 くれない場合があります。ウインドウを出したりするプログラムでは、
+	 注意してください。
 
 --------------------------------------
 public class myApplet extends Applet
@@ -3395,15 +3395,15 @@ public class myApplet extends Applet
 
 	void doSomething()
 	{
-		myWindow win = new myWindow( ...);	// $B$3$3$G%&%$%s%I%&$,:n$i$l$k$,(B
+		myWindow win = new myWindow( ...);	// ここでウインドウが作られるが
 		...
-	}		// <-- $B$3$3$G(Bwin$B$O%9%3!<%W$+$i30$l$k$N$G!"(Bwin$B$N%$%s%9%?%s%9$,(B
-			// $B%a%b%j$+$iKu>C$5$l$F$7$^$$$^$9!#(B
-			//$B$=$&$9$k$H%$%Y%s%H$bMh$J$/$J$C$F$7$^$&$N$G$9!#(B
+	}		// <-- ここでwinはスコープから外れるので、winのインスタンスが
+			// メモリから抹消されてしまいます。
+			//そうするとイベントも来なくなってしまうのです。
 }
 --------------------------------------
 
-	$B$3$l$KBP=h$9$k$K$O!"<!$N$h$&$K$7$^$9!#(B
+	これに対処するには、次のようにします。
 --------------------------------------
 public class myApplet extends Applet
 {
@@ -3412,27 +3412,27 @@ public class myApplet extends Applet
 	myWindow win;
 	void doSomething()
 	{
-		win = new myWindow( ...);	// $B$3$3$G%&%$%s%I%&$,:n$i$l$k$N$O0l=o(B
+		win = new myWindow( ...);	// ここでウインドウが作られるのは一緒
 		...
-	}		// $B$3$3$G$b$^$@%9%3!<%WFb$J$N$G!"(Bwin$B$N%$%s%9%?%s%9$OL5;v!#(B
-			// $B%$%Y%s%H$b$-$A$s$HMh$^$9!#(B
+	}		// ここでもまだスコープ内なので、winのインスタンスは無事。
+			// イベントもきちんと来ます。
 }
 --------------------------------------
 
-	* $B%&%$%s%I%&$N30B&$NNN0h$NBg$-$5$rF@$k(B
+	* ウインドウの外側の領域の大きさを得る
 		
-	$B%2!<%`%W%m%0%i%`$G$O!"%W%l%$%d!<$K%2!<%`$N>uBV$r@5$7$/EA$($k$?$a$K!"(B
-	$B!V@53N$JI=<(!W$,I,MW$G$9!#%"%W%l%C%H<+?H$N>l9g$O!"%"%W%l%C%H$NBg$-$5$H(B
-	$B@53N$KF1$8NN0h$rF@$k$N$O4JC1$G$9!#(Bpaint(Graphics g)$B%a%=%C%I$NCf$G(B
+	ゲームプログラムでは、プレイヤーにゲームの状態を正しく伝えるために、
+	「正確な表示」が必要です。アプレット自身の場合は、アプレットの大きさと
+	正確に同じ領域を得るのは簡単です。paint(Graphics g)メソッドの中で
 
 		g.drawRect( 0 ,0 , size().width-1 , size().height-1 );
 
-	$B$N$h$&$K$9$l$P!"@53N$KF1$8Bg$-$5$N;M3Q$r=q$/$3$H$,$G$-$^$9!#(B
+	のようにすれば、正確に同じ大きさの四角を書くことができます。
 
-#$B?^(B4.11-3 <DONE>	$B%"%W%l%C%H$O(Binsets$B$NMWAG$,$9$Y$F(B0$B$J$N$G@5$7$/IA2h$G$-$k(B
+#図4.11-3 <DONE>	アプレットはinsetsの要素がすべて0なので正しく描画できる
 
 
-	$B$H$3$m$,!"(B
+	ところが、
 -----------------------------------
 class MFrame extends Frame
 {
@@ -3445,15 +3445,15 @@ class MFrame extends Frame
 	}
 }
 -----------------------------------
-	$B0J>e$N$h$&$K$7$F:n$C$?%&%$%s%I%&$G$O!"!V%&%$%s%I%&$NC<$+$iC<$^$G$NBg$-$5!W(B
-	$B$,(B(100,200)$B$K$J$C$F$7$^$&$N$G!"(B
+	以上のようにして作ったウインドウでは、「ウインドウの端から端までの大きさ」
+	が(100,200)になってしまうので、
 
 		g.drawRect( 0 , 0 , size().width-1,size().height-1);
 
-	$B$O@5$7$/IA2h$5$l$^$;$s!#%&%$%s%I%&$N<~$j$K(B
-	$B$O!"B@$5$r$b$DOH$d%?%$%H%k%P!<$,$"$k$?$a!"$=$N>e$KIA2h$7$F$$$k$+$i$G$9!#(B
-	$B$=$3$G!"(BInsets$B$H$$$&%/%i%9$r;H$$$^$9!#(Bpaint(Graphics g)$B$NCf?H$r<!$N$h$&(B
-	$B$K$+$($l$P!"(B
+	は正しく描画されません。ウインドウの周りに
+	は、太さをもつ枠やタイトルバーがあるため、その上に描画しているからです。
+	そこで、Insetsというクラスを使います。paint(Graphics g)の中身を次のよう
+	にかえれば、
 -----------------------------------
 	public void paint(Graphics g ){
 		Insets ins = insets();			
@@ -3463,42 +3463,42 @@ class MFrame extends Frame
 	}
 -----------------------------------
 
-	$B@5$7$/IA2h$5$l$k$h$&$K$J$j$^$9!#(B
+	正しく描画されるようになります。
 
-#$B?^(B4.11-4 <DONE>	$BF0:n7k2L(B
+#図4.11-4 <DONE>	動作結果
 
 
-	Inset$B%/%i%9$K$O!"<!$N(B4$B$D$N%a%s%PJQ?t$,$"$C$F!"$=$l$>$l!"(BFrame$B$H$$$&(B
-	$B%3%s%]!<%M%s%H$N>e2<:81&$N!V$D$1$?$7ItJ,!W$N%5%$%:$N>pJs$r;}$C$F$$$k(B
-	$B$N$G$9!#(BFrame$B0J30$N%3%s%]!<%M%s%H$K$b!"(BInset$B$OB8:_$7$^$9!#D4$Y$F$_$F(B
-	$B$/$@$5$$!#(B
+	Insetクラスには、次の4つのメンバ変数があって、それぞれ、Frameという
+	コンポーネントの上下左右の「つけたし部分」のサイズの情報を持っている
+	のです。Frame以外のコンポーネントにも、Insetは存在します。調べてみて
+	ください。
 
-#$BI=(B4.11 <DONE>	Insets$B$N%a%s%PJQ?t(B
+#表4.11 <DONE>	Insetsのメンバ変数
 
 ----------------------------
-	top			$B>eJU(B
-	bottom		$B2<JU(B
-	right		$B1&JU(B
-	left		$B:8JU(B
+	top			上辺
+	bottom		下辺
+	right		右辺
+	left		左辺
 ----------------------------
 		
-	($BCm0U(B)
-	Frame$B$r(Bshow()$B$9$kA0$K(BInset$B$rD4$Y$F$b!"$^$@308+$,7h$^$C$F$$$J$$$?$a!"(B
-	$BCM$OITDj$K$J$j$^$9!#$+$J$i$:!"(Bshow()$B$5$l$F$$$k$3$H$r3NG'$7$F$/$@$5$$!#(B
-	$BNc$G$O!"(Bpaint$B$NCf$G(Binsets()$B$r<B9T$7$F$$$^$9$N$G!"@5$7$$CM$,F@$i$l$F$$$^$9!#(B
+	(注意)
+	Frameをshow()する前にInsetを調べても、まだ外見が決まっていないため、
+	値は不定になります。かならず、show()されていることを確認してください。
+	例では、paintの中でinsets()を実行していますので、正しい値が得られています。
 
 
-4.12 Java$B$G$N2hA|=hM}(B
+4.12 Javaでの画像処理
 
-	$BBh(B2$B>O$G!"!V9)IW<!Bh$G%G!<%?$r@aLs$9$k$3$H$,$G$-$k!W$H$$$&$3$H$r@bL@$7$F(B
-	$B$$$^$7$?$,!"$=$NCf$G!"!VF1$87A$G0c$&?'$NE($rEP>l$5$;$F!"$"$?$+$b<oN`$,(B
-	$BB?$$$h$&$K8+$;$+$1$k!#!W$H$$$&5;$r>R2p$7$F$$$^$7$?!#$3$N@a$G$O!"(B
-	$B$=$l$r<B8=$7$^$9!#(B
-    Java$B$K$*$$$F$O!"0lHLE*$J2hA|=hM}MQ$N%/%i%972$r;H$&$3$H$K$h$C$F!"2hA|$N(B
-	$B=hM}$r$9$k$3$H$,$G$-$^$9!#$=$NE57?E*$JNc$,!"?'$NJQ49$G$9!#$3$3$G<($9Nc(B	
-	$B$O!"?'$rJQ49$9$k$b$N$G$9$,!"$3$NJ}K!$r%@%V%k%P%C%U%!$K;H$C$F$$$k2hA|$K(B
-	$BBP$7$FMQ$$$l$P!"2hLL$N$"$k0LCV$N?'$rF@$k$3$H$,$G$-$^$9!#(B($B$3$NJ}K!$O(B
-	$BHs>o$KCY$$$N$G!"$"$^$jIQHK$K;HMQ$9$k$N$OHr$1$?$$J}K!$G$9!#(B)
+	第2章で、「工夫次第でデータを節約することができる」ということを説明して
+	いましたが、その中で、「同じ形で違う色の敵を登場させて、あたかも種類が
+	多いように見せかける。」という技を紹介していました。この節では、
+	それを実現します。
+    Javaにおいては、一般的な画像処理用のクラス群を使うことによって、画像の
+	処理をすることができます。その典型的な例が、色の変換です。ここで示す例	
+	は、色を変換するものですが、この方法をダブルバッファに使っている画像に
+	対して用いれば、画面のある位置の色を得ることができます。(この方法は
+	非常に遅いので、あまり頻繁に使用するのは避けたい方法です。)
 
 
 File name: memSrc.java
@@ -3521,13 +3521,13 @@ public class memSrc extends java.applet.Applet
 		img = getImage( getDocumentBase() , "kawai.jpg");
 		mt.addImage( img, 0 );
 		try{
-			mt.waitForAll();         // $BFI$_$3$_$,=*N;$9$k$^$GBT$D!#(B
+			mt.waitForAll();         // 読みこみが終了するまで待つ。
 		}catch( InterruptedException e ){}
 
 		width = img.getWidth(null);
 		height = img.getHeight(null);
 
-		// $BI,MW$JJ,$N%a%b%j!<$r3NJ]!#MWAG?t$O(B ($B=D%I%C%H?t(B)$B!_(B($B2#%I%C%H?t(B) $B$G$9!#(B 
+		// 必要な分のメモリーを確保。要素数は (縦ドット数)×(横ドット数) です。 
 		pix = new int[width*height];   
 
 		resize( width*2 , height );
@@ -3537,9 +3537,9 @@ public class memSrc extends java.applet.Applet
 		} catch ( InterruptedException e ){
 			System.out.println(e );
 		}
-		// $B$3$3$G2hA|$r9%$-$J$h$&$K=hM}!#(B
+		// ここで画像を好きなように処理。
 		for(int i=0;i<width*height;i++){
-				pix[i]= pix[i]& 0xffff00ff;  //$BNP@.J,$rA4It;&$9=hM}(B
+				pix[i]= pix[i]& 0xffff00ff;  //緑成分を全部殺す処理
 		}
 		nimg = createImage(
 				new MemoryImageSource( width,height,pix ,0,width ));
@@ -3558,79 +3558,79 @@ File name: test.html
 <applet code=memSrc.class width=500 height=400></applet>
 ------------------------------------------------------------
 
-#$B?^(B4.12-1 <DONE>	$BF0:n7k2L(B(memSrc.java)
+#図4.12-1 <DONE>	動作結果(memSrc.java)
 
-	$B2hLL$N:8H>J,$K=w$N;R$N2hA|$,=P$F!"1&H>J,$K$=$N2hA|$NNP@.J,$rH4$$$?(B
-	$B$b$N$,I=<($5$l$F$$$^$9!#(B
-	$B$3$N%W%m%0%i%`$N%]%$%s%H$4$H$K2r@b$7$^$9!#(B
+	画面の左半分に女の子の画像が出て、右半分にその画像の緑成分を抜いた
+	ものが表示されています。
+	このプログラムのポイントごとに解説します。
 
-	1) Image$B$N%5%$%:$r@5$7$/<h$j$@$9$?$a$K!"(BMediaTracker$B$r;H$C$F3N<B$K2hA|$r(B
-	$B%m!<%I$7$F$$$k!#(B
-      Image$B%/%i%9$N(BgetWidth() ,getHeight()$B$O!"$=$l$>$l2hA|$N(B
-	$BI}$H9b$5$rF@$k%a%=%C%I$G$9$,!"$3$l$i$O!"2hA|$,%m!<%I$5$l$F$$$J$$$H!"(B
-	$B@5$7$$CM$rJV$7$^$;$s!#$7$?$,$C$F!"$3$l$i$N%a%=%C%I$r8F$S$@$9A0$K!"(B
-	waitForAll()$B$r9T$J$C$F!"$7$C$+$j%m!<%I$r$7$F$$$^$9!#(B
+	1) Imageのサイズを正しく取りだすために、MediaTrackerを使って確実に画像を
+	ロードしている。
+      ImageクラスのgetWidth() ,getHeight()は、それぞれ画像の
+	幅と高さを得るメソッドですが、これらは、画像がロードされていないと、
+	正しい値を返しません。したがって、これらのメソッドを呼びだす前に、
+	waitForAll()を行なって、しっかりロードをしています。
 
-	2) $B2hA|=hM}$N$?$a$N%a%b%j!<$r3NJ](B
-	$BI}!_9b$5$NMWAG?t$r;}$D(Bint$B7?$NG[Ns$r3NJ](B(new)$B$7$F$$$^$9!#(B
+	2) 画像処理のためのメモリーを確保
+	幅×高さの要素数を持つint型の配列を確保(new)しています。
 	
-	3) PixelGrabber$B$r(Bnew$B$7$F$$$^$9!#(BPixelGrabber$B%/%i%9$O!"(BImage$B7?$N2hA|$+$i!"(B
-	int[] $B$NG[Ns$X!"?'$N>pJs$r<h$j$@$7$^$9!#G[Ns$NBg$-$5$O!":GDc(B2)$B$G@bL@$7$?(B
-	$BBg$-$5$,$"$l$P!"Bg$-$9$.$F$bBg>fIW$G$9!#B-$j$J$$>l9g$O!"(B
-	ArrayIndexOutOfBoundsException$B$,H/@8$7$^$9!#(B
+	3) PixelGrabberをnewしています。PixelGrabberクラスは、Image型の画像から、
+	int[] の配列へ、色の情報を取りだします。配列の大きさは、最低2)で説明した
+	大きさがあれば、大きすぎても大丈夫です。足りない場合は、
+	ArrayIndexOutOfBoundsExceptionが発生します。
 
-	$B%3%s%9%H%i%/%?$N=q<0(B
+	コンストラクタの書式
 
 	PixelGrabber( Image i, int x,int y,int w,int h,int[]pix,int off,int hsiz)
 	
-	Image i .... $B?'$r<h$j$@$9BP>N$N2hA|(B
-	int x,y .... $B?'$r<h$j$@$9ItJ,$N2hA|Fb$N:8>e:BI8(B
-	int w,h .... $B?'$r<h$j$@$9I}$H9b$5(B
-	int[] pix .. $B?'$N>pJs$r3JG<$9$kG[Ns(B
-	int off   .. $BG[Ns$N2?HVL\$NMWAG$+$i3JG<$r3+;O$9$k$+(B
-	int hsiz  .. $B2hA|$N2#I}(B
+	Image i .... 色を取りだす対称の画像
+	int x,y .... 色を取りだす部分の画像内の左上座標
+	int w,h .... 色を取りだす幅と高さ
+	int[] pix .. 色の情報を格納する配列
+	int off   .. 配列の何番目の要素から格納を開始するか
+	int hsiz  .. 画像の横幅
 
-	4) $B=hM}$7$F$G$-$??7$7$$CM$r;H$C$F!"?7$7$$2hA|$r$b$&0lKg:n$k(B
+	4) 処理してできた新しい値を使って、新しい画像をもう一枚作る
 
 	nimg = createImage( new MemoryImageSource( width,height,pix ,0,width ));
 
-	$B:#$^$G%@%V%k%P%C%U%!$r:n$k$?$a$K!"$h$/(BcreateImage$B$r;H$C$F$$$^$7$?$,!"(B
-	$B$^$?JL$N0z?t$N%?%$%W$r;}$D(BcreateImage$B$G$9!#$3$N9T$O$[$\7h$^$C$?=q$-$+$?(B
-	$B$G!"?7$7$/:n$j$?$$2hA|$NI}$H9b$5$H!"?'$N>pJs$,F~$C$F$$$k(Bint$B7?$NG[Ns$H$r(B
-	$B;XDj$7$^$9!#(B
+	今までダブルバッファを作るために、よくcreateImageを使っていましたが、
+	また別の引数のタイプを持つcreateImageです。この行はほぼ決まった書きかた
+	で、新しく作りたい画像の幅と高さと、色の情報が入っているint型の配列とを
+	指定します。
 
-	* $B?'$N07$$(B
+	* 色の扱い
 
-	$B:G8e$K!"?'$N>pJs$,0l8D$N(Bint$B7?$NCM$NCf$K$I$N$h$&$K3JG<$5$l$F$$$k$N$+$r(B
-	$B<($7$^$9!#(B
+	最後に、色の情報が一個のint型の値の中にどのように格納されているのかを
+	示します。
 
-	int$B7?$O(B32bit$BCM$G$9!#$=$l$r(B8$B%S%C%H$4$H$K(B4$B$D$KJ,2r$7!"$=$l$>$l$K(B0(0x00)
-	$B$+$i(B255(0xff)$B$^$G$NCM$,3d$j$"$F$i$l$F$$$^$9!#(B
+	int型は32bit値です。それを8ビットごとに4つに分解し、それぞれに0(0x00)
+	から255(0xff)までの値が割りあてられています。
 
-#$B?^(B4.12-2 <DRAFT>	RGBA$B$N(B32$B%S%C%H3d$j$"$F(B
+#図4.12-2 <DRAFT>	RGBAの32ビット割りあて
 
 
 -----------------------------
 	01234567   01234567   01234567   01234567
-	A($BF)L@EY(B)  R($B@V(B)      G($BNP(B)      B($B@D(B)
+	A(透明度)  R(赤)      G(緑)      B(青)
 -----------------------------
 
-	$BF)L@EY$O(B0xff$B$,:GBgCM$NITF)L@!"(B0x00$B$,40A4$JF)L@$G$9!#(BR,G,B$B$K$D$$$F$O!"(B
-	0xff$B$,:G$b6/$/H/?'$9$kCM$G!"(B0x00$B$,0E9u$G$9!#(B
+	透明度は0xffが最大値の不透明、0x00が完全な透明です。R,G,Bについては、
+	0xffが最も強く発色する値で、0x00が暗黒です。
 
-	$BNc$($P!"(B0xffffffff $B$O!"40A4$JITF)L@$N%[%o%$%H$G!"(B0x041122ff$B$J$i!"(B
-	$B8B$j$J$/F)L@$K6a$$%V%k!<$H$$$&$3$H$K$J$j$^$9!#(B
+	例えば、0xffffffff は、完全な不透明のホワイトで、0x041122ffなら、
+	限りなく透明に近いブルーということになります。
 
-	$B2hA|$r=hM}$9$k%k!<%W$NCf$G!"$"$k?'$KH?1~$9$k$h$&$K;EAH$s$G$*$1$P!"(B
-	$BE($NNX3T$N?'$@$1$rJQ$($?$j$H$$$C$?$3$H$,<+M3$K$G$-$^$9!#3hMQ$7$F$/$@$5$$!#(B
+	画像を処理するループの中で、ある色に反応するように仕組んでおけば、
+	敵の輪郭の色だけを変えたりといったことが自由にできます。活用してください。
 
 
-4.13 $B%U%)%s%H(B
+4.13 フォント
 
-	Java$B$G$O!"MM!9$J8@8l$N!"MM!9$J7A<0$NJ8;z$rI=<($9$k$3$H$,$G$-$^$9!#(B
-	$BF|K\8l$NI=<($K$D$$$F$O$$$m$$$m$JLdBj$,$+$i$`$N$G!"IUO?$N!VF|K\8l$rI=<((B
-	$B$9$kJ}K!!W$r;2>H$7$F$b$i$&$3$H$K$7$F!"$3$3$G$O1QJ8;z$r<+M3$KI=<($9$k(B
-	$B%W%m%0%i%`$NNc$r<($7$^$9!#(B
+	Javaでは、様々な言語の、様々な形式の文字を表示することができます。
+	日本語の表示についてはいろいろな問題がからむので、付録の「日本語を表示
+	する方法」を参照してもらうことにして、ここでは英文字を自由に表示する
+	プログラムの例を示します。
 
 File name: font.java
 -------------------------------------------------------------
@@ -3640,17 +3640,17 @@ public class font extends java.applet.Applet
 {
 	String font_names[];
 	public void init(){
-		// $B$^$:!";HMQ2DG=$J%U%)%s%H$rC5$7$^$9!#(B
+		// まず、使用可能なフォントを探します。
 		font_names = Toolkit.getDefaultToolkit().getFontList();
 		for(int i=0;i<font_names.length;i++){
 			System.out.println( font_names[i] );
 		}
 	}
 	public void paint(Graphics g ){
-		// $B$=$l$>$l$N%U%)%s%H$G!"J8;z$rIA2h$7$^$9!#?'$b%5%$%:$b(B
-		// $BJQ2=$5$;$F$_$^$7$g$&!#(B
+		// それぞれのフォントで、文字を描画します。色もサイズも
+		// 変化させてみましょう。
 		g.setColor( Color.white);
-		g.fillRect( 0 , 0 , size().width , size().height);  //$BGr$GEI$j$D$V$7(B
+		g.fillRect( 0 , 0 , size().width , size().height);  //白で塗りつぶし
 		for(int i=0;i<font_names.length;i++){
 			Font f = new Font( font_names[i] , Font.PLAIN , 15+i*5 );
 			g.setFont( f ); 
@@ -3666,9 +3666,9 @@ File name: test.html
 <applet code=font.class width=300 height=300></applet>
 -------------------------------------------------------------
 
-#$B?^(B4.13-1 <DONE>	$B<B9T7k2L(B(font.java)
+#図4.13-1 <DONE>	実行結果(font.java)
 
-	$BI8=`=PNO$O<!$N$h$&$K$J$C$F$$$^$9!#(B
+	標準出力は次のようになっています。
 ----------
 $
 $ appletviewer test.html
@@ -3680,64 +3680,64 @@ Symbol
 $
 ----------
 
-	$BMM!9$J%U%)%s%H$,!"MM!9$J?'$GIA2h$5$l$F$$$^$9!#%W%m%0%i%`$NCf$G$O!"$^$:(B
+	様々なフォントが、様々な色で描画されています。プログラムの中では、まず
 	
 	font_names = Toolkit.getDefaultToolkit().getFontList();
 
-	$B$H$7$F!";HMQ2DG=$J%U%)%s%H$NL>A0$r!"(BString$B7?$NG[Ns$H$7$FF@$F$$$^$9!#(B
-	$BI.<T$N4D6-$G$O!"(BDialog,Helvetica,TimesRoman,Courier,Symbol$B$H$$$&(B5$B$D$N(B
-	$B%U%)%s%H$,MxMQ2DG=$G$7$?!#$@$$$?$$$3$l$i$N(B5$B$D$O!"$I$N4D6-$G$bMxMQ2DG=(B
-	$B$J$N$G!"$3$N%U%)%s%H$,$"$k$H4|BT$7$F$h$$$G$7$g$&!#%2!<%`$NCf$GFCDj$N(B
-	$B%U%)%s%H$r;H$$$?$$>l9g$O!"$^$:!"Nc$($P(BSymbol$B$,$"$k$H2>Dj$7$F!"$b$7$b(B
-	String$B$NG[Ns$KB8:_$7$J$$>l9g$O!"B>$N$b$N$r;H$&!"$H$$$&$h$&$K%W%m%0%i%`$7$F(B
-	$B$*$1$P$h$$$G$7$g$&!#(B
+	として、使用可能なフォントの名前を、String型の配列として得ています。
+	筆者の環境では、Dialog,Helvetica,TimesRoman,Courier,Symbolという5つの
+	フォントが利用可能でした。だいたいこれらの5つは、どの環境でも利用可能
+	なので、このフォントがあると期待してよいでしょう。ゲームの中で特定の
+	フォントを使いたい場合は、まず、例えばSymbolがあると仮定して、もしも
+	Stringの配列に存在しない場合は、他のものを使う、というようにプログラムして
+	おけばよいでしょう。
 
-	$B%U%)%s%H$r;H$&4pK\E*$J<j=g$O!"(B
-	1) $B%U%)%s%H$NL>A0$rD4$Y$^$9!#(B
-	2) Font = new Font( String $BL>A0(B , int STYLE , int point)
-	$B$H$7$F!"(BFont$B7?$N%$%s%9%?%s%9$r:n$j$^$9!#(BSTYLE$B$K$O!"<!$N$b$N$,$"$j$^$9!#(B
+	フォントを使う基本的な手順は、
+	1) フォントの名前を調べます。
+	2) Font = new Font( String 名前 , int STYLE , int point)
+	として、Font型のインスタンスを作ります。STYLEには、次のものがあります。
 	
-#$BI=(B4.13<DONE>	$B%U%)%s%H$N%9%?%$%kI=(B
+#表4.13<DONE>	フォントのスタイル表
 
 ----------------------------------
-	Font.BOLD      $BB@;z(B
-	Font.ITALIC    $B<PBN(B
-	Font.PLAIN	   $BI8=`(B
+	Font.BOLD      太字
+	Font.ITALIC    斜体
+	Font.PLAIN	   標準
 ----------------------------------
-	point$B?t$O!"0lHVBg$-$JJ8;z$N=D%I%C%H?t$G$9!#(B
+	point数は、一番大きな文字の縦ドット数です。
 
-	3) Graphics$B%/%i%9$N%$%s%9%?%s%9(Bg$B$KBP$7$F!"(Bg.setFont(Font)$B$7$^$9!#(B
-	4) $BIA2h$7$^$9!#(B
+	3) Graphicsクラスのインスタンスgに対して、g.setFont(Font)します。
+	4) 描画します。
 	
 
 
-#$B?^(B4.13-2 <DONE>	3$B<oN`$N%9%?%$%k$G?'!9$KI=<($7$?Nc(B
+#図4.13-2 <DONE>	3種類のスタイルで色々に表示した例
 
 
-	($BCm0U(B)
-	  Toolkit.getDefaultToolkit().getFontList()$B$GF@$i$l$?$=$l$>$l$N%U%)%s%H(B
-	$B$O!"$I$NBg$-$5(B($B%]%$%s%H?t(B)$B$K;XDj$7$F$bMxMQ2DG=$G$"$k$H$$$&$o$1$G$O$"$j(B
-	$B$^$;$s!#Nc$($P!"(BSymbol$B%U%)%s%H$N%5%$%:(B24$B0J>e$,MxMQIT2D$N>l9g$b$"$j$^$9!#(B
-	$B$=$N>l9g$K$O!"(Bg.setFont(...)$B$N$H$3$m$G!"(B $BNc30$,H/@8$9$k$3$H$,$"$j$^$9!#(B
-	(IOException$B$"$k$$$O!"(BFileNotFoundException$B$J$I!#(B)$B$7$?$,$C$F!"3N<B$J(B
-	$B%W%m%0%i%`$K$7$?$$>l9g$O!"(B
+	(注意)
+	  Toolkit.getDefaultToolkit().getFontList()で得られたそれぞれのフォント
+	は、どの大きさ(ポイント数)に指定しても利用可能であるというわけではあり
+	ません。例えば、Symbolフォントのサイズ24以上が利用不可の場合もあります。
+	その場合には、g.setFont(...)のところで、 例外が発生することがあります。
+	(IOExceptionあるいは、FileNotFoundExceptionなど。)したがって、確実な
+	プログラムにしたい場合は、
 
 --------------------
 try{
 	Font f = new Font( font_names[i] , Font.PLAIN , 15+i*5 );
 	g.setFont( f ); 
 }catch( Exception e){
-	// $B%U%)%s%H$,$J$+$C$?>l9g$N=hM}(B
+	// フォントがなかった場合の処理
 }
 --------------------
-	$B$H$$$&$h$&$K$7$F$*$/$N$,0BA4$G$9!#(B($B$a$C$?$K$"$j$^$;$s$,!#(B)
+	というようにしておくのが安全です。(めったにありませんが。)
 
-	* $B%U%)%s%H$4$H$NIA2h%5%$%:$rF@$k(B
+	* フォントごとの描画サイズを得る
 	
-	$B%U%)%s%H$O$$$m$$$m$"$j$^$9$+$i!"F1$8J8;zNs$rIA2h$7$F$b%5%$%:$,0[$J(B
-	$B$j$^$9!#%2!<%`$G$O!V@53N$K!WIA2h$7$?$$$3$H$bB?$$$N$G!"<B:]$KIA2h$7$?$i(B
-	$B$$$C$?$$$I$N$/$i$$$N%5%$%:$K$J$k$N$+$rCN$k$3$H$,$G$-$k$H=u$+$j$^$9!#(B
-	$B$=$l$r<B8=$9$k$N$,!"(BFontMetrics$B%/%i%9$G$9!#<!$K;HMQNc$r<($7$^$9!#(B
+	フォントはいろいろありますから、同じ文字列を描画してもサイズが異な
+	ります。ゲームでは「正確に」描画したいことも多いので、実際に描画したら
+	いったいどのくらいのサイズになるのかを知ることができると助かります。
+	それを実現するのが、FontMetricsクラスです。次に使用例を示します。
 
 File name: fmetr.java
 --------------------------------------
@@ -3756,8 +3756,8 @@ public class fmetr extends java.applet.Applet
 			g.setFont( f ); 
 			String s = "GAME OVER";
 			g.drawString( s , 10,40*i+20 );
-			FontMetrics fm= g.getFontMetrics();  // FontMetrics$B$rF@$^$9!#(B
-			int width = fm.stringWidth( s );     // $BJ8;zNs$ND9$5$r7W;;$7$^$9!#(B
+			FontMetrics fm= g.getFontMetrics();  // FontMetricsを得ます。
+			int width = fm.stringWidth( s );     // 文字列の長さを計算します。
 			g.drawString( ""+width , 10,40*i+40 );
 
 		}
@@ -3770,18 +3770,18 @@ File name: test.html
 <applet code=fmetr.java width=300 height=400></applet>
 --------------------------------------
 
-#$B?^(B4.13-3 <DONE>	$B<B9T7k2L(B(fmetr.java)	
+#図4.13-3 <DONE>	実行結果(fmetr.java)	
 
 
 
-4.14 $B%"%W%l%C%H$N8e;OKv(B
+4.14 アプレットの後始末
 
-	$B%"%W%l%C%H$N<B9T$r=*N;$7$h$&$H$7$?;~$d!"%V%i%&%6$r=*N;$5$;$h$&$H$7$?;~(B
-	$B$K$O!"(B destroy()$B%a%=%C%I$,<+F0E*$K8F$S$@$5$l$^$9!#(B(4$B>OBh(B1$B@a!"(B14$B$r;2>H(B)
-	$B%"%W%l%C%H$NCf$G%9%l%C%I$r;H$C$F$$$k>l9g$O!"(Bdestroy()$B%a%=%C%I$r%*!<%P!<(B
-	$B%i%$%I(B($B=q$-$+$((B)$B$7$F!"$=$NCf$G%9%l%C%I$r;_$a$k$h$&$K$9$k$N$,!"Ni57@5$7$$(B
-	$B%"%W%l%C%H$G$"$k$H$5$l$F$$$^$9!#0J2<$NNc$O!"%9%l%C%I$r;_$a$k(Bdestroy()
-	$B%a%=%C%I$NNc$G$9!#(B
+	アプレットの実行を終了しようとした時や、ブラウザを終了させようとした時
+	には、 destroy()メソッドが自動的に呼びだされます。(4章第1節、14を参照)
+	アプレットの中でスレッドを使っている場合は、destroy()メソッドをオーバー
+	ライド(書きかえ)して、その中でスレッドを止めるようにするのが、礼儀正しい
+	アプレットであるとされています。以下の例は、スレッドを止めるdestroy()
+	メソッドの例です。
 
 --------------------------------------
 public class destTest extends java.applet.Applet implements Runnable
@@ -3797,15 +3797,15 @@ public class destTest extends java.applet.Applet implements Runnable
 	{
 		...
 	}
-	public void destroy()		// $B$3$N(B4$B9T$r=q$$$F$*$/$@$1$G$9!#(B
+	public void destroy()		// この4行を書いておくだけです。
 	{
 		t.stop();
 	}
 }
 --------------------------------------
 
-	5$B!"(B6$B>O$N%2!<%`$N<BNc$G$O!"(Bdestroy$B%a%=%C%I$r%*!<%P!<%i%$%I$7$F$$$^$9!#(B
-	$B$=$l$i$O!">e5-$NNc$H$[$H$s$IF1$8$K$J$C$F$$$^$9!#(B
+	5、6章のゲームの実例では、destroyメソッドをオーバーライドしています。
+	それらは、上記の例とほとんど同じになっています。
 
 
 

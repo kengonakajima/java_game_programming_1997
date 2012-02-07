@@ -82,7 +82,7 @@ public class player {
 			}
 		}
 
-		// $B??>e$,(B0$B$G1&2s$j$K(B7$B$^$G!#F~NOL5$7$O(B8
+		// 真上が0で右回りに7まで。入力無しは8
 		if (input_x > 0) {
 			if (input_y > 0) {
 				return 3;

@@ -1,15 +1,15 @@
 /*
-  $BJ#?t$N;M3Q$,F0$$$F!"$=$l$>$l$,Ev$?$k$H$O$M$+$($k$N?^(B
+  複数の四角が動いて、それぞれが当たるとはねかえるの図
 
-  $B$3$N%W%m%0%i%`$b!"(Bgame.java$B$r%3%T!<$7$F;H$C$F$$$k!#(B
+  このプログラムも、game.javaをコピーして使っている。
 
 
-  $B$^$:Bg;v$J%]%$%s%H$O!"Ev$?$jH=Dj$NCf?4ItJ,$K$J$C$F$$$k(Bcheck
-$B%a%=%C%I$G$9!#;M3Q7AF1;N$NEv$?$jH=Dj$O!"ITEy9f$r;H$($P4JC1$K(B
-$B<B8=$G$-$kNc$G$9!#B>$K$b!"1_F1;N$NEv$?$jH=Dj$J$i5wN%$r7W;;(B
-$B$9$k$H$+!"?'!9%P%j%(!<%7%g%s$O$"$k$G$7$g$&!#(B
+  まず大事なポイントは、当たり判定の中心部分になっているcheck
+メソッドです。四角形同士の当たり判定は、不等号を使えば簡単に
+実現できる例です。他にも、円同士の当たり判定なら距離を計算
+するとか、色々バリエーションはあるでしょう。
 
-  $B<!$K!"%-%c%i%/%?$NH?<M$NItJ,$G$9!#(B
+  次に、キャラクタの反射の部分です。
 
 */
 import java.applet.Applet;
@@ -24,7 +24,7 @@ public class atari extends Applet implements Runnable
 	Graphics dg;
 	int cron=0;
 
-	// $BJQ992DG=8D=j(B
+	// 変更可能個所
 
 	int width ,height;
 	int interval = 50;	// milli second 
@@ -81,7 +81,7 @@ public class atari extends Applet implements Runnable
 		}
 	}
 
-	double react = 17;  // $BBg$-$$$[$I4K$d$+$JH?<M$K$J$k!#(B
+	double react = 17;  // 大きいほど緩やかな反射になる。
 	void moveBox(){
 		double before_x , before_y;
 		for(int i=0;i<nownum;i++){
@@ -95,11 +95,11 @@ public class atari extends Applet implements Runnable
 				if( check( bx[i] , by[i], bxsiz[i] , bysiz[i] , 
 						  bx[j] , by[j] , bxsiz[j] , bysiz[j] ) ){
 					bfill[i] = true;
-					double relx , rely;   // $BH"$NCf?4$NAjBP0LCV4X78!#(B
+					double relx , rely;   // 箱の中心の相対位置関係。
 					relx = (bx[j]+bxsiz[j]/2) - (bx[i]+bxsiz[i]/2);
 					rely = (by[j]+bysiz[j]/2) - (by[i]+bysiz[i]/2);
 
-					bdx[i] = -relx / react;  // $B$*8_$$$rN%$9(B
+					bdx[i] = -relx / react;  // お互いを離す
 					bdy[i] = -rely / react;
 					bdx[j] = relx /  react;
 					bdy[j] = rely /  react;
@@ -116,13 +116,13 @@ public class atari extends Applet implements Runnable
 		}
 	}
 
-	// $BEv$?$jH=Dj!#?4B!It$G$9!#(B
+	// 当たり判定。心臓部です。
 	boolean check( double x1, double y1 , double x1size , double y1size ,
 				  double x2 , double y2 , double x2size , double y2size ){
 		return( x2 <= (x1+x1size) && x1 <= (x2+x2size ) &&
 			    y2 <= (y1+y1size) && y1 <= (y2+y2size) );
 	}
-	// $B%^%&%9$N%\%?%s$r2!$9$HH"$,A}$($^$9!#(B
+	// マウスのボタンを押すと箱が増えます。
 	public boolean mouseDown( Event e , int x , int y){
 		bx[nownum] = x;
 		by[nownum] = y;
@@ -131,14 +131,14 @@ public class atari extends Applet implements Runnable
 	}
 	void doIt(){
 
-		// $BH"$rF0$+$9!#(B
+		// 箱を動かす。
 		moveBox();
 		
 		dg.setColor( Color.white );
 		dg.fillRect( 0 , 0 , width , height );
 		dg.setColor( Color.black  );
 
-		// $BA4ItIA2h$9$k!#(B
+		// 全部描画する。
 		for(int i=0;i<nownum;i++){
 			if( bfill[i] ){
 				dg.fillRect( (int)bx[i] , (int)by[i] ,

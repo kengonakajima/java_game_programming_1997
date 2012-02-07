@@ -1,45 +1,45 @@
 
-$BBh(B6$B>O(B $B%M%C%H%o!<%/%2!<%`$r:n$k(B
+第6章 ネットワークゲームを作る
 
-$B$3$N>O$G$O!"%M%C%H%o!<%/$rMxMQ$7$?%2!<%`$r:n$C$F$_$^$7$g$&!#$3$3$G$$$&%M%C(B
-$B%H%o!<%/$H$$$&$N$O!"$"$J$?$bMxMQ$7$F$$$k!"%$%s%?!<%M%C%H$N$3$H$G$9!#(B $B%$%s%?(B
-$B!<%M%C%H$rMxMQ$7$?%2!<%`$r:n$k;~$K$O!"(BJava$B$OK\NN$rH/4x$7$^$9!#(B $B%9%?%s%I%"%m(B
-$B!<%s$N%2!<%`$r:n$l$k$h$&$K$J$C$?$"$J$?$J$i!"$9$0$K!"%M%C%H%o!<%/(B $B%2!<%`$r:n(B
-$B$l$k$h$&$K$J$j$^$9!#:#$^$G$O!"%M%C%H%o!<%/%W%m%0%i%_%s%0$O!"@lLg2H(B $B$@$1$N$b(B
-$B$N$@$C$?$N$G$9$,!"(BJava$B$N$*$+$2$G!";dC#$N$h$&$JIaDL$N?M$K$b(B $B%M%C%H%o!<%/%W%m(B
-$B%0%i%_%s%0$NLLGr$5$,BN83$G$-$k$h$&$K$J$j$^$7$?!#(B
-$B$^$:$O!"%$%s%?!<%M%C%H$N$7$/$_$r2r@b$7!"$=$N;EAH$+$i@8$8$kFCD'$K$D$$$F(B $B9M$((B
-$B$^$9!#$=$7$F!"$=$NFCD'$r!"$I$N$h$&$K$7$F%2!<%`%G%6%$%s$KH?1G$5$;(B $B$k$+$,!":G(B
-$B=*L\I8$G$9!#$=$7$F$5$i$K!"%M%C%H%o!<%/%2!<%`$N<BNc$H$7$F!":G6aN.9T$N(B
-MUD(Multi User Dungeon)$B$N4pAC$K$J$kItJ,$r:n$C$F$_$^$7$g$&!#(B
+この章では、ネットワークを利用したゲームを作ってみましょう。ここでいうネッ
+トワークというのは、あなたも利用している、インターネットのことです。 インタ
+ーネットを利用したゲームを作る時には、Javaは本領を発揮します。 スタンドアロ
+ーンのゲームを作れるようになったあなたなら、すぐに、ネットワーク ゲームを作
+れるようになります。今までは、ネットワークプログラミングは、専門家 だけのも
+のだったのですが、Javaのおかげで、私達のような普通の人にも ネットワークプロ
+グラミングの面白さが体験できるようになりました。
+まずは、インターネットのしくみを解説し、その仕組から生じる特徴について 考え
+ます。そして、その特徴を、どのようにしてゲームデザインに反映させ るかが、最
+終目標です。そしてさらに、ネットワークゲームの実例として、最近流行の
+MUD(Multi User Dungeon)の基礎になる部分を作ってみましょう。
 
 
-6.1 $B%$%s%?!<%M%C%H$N$7$/$_(B
+6.1 インターネットのしくみ
 
-     $BIaCJ2?5$$J$/MxMQ$7$F$$$k%$%s%?!<%M%C%H$O!"<B$OHs>o$K9*L/$J$7$/$_$K$J$C(B
-     $B$F(B $B$$$^$9!#<B:_$N%7%9%F%`$KNc$($k$J$i!"M9JX%7%9%F%`$N%$%a!<%8$K6a$$$+$b(B
-     $B$7$l$^$;$s!#(B
-     $B%$%s%?!<%M%C%H$NCf$G$O!"$"$i$f$k>pJs$O!"%Q%1%C%H$H8F$P$l$F$$$k!"?t==$+(B
-     $B$i(B $B?t%-%m%P%$%H$N%G!<%?$N2t$N7A$GN.$l$F$$$^$9!#$=$l$>$l$N%Q%1%C%H$O!"(B
-     $BEE5$E*$K@~(B($BEEOC@~$d%$!<%5%M%C%H$d(BATM$B$d$=$NB>(B) $B$G7R$,$C$F$$$kNY$j$N%^%7(B
-     $B%s(B($B%[%9%H$H$$$&$3$H$,B?$$(B)$B$KEO$5$l$F(B $B$$$-$^$9!#$=$l$>$l$N%^%7%s$O!"NY$j(B
-     $B$N%^%7%s$K$o$?$9!"$H$$$&$3$H$7$+(B $B9T$J$o$J$$$o$1$G$9!#M9JX$G8@$($P!">.Jq(B
-     $B$O!"$^$:$OAw$j<g$K:G$b6a$$(B $BM9JX6I(B($B$3$N>l9g$O%^%7%s(B)$B$KFO$1$i$l!"$=$NM9JX(B
-     $B6I$+$i!"08@h$K6a$/$F!"$7$+$b(B $B:G$b$=$NM9JX6I$K6a$$JL$NM9JX6I$KFO$1$i$l!"(B
-     $B$H$$$&$3$H$r7+$j$+$($7$F!"(B $B>.Jq$r<u$1$o$?$7$F$$$/$o$1$G$9!#$=$l$r7+$j$+(B
-     $B$($;$P!":G8e$K$O!"L\E*CO(B $B$KE~C#$9$k!"$H$$$&$o$1$G$9!#%$%s%?!<%M%C%H$K7R(B
-     $B$,$C$F$$$k%^%7%s!"$H$$$&(B $B$N$O!"$3$&$d$C$F!"!VNY$j$N%^%7%s$K%Q%1%C%H$rEO(B
-     $B$9!W$H$$$&G=NO$r(B $B;}$C$F$$$k%^%7%s$N$3$H$G$9!#$b$A$m$s!"NY$j$H$$$&$N$O!"(B
-     $BJ*M}E*$KNY$j(B $B$H$$$&$o$1$G$O$J$/!"!V%$%s%?!<%M%C%HE*$KNY$j!W$H$$$&0UL#$G(B
-     $B$9!#(B
+     普段何気なく利用しているインターネットは、実は非常に巧妙なしくみになっ
+     て います。実在のシステムに例えるなら、郵便システムのイメージに近いかも
+     しれません。
+     インターネットの中では、あらゆる情報は、パケットと呼ばれている、数十か
+     ら 数キロバイトのデータの塊の形で流れています。それぞれのパケットは、
+     電気的に線(電話線やイーサネットやATMやその他) で繋がっている隣りのマシ
+     ン(ホストということが多い)に渡されて いきます。それぞれのマシンは、隣り
+     のマシンにわたす、ということしか 行なわないわけです。郵便で言えば、小包
+     は、まずは送り主に最も近い 郵便局(この場合はマシン)に届けられ、その郵便
+     局から、宛先に近くて、しかも 最もその郵便局に近い別の郵便局に届けられ、
+     ということを繰りかえして、 小包を受けわたしていくわけです。それを繰りか
+     えせば、最後には、目的地 に到達する、というわけです。インターネットに繋
+     がっているマシン、という のは、こうやって、「隣りのマシンにパケットを渡
+     す」という能力を 持っているマシンのことです。もちろん、隣りというのは、
+     物理的に隣り というわけではなく、「インターネット的に隣り」という意味で
+     す。
 
-#$B?^(B6.1-1 <NOT YET>     $B%$%s%?!<%M%C%H$N35G0?^(B
+#図6.1-1 <NOT YET>     インターネットの概念図
 
-     $B<B:]$K!"%Q%1%C%H$,$I$N$h$&$K$7$FN.$l$F$$$/$N$+$rD4$Y$k$?$a$N!"(B
-     traceroute$B$H$$$&%W%m%0%i%`$,(B $B$"$j$^$9!#$=$l$r;H$C$F!"8+$F$_$^$9!#(B
-     traceroute$B$O<!$N$h$&$J(B $B=PNO$r$7$^$7$?!#5~Bg%^%$%3%s%/%i%V$NIt<<$N(BUNIX$B%^(B
-     $B%7%s(B(hasu$B$H$$$&L>A0$G$9(B) $B$+$i!"%"%a%j%+$N%M%C%H%9%1!<%W<R$N%^%7%s$K$?$I(B
-     $B$j$D$/$^$G$N%k!<%H$,(B $B<($5$l$F$$$^$9!#(B
+     実際に、パケットがどのようにして流れていくのかを調べるための、
+     tracerouteというプログラムが あります。それを使って、見てみます。
+     tracerouteは次のような 出力をしました。京大マイコンクラブの部室のUNIXマ
+     シン(hasuという名前です) から、アメリカのネットスケープ社のマシンにたど
+     りつくまでのルートが 示されています。
 
 -------------------------------------------------------------
 traceroute to www1.netscape.com (198.95.251.30), 30 hops max, 40 byte packets
@@ -60,103 +60,103 @@ traceroute to www1.netscape.com (198.95.251.30), 30 hops max, 40 byte packets
 15  www1.netscape.com (198.95.251.30)  2271.26 ms  
 -------------------------------------------------------------
 
-     $B<B$K!"(B15$BCJ3,Cf7Q$5$l$F$$$^$9$M!#5$7Z$K%M%C%H%9%1!<%W<R$N%[!<%`%Z!<%8$r(B
-     $B8+$k$3$H$,$G$-$k$N$b!"4V$K(B10$B0J>e$N%k!<%?$d%2!<%H%&%'%$%^%7%s$,;E;v$r(B $B$7(B
-     $B$F$$$k$+$i$3$=!"2DG=$K$J$k$3$H$J$N$G$9!#(B
+     実に、15段階中継されていますね。気軽にネットスケープ社のホームページを
+     見ることができるのも、間に10以上のルータやゲートウェイマシンが仕事を し
+     ているからこそ、可能になることなのです。
 
 
-6.2 $B%W%m%H%3%k(B
+6.2 プロトコル
 
-     $B$3$NJ9$-$J$l$J$$8@MU$N0UL#$O!"!V$d$j$H$j$N$H$-$N7h$a;v!W$G$9!#8=<B$N@$(B
-     $B3&$G$b!"(B $B%W%m%H%3%k$,B8:_$7$^$9!#Nc$($P!"EE<V$K>h$k$H$-$J$i!"(B
+     この聞きなれない言葉の意味は、「やりとりのときの決め事」です。現実の世
+     界でも、 プロトコルが存在します。例えば、電車に乗るときなら、
 
-       1. $B5!3#$K$*6b$rF~$l$F!"(B
-       2. $BL\E*CO$N%\%?%s$r2!$7!"(B
-       3. $B=P$F$-$?$*$D$j$H@ZId$r<u$1$H$j!"(B
-       4. $B$=$l$r2~;%5!$KDL$7$F!"(B
-       5. $B0J>e$K4V0c$$$,$J$1$l$P!">h$k$3$H$,$G$-$k!#(B
+       1. 機械にお金を入れて、
+       2. 目的地のボタンを押し、
+       3. 出てきたおつりと切符を受けとり、
+       4. それを改札機に通して、
+       5. 以上に間違いがなければ、乗ることができる。
 
-     $B$3$N$h$&$K$7$J$1$l$P!"EE<V$K$O>h$k$3$H$,$G$-$^$;$s!#(B1$B$+$i(B5$B$N=gHV$OJQ$((B
-     $B$k$3$H$,(B $B$G$-$J$$>e$K!"$=$l$>$l$O@5$7$/9T$o$J$1$l$P$J$j$^$;$s!#$3$N$h$&(B
-     $B$J!"DL?.$d(B $BA`:n$N<j=g$r7h$a$F$$$k$b$N$,!"%W%m%H%3%k$G$9!#(B
-     $B%$%s%?!<%M%C%H$N>e$r>pJs$,$&$^$/N.$l$F$$$/$N$b!"%k!<%H>e$K$"$k$=$l$>$l(B
-     $B$N%^%7%s$,(B $B?'!9$J%W%m%H%3%k$r<i$C$F$$$k$+$i$J$N$G$9!#(B
-     $B%$%s%?!<%M%C%H$N:G$b4pK\E*$J%W%m%H%3%k$O!"(BIP(Internet Protocol)$B$G$9!#$3(B
-     $B$N%W%m%H(B $B%3%k$O!"$"$kBg$-$5$^$G$N>pJs%Q%1%C%H$r!"$H$j$"$($:B>$N%[%9%H$^(B
-     $B$G%P%1%D%j%l!<<0$K(B $BEAC#$7$h$&$H$9$k%W%m%H%3%k$G$9!#3N<B$KFO$/$o$1$G$O$"(B
-     $B$j$^$;$s$7!"(B $B=gHV$,5U$K$J$k$3$H$b$"$jF@$^$9!#(B $B$3$l$OM9JX$HF1$8$G$9$M!#(B
-     $B$7$+$7!"$3$N%W%m%H%3%k$@$1$@$H!"IaDL$K(B $BJ8>O$rAw$C$F$b!"A08e$,F~$l$+$o$C(B
-     $B$?$j!"ESCf$,H4$1$?$j$7$F$7$^$&$N$G;H$$$b$N$K$J$j(B $B$^$;$s!#$=$3$G!"$3$N(BIP
-     $B%W%m%H%3%k$N>e$K!"!V$b$7$bH4$1$?$j$7$?$i$b$&0l2s$d$j$J$*$9!W(B $B$H$$$&5!G=(B
-     $B$r2C$($?%W%m%H%3%k$,!"(BTCP(Transmission Control Protocol)$B$G$9!#$3$N(B $B%W%m(B
-     $B%H%3%k$r;H$&$H!"Aw?.$7$?%P%$%HNs$O!"@5$7$$=gHV$G3N<B$KAw?.$5$l$^$9!#(B($B$=(B
-     $B$N$+$o$j(B $BB?>/B.EY$OMn$A$^$9!#(B)
-     $B$H$3$m$,!"$b$C$H!"MQES$KFC2=$7$?!";H$$$d$9$$%W%m%H%3%k$,M_$7$/$J$C$F$/(B
-     $B$k$b$N$G$9!#(B $BNc$($P1s3VCO$N%U%!%$%k$r<h$C$F$/$k$N$KJXMx$J(BFTP(File
-     Transfer Protocol)$B$d!"%3%s%T%e!<%?!<$r1s3VA`:n$9$k(BTelnet$B!"@$3&Cf$N%I%-(B
-     $B%e%a%s%H$r%j%s%/$5$;$k(B HTTP(Hyper Text Transfer Protocol)$B!"J#?t$N%^%7%s(B
-     $B$G%U%!%$%k$r6&M-$9$k$N$KJXMx$J(B NFS(Network File System)$B$J$I!"MQES$K$h$C(B
-     $B$F;H$$$o$1$i$l$F$$$^$9!#$3$l$i$N35G0$r(B $B?^$K$9$k$H<!$N$h$&$K$J$k$G$7$g$&(B
-     $B$+!#(B
+     このようにしなければ、電車には乗ることができません。1から5の順番は変え
+     ることが できない上に、それぞれは正しく行わなければなりません。このよう
+     な、通信や 操作の手順を決めているものが、プロトコルです。
+     インターネットの上を情報がうまく流れていくのも、ルート上にあるそれぞれ
+     のマシンが 色々なプロトコルを守っているからなのです。
+     インターネットの最も基本的なプロトコルは、IP(Internet Protocol)です。こ
+     のプロト コルは、ある大きさまでの情報パケットを、とりあえず他のホストま
+     でバケツリレー式に 伝達しようとするプロトコルです。確実に届くわけではあ
+     りませんし、 順番が逆になることもあり得ます。 これは郵便と同じですね。
+     しかし、このプロトコルだけだと、普通に 文章を送っても、前後が入れかわっ
+     たり、途中が抜けたりしてしまうので使いものになり ません。そこで、このIP
+     プロトコルの上に、「もしも抜けたりしたらもう一回やりなおす」 という機能
+     を加えたプロトコルが、TCP(Transmission Control Protocol)です。この プロ
+     トコルを使うと、送信したバイト列は、正しい順番で確実に送信されます。(そ
+     のかわり 多少速度は落ちます。)
+     ところが、もっと、用途に特化した、使いやすいプロトコルが欲しくなってく
+     るものです。 例えば遠隔地のファイルを取ってくるのに便利なFTP(File
+     Transfer Protocol)や、コンピューターを遠隔操作するTelnet、世界中のドキ
+     ュメントをリンクさせる HTTP(Hyper Text Transfer Protocol)、複数のマシン
+     でファイルを共有するのに便利な NFS(Network File System)など、用途によっ
+     て使いわけられています。これらの概念を 図にすると次のようになるでしょう
+     か。
 
-#$B?^(B6.2-1 <DRAFT>     $B%M%C%H%o!<%/$N%W%m%H%3%k3,AX(B
+#図6.2-1 <DRAFT>     ネットワークのプロトコル階層
 
 
-     $B9b%l%Y%k(B  FTP HTTP Telnet SMTP | NFS TFTP BOOTP
+     高レベル  FTP HTTP Telnet SMTP | NFS TFTP BOOTP
               ---------------------------------------
                        TCP          |        UDP
               ---------------------------------------
                                     IP
               ---------------------------------------
-     $BDc%l%Y%k(B           $BEE5$E*@\B3(B($B%O!<%I%&%'%"(B)
+     低レベル           電気的接続(ハードウェア)
 
-     $B$=$l$>$l(BP$B$G=*$o$C$F$$$k$b$N$O!"(B"Protocol"$B$,:G8e$K$D$$$F$$$k$?$a$G$9!#>e(B
-     $B$K$"$k$b$N(B $B$[$I!"L\E*$KFC2=$7$F$$$F!"2<$K$"$k$b$N$[$I!"0lHLE*$J5!G=$rDs(B
-     $B6!$7$F$$$^$9!#(B $B>e$K$"$k%W%m%H%3%k$O!"$=$l$h$j2<$N%W%m%H%3%k$,$J$$$H!"5!(B
-     $BG=$7$J$$$3$H$,=EMW$G$9!#(B
-
-
-6.3 $B%=%1%C%H(B
-
-     $B%$%s%?!<%M%C%H$K7R$,$C$F$$$k%^%7%s$K$O!"$=$l$>$l!"(B 32768$B8D$E$D$N!"F~=P(B
-     $BNO8}$,$"$j$^$9!#$=$l$i$OO@M}E*$K$=$&7h$a$F$"$k(B $B$@$1$G!"J*M}E*$KB8:_$7$F(B
-     $B$$$k$o$1$G$O$"$j$^$;$s!#(B($B%^%7%s$K(B32768$B8D$b(B $B%3%M%/%?!<$r$D$1$k>l=j$O$"$j(B
-     $B$^$;$s$h$M!#(B) $B%$%s%?!<%M%C%H$K7R$0$?$a(B $B$K$O!">o$K$=$l$i$N$&$A$N$$$/$D$+(B
-     $B$rF/$+$;$F$*$/I,MW$,$"$j$^$9!#(B $B$3$NF~=PNO8}$O!"%]!<%H$H8F$P$l$F$$$^$9!#(B
-     $B$3$N%]!<%H$rDL$C$F!"%$%s%?!<%M%C%H(B $B$+$i$N>pJs$,N.$l$3$s$G$/$k$o$1$G$9(B
-     ($BF~NO(B)$B!#$b$A$m$s!"$"$J$?$,(BNetscape$B$J$I$r(B $B;H$C$F!"(BURL$B$rF~NO$9$l$P!"$=$N(B
-     URL$B$,%]!<%H$rDL$C$FAw?.$5$l$F$$$-$^$9(B($B=PNO(B)$B!#(B $B%a%$%k$d(Btelnet$B!"(BWWW$B$N%5!<(B
-     $B%S%9(B(http)$B!"%U%!%$%kE>Aw(B(ftp)$B$J$I!"%$%s%?!<%M%C%H(B $B$N%5!<%S%9$r;H$&;~$K(B
-     $B$O!"I,$:>pJs$O%]!<%H$rDL$j$^$9!#(B 32768$B8D$NF~=PNO8}$K$O!"$=$l$>$lHV9f$,(B
-     $B?6$i$l$F$$$^$9!#$=$7$F!"(B $B$I$N%5!<%S%9$,$I$N(B $B%]!<%H$r;H$&$+$O!"$"$i$+$8(B
-     $B$a7h$a$i$l$F$$$F!"Nc$($P%a%$%k$J$i(B25$BHV$N%]!<%H!"(B telnet$B$J$i(B23$BHV!"(B ftp$B$J(B
-     $B$i(B21$BHV!"(Bhttp$B$J$i(B80$BHV!"$H$$$&$h$&$K$J$C$F$$$^$9!#(B $B@$3&Cf$G$3$l$,E}0l$5$l(B
-     $B$F$$$k$+$i$3$=!"AG@2$7$$%M%C%H%o!<%/4D6-$,$G$-$F$$$k(B $B$o$1$G$9$M!#%[%9%H(B
-     $BL>$H%]!<%HHV9f$,$o$+$l$P!"@$3&Cf$N$I$N%^%7%s$N4V$G$b(B $B<+M3$K!"9%$-$J$d$j(B
-     $B$+$?$G(B($B$d$j$+$?$H$$$&$N$O!"%W%m%H%3%k$N$3$H!#(Btelnet,ftp,http,...) $BDL?.(B
-     $B$G$-$k$H$$$&$3$H$G$9!#(B
-
-#$B?^(B6.3-1 <NOT YET>     32768$B8D$N%]!<%H(B
-
-     $B$5$F!"<B:]$K%M%C%H%o!<%/$N%2!<%`$r:n$k$K$O!"%$%s%?!<%M%C%H>e$G>pJs$r(B $B$d(B
-     $B$j$H$j$9$kI,MW$,$"$k$o$1$G$9$+$i!"2?$H$+$7$F%=%1%C%H$r;H$&I,MW$,$"$j$^(B
-     $B$9!#(B Java$B$G$O!"@h$[$I$N%M%C%H%o!<%/35G0?^$G$$$&$H!"(BTCP$B$d(BUDP$B$N%l%Y%k$N%W(B
-     $B%m%H%3%k(B $B$rD>@\07$&%/%i%972$H!"$=$N>e$N(BHTTP$B$rD>@\07$&%/%i%972$,I8=`$GMQ(B
-     $B0U$5$l$F$$$^$9!#(B TCP$B$d(BUDP$B$r6n;H$9$l$P!"$=$N>e$N%W%m%H%3%k$G$"$k(BHTTP$B$r%7(B
-     $B%_%e%l!<%H$9$k$3$H$O(B $B$G$-$^$9$,!"$;$C$+$/MQ0U$5$l$F$$$k$N$G$9$+$i!"(BHTTP
-     $B$N%/%i%972$r3hMQ$7$^$7$g$&!#(B (HTTP$B$,FCJL07$$$5$l$F$$$k$N$O!"$d$O$j!"%"(B
-     $B%W%l%C%H$,%Z!<%8>e$KCV$+$l$k$3$H$r(B $BG0F,$KCV$$$F$$$k$+$i$G$9!#(B)$B<B:]!"(B
-     HTTP$B$r07$&%/%i%9$O!"L\E*$KFC2=$5$l$F$$$k$N$G!"(B $B;H$$$d$9$/$J$C$F$$$^$9!#(B
-     $B$H$$$&$o$1$G!"K\>O$G$O!"$^$:(BHTTP$B$N%/%i%972$r;H$C$F!"%M%C%H%o!<%/%2!<%`(B
-     $B$N2DG=@-(B $B$rDI5Z$7!"$=$N<!$K!"$=$l$@$1$G$O$G$-$J$$(B($B$G$-$K$/$$(B)$B$3$H$r!"(B
-     TCP/UDP$B$N%/%i%9(B $B72$r;H$C$F(B $B<B8=$9$k$3$H$r;n$_$^$9!#(B
+     それぞれPで終わっているものは、"Protocol"が最後についているためです。上
+     にあるもの ほど、目的に特化していて、下にあるものほど、一般的な機能を提
+     供しています。 上にあるプロトコルは、それより下のプロトコルがないと、機
+     能しないことが重要です。
 
 
-6.4. HTTP$B$r;H$C$F>pJs$r<h$C$F$/$k(B
+6.3 ソケット
 
-     $B$^$:$O!"(BHTTP$B$N%/%i%972$K47$l$k$?$a$K!"4JC1$J%5%s%W%k%W%m%0%i%`$r:n@.$7(B
-     $B$F(B $B$_$k$3$H$K$7$^$9!#$3$N%W%m%0%i%`$O!"(BURL$B$r;XDj$7$F!"E,Ev$J(BHTTP$B%5!<%P(B
-     $B!<$+$i(B $B>pJs$r<h$C$F$-$^$9!#(B
+     インターネットに繋がっているマシンには、それぞれ、 32768個づつの、入出
+     力口があります。それらは論理的にそう決めてある だけで、物理的に存在して
+     いるわけではありません。(マシンに32768個も コネクターをつける場所はあり
+     ませんよね。) インターネットに繋ぐため には、常にそれらのうちのいくつか
+     を働かせておく必要があります。 この入出力口は、ポートと呼ばれています。
+     このポートを通って、インターネット からの情報が流れこんでくるわけです
+     (入力)。もちろん、あなたがNetscapeなどを 使って、URLを入力すれば、その
+     URLがポートを通って送信されていきます(出力)。 メイルやtelnet、WWWのサー
+     ビス(http)、ファイル転送(ftp)など、インターネット のサービスを使う時に
+     は、必ず情報はポートを通ります。 32768個の入出力口には、それぞれ番号が
+     振られています。そして、 どのサービスがどの ポートを使うかは、あらかじ
+     め決められていて、例えばメイルなら25番のポート、 telnetなら23番、 ftpな
+     ら21番、httpなら80番、というようになっています。 世界中でこれが統一され
+     ているからこそ、素晴しいネットワーク環境ができている わけですね。ホスト
+     名とポート番号がわかれば、世界中のどのマシンの間でも 自由に、好きなやり
+     かたで(やりかたというのは、プロトコルのこと。telnet,ftp,http,...) 通信
+     できるということです。
+
+#図6.3-1 <NOT YET>     32768個のポート
+
+     さて、実際にネットワークのゲームを作るには、インターネット上で情報を や
+     りとりする必要があるわけですから、何とかしてソケットを使う必要がありま
+     す。 Javaでは、先ほどのネットワーク概念図でいうと、TCPやUDPのレベルのプ
+     ロトコル を直接扱うクラス群と、その上のHTTPを直接扱うクラス群が標準で用
+     意されています。 TCPやUDPを駆使すれば、その上のプロトコルであるHTTPをシ
+     ミュレートすることは できますが、せっかく用意されているのですから、HTTP
+     のクラス群を活用しましょう。 (HTTPが特別扱いされているのは、やはり、ア
+     プレットがページ上に置かれることを 念頭に置いているからです。)実際、
+     HTTPを扱うクラスは、目的に特化されているので、 使いやすくなっています。
+     というわけで、本章では、まずHTTPのクラス群を使って、ネットワークゲーム
+     の可能性 を追及し、その次に、それだけではできない(できにくい)ことを、
+     TCP/UDPのクラス 群を使って 実現することを試みます。
+
+
+6.4. HTTPを使って情報を取ってくる
+
+     まずは、HTTPのクラス群に慣れるために、簡単なサンプルプログラムを作成し
+     て みることにします。このプログラムは、URLを指定して、適当なHTTPサーバ
+     ーから 情報を取ってきます。
 
 
 File name: http.java
@@ -221,50 +221,50 @@ File name: test.html
 <applet code=http.class width=400 height=200></applet>
 --------------------------------------------------------
 
-#$B?^(B6.4-1 <DONE>     $BF0:n7k2L(B(http.java)
+#図6.4-1 <DONE>     動作結果(http.java)
 
-     $B%F%-%9%HF~NO%U%#!<%k%I$K(BURL$B$rF~NO$7$F%\%?%s$r2!$9$H!"$=$N%5%$%H$K@\B3$7(B
-     $B$F(B $B%I%-%e%a%s%H$r<h$j$@$7$^$9!#(B
-     $B<h$C$F$-$?%P%$%HNs$O!"$=$N$^$^I8=`=PNO$KEG$-$@$7$^$9!#F|K\8l$N%Z!<%8$N(B
-     $B>l9g$O!"(B $B4D6-$K$h$C$F$OJ8;z2=$1$9$k2DG=@-$b$"$j$^$9!#(B
-     $B$3$N%W%m%0%i%`$N%]%$%s%H$O!"%/%i%9(BURL$B$H!"(BURLConnection$B$r(B $B;H$&$H$3$m$G(B
-     $B$9!#(BURL(Uniform Reference Locator)$B$H$$$&8@MU$O$O$3$l$^$G$K$b2?2s$+(B $B=P$F(B
-     $B$-$F$$$^$9$,!"$3$l$O!"<g$K(BWWW(World Wide Web)$B>e$G!";HMQ$9$k%W%m%H%3%k!"(B
-     $B%[%9%H!"(B $B$=$N%5!<%S%9>e$K$*$1$k%U%!%$%k$N%"%I%l%9$^$G$r4^$`I=8=$N$3$H$G(B
-     $B$9!#E57?E*$K$O(B $B<!$N$h$&$J0lO"$NJ8;zNs$G$9!#(B
+     テキスト入力フィールドにURLを入力してボタンを押すと、そのサイトに接続し
+     て ドキュメントを取りだします。
+     取ってきたバイト列は、そのまま標準出力に吐きだします。日本語のページの
+     場合は、 環境によっては文字化けする可能性もあります。
+     このプログラムのポイントは、クラスURLと、URLConnectionを 使うところで
+     す。URL(Uniform Reference Locator)という言葉ははこれまでにも何回か 出て
+     きていますが、これは、主にWWW(World Wide Web)上で、使用するプロトコル、
+     ホスト、 そのサービス上におけるファイルのアドレスまでを含む表現のことで
+     す。典型的には 次のような一連の文字列です。
 
      http://www.kuis.kyoto-u.ac.jp:80/~kmc/index.html
 
-     $B$3$NJ8;zNs$N(Bhttp:$B$NItJ,$,;HMQ$9$k%W%m%H%3%k$rI=$7$^$9!#(B
-     www.kuis.kyoto-u.ac.jp $B$NItJ,$O!"%"%/%;%9$7$?$$%^%7%s$N(BIP$B%"%I%l%9$G$9!#(B
-     $B$b$A$m$s!"(B 130.54.23.35$B$N$h$&$J(B 10$B?J?tI=5-$r;H$&$3$H$b2DG=$G$9!#(B:80$B$NIt(B
-     $BJ,$O!"%"%/%;%9@h$N%^%7%s$N%]!<%H(B $BHV9f$r;XDj$7$^$9!#(B($B%]!<%H$N35G0$O!"(B
-     socket$B$N@a$G@bL@$7$^$7$?$M!#(B) HTTP$B$N>l9g$O(B80$BHV!"(B ftp$B$N>l9g$O(B21$BHV$,!"DL(B
-     $B>o;H$&%]!<%H(B(Well known port)$B$H$7$FCN$i$l$F$$$^$9$N$G!"(B $B>JN,$,2DG=$G(B
-     $B$9!#(B/~kmc/index.html$B$NItJ,$O!"(BHTTP$B$N%5!<%P!<$,(B $B$3$NJ8;zNs$r2r<a$7$F!";X(B
-     $BDj$5$l$?(B $B0LCV$K$"$k%U%!%$%k$r<h$j$@$9$?$a$K;H$$$^$9!#$b$7$b$"$J$?$,!"(B
-     telnet$B%W%m%0%i%`(B $B$r;H$&$3$H$,$G$-$k4D6-$K$"$C$F!"8=:_%$%s%?!<%M%C%H$K@\(B
-     $BB3$5$l$F$$$k$J$i!"(B $B<!$N%3%^%s%I$r;n$7$F$_$F$/$@$5$$!#(B
+     この文字列のhttp:の部分が使用するプロトコルを表します。
+     www.kuis.kyoto-u.ac.jp の部分は、アクセスしたいマシンのIPアドレスです。
+     もちろん、 130.54.23.35のような 10進数表記を使うことも可能です。:80の部
+     分は、アクセス先のマシンのポート 番号を指定します。(ポートの概念は、
+     socketの節で説明しましたね。) HTTPの場合は80番、 ftpの場合は21番が、通
+     常使うポート(Well known port)として知られていますので、 省略が可能で
+     す。/~kmc/index.htmlの部分は、HTTPのサーバーが この文字列を解釈して、指
+     定された 位置にあるファイルを取りだすために使います。もしもあなたが、
+     telnetプログラム を使うことができる環境にあって、現在インターネットに接
+     続されているなら、 次のコマンドを試してみてください。
 
      telnet www.kuis.kyoto-u.ac.jp 80
 
-     $B$3$N$h$&$K(B80$B$H$$$&%]!<%HHV9f$r;XDj$7$F(Btelnet$B$9$k$H!"(B HTTP$B$H!V<j$G!WOC$r(B
-     $B$9$k$3$H$,$G$-$^$9!#(BHTTP$B$O!"(B
+     このように80というポート番号を指定してtelnetすると、 HTTPと「手で」話を
+     することができます。HTTPは、
 
-       1. $B%/%i%$%"%s%H$+$i%3%^%s%INs$rAw?.$9$k!#(B
-       2. $BAw?.$K6u9T$r3NG'$9$k$H!"(B
-       3. $B%5!<%P!<$+$i!"MW5a$5$l$?>pJs$rAw?.$9$k!#(B
+       1. クライアントからコマンド列を送信する。
+       2. 送信に空行を確認すると、
+       3. サーバーから、要求された情報を送信する。
 
-     $B$H$$$&%W%m%H%3%k$K$J$C$F$$$^$9(B($B$9$4$/Bg;(GD$JI=8=$G$9!*(B) $B$N$G!"(Btelnet
-     $B%3%^%s%I$+$i<!$N$h$&$K(B $BBG$F$P!"2?$+H?1~$,JV$C$F$/$k$O$:$G$9!#<!$NNc$O!"(B
-     $B%3%^%s%I%i%$%s$NNc$G$9!#(B
+     というプロトコルになっています(すごく大雑把な表現です！) ので、telnet
+     コマンドから次のように 打てば、何か反応が返ってくるはずです。次の例は、
+     コマンドラインの例です。
 
 ------------------------------------------------------
 ringo@hasu:/home/ringo % telnet www.kuis.kyoto-u.ac.jp 80
 Trying 130.54.23.35...
 Connected to polyester.
 Escape character is '^]'.
-GET /~kmc/hoge HTTP/1.0           <--$B$3$N(B1$B9T$@$1F~NO$9$l$P$h$$!#(B
+GET /~kmc/hoge HTTP/1.0           <--この1行だけ入力すればよい。
 
 HTTP/1.0 404 Not found
 Date: Mon, 21 Oct 1996 04:21:59 GMT
@@ -279,132 +279,132 @@ Connection closed by foreign host.
 ringo@hasu:/home/ringo %
 ------------------------------------------------------
 
-     hoge$B$H$$$&%U%!%$%k$,$J$+$C$?$?$a!"%5!<%P!<$O%(%i!<%a%C%;!<%8$r(B $BJV$7$F$-(B
-     $B$F$$$^$9!#%5!<%P!<$O!"(BGET$B$H$$$&%a%=%C%I$N8e$KB3$/(B $BJ8;zNs$r%U%!%$%kL>$H(B
-     $BG'<1$9$k$o$1$G$9!#(BHTTP/1.0$B$H$$$&$N$O!"(B HTTP$B$N%P!<%8%g%s;XDj$G$9!#%5!<%P(B
-     $B!<$K$O!"$3$l$i0J30$N;XDj$b$?$/$5$s$G$-$^$9$,!":GDc(B $B$3$l$@$1$"$l$P!"%5!<(B
-     $B%P!<$+$i%U%!%$%k$r<h$C$F$/$k$3$H$,$G$-$^$9!#(B
-     $B%5%s%W%k%W%m%0%i%`$NCf$G;H$C$F$$$k!"(BURL$B%/%i%9$d(B URLConnection $B%/%i%9(B
-     $B$O!"FbIt$G$3$l$i$NJ8;zNs$rAw?.(B/$B<u?.$9$k$H$$$&=hM}$r$7$F$$$k$o$1$G$9!#(B
-     ($BCm0U(B)
-     appletviewer$B$N@_Dj$KCm0U$,I,MW$G$9!#I8=`$N@_Dj$G$O!"%M%C%H%o!<%/(B $B%"%/%;(B
-     $B%9@)8B$,$"$C$F!"%"%W%l%C%H$r%m!<%I$7$F$-$?%5%$%H0J30$H$ODL?.$G$-$^$;$s(B
-     $B$N$G!"(B Applet$B$H=q$+$l$F$$$k%a%K%e!<$+$i!"(Bproperties$B$rA*$s$G!"(B network
-     access$B$N9`L\$r!"(BUnrestricted$B$KA*Br$7$^$9!#(B $B$5$i$K!"(Bproxy$B%5!<%P!<$r;H$C(B
-     $B$F$$$k>l9g$O!"$=$N%"%I%l%9$bF1$8%&%$%s%I%&$G@_Dj$9$k(B $BI,MW$,$"$j$^$9!#(B
-     (Netscape 3.x$B$G$O!"$3$N$h$&$J@_Dj$,$G$-$J$$$N$G!"$3$N%"%W%l%C%H(B $B$OF0:n(B
-     $B$7$^$;$s!#(B)$B$5$i$K!"(BWindows95$BMQ$N(BJDK1.1beta2$B$K4^$^$l$k(Bappletviewer$B$O!"(B
-	 $B$3$N@_Dj$r$7$h$&$H$9$k$HNc30$rH/@8$7$F;_$^$C$F$7$^$$$^$9!#$3$l$O%P%0$N(B
-	 $B$h$&$G$9!#?7$7$$%P!<%8%g%s$G$O!"D>$C$F$$$k$3$H$r4|BT$7$^$9!#(B
+     hogeというファイルがなかったため、サーバーはエラーメッセージを 返してき
+     ています。サーバーは、GETというメソッドの後に続く 文字列をファイル名と
+     認識するわけです。HTTP/1.0というのは、 HTTPのバージョン指定です。サーバ
+     ーには、これら以外の指定もたくさんできますが、最低 これだけあれば、サー
+     バーからファイルを取ってくることができます。
+     サンプルプログラムの中で使っている、URLクラスや URLConnection クラス
+     は、内部でこれらの文字列を送信/受信するという処理をしているわけです。
+     (注意)
+     appletviewerの設定に注意が必要です。標準の設定では、ネットワーク アクセ
+     ス制限があって、アプレットをロードしてきたサイト以外とは通信できません
+     ので、 Appletと書かれているメニューから、propertiesを選んで、 network
+     accessの項目を、Unrestrictedに選択します。 さらに、proxyサーバーを使っ
+     ている場合は、そのアドレスも同じウインドウで設定する 必要があります。
+     (Netscape 3.xでは、このような設定ができないので、このアプレット は動作
+     しません。)さらに、Windows95用のJDK1.1beta2に含まれるappletviewerは、
+	 この設定をしようとすると例外を発生して止まってしまいます。これはバグの
+	 ようです。新しいバージョンでは、直っていることを期待します。
 
-#$B?^(B6.4-2 <DONE> appletviewer$B$N@_Dj%&%$%s%I%&(B
+#図6.4-2 <DONE> appletviewerの設定ウインドウ
     
-6.5 HTTP$B$r;H$C$F>pJs$rAw$j$3$`(B
+6.5 HTTPを使って情報を送りこむ
 
-     HTTP$B$O!"$?$@>pJs$r<h$C$F$/$k$@$1$G$J$/!">pJs$r%/%i%$%"%s%H$+$i%5!<%P!<(B
-     $B$K(B $BAw$j$3$`$d$j$+$?$b5,Dj$7$F$$$^$9!#:G$b9-$/;H$o$l$F$$$k$N$O!"(BCGI
-     (Common Gateway Interface)$B$r;H$&$b$N$G$9!#(BCGI$B$O!"(BCGI$B%W%m%0%i%`$r(B HTTP$B$N(B
-     $B%5!<%P$,5/F0$7!"$=$N%W%m%0%i%`$X$NF~NO$H=PNO$r%V%i%&%6$K$D$J$0(B $B$7$/$_$G(B
-     $B$9!#(BCGI$B$r3hMQ$9$k$3$H$K$h$j!"(BWWW$B>e$G$h$/8+$i$l$k$h$&$J!"%U%)!<%`$r;H$C$?(B
-	 $B%Z!<%8$d!">o$KJQ2=$9$k%Z!<%8$r:n$k$3$H$,2DG=$K$J$j$^$7$?!#(B($B>o$KJQ2=$9$k(B
-     $B$H$$$&E@$G$O(BSSI(Server Side Include)$B$r;W$$$D$/J}$b$$$k$+$b$7$l$^$;$s!#(B
-	 $B$7$+$7!"(BSSI$B$O(BCGI$B$h$j$b%$%s%?%i%/%F%#%V@-$,BgJ,Dc$$$N$G!"$3$3$G$O@bL@$r(B
-	 $B>JN,$7$^$9!#(B)
+     HTTPは、ただ情報を取ってくるだけでなく、情報をクライアントからサーバー
+     に 送りこむやりかたも規定しています。最も広く使われているのは、CGI
+     (Common Gateway Interface)を使うものです。CGIは、CGIプログラムを HTTPの
+     サーバが起動し、そのプログラムへの入力と出力をブラウザにつなぐ しくみで
+     す。CGIを活用することにより、WWW上でよく見られるような、フォームを使った
+	 ページや、常に変化するページを作ることが可能になりました。(常に変化する
+     という点ではSSI(Server Side Include)を思いつく方もいるかもしれません。
+	 しかし、SSIはCGIよりもインタラクティブ性が大分低いので、ここでは説明を
+	 省略します。)
 
-#$B?^(B6.5-1 <DONE>	 $B%U%)!<%`$,$"$k%Z!<%8(B
-
-
-#$B?^(B6.5-2 <NOT YET>     CGI$B$H(BHTTP$B%5!<%P$H%V%i%&%6(B
-
-     CGI$B$r;H$($P!"%j%"%k%?%$%`$J$b$N(B $B$OFq$7$$$G$9$,!"%+!<%I%2!<%`$d%\!<%I%2(B
-     $B!<%`$N$h$&$J$b$N$J$i!"==J,$K:n$k$3$H(B $B$,$G$-$^$9!#<B:]$3$N<o$N%2!<%`$OB?(B
-     $B$/$N%5%$%H$G;n$5$l$F$$$^$9!#(BSCEI$B$N%Z!<%8$O(B $B%A%'%C%/$7$F$*$/$Y$-$G$9(B
-     (http://www.scei.co.jp/love/lm/) $B$3$N%5%$%H$O!"62$i$/(BC$B8@8l$b$7$/$O(BPerl
-     $B8@8l$G=q$+$l$F$$$k(BCGI$B$r;H$C$F$$$^$9!#(B CGI$B$r;H$C$F$$$k$+$I$&$+$O!"(B
-     Web$B%Z!<%8$KF~NO%9%Z!<%9$,MQ0U$5$l$F$$$k$+$I$&$+(B $B$G$o$+$j$^$9!#(B
-	 CGI$B$O!"$I$s$I$sKD$i$s$G$$$/%V%i%&%6$N5!G=$rlEM_$K@8$+$;$k<jCJ$G$9!#(B
-	 Java$B%"%W%l%C%H$NOH$r1[$($F!"(BShockwave$B$d%U%l!<%`!"(BQuicktime$B!"%A%c%C%H(B
-	 $B$J$I$H$$$C$?B>$N5;=Q$HM;9g$5$;$k$3$H$K$h$C$F!"I}$N9-$$I=8=$,2DG=$K(B
-	 $B$J$k$N$G$9!#(B
-
-     CGI$B$r;H$&>l9g$N>pJs$NN.$l$O!"<!$N$h$&$K$J$C$F$$$^$9!#(B
-
-       1. $BF~NO%9%Z!<%9(B($B%U%)!<%`(B)$B$N$"$k%Z!<%8$r%5!<%P!<$KCV$/!#(B
-       2. $B$=$N%Z!<%8$K$O!"$"$k(BCGI$B%W%m%0%i%`$K$h$C$F=hM}$5$l$k$H5-=R$5$l$F$$(B
-          $B$k!#(B
-       3. $B%f!<%6!<$,$=$N%Z!<%8>e$GF~NO$7$F!"Aw?.%\%?%s$r2!$9!#(B
-       4. $B%V%i%&%6!<$,F~NO$NFbMF$r2r<a$7$F!"%5!<%P!<$KAw$k!#(B
-       5. $B$=$l$r<u?.$7$?%5!<%P!<$O!"$=$NFbMF$r!"$"$J$?$N(BCGI$B%W%m%0%i%`$KN.$7(B
-          $B$3$`!#(B
-       6. $B$"$J$?$N%W%m%0%i%`$G$=$NFbMF$r=hM}$9$k!#(B
-       7. $B=hM}$7$?7k2L$r%5!<%P!<$KJV$9!#(B
-       8. $B%5!<%P!<$O!"$=$l$r%V%i%&%6!<$KAw$j$+$($9!#(B($B$=$N%Z!<%8$K!"(B $B$^$?F~NO(B
-          $B%9%Z!<%9$,$"$l$P!"<ALd$dEz$($K1~$8$?$d$j$H$j$rB3$1$k$,$G$-$^$9!#(B)
+#図6.5-1 <DONE>	 フォームがあるページ
 
 
-     Java$B$7$+CN$i$J$$$"$J$?$,(BCGI$B$r;H$&$K$O0l$DLdBjE@$,$"$j$^$9!#(B CGI$B$O0l<o$N(B
-     $B%W%m%0%i%`$J$N$G$9$,!"$=$N%W%m%0%i%`$O!"(B $B>o$K(BWWW$B$N%5!<%S%9$r$9$k%5!<%P(B
-     $B!<$N%^%7%s$KF~$l$F$*$+$J$1$l$P$J$j$^$;$s!#(B $B8D?M$G7@Ls$7$F$$$kB?$/$N%W%m(B
-     $B%P%$%@$G$O!"(BCGI$B$rCV$$$F$*$/$3$H$,$G$-$k$h$&$K$J$C$F(B $B$$$^$9(B(ftp$BEy$G!"(BCGI
-     $B%W%m%0%i%`$r<+J,$N%G%#%l%/%H%j$KE>Aw$9$k$3$H$K$h$C$F9T$J$$$^$9!#(B) $B$,!"(B
-     $B$=$N%^%7%s$G(BJava$B$,F0$/$H$O8B$i$J$$$N$G$9!#(BC$B8@8l$N%U%!%$%k$r;}$C$F$$$C$F(B
-     $B$=$N%^%7%s>e$G%3%s%Q%$%k$9$k$+!"(BPerl$B$J$I$N!"$I$N(BUNIX$B%^%7%s$G$bF0$/$h$&(B
-     $B$J%W%m%0%i%`(B $B8@8l$G:n$k$+$7$J$1$l$P$J$j$^$;$s!#(BJava$B$G$N(BCGI$B$b!"M-8z$J$N(B
-     $B$G$9$,!"$=$N%^%7%s$K(B java$B$,BP1~$7$F$$$k$H$O8B$i$J$$$N$G$9!#(B
-     $B0l$D$N2r7h:v$O!"(Bj2c$B$H$$$&%W%m%0%i%`$r;H$C$F!"(BJava$B$N%W%m%0%i%`$r(B C$B8@8l$N(B
-     $B%W%m%0%i%`$KJQ49$7!"$=$N%W%m%0%i%`$r%5!<%P!<>e$G%3%s%Q%$%k$9$k$3$H$G(B
-     $B$9!#(B $B$=$&$9$l$P!"(BJava$B$NCN<1$@$1$G(BCGI$B$r:n@.$9$k$3$H$,$G$-$^$9!#(B(C$B8@8l$O(B
-     Java$B$H;w$F$$$^$9(B $B$+$i!"$3$N:](BC$B8@8l$b21$($F$7$^$&$N$b$$$$$+$b$7$l$^$;$s(B
-     $B$,!#(B)
-     $B%U%)!<%`$P$+$j$G$J$/!"%"%W%l%C%H$N%W%m%0%i%`$+$i(BCGI$B$r;H$&$3$H$b$G$-$^(B
-     $B$9!#(B $B<!$N@a0J9_$G$O!"%"%W%l%C%H%2!<%`$+$i(BCGI$B$r;H$($k$h$&$K$J$k$3$H$r(B
-     $BL\I8$K$7$F!"4pACCN<1$+$i@bL@$7$F$$$-$^$9!#(B
+#図6.5-2 <NOT YET>     CGIとHTTPサーバとブラウザ
+
+     CGIを使えば、リアルタイムなもの は難しいですが、カードゲームやボードゲ
+     ームのようなものなら、十分に作ること ができます。実際この種のゲームは多
+     くのサイトで試されています。SCEIのページは チェックしておくべきです
+     (http://www.scei.co.jp/love/lm/) このサイトは、恐らくC言語もしくはPerl
+     言語で書かれているCGIを使っています。 CGIを使っているかどうかは、
+     Webページに入力スペースが用意されているかどうか でわかります。
+	 CGIは、どんどん膨らんでいくブラウザの機能を貪欲に生かせる手段です。
+	 Javaアプレットの枠を越えて、Shockwaveやフレーム、Quicktime、チャット
+	 などといった他の技術と融合させることによって、幅の広い表現が可能に
+	 なるのです。
+
+     CGIを使う場合の情報の流れは、次のようになっています。
+
+       1. 入力スペース(フォーム)のあるページをサーバーに置く。
+       2. そのページには、あるCGIプログラムによって処理されると記述されてい
+          る。
+       3. ユーザーがそのページ上で入力して、送信ボタンを押す。
+       4. ブラウザーが入力の内容を解釈して、サーバーに送る。
+       5. それを受信したサーバーは、その内容を、あなたのCGIプログラムに流し
+          こむ。
+       6. あなたのプログラムでその内容を処理する。
+       7. 処理した結果をサーバーに返す。
+       8. サーバーは、それをブラウザーに送りかえす。(そのページに、 また入力
+          スペースがあれば、質問や答えに応じたやりとりを続けるができます。)
 
 
-6.6 CGI$B$G%2!<%`$r:n$k4pAC5;=Q(B
+     Javaしか知らないあなたがCGIを使うには一つ問題点があります。 CGIは一種の
+     プログラムなのですが、そのプログラムは、 常にWWWのサービスをするサーバ
+     ーのマシンに入れておかなければなりません。 個人で契約している多くのプロ
+     バイダでは、CGIを置いておくことができるようになって います(ftp等で、CGI
+     プログラムを自分のディレクトリに転送することによって行ないます。) が、
+     そのマシンでJavaが動くとは限らないのです。C言語のファイルを持っていって
+     そのマシン上でコンパイルするか、Perlなどの、どのUNIXマシンでも動くよう
+     なプログラム 言語で作るかしなければなりません。JavaでのCGIも、有効なの
+     ですが、そのマシンに javaが対応しているとは限らないのです。
+     一つの解決策は、j2cというプログラムを使って、Javaのプログラムを C言語の
+     プログラムに変換し、そのプログラムをサーバー上でコンパイルすることで
+     す。 そうすれば、Javaの知識だけでCGIを作成することができます。(C言語は
+     Javaと似ています から、この際C言語も憶えてしまうのもいいかもしれません
+     が。)
+     フォームばかりでなく、アプレットのプログラムからCGIを使うこともできま
+     す。 次の節以降では、アプレットゲームからCGIを使えるようになることを
+     目標にして、基礎知識から説明していきます。
 
-     $B<B:]$K(BCGI$B$GK\3JE*$J%2!<%`$r:n$k$N$O%Z!<%8?t$,$$$/$i$"$C$F$bB-$j$^$;$s(B
-     $B$+$i!"(B $B$=$N4pAC$K$J$k5;=Q$r>R2p$7$^$9!#$3$3$G$O!"%"%k%4%j%:%`$KCmL\(B
-     $B$7$F$/$@$5$$!#$-$C$H$3$3$G>R2p$9$k%"%k%4%j%:%`$O!"(B Java
-     $B0J30$N8@8l$G:n$k;~$K$bLr$KN)$A$^$9!#(B
 
-     ($BCm0U(B) CGI$B%W%m%0%i%`$rIQHK$K8F$S$@$9$3$H$O!"%5!<%P!<$KBg$-$JIiC4$r$+$1(B
-     $B$^$9!#(B $B%5!<%P!<$N4IM}<T$K$H$C$F$O!"(BCGI$B$G$7$+$b(BJava($B=E$$(B)$B$N(B $B%W%m%0%i%`$r(B
-     1$BIC$K$$$/$D$b5/F0$5$l$k$3$H$O(B $BITL{2w$J$3$H$G$9!#(BPentium$B$rEc:\$7$?$+$J$j(B
-     $B9bB.$J%5!<%P!<$G$5$(!"(B 1$BIC$K(B5$B2s0J>e(BCGI$B%W%m%0%i%`$r5/F0$9$k$H!"%^%7%s%Q(B
-     $B%o!<$,B-$j$J$/(B $B$J$C$F$/$k$[$I$G$9!#(B
-     $B%2!<%`%G%6%$%s$K$"$?$C$F$O!"$G$-$k$@$1!"?tIC$K0l2sDxEY$NDL?.$G(B $B:Q$`$h$&(B
-     $B$JFbMF$K$9$k$3$H$r?43]$1$F$/$@$5$$!#6qBNE*$K$O!"(B $B%+!<%I%2!<%`$d>-4}$H(B
-     $B$+!"%7%_%e%l!<%7%g%s%2!<%`!"%F!<%V%k%H!<%/(B $B%9%?%$%k$N(BRPG$B$J$I$K$J$k$G$7(B
-     $B$g$&$+!#(B
+6.6 CGIでゲームを作る基礎技術
 
-     $BNc$H$7$F<($9(BCGI$B%W%m%0%i%`$O!"F~NO%9%Z!<%9$r;}$D$h$&$J%I%-%e%a%s%H$r(B $B%V(B
-     $B%i%&%6$NMW5a$K1~$8$FAw?.(B/$B<u?.$7$^$9!#%f!<%6$O$3$NF~NO%9%Z!<%9$K!"(B $B<+J,(B
-     $B$NH=CG7k2L$rF~NO$7$F!"(Bsubmit($BAw?.(B)$B$7$^$9!#(B CGI$B%W%m%0%i%`$O$^$?$3$N7k2L(B
-     $B$r<u$1$H$j!"$=$l$K4p$E$$$F!"?7$7$$%Z!<%8(B $B$N>pJs$rAw?.$7$^$9!#$=$N7+$j$+(B
-     $B$($7$r%2!<%`$NF~NO$H$9$k$N$G$9!#(B $B%5%s%W%k$NFbMF$O!"$^$@%2!<%`$K$O$J$C$F(B
-     $B$$$^$;$s$,!"(B CGI$B%2!<%`$N4pAC$rCN$k$3$H$,$G$-$k(B $BFbMF$K$J$C$F$$$^$9!#(B
-     Java$B$K$h$k(BCGI$B$N%W%m%0%i%`$O!"IaDL$N%2!<%`%W%m%0%i%`$HF1$8$/!"(B $BB?$/$NIt(B
-     $BJ,$,6&DL$7$F$$$^$9!#(B $B$=$3$G!"Nc$K$h$C$F!"(BCGI$B$N%9%1%k%H%s$r<($7$^$9!#(B $B$3(B
-     $B$N%9%1%k%H%s$KB?>/$NJQ99$r2C$($l$P!"(B $B4JC1$K(BJava$B$K$h$k(BCGI$B%W%m%0%i%`(B
-     $B$,$G$-$"$,$j$^$9!#(B
+     実際にCGIで本格的なゲームを作るのはページ数がいくらあっても足りません
+     から、 その基礎になる技術を紹介します。ここでは、アルゴリズムに注目
+     してください。きっとここで紹介するアルゴリズムは、 Java
+     以外の言語で作る時にも役に立ちます。
 
-	   http$B$N%5!<%P!<$,5/F0$5$l$F$$$k%^%7%s$NB?$/$O(BUNIX$B%7%9%F%`$G$"$j!"$3$3(B
-     $B$G<($9Nc$b!"(BUNIX$B%7%9%F%`>e$G;n$5$l$k$3$H$rA0Ds$K$7$F$$$^$9!#(B($B$D$^$j!"(B
-	 $B%7%'%k%9%/%j%W%H$r;H$$$^$9!#%7%'%k%9%/%j%W%H$H$$$&$N$O!"(BMS-DOS/Windows
-	 $B$G8@$&$H%P%C%A%U%!%$%k$N$3$H$G!"$R$H$D$NCf?H$,8+$($k<B9T%U%!%$%k$N$3$H(B
-	 $B$G$9!#J8K!;v9`$K$D$$$F$O!":#2s$OI,MW$J$$$N$G!">JN,$7$^$9!#(B)
-	 $BF0:n3NG'$K$O!"(BSolaris2.5,JDK1.1beta2$B$r;HMQ$7$^$7$?!#(B
+     (注意) CGIプログラムを頻繁に呼びだすことは、サーバーに大きな負担をかけ
+     ます。 サーバーの管理者にとっては、CGIでしかもJava(重い)の プログラムを
+     1秒にいくつも起動されることは 不愉快なことです。Pentiumを塔載したかなり
+     高速なサーバーでさえ、 1秒に5回以上CGIプログラムを起動すると、マシンパ
+     ワーが足りなく なってくるほどです。
+     ゲームデザインにあたっては、できるだけ、数秒に一回程度の通信で 済むよう
+     な内容にすることを心掛けてください。具体的には、 カードゲームや将棋と
+     か、シミュレーションゲーム、テーブルトーク スタイルのRPGなどになるでし
+     ょうか。
 
-     $B0J2<$K!"(Bjava$B$K$h$k(BCGI$B%W%m%0%i%`$N%9%1%k%H%s$r<($7$^$9!#(B
+     例として示すCGIプログラムは、入力スペースを持つようなドキュメントを ブ
+     ラウザの要求に応じて送信/受信します。ユーザはこの入力スペースに、 自分
+     の判断結果を入力して、submit(送信)します。 CGIプログラムはまたこの結果
+     を受けとり、それに基づいて、新しいページ の情報を送信します。その繰りか
+     えしをゲームの入力とするのです。 サンプルの内容は、まだゲームにはなって
+     いませんが、 CGIゲームの基礎を知ることができる 内容になっています。
+     JavaによるCGIのプログラムは、普通のゲームプログラムと同じく、 多くの部
+     分が共通しています。 そこで、例によって、CGIのスケルトンを示します。 こ
+     のスケルトンに多少の変更を加えれば、 簡単にJavaによるCGIプログラム
+     ができあがります。
 
-     ($BCm0U(B)JDK1.0.2$B$+$i(BJDK1.1$B$K0\9T$9$k;~$K!"J8;zNs$N07$$$,9q:]2=$5$l$?$3$H$K(B
-     $BH<$J$C$F!"%a%=%C%I$N;H$$$+$?$,<c43JQ99$5$l$^$7$?!#(BJDK1.0.2$B$N%a%=%C%I8F$S(B
-     $B=P$7$N$^$^(BJDK1.1$B$N(Bjavac$B$G%3%s%Q%$%k$9$k$H!"7Y9p$,=P$^$9!#(B($B%3%s%Q%$%k$O$G(B
-     $B$-$^$9!#(B)$B0J2<$N(Bcgiskel.java$B$G$O!"(BJDK1.0.2$B$H(BJDK1.1$B$NN>J}$G%3%s%Q%$%k$G$-(B
-     $B$k%3!<%I$K$7$F$"$j$^$9$,!"$I$&$7$F$b7Y9p$r$J$/$7$?$$>l9g$O!"%W%m%0%i%`Cf(B
-     $B$N;X<($K$7$?$,$C$F!"%a%=%C%I$rF~$l$+$($F$/$@$5$$!#(B($B%3%a%s%H$K(B "//JDK1.1"
-     $B$J$I$H;X<($,$"$j$^$9!#(B
+	   httpのサーバーが起動されているマシンの多くはUNIXシステムであり、ここ
+     で示す例も、UNIXシステム上で試されることを前提にしています。(つまり、
+	 シェルスクリプトを使います。シェルスクリプトというのは、MS-DOS/Windows
+	 で言うとバッチファイルのことで、ひとつの中身が見える実行ファイルのこと
+	 です。文法事項については、今回は必要ないので、省略します。)
+	 動作確認には、Solaris2.5,JDK1.1beta2を使用しました。
+
+     以下に、javaによるCGIプログラムのスケルトンを示します。
+
+     (注意)JDK1.0.2からJDK1.1に移行する時に、文字列の扱いが国際化されたことに
+     伴なって、メソッドの使いかたが若干変更されました。JDK1.0.2のメソッド呼び
+     出しのままJDK1.1のjavacでコンパイルすると、警告が出ます。(コンパイルはで
+     きます。)以下のcgiskel.javaでは、JDK1.0.2とJDK1.1の両方でコンパイルでき
+     るコードにしてありますが、どうしても警告をなくしたい場合は、プログラム中
+     の指示にしたがって、メソッドを入れかえてください。(コメントに "//JDK1.1"
+     などと指示があります。
 
 
 File name: cgiskel.java
@@ -413,22 +413,22 @@ import java.io.*;
 
 class cgimain
 {
-	// $B%a%$%s!&%k!<%A%s$G$O!"<+J,$N%$%s%9%?%s%9$r:n$k$@$1!#(B
+	// メイン・ルーチンでは、自分のインスタンスを作るだけ。
 	public static void main( String args[] )
 	{
 		cgimain c = new cgimain( args);
 	}
 
 	public final int MAXBYTE = 2000;	
-	byte b[] = new byte[MAXBYTE];	//$B%V%i%&%6$+$i$N%a%C%;!<%8$rJ]B8(B
+	byte b[] = new byte[MAXBYTE];	//ブラウザからのメッセージを保存
 
-	String topdir;    // $B%"%/%;%9$9$k%U%!%$%k$,$"$k%G%#%l%/%H%j!#0z?t$G;XDj(B
+	String topdir;    // アクセスするファイルがあるディレクトリ。引数で指定
 
 	cgimain( String args[] )
 	{
 		int querylen = 0;
 
-		// $B$^$:(BGET$B$+$I$&$+D4$Y!"$=$&$G$J$1$l$P(BPOST$B$+$i$@$H$7$FF~NO(B
+		// まずGETかどうか調べ、そうでなければPOSTからだとして入力
 		String getquery = System.getProperty("QUERY");
 		if( getquery != null && !getquery.equals("")){
 			//b = getquery.getBytes();  // JDK1.1
@@ -442,16 +442,16 @@ class cgimain
 		URLDecoder ud = new URLDecoder( b );
 
 
-		// $B%V%i%&%6$KAw$jJV$9FbMF$r=q$/!#(B
-		// $B:G=i$K(BHTTP$B%X%C%@$rAw?.$9$k!#6u9T$r:n$k$?$a$N:G8e$N(B'\n'$B$,Bg@Z!#(B
-		// $B$3$3$G$O(Bprintln$B$r;H$&$N$G!"(B'\n' $B$O0l8D$G$h$$!#(B
+		// ブラウザに送り返す内容を書く。
+		// 最初にHTTPヘッダを送信する。空行を作るための最後の'\n'が大切。
+		// ここではprintlnを使うので、'\n' は一個でよい。
 		System.out.println("Content-type: text/html\n");     
 		System.out.println("<html>");
 		System.out.println("<title>QUERY RESULT</title>");
 		System.out.println("<body>");
 
 
-		// $B$I$N%U%!%$%k$rA`:n$9$k$N$+!)(B
+		// どのファイルを操作するのか？
 		if( args.length == 0 ){
 			System.out.println("ERROR: top directory was not set.");
 			return;
@@ -463,8 +463,8 @@ class cgimain
 
 
 
-		// $B<B:]$N%U%!%$%k$N=hM}$r$9$k!#<B8=$7$?$$FbMF$K$h$C$F!"$3$3$O(B
-		// $BJQ99$9$kI,MW$,$"$j$^$9!#(B
+		// 実際のファイルの処理をする。実現したい内容によって、ここは
+		// 変更する必要があります。
 		RandomAccessFile f = null;
 
 		if( ud.getValue("method" ).equals("append") ){
@@ -477,7 +477,7 @@ class cgimain
 
 				f.seek( f.length());
 				f.write( valbyte ,0,valbyte.length) ;
-				f.write( '\n'); // $B2~9T$rF~$l$k(B
+				f.write( '\n'); // 改行を入れる
 				System.out.println("OK: append successful.");
 				f.close();
 			}catch( IOException e ){
@@ -491,7 +491,7 @@ class cgimain
 				f.close();
 				System.out.println("OK: read successful.");
 				System.out.write( fileb , 0 , fileb.length );
-				System.out.println("");   // $B:G8e$K6u9T$rF~$l$k(B
+				System.out.println("");   // 最後に空行を入れる
 				
 			}catch( IOException e ){
 				System.out.println( "ERROR: Error while reading." + e);
@@ -503,9 +503,9 @@ class cgimain
 	}
 }
 
-// URLDecoder$B$,(BJava$B%3%"$K$"$l$P$$$$$N$G$9$,!#(B
-// $B;XDj$5$l$?L>A0$N9`L\$,$J$$>l9g$O!"6u$NJ8;zNs$rJV$7$^$9!#(B
-// ascii$BJ8;z0J30$K$OBP1~$7$F$$$^$;$s!#(B
+// URLDecoderがJavaコアにあればいいのですが。
+// 指定された名前の項目がない場合は、空の文字列を返します。
+// ascii文字以外には対応していません。
 class URLDecoder
 {
 	int valuenum=0;
@@ -515,8 +515,8 @@ class URLDecoder
 	URLDecoder( byte linebuf[] )
 	{
 		length = linebuf.length;
-		// byteToCharConverter$B$OFbIt$GM?$($i$l$?%P%C%U%!$r;H$&(B
-		// $B$N$G!"%P%C%U%!$OD9$a$K$H$C$F$*$/(B(2$BG\(B)$B!#(B
+		// byteToCharConverterは内部で与えられたバッファを使う
+		// ので、バッファは長めにとっておく(2倍)。
 		newbuf= new byte[ length*2]; 
 		int counter=0;
 		
@@ -591,118 +591,118 @@ File name: test.cgi
 ----------------------------------------------------------
 
 
-	 CGI$B%W%m%0%i%`$O(Bhttp$B$N%5!<%P$K$h$C$F5/F0$5$l$^$9!#%5!<%P$,5/F0$7$h$&(B
-     $B$H$9$k%U%!%$%k$O!"0l$D$N<B9T%U%!%$%k$G$9!#(Bjava$B$r5/F0$9$k$K$O!"C1$J$k(B
-     $B<B9T%U%!%$%k$r5/F0$9$k0J30$N$3$H$b$7$F$d$kI,MW$,$"$k$N$G!"$-$A$s$H(B
-	 Java$B$N%P!<%A%c%k%^%7%s$r5/F0$9$k$?$a$K!"<B9T%U%!%$%k$H$7$F;H$($k%7%'%k(B
-	 $B%9%/%j%W%H$r$+$^$7$^$9!#$=$N%7%'%k%9%/%j%W%H$,!"(Btest.cgi$B$H$$$&%W%m%0%i%`(B
-	 $B$G$9!#(Bjava$B$,5/F0$5$l$k$^$G$K$O<!$N$h$&$J=hM}$N2aDx$,$"$j$^$9!#(B
+	 CGIプログラムはhttpのサーバによって起動されます。サーバが起動しよう
+     とするファイルは、一つの実行ファイルです。javaを起動するには、単なる
+     実行ファイルを起動する以外のこともしてやる必要があるので、きちんと
+	 Javaのバーチャルマシンを起動するために、実行ファイルとして使えるシェル
+	 スクリプトをかまします。そのシェルスクリプトが、test.cgiというプログラム
+	 です。javaが起動されるまでには次のような処理の過程があります。
 
-#$B?^(B6.6-1 <NOT YET>	java$B$,5/F0$5$l$k$^$G(B
+#図6.6-1 <NOT YET>	javaが起動されるまで
 
-	* $B=`Hw(B
-	 cgimain.class$B$,F/$/$?$a$K$O!"$$$m$$$m$H=`Hw$7$F$d$k$3$H$,I,MW$G$9!#(B
+	* 準備
+	 cgimain.classが働くためには、いろいろと準備してやることが必要です。
 
-    1) CGI$B%W%m%0%i%`$r:n$kA0$K!"(BCGI$B%W%m%0%i%`$r%5!<%P!<%^%7%s>e$KCV$/$3$H$,(B
-    $B$G$-$k$+$I$&$+$rD4$Y$^$9!#(B
+    1) CGIプログラムを作る前に、CGIプログラムをサーバーマシン上に置くことが
+    できるかどうかを調べます。
 
-	  $B$=$l$>$l$N%5!<%P!<$4$H$K!"(BCGI$B%W%m%0%i%`$rCV$/>l=j$O7h$^$C$F$$$^$9!#(B
-	$BI.<T$N%5%$%H$G$O!"(B/usr/local/httpd/cgi-bin/$B$N2<$K<B9T%U%!%$%k$rCV$/$3$H(B
-    $B$K$J$C$F$$$k$N$G!"%7%'%k%9%/%j%W%H(Btest.cgi$B$O!"(B
+	  それぞれのサーバーごとに、CGIプログラムを置く場所は決まっています。
+	筆者のサイトでは、/usr/local/httpd/cgi-bin/の下に実行ファイルを置くこと
+    になっているので、シェルスクリプトtest.cgiは、
 
 	/usr/local/httpd/cgi-bin/ringo/test.cgi
 
-	$B$N2<$KCV$$$F$$$^$9!#(B(ringo$B$H$$$&$N$O!"I.<T$N%m%0%$%s%M!<%`$G$9!#(B)
-	$B$3$l0J30$K$b!"8D?M$N(B 
+	の下に置いています。(ringoというのは、筆者のログインネームです。)
+	これ以外にも、個人の 
 	
 	~/public_html/cgi-bin
 
-	$B$H$$$&$h$&$J%G%#%l%/%H%j$N2<$KCV$/$h$&$K$J$C$F$$$?$j!"$$$m$$$m$H0[$J$k(B
-	$B$N$G!"$^$:$=$l$rD4$Y$F$_$F$/$@$5$$!#$3$3$GLdBj$J$N$O!"(BCGI$B%W%m%0%i%`$O!"(B
-	$B%7%9%F%`$K$H$C$F4m81$JF0:n$b$G$-$k$[$I6/NO$J$N$G!"(B
-	$B0lHL%f!<%6$O(BCGI$B%W%m%0%i%`$rCV$1$J$/$7$F$$$k(B
-	$B%5%$%H$,B?$$$H$$$&$3$H$G$9!#Bg3X$d2q<R$J$I$G<+M3$KCV$1$k$H$$$&4D6-$N?M(B
-	$B$O$$$$$N$G$9$,!"0lHL%W%m%P%$%@$r;H$C$F$$$k>l9g$O$^$:L5M}$H$J$C$F$$$^$9!#(B
-	$B$G$9$+$i!"(BCGI$B%W%m%0%i%`$rCV$/$3$H$,$G$-$k$+$I$&$+!"$^$:3NG'$7$F$/$@$5$$!#(B
+	というようなディレクトリの下に置くようになっていたり、いろいろと異なる
+	ので、まずそれを調べてみてください。ここで問題なのは、CGIプログラムは、
+	システムにとって危険な動作もできるほど強力なので、
+	一般ユーザはCGIプログラムを置けなくしている
+	サイトが多いということです。大学や会社などで自由に置けるという環境の人
+	はいいのですが、一般プロバイダを使っている場合はまず無理となっています。
+	ですから、CGIプログラムを置くことができるかどうか、まず確認してください。
 
-	2) CGI$B%W%m%0%i%`$O!"(BURL$B$G$O$I$N$h$&$J%"%I%l%9$K$J$k$N$+$rD4$Y$^$9!#(B
-	$B<B:]$N!"%5!<%P!<$N%^%7%s>e$G$N%U%!%$%k$N0LCV$H!"(BURL$B$H$7$F8+$($k0LCV$O0[$J$j(B
-	$B$^$9!#Nc$($PI.<T$N4D6-$G$O!"%U%!%$%k$N$"$k0LCV$O!"(B
+	2) CGIプログラムは、URLではどのようなアドレスになるのかを調べます。
+	実際の、サーバーのマシン上でのファイルの位置と、URLとして見える位置は異なり
+	ます。例えば筆者の環境では、ファイルのある位置は、
 	/usr/local/httpd/cgi-bin/ringo/java/test.cgi
-	$B$H$J$C$F$$$^$9$,!"(BURL$B$@$H!"(B
+	となっていますが、URLだと、
 	http://your.site.or.jp/cgi-bin/ringo/java/test.cgi
-	$B$K$J$j$^$9!#(B($B%^%7%sL>$O(Byour$B$H$7!"%I%a%$%sL>$O(Bsite.or.jp$B$H2>Dj$7$F$$$^$9!#(B
-	URL$B$,$I$N$h$&$K$J$k$N$+$O!"%5!<%P!<$N4IM}<T$KJ9$$$F$/$@$5$$!#(B
-	($B4IM}<T$KJ9$/!"$H$$$&;~$K$O!"(Broot$B$H$$$&%f!<%6$K%a%$%k$rAw$C$F$_$k$H(B
-	$B$h$$$G$7$g$&!#(B)
+	になります。(マシン名はyourとし、ドメイン名はsite.or.jpと仮定しています。
+	URLがどのようになるのかは、サーバーの管理者に聞いてください。
+	(管理者に聞く、という時には、rootというユーザにメイルを送ってみると
+	よいでしょう。)
 
-	3) CGI$B%W%m%0%i%`$rCV$/>l=j$,7h$^$C$?$i!"(Btest.cgi$B$rF~NO$7$F!"CV$-$^$9!#(B
-	$B%(%G%#%?$GF~NO$7$F$/$@$5$$!#%9%/%j%W%H$NFbMF$O!"0lHLE*$K=q$/$H!"<!$N$h$&(B
-	$B$K$J$j$^$9!#(B
+	3) CGIプログラムを置く場所が決まったら、test.cgiを入力して、置きます。
+	エディタで入力してください。スクリプトの内容は、一般的に書くと、次のよう
+	になります。
 
 ----------------------------------------------------------
 #!/bin/sh
 /home/ringo/java/bin/java -DQUERY=${QUERY_STRING} cgimain /usr/local/httpd/cgi-bin/ringo/java
 ----------------------------------------------------------
 
-	$B$3$N%U%!%$%k$,(B 
+	このファイルが 
 	/usr/local/httpd/cgi-bin/ringo/test.cgi
-	$B$K$"$k$H$9$k$H!"(BWWW$B%5!<%P$O!"$^$:(B /usr/local/httpd/cgi-bin/ringo/
-	$B$H$$$&%G%#%l%/%H%j$K!"%+%l%s%H%G%#%l%/%H%j$r0\F0$7$F$+$i$3$N%W%m%0%i%`$r(B
-	$B<B9T$7$^$9!#$=$7$F$*$b$`$m$K(B
+	にあるとすると、WWWサーバは、まず /usr/local/httpd/cgi-bin/ringo/
+	というディレクトリに、カレントディレクトリを移動してからこのプログラムを
+	実行します。そしておもむろに
 	/home/ringo/java/bin/java
-	$B$H$$$&%W%m%0%i%`$r<B9T$7$^$9!#$3$N>l9g$O4D6-JQ?t(BCLASSPATH$B$,@_Dj$5$l$F$$$J(B
-	$B$$$N$G!"(Bjava$B$O!"%+%l%s%H%G%#%l%/%H%j!"$D$^$j(B /usr/local/httpd/cgi-bin/ringo/
-	$BFb$+$i(Bcgimain.class$B$rC5$7$^$9!#$H$$$&$3$H$O!"(BCGI$B%W%m%0%i%`$N%/%i%9%U%!%$%k(B
-	$B$b!"(Btest.cgi$B$HF1$8%G%#%l%/%H%j$KCV$$$F$*$/I,MW$,$"$k$o$1$G$9!#(B
-    $B$I$&$7$F$b%/%i%9$rFCDj$N>l=j$KCV$$$F$*$-$?$$>l9g$O!"(B
+	というプログラムを実行します。この場合は環境変数CLASSPATHが設定されていな
+	いので、javaは、カレントディレクトリ、つまり /usr/local/httpd/cgi-bin/ringo/
+	内からcgimain.classを探します。ということは、CGIプログラムのクラスファイル
+	も、test.cgiと同じディレクトリに置いておく必要があるわけです。
+    どうしてもクラスを特定の場所に置いておきたい場合は、
 
 	export CLASSPATH;CLASSPATH=/where/your/classes/are;
 	
-	$B$H$$$&Iw$K$"$J$?$N%/%i%9$N$"$k%G%#%l%/%H%j$r=q$$$F!"(B2$B9TL\$KA^F~$7$F$/$@$5$$!#(B
+	という風にあなたのクラスのあるディレクトリを書いて、2行目に挿入してください。
 
 	-DQUERY=${QUERY_STRING}
 	
-	$B$H$$$&%*%W%7%g%s$O!"%5!<%P$,<+F0E*$K@_Dj$9$k4D6-JQ?t(B QUERY_STRING$B$r!"(B
-	java$B$,G'<1$G$-$k$h$&$K$9$k$?$a$N$b$N$G$9!#$=$7$F(B
+	というオプションは、サーバが自動的に設定する環境変数 QUERY_STRINGを、
+	javaが認識できるようにするためのものです。そして
 		
 	/usr/local/httpd/cgi-bin/ringo/java
 	
-	$B$O!"$3$N(BCGI$B%W%m%0%i%`$,FI$_$+$-$9$k%U%!%$%k$N0LCV$r!"(Bcgimain.class$B$KBP$7$F(B
-	$B;XDj$7$F$$$^$9!#(B(cgimain.java$B$r8+$l$P!"$3$NJ8;zNs$r$I$N$h$&$K;H$C$F$$$k$+(B
-	$B$o$+$j$^$9!#(B)
+	は、このCGIプログラムが読みかきするファイルの位置を、cgimain.classに対して
+	指定しています。(cgimain.javaを見れば、この文字列をどのように使っているか
+	わかります。)
 
-	3) test.cgi$B$r!"(Bchmod$B$7$F!"<B9T%U%!%$%k$K$7$^$9!#(B
-	$B%(%G%#%?$GF~NO$7$?$F$N(Btest.cgi$B$O!"$?$@$N%F%-%9%H%U%!%$%k$G!"<B9T%U%!%$%k(B
-	$B$G$O$"$j$^$;$s$N$G!"%3%^%s%I%i%$%s$+$i(B
+	3) test.cgiを、chmodして、実行ファイルにします。
+	エディタで入力したてのtest.cgiは、ただのテキストファイルで、実行ファイル
+	ではありませんので、コマンドラインから
 	
 	chmod 777 test.cgi
 	
-	$B$H$7$F!"<B9T%U%!%$%k$KJQ$($^$9!#(B
+	として、実行ファイルに変えます。
 
-	4) cgiskel.java $B$rF~NO$7$F%3%s%Q%$%k$9$k!#(B
-	JDK1.1$B$G%3%s%Q%$%k$7$?>l9g$O!"(BJDK1.0.2$BMQ$N%3!<%I$KBP$7$F7Y9p$,=P$^$9!#(B
-	$B5$$K$J$k$J$i!"%3%a%s%H%"%&%H$7$F$"$k(BJDK1.1$BMQ$N%3!<%I$KF~$l$+$($F$/$@$5$$!#(B
+	4) cgiskel.java を入力してコンパイルする。
+	JDK1.1でコンパイルした場合は、JDK1.0.2用のコードに対して警告が出ます。
+	気になるなら、コメントアウトしてあるJDK1.1用のコードに入れかえてください。
 	
-	5) cgimain.class$B$H(BURLDecoder.class$B$r!"(Btest.cgi$B$N$"$k%G%#%l%/%H%j$K0\$7$^$9!#(B
-	2)$B$G(BCLASSPATH$B$r@_Dj$7$?>l9g$O!"$=$N%G%#%l%/%H%j$K0\$7$F$/$@$5$$!#(B
-	$B0J>e$N:n6H$G!"(Bcgimain.class$B$O(BCGI$B%W%m%0%i%`$H$7$FF0:n$9$k$O$:$G$9!#(B
+	5) cgimain.classとURLDecoder.classを、test.cgiのあるディレクトリに移します。
+	2)でCLASSPATHを設定した場合は、そのディレクトリに移してください。
+	以上の作業で、cgimain.classはCGIプログラムとして動作するはずです。
 
-	6)$BF0$/$+$I$&$+3NG'$9$k!#(B
-	telnet$B$r;H$&$N$,4JJX$G$9!#(B(telnet$B$r;H$C$F<j$G%5!<%P$HOC$r$9$k$N$O!"(B
-	$B$3$N>O$N(B $BBh(B4$B@a$G@bL@$7$F$$$^$9(B)$B%3%^%s%I%i%$%s$+$i!"(B
+	6)動くかどうか確認する。
+	telnetを使うのが簡便です。(telnetを使って手でサーバと話をするのは、
+	この章の 第4節で説明しています)コマンドラインから、
 
 	telnet your.site.or.jp 80
 	
-	$B$H$7$F!"(Btelnet$B$r5/F0$7$^$9!#$=$7$F!"(BCGI$B%W%m%0%i%`$N(BURL$B$,(B 
+	として、telnetを起動します。そして、CGIプログラムのURLが 
 	/cgi-bin/ringo/java/test.cgi
-	$B$G$"$k>l9g$K$O!"(B
+	である場合には、
 
-	GET /cgi-bin/ringo/java/test.cgi HTTP/1.0($B2~9T(B)
-	($B2~9T(B)
+	GET /cgi-bin/ringo/java/test.cgi HTTP/1.0(改行)
+	(改行)
 	
-	$B$HF~NO$7$^$9!#6u9T$rF~NO$9$k$N$rK:$l$:$K!#(B
-	$B$7$P$i$/(B($B?tIC(B)$B$7$F$+$i!"0J2<$N$h$&$JJ8;zNs$,=P$F$-$?$i(BOK$B$G$9!#(B
+	と入力します。空行を入力するのを忘れずに。
+	しばらく(数秒)してから、以下のような文字列が出てきたらOKです。
 
 ------------------------------------------
 <html>
@@ -711,60 +711,60 @@ File name: test.cgi
 ERROR: method not specified.
 ------------------------------------------
 	
-	$B0J2<$K!"40A4$J%3%^%s%I%i%$%s$NNc$r<($7$^$9!#%^%7%sL>$O!"$3$3$G$O(Bws1$B$G$9!#(B
+	以下に、完全なコマンドラインの例を示します。マシン名は、ここではws1です。
 
 ------------------------------------------
 $
-$ telnet ws1 80								telnet$B$r(B80$BHV$N%]!<%H$KBP$7$F5/F0(B
+$ telnet ws1 80								telnetを80番のポートに対して起動
 Trying 192.168.1.11...
 Connected to ws1.
-Escape character is '^]'.					telnet$B$,=PNO$7$?%a%C%;!<%8(B
-GET /cgi-bin/ringo/java/aho.cgi HTTP/1.0	$B$3$N9T$rF~NO$7$?(B
-											$B6u9T(B
-HTTP/1.0 200 Document follows				$B$3$l$O%5!<%P!<$,$D$1$?$9J8;zNs(B
+Escape character is '^]'.					telnetが出力したメッセージ
+GET /cgi-bin/ringo/java/aho.cgi HTTP/1.0	この行を入力した
+											空行
+HTTP/1.0 200 Document follows				これはサーバーがつけたす文字列
 Date: Tue, 31 Dec 1996 11:01:38 GMT
-Server: NCSA/1.5							$B%5!<%P!<%?%$%W$O(BNCSA
+Server: NCSA/1.5							サーバータイプはNCSA
 Content-type: text/html
-											$B6u9T(B
-<html>										$B$3$N9T0J9_$,!"(Bcgimain.class$B$N=PNO(B
+											空行
+<html>										この行以降が、cgimain.classの出力
 <title>QUERY RESULT</title>
 <body>
 ERROR: method not specified.
-Connection closed by foreign host.			$B@\B3$,@Z$l$?(B
+Connection closed by foreign host.			接続が切れた
 $
 $
 ------------------------------------------
 
 
-	* cgiskel.java$B$NFbMF(B
+	* cgiskel.javaの内容
 
-     "cgiskel.java" $B$K$O!"%V%i%&%6$+$i$NMW5a$r2r<a$7$FMxMQ$7$d$9$/(B
-     $B$9$kItJ,(B(URLDecoder$B%/%i%9(B)$B$H!"<c43$N%U%!%$%kA`:n$NItJ,(B(cgimain$B%/%i%9(B)
-	$B$,4^$^$l$F$$$^$9!#<B:]$K;H$&>l9g$K$O!"(B
-     $B$b$C$HJ#;($J=hM}(B($BNc$($P!"8!:w$d!"JB$Y$+$(!"7W;;$J$I!#(B)$B$r$5$;$kI,MW$,$"$k(B
-     $B$G$7$g$&$+$i!"$=$N$?$a$N%W%m%0%i%`$r2C$($kI,MW$,$"$j$^$9!#E,59!":o=|$7$?(B
-	 $B$jDI2C$7$?$j$7$F$/$@$5$$!#(B
+     "cgiskel.java" には、ブラウザからの要求を解釈して利用しやすく
+     する部分(URLDecoderクラス)と、若干のファイル操作の部分(cgimainクラス)
+	が含まれています。実際に使う場合には、
+     もっと複雑な処理(例えば、検索や、並べかえ、計算など。)をさせる必要がある
+     でしょうから、そのためのプログラムを加える必要があります。適宜、削除した
+	 り追加したりしてください。
 
-	o URLDecoder$B%/%i%9(B
+	o URLDecoderクラス
 
-	$B%V%i%&%6$+$iAw$i$l$F$/$kJ8;zNs$O!"(BURL$B%(%s%3!<%I$5$l$?%9%?%$%k$KE}0l$5$l$F(B
-	$B$$$^$9!#$=$l$r85$KLa$7$F!"FbMF$4$H$KJ,2r$7$^$9!#(B
+	ブラウザから送られてくる文字列は、URLエンコードされたスタイルに統一されて
+	います。それを元に戻して、内容ごとに分解します。
 	
-	$B%?%$%W(B=$BFbMF(B
+	タイプ=内容
 		
-	$B$H$$$&2t$NG[Ns$K$7$F!"%?%$%W$r;XDj$9$l$PFbMF$r<h$j=P$;$k$h$&$K$7$F$$$^$9!#(B
-	$B=hM}$9$kJ8;zNs$O!"%3%s%9%H%i%/%?$K;XDj$7$^$9!#(B
+	という塊の配列にして、タイプを指定すれば内容を取り出せるようにしています。
+	処理する文字列は、コンストラクタに指定します。
 	
 	URLDecoder ud = new URLDEcoder( byte[] input );
 
-	$BFbMF$r<h$j$@$9$K$O!"(B
+	内容を取りだすには、
 	
 	String val = getValue( String type );
 	
-	$B$H$$$&$h$&$K!"%?%$%W$r;XDj$7$^$9!#(B
-	$B$J$<$3$N$h$&$JF0:n$r$9$k$h$&$K$7$?$+$H$$$&$H!"$=$l$O!"0lHLE*$J!V%U%)!<%`!W(B
-	$B$r;H$C$?=hM}$r$9$k>l9g$KJXMx$@$+$i$G$9!#;29M$^$G$K<!$N(BHTML$B%U%!%$%k$r(B
-	$B%V%i%&%6$GFI$_$3$s$GAw?.$7$?>l9g$r@bL@$7$^$9!#(B
+	というように、タイプを指定します。
+	なぜこのような動作をするようにしたかというと、それは、一般的な「フォーム」
+	を使った処理をする場合に便利だからです。参考までに次のHTMLファイルを
+	ブラウザで読みこんで送信した場合を説明します。
 
 
 File name: form.html
@@ -782,65 +782,65 @@ File name: form.html
 </html>
 --------------------------------------------------
 
-#$B?^(B6.6-2 <DONE>	form.html$B$N2hLL(B
+#図6.6-2 <DONE>	form.htmlの画面
 
-	$B2?$bJQ99$;$:$K(Bok$B%\%?%s$r2!$9$H!"(Bcgimain$B$K$O!"<!$N$h$&$JJ8;zNs$,Aw$i$l$F(B
-	$B$-$^$9!#(B
+	何も変更せずにokボタンを押すと、cgimainには、次のような文字列が送られて
+	きます。
 
 filename=scorefile&method=append&value=0
 
-	$B$3$l$O!"(B80$BHV$K(Btelnet$B$7$F:G=i$N9T$K(B
+	これは、80番にtelnetして最初の行に
 	
 GET /cgi-bin/ringo/java/test.cgi?filename=scorefile&method=append&value=0 HTTP/1.0
 
-	$B$H=q$$$?$N$HF1$8$G$9!#(B
+	と書いたのと同じです。
 
-	URLDecoder$B$r;H$C$F!"(B getValue("filename")$B$H$9$k$H!"(B "scorefile"$B$H$$$&(B
-	$BJ8;zNs$,F@$i$l$^$9!#(B
+	URLDecoderを使って、 getValue("filename")とすると、 "scorefile"という
+	文字列が得られます。
 
-	o cgimain$B%/%i%9(B
+	o cgimainクラス
 
-	cgimain$B%/%i%9$G9T$J$C$F$$$k=hM}$N%]%$%s%H$4$H$K2r@b$7$^$9!#(B
+	cgimainクラスで行なっている処理のポイントごとに解説します。
 
-	1) GET$B%a%=%C%I$G$b(BPOST$B%a%=%C%I$G$b$I$A$i$G$bH?1~$G$-$k$h$&$K$7$F$$$k(B
+	1) GETメソッドでもPOSTメソッドでもどちらでも反応できるようにしている
 
-	  $B$^$:(BGET$B$G$"$k$H2>Dj$7$F!"4D6-JQ?t(BQUERY_STRING$B$NFbMF$,6u$@$C$?$i(BPOST
-	$B$G$"$k$H$7$FI8=`F~NO$rFI$_$K$$$-$^$9!#4D6-JQ?t$rCN$k$K$O!"(B
-	System.getProperty(String key)$B$r;H$$$^$9!#$=$7$F!"(Bnull$B$+6u$+$I$A$i$+$G$"$l(B
-	$B$P!"(BQUERY_STRING$B$K$OF~NO$5$l$J$+$C$?$3$H$K$J$k$N$G!"(BPOST$B$@$HH=CG$7$^$9!#(B
+	  まずGETであると仮定して、環境変数QUERY_STRINGの内容が空だったらPOST
+	であるとして標準入力を読みにいきます。環境変数を知るには、
+	System.getProperty(String key)を使います。そして、nullか空かどちらかであれ
+	ば、QUERY_STRINGには入力されなかったことになるので、POSTだと判断します。
 
-	2) $B$I$A$i$+$NJ}K!$GF@$i$l$?>pJs$r!"(BURLDecoder$B$KDL$9!#(B
+	2) どちらかの方法で得られた情報を、URLDecoderに通す。
 	
-	  URLDecoder$B$NF/$-$O!"A0=R$NDL$j$G$9!#(BString$B$r%P%$%HNs$KJQ49$9$k$K$O!"(B
-	  JDK1.1$B$N>l9g$O!"(B byte[] getBytes()$B!"(BJDK1.0.2$B$N>l9g$O!"(B
+	  URLDecoderの働きは、前述の通りです。Stringをバイト列に変換するには、
+	  JDK1.1の場合は、 byte[] getBytes()、JDK1.0.2の場合は、
 	  getBytes( int srcBegin,int length,byte[] buf , int destBegin )
-	  $B$r;HMQ$7$F$$$^$9!#(BWarning$B$rL[$i$;$?$$J}$O!"4D6-$K1~$8$F!"%3%a%s%H(B
-	  $B%"%&%H$rF~$l$+$($F$/$@$5$$!#(B
+	  を使用しています。Warningを黙らせたい方は、環境に応じて、コメント
+	  アウトを入れかえてください。
 		
-	3) HTTP$B%X%C%@$r=q$-$@$9!#(B
+	3) HTTPヘッダを書きだす。
 		
-      URLConnection$B$J$I$,;H$($J$$$N$G!"<+NO$G%P%$%HNs$r=q$-$@$7$F$$$^$9!#(B
-      $B$3$3$G$NI=8=$O0lHLE*$K;H$($k$b$N$G$9!#(B
-	  HTTP$B$NMW@A>e!"(B"Content-type: test/html"$B$N$"$H$K2~9TJ8;z$,(B2$B8DO"B3$9$kI,MW(B
-	  $B$,$"$k$N$G!"(Bprintln$B$r;H$$$J$,$i$b(B'\n'$B$rAw?.$7$F$$$^$9!#M}A[E*$K$O(B
-	  Content-Length:$B$bAw$l$P$h$$$N$G$9$,!">JN,$7$F$$$^$9!#(B
+      URLConnectionなどが使えないので、自力でバイト列を書きだしています。
+      ここでの表現は一般的に使えるものです。
+	  HTTPの要請上、"Content-type: test/html"のあとに改行文字が2個連続する必要
+	  があるので、printlnを使いながらも'\n'を送信しています。理想的には
+	  Content-Length:も送ればよいのですが、省略しています。
 	
-	4) $B<B:]$N=hM}!#(B
+	4) 実際の処理。
 
-	  $B$3$NNc$N>l9g$O!":GDc8B$N%U%!%$%kA`:n%5!<%S%9$@$1$rDs6!(B
-	$B$7$^$9!#$3$N;~$K;H$&%H%C%W%G%#%l%/%H%j$O!"(Bcgimain$B$KBP$9$k0z?t$H$7$F!"(B
-	$B%7%'%k%9%/%j%W%H$NCf$K5-=R$7$F$*$-$^$9!#%U%!%$%k=hM}$NItJ,$O!"@8!9$7$$(B
-	$B%3!<%I$K$J$C$F$$$^$9!#ESCf$G%(%i!<$J$I$,H/@8$7$?>l9g$O!"%/%i%$%"%s%H$K(B
-	HTML$B$GCN$i$;$F$$$^$9!#(B
+	  この例の場合は、最低限のファイル操作サービスだけを提供
+	します。この時に使うトップディレクトリは、cgimainに対する引数として、
+	シェルスクリプトの中に記述しておきます。ファイル処理の部分は、生々しい
+	コードになっています。途中でエラーなどが発生した場合は、クライアントに
+	HTMLで知らせています。
 
-	$B$3$N(BCGI$B$N%5!<%S%9$,@.8y$7$?>l9g$N%a%C%;!<%8$O<!$N$h$&$K$J$j$^$9!#(B
+	このCGIのサービスが成功した場合のメッセージは次のようになります。
 ------------------------------------
 <html>
 <title>QUERY RESULT</title>
 <body>
 OK: append successful.
 ------------------------------------
-	$B<:GT$7$?>l9g$O<!$N$h$&$JJ8;zNs$rJV$7$^$9!#(B
+	失敗した場合は次のような文字列を返します。
 ------------------------------------
 <html>
 <title>QUERY RESULT</title>
@@ -848,40 +848,40 @@ OK: append successful.
 ERROR: Error while writing.java.io.IOException: 
 /usr/local/httpd/cgi-bin/ringo/java/
 ------------------------------------
-	$B$3$N%a%C%;!<%8$N(B"OK"$B$+(B"ERROR"$B$+$r8+$F!"%/%i%$%"%s%H$O!"=hM}$r?6$j$o$1$l$P(B
-	$B$h$$$3$H$K$J$j$^$9!#(B
+	このメッセージの"OK"か"ERROR"かを見て、クライアントは、処理を振りわければ
+	よいことになります。
 
 
 
-       CGI$B$N%W%m%0%i%_%s%0$K$*$$$F!"=EMW$J%]%$%s%H$O!"$=$l$,%"%W%l%C%H$G$O(B 
-	 $B$J$/%"%W%j%1!<%7%g%s$G$"$k$3$H!"$=$l$+$i!"%"%W%l%C%H(B
-     $B%W%m%0%i%_%s%0(B $B$G$O;H$o$J$+$C$?!"%U%!%$%kF~(B
-     $B=PNO$r07$&E@$G$9!#$=$l$i$K$D$$$F(B $B=g$rDI$C$F2r@b$7$^$9!#(B
+       CGIのプログラミングにおいて、重要なポイントは、それがアプレットでは 
+	 なくアプリケーションであること、それから、アプレット
+     プログラミング では使わなかった、ファイル入
+     出力を扱う点です。それらについて 順を追って解説します。
 
 
-     * CGI$B$O%"%W%j%1!<%7%g%s(B
+     * CGIはアプリケーション
 
-     Java$B$G(BCGI$B%W%m%0%i%`$r:n$k>l9g!"%"%W%l%C%H$G$O$J$/%"%W%j%1!<%7%g%s$K$J$j(B
-     $B$^$9!#(B $BI8=`F~NO!"I8=`=PNO$r;H$C$F%5!<%P$HO"Mm$r<h$j$^$9!#$3$N@a$G$O!"0l(B
-     $BHLE*$J(B Java$B$G$N%"%W%j%1!<%7%g%s%W%m%0%i%`$NFCD'$K$D$$$F8+$F$_$^$9!#(B
+     JavaでCGIプログラムを作る場合、アプレットではなくアプリケーションになり
+     ます。 標準入力、標準出力を使ってサーバと連絡を取ります。この節では、一
+     般的な Javaでのアプリケーションプログラムの特徴について見てみます。
 
-     $B%"%W%j%1!<%7%g%s%W%m%0%i%`$O!"(BWWW$B%V%i%&%6>e$GF0:n$5$;$k$3$H$,(B $BA0Ds$K$J(B
-     $B$C$F$$$^$;$s!#$=$l$>$l$N%7%9%F%`>e$GF0:n$5$;$^$9!#$=$N$?$a!"(B HTML$B%U%!%$(B
-     $B%k$bI,MW$"$j$^$;$s!#(B
+     アプリケーションプログラムは、WWWブラウザ上で動作させることが 前提にな
+     っていません。それぞれのシステム上で動作させます。そのため、 HTMLファイ
+     ルも必要ありません。
 
-     * $B%"%W%j%1!<%7%g%s%W%m%0%i%`$NFCD'(B
+     * アプリケーションプログラムの特徴
 
-        o public static void main(String[])$B%a%=%C%I$r4^$`(B
-        o javac$B$K$h$C$F=PNO$5$l$k%/%i%9$r(B public$B$K$9$kI,MW$,$J$$$?$a!"%/%i%9(B
-          $B%U%!%$%k$NL>A0$H(B java$B%=!<%9%3!<%I$N%U%!%$%kL>$O0lCW$5$;$J$/$F$b$h(B
-          $B$$!#(B
-        o $B%"%W%l%C%H$G$G$-$k$3$H$J$i2?$G$b$G$-$k!#(B
-        o $BL5@)8B$K%M%C%H%o!<%/$d%^%7%s;q8;$r3hMQ$G$-$k!#$=$l$K$OI8=`F~=PNO(B
-		$B$b4^$^$l$k!#(B
-        o $B%3%^%s%I%i%$%s$+$i5/F0$G$-!"(Bmain$B%a%=%C%I$N(B $B0z?t$H$7$F%3%^%s%I%i%$(B
-          $B%s%Q%i%a!<%?$r<hF@$G$-$k!#(B
+        o public static void main(String[])メソッドを含む
+        o javacによって出力されるクラスを publicにする必要がないため、クラス
+          ファイルの名前と javaソースコードのファイル名は一致させなくてもよ
+          い。
+        o アプレットでできることなら何でもできる。
+        o 無制限にネットワークやマシン資源を活用できる。それには標準入出力
+		も含まれる。
+        o コマンドラインから起動でき、mainメソッドの 引数としてコマンドライ
+          ンパラメータを取得できる。
 
-     $B4JC1$JNc$r<($7$^$9!#(B
+     簡単な例を示します。
 
 
 
@@ -898,21 +898,21 @@ class test
 }
 ------------------------------------------------------
 
-     $B<B9T$5$;$k$K$O!"%"%W%l%C%H$H0[$J$j!"%7%'%k$d(BMS-DOS$B%W%m%s%W%H$N(B $B%3%^%s%I(B
-     $B%i%$%s$+$i<!$N$h$&$KF~NO$7$^$9!#(B
+     実行させるには、アプレットと異なり、シェルやMS-DOSプロンプトの コマンド
+     ラインから次のように入力します。
 
      >java test
 
-     java$B$H$$$&%3%^%s%I$K!"(Btest.class$B$H$$$&(B $B%U%!%$%k$rFI$_$3$^$;$F$$$^$9!#(B
+     javaというコマンドに、test.classという ファイルを読みこませています。
 
      >java test.class
 
-     $B$5$F!"<B9T7k2L$G$9$,!"$=$N$^$^<B9T$7$F$b2?$b5/$3$i$J$+$C$?$O$:$G$9!#(B $B$3(B
-     $B$N%W%m%0%i%`$O!"%3%^%s%I%i%$%s$N0z?t$rJB$Y$FI=<($9$k$b$N$J$N$G!"(B
+     さて、実行結果ですが、そのまま実行しても何も起こらなかったはずです。 こ
+     のプログラムは、コマンドラインの引数を並べて表示するものなので、
 
      >java test hoge 808
 
-     $B$J$I$H$9$k$H!"(B
+     などとすると、
 ----------
 $ java test hoge 808
 hoge
@@ -920,15 +920,15 @@ hoge
 $
 $
 ----------
-     $B$N$h$&$J=PNO$,F@$i$l$^$9!#(B('$'$B$O!"(BUNIX$B$N%7%'%k$N%W%m%s%W%H$G$9(B)
+     のような出力が得られます。('$'は、UNIXのシェルのプロンプトです)
 
-    *  main$B%a%=%C%I(B
+    *  mainメソッド
 
-     $B%"%W%j%1!<%7%g%s%W%m%0%i%`$N<B9T$O!"(Bmain$B%a%=%C%I$+$i;O$^$j(B $B$^$9!#(Bmain$B%a(B
-     $B%=%C%I$O!"(B public static void main(String args[]) $B$H@k8@$9$kLsB+$K$J$C(B
-     $B$F$$$^$9!#$3$3$GCm0UE@$O!"(Bmain$B%a%=%C%I$O(B static$B;XDj$5$l$F$$$k$N$G!"$3$N(B
-     $B%/%i%9$K4^$^$l$F$$$kIaDL$NJQ?t$K(B $B%"%/%;%9$9$k$3$H$,$G$-$J$$$H$$$&$3$H$G(B
-     $B$9!#<!$NNc$r8+$F$/$@$5$$!#(B
+     アプリケーションプログラムの実行は、mainメソッドから始まり ます。mainメ
+     ソッドは、 public static void main(String args[]) と宣言する約束になっ
+     ています。ここで注意点は、mainメソッドは static指定されているので、この
+     クラスに含まれている普通の変数に アクセスすることができないということで
+     す。次の例を見てください。
 
 ---------------------------------------------------------
 class hoge
@@ -938,17 +938,17 @@ class hoge
 	public static void main(String args[] )
 	{
 		int k;
-		i = 100;        // $B$3$N$h$&$K$O$G$-$J$$(B($B%3%s%Q%$%k%(%i!<(B)
-		j = 20;         // $B$3$l$O$G$-$k!#(B
-		k = 808;        // $B$3$l$b$G$-$k!#(B
+		i = 100;        // このようにはできない(コンパイルエラー)
+		j = 20;         // これはできる。
+		k = 808;        // これもできる。
 	}
 }
 ---------------------------------------------------------
 
-     $B4JC1$K8@$($P(Bstatic$B$J%a%=%C%I$+$i$O(Bstatic$B$J(B $BJQ?t$K$7$+%"%/%;%9$G$-$J$$$H(B
-     $B$$$&$3$H$G$9!#$G$9$+$iB?$/$N>l9g!"(Bmain $B%a%=%C%I$G$O!"(B
-     $B<+J,<+?H$N%/%i%9$r(Bnew$B$9$k(B $B$@$1!"$H$$$&$b$N$K$J$j$^$9!#<!$N$h(B
-     $B$&$J46$8$G$9!#(B
+     簡単に言えばstaticなメソッドからはstaticな 変数にしかアクセスできないと
+     いうことです。ですから多くの場合、main メソッドでは、
+     自分自身のクラスをnewする だけ、というものになります。次のよ
+     うな感じです。
 
 ---------------------------------------------------------
 class MyApplicationClass
@@ -962,45 +962,45 @@ class MyApplicationClass
 	int i;
 	MyApplicationClass(String args[])
 	{
-		i = 10; // $BIaDL$N%W%m%0%i%_%s%0$,$G$-$k!#(B
+		i = 10; // 普通のプログラミングができる。
 	}
-	int anyMethod()  //$B%a%=%C%I$bE,Ev$K:n$l$k!#(B
+	int anyMethod()  //メソッドも適当に作れる。
 	{
 	}
 
 }
 ---------------------------------------------------------
 
-     $B=i?4<T$N$&$A$O%O%^$j$d$9$$%]%$%s%H$G$9!#I.<T$bG:$_$^$7$?!#(B
+     初心者のうちはハマりやすいポイントです。筆者も悩みました。
 
-     * $B%U%!%$%kF~=PNO(B
+     * ファイル入出力
 
-     Java$B%"%W%j%1!<%7%g%s$G$O!"(BSystem.out.println$B$N$h$&$JI8=`(B $BF~=PNO$O!"%"%W(B
-     $B%l%C%H$N>l9g$HF1$8$h$&$K;H$($^$9!#$=$l0J30$K$b!"%U%!%$%k$r(B $BD>@\A`:n$9$k(B
-     $B$3$H$b2DG=$G$9!#(BCGI$B$r;H$($PB>$N%^%7%s$+$iAw$i$l$F$-$?>pJs$r(B $B%5!<%P$,F0(B
-     $B:n$7$F$$$k%^%7%s>e$KJ]B8$9$k$3$H$,$G$-$^$9!#(B Java$B$G$O!"%^%7%s$N%G%#%9%/(B
-     $B$KJ]B8$5$l$F$$$k>pJs$r!"%U%!%$%kC10L$G07$$$^$9!#(B $B%U%!%$%k$H$$$&$N$O%3%s(B
-     $B%T%e!<%?$NCf$K>pJs$r(B $BJ]B8$9$k;~$NC10L$K$J$k$b$N$G!"$"$k7h$^$C$?Bg$-$5$N(B
-     $B%P%$%HNs$G$9!#(B $B$=$l$>$l$N%U%!%$%k$K$OL>A0$r$D$1$k$3$H$,$G$-$^$9!#(B
-     Windows95, Macintosh, $BB?$/$N(BUNIX $B$J$I!"(BJava$B$,F0:n$9$k%^%7%s>e$G$O!":G9b(B
-     200$BJ8;zDxEY$NL>A0(B $B$^$G$OIU$1$k$3$H$,$G$-$k$h$&$J$N$G!"L>A0$N$D$1$+$?$K(B
-     $BFC$K$3$@$o$kI,MW$O(B $B$"$j$^$;$s!#L>A0$N:G8e$K!"(B".gz" ".txt" ".java"
-     ".html" ".tar.gz"$B$N$h$&$K(B $B%T%j%*%I$r;H$C$F$=$N%U%!%$%k$NCf?H$r<(:6$9$k(B
-     $B$h$&$JJ8;z$r$D$1$k$3$H$O!"(B $B%U%!%$%k$N0lMw@-$rA}$9$N$G!"$h$$=,47$G$9!#(B
+     Javaアプリケーションでは、System.out.printlnのような標準 入出力は、アプ
+     レットの場合と同じように使えます。それ以外にも、ファイルを 直接操作する
+     ことも可能です。CGIを使えば他のマシンから送られてきた情報を サーバが動
+     作しているマシン上に保存することができます。 Javaでは、マシンのディスク
+     に保存されている情報を、ファイル単位で扱います。 ファイルというのはコン
+     ピュータの中に情報を 保存する時の単位になるもので、ある決まった大きさの
+     バイト列です。 それぞれのファイルには名前をつけることができます。
+     Windows95, Macintosh, 多くのUNIX など、Javaが動作するマシン上では、最高
+     200文字程度の名前 までは付けることができるようなので、名前のつけかたに
+     特にこだわる必要は ありません。名前の最後に、".gz" ".txt" ".java"
+     ".html" ".tar.gz"のように ピリオドを使ってそのファイルの中身を示唆する
+     ような文字をつけることは、 ファイルの一覧性を増すので、よい習慣です。
 
-#$B?^(B6.6-5 <NOT YET>     $B%U%!%$%kC10L$G%G%#%9%/$KF~$C$F$$$k(B
+#図6.6-5 <NOT YET>     ファイル単位でディスクに入っている
 
-     $B%U%!%$%k$NCf$O$-$l$$$K%P%$%H$,JB$s$G$$$^$9!#$G$9$+$iNc$($PJ8>O$,F~$C$F(B
-     $B$$$k(B $B%U%!%$%k$N>l9g!"@hF,$+$iFI$s$G$$$/$H!"=g$KFI$`$3$H$,$G$-$^$9!#$3$N(B
-     $B$h$&$J9=B$$O(B $B!V%9%H%j!<%`!W$HHs>o$KAj@-$,$h$/!"%U%!%$%k$r07$&;~$K$O$h$/(B
-     $BA0$+$i=gHV$K=hM}$9$k(B $BJ}K!$,;HMQ$5$l$^$9!#$3$NJ}K!$r<B8=$9$k%/%i%9$,(BJava
-     $B$K$b$"$j!"(BFileInputStream $B$d(BFileOutputStream$B$J$I$,$3$l$K$"$?$j$^$9!#(B
-     $B$7$+$7!"ESCf$rHt$P$7$?$j!"<+M3$K9%$-$J0LCV$r;2>H$7$?$j$7$?$$>l9g$O!"(B $B$3(B
-     $B$l$i$r;H$C$F$$$?$N$G$O:$Fq$G$9!#$=$3$G!"K\=q$G$O!"%U%!%$%k$r07$&Nc$H$7(B
-     $B$F!"(B $B9%$-$J0LCV$r;2>H$9$k$3$H$,$G$-$k(BRandomAccessFile$B$H$$$&%/%i%9$N;HMQ(B
-     $BNc$r(B $B>R2p$7$^$9!#(B
-     $B<!$NNc$G$O!"%U%!%$%k$NJ8;z$NJB$S$r5U$K$7$FJL$N%U%!%$%k$r:n$k$H$$$&$3$H(B
-     $B$r9T$J$$$^$9!#(B 
+     ファイルの中はきれいにバイトが並んでいます。ですから例えば文章が入って
+     いる ファイルの場合、先頭から読んでいくと、順に読むことができます。この
+     ような構造は 「ストリーム」と非常に相性がよく、ファイルを扱う時にはよく
+     前から順番に処理する 方法が使用されます。この方法を実現するクラスがJava
+     にもあり、FileInputStream やFileOutputStreamなどがこれにあたります。
+     しかし、途中を飛ばしたり、自由に好きな位置を参照したりしたい場合は、 こ
+     れらを使っていたのでは困難です。そこで、本書では、ファイルを扱う例とし
+     て、 好きな位置を参照することができるRandomAccessFileというクラスの使用
+     例を 紹介します。
+     次の例では、ファイルの文字の並びを逆にして別のファイルを作るということ
+     を行ないます。 
 
 
 File name: rfile.java
@@ -1016,7 +1016,7 @@ class rfile
 			RandomAccessFile wf = new RandomAccessFile("wrotefile" , "rw");
 
 			for(int i=0;i< rf.length(); i++){
-				rf.seek( rf.length()-i-1 ); // $B:G=i$O(B0$B$@$+$i(B1$B$r0z$/!#(B
+				rf.seek( rf.length()-i-1 ); // 最初は0だから1を引く。
 				int c = rf.read();
 				wf.write( c);
 			}
@@ -1027,11 +1027,11 @@ class rfile
 }
 ------------------------------------------------------
 
-     $B$3$3$G$O(Bseek$B$H$$$&%a%=%C%I$r;H$C$F(B $B%U%!%$%k$N9%$-$J0LCV$K%"%/%;%9$7$F$$(B
-     $B$^$9!#(Bseek$B$N(B $B0z?t$O(Blong$B7?$G!"!V<!$K(Bread$B$d(Bwrite$B$9$k;~$K$O!"(B $B%U%!%$%k$N2?(B
-     $B%P%$%HL\$r(Bread$B$d(Bwrite$B$9$k$N$+!W$H$$$&$3$H$r(B $B;XDj$7$^$9!#$^$?!"%U%!%$%k(B
-     $B$N:G8e$K$I$s$I$sIU$1$?$7$F$$$/$H$$$&$h$&$J(B $B=hM}$O!"<!$N$h$&$K$7$F4JC1$K(B
-     $B<B8=$G$-$^$9!#(B
+     ここではseekというメソッドを使って ファイルの好きな位置にアクセスしてい
+     ます。seekの 引数はlong型で、「次にreadやwriteする時には、 ファイルの何
+     バイト目をreadやwriteするのか」ということを 指定します。また、ファイル
+     の最後にどんどん付けたしていくというような 処理は、次のようにして簡単に
+     実現できます。
 
 ------------------------------------------------------
 RandomAccessFile rf =  new RandomAccessFile("hoge", "rw" );
@@ -1039,49 +1039,49 @@ rf.seek( rf.length() );
 rf.write( 'a' );
 ------------------------------------------------------
 
-     $B$3$N>l9g!"(B'hoge'$B$H$$$&L>A0$N%U%!%$%k$NKvHx$K!"(B'a'$B$H$$$&J8;z$,IU$1$/$o$((B
-     $B$i$l$^$9!#(B
-     RandomAccessFile$B%/%i%9$r(Bnew$B$9$k;~$K$O!"%U%!%$%kL>$HFI$_=q$-%b!<%I(B $B$r;X(B
-     $BDj$7$^$9!#FI$_$@$7$@$1$r$9$k>l9g$ONc$N$h$&$K(B"r"$B!"FI$_$+$-N>J}$9$k>l9g$O(B
-     "rw"$B$H;XDj(B $B$7$^$9!#(B"rw"$B$r;XDj$7$?>l9g$O!"L>A0$G;XDj$7$?%U%!%$%k$,(B $BB8:_(B
-     $B$7$J$$>l9g!"D9$5$,(B0$B$N%U%!%$%k$,<+F0E*$K:n$i$l$^$9!#(B RandomAccessFile$B$K(B
-     $B$O!"(Bbyte$B7?$@$1$G$J$/!"(Bint$B7?$d(Bdouble$B7?$J$I$N!"(B1$B%P%$%H0J>e$"$k(B $B%G!<%?$b!"(B
-     $B0lH/$GFI$_$3$`$?$a$N%a%=%C%I$b$?$/$5$sMQ0U$5$l$F$$$^$9!#(B($B>\$7$/$O!"(BHTML
-     $BHG$N(BAPI $B%^%K%e%"%k$r;2>H$7$F$/$@$5$$!#(B)CGI$B$r:n$k;~$K$O!"$3$l$i$N%a%=%C(B
-     $B%I72$,0RNO$rH/4x$9$k$3$H$G(B $B$7$g$&!#(B
+     この場合、'hoge'という名前のファイルの末尾に、'a'という文字が付けくわえ
+     られます。
+     RandomAccessFileクラスをnewする時には、ファイル名と読み書きモード を指
+     定します。読みだしだけをする場合は例のように"r"、読みかき両方する場合は
+     "rw"と指定 します。"rw"を指定した場合は、名前で指定したファイルが 存在
+     しない場合、長さが0のファイルが自動的に作られます。 RandomAccessFileに
+     は、byte型だけでなく、int型やdouble型などの、1バイト以上ある データも、
+     一発で読みこむためのメソッドもたくさん用意されています。(詳しくは、HTML
+     版のAPI マニュアルを参照してください。)CGIを作る時には、これらのメソッ
+     ド群が威力を発揮することで しょう。
 
 
-6.7 CGI$B$r;H$C$F%O%$%9%3%"$r%5!<%P!<$KEPO?$9$k<BNc(B
+6.7 CGIを使ってハイスコアをサーバーに登録する実例
 
-     $B%2!<%`%G%6%$%s$N@a$G$b?($l$?$h$&$K!"%W%l%$%d!<F1;N$,6%$&$3$H$,$G$-$k(B $B4D(B
-     $B6-$rMQ0U$9$l$P!"$=$l$@$1$G%2!<%`$K$N$a$j$3$`MWAG$K$J$jF@$^$9!#(B $B%l!<%7%s(B
-     $B%0%2!<%`$G!"0l?MMQ$G$N%?%$%`$r3'$G6%$C$?$j$9$k$N$O!"4V@\E*$J(B $BBP@o%2!<%`(B
-     $B$K$J$C$F$$$k$H$$$&$3$H$G$9!#(B $B$*$*$,$+$j$JBP@o%2!<%`$N%"%W%l%C%H$r:n$k$N(B
-     $B$OBgJQ$G$9$+$i!"(B $B%9%?%s%I%"%m!<%s$N%2!<%`$K!"%$%s%?!<%M%C%H>e$NB>$N%W%l(B
-     $B%$%d!<$N(B $B%O%$%9%3%"$r8+$k$3$H$,$G$-$k5!G=$rIU$1!"(B $BEPO?$b$G$-$k$h$&$K$7(B
-     $B$F$_$F$O$I$&$G$7$g$&$+!)(B
-     $B$3$N$h$&$JL\E*$K$O!"(BCGI$B$,E,$7$F$$$^$9!#$3$N@a$G$O!"(B $B%O%$%9%3%"J]B8$N$?(B
-	 $B$a$K;H$($k5!G=$r;}$C$F$$$k(BCGI$B%W%m%0%i%`$r:n$j$^$9!#(B $B%9%1%k%H%s$OA0@a$G<((B
-     $B$7$?$b$N$r;H$$!"(BCGI$B%W%m%0%i%`$KAw?.$9$k(B $B%"%W%l%C%H$O!"$H$j$"$($:%2!<%`(B
-     $B$r$7$F3MF@$7$?$O$:$N(B $BE@?t$rF~NO$@$1$9$k$b$N$K$7$^$9!#(B($B$3$3$G%2!<%`$r$^(B
-     $B$?0l$D:n$C$F$$(B $B$F$O!"$H$F$b;fLL$,B-$j$^$;$s$N$G!#(B) Java$B%"!<%+%$%V!&%5%$(B
-     $B%H$G$"$k(Bgamelan$BEy$K$O!"$b$C$H0lHLE*$JF/$-$r$7$F$/$l$k(B Java CGI$B%W%m%0%i(B
-     $B%`$b$?$/$5$sEPO?$5$l$F$$$^$9$,!"$3$3$G$O$=$l$i$,4pK\E*$K(B $B$I$N$h$&$K$7$F(B
-     $B:n$i$l$F$$$k$N$+$rM}2r$7$F$/$@$5$$!#(B ($B<B:]!"0l$D$N(BCGI$B%2!<%`$r:n$k$K$O!"(B
-     $B7k6I:G=i$+$i%W%m%0%i%`$7$?J}$,B.$+$C$?$j$7$^$9!#(B)
+     ゲームデザインの節でも触れたように、プレイヤー同士が競うことができる 環
+     境を用意すれば、それだけでゲームにのめりこむ要素になり得ます。 レーシン
+     グゲームで、一人用でのタイムを皆で競ったりするのは、間接的な 対戦ゲーム
+     になっているということです。 おおがかりな対戦ゲームのアプレットを作るの
+     は大変ですから、 スタンドアローンのゲームに、インターネット上の他のプレ
+     イヤーの ハイスコアを見ることができる機能を付け、 登録もできるようにし
+     てみてはどうでしょうか？
+     このような目的には、CGIが適しています。この節では、 ハイスコア保存のた
+	 めに使える機能を持っているCGIプログラムを作ります。 スケルトンは前節で示
+     したものを使い、CGIプログラムに送信する アプレットは、とりあえずゲーム
+     をして獲得したはずの 点数を入力だけするものにします。(ここでゲームをま
+     た一つ作ってい ては、とても紙面が足りませんので。) Javaアーカイブ・サイ
+     トであるgamelan等には、もっと一般的な働きをしてくれる Java CGIプログラ
+     ムもたくさん登録されていますが、ここではそれらが基本的に どのようにして
+     作られているのかを理解してください。 (実際、一つのCGIゲームを作るには、
+     結局最初からプログラムした方が速かったりします。)
 
-	 $B%2!<%`$NFbMF$O!"(BUNIX$B$N@$3&$G$OM-L>$J!"(B"robots"$B$H$$$&%2!<%`$r%b%A!<%U$K(B
-	 $B$7$F!"%2!<%`%*!<%P!<$K$J$C$?$H$-$K%O%$%9%3%"$rJ]B8$9$k$h$&$K$7$^$9!#(B
-     $B%W%m%0%i%`%U%!%$%k$O!"(B
+	 ゲームの内容は、UNIXの世界では有名な、"robots"というゲームをモチーフに
+	 して、ゲームオーバーになったときにハイスコアを保存するようにします。
+     プログラムファイルは、
 
-     o Java CGI$B%W%m%0%i%`(B cgiskel.java($B$3$l$O!"A0@a$N$b$N$=$N$^$^$J$N$G!"(B
-     $B>JN,$7$^$9!#(B)
-     o Java CGI$B%W%m%0%i%`$r8F$S$@$9%7%'%k%9%/%j%W%H(B($B$3$l$bA0@a$N$b$N$=$N$^$^(B
-     $B$J$N$G!">JN,$7$^$9!#(B)
-     o $B%"%W%l%C%H%W%m%0%i%`(B "robots.java" $B$3$l$O?7$7$/%W%m%0%i%`$7$^$9!#(B
-     o robots.class$B$r5/F0$9$k$?$a$N(Bweb$B%Z!<%8(B "test.html"
+     o Java CGIプログラム cgiskel.java(これは、前節のものそのままなので、
+     省略します。)
+     o Java CGIプログラムを呼びだすシェルスクリプト(これも前節のものそのまま
+     なので、省略します。)
+     o アプレットプログラム "robots.java" これは新しくプログラムします。
+     o robots.classを起動するためのwebページ "test.html"
 
-	 $B0J>e$N(B4$B$D$H$J$C$F$$$^$9!#<!$K!"(B"robots.java"$B$NA4It$r7G:\$7$^$9!#(B
+	 以上の4つとなっています。次に、"robots.java"の全部を掲載します。
 
 	     
 
@@ -1102,7 +1102,7 @@ public class robots extends java.applet.Applet
 
 	Image imgs[] = new Image[4];
 	int width ,height;
-	int interval = 50;	// $B$3$N%"%W%l%C%H$G$O!"%9%l%C%I$O;H$$$^$;$s!#(B
+	int interval = 50;	// このアプレットでは、スレッドは使いません。
 	Image floorimg;
 	Graphics floorimg_g;
 
@@ -1149,7 +1149,7 @@ public class robots extends java.applet.Applet
 	int fysiz;
 	int field[][];
 	int tmpfield[][];
-	final int BLANK = 0;    // $B$9$Y$FCO7A$NMWAG$H$7$F4IM}(B
+	final int BLANK = 0;    // すべて地形の要素として管理
 	final int ROBOT = 1;
 	final int JUNK = 2;
 	final int PLAYER = 3;
@@ -1161,7 +1161,7 @@ public class robots extends java.applet.Applet
 	Color bg2 = new Color( 0x113322 );
 	Color fg = new Color( 0xffee44 );
 
-	int xtilesize =20,ytilesize=20;    // $B%?%$%k$N=D2#$NBg$-$5(B
+	int xtilesize =20,ytilesize=20;    // タイルの縦横の大きさ
 
 	int score=0;
 	String yourname = "input yourname";
@@ -1190,22 +1190,22 @@ public class robots extends java.applet.Applet
 	{
 		int num;
 
-		// $BE($N?t$r7h$a$k(B
+		// 敵の数を決める
 		if( stage < 5 ) num = stage * 5 ; else num = 25 + stage ;
 
-		// $B%U%m%"$r=i4|2=(B
+		// フロアを初期化
 		for(int i=0;i<fxsiz;i++){
 			for(int j=0;j<fysiz;j++){
 				field[i][j] = BLANK;
 			}
 		}
-		// $BE($rG[CV(B
+		// 敵を配置
 		for( int i = 0 ; i < num ; i++ ){
 			int x = ( ran.nextInt() & 0xffff ) % fxsiz;
 			int y = ( ran.nextInt() & 0xffff ) % fysiz;
 			field[x][y] = ROBOT;
 		} 
-		// $B%W%l%$%d!<$rG[CV(B
+		// プレイヤーを配置
 		for(;;){
 			int x = ( ran.nextInt() & 0xffff ) % fxsiz;
 			int y = ( ran.nextInt() & 0xffff ) % fysiz;
@@ -1217,11 +1217,11 @@ public class robots extends java.applet.Applet
 		}
 	}
 
-	// $B$3$NJV$jCM$,(Btrue $B$N>l9g$O!"Jb$1$J$+$C$?!#(B
+	// この返り値がtrue の場合は、歩けなかった。
 
 	boolean walk( int rx , int ry , boolean teleport )
 	{
-		// $BD4$Y$?$j!"?t$($?$j!#(B
+		// 調べたり、数えたり。
 		int robotno=0;
 
 
@@ -1234,9 +1234,9 @@ public class robots extends java.applet.Applet
 			}
 		}
 		
-		// $B%U%#!<%k%I$N%3%T!<$r0l;~E*$K:n$k!#A4BN$,0l@F$K?7$7$$>uBV(B
-		// $B$K0\9T$9$k$h$&$J%2!<%`$G$O!"$3$N$h$&$K%F%s%]%i%j$N%P%C%U%!$r(B
-		// $B:n$kI,MW$,$"$k!#(B($B%i%$%U%2!<%`$J$I(B)
+		// フィールドのコピーを一時的に作る。全体が一斉に新しい状態
+		// に移行するようなゲームでは、このようにテンポラリのバッファを
+		// 作る必要がある。(ライフゲームなど)
 		if( (plx+rx) < 0 || (plx+rx) >=fxsiz ){
 			return true;
 		}
@@ -1286,7 +1286,7 @@ public class robots extends java.applet.Applet
 			}
 		}
 
-		// $B$G$-$"$,$C$?%P%C%U%!$r85$N%P%C%U%!$K%3%T!<$9$k!#(B
+		// できあがったバッファを元のバッファにコピーする。
 		
 		for(int i=0;i<fxsiz;i++){
 			for(int j=0;j<fysiz;j++){
@@ -1294,7 +1294,7 @@ public class robots extends java.applet.Applet
 			}
 		}
 
-		// $BE($r?t$($FC/$b$$$J$+$C$?$i%/%j%"(B
+		// 敵を数えて誰もいなかったらクリア
 		if( countEnemy(field) ==0 ){
 			stage++;
 			initField();
@@ -1305,10 +1305,10 @@ public class robots extends java.applet.Applet
 		
 		return false;
 	}
-	// windows95$BMQ$N(BJDK1.1$B$N(Bbeta2$B$G$O!"2a5n$H$N8_49@-$rJ]$D$?$a$K(B
-	// $BMQ0U$5$l$F$$$k(BkeyDown$B%a%=%C%I$P$+$j$G$O$J$/!"(B1.1$B$G2C$o$C$?(B
-	// keyListener$B$r;H$C$?$d$j$+$?$G$b%-!<%$%Y%s%H$,Ht$s$G$3$J$$$N$G(B
-	// $B$7$+$?$J$/!"%^%&%9$K$h$kA`:n$K$7$F$$$k!#(B
+	// windows95用のJDK1.1のbeta2では、過去との互換性を保つために
+	// 用意されているkeyDownメソッドばかりではなく、1.1で加わった
+	// keyListenerを使ったやりかたでもキーイベントが飛んでこないので
+	// しかたなく、マウスによる操作にしている。
 	int gridx,gridy;
 	public boolean mouseMove( Event e , int x , int y )
 	{
@@ -1317,7 +1317,7 @@ public class robots extends java.applet.Applet
 		repaint();
 		return true;
 	}
-	// $B%-!<%\!<%I$G$bA`:n$G$-$k$h$&$K$7$F$*$/!#(B
+	// キーボードでも操作できるようにしておく。
 	public boolean keyDown( Event e , int c )
 	{
 		switch( c ){
@@ -1356,9 +1356,9 @@ public class robots extends java.applet.Applet
 		else if( gridy == (ply -1 )) dy = -1; 
 		else if( gridy == ply ) dy = 0;
 
-		// $B<g?M8x$N6a$/$r%/%j%C%/$9$k$H!"IaDL$KJb$/!#(B
-		// $B1s$/$r%/%j%C%/$9$k$H!"%F%l%]!<%H$9$k!#(B 
-		// $B%7%U%H%-!<$r2!$7$J$,$i%/%j%C%/$9$k$H!"!VBT$D!W!#(B
+		// 主人公の近くをクリックすると、普通に歩く。
+		// 遠くをクリックすると、テレポートする。 
+		// シフトキーを押しながらクリックすると、「待つ」。
 		if( ( e.modifiers & Event.SHIFT_MASK ) != 0){
 			waitRobots();
 		} else
@@ -1379,8 +1379,8 @@ public class robots extends java.applet.Applet
 		int c;
 		int total_robots = countEnemy(field);
 		for(;;){
-			// $B%$%Y%s%H=hM}$N%a%=%C%I$NCf$GIA2h$9$k$K$O$3$&$9$k!#$3$l$r;H$&$H(B
-			// $B9%$-$J%?%$%_%s%0$GIA2h$5$;$k$3$H$,$G$-$k!#>/!9N"5;E*!#(B
+			// イベント処理のメソッドの中で描画するにはこうする。これを使うと
+			// 好きなタイミングで描画させることができる。少々裏技的。
 			paint( getGraphics() );    
 			c = countEnemy(tmpfield);
 			if( c == 0 ){
@@ -1391,7 +1391,7 @@ public class robots extends java.applet.Applet
 			}
 
 			if( walk( 0 , 0 , false ) == true ){
-				// wait$B$7$F$k$N$KJb$1$J$$>l9g!"$=$l$O;`$@!#(B
+				// waitしてるのに歩けない場合、それは死だ。
 				die();
 				break;
 			}
@@ -1418,10 +1418,10 @@ public class robots extends java.applet.Applet
 
 	void drawAll()
 	{
-		// $B$^$:>C$9(B
+		// まず消す
 		dg.drawImage( floorimg , 0 , 0 , null );
 
-		// $B%U%#!<%k%I$rIA$/(B
+		// フィールドを描く
 		for(int i=0;i<fxsiz;i++){
 			for(int j=0;j<fysiz;j++){
 				if( field[i][j] != BLANK ) 
@@ -1429,10 +1429,10 @@ public class robots extends java.applet.Applet
 			}
 		}
 		
-		// $B%0%j%C%I$rIA$/(B
+		// グリッドを描く
 		dg.drawRect( gridx*xtilesize , gridy*ytilesize , 
 					xtilesize-1,ytilesize-1 );
-		// $BE@?tI=<((B
+		// 点数表示
 		dg.setColor( fg );
 		dg.drawString( "SCORE " + score + "/STAGE " +
 					  stage + "/Wait Bonus " + wait_bonus,10,30);
@@ -1449,11 +1449,11 @@ class YourNameWindow extends Frame
 
 	int score;
 	robots parent ;
-	// your.site.or.jp$B$K$O!"$"$J$?$,(BCGI$B$rCV$/%5%$%H$N%[%9%HL>$r=q$-$^$9!#(B
-	// HTML$B$+$i(BgetParam$B$9$k$h$&$K$7$F$b$h$$$G$7$g$&$7!"(BgetDocumentBase()
-	// $B$9$k$N$b%9%^!<%H$G$9!#$=$l$O=IBj$H$$$&$3$H$K$7$F$*$-$^$9!#(B
+	// your.site.or.jpには、あなたがCGIを置くサイトのホスト名を書きます。
+	// HTMLからgetParamするようにしてもよいでしょうし、getDocumentBase()
+	// するのもスマートです。それは宿題ということにしておきます。
 
-	// $B0J2<$N%"%I%l%9$O!"(BCGI$B%W%m%0%i%`$rCV$/>l=j$K1~$8$FJQ$($F$/$@$5$$!#(B
+	// 以下のアドレスは、CGIプログラムを置く場所に応じて変えてください。
 	String cgi_url = "http://your.site.or.jp/cgi-bin/ringo/java/aho.cgi";
 
 	YourNameWindow(robots parent , int score , String name)
@@ -1480,7 +1480,7 @@ class YourNameWindow extends Frame
 		resize(320,250);
 		show();
 
-		// $B%O%$%9%3%"$NI=$r<h$C$F$/$k!#(B
+		// ハイスコアの表を取ってくる。
 		String args[] = { "filename=robots_score" , "method=read" };
 		
 		HTTPAccess ha=null;
@@ -1504,7 +1504,7 @@ class YourNameWindow extends Frame
 			if( t.getText().length() == 0 ){
 				return true;
 			}
-			// $B%9%3%"$r(BCGI$B$KAw$k!#$3$3$G$b(BHTTPAcecss$B$r;H$&!#(B
+			// スコアをCGIに送る。ここでもHTTPAcecssを使う。
 			String args[] = 
 			{ "filename=robots_score" , 
 			  "method=append" ,"value="+  t.getText()+":"+score};
@@ -1526,8 +1526,8 @@ class YourNameWindow extends Frame
 		return t.getText();
 	}
 }
-// $B;H$$$+$?$O!"$^$:!"(BURL$B$NJ8;zNs$^$?$O(BURL$B$r;XDj$7$F!"=i4|2=$7!"$=$N$"$H(B
-// getDocument$B$9$k$@$1!#$=$&$9$k$H7k2L$N(Bbyte$BG[Ns$,F@$i$l$k!#(B
+// 使いかたは、まず、URLの文字列またはURLを指定して、初期化し、そのあと
+// getDocumentするだけ。そうすると結果のbyte配列が得られる。
 class HTTPAccess
 {
 	URL url;
@@ -1547,13 +1547,13 @@ class HTTPAccess
 	{
 		this( new URL( location ) );
 	}
-	// $BIaDL$N%3%M%/%7%g%s(B
+	// 普通のコネクション
 	HTTPAccess( URL u )
 	{
 		method = "GET";
 		url = u;
 	}
-	// CGI$B$r;H$&J}(B
+	// CGIを使う方
 	HTTPAccess( URL u , String method , String[] values )
 	throws MalformedURLException
 	{
@@ -1581,10 +1581,10 @@ class HTTPAccess
 		try{
 			uc = url.openConnection();
 			uc.setUseCaches(false);
-			uc.setDoInput(true);  // $B$3$l$r$d$i$J$$$H%@%a!#(B
+			uc.setDoInput(true);  // これをやらないとダメ。
 
 			if( method.equals("POST") ){
-					uc.setDoOutput(true);  // $B$3$l$b=EMW(B
+					uc.setDoOutput(true);  // これも重要
 					OutputStream out = uc.getOutputStream();
 					//byte b[] = request_string.getBytes();  // JDK1.1
 
@@ -1621,80 +1621,80 @@ File name: test.html
 <applet code=robots.class width=400 height=400></applet>
 -----------------------------------------------------------
 
-#$B?^(B6.7-1 <DONE>	$BF0:n7k2L(B(robots.java)
+#図6.7-1 <DONE>	動作結果(robots.java)
 
-	$B$3$N%"%W%l%C%H$,F0:n$9$k$K$O!"(Brobots.class$B$HF1$8%G%#%l%/%H%j$K!"(B
-	man.gif,robot.gif,junk.gif$B$N(B3$B$D$N%U%!%$%k$,CV$+$l$F$$$k$3$H$,I,MW$G$9!#(B
-	$B$3$l$i$N%U%!%$%k$O!"(BCD-ROM$B$K<}O?$5$l$F$$$^$9!#(B
+	このアプレットが動作するには、robots.classと同じディレクトリに、
+	man.gif,robot.gif,junk.gifの3つのファイルが置かれていることが必要です。
+	これらのファイルは、CD-ROMに収録されています。
 	
-	* $B%2!<%`$N%k!<%k(B
+	* ゲームのルール
 	
-	o $B<g?M8x$O!"(B8$BJ}8~$K0\F0$G$-$k!#(B
-    o $B%m%\%C%H$OE($G!"(B8$BJ}8~$K0\F0$9$k!#(B
-	o $B%m%\%C%H$O!"I,$:<g?M8x$NJ}$K6a$E$$$F$3$h$&$H$9$k!#(B
-	o $B<g?M8x$O!"%m%\%C%H$K0O$^$l$k$H!"$=$l0J>e0\F0$G$-$J$$!#(B
-	o $B<g?M8x$O!"A`:n$K$h$j!"9%$-$J;~$K%F%l%]!<%H$G$-$k!#%F%l%]!<%H$9$k(B
-    $B@h$O%i%s%@%`$G!"$=$3$K%m%\%C%H$d%4%_$,$"$k$H%2!<%`%*!<%P!<!#(B
-    o $BFs$D0J>e$N%m%\%C%H$,F1$8%^%9$K?J$b$&$H$7$?>l9g$O!"?J$s$@@h$N%^%9$K%4%_(B
-    $B$,$G$-!"$=$l$i$N%m%\%C%H$O>CLG$9$k!#(B($BE@?tDI2C(B)
-    o $B%4%_$KEv$?$C$?%m%\%C%H$O!">CLG$9$k!#(B($BE@?tDI2C(B)
-	o $B$9$Y$F$N%m%\%C%H$r>CLG$5$;$k$H!"%9%F!<%8%/%j%"!#(B
-	o $B$=$l0J>e0\F0$7$J$/$F$bA4$F$N%m%\%C%H$,;`$L$h$&$J%Q%?!<%s$K$J$C$?(B
-    $B>l9g!"!V8+@Z$jBT$A!W$9$k$3$H$,$G$-!"$=$N>l9g$O!"$=$N;~$K$d$C$D$1$?(B
-    $B%m%\%C%H$N8D?t$H%9%F!<%8HV9f$K$h$C$F7W;;$5$l$kE@?t$,F~$k!#(B
+	o 主人公は、8方向に移動できる。
+    o ロボットは敵で、8方向に移動する。
+	o ロボットは、必ず主人公の方に近づいてこようとする。
+	o 主人公は、ロボットに囲まれると、それ以上移動できない。
+	o 主人公は、操作により、好きな時にテレポートできる。テレポートする
+    先はランダムで、そこにロボットやゴミがあるとゲームオーバー。
+    o 二つ以上のロボットが同じマスに進もうとした場合は、進んだ先のマスにゴミ
+    ができ、それらのロボットは消滅する。(点数追加)
+    o ゴミに当たったロボットは、消滅する。(点数追加)
+	o すべてのロボットを消滅させると、ステージクリア。
+	o それ以上移動しなくても全てのロボットが死ぬようなパターンになった
+    場合、「見切り待ち」することができ、その場合は、その時にやっつけた
+    ロボットの個数とステージ番号によって計算される点数が入る。
 
-#$B?^(B6.7-2 <DRAFT> 	wait$B%\!<%J%9(B
+#図6.7-2 <DRAFT> 	waitボーナス
 
-	*$BA`:nJ}K!(B
+	*操作方法
 
-	o $B%^%&%9$r;H$&>l9g(B
+	o マウスを使う場合
 	
-#$B?^(B6.7-3 <DRAFT>	$B%^%&%9$r;H$C$FA`:n(B
+#図6.7-3 <DRAFT>	マウスを使って操作
 
-	o $B%-!<%\!<%I$r;H$&>l9g(B
+	o キーボードを使う場合
 
-#$B?^(B6.7-4 <DRAFT>	$B%-!<%\!<%I$r;H$C$FA`:n(B
+#図6.7-4 <DRAFT>	キーボードを使って操作
 
-	* $BL>A0F~NO%&%$%s%I%&$NA`:nJ}K!(B
+	* 名前入力ウインドウの操作方法
 
-#$B?^(B6.7-5 <DONE>		$B%&%$%s%I%&$GL>A0$rF~NO$9$k(B
+#図6.7-5 <DONE>		ウインドウで名前を入力する
 
-#$B?^(B6.7-6 <DONE>		$B%=%1%C%H$r7R$0$3$H$,$G$-$J$+$C$?(B
-#$B?^(B6.7-7 <DONE>		CGI$B$K@\B3$G$-$?(B
+#図6.7-6 <DONE>		ソケットを繋ぐことができなかった
+#図6.7-7 <DONE>		CGIに接続できた
 
 
 
-	*$B%"%W%l%C%H%W%m%0%i%`(B"robots.java"$B$N9=@.(B
+	*アプレットプログラム"robots.java"の構成
 
-     "robots.java"$B$O!"(B4$B>O$G>R2p$7$?%9%1%k%H%s%W%m%0%i%`$r4pK\$K$7$F$O$$$^$9(B
-     $B$,!"BgI}$KJQ99$7$F$$$^$9$N$G(B($B2?$7$m!"(BThread$B$b;H$C$F$$$^$;$s(B)$B0c$&$b$N$H(B
-     $B$7$F9M$($?$[$&$,$h$$$G$7$g$&!#(B
+     "robots.java"は、4章で紹介したスケルトンプログラムを基本にしてはいます
+     が、大幅に変更していますので(何しろ、Threadも使っていません)違うものと
+     して考えたほうがよいでしょう。
   
-     "robots.java"$B$K$O!"(B
+     "robots.java"には、
 
      o robots.class
      o YourNameWindow.class
      o HTTPAccess.class
      
-	 $B0J>e(B3$B$D$N%/%i%9$,4^$^$l$F$$$^$9!#$3$N$&$A!"%2!<%`$NFbMF$K4X78$9$k$N$O!"(B
-     robots.class $B$H!"(BYourNameWindow.class$B$N$U$?$D$G$9!#(BHTTPAccess.class$B$O!"(B
-     $B0lHLE*$J(BHTTP$B%"%/%;%9$r<B8=$9$k$?$a$N$b$N$G!"B>$N%W%m%0%i%`$+$i$b;H$$(B
-	 $B$d$9$$$h$&$K$7$F$"$j$^$9$N$G!"(BCGI$B%2!<%`$r:n$k>l9g$O!"$3$NItJ,$r@Z$j$@(B
-	 $B$7$F!"FHN)$7$?%W%m%0%i%`$H$7$FN.MQ$7$F$/$@$5$$!#$b$A$m$s!"(BCGI$B$r;H$o$J(B
-     $B$/$F$b!"IaDL$K%5!<%P!<$+$i%I%-%e%a%s%H$r<h$j$@$9$3$H$K$b;H$($^$9!#(B
+	 以上3つのクラスが含まれています。このうち、ゲームの内容に関係するのは、
+     robots.class と、YourNameWindow.classのふたつです。HTTPAccess.classは、
+     一般的なHTTPアクセスを実現するためのもので、他のプログラムからも使い
+	 やすいようにしてありますので、CGIゲームを作る場合は、この部分を切りだ
+	 して、独立したプログラムとして流用してください。もちろん、CGIを使わな
+     くても、普通にサーバーからドキュメントを取りだすことにも使えます。
 	
-    * robots $B%/%i%9$H(B YourNameWindow$B%/%i%9(B
+    * robots クラスと YourNameWindowクラス
 
-     $B%]%$%s%H$4$H$K@bL@$7$F$$$-$^$9$,!"$3$N>O$O%M%C%H%o!<%/%W%m%0%i%_%s%0$,(B
-	 $B%F!<%^$G$9$+$i!"0J>e$K$D$$$F$OHs>o$K4JC1$J@bL@$KN1$a$F$*$-$^$9!#(B
+     ポイントごとに説明していきますが、この章はネットワークプログラミングが
+	 テーマですから、以上については非常に簡単な説明に留めておきます。
 
-     1) $B2hA|$rG[Ns$G4IM}$7$F$$$k(B
+     1) 画像を配列で管理している
 
-     $B$3$N%2!<%`$G;H$&2hA|$O(B3$B<oN`$"$j$^$9$+$i!"$=$l$>$l$NHV9f$K1~$8$FG[Ns$N(B
-	 $BMWAG$r=i4|2=$7$F$*$1$P!"(B
+     このゲームで使う画像は3種類ありますから、それぞれの番号に応じて配列の
+	 要素を初期化しておけば、
 
 ---------------------------------------
-// $B%U%#!<%k%I$rIA$/(B
+// フィールドを描く
 for(int i=0;i<fxsiz;i++){
 	for(int j=0;j<fysiz;j++){
 		if( field[i][j] != BLANK ) 
@@ -1703,128 +1703,128 @@ for(int i=0;i<fxsiz;i++){
 }
 ---------------------------------------
 
-	 $B$H$$$&$h$&$J%3!<%I$GCO7A$r0lH/$GIA2h$G$-$^$9!#2hA|$N<oN`$,A}$($F$b!"(B
-	 $BIA2hItJ,$N%W%m%0%i%`$KJQ99$r2C$($kI,MW$O$"$j$^$;$s!#(B
+	 というようなコードで地形を一発で描画できます。画像の種類が増えても、
+	 描画部分のプログラムに変更を加える必要はありません。
 	
-	 2) $BE($N0LCV$J$I$N>pJs$O!"$9$Y$FCO7A$K;}$?$;$F$$$k!#(B
+	 2) 敵の位置などの情報は、すべて地形に持たせている。
 
-	 $B%2!<%`%W%m%0%i%`$K$*$$$F$O!"$[$H$s$I$N>l9g!"E($N0LCV$rI=$9$?$a$K!"(B
-	 $BE($N(BX$B:BI8$d(BY$B:BI8!">uBV$J$I$rG[Ns$K$7$F;}$A$^$9$,!"$3$N%W%m%0%i%`$G$O!"(B
-     $B%U%#!<%k%I$rI=$9(B2$B<!85G[Ns(B int field[][]$B$@$1$7$+$"$j$^$;$s!#I,MW$J$$$+$i(B
-     $B$G$9!#<g?M8x$N0LCV$b$=$N$h$&$K$G$-$k$N$G$9$,!"7W;;$,JXMx$K$J$k$h$&$K!"(B
-	 plx $B$H(B ply$B$H$$$&L>A0$G@k8@$7$F;HMQ$7$F$$$^$9!#(B
+	 ゲームプログラムにおいては、ほとんどの場合、敵の位置を表すために、
+	 敵のX座標やY座標、状態などを配列にして持ちますが、このプログラムでは、
+     フィールドを表す2次元配列 int field[][]だけしかありません。必要ないから
+     です。主人公の位置もそのようにできるのですが、計算が便利になるように、
+	 plx と plyという名前で宣言して使用しています。
 	 
-     3) $B>2$NEI$j$D$V$7MQ$K!"(BImage$B$r0lKgM>J,$K:n$C$F$$$k!#(B
+     3) 床の塗りつぶし用に、Imageを一枚余分に作っている。
 
-	 $B$3$l$OB.EY$r2T$0$?$a$G$9!#$$$A$$$AA4BN$rIA2h$9$k;~$K!"GX7J$NLOMM$rIA$$$F(B
-	 $B$$$?$N$G$O!"CY$/$F$7$+$?$,$J$$$N$G!"$3$&$7$F$$$^$9!#$J$<GX7J$KLOMM$r$D$1(B
-	 $B$?$+$H$$$&$H!"$=$l$O%W%l%$%d!<$H%m%\%C%H$N0LCV4X78$,<P$a$N>l9g$G$b$O$C$-(B
-     $B$j$o$+$k$h$&$K$9$k$?$a$G$9!#(B
-***  initFloorImage()$B%a%=%C%I$G:n$C$F$$$^$9!#(B
+	 これは速度を稼ぐためです。いちいち全体を描画する時に、背景の模様を描いて
+	 いたのでは、遅くてしかたがないので、こうしています。なぜ背景に模様をつけ
+	 たかというと、それはプレイヤーとロボットの位置関係が斜めの場合でもはっき
+     りわかるようにするためです。
+***  initFloorImage()メソッドで作っています。
 
-     4) $BE($,0\F0$9$k;~$K!"2>$N%P%C%U%!$r:n$C$F$$$k!#(B
+     4) 敵が移動する時に、仮のバッファを作っている。
 
-	 $B%U%#!<%k%I>e$NA4$F$,0lEY$KF0$/$h$&$J%b%G%k$N%2!<%`$G$O!"0\F0$N=hM}$N;~$K(B
-     $B$3$N%W%m%0%i%`$G$7$F$$$k$h$&$J2>$N%P%C%U%!$r:n$i$J$$$H!"%k!<%W=hM}$N=gHV(B
-     $B$NLdBj$G!"$&$^$/F0:n$7$^$;$s!#(B($BE57?Nc$,!"%i%$%U%2!<%`$N%W%m%0%i%`$J$N$G(B
-     $B$9$,!";DG0$J$,$i!"@bL@$9$k%9%Z!<%9$,$"$j$^$;$s!#(Bgamelan.com$B$J$I$G%A%'%C%/(B
-	 $B$7$F$_$F$/$@$5$$!#(B)
-***  walk()$B%a%=%C%I$NCf$G$3$N=hM}$r$7$F$$$^$9!#(B
+	 フィールド上の全てが一度に動くようなモデルのゲームでは、移動の処理の時に
+     このプログラムでしているような仮のバッファを作らないと、ループ処理の順番
+     の問題で、うまく動作しません。(典型例が、ライフゲームのプログラムなので
+     すが、残念ながら、説明するスペースがありません。gamelan.comなどでチェック
+	 してみてください。)
+***  walk()メソッドの中でこの処理をしています。
 
-	 5) $B%9%3%"EPO?MQ$K!"JL$J%&%$%s%I%&$r3+$$$F$$$k!#(B(YourNameWindow)
+	 5) スコア登録用に、別なウインドウを開いている。(YourNameWindow)
 
-	 robots$B%/%i%9$NCf$G$O!"%W%l%$%d!<$,;`$s$@;~$K(B die()$B$H$$$&%a%=%C%I$,8F$S(B
-     $B$@$5$l$^$9!#(Bdie()$B$NCf$G$O!"(B
+	 robotsクラスの中では、プレイヤーが死んだ時に die()というメソッドが呼び
+     だされます。die()の中では、
 
      win = new YourNameWindow(this , score,yourname );
 
-     $B$H$$$&$h$&$K$7$F!"L>A0F~NOMQ$N%&%$%s%I%&$r@8@.$7$F$$$^$9!#(B
+     というようにして、名前入力用のウインドウを生成しています。
 
      YourNameWindow win = new YourNameWindow(.....);
 
-	 $B$H$$$&Iw$K$;$:$K!"JQ?t(Bwin$B$N@k8@ItJ,$@$130It$K$7$F$"$k$N$O!"(BJava$B$N(B
-	 $B!V%,%Y!<%8%3%l%/%?!W$N=hM}$r$5$;$J$$$h$&$K$9$k9)IW$J$N$G$9$,!"$=$l$K$D$$(B
-     $B$F$OK\=q$NHO0O$r1[$($^$9$N$G!">JN,$7$^$9!#$5$F!"(BYourNameWindow$B%/%i%9$N(B
-	 $BCf$G$O!"%3%s%]!<%M%s%H$r;H$C$F$$$^$9!#L>A0$r<j7Z$KF~NO$9$k$?$a$G$9!#(B
-	 $B%3%s%]!<%M%s%H$O!"$3$N$h$&$JMQES$K$O8~$$$F$$$^$9!#$3$NNc$G$O!"$^$:(BPanel
-	 $B%/%i%9$r:n$j!"$=$3$K(BLabel$B$H(BTextField$B$H(BButton$B$r0l$D$E$DE=$j$D$1!"$=$&$7$F(B
-     $B$G$-$?(BPanel$B$r:#EY$O(BApplet$B$KE=$j$D$1!"$5$i$K%O%$%9%3%"%j%9%HI=<(MQ$N(B
-	 TextField$B$rE=$j$D$1$F$$$^$9!#$=$l$>$l$N0LCV4X78$O!"(Badd$B%a%=%C%I$KM?$($k(B
-     $BJ}3Q$G;XDj$7$F$$$^$9!#$3$N%l%$%"%&%H$r$9$k$K$O!"(BAPI$B%^%K%e%"%k$N(B
-     awt.BorderLayout$B$N9`L\$r;2>H$7$F$/$@$5$$!#(B
+	 という風にせずに、変数winの宣言部分だけ外部にしてあるのは、Javaの
+	 「ガベージコレクタ」の処理をさせないようにする工夫なのですが、それについ
+     ては本書の範囲を越えますので、省略します。さて、YourNameWindowクラスの
+	 中では、コンポーネントを使っています。名前を手軽に入力するためです。
+	 コンポーネントは、このような用途には向いています。この例では、まずPanel
+	 クラスを作り、そこにLabelとTextFieldとButtonを一つづつ貼りつけ、そうして
+     できたPanelを今度はAppletに貼りつけ、さらにハイスコアリスト表示用の
+	 TextFieldを貼りつけています。それぞれの位置関係は、addメソッドに与える
+     方角で指定しています。このレイアウトをするには、APIマニュアルの
+     awt.BorderLayoutの項目を参照してください。
 
-     7) paint$B$rD>@\;H$&N"5;$r;H$C$F$$$k!#(B
-	 $B%"%W%l%C%H$K$*$1$k(Brepaint$B$O!"8F$S$@$7$F$b!"(Brepaint$B$r8F$S$@$7$F$$$k(B
-	 $B%a%=%C%I$N=hM}$,=*$o$k$^$G$O!":FIA2h$5$l$^$;$s!#$3$l$O!"(BwaitRobots()
-     $B$N$h$&$J!"0l$D$N%a%=%C%I$N=hM}Cf$K2?2s$bIA2h$7$?$$$h$&$J>l9g$K$OLdBj(B
-     $B$,@8$8$^$9!#$=$l$r2r7h$9$k$K$O!"B?>/N"5;E*$G$9$,!"(Bpaint$B$rD>@\$K8F$S$@(B
-     $B$9J}K!$r<h$j$^$9!#$=$l$K$O!"%"%W%l%C%H$NCf$J$i(B
+     7) paintを直接使う裏技を使っている。
+	 アプレットにおけるrepaintは、呼びだしても、repaintを呼びだしている
+	 メソッドの処理が終わるまでは、再描画されません。これは、waitRobots()
+     のような、一つのメソッドの処理中に何回も描画したいような場合には問題
+     が生じます。それを解決するには、多少裏技的ですが、paintを直接に呼びだ
+     す方法を取ります。それには、アプレットの中なら
 
      paint( getGraphics() );
      
-	 $B$H$$$&7h$^$C$?=q$-$+$?$r$7$^$9!#$3$&$9$k$H!"9%$-$J%?%$%_%s%0$GIA2h$9$k(B
-     $B$3$H$,$G$-$^$9!#(B     
-***  waitRobots()$B%a%=%C%I$N(Bfor$B%k!<%W$NCf$G9T$J$C$F$$$^$9!#(B
+	 という決まった書きかたをします。こうすると、好きなタイミングで描画する
+     ことができます。     
+***  waitRobots()メソッドのforループの中で行なっています。
 
-	* HTTPAccess$B%/%i%9(B
+	* HTTPAccessクラス
  
-     $B$3$N@a$G=EMW$J$N$O$3$N%/%i%9$G$9!#HFMQE*$K;H$($k$h$&$K:n$C$F$"$j$^$9!#(B
-     $B$3$N%/%i%9$NCf$G$O!"(BURLConnection$B$H$$$&!"(BHTTP$B$N%5!<%P!<$HDL?.$9$k$N$K(B
-     $BHs>o$KET9g$N$h$$%/%i%9$r;HMQ$7$F$$$^$9!#$3$N%/%i%9$r;H$&<j=g$O!"(B
+     この節で重要なのはこのクラスです。汎用的に使えるように作ってあります。
+     このクラスの中では、URLConnectionという、HTTPのサーバーと通信するのに
+     非常に都合のよいクラスを使用しています。このクラスを使う手順は、
 
-	 1) $B$H$K$+$/!"DL?.$7$?$$%5!<%P!<$N(BURL$B$rF@$^$9!#(BHTTPAccess$B$G$O!"0z?t$H$7$F(B
-     $B8F$S$@$785$+$iF@$k$h$&$K$J$C$F$$$^$9!#(B
-***  $B%3%s%9%H%i%/%?$NCf$G$O<!$N$h$&$J%3!<%I$G(BURL$B$rF@$F$$$^$9!#(B
+	 1) とにかく、通信したいサーバーのURLを得ます。HTTPAccessでは、引数として
+     呼びだし元から得るようになっています。
+***  コンストラクタの中では次のようなコードでURLを得ています。
 
 	 URL url = new URL( location);
 
-     2) URL$B$,5a$^$C$?$i!"(B
-***  getDocument$B%a%=%C%I$NCf$G!"(B
+     2) URLが求まったら、
+***  getDocumentメソッドの中で、
 
      URLConnection uc = url.openConnection();
 
-	 $B$N$h$&$K$7$F!"(BURLConnection$B$rF@$^$9!#(B
+	 のようにして、URLConnectionを得ます。
 	
 	 3)
-***  URLConnection$B$rF@$?8e!"(B
- $BI,MW$K1~$8$F!"(Buc.setDoInput(true); $B$^$?$O(B uc.setDoOutput(true);
-     $B$r9T$J$$$^$9!#(Btrue $B$r;XDj$9$k$H!"F~NO$^$?$O=PNO$r$9$k!"(B
-     $B$H$$$&$3$H$K$J$j$^$9!#(B
-	 $B%G%U%)%k%H$G$O!"(BsetDoInput(true); uc.setDoOutput(false);$B$K$J$C$F$$$^$9!#(B
+***  URLConnectionを得た後、
+ 必要に応じて、uc.setDoInput(true); または uc.setDoOutput(true);
+     を行ないます。true を指定すると、入力または出力をする、
+     ということになります。
+	 デフォルトでは、setDoInput(true); uc.setDoOutput(false);になっています。
 
-	 4) $B%G!<%?$r<h$C$F$/$k>l9g$O!"(B
+	 4) データを取ってくる場合は、
 
 	InputStream in = uc.getInputStream();
 	
-	$B$N$h$&$K$7$F%9%H%j!<%`$rMQ0U$7!"FI$_$3$_$N=`Hw$r$7$^$9!#(BHTTPAccess$B$G$O!"(B
-	$BFC$KI,MW$H$$$&$o$1$G$O$"$j$^$;$s$,!"(BDataInputStream$B$rDL$7$F;H$C$F$$$^$9!#(B
+	のようにしてストリームを用意し、読みこみの準備をします。HTTPAccessでは、
+	特に必要というわけではありませんが、DataInputStreamを通して使っています。
 
-	POST$B%a%=%C%I$r;H$&;~$J$I!"=PNO$9$k>l9g$K$O!"(B
+	POSTメソッドを使う時など、出力する場合には、
 
 	OutputStream out = uc.getOutputStream();
 
-	$B$N$h$&$K$7$^$9!#(BPOST$B%a%=%C%I$r;H$&;~$K$O!"(BHTTP$B%5!<%P$O!"(BPOST$B%a%=%C%I$N(B
-	$BF~NO$,$"$C$F$+$i$=$NJVEz$H$7$F=PNO$7$F$-$^$9$N$G!"@h$K=PNO$7$F$d$kI,MW(B
-    $B$,$"$j$^$9!#=PNO$9$k>l9g$O!"%5!<%P!<$KAw?.$9$kJ8;zNs$r(B write$B$7$F$d$j$^$9!#(B
-*** getDocument$B$NCf$G$O!"(Brequest_string$B$KAw?.$7$?$$J8;zNs$rJ]B8$7$F$+$i!"(B
+	のようにします。POSTメソッドを使う時には、HTTPサーバは、POSTメソッドの
+	入力があってからその返答として出力してきますので、先に出力してやる必要
+    があります。出力する場合は、サーバーに送信する文字列を writeしてやります。
+*** getDocumentの中では、request_stringに送信したい文字列を保存してから、
 ***	request_string.getBytes( 0 , request_string.length(),b,0 );//JDK1.0.2
 ***	out.write( b , 0 , b.length );
 ***	out.write( '\n' );
-***	$B$H$7$F!"(BURLConnection$B$K=q$-$3$s$G$$$^$9!#(B
+***	として、URLConnectionに書きこんでいます。
 
 	5)
-*** $B%5!<%P$+$i$NJVEz$r(B
-    $B<B:]$KFI$_$3$_$^$9!#(Bread()$B$r;H$$$^$9!#(B
+*** サーバからの返答を
+    実際に読みこみます。read()を使います。
 
 
-	URLConnection$B$r;H$&$H!"(BHTTP$B%W%m%H%3%k$NFbIt$rCN$k$3$H$J$/!"%"%W%l%C%H$d(B
-    $B%"%W%j%1!<%7%g%s$NCf$+$i(BHTTP$B%3%M%/%7%g%s$r:n$k$3$H$,$G$-$^$9!#(B
+	URLConnectionを使うと、HTTPプロトコルの内部を知ることなく、アプレットや
+    アプリケーションの中からHTTPコネクションを作ることができます。
 
-	$B:G8e$K!"(BHTTPAccess$B$N%a%=%C%I$NI=$r<($7$^$9!#(B
+	最後に、HTTPAccessのメソッドの表を示します。
 
-#$BI=(B6.7-1 <DONE>	HTTPAccess$B$N%a%=%C%I$NI=(B
+#表6.7-1 <DONE>	HTTPAccessのメソッドの表
 -------------------------------------------------------
-$B%3%s%9%H%i%/%?(B
+コンストラクタ
 
 o HTTPAccess( String location , String method , String[] values ) 
 	throws MalformedURLException
@@ -1833,234 +1833,234 @@ o HTTPAccess( URL u , String method , String[] values )
 o HTTPAccess( String location ) throws MalformedURLException
 o HTTPAccess( URL u )
 
-$B%I%-%e%a%s%H$r<h$j$@$9(B
+ドキュメントを取りだす
 o byte[] getDocument() throws Exception
 -------------------------------------------------------
 
-	* $B$5$i$KH/E8$5$;$k(B
+	* さらに発展させる
 
-	robots.java$B$G$O!":GDc8B$N5!G=$@$1$r<B8=$7$^$7$?!#%F%-%9%H%U%#!<%k%I$K$O!"(B
-    $B%5!<%P!<$+$iAw$i$l$F$/$kJ8;z$,$=$N$^$^F~$C$F$$$^$9$,!"$b$C$H6E$C$?I=<((B
-    $B$K$7$?$[$&$,8z2LE*$G$7$g$&$7!"(BCGI$B$K$b$C$H$$$m$$$m$J5!G=$r;}$?$;$F!"(B
-    $B3F%W%l%$%d!<$,%O%$%9%3%"$r=P$5$J$+$C$?;~$K$OEPO?$7$J$$$H$+!"A4BN$rDL$7$F(B
-    $B%9%3%"=g$KJB$Y$FAw?.$9$k$H$+!">e0L(B10$B?M$@$1Aw?.$9$k$H$+!"H/E87A$O$$$m$$$m(B
-    $B9M$($i$l$^$9!#$I$N$h$&$KH/E8$5$;$F$$$/$N$+$O!"$_$J$5$s$N<+M3$G$9!#$3$3$G(B
-	$BF@$?CN<1$r;H$($P!"%O%$%9%3%"J]B8$@$1$G$J$/!"%2!<%`$NFbMF$K(BCGI$B$r;H$&$3$H(B
-	$B$b$G$-$^$9!#(B
-      $B$3$N>O$NBh(B5$B@a$G$O!"!V%+!<%I%2!<%`$d%\!<%I%2!<%`$J$I(B
-    $B$N$h$&$J!"%j%"%k%?%$%`$G$J$$$b$N$J$i!"==J,$K:n$k$3$H$,$G$-$^$9!#!W$H(B
-	$B=R$Y$F$$$^$9$,!"$=$NM}M3$O2?$G$7$g$&$+!)$J$<!"%j%"%k%?%$%`$J%2!<%`$O(B
-	$B:n$l$J$$$N$G$7$g$&$+!)(B
+	robots.javaでは、最低限の機能だけを実現しました。テキストフィールドには、
+    サーバーから送られてくる文字がそのまま入っていますが、もっと凝った表示
+    にしたほうが効果的でしょうし、CGIにもっといろいろな機能を持たせて、
+    各プレイヤーがハイスコアを出さなかった時には登録しないとか、全体を通して
+    スコア順に並べて送信するとか、上位10人だけ送信するとか、発展形はいろいろ
+    考えられます。どのように発展させていくのかは、みなさんの自由です。ここで
+	得た知識を使えば、ハイスコア保存だけでなく、ゲームの内容にCGIを使うこと
+	もできます。
+      この章の第5節では、「カードゲームやボードゲームなど
+    のような、リアルタイムでないものなら、十分に作ることができます。」と
+	述べていますが、その理由は何でしょうか？なぜ、リアルタイムなゲームは
+	作れないのでしょうか？
 
-    $B$^$:Bh0l$K!"(BCGI$B%W%m%0%i%`$O!"J#?tF1;~$K5/F0$5$l$k$N$G!"$=$l$>$l$N(BCGI
-    $B%W%m%0%i%`F1;N$,>pJs$r$d$j$H$j$9$k$K$O!"%U%!%$%k$=$NB>$N<jCJ$r;H$&$7$+(B
-	$B$J$$$N$G$9$,!"$=$N>l9g!"<!$N?^$K<($9$h$&$J!"F14|>e$NLdBj$,H/@8$9$k$N$G$9!#(B
+    まず第一に、CGIプログラムは、複数同時に起動されるので、それぞれのCGI
+    プログラム同士が情報をやりとりするには、ファイルその他の手段を使うしか
+	ないのですが、その場合、次の図に示すような、同期上の問題が発生するのです。
 
-#$B?^(B6.7-8 <NOT YET>	$B%U%!%$%k$r;H$&$HF14|$G$-$J$$2DG=@-$,$"$k(B
+#図6.7-8 <NOT YET>	ファイルを使うと同期できない可能性がある
 
-	$B$3$l$rKI$0$K$O!"F14|$N$?$a$N>pJs$rJ]4I$9$k>pJs%U%!%$%k$r:n$C$F!"(B
-	CGI$B%W%m%0%i%`$,5/F0$7$?;~$K$O$^$:$=$N%U%!%$%k$K%"%/%;%9$7$F!"5v2D$,=P$k(B
-	$B$^$GBT$D$h$&$K$9$k$J$I$H$$$C$?$d$d$3$7$$$3$H$r$9$kI,MW$,$"$j$^$9!#(B
-	$B4pK\E*$K(BCGI$B%W%m%0%i%`$O!"J]B8$5$l$F$$$k%U%!%$%k$NFbMF0J30$K!">uBV$rJ]B8(B
-	$B$7$F$*$/$3$H$,$G$-$J$$$N$G!"%2!<%`$K4XO"$9$kA4$F$N>pJs$,!"(BCGI$B%W%m%0%i%`$H(B
-	$B%V%i%&%6$N4V$G1}I|$9$k$h$&$J%G%6%$%s$K$7$F$*$/$Y$-$G$9!#$=$N>pJs$O(B
-	$B%5!<%P!<$+$iAw?.$5$l$k$H$-$K$O(BHTML$B$H$$$&7A$G!"%V%i%&%6$+$iAw?.$5$l$k(B
-    $B;~$K$O(BGET$B$d(BPOST$B$K;XDj$9$kJ8;zNs$H$$$&7A$G0\F0$9$k$N$G$9!#$=$7$F!"%W%l%$%d(B
-	$B$NF~NO$H(BCGI$B%W%m%0%i%`$N=hM}$K$h$C$F$=$N>pJs$N2t$,JQ2=$7$F$$$/$H$$$&(B
-	$B$o$1$G$9!#(B
+	これを防ぐには、同期のための情報を保管する情報ファイルを作って、
+	CGIプログラムが起動した時にはまずそのファイルにアクセスして、許可が出る
+	まで待つようにするなどといったややこしいことをする必要があります。
+	基本的にCGIプログラムは、保存されているファイルの内容以外に、状態を保存
+	しておくことができないので、ゲームに関連する全ての情報が、CGIプログラムと
+	ブラウザの間で往復するようなデザインにしておくべきです。その情報は
+	サーバーから送信されるときにはHTMLという形で、ブラウザから送信される
+    時にはGETやPOSTに指定する文字列という形で移動するのです。そして、プレイヤ
+	の入力とCGIプログラムの処理によってその情報の塊が変化していくという
+	わけです。
 
-#$B?^(B6.7-9 <NOT YET>	$B>pJs$N%Q%C%1!<%8$r(BCGI$B%W%m%0%i%`$H%f!<%6$,$d$j$H$j$9$k(B
+#図6.7-9 <NOT YET>	情報のパッケージをCGIプログラムとユーザがやりとりする
 
-	$B%+!<%I%2!<%`$d%/%$%:%2!<%`$d$9$4$m$/!"%"%I%Y%s%A%c!<%2!<%`$J$I$O!"$^$5$K(B
-    $B$3$N%9%?%$%k$K$T$C$?$j$"$F$O$^$j$^$9!#J#?t;22C7?$N%"%I%Y%s%A%c!<%2!<%`(B
-	$B$J$I$r(BWWW$B>e$K<B8=$9$l$P$+$J$jLLGr$$$b$N$K$J$k$O$:$G$9!#IaDL$N%"%I%Y%s(B
-	$B%A%c!<%2!<%`$KK0$-$F$7$^$C$?$H$$$&J}!"$=$&$$$&%2!<%`$r:n$C$F$_$^$;$s$+!)(B
+	カードゲームやクイズゲームやすごろく、アドベンチャーゲームなどは、まさに
+    このスタイルにぴったりあてはまります。複数参加型のアドベンチャーゲーム
+	などをWWW上に実現すればかなり面白いものになるはずです。普通のアドベン
+	チャーゲームに飽きてしまったという方、そういうゲームを作ってみませんか？
 
 
 6.8 Remote Method Invocation(RMI)
 
-     JDK 1.1$B$+$i!"(Bjava.rmi$B$H$$$&%Q%C%1!<%8$N%/%i%972!"(BAPI$B$,;H$($k$h$&$K$J$j(B
-     $B$^$7$?!#$3$l$O!"%M%C%H%o!<%/$r2p$7$F!"B>$N(BJava$B%P!<%A%c%k%^%7%s>e$GF0:n(B
-     $B$7$F$$$k%*%V%8%'%/%H$N;}$D%a%=%C%I$r<B9T$7$F$7$^$*$&$H$$$&$b$N$G$9!#<B(B
-     $B:]$K$O!"(BJava$B$N3F<o%/%i%9$NBeM}$H$J$k%/%i%9$r%P%$%HNs$KJQ49$7$F!"(B
-	 $B$=$l$rAw<u?.$9$k$H$$$&$h$&$J$3$H$r$7$F$$$^$9!#(B
-	 $B$3$N%/%i%972$r!"%2!<%`%W%m%0%i%`4V$N>pJs(B
-     $B8r49$K;H$($P!"%2!<%`$r:n$k$3$H$,$G$-$^$9!#(BJava$B$N(Bsynchronized$B$J$I$N(B
-	 $B5!9=$r%2!<%`$NF14|$K@8$+$;$P!"$+$J$j?J$s$@7A$G%M%C%H%o!<%/%2!<%`$r:n$k(B
-	 $B$3$H$,$G$-$=$&$G$9$,!"8&5fITB-$G!"Nc$r<($9$H$3$m$^$GC#$7$F$$$^$;$s!#(B
-	 $B$G$9$+$i!"$3$N@a$G$O!"354Q$@$1$KN1$a$F$*$-$^$9!#(B
+     JDK 1.1から、java.rmiというパッケージのクラス群、APIが使えるようになり
+     ました。これは、ネットワークを介して、他のJavaバーチャルマシン上で動作
+     しているオブジェクトの持つメソッドを実行してしまおうというものです。実
+     際には、Javaの各種クラスの代理となるクラスをバイト列に変換して、
+	 それを送受信するというようなことをしています。
+	 このクラス群を、ゲームプログラム間の情報
+     交換に使えば、ゲームを作ることができます。Javaのsynchronizedなどの
+	 機構をゲームの同期に生かせば、かなり進んだ形でネットワークゲームを作る
+	 ことができそうですが、研究不足で、例を示すところまで達していません。
+	 ですから、この節では、概観だけに留めておきます。
 
    
-  	 RMI$B$NF0:n$O4pK\E*$K$O<!$N?^$N$h$&$K$J$j$^$9!#(B
+  	 RMIの動作は基本的には次の図のようになります。
 
-#$B?^(B6.8-1 <DRAFT>     rmi$B$N%5!<%P%/%i%$%"%s%H$N4X78(B
+#図6.8-1 <DRAFT>     rmiのサーバクライアントの関係
 
 ------------------------------------------
-     $B%"%W%l%C%H(B/$B%"%W%j%1!<%7%g%s(B
+     アプレット/アプリケーション
        |
-     $B%M%C%H%o!<%/(B $B%"%W%l%C%H$O!"%M%C%H%o!<%/$rDL$8$FAw?.$5$l$k!#(B
+     ネットワーク アプレットは、ネットワークを通じて送信される。
        |
-     $B%"%W%j%1!<%7%g%s!&%5!<%P(B
+     アプリケーション・サーバ
 ------------------------------------------
 
-     RMI$B$r;H$C$FAj8_$KDL?.$r$9$k$K$O!"%5!<%P$rMQ0U$9$kI,MW$,$"$j$^(B $B$9!#$=$7(B
-     $B$F!"%5!<%PB&$N%W%m%0%i%`$b(Bjava.rmi$B$r;H$C$F!"(B $B<B:]$N%5!<%S%9$rDs6!$9$k$h(B
-     $B$&$K$7$F$*$-$^$9!#%5!<%P$rMQ0U$9$k$?$a$KI,MW$J(B $B%W%m%0%i%`72$b!"(BJDK1.1$B$K(B
-     $B$OImB0$7$F$$$^$9!#(B
+     RMIを使って相互に通信をするには、サーバを用意する必要がありま す。そし
+     て、サーバ側のプログラムもjava.rmiを使って、 実際のサービスを提供するよ
+     うにしておきます。サーバを用意するために必要な プログラム群も、JDK1.1に
+     は附属しています。
 
-     $B$3$NJ}K!$O!"%5!<%P$rMQ0U$7$J$1$l$P$J$i$J$$$H$$$&E@$G!"<!9`$N(B $B!V%2!<%`MQ(B
-     $B$N@lMQ%5!<%P!<$rMQ0U$9$k!W$HK\<AE*$K$OF1$8$G!"$"$kDxEY(B $B<j4V$b$+$+$j$^(B
-     $B$9!#$=$7$F!"C10l$N%5!<%P$,B8:_$7$F$$$k$o$1$G$O$J$$$?$a!"%5!<%PF1;N$N(B
-	 $BO"Mm$N<h$j$"$$$K6lO+$9$k$3$H$K$J$j$^$9!#BP@o%2!<%`$G$O!">pJs$NF14|$,(B
-	 $B:GDc8BI,MW$J$N$G$9$,!"$=$N$3$H$O!"%5!<%P$N@_7W$rHs>o$K:$Fq$K$7$^$9!#(B
-	 $B$=$l$O(BRMI$B$r;H$C$?>l9g$bF1MM$G$9!#(B
-	 RMI$B$r;H$&$3$H$N6/$_$O!"%/%i%$%"%s%H(B($B>e$N?^$G$O!"%"%W%l%C%H(B/$B%"%W%j(B
-	 $B%1!<%7%g%s(B) $B$H%5!<%P$,!"!V%a%=%C%I8F$S$@$7!W$H$$$&!"8@8l;EMM$G7hDj$5$l(B
-	 $B$F$$$k7x8G$J%W%m%H%3%k$r;H$C$FDL?.$G$-$k$3$H$G$9!#(B
-	 $B<+A0$G%W%m%H%3%k$r9)IW$7$J$/$F$b$h$$$N$G$9!#(B
-	 $BDL?.%2!<%`$G$O%W%m%H%3%k$N:vDj$,LLE]$G$9$,!"(B $B$=$NI,MW$,$J$$$o$1$G$9!#(B
-	 ($B$b$A$m$s@-G=$NLdBj$O$"$j$^$9$,!#(B)
-        $B$^$?8=:_$O!"(BJava$B$N%/%i%9%i%$%V%i%j$r;H$&0J30$N(BRMI$B$N;HMQJ}K!$,$J$$$N$G!"(B
-	 $B%/%i%$%"%s%H%W%m%0%i%`(B
-     $B$,(BJava$B$N$b$N$@$1$G$"$k>l9g0J30$O;H$($^$;$s!#(B($B$D$^$j!"(B Java$B$N%/%i%$%"%s(B
-     $B%H$H!"(BWindows$B$N%"%W%j%1!<%7%g%s$N%/%i%$%"%s%H$H$,DL?.$9$k(B $B$h$&$J>l9g$O(B
-     $BL5M}$@$H$$$&$3$H$G$9!#(B)
-	 RMI$B$r%U%k$K;H$($P!"$+$J$j$NFbMF$N%2!<%`$r:n$k$3$H$,$G$-$=$&$G$9!#$7$+$7(B
-	 CGI$B$d!"(BSocket$B$rD>@\MQ$$$F%5!<%P$rMQ0U$9$kJ}K!$HJB$VM-8z@-$rH/4x$G$-$k$+(B
-	 $B$I$&$+$O!"8!>Z$9$kI,MW$,$"$j$=$&$G$9!#(B
+     この方法は、サーバを用意しなければならないという点で、次項の 「ゲーム用
+     の専用サーバーを用意する」と本質的には同じで、ある程度 手間もかかりま
+     す。そして、単一のサーバが存在しているわけではないため、サーバ同士の
+	 連絡の取りあいに苦労することになります。対戦ゲームでは、情報の同期が
+	 最低限必要なのですが、そのことは、サーバの設計を非常に困難にします。
+	 それはRMIを使った場合も同様です。
+	 RMIを使うことの強みは、クライアント(上の図では、アプレット/アプリ
+	 ケーション) とサーバが、「メソッド呼びだし」という、言語仕様で決定され
+	 ている堅固なプロトコルを使って通信できることです。
+	 自前でプロトコルを工夫しなくてもよいのです。
+	 通信ゲームではプロトコルの策定が面倒ですが、 その必要がないわけです。
+	 (もちろん性能の問題はありますが。)
+        また現在は、Javaのクラスライブラリを使う以外のRMIの使用方法がないので、
+	 クライアントプログラム
+     がJavaのものだけである場合以外は使えません。(つまり、 Javaのクライアン
+     トと、Windowsのアプリケーションのクライアントとが通信する ような場合は
+     無理だということです。)
+	 RMIをフルに使えば、かなりの内容のゲームを作ることができそうです。しかし
+	 CGIや、Socketを直接用いてサーバを用意する方法と並ぶ有効性を発揮できるか
+	 どうかは、検証する必要がありそうです。
 
 
-6.9 $B%2!<%`MQ$N@lMQ%5!<%P!<$rMQ0U$9$k(B
+6.9 ゲーム用の専用サーバーを用意する
 
-     $B$3$l$O!"$3$l$^$G$K07$C$?(BCGI$B$d(BRMI$B$r;H$C$?DL?.$K$/$i$Y$F(B $B:G$b<j4V$N$+$+$k(B
-     $B<BAu$G$9!#$=$7$F:#$G$O8E$a$+$7$/$b$"$j$^$9!#(B $B$7$+$7!"$d$j$+$?$K$h$C$F$O(B
-     $B%2!<%`$NFbMF$K:G$b6E$l$k<BAuJ}K!$G$b$"$j$^$9!#(B $B%5!<%P!<<+BN$r0l$+$i:n$k(B
-     $B$N$G!"%Q%U%)!<%^%s%9$bM%$l$F$$$^$9!#(B $B$3$NJ}K!$O!"Bg5,LO$J%2!<%`$K$bBP1~(B
-     $B$G$-$^$9!#(B $BK\3JE*$K%5!<%P$r1?1D$9$k>l9g$O!"(BUNIX$B$^$?$O$=$l$K=`$8$k%7%9%F(B
-     $B%`(B (linux$BEy(B)$B>e$G1?1D$9$k$N$,8=<BE*$G$"$k$H;W$o$l$^$9$,!"(Bwindows$B$J$I$G$b(B
-     $B==J,$K%5!<%P$rF0:n$5$;$k$3$H$,$G$-$^$9!#<B:]$KF0:n%F%9%H$7$F$b!"(B UNIX$B$K(B
-     $BB=?'$J$$%Q%U%)!<%^%s%9$r8+$;$^$9!#(B $B$3$N@a$K8B$C$F$O!"@lLgMQ8l$rB?MQ$7$^(B
-     $B$9$N$G!"$b$7$b$o$+$i$J$$(B $BC18l$,=P$F$-$?>l9g$O!"%W%l%s%F%#%9%[!<%k$NNICx(B
-     $B!V(BUNIX$B%M%C%H%o!<%/%W%m%0%i%_%s%0!W$d!"%=%U%H%P%s%/$N(B $B!V(BTCP/IP$B%P%$%V%k!W(B
-     $B$=$NB>$r;2>H$7$F$/$@$5$$!#(B
+     これは、これまでに扱ったCGIやRMIを使った通信にくらべて 最も手間のかかる
+     実装です。そして今では古めかしくもあります。 しかし、やりかたによっては
+     ゲームの内容に最も凝れる実装方法でもあります。 サーバー自体を一から作る
+     ので、パフォーマンスも優れています。 この方法は、大規模なゲームにも対応
+     できます。 本格的にサーバを運営する場合は、UNIXまたはそれに準じるシステ
+     ム (linux等)上で運営するのが現実的であると思われますが、windowsなどでも
+     十分にサーバを動作させることができます。実際に動作テストしても、 UNIXに
+     遜色ないパフォーマンスを見せます。 この節に限っては、専門用語を多用しま
+     すので、もしもわからない 単語が出てきた場合は、プレンティスホールの良著
+     「UNIXネットワークプログラミング」や、ソフトバンクの 「TCP/IPバイブル」
+     その他を参照してください。
 
-     * $B@lMQ$N%5!<%P$rMQ0U$9$k$H!"$I$N$h$&$JMxE@$,$"$k$N$+(B
+     * 専用のサーバを用意すると、どのような利点があるのか
 
-     $B$^$:!":GE,2=$7$?%5!<%P$rMQ0U$9$k$3$H$G!"%5!<%P$rF0:n$5$;$k(B $B%^%7%s$N@-G=(B
-     $B$r@8$+$9$3$H$,$G$-$k$H$$$&MxE@$,$"$j$^$9!#(B $B%5!<%P$N:GE,2=$H$O!"(B UNIX$B%7(B
-     $B%9%F%`$K$*$1$k(Bsocket$B$K:GE,$J%*%W%7%g%s$r;XDj$9$k$3$H$d!"(B $B%W%m%;%94IM}$r(B
-     $B9)IW$9$k(B(fork$B$7$J$$$h$&$K$9$k$J$I(B) $B$3$H!"(BOS$B$N%+!<%M%k$K<j$r2C$($F%M%C%H(B
-     $B%o!<%/@-G=$r(B $B:GE,2=$9$k$3$H$J$I$,4^$^$l$^$9!#(B($B$b$A$m$s!"%+!<%M%k$K<j$r(B
-     $B2C$($k(B $B$3$H$,$G$-$k$N$O!"%=!<%9%3!<%I$,8x3+$5$l$F$$$k%U%j!<$N$b$N$K(B $B8B(B
-     $B$j$^$9$,!#(B)$B$d$m$&$H;W$($P%Q%1%C%H$N@8@.$^$G%3%s%H%m!<%k$9$k(B $B$3$H$,$G$-(B
-     $B$^$9(B($B$b$A$m$s!"$3$N$d$j$+$?$O8=<BE*$H$O(B $B;W$($^$;$s!#(B)$B$=$NB>$NMxE@$K$D$$(B
-     $B$F$O!"(BHTTP$B0J30$N%W%m%H%3%k(B $B$r;H$&$3$H$,$G$-$k(B($B$3$l$K$O<+:n$N%W%m%H%3%k(B
-     $B$b4^$_$^$9(B)$B$H(B $B$$$&$3$H$b$"$j$^$9!#(B
+     まず、最適化したサーバを用意することで、サーバを動作させる マシンの性能
+     を生かすことができるという利点があります。 サーバの最適化とは、 UNIXシ
+     ステムにおけるsocketに最適なオプションを指定することや、 プロセス管理を
+     工夫する(forkしないようにするなど) こと、OSのカーネルに手を加えてネット
+     ワーク性能を 最適化することなどが含まれます。(もちろん、カーネルに手を
+     加える ことができるのは、ソースコードが公開されているフリーのものに 限
+     りますが。)やろうと思えばパケットの生成までコントロールする ことができ
+     ます(もちろん、このやりかたは現実的とは 思えません。)その他の利点につい
+     ては、HTTP以外のプロトコル を使うことができる(これには自作のプロトコル
+     も含みます)と いうこともあります。
 
-     * $B$=$l$G$b;D$kFq$7$$LdBj(B
+     * それでも残る難しい問題
 
-     $B%5!<%P$r:GE,2=$9$k$3$H$K$h$C$F%M%C%H%o!<%/@-G=$b%^%7%s$N@-G=$b(B $B==J,$K@8(B
-     $B$+$;$k$h$&$K$J$C$?$H$7$F!"$5$i$K2s@~$b==J,$K9bB.$J$b$N$K(B $B$J$C$?$H$7$^$7(B
-     $B$g$&!#$H$3$m$,!"$I$l$[$I%M%C%H%o!<%/$N8x>N@-G=(B ($B:GBgB.EY@-G=(B)$B$,>e$,$C$?(B
-     $B$H$7$F$b!"?tG/$N$&$A$K$O2r7h$7$=$&$K$J$$(B $B$N$,!"!V%3%s%9%?%s%H$KB.EY$,=P(B
-     $B$J$$!W$H$$$&LdBj$G$9!#(B $B%j%"%k%?%$%`$K>pJs$r99?7$7$?$$%2!<%`$K$H$C$F$O!"(B
-     $B!V(B1$BIC4V!"(B64kbyte/sec$B$NB.EY$,=P$F!"<!$N(B1$BIC4V$O;_$^$C$F$$$k!W(B $B$h$j$b!"(B
-     $B!V>o$K(B0.3kbyte/sec$B!W$NJ}$,$O$k$+$K(B $B4r$7$$$N$G$9!#$H$3$m$,!":G6a$N5;=Q(B
-     $B$O!"FC$K:GBgB.EY$N@-G=$K(B $B6=L#$r9J$C$F$$$k$h$&$G!"$J$+$J$+!V%3%s%9%?%s%H(B
-     $B$JE>Aw!W(B $B$N@-G=$O>e>:$7$^$;$s!#MM!9$J<oN`$N%G!<%?(B $B$,Ht$S$+$C$F$$$k%$%s(B
-     $B%?!<%M%C%H$N!"!V%3%s%9%?%s%H$JE>Aw!W(B $B$N@-G=$O!"EvJ,8~>e$7$=$&$K$"$j$^$;(B
-     $B$s!#(B
-     $B$3$N$3$H$,!"%j%"%k%?%$%`$J%2!<%`$O%$%s%?!<%M%C%H>e$G$O<B8=(B $B$7$K$/$$860x(B
-     $B$G$9!#(B $B$=$l$G$b!"IC4V(B2$B!A(B3$B2s!"(B10$B?t%P%$%H$N%G!<%?$r$d$j$H$j$9$k$H$$$&DL?.(B
-     $B7ABV$O(B $B==J,2DG=$G$9!#$=$N@-<A$r:GBg8B$KMxMQ$7!"(B $B$^$?!"!V:G9bB.EY$O>e>:(B
-     $B$7$D$D$"$k!W(B $B$H$$$&;v<B$r@8$+$7$F$$$/$3$H$,=EMW$K$J$C$F$/$k$G$7$g$&!#(B
+     サーバを最適化することによってネットワーク性能もマシンの性能も 十分に生
+     かせるようになったとして、さらに回線も十分に高速なものに なったとしまし
+     ょう。ところが、どれほどネットワークの公称性能 (最大速度性能)が上がった
+     としても、数年のうちには解決しそうにない のが、「コンスタントに速度が出
+     ない」という問題です。 リアルタイムに情報を更新したいゲームにとっては、
+     「1秒間、64kbyte/secの速度が出て、次の1秒間は止まっている」 よりも、
+     「常に0.3kbyte/sec」の方がはるかに 嬉しいのです。ところが、最近の技術
+     は、特に最大速度の性能に 興味を絞っているようで、なかなか「コンスタント
+     な転送」 の性能は上昇しません。様々な種類のデータ が飛びかっているイン
+     ターネットの、「コンスタントな転送」 の性能は、当分向上しそうにありませ
+     ん。
+     このことが、リアルタイムなゲームはインターネット上では実現 しにくい原因
+     です。 それでも、秒間2〜3回、10数バイトのデータをやりとりするという通信
+     形態は 十分可能です。その性質を最大限に利用し、 また、「最高速度は上昇
+     しつつある」 という事実を生かしていくことが重要になってくるでしょう。
 
-     * $B$I$N$h$&$J%2!<%`$K8~$$$F$$$k$+(B
+     * どのようなゲームに向いているか
 
-     CGI$B$r;HMQ$9$kJ}<0$KHf$Y$F!">e5-$NM}M3$K$h$j!"%M%C%H%o!<%/$N2s@~$NB@$5$r(B
-     $BM-8z$K3hMQ$G$-$^$9!#(B $B$=$N$?$a!"$h$j%j%"%k%?%$%`$K!"$h$jBg$-$J>pJsNL$r$d(B
-     $B$j$H$j$9$k(B $B$3$H$,$G$-$^$9!#(B $B2HDmMQ%2!<%`5!$N$h$&$J!"IC4V(B20$B$+$i(B60$B%U%l!<(B
-     $B%`$N9bB.F14|$r<h$k(B $B$3$H$O$^$@L5M}$G$9$,!"(B2$B$+$i(B5$B%U%l!<%`$^$G$NF14|$J$i!"(B
-     $BIT2DG=$G$O$J$$%l%Y%k$G$9!#$b$A$m$s!"!V;~!9(B1$BIC0J>eDd;_$9$k!W(B $B$H$$$&LdBj(B
-     $B$O%$%s%?!<%M%C%H$r;H$&8B$j$O>C$($^$;$s$,!#(B
+     CGIを使用する方式に比べて、上記の理由により、ネットワークの回線の太さを
+     有効に活用できます。 そのため、よりリアルタイムに、より大きな情報量をや
+     りとりする ことができます。 家庭用ゲーム機のような、秒間20から60フレー
+     ムの高速同期を取る ことはまだ無理ですが、2から5フレームまでの同期なら、
+     不可能ではないレベルです。もちろん、「時々1秒以上停止する」 という問題
+     はインターネットを使う限りは消えませんが。
 
-     * $B;HMQ8@8l(B
+     * 使用言語
 
-     $B$^$:!"@lMQ$N%5!<%P!<$r:n$k$?$a$K;H$&8@8l$G$9$,!"(B $B$=$l$O(BJava$B$G$b(BC$B$G$b(B
-     Perl$B$G$b9=$$$^$;$s!#(B $BB??M?t$G$NF1;~%W%l%$$,$d$j$?$$$J$I!"@-G=$rDI5Z$9$k(B
-     $B>l9g$O!"(B C$B$G=q$/$N$,$h$$$+$b$7$l$^$;$s!#(B $B%5!<%P<+BN$N0\?"$r9M$($k>l9g(B
-     $B$O!"(BJava$B$J$I$,$h$$$G$7$g$&!#(B $B<B:]$K(Bhttp$B%5!<%P!<$r(BJava$B$G<BAu$7$F$$$kNc$b(B
-     $B$"$j$^$9!#(B
+     まず、専用のサーバーを作るために使う言語ですが、 それはJavaでもCでも
+     Perlでも構いません。 多人数での同時プレイがやりたいなど、性能を追及する
+     場合は、 Cで書くのがよいかもしれません。 サーバ自体の移植を考える場合
+     は、Javaなどがよいでしょう。 実際にhttpサーバーをJavaで実装している例も
+     あります。
 
-     * $B%5!<%P$rF0:n$5$;$k%^%7%s(B
+     * サーバを動作させるマシン
 
-     $BA[Dj$7$F$$$k%5!<%S%9$N<A$H2s@~$NB@$5$K$b$h$j$^$9$,!"@-G=E*$K$O!"IaDL$N(B
-     $B%o!<%/%9%F!<%7%g%s$d(BPC UNIX$B$rEc:\$7$F$$$k%Q%=%3%s$G==J,$G$9!#(B $B$I$&$7$F(B
-     $B$b!"%M%C%H%o!<%/4XO"$N%=%U%H3+H/$K$O!"(BUNIX$B$,E,$7$F$$$^$9!#(B (Windows NT
-     $B$H$$$&A*Br$b$"$j$^$9$,!"(B $B2a5n$N%U%j!<$J;q;:$,BgNL$K$"$k$H$$$&E@$G$b(BUNIX
-     $B$,$h$$$N$G$O(B $B$J$$$G$7$g$&$+!#(B)
+     想定しているサービスの質と回線の太さにもよりますが、性能的には、普通の
+     ワークステーションやPC UNIXを塔載しているパソコンで十分です。 どうして
+     も、ネットワーク関連のソフト開発には、UNIXが適しています。 (Windows NT
+     という選択もありますが、 過去のフリーな資産が大量にあるという点でもUNIX
+     がよいのでは ないでしょうか。)
 
-     * $B>-Mh(B
+     * 将来
 
-     $B8=:_$O!"(BNetscape$B$d(BInternet Explorer$B$J$I$N%V%i%&%6>e$G(B $B%M%C%H%o!<%/DL?.(B
-     $B%"%W%l%C%H$rF0:n$5$;$?>l9g!"(BSecurity Violation $B$,H/@8$7$FB>$N%5!<%P$H$N(B
-     $B<+M3$J@\B3$r3NN)(B $B$9$k$3$H$,$G$-$^$;$s$,!">-MhE*$K$O!"%f!<%6$N@_Dj$K$h$C(B
-     $B$F(B $B%M%C%H%o!<%/@\B3$NHO0O$r;XDj$9$k$3$H$,$G$-$k$h$&$K$J$C$F$$$/$G$7$g(B
-     $B$&!#(B $B$=$&$J$l$P!"%M%C%H%2!<%`$r%W%l%$$9$k;~$@$1@_Dj$rJQ99$9$k$H$$$&(B $B$h(B
-     $B$&$K$G$-$k$N$G!"$h$j5$7Z$K%W%l%$$G$-$k$h$&$K$J$C$F$$$/$O$:$G$9!#(B
-     $B$?$@!"8=:_$G$b!"%"%W%l%C%H$N%P%$%J%j$r<+J,$GAw$k$h$&$J(B $B%5!<%P!<$N<BAu$K(B
-     $B$7$F$*$1$P!"$=$N%5!<%P$H$J$i(BSocket$B@\B3$,5v$5$l(B $B$k$N$G!"%M%C%H%2!<%`$r:n(B
-     $B$k$3$H$,$G$-$^$9!#(B $B$7$+$7!"$=$l$O(Bhttpd$B$b$I$-$r:n$C$F$$$k$N$HF1$8$G!"(B $B2?(B
-     $B$H$b$b$C$?$$$J$$EXNO$r$9$k$3$H$K$J$C$F$7$^$$$^$9!#(B
+     現在は、NetscapeやInternet Explorerなどのブラウザ上で ネットワーク通信
+     アプレットを動作させた場合、Security Violation が発生して他のサーバとの
+     自由な接続を確立 することができませんが、将来的には、ユーザの設定によっ
+     て ネットワーク接続の範囲を指定することができるようになっていくでしょ
+     う。 そうなれば、ネットゲームをプレイする時だけ設定を変更するという よ
+     うにできるので、より気軽にプレイできるようになっていくはずです。
+     ただ、現在でも、アプレットのバイナリを自分で送るような サーバーの実装に
+     しておけば、そのサーバとならSocket接続が許され るので、ネットゲームを作
+     ることができます。 しかし、それはhttpdもどきを作っているのと同じで、 何
+     とももったいない努力をすることになってしまいます。
 
-     * $B<BAuNc(B
+     * 実装例
 
-     $B$=$l$G$O!"%M%C%H%o!<%/%2!<%`$N3K$K$J$kItJ,$N%W%m%0%i%`Nc$r>R2p$7!"2r@b(B
-     $B$7$F$$$-$^$9!#$3$N%W%m%0%i%`$G$O!"%M%C%H%o!<%/%W%m%0%i%`(B $B$N4pK\E*$J%F%/(B
-     $B%K%C%/$,B?$/;H$o$l$F$$$^$9$N$G!"(B $BB>$N%"%W%j%1!<%7%g%s$r:n$k:]$K$b!";29M(B
-     $B$K$J$k$3$H$H;W$$$^$9!#(B
-     $B$3$NNc$K$*$1$k%M%C%H%o!<%/@\B3$N35G0$O<!$N$h$&$K$J$C$F$$$^$9!#(B
+     それでは、ネットワークゲームの核になる部分のプログラム例を紹介し、解説
+     していきます。このプログラムでは、ネットワークプログラム の基本的なテク
+     ニックが多く使われていますので、 他のアプリケーションを作る際にも、参考
+     になることと思います。
+     この例におけるネットワーク接続の概念は次のようになっています。
 
-#$B?^(B6.9-1 <NOT YET>     $B$$$/$D$+$N%/%i%$%"%s%H$H%5!<%P$,@\B3$7$F$$$k>u67(B
+#図6.9-1 <NOT YET>     いくつかのクライアントとサーバが接続している状況
 
-     $B%5!<%P$O@$3&$N>uBV(B($BA4%W%l%$%d!<$N0LCV(B)$B$r4IM}$7$^$9!#(B $B%W%l%$%d!<$O%/%i%$(B
-     $B%"%s%H$N%"%W%l%C%H$KBP$7$F%-!<F~NO$r$7$^$9!#(B $B$=$N%-!<F~NO$O!"$=$N$^$^%5(B
-     $B!<%P$KAw$i$l$^$9!#(B $B%5!<%P$O!"?7$7$/@\B3MW5a$,$"$l$P!"(B $B@_Dj$5$l$F$$$k:G(B
-     $BBg%W%l%$%d!<?t$^$G$N@\B3$r3NN)$7$^$9!#$=$7$F!"(B $B@\B3$7$F$$$k%W%l%$%d!<$N(B
-     $B$&$AC/$+$,%-!<F~NO$r$9$l$P!"$=$l$K$h$C$F(B $BJQ2=$7$?@$3&A4BN$rAw?.$7$^$9!#(B
-     $B%/%i%$%"%s%H%"%W%l%C%H$O!"(B $BAw?.$5$l$F$-$?@$3&$NI=<($N$_$r9T$J$$$^$9!#$3(B
-     $B$N$h$&$J%b%G%k$r!"(B $B!V@$3&4IM}7?%5!<%P!<!W$H8F$V$3$H$K$7$^$9!#(B
+     サーバは世界の状態(全プレイヤーの位置)を管理します。 プレイヤーはクライ
+     アントのアプレットに対してキー入力をします。 そのキー入力は、そのままサ
+     ーバに送られます。 サーバは、新しく接続要求があれば、 設定されている最
+     大プレイヤー数までの接続を確立します。そして、 接続しているプレイヤーの
+     うち誰かがキー入力をすれば、それによって 変化した世界全体を送信します。
+     クライアントアプレットは、 送信されてきた世界の表示のみを行ないます。こ
+     のようなモデルを、 「世界管理型サーバー」と呼ぶことにします。
 
-#$B?^(B6.9-2 <NOT YET>     $B@$3&4IM}%5!<%P!<$N35G0?^(B
+#図6.9-2 <NOT YET>     世界管理サーバーの概念図
 
-     $B$3$l$HBP>HE*$J%b%G%k$,$"$j$^$9!#%W%l%$%d!<$NF~NO$@$1$rN.DL$5$;$k%?%$%W(B
-     $B$N(B $B%5!<%P$,$3$l$K$"$?$j$^$9!#@$3&$O!"$=$l$>$l$N%/%i%$%"%s%H$GJL!9$K4IM}(B
-     $B$5$l(B $B$F$$$^$9!#@$3&$O!"%W%l%$%d!<$N?t$@$1$"$C$F!"$"$k0l?M$N%W%l%$%d!<$N(B
-     $BF~NO(B $B$,B>$N$9$Y$F$N%W%l%$%d!<$KAw?.$5$l$^$9!#$3$N>l9g$O!"$"$k0l$D$N(B $B%5(B
-     $B!<%P!<$,$"$kI,MW$b$J$$$3$H$+$i!"$3$l$r!VF~NON.DL7?!W$H8F$S$^$7$g$&!#(B
+     これと対照的なモデルがあります。プレイヤーの入力だけを流通させるタイプ
+     の サーバがこれにあたります。世界は、それぞれのクライアントで別々に管理
+     され ています。世界は、プレイヤーの数だけあって、ある一人のプレイヤーの
+     入力 が他のすべてのプレイヤーに送信されます。この場合は、ある一つの サ
+     ーバーがある必要もないことから、これを「入力流通型」と呼びましょう。
 
-#$B?^(B6.9-3 <NOT YET>     $BF~NON.DL7?%5!<%P$N35G0?^(B
+#図6.9-3 <NOT YET>     入力流通型サーバの概念図
 
-     $B2HDmMQ%2!<%`5!$NBP@o%2!<%`$d!"%2!<%`%;%s%?!<$NBP@o%2!<%`$J$I$G$O!"DL?.(B
-     $B2s@~$NB.EY$,0BDj$G$7$+$b9bB.$J%l%9%]%s%9$,4|BT$G$-$k$?$a!"!VF~NON.DL(B
-     $B7?!W(B $B$G$bIC4V(B20$B2s0J>e$NF14|$r<B8=$9$k$3$H$,$G$-$^$9!#%$%s%?!<%M%C%H>e$G(B
-     $B$O!"(B $B0-$$;~$K$OCY1d$,ICC10L$GH/@8$9$k$?$a!"$=$l$G$O$[$H$s$I%2!<%`$K$J$j(B
-     $B$^$;$s!#(B $B$=$l$G$b!"$=$l$>$l$N%Q%1%C%H$K%?%$%`%9%?%s%W(B($BF|IU$1(B)$B$r$7$N$P$;(B
-     $B$F!"(B $B$5$i$K%W%l%$%d!<$N9TF0$N7k2L$,8e$K$J$i$J$$$H$o$+$i$J$$$h$&$J%2!<%`(B
-     $B%7%9%F%`(B $B$K$7$F$*$1$P!"CY1d$,$=$N;~4V$h$j$bC;$$>l9g$OF14|$5$;$k$3$H$O$G(B
-     $B$-$^$9!#(B $B$=$N$h$&$J%2!<%`$r:n$m$&$H$7$F$$$k?M$,5~Bg%^%$%3%s%/%i%V$K$$$^(B
-     $B$9$,!"(B $B$O$?$7$F$&$^$/$$$/$G$7$g$&$+!#?7$7$$;n$_$H8@$($k$G$7$g$&!#(B
+     家庭用ゲーム機の対戦ゲームや、ゲームセンターの対戦ゲームなどでは、通信
+     回線の速度が安定でしかも高速なレスポンスが期待できるため、「入力流通
+     型」 でも秒間20回以上の同期を実現することができます。インターネット上で
+     は、 悪い時には遅延が秒単位で発生するため、それではほとんどゲームになり
+     ません。 それでも、それぞれのパケットにタイムスタンプ(日付け)をしのばせ
+     て、 さらにプレイヤーの行動の結果が後にならないとわからないようなゲーム
+     システム にしておけば、遅延がその時間よりも短い場合は同期させることはで
+     きます。 そのようなゲームを作ろうとしている人が京大マイコンクラブにいま
+     すが、 はたしてうまくいくでしょうか。新しい試みと言えるでしょう。
 
-     $B$5$F!"$3$l$+$iNc$H$7$F<($9%5!<%P!<$O!"(B java$B$N!V%"%W%j%1!<%7%g%s!W$N7A$G(B
-     $B<BAu$7!"(BJDK$B$,%$%s%9%H!<%k$5$l$F$$$k(B $B%^%7%s>e$GF0:n$5$;$^$9!#%5!<%P!<$N(B
-	 $B%b%G%k$O!"!V@$3&4IM}7?!W$G$9!#(B
+     さて、これから例として示すサーバーは、 javaの「アプリケーション」の形で
+     実装し、JDKがインストールされている マシン上で動作させます。サーバーの
+	 モデルは、「世界管理型」です。
 
-     $B$3$N%W%m%0%i%`$NF0:n%F%9%H$G$O!"(B UNIX$B$H(BWindows95$B$N$I$NAH$_$"$o$;$G$b@5(B
-	 $B$7$/F0:n$7$^$7$?!#(B $B$J$*!"$=$l$>$l$N%^%7%s$O!"(BIBM PC/AT$B8_495!$G!"(B
-      Ether$B%M%C%H$K$h$C$F(B IP$B@\B3$5$l$F$$$^$9!#(BInternet$B>e$G$bF1$8$h$&$KF0:n(B
-     $B$7$^$9!#(B
+     このプログラムの動作テストでは、 UNIXとWindows95のどの組みあわせでも正
+	 しく動作しました。 なお、それぞれのマシンは、IBM PC/AT互換機で、
+      Etherネットによって IP接続されています。Internet上でも同じように動作
+     します。
 
-#$B?^(B6.9-1 <DONE>     $BF0:n3NG'$NI=(B
+#図6.9-1 <DONE>     動作確認の表
 
 --------------------------------------------------
      server     client
@@ -2070,12 +2070,12 @@ o byte[] getDocument() throws Exception
      windows95  windows95     OK
 --------------------------------------------------
 
-     $B<B:]$N1?MQ$G$O!"%M%C%H%o!<%/4XO"$N%G%P%C%0$N$d$j$d$9$5$+$i!"(B UNIX$B4D6-$G(B
-     $B%5!<%P$rF0:n$5$;$k$N$,8-L@$G$9!#(B
-     $B%W%m%0%i%`%j%9%H$O(B3$B$D$N%U%!%$%k$KJ,$+$l$F$*$j!"(B server.java$B$K$O%5!<%P$K(B
-     $B4XO"$9$k%3!<%I$,A4$F4^$^$l$F$$$^$9!#(B client.java$B$H(Btest.html$B$O!"(B $B%/%i%$(B
-     $B%"%s%H$K$J$k%"%W%l%C%H$N%3!<%I$G$9!#(B $B$3$l$^$G$K@bL@$7$F$-$?(Bjava$B$N4pK\$K(B
-     $B$D$$$F$O@bL@$r>J$-$^$9!#(B
+     実際の運用では、ネットワーク関連のデバッグのやりやすさから、 UNIX環境で
+     サーバを動作させるのが賢明です。
+     プログラムリストは3つのファイルに分かれており、 server.javaにはサーバに
+     関連するコードが全て含まれています。 client.javaとtest.htmlは、 クライ
+     アントになるアプレットのコードです。 これまでに説明してきたjavaの基本に
+     ついては説明を省きます。
 
 
 File name: server.java
@@ -2131,16 +2131,16 @@ class server implements Runnable
 	int playerno = 5;
 	Thread thread;
 	ServerSocket servsock;
-	Socket sock[] = new Socket[playerno];         // $B?M?tJ,$@$1MQ0U$9$k!#(B
-	boolean using[] = new boolean[playerno];      // $B%=%1%C%H$,;HMQCf$+$I$&$+(B
+	Socket sock[] = new Socket[playerno];         // 人数分だけ用意する。
+	boolean using[] = new boolean[playerno];      // ソケットが使用中かどうか
 	InputStream in[] = new InputStream[playerno];
 	OutputStream out[] = new OutputStream[playerno];
-	int timeout[] = new int[playerno]; // $B0lDj;~4VA`:n$,$J$$;~$O%?%$%`%"%&%H(B
+	int timeout[] = new int[playerno]; // 一定時間操作がない時はタイムアウト
 	int timeout_max = 300;
 
 	acceptor ac;
 
-	// $B%W%l%$%d!<$N>pJs(B
+	// プレイヤーの情報
 	int x[] = new int[playerno];
 	int y[] = new int[playerno];
 
@@ -2155,14 +2155,14 @@ class server implements Runnable
 
 		for(int i = 0 ; i < playerno ; i++){
 			using[i] = false;
-			x[i] = y[i] = 50;  // $B=i4|0LCV$OE,Ev(B
+			x[i] = y[i] = 50;  // 初期位置は適当
 			timeout[i] = 0;
 		}
 		thread = new Thread(this);
 		thread.start();
 	}
 
-	// acceptor$B$+$i8F$S$@$5$l$k!#%=%1%C%H$N6u$-$rC5$7$FEPO?$9$k(B
+	// acceptorから呼びだされる。ソケットの空きを探して登録する
 	public void addSocket( Socket soc )
 	{
 		if( soc == null ) return;
@@ -2199,7 +2199,7 @@ class server implements Runnable
 		System.out.println("Closed socket. player="+index);
 	}
 
-	// $BF~NO$K1~$8$F0\F0$5$;$k(B
+	// 入力に応じて移動させる
 	void playerMove( int index , int key)
 	{
 		int dx , dy;
@@ -2219,12 +2219,12 @@ class server implements Runnable
 		y[index] += dy;
 		if( y[index] < 0 ) y[index] = 0;
 		if( y[index] > 200) y[index] = 200;
-		timeout[index] = 0;             // $B%?%$%`%"%&%H$^$G$N;~4V$r85$KLa$9(B
+		timeout[index] = 0;             // タイムアウトまでの時間を元に戻す
 	}
-	// $BA40w$KBP$7$F0LCV$N>pJs$rAw?.$9$k(B
+	// 全員に対して位置の情報を送信する
 	void sendForAll()
 	{
-		// $B$^$:!"Aw$k>pJs$r:n$k!#%P%C%U%!$N%5%$%:$O%W%m%H%3%k$r;2>H(B
+		// まず、送る情報を作る。バッファのサイズはプロトコルを参照
 
 		short sendbuf[] = new short[(playerno+1)*2*2];
 		int counter = 0;
@@ -2234,7 +2234,7 @@ class server implements Runnable
 				sendbuf[counter++] = (short)y[i];
 			}
 		}
-		sendbuf[counter++] = -1; // $B%G!<%?$N:G8e$H$$$&0UL#(B
+		sendbuf[counter++] = -1; // データの最後という意味
 		sendbuf[counter++] = -1;
 
 
@@ -2250,7 +2250,7 @@ class server implements Runnable
 					dout.flush();
 					//dout.close();
 				}catch( IOException e ){
-					// $B=q$-$3$_$,$&$^$/$$$+$J$+$C$?$i!"$=$N%W%l%$%d!<$rKu>C(B
+					// 書きこみがうまくいかなかったら、そのプレイヤーを抹消
 					System.out.println("dout ex.");
 					deletePlayer( i );
 				}
@@ -2265,7 +2265,7 @@ class server implements Runnable
 				Thread.sleep(200);
 			}catch( InterruptedException e){}
 
-			// $B%5!<%P!<$N>uBV$rI=<((B
+			// サーバーの状態を表示
 			for(int i=0;i < playerno ;i++){
 
 				if(using[i])System.out.print("ON");
@@ -2278,7 +2278,7 @@ class server implements Runnable
 			}
 			System.out.println("");
 
-			// $B$=$l$>$l$N@\B3$N=hM}(B
+			// それぞれの接続の処理
 			for(int i = 0  ; i < playerno ; i++){
 				if( using[i] == true ){
 					if( (++timeout[i]) > timeout_max){
@@ -2287,7 +2287,7 @@ class server implements Runnable
 					}
 					try{
 						if( in[i].available() > 0 ){
-							// $B2?$+>pJs$rAw$C$F$-$?$>(B
+							// 何か情報を送ってきたぞ
 							int r;
 							r = in[i].read();
 							playerMove( i, r );
@@ -2295,7 +2295,7 @@ class server implements Runnable
 						}
 					}catch( IOException e)
 					{
-						// $B%=%1%C%H$,$b$&;H$($J$$(B
+						// ソケットがもう使えない
 						deletePlayer( i );
 					}
 				}
@@ -2305,19 +2305,19 @@ class server implements Runnable
 }
 -----------------------------------------------------------
 
-     $B%5!<%P!<$N5/F0J}K!$O!"(BMS-DOS$B%W%m%s%W%H$d(BUNIX$B$N%7%'%k$+$i!"(B
+     サーバーの起動方法は、MS-DOSプロンプトやUNIXのシェルから、
 
 java server 9000
 
-	 $B$H$$$&$h$&$K!"%]!<%HHV9f$r;XDj$7$F5/F0$7$^$9!#2?$i$+$N%(%i!<$,H/@8$7$?(B
-     $B>l9g$O!"Nc30$,H/@8$7$^$9!#(B
+	 というように、ポート番号を指定して起動します。何らかのエラーが発生した
+     場合は、例外が発生します。
 
 
-     $B$3$N%W%m%0%i%`$G$O!"%(%i!<=hM}$r$[$H$s$I9T$J$C$F$$$^$;$s!#$9$Y$F$N(B
-     IOException$B$OC1=c$K(Btry$B$7!"2?$b=hM}$r(B $B$7$J$$$h$&$K$J$C$F$$$^$9!#8=<B$K1?(B
-     $B1D$9$k$J$i!"%(%i!<=hM}$K$D$$$F$O(B $B5$$r$D$1$kI,MW$,$"$k$G$7$g$&!#4pK\E*$K(B
-     $B$O!"%=%1%C%H$d%9%H%j!<%`(B $B<~JU$K2?$+0[JQ$,5/$3$C$?$i!"%W%l%$%d!<$H$N@\B3(B
-     $B$r@Z$k$h$&$K$7$F$*$/(B $B$N$G$h$$$G$7$g$&!#(B
+     このプログラムでは、エラー処理をほとんど行なっていません。すべての
+     IOExceptionは単純にtryし、何も処理を しないようになっています。現実に運
+     営するなら、エラー処理については 気をつける必要があるでしょう。基本的に
+     は、ソケットやストリーム 周辺に何か異変が起こったら、プレイヤーとの接続
+     を切るようにしておく のでよいでしょう。
 	 
 
 
@@ -2332,7 +2332,7 @@ import java.util.*;
 
 public class client extends Applet implements Runnable
 {
-	Socket clisock;		// $B%/%i%$%"%s%HMQ(B
+	Socket clisock;		// クライアント用
 	Thread thread;
 	Socket so;
 	InputStream in;
@@ -2344,7 +2344,7 @@ public class client extends Applet implements Runnable
 	int width , height;
 
 	int num;
-	int x[] = new int[100];		// $B$?$/$5$sMQ0U$7$F$*$/(B
+	int x[] = new int[100];		// たくさん用意しておく
 	int y[] = new int[100];
 	Color colortable[] = new Color[100];
 
@@ -2356,7 +2356,7 @@ public class client extends Applet implements Runnable
 							 height = size().height );
 		offscrg = offscr.getGraphics();
 
-		// $B?'$r=i4|2=$7$F$*$/(B
+		// 色を初期化しておく
 		
 		for(int i=0;i<100;i++){
 			colortable[i] =
@@ -2448,196 +2448,196 @@ File name: test.html
 <param name=port value=9000>
 </applet>
 -----------------------------------------------------------
-#$B?^(B6.9-4 <DONE>		$BF0:n7k2L(B(server.java)
+#図6.9-4 <DONE>		動作結果(server.java)
 
 
-    $B%"%W%l%C%H$N(Bparam$B%?%0$K=q$+$l$F$$$k%]!<%HHV9f$O!"%5!<%P!<$,BT$A$&$1$F$$$k(B
-    $B%]!<%HHV9f$K0lCW$5$;$F$*$/I,MW$,$"$j$^$9!#(Bsquash$B$H$J$C$F$$$k$N$O!"(BKMC$B$N(B
-	$BIt<<$K$"$k%^%7%sL>$G$9!#$^$?!"(B
-    appletviewer$B$N%M%C%H%o!<%/@_Dj$r(B"Unrestricted"$B$K$7$F$*$$$F$/$@$5$$!#(B
-    ($BCm0U(B)windows95$B$H(BSolaris$BMQ$N(BJDK1.1beta2$B$G$O!"$3$N@_DjJQ99$r$7$h$&$H$9$k$H(B
-	sun$B%Q%C%1!<%8FbIt$GNc30$,H/@8$7$F!"JQ99$G$-$J$$$h$&$K$J$C$F$$$^$9!#(B
-    $B$3$N%W%m%0%i%`$N%F%9%H$r$9$k>l9g$K$O!"(BJDK1.0.2$B$r;HMQ$7$F$/$@$5$$!#(B
+    アプレットのparamタグに書かれているポート番号は、サーバーが待ちうけている
+    ポート番号に一致させておく必要があります。squashとなっているのは、KMCの
+	部室にあるマシン名です。また、
+    appletviewerのネットワーク設定を"Unrestricted"にしておいてください。
+    (注意)windows95とSolaris用のJDK1.1beta2では、この設定変更をしようとすると
+	sunパッケージ内部で例外が発生して、変更できないようになっています。
+    このプログラムのテストをする場合には、JDK1.0.2を使用してください。
 
 
 
-6.10 $B%2!<%`$KE,$7$?%W%m%H%3%k$r:n$k%3%D(B
+6.10 ゲームに適したプロトコルを作るコツ
 
-     $B%M%C%H%o!<%/BP@o%2!<%`$r:n$k$K$O!"I,$:!"$I$N$h$&$J%W%m%H%3%k(B $B$K$9$k$N$+(B
-     $B7h$a$kI,MW$,$"$j$^$9!#$3$3$G$$$&%W%m%H%3%k$O!"DL?.$NJ}<0$H!"(B $B$=$NJ}<0$N(B
-     $B>e$G$I$N$h$&$J>pJs$rDL?.$9$k$N$+$H$$$&$3$H$G$9!#(B
-     $B%W%m%H%3%k$r:n$k;~$KCm0U$9$k$Y$-E@$O<!$N$h$&$J$3$H$G$9!#(B
+     ネットワーク対戦ゲームを作るには、必ず、どのようなプロトコル にするのか
+     決める必要があります。ここでいうプロトコルは、通信の方式と、 その方式の
+     上でどのような情報を通信するのかということです。
+     プロトコルを作る時に注意するべき点は次のようなことです。
 
-        o $B%3%M%/%7%g%s;X8~$+!"%3%M%/%7%g%s%l%9;X8~$+(B
+        o コネクション指向か、コネクションレス指向か
 
-          $B%$%s%?!<%M%C%H$K$*$1$k%M%C%H%o!<%-%s%0$O!"$3$N(B2$B$D$KBgJL$G$-$^$9!#(B
-          $B$*$J$8$_$N(BTCP$B$O%3%M%/%7%g%s;X8~$G!"%5!<%P$H%/%i%$%"%s%H(B $B$N4V$G3N<B(B
-          $B$J0lK\$N2s@~$r3NN)$7!"$=$l$r;H$C$F>pJs$r8m$j$J$/$d$j$H$j(B $B$9$k%W%m(B
-          $B%H%3%k$G$9!#$=$l$KBP$7$F!"(BUDP$B$O!"$[$\(BIP$B$=$N$^$^$N$b$N$G!"(B $B>pJs%Q%1(B
-          $B%C%H$rC1$KAw$j$D$1$k$@$1$G!"3N<B$K>pJs$,FO$$$F$$$k$N$+!"Aw$j(B $B=P$7(B
-          $B$?=gHV$GFO$$$F$$$k$N$+!"$^$C$?$/J]>Z$,$"$j$^$;$s!#(B
+          インターネットにおけるネットワーキングは、この2つに大別できます。
+          おなじみのTCPはコネクション指向で、サーバとクライアント の間で確実
+          な一本の回線を確立し、それを使って情報を誤りなくやりとり するプロ
+          トコルです。それに対して、UDPは、ほぼIPそのままのもので、 情報パケ
+          ットを単に送りつけるだけで、確実に情報が届いているのか、送り 出し
+          た順番で届いているのか、まったく保証がありません。
 
 
-          UDP$B$O3N<B@-$,%W%m%H%3%k$N%l%Y%k$GJ]>Z$5$l$J$$$+$o$j$K!"(BTCP$B$h$j$b%X(B
-          $B%C%@$b(B $B>.$5$/!"8m$j$,@8$8$?$H$-$N%Q%1%C%H:FAw$J$I$N%3%9%H$b$+$+$i(B
-          $B$J$$$N$G!"(B $BHf3SE*9bB.$KF0:n$7$^$9!#$=$7$F2?$h$j!"B??t$N%[%9%H$K8~(B
-          $B$+$C$FF1;~$K%Q%1%C%H(B $B$r!VJ|Aw!W$9$k$3$H$,$G$-$kE@$,!"(BTCP$B$H0[$J$j$^(B
-          $B$9!#$3$l$r$&$^$/;H$&$H$5$i$K(B $B8zN($r>e$2$k$3$H$,$G$-$^$9!#(B
+          UDPは確実性がプロトコルのレベルで保証されないかわりに、TCPよりもヘ
+          ッダも 小さく、誤りが生じたときのパケット再送などのコストもかから
+          ないので、 比較的高速に動作します。そして何より、多数のホストに向
+          かって同時にパケット を「放送」することができる点が、TCPと異なりま
+          す。これをうまく使うとさらに 効率を上げることができます。
 
-        o $B3HD%@-$O$"$k$+(B
+        o 拡張性はあるか
 
-          $B$D$^$j!">-Mh5!G=$r3HD%$9$k$H$-$K!":#$^$G$K$=$N%W%m%H%3%k$KBP1~$7$F(B
-          $B$$$k(B $B%=%U%H%&%'%"$KJQ99$r2C$($J$/$F$b$h$$$h$&$K$7$F$*$/$H$$$&$3$H(B
-          $B$G$9!#(B $BNc$($P!"!V%P%$%HNs$N:G=i$N(B1$B%P%$%H$,;E;v$NFbMF$rI=$7!"$=$3$K(B
-          1$B$H$$$&CM$,(B $BF~$C$F$$$k$H!"$=$l$O(BA$B$H$$$&;E;v$r$9$k$H$$$&0UL#$K$J(B
-          $B$k!#(B2$B0J9_$OL$Dj5A!W(B $B$H$$$&$h$&$K7h$a!"<BAu$NCJ3,$G!"(B2$B0J9_$NMW5a$O(B
-          $BL5;k$9$k$h$&$K$7$F$*$1$P!"(B $B>-Mh$N5!G=3HD%$KBP1~$G$-$^$9!#(B
+          つまり、将来機能を拡張するときに、今までにそのプロトコルに対応して
+          いる ソフトウェアに変更を加えなくてもよいようにしておくということ
+          です。 例えば、「バイト列の最初の1バイトが仕事の内容を表し、そこに
+          1という値が 入っていると、それはAという仕事をするという意味にな
+          る。2以降は未定義」 というように決め、実装の段階で、2以降の要求は
+          無視するようにしておけば、 将来の機能拡張に対応できます。
 
-        o $B%G%P%C%0$7$d$9$$$+(B
+        o デバッグしやすいか
 
-          $B$=$N%W%m%H%3%k$GAw<u?.$5$l$k%P%$%HNs$,!"2DFI$JJ8;z(B(0x00$B$+$i(B0x7f)
-          $B$@$1$G9=@.$5$l$F$$$k(B $B>l9g!"%P%$%HNs$r$=$N$^$^%U%!%$%k$K5-O?$9$k$3(B
-          $B$H$K$h$C$F%G%P%C%0$G$-$^$9!#(B $B$=$NB>$K$b!"(Btelnet$B%3%^%s%I$r;H$C$F$=(B
-          $B$N%W%m%H%3%k$N(B $B%5!<%P$KD>@\@\B3$7$F%-!<%\!<%IF~NO$GBPOC$9$k$3$H$b(B
-          $BMF0W$G$9!#(B
+          そのプロトコルで送受信されるバイト列が、可読な文字(0x00から0x7f)
+          だけで構成されている 場合、バイト列をそのままファイルに記録するこ
+          とによってデバッグできます。 その他にも、telnetコマンドを使ってそ
+          のプロトコルの サーバに直接接続してキーボード入力で対話することも
+          容易です。
 
-        o $B8zN($O$h$$$+(B
+        o 効率はよいか
 
-          $BDL?.2s@~$NI}(B($BB.EY(B)$B$O!"L58B$G$O$"$j$^$;$s!#FC$KB??M?t$G$N%W%l%$(B $B$r(B
-          $B9M$($k>l9g!"$=$l$>$l$N%W%l%$%d!<$,F1$82s@~$r;HMQ$9$k$3$H$K$J(B $B$k$N(B
-          $B$G!"2s@~$NI}$O;W$C$?$[$I$O<h$l$^$;$s!#$7$+$b!"<+J,$G7h$a$?(B $B%P%$%H(B
-          $BNs0J30$K$b!"(BTCP$B$d(BIP$B$J$I!"2<$K$/$k%W%m%H%3%k$,2?==%P%$%H(B $B$b$N%X%C%@(B
-          $B$r2C$($^$9!#$3$N8z2L$O>.$5$$%Q%1%C%H$rBt;3H/@8$9$k>l9g$O(B $B$h$j$$$C(B
-          $B$=$&87$7$$@)8B$K$J$C$F$-$^$9!#$=$7$F%2!<%`$O>.$5$$%Q%1%C%H(B $B$rH/@8(B
-          $B$7$d$9$$%"%W%j%1!<%7%g%s$G$9!#(B
+          通信回線の幅(速度)は、無限ではありません。特に多人数でのプレイ を
+          考える場合、それぞれのプレイヤーが同じ回線を使用することにな るの
+          で、回線の幅は思ったほどは取れません。しかも、自分で決めた バイト
+          列以外にも、TCPやIPなど、下にくるプロトコルが何十バイト ものヘッダ
+          を加えます。この効果は小さいパケットを沢山発生する場合は よりいっ
+          そう厳しい制限になってきます。そしてゲームは小さいパケット を発生
+          しやすいアプリケーションです。
 
-#$B?^(B6.10-2 <NOT YET>          $B%X%C%@$,2C$o$C$F$$$/(B
+#図6.10-2 <NOT YET>          ヘッダが加わっていく
 
-          $B$3$l$i$N$3$H$r9M$($"$o$;$k$H!"2s@~$,Nc$((B64kbps$B$@$C$?$H$7$F$b!"(B
-          6kb/$BICDxEY$NB.EY$,=P$l$P:G9b$H$$$C$?$3$H$K$J$k$G$7$g$&!#(B
+          これらのことを考えあわせると、回線が例え64kbpsだったとしても、
+          6kb/秒程度の速度が出れば最高といったことになるでしょう。
 
-     $BIaDL$N>&MQ%"%W%j%1!<%7%g%s$N>l9g$O!";E;v$NL\E*$,!"$9$G$K8&5f$5$l$F$-$F(B
-     $B$$$k(B $B%b%G%k$K$T$C$?$j9g$C$F$$$k>l9g$,B?$$$N$G!">e5-$NE@$K$D$$$F!"8&5f@.(B
-     $B2L$r(B $B;H$&$3$H$,$G$-$^$9!#(B($B$D$^$jK\$N<L$7$G$h$$$H$$$&$3$H$G$9!#(B) $B$H$3$m(B
-     $B$,!"%2!<%`$N>l9g$O8&5f@.2L$,$J$$$H$$$&$3$H$b$"$j$^$9$,!"FbMF$K$h$C$F(B $BB?(B
-     $BBg$J1F6A$r<u$1$k$N$G!":GE,$J%W%m%H%3%k$r:n$j$K$/$$$H$$$&$3$H$,$"$j$^(B
-     $B$9!#(B $B0J2<$G$O!"I.<T$,%W%m%H%3%k$r:n$k;~$K9M$($k=g=x$r>R2p$7$^$9!#(B
-     $B:G=i$KDL?.J}<0$r!"<!$KDL?.FbMF$r9M$($^$9!#(B
+     普通の商用アプリケーションの場合は、仕事の目的が、すでに研究されてきて
+     いる モデルにぴったり合っている場合が多いので、上記の点について、研究成
+     果を 使うことができます。(つまり本の写しでよいということです。) ところ
+     が、ゲームの場合は研究成果がないということもありますが、内容によって 多
+     大な影響を受けるので、最適なプロトコルを作りにくいということがありま
+     す。 以下では、筆者がプロトコルを作る時に考える順序を紹介します。
+     最初に通信方式を、次に通信内容を考えます。
 
-     * $BDL?.J}<0(B
+     * 通信方式
 
-     $B<B8=$7$h$&$H$7$F$$$k;v$,!">pJs$N3N<B@-$rI,MW$H$7$F$$$k$+$I$&$+$r$^$:9M(B
-     $B$($^$9!#(B $BBP@o%2!<%`$N>l9g$O!"%W%l%$%d!<$NF~NO$,$o$:$+$K7g$1$F$b$^$:$$$3(B
-     $B$H$K$J$k$N$G!"(B $B3N<B@-$OI,MW$G$9!#IaDL$NDL?.%2!<%`$N>l9g$O!"(BTCP$B$,;H$($J(B
-     $B$$$+$I$&$+$r:G=i$K(B $B9M$($F$_$^$7$g$&!#$G$O!"3N<B@-$,I,MW$J$$%"%W%j%1!<%7(B
-     $B%g%s$H$O$I$N$h$&$J$b$N(B $B$J$N$G$7$g$&$+!)$=$l$ONc$($P!"?M9)1R@1!V$R$^$o(B
-     $B$j!W$+$i(B1$BIC$K0l2sCO5e$N1GA|$,(B $BAw$i$l$F$/$k$h$&$J>l9g$G$9!#(B $B0l$D$dFs$D<u(B
-     $B$1$N$,$7$F$b!"$9$0<!$,$"$j!"$^$?2hA|$N=gHV$,$*$+$7$/$J$C$F$b(B $BC1=c$K;~9o(B
-     $B$r2hA|$K=q$$$F$*$/$@$1$G$9$_$^$9!#3t2A$N>u67$r9o0l9o$HAw?.$9$k(B $B$h$&$J%=(B
-     $B%U%H%&%'%"$d!"8rDL$N>u67$r4F;k$9$k%+%a%i!"%3!<%R!<%a!<%+!<$N>u67$r(B $B%A%'(B
-     $B%C%/$9$k$?$a$N%+%a%i$J$I$H$NDL?.$O!"(BUDP$B$,E,$7$F$$$k$H8@$($^$9!#(B
-     $B%"%W%l%C%H$H$7$F%2!<%`$r:n$k>l9g$O%V%i%&%6!<>e$GF0$+$9$3$H$r9M$($F!"(BTCP
-     $B$r(B $B;H$&$N$,$h$$H=CG$K$J$k$G$7$g$&!#(B
+     実現しようとしている事が、情報の確実性を必要としているかどうかをまず考
+     えます。 対戦ゲームの場合は、プレイヤーの入力がわずかに欠けてもまずいこ
+     とになるので、 確実性は必要です。普通の通信ゲームの場合は、TCPが使えな
+     いかどうかを最初に 考えてみましょう。では、確実性が必要ないアプリケーシ
+     ョンとはどのようなもの なのでしょうか？それは例えば、人工衛星「ひまわ
+     り」から1秒に一回地球の映像が 送られてくるような場合です。 一つや二つ受
+     けのがしても、すぐ次があり、また画像の順番がおかしくなっても 単純に時刻
+     を画像に書いておくだけですみます。株価の状況を刻一刻と送信する ようなソ
+     フトウェアや、交通の状況を監視するカメラ、コーヒーメーカーの状況を チェ
+     ックするためのカメラなどとの通信は、UDPが適していると言えます。
+     アプレットとしてゲームを作る場合はブラウザー上で動かすことを考えて、TCP
+     を 使うのがよい判断になるでしょう。
 
-     * $BDL?.FbMF(B
+     * 通信内容
 
-     $B;d$O%G%P%C%0$7$d$9$5$,:GBg$N%]%$%s%H$@$H9M$($^$9$N$G!"$I$&$7$F$b(B $B@-G=$r(B
-     $BDI5Z$7$J$1$l$P$J$i$J$$>l9g0J30$O!"(BASCII$BJ8;z$N$_$r;H$C$?DL?.$K(B $B$G$-$J$$(B
-     $B$+$H9M$($^$9!#(BASCII$BJ8;z$H$O!"(B16$B?J?t$G(B0x00$B$+$i(B0x7f$B$^$G$NJ8;z$G!"(B $B1Q?t;z(B
-     $B$H5-9f$,4^$^$l$^$9!#(B($BIUO?$N(BASCII$BJ8;z%3!<%II=$r;2>H(B)ASCII$BJ8;z$N$_$K(B $B$h$k(B
-     $BDL?.$K$7$?>l9g$O!"FC$KDL?.J}<0$,(BTCP$B$N>l9g$O!"(Btelnet$B$N$h$&$J(B $BC<Kv%"%W%j(B
-     $B%1!<%7%g%s$r;H$C$F!"%5!<%P$H!V<j$G!WDL?.$7!"%G%P%C%0$9$k$3$H$,(B $B$G$-$^(B
-     $B$9!#0JA0$N@a$G$b!"(BHTTP$B%5!<%P$H!V<j$G!WDL?.$9$kJ}K!$r>R2p$7$^$7$?!#(B $B$3$N(B
-     $B%G%P%C%0$7$d$9$5$O!"%"%W%j%1!<%7%g%s$,Bg5,LO$K$J$l$P$J$k$[$I!"(B $BM-8z@-$r(B
-     $BA}$7$^$9!#(B
-     ASCII$BJ8;z$N$_$NDL?.$K$7$?>l9g$O!"B?>/$N@-G=Dc2<$r3P8g$7$J$1$l$P$J$j$^$;(B
-     $B$s!#(B $B%P%$%J%j%G!<%?$@$H!"(B150$B$H$$$&?tCM$rAw$k$K$O(B1$B%P%$%H$G:Q$`$H$3$m$r!"(B
-     ASCII$B%F%-%9%H$@$H=*C<J8;z$^$G4^$a$l$P(B4$B%P%$%H$b>CHq$9$k$+$i$G$9!#(B
+     私はデバッグしやすさが最大のポイントだと考えますので、どうしても 性能を
+     追及しなければならない場合以外は、ASCII文字のみを使った通信に できない
+     かと考えます。ASCII文字とは、16進数で0x00から0x7fまでの文字で、 英数字
+     と記号が含まれます。(付録のASCII文字コード表を参照)ASCII文字のみに よる
+     通信にした場合は、特に通信方式がTCPの場合は、telnetのような 端末アプリ
+     ケーションを使って、サーバと「手で」通信し、デバッグすることが できま
+     す。以前の節でも、HTTPサーバと「手で」通信する方法を紹介しました。 この
+     デバッグしやすさは、アプリケーションが大規模になればなるほど、 有効性を
+     増します。
+     ASCII文字のみの通信にした場合は、多少の性能低下を覚悟しなければなりませ
+     ん。 バイナリデータだと、150という数値を送るには1バイトで済むところを、
+     ASCIIテキストだと終端文字まで含めれば4バイトも消費するからです。
 
-#$B?^(B6.10-3 <NOT YET>     $B%F%-%9%H$K$9$k$H%G!<%?$,KD$i$`(B
+#図6.10-3 <NOT YET>     テキストにするとデータが膨らむ
 
-     $B$7$+$7!"%$%s%?!<%M%C%H$r;H$&>l9g$OFC$K!">o$K2s@~$,:G9bB.EY@-G=$rH/4x(B $B$G(B
-     $B$-$k$o$1$G$O$J$$$7!"%P%$%J%jDL?.$^$G$7$F:GBg@-G=$r5a$a$kEXNO$OL5BL$K(B $B=*(B
-     $B$o$C$F$7$^$&2DG=@-$,9b$$$N$G$9!#%2!<%`$N>l9g$O(Bftp$B$N$h$&$K9bL)EY$G(B $B>pJs(B
-     $B$rDL?.$9$k$H$$$&$h$j$ON%;6E*$G;6H/E*$JDL?.$K$J$j$^$9$+$i!">099$N(B $B$3$H$G(B
-     $B$9!#$d$O$j%F%-%9%H%G!<%?$K$h$kDL?.$,$h$$A*Br$H8@$($k$G$7$g$&!#(B $B$3$NB>$K(B
-     $B$b!"%P%$%J%j%G!<%?$r;H$C$FDL?.$9$k>l9g$O!"!V%P%$%H%*!<%@!W(B $B$NLdBj$,$"$k(B
-     $B$N$G$9$,!"9,$$!"(BJava$B$r;H$C$F%5!<%P$b%/%i%$%"%s%H$b:n$k(B $B>l9g$O!"$3$NLdBj(B
-     $B$O2sHr$G$-$^$9!#>\$7$/$O!"NICx(B $B!V(BUNIX$B%M%C%H%o!<%/%W%m%0%i%_%s%0!W$r;2>H(B
-     $B$7$F$/$@$5$$!#(B
-     $B$5$F!"(B $B%W%m%H%3%k$,$G$-$F$-$?$i!"$=$l$r;f$K=q$/$J$j(B $B%G%8%?%k%I%-%e%a%s(B
-     $B%H$K$9$k$J$j$7$F!"J8=q2=$7$F$*$/$3$H$,=EMW$G$9!#(B $B$=$&$9$k$3$H$K$h$C$F6&(B
-     $BF1:n6H<T$K$=$N%W%m%H%3%k$r<~CN$9$k$3$H$,$G$-!"(B $B3+H/$NJ,C4$,%9%`!<%:$K$J(B
-     $B$j$^$9!#%W%m%H%3%k$N<BAu7O$r!"A4$/FHN)(B $B$J(B2$B<T$,F1$8%I%-%e%a%s%H$K4p$$$F(B
-     $B:n$k$3$H$,$G$-$l$P!"$=$l$O!VN)GI$J!W(B $B%W%m%H%3%k$@$H8@$&$3$H$,$G$-$^$9!#(B
+     しかし、インターネットを使う場合は特に、常に回線が最高速度性能を発揮 で
+     きるわけではないし、バイナリ通信までして最大性能を求める努力は無駄に 終
+     わってしまう可能性が高いのです。ゲームの場合はftpのように高密度で 情報
+     を通信するというよりは離散的で散発的な通信になりますから、尚更の ことで
+     す。やはりテキストデータによる通信がよい選択と言えるでしょう。 この他に
+     も、バイナリデータを使って通信する場合は、「バイトオーダ」 の問題がある
+     のですが、幸い、Javaを使ってサーバもクライアントも作る 場合は、この問題
+     は回避できます。詳しくは、良著 「UNIXネットワークプログラミング」を参照
+     してください。
+     さて、 プロトコルができてきたら、それを紙に書くなり デジタルドキュメン
+     トにするなりして、文書化しておくことが重要です。 そうすることによって共
+     同作業者にそのプロトコルを周知することができ、 開発の分担がスムーズにな
+     ります。プロトコルの実装系を、全く独立 な2者が同じドキュメントに基いて
+     作ることができれば、それは「立派な」 プロトコルだと言うことができます。
 
-     * $B%W%m%H%3%k$NNc(B
+     * プロトコルの例
 
-     $B%W%m%H%3%k$O(BC$B$d(BJava$B$N%=!<%9%3!<%I$G$bL@3N$K<($9$3$H$,$G$-$^$9!#(B $B$=$l0J(B
-     $B30$G$bI=$d?^$b$A$m$sJ8$b;H$C$FI=8=$G$-$^$9!#0J2<$K!"%5!<%P$,(B $BJ#?t$N%/%i(B
-     $B%$%"%s%H$r0l3g4IM}$9$k$h$&$JBP@o%2!<%`$G;H$o$l$k%W%m%H%3%k$N(B $BNc$r<($7$^(B
-     $B$9!#$b$A$m$s$3$NNc$O<B:_$N%2!<%`$N$b$N$G$O$J$/!"Nc$K=P$9$?$a$K(B $B2M6u$N$b(B
-     $B$N$G$9!#(B
+     プロトコルはCやJavaのソースコードでも明確に示すことができます。 それ以
+     外でも表や図もちろん文も使って表現できます。以下に、サーバが 複数のクラ
+     イアントを一括管理するような対戦ゲームで使われるプロトコルの 例を示しま
+     す。もちろんこの例は実在のゲームのものではなく、例に出すために 架空のも
+     のです。
 
-       1. TCP$B>e$N%W%m%H%3%k$G$"$k!#(B
-       2. $B%/%i%$%"%s%H$O%2!<%`$r;O$a$k;~$K%5!<%P$H@\B3$9$k!#%2!<%`%*!<%P!<$K(B
-          $B$J$l$P(B $B@\B3$r@Z$k!#(B
-       3. $BDL?.C10L$O(BASCII$BJ8;z$,B3$-!":G8e$K(B0$B$H$$$&%P%$%H(B($B%*%/%F%C%H(B)$B$,<}$a$i(B
-          $B$l(B $B$F$$$k0lB3$-$N%P%$%HNs$H$9$k!#Nc$($P<!$NJ8;zNs$,DL?.C10L$G$"(B
-          $B$k!#(B
+       1. TCP上のプロトコルである。
+       2. クライアントはゲームを始める時にサーバと接続する。ゲームオーバーに
+          なれば 接続を切る。
+       3. 通信単位はASCII文字が続き、最後に0というバイト(オクテット)が収めら
+          れ ている一続きのバイト列とする。例えば次の文字列が通信単位であ
+          る。
 
-#$B?^(B6.10-4 <NOT YET>   "STARTGAME name=ringo mode=normal"$B$r0UL#$9$k%P%$%HNs(B
-          ($B$3$N$h$&$K?^$K$9$k$H!"%W%m%H%3$,$o$+$j$d$9$/$J$j$^$9!#(B)
+#図6.10-4 <NOT YET>   "STARTGAME name=ringo mode=normal"を意味するバイト列
+          (このように図にすると、プロトコがわかりやすくなります。)
 
-       4. $BDL?.FbMF$O!">e5-$NDL?.C10L$NO"B3$H$9$k!#(B
-       5. $BDL?.C10L$O!"%3%^%s%I!"%Q%i%a!<%?Ns!"=*C<J8;z(B(0)$B$G9=@.$5$l$k!#(B
-       6. $B%3%^%s%I$O>JN,$G$-$J$$!#%Q%i%a!<%?Ns$O>JN,$G$-$k!#(B($B$J$/$F$b$h$$(B)
-          $B=*C<J8;z$O>e5-$K$h$jI,$:I,MW!#%Q%i%a!<%?Ns$O!"(B'$B%Q%i%a!<%?$NL>A0(B=$BCM(B
-          ' $B$H$$$&$h$&$K$J$C$F$$$k!#%9%Z!<%9J8;z$H(B'='$B$O!"$=$l$>$l(B'%20'$B$H(B
-          '%3d' $B$H$K%(%9%1!<%W$5$l$k!#%Q%i%a!<%?Ns$NFbMF$O!"%3%^%s%I$K$h$C$F(B
-          $B0[$J$k!#(B $B%3%^%s%I$,I,MW$H$7$J$$%Q%i%a!<%?$OL5;k$5$l$k!#(B
+       4. 通信内容は、上記の通信単位の連続とする。
+       5. 通信単位は、コマンド、パラメータ列、終端文字(0)で構成される。
+       6. コマンドは省略できない。パラメータ列は省略できる。(なくてもよい)
+          終端文字は上記により必ず必要。パラメータ列は、'パラメータの名前=値
+          ' というようになっている。スペース文字と'='は、それぞれ'%20'と
+          '%3d' とにエスケープされる。パラメータ列の内容は、コマンドによって
+          異なる。 コマンドが必要としないパラメータは無視される。
 
-       7. $B%3%^%s%I$O<!$N$b$N$,$"$k!#(B
+       7. コマンドは次のものがある。
 
-          $B%/%i%$%"%s%H$+$i%5!<%P$X$NDL?.(B
-             + 'STARTGAME name=$BJ8;zNs(B mode=normal|timeattack'
-               name$B$K$OL>A0$r!"(Bmode$B$K$O(B'normal'$B$^$?$O(B'timeattack'$B$r;XDj$9(B
-               $B$k!#(B $BNc!'(B
+          クライアントからサーバへの通信
+             + 'STARTGAME name=文字列 mode=normal|timeattack'
+               nameには名前を、modeには'normal'または'timeattack'を指定す
+               る。 例：
                'STARTGAME name=ringo mode=normal'
-             + 'MOVE dx=$B?tCM(B dy=$B?tCM(B'
-               dx,dy$B$K$O$=$l$>$l(B10$B?J?t$N0\F0NL$r;XDj$9$k!#(B $BNc!'(B
+             + 'MOVE dx=数値 dy=数値'
+               dx,dyにはそれぞれ10進数の移動量を指定する。 例：
                'MOVE dx=4 dy=-4'
              + 'SHOT type=lasergun|bomber'
-               type$B$K$O!";H$&Ip4o$N<oN`$r;XDj$9$k!#(B $BNc!'(B
+               typeには、使う武器の種類を指定する。 例：
                'SHOT type=lasergun'
-          $B%5!<%P$+$i%/%i%$%"%s%H$X$NDL?.(B
+          サーバからクライアントへの通信
              + 'ACCEPT'
-               $B%2!<%`3+;O$N?.9f!#(B
-             + 'OBJECT {x=$B?tCM(B y=$B?tCM(B type=$B?tCM(B }*$B8D?t(B'
-               $B2hLL$N;XDj$7$?0LCV$K;XDj$7$?J*BN$rI=<($9$k!#(B $B>e$NI=8=Cf$NCf3g(B
-               $B8L$O<B:]$NDL?.C10L$K$O4^$^$l$J$$!#(B x$B:BI8!"(By$B:BI8!"<oN`$N>pJs$N(B
-               $BAH$,8D?tJ,B3$/!#(B $BNc!'(B
+               ゲーム開始の信号。
+             + 'OBJECT {x=数値 y=数値 type=数値 }*個数'
+               画面の指定した位置に指定した物体を表示する。 上の表現中の中括
+               弧は実際の通信単位には含まれない。 x座標、y座標、種類の情報の
+               組が個数分続く。 例：
                'OBJECT x=100 y=200 type=1 x=50 y=82 type=3'
              + 'GAMEOVER'
-               $B%Q%i%a!<%?$O$J$$!#%W%l%$%d!<$K!"%2!<%`%*!<%P!<$K$J$C$?$H$$$&(B
-               $BDLCN$r$9$k!#(B
+               パラメータはない。プレイヤーに、ゲームオーバーになったという
+               通知をする。
 
-     $B%W%m%H%3%k$,$3$N$h$&$J$b$N$G$"$l$P!"(Btelnet$B$r;H$&$3$H$K$h$C$FL\(B $B$K8+$($k(B
-     $B7A$G%G%P%C%0$G$-$^$9!#%$%a!<%8$H$7$F$O<!$N$h$&$K$J$k$G$7$g$&$+!#(B
+     プロトコルがこのようなものであれば、telnetを使うことによって目 に見える
+     形でデバッグできます。イメージとしては次のようになるでしょうか。
 
 ------------------------------------------------------------
 > telnet server.foo.ac.jp 10000
-GAMESTART name=ringo mode=normal        <-- $B%W%l%$%d!<$NF~NO(B
-ACCEPT                                  <-- $B%5!<%P$+$i$NJVEz(B
-MOVE dx=2 dy=-2                         <-- $B%W%l%$%d!<$NF~NO(B
-OBJECT x=100 y=100 type=1               <-- $B%5!<%P$+$i$NJVEz(B
+GAMESTART name=ringo mode=normal        <-- プレイヤーの入力
+ACCEPT                                  <-- サーバからの返答
+MOVE dx=2 dy=-2                         <-- プレイヤーの入力
+OBJECT x=100 y=100 type=1               <-- サーバからの返答
 ------------------------------------------------------------
 
-     $B$3$N%W%m%H%3%k$@$H!"?7$7$$%3%^%s%I$rA}$d$9$N$b4JC1$G$9$M!#(B
+     このプロトコルだと、新しいコマンドを増やすのも簡単ですね。
 
-     $B$^$H$a(B/h4> $BBP@o%2!<%`$N?t$@$1%W%m%H%3%k$,B8:_$7$^$9!#%W%m%H%3%k$N;EMM(B
-     $B$O!"(B $B3+H/8zN($K=EBg$J1F6A$r5Z$\$7$^$9!#3+H/ESCf$GJQ99$7$?$j$7$d$9$$(B $B$h(B
-     $B$&$K!"3HD%@-$K$D$$$F$O==J,Cm0U$7$F$/$@$5$$!#(B
+     まとめ/h4> 対戦ゲームの数だけプロトコルが存在します。プロトコルの仕様
+     は、 開発効率に重大な影響を及ぼします。開発途中で変更したりしやすい よ
+     うに、拡張性については十分注意してください。
 
 
 

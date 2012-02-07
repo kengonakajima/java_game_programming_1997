@@ -1,7 +1,7 @@
 import java.applet.Applet;
 import java.awt.*;
 
-//$B>o$KF0$/$h$&$J%"%W%l%C%H$O!"(BRunnable$B$r$D$1$k$3$H$,I,MW$G$9!#(B
+//常に動くようなアプレットは、Runnableをつけることが必要です。
 public class db extends Applet implements Runnable
 {
 	Thread t;	

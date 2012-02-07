@@ -9,7 +9,7 @@ public class atari extends java.applet.Applet implements Runnable
 	Graphics dg;
 	int cron=0;
 
-	// $BJQ992DG=8D=j(B
+	// 変更可能個所
 
 	int width ,height;
 	int interval = 50;	// milli second 
@@ -45,15 +45,15 @@ public class atari extends java.applet.Applet implements Runnable
 		}
 	}
 	
-	int maxnum=100;							// $B:GBg$NH"$N8D?t(B
-	int nownum=1;							// $B8=:_$NH"$N8D?t(B
-	double bx[] = new double[maxnum];		// $B0LCV$N(BX$B:BI8(B
-	double by[] = new double[maxnum];		// $B0LCV$N(BY$B:BI8(B
-	double bxsiz[] = new double[maxnum];	// $BH"$NI}(B
-	double bysiz[] = new double[maxnum];	// $BH"$N9b$5(B
-	double bdx[] = new double[maxnum];		// X$BJ}8~$N0\F0NL(B
-	double bdy[] = new double[maxnum];		// Y$BJ}8~$N0\F0NL(B
-	boolean bfill[] = new boolean[maxnum]; //$B2?$+$KEv$?$C$?;~$KE@LG$5$;$k%U%i%0(B
+	int maxnum=100;							// 最大の箱の個数
+	int nownum=1;							// 現在の箱の個数
+	double bx[] = new double[maxnum];		// 位置のX座標
+	double by[] = new double[maxnum];		// 位置のY座標
+	double bxsiz[] = new double[maxnum];	// 箱の幅
+	double bysiz[] = new double[maxnum];	// 箱の高さ
+	double bdx[] = new double[maxnum];		// X方向の移動量
+	double bdy[] = new double[maxnum];		// Y方向の移動量
+	boolean bfill[] = new boolean[maxnum]; //何かに当たった時に点滅させるフラグ
 
 	void initBox(){
 		for(int i=0;i<maxnum;i++){
@@ -67,7 +67,7 @@ public class atari extends java.applet.Applet implements Runnable
 		}
 	}
 
-	double react = 17;  // $BBg$-$$$[$I4K$d$+$JH?<M$K$J$k!#3d$j;;$NDj?t(B
+	double react = 17;  // 大きいほど緩やかな反射になる。割り算の定数
 	void moveBox(){
 		double before_x , before_y;
 		for(int i=0;i<nownum;i++){
@@ -80,16 +80,16 @@ public class atari extends java.applet.Applet implements Runnable
 				if( check( bx[i] , by[i], bxsiz[i] , bysiz[i] , 
 						  bx[j] , by[j] , bxsiz[j] , bysiz[j] ) ){
 					bfill[i] = true;
-					double relx , rely;   // $BH"$NCf?4$NAjBP0LCV4X78!#(B
+					double relx , rely;   // 箱の中心の相対位置関係。
 					relx = (bx[j]+bxsiz[j]/2) - (bx[i]+bxsiz[i]/2);
 					rely = (by[j]+bysiz[j]/2) - (by[i]+bysiz[i]/2);
 
-					bdx[i] = -relx / react;  // $B$*8_$$$rN%$9(B
+					bdx[i] = -relx / react;  // お互いを離す
 					bdy[i] = -rely / react;
 					bdx[j] = relx /  react;
 					bdy[j] = rely /  react;
 				}
-				// $BJI$KEv$?$C$?$i!"0\F0J}8~$NId9f$rJQ$($k!#(B
+				// 壁に当たったら、移動方向の符号を変える。
 				if( bx[i] < 0 ){ bx[i]=0;bdx[i]*=-1;bfill[i]=true;}
 				if( bx[i]+bxsiz[i] > width ){
 					bx[i]=width-bxsiz[i];bdx[i]*=-1;bfill[i]=true;
@@ -102,13 +102,13 @@ public class atari extends java.applet.Applet implements Runnable
 		}
 	}
 
-	// $BEv$?$jH=Dj!#?4B!It$G$9!#@53N$K;M3Q$NHO0O!#(B
+	// 当たり判定。心臓部です。正確に四角の範囲。
 	boolean check( double x1, double y1 , double x1size , double y1size ,
 				  double x2 , double y2 , double x2size , double y2size ){
 		return( x2 <= (x1+x1size) && x1 <= (x2+x2size ) &&
 			    y2 <= (y1+y1size) && y1 <= (y2+y2size) );
 	}
-	// $B%^%&%9$N%\%?%s$r2!$9$HH"$,A}$($^$9!#(B
+	// マウスのボタンを押すと箱が増えます。
 	public boolean mouseDown( Event e , int x , int y){
 		bx[nownum] = x;
 		by[nownum] = y;
@@ -117,14 +117,14 @@ public class atari extends java.applet.Applet implements Runnable
 	}
 	void doIt(){
 
-		// $BH"$rF0$+$9!#(B
+		// 箱を動かす。
 		moveBox();
 		
 		dg.setColor( Color.white );
 		dg.fillRect( 0 , 0 , width , height );
 		dg.setColor( Color.black  );
 
-		// $BA4ItIA2h$9$k!#(B
+		// 全部描画する。
 		for(int i=0;i<nownum;i++){
 			if( bfill[i] ){
 				dg.fillRect( (int)bx[i] , (int)by[i] ,

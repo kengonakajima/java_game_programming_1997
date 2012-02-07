@@ -12,8 +12,8 @@ public class game extends java.applet.Applet implements Runnable
 
 	int cron=0;
 
-	public int width,height;                        // $BC10L$O%T%/%;%k(B
-	public final int interval = 50;         // $B%_%jIC(B
+	public int width,height;                        // 単位はピクセル
+	public final int interval = 50;         // ミリ秒
 
 	MenuBar mb;
 	player p ;
@@ -44,7 +44,7 @@ public class game extends java.applet.Applet implements Runnable
 
 		thread.start();
 
-		//$BJQ992DG=8D=j(B
+		//変更可能個所
 
 		p = new player( width , height ,8 ,(double)4 ,(double)1,(double)0.1 );
 		mode = p.TOSOKU;
@@ -106,8 +106,8 @@ public class game extends java.applet.Applet implements Runnable
 	void doIt()
 	{
 
-		// $BJQ992DG=8D=j(B
-		// $B$3$3$K%W%m%0%i%`$r2C$($F$$$C$F$_$^$7$g$&!#(B
+		// 変更可能個所
+		// ここにプログラムを加えていってみましょう。
 		dg.setColor( Color.white );
 		dg.fillRect( 0 ,0, 300,50 );
 		dg.setColor( Color.black );

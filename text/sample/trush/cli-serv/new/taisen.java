@@ -3,14 +3,14 @@ import java.io.*;
 import java.net.*;
 import java.awt.*;
 
-// UNIX$B$G$O!"(Bappletviewer$B$N(Bproperties$B$G!"(Bnetwork: Unrestricted$B$K$9$l$P(B
-// server.class$B!"(Bclient.class$B$H$bLdBj$J$/F0$/!#(B
-// windows95$B$G$O!"(B10000$B$H$$$&%]!<%H$r(Blisten$B$7$h$&$H$7$?$H$-$K(B
-// SecurityException $B$,=P$k!#(B Windows $B$,%/%i%$%"%s%H$G(B UNIX$B$,%5!<%P!<$J$i2DG=!#(B
+// UNIXでは、appletviewerのpropertiesで、network: Unrestrictedにすれば
+// server.class、client.classとも問題なく動く。
+// windows95では、10000というポートをlistenしようとしたときに
+// SecurityException が出る。 Windows がクライアントで UNIXがサーバーなら可能。
 //
 
-// $B$=$l$>$l$N%W%l%$%d!<$,%-!<A`:n$7$?$i!"$=$N>pJs$r<u$1$H$C$FI=<(0LCV$rJQ99$9$k$H$$$&$b$N!#(B
-// $BF14|$5$;$J$$!#(B
+// それぞれのプレイヤーがキー操作したら、その情報を受けとって表示位置を変更するというもの。
+// 同期させない。
 //
 public class server extends Applet implements Runnable
 {
@@ -23,8 +23,8 @@ public class server extends Applet implements Runnable
 	int port = 10000;
 	String host;
 	boolean server_mode = false;
-	Player p[] = new Player[8];	// $B%W%l%$%d!<$r(B8$B?MJ,4IM}(B
-	int player_num=0;  // $B%W%l%$%d!<$,2??M$$$k$+(B
+	Player p[] = new Player[8];	// プレイヤーを8人分管理
+	int player_num=0;  // プレイヤーが何人いるか
 	TextField hostfield , portfield;
 	Checkbox servercheckbox;
 	Button startbutton;
@@ -43,7 +43,7 @@ public class server extends Applet implements Runnable
 		add( servercheckbox );
 		add( startbutton );
 
-		// $B%W%l%$%d!<=i4|2=(B
+		// プレイヤー初期化
 		for(int i=0 ; i < 8 ; i++){
 			p[i] = new Player( size().width/2 , (size().height/8)*i , Color.black);
 		}
@@ -77,7 +77,7 @@ public class server extends Applet implements Runnable
 			for(
 		g.fillRect( x ,y , 10 ,10 );
 	}
-	void shikakumove( int dx, int dy )	// $B;M3Q$rF0$+$9%a%=%C%I(B
+	void shikakumove( int dx, int dy )	// 四角を動かすメソッド
 	{
 		x += dx;
 		y += dy;
@@ -99,7 +99,7 @@ public class server extends Applet implements Runnable
 			}catch( InterruptedException e ){ }
 			try{
 				
-				if( in.available()>0 ){  // $B$b$7$b!"FI$_$3$`$3$H$,$G$-$l$P(Bread$B$9$k(B
+				if( in.available()>0 ){  // もしも、読みこむことができればreadする
 					c = in.read();
 					//System.out.println( (char)c);
 				}

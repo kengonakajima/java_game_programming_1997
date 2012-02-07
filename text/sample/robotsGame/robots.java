@@ -66,7 +66,7 @@ public class robots extends java.applet.Applet
 	int fysiz;
 	int field[][];
 	int tmpfield[][];
-	final int BLANK = 0;    // $B$9$Y$FCO7A$NMWAG$H$7$F4IM}(B
+	final int BLANK = 0;    // すべて地形の要素として管理
 	final int ROBOT = 1;
 	final int JUNK = 2;
 	final int PLAYER = 3;
@@ -78,7 +78,7 @@ public class robots extends java.applet.Applet
 	Color bg2 = new Color( 0x113322 );
 	Color fg = new Color( 0xffee44 );
 
-	int xtilesize =20,ytilesize=20;    // $B%?%$%k$N=D2#$NBg$-$5(B
+	int xtilesize =20,ytilesize=20;    // タイルの縦横の大きさ
 
 	int score=0;
 	String yourname = "input yourname";
@@ -107,22 +107,22 @@ public class robots extends java.applet.Applet
 	{
 		int num;
 
-		// $BE($N?t$r7h$a$k(B
+		// 敵の数を決める
 		if( stage < 5 ) num = stage * 5 ; else num = 25 + stage ;
 
-		// $B%U%m%"$r=i4|2=(B
+		// フロアを初期化
 		for(int i=0;i<fxsiz;i++){
 			for(int j=0;j<fysiz;j++){
 				field[i][j] = BLANK;
 			}
 		}
-		// $BE($rG[CV(B
+		// 敵を配置
 		for( int i = 0 ; i < num ; i++ ){
 			int x = ( ran.nextInt() & 0xffff ) % fxsiz;
 			int y = ( ran.nextInt() & 0xffff ) % fysiz;
 			field[x][y] = ROBOT;
 		} 
-		// $B%W%l%$%d!<$rG[CV(B
+		// プレイヤーを配置
 		for(;;){
 			int x = ( ran.nextInt() & 0xffff ) % fxsiz;
 			int y = ( ran.nextInt() & 0xffff ) % fysiz;
@@ -134,11 +134,11 @@ public class robots extends java.applet.Applet
 		}
 	}
 
-	// $B$3$NJV$jCM$,(Btrue $B$N>l9g$O!"Jb$1$J$+$C$?!#(B
+	// この返り値がtrue の場合は、歩けなかった。
 
 	boolean walk( int rx , int ry , boolean teleport )
 	{
-		// $BD4$Y$?$j!"?t$($?$j!#(B
+		// 調べたり、数えたり。
 		int robotno=0;
 
 
@@ -151,9 +151,9 @@ public class robots extends java.applet.Applet
 			}
 		}
 		
-		// $B%U%#!<%k%I$N%3%T!<$r0l;~E*$K:n$k!#A4BN$,0l@F$K?7$7$$>uBV(B
-		// $B$K0\9T$9$k$h$&$J%2!<%`$G$O!"$3$N$h$&$K%F%s%]%i%j$N%P%C%U%!$r(B
-		// $B:n$kI,MW$,$"$k!#(B($B%i%$%U%2!<%`$J$I(B)
+		// フィールドのコピーを一時的に作る。全体が一斉に新しい状態
+		// に移行するようなゲームでは、このようにテンポラリのバッファを
+		// 作る必要がある。(ライフゲームなど)
 		if( (plx+rx) < 0 || (plx+rx) >=fxsiz ){
 			return true;
 		}
@@ -203,7 +203,7 @@ public class robots extends java.applet.Applet
 			}
 		}
 
-		// $B$G$-$"$,$C$?%P%C%U%!$r85$N%P%C%U%!$K%3%T!<$9$k!#(B
+		// できあがったバッファを元のバッファにコピーする。
 		
 		for(int i=0;i<fxsiz;i++){
 			for(int j=0;j<fysiz;j++){
@@ -211,7 +211,7 @@ public class robots extends java.applet.Applet
 			}
 		}
 
-		// $BE($r?t$($FC/$b$$$J$+$C$?$i%/%j%"(B
+		// 敵を数えて誰もいなかったらクリア
 		if( countEnemy(field) ==0 ){
 			stage++;
 			initField();
@@ -222,10 +222,10 @@ public class robots extends java.applet.Applet
 		
 		return false;
 	}
-	// windows95$BMQ$N(BJDK1.1$B$N(Bbeta2$B$G$O!"2a5n$H$N8_49@-$rJ]$D$?$a$K(B
-	// $BMQ0U$5$l$F$$$k(BkeyDown$B%a%=%C%I$P$+$j$G$O$J$/!"(B1.1$B$G2C$o$C$?(B
-	// keyListener$B$r;H$C$?$d$j$+$?$G$b%-!<%$%Y%s%H$,Ht$s$G$3$J$$$N$G(B
-	// $B$7$+$?$J$/!"%^%&%9$K$h$kA`:n$K$7$F$$$k!#(B
+	// windows95用のJDK1.1のbeta2では、過去との互換性を保つために
+	// 用意されているkeyDownメソッドばかりではなく、1.1で加わった
+	// keyListenerを使ったやりかたでもキーイベントが飛んでこないので
+	// しかたなく、マウスによる操作にしている。
 	int gridx,gridy;
 	public boolean mouseMove( Event e , int x , int y )
 	{
@@ -234,7 +234,7 @@ public class robots extends java.applet.Applet
 		repaint();
 		return true;
 	}
-	// $B%-!<%\!<%I$G$bA`:n$G$-$k$h$&$K$7$F$*$/!#(B
+	// キーボードでも操作できるようにしておく。
 	public boolean keyDown( Event e , int c )
 	{
 		switch( c ){
@@ -273,9 +273,9 @@ public class robots extends java.applet.Applet
 		else if( gridy == (ply -1 )) dy = -1; 
 		else if( gridy == ply ) dy = 0;
 
-		// $B<g?M8x$N6a$/$r%/%j%C%/$9$k$H!"IaDL$KJb$/!#(B
-		// $B1s$/$r%/%j%C%/$9$k$H!"%F%l%]!<%H$9$k!#(B 
-		// $B%7%U%H%-!<$r2!$7$J$,$i%/%j%C%/$9$k$H!"!VBT$D!W!#(B
+		// 主人公の近くをクリックすると、普通に歩く。
+		// 遠くをクリックすると、テレポートする。 
+		// シフトキーを押しながらクリックすると、「待つ」。
 		if( ( e.modifiers & Event.SHIFT_MASK ) != 0){
 			waitRobots();
 		} else
@@ -297,7 +297,7 @@ public class robots extends java.applet.Applet
 		int c;
 		int total_robots = countEnemy(field);
 		for(;;){
-			// $B%$%Y%s%H=hM}$N%a%=%C%I$NCf$GIA2h$9$k$K$O$3$&$9$k(B
+			// イベント処理のメソッドの中で描画するにはこうする
 			paint( getGraphics() );    
 			c = countEnemy(tmpfield);
 			if( c == 0 ){
@@ -308,7 +308,7 @@ public class robots extends java.applet.Applet
 			}
 
 			if( walk( 0 , 0 , false ) == true ){
-				// wait$B$7$F$k$N$KJb$1$J$$>l9g!"$=$l$O;`$@!#(B
+				// waitしてるのに歩けない場合、それは死だ。
 				die();
 				break;
 			}
@@ -338,10 +338,10 @@ public class robots extends java.applet.Applet
 
 	void drawAll()
 	{
-		// $B$^$:>C$9(B
+		// まず消す
 		dg.drawImage( floorimg , 0 , 0 , null );
 
-		// $B%U%#!<%k%I$rIA$/(B
+		// フィールドを描く
 
 		for(int i=0;i<fxsiz;i++){
 			for(int j=0;j<fysiz;j++){
@@ -350,11 +350,11 @@ public class robots extends java.applet.Applet
 			}
 		}
 		
-		// $B%0%j%C%I$rIA$/(B
+		// グリッドを描く
 
 		dg.drawRect( gridx*xtilesize , gridy*ytilesize , 
 					xtilesize-1,ytilesize-1 );
-		// $BE@?tI=<((B
+		// 点数表示
 		dg.setColor( fg );
 		dg.drawString( "SCORE " + score + "/STAGE " +
 					  stage + "/Wait Bonus " + wait_bonus,10,30);
@@ -399,7 +399,7 @@ class YourNameWindow extends Frame
 		resize(320,250);
 		show();
 
-		// $B%O%$%9%3%"$NI=$r<h$C$F$/$k!#(B
+		// ハイスコアの表を取ってくる。
 		String args[] = { "filename=robots_score" , "method=read" };
 		
 		HTTPAccess ha=null;
@@ -451,9 +451,9 @@ class YourNameWindow extends Frame
 
 
 
-// $B$3$N%/%i%9$OHFMQE*$J!"(Bhttp$B%"%/%;%9$r<B8=$9$k!#FC$K(BCGI$B$KBP$7$FM-8z!#(B
-// $B;H$$$+$?$O!"$^$:!"(BURL$B$NJ8;zNs$^$?$O(BURL$B$r;XDj$7$F!"=i4|2=$7!"$=$N$"$H(B
-// getDocument$B$9$k$@$1!#(B
+// このクラスは汎用的な、httpアクセスを実現する。特にCGIに対して有効。
+// 使いかたは、まず、URLの文字列またはURLを指定して、初期化し、そのあと
+// getDocumentするだけ。
 // HTTPAccess ha = new HTTPAccess( URL
 class HTTPAccess
 {
@@ -474,13 +474,13 @@ class HTTPAccess
 	{
 		this( new URL( location ) );
 	}
-	// $BIaDL$N%3%M%/%7%g%s(B
+	// 普通のコネクション
 	HTTPAccess( URL u )
 	{
 		method = "GET";
 		url = u;
 	}
-	// CGI$B$r;H$&J}(B
+	// CGIを使う方
 	HTTPAccess( URL u , String method , String[] values )
 	throws MalformedURLException
 	{
@@ -508,10 +508,10 @@ class HTTPAccess
 		try{
 			uc = url.openConnection();
 			uc.setUseCaches(false);
-			uc.setDoInput(true);  // $B$3$l$r$d$i$J$$$H%@%a!#(B
+			uc.setDoInput(true);  // これをやらないとダメ。
 
 			if( method.equals("POST") ){
-					uc.setDoOutput(true);  // $B$3$l$b=EMW(B
+					uc.setDoOutput(true);  // これも重要
 					OutputStream out = uc.getOutputStream();
 					//byte b[] = request_string.getBytes();  // JDK1.1
 
@@ -545,7 +545,7 @@ class HTTPAccess
 	}
 }
 
-// $B%F%9%HMQ%/%i%9(B
+// テスト用クラス
 
 class test
 {

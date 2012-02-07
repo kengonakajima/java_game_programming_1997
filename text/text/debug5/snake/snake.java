@@ -5,13 +5,13 @@ import java.util.*;
 
 public class snake extends Applet implements Runnable
 {
-	Thread thread;		// $B$3$N$"$?$j$O!"%9%1%k%H%s$N$^$^!#(B
+	Thread thread;		// このあたりは、スケルトンのまま。
 	Image double_buffer;
 	Graphics dg;
 	int cron=0;
 
 	int width ,height;
-	int interval = 30;	// $B$3$3$O!"%9%1%k%H%s$G$O(B500$B%_%jIC$K$J$C$F$$$^$9!#(B
+	int interval = 30;	// ここは、スケルトンでは500ミリ秒になっています。
 
 	public void init()
 	{
@@ -54,39 +54,39 @@ public class snake extends Applet implements Runnable
 	}
 
 	int snake_max=1000;
-	int snake_unit=12;		// $B4X@a$O(B12$B%k!<%W$E$DAw$l$F0\F0(B
-	int snake_len=5;		// $B<X$N8=:_$ND9$5(B
-	int snake_start_len=5;	// $B<X$N:G=i$ND9$5(B
-	int snake_dir;  // $BJ}8~$O??>e$,(B0$B$G1&<~$j$K(B7$B$^$G$N(B8$BJ}8~$H$7$^$9!#(B
-	double dx[] = { 0,1.41,2,1.41,0,-1.41,-2,-1.41};  // $B$=$l$>$l$NJ}8~$N0\F0NL(B
-	double dy[] = { -2,-1.41,0,1.41,2,1.41,0,-1.41};  // $B2sE>7O$N?4B!It!#(B
-	double snake_x[] = new double[snake_max];	// $B<X$NBN$N4V@\$N0LCV5-21MQ(B
+	int snake_unit=12;		// 関節は12ループづつ送れて移動
+	int snake_len=5;		// 蛇の現在の長さ
+	int snake_start_len=5;	// 蛇の最初の長さ
+	int snake_dir;  // 方向は真上が0で右周りに7までの8方向とします。
+	double dx[] = { 0,1.41,2,1.41,0,-1.41,-2,-1.41};  // それぞれの方向の移動量
+	double dy[] = { -2,-1.41,0,1.41,2,1.41,0,-1.41};  // 回転系の心臓部。
+	double snake_x[] = new double[snake_max];	// 蛇の体の間接の位置記憶用
 	double snake_y[] = new double[snake_max];	
-	double snakehead_x , snakehead_y;			// $B<X$NF,$N0LCV(B
-	int score = 0;						// $BE@?t(B
-	double snake_xsiz = 36;				// $B<X$NBN$N4V@\$N$=$l$>$l$NBg$-$5(B
+	double snakehead_x , snakehead_y;			// 蛇の頭の位置
+	int score = 0;						// 点数
+	double snake_xsiz = 36;				// 蛇の体の間接のそれぞれの大きさ
 	double snake_ysiz = 36;
-	final double SNAKE_SPEED = 3;		// dx$B$d(Bdy$B$K$3$NCM$r$+$1$FB.EY$H$9$k(B
+	final double SNAKE_SPEED = 3;		// dxやdyにこの値をかけて速度とする
 
 	void initSnake(){
 		for(int i=0;i<snake_max;i++){
-			snake_x[i] = snake_y[i] = -1000;   //$B@$3&$N2L$F$K$7$F$*$/(B
+			snake_x[i] = snake_y[i] = -1000;   //世界の果てにしておく
 		}
-		snakehead_x = width/2;		// $B:G=i$O??$sCf$+$i;O$^$k(B
+		snakehead_x = width/2;		// 最初は真ん中から始まる
 		snakehead_y = height/2;
-		snake_dir = 2;				// $B1&8~$-$+$i(B
-		snake_len = snake_start_len;	// $B:G=i$ND9$5$O(Bsnake_start_len
+		snake_dir = 2;				// 右向きから
+		snake_len = snake_start_len;	// 最初の長さはsnake_start_len
 	}
 
-	// $B%-!<$r2!$7$?;~$N=hM}(B
+	// キーを押した時の処理
 	public boolean keyDown(Event e , int c ){
 		if( c == 'h' ){ 
-			snake_dir--;  // $B:82sE>(B
+			snake_dir--;  // 左回転
 		}
 		if( c == 'j' ){
-			snake_dir++;  // $B1&2sE>(B
+			snake_dir++;  // 右回転
 		}
-		// $B>o$KCM$,(B0$B$+$i(B7$B$N4V$K$J$k$h$&$K$9$k(B
+		// 常に値が0から7の間になるようにする
 		if( snake_dir >= 7 ) snake_dir-=8;
 		if( snake_dir < 0 )snake_dir +=8;
 		
@@ -97,9 +97,9 @@ public class snake extends Applet implements Runnable
 		snakehead_y += dy[snake_dir] * SNAKE_SPEED;
 		if( snakehead_x < 0 || snakehead_y < 0 || snakehead_x > width ||
 		   snakehead_y > height ){
-			snakeDie();	// $B30OH$KEv$?$C$F$b;`$L(B
+			snakeDie();	// 外枠に当たっても死ぬ
 		}
-		// $B0LCV5-21MQ$NG[Ns$KF,$N0LCV$r=g<!BeF~$7$F$$$/!#(B
+		// 位置記憶用の配列に頭の位置を順次代入していく。
 		snake_x[cron % snake_max ] = snakehead_x;
 		snake_y[cron % snake_max ] = snakehead_y;
 		
@@ -112,7 +112,7 @@ public class snake extends Applet implements Runnable
 		score = 0;
 		snake_len = 5;
 	}
-	double tmpx[] = new double[ 200];   // $B4V@\F1;N$NEv$?$jH=DjMQG[Ns(B
+	double tmpx[] = new double[ 200];   // 間接同士の当たり判定用配列
 	double tmpy[] = new double[ 200];
 	void drawSnake(){
 		dg.setColor( fg );
@@ -122,12 +122,12 @@ public class snake extends Applet implements Runnable
 			int index = ( cron - (i * snake_unit) ) % snake_max;
 			tmpx[i] = snake_x[index];
 			tmpy[i] = snake_y[index];
-			// $B<X$NBN$O;M3Q$NEI$jDY$7(B
+			// 蛇の体は四角の塗り潰し
 			dg.fillRect( (int)snake_x[index],(int)snake_y[index],
 						(int)snake_xsiz , (int)snake_ysiz );
 		}
-		// $B<+J,$NBN$KEv$?$k$H;`$L!#(B
-		// $B>WFM$NH=Dj$K$D$$$F$O!"<!$N@a$G@bL@$7$^$9!#(B
+		// 自分の体に当たると死ぬ。
+		// 衝突の判定については、次の節で説明します。
 		for(int j=1;j<snake_len;j++){
 			if( snakehead_x+snake_xsiz > tmpx[j] && 
 			    snakehead_x < tmpx[j]+snake_xsiz  &&
@@ -150,12 +150,12 @@ public class snake extends Applet implements Runnable
 		moveSnake();
 		drawSnake();
 
-		// $BFq0WEYD4@0!#D9$5$ND4@a$r$9$k(B
+		// 難易度調整。長さの調節をする
 		if( (cron % 200 )==0){
 			snake_len++;
 		}
 		dg.setColor( fg );
-		// $BE@?t$NI=<((B
+		// 点数の表示
 		dg.drawString( "Score: " + score , 30,30);
 
 		score += snake_len-snake_start_len;

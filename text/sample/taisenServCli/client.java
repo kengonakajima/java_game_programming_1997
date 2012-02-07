@@ -1,10 +1,10 @@
-// client$B$N7hDj%P!<%8%g%s!#$9$G$KJ8>O$KKd$a$3$s$G$"$k$N$G!"JQ99$K$OCm0U$;$h!#(B
+// clientの決定バージョン。すでに文章に埋めこんであるので、変更には注意せよ。
 
-// $B%5!<%P!<$rMQ0U$9$k%?%$%W$NBP@o%2!<%`$N%5%s%W%k!#$3$N%"%W%l%C%H$O(B
-// $BI=<($N$_$r9T$J$&!#(B
-// $B%"%W%l%C%H$NCf$K!"J#?t$N%W%l%$%d!<$,F0$-$^$o$k$H$$$&$b$N!#(B
-// $B%-!<F~NO$G(B4$BJ}8~$KF0$-$^$o$k$@$1$N$b$N!#(B
-// $BMW5a$,Mh$7$@$$!"0LCV$rJQ99$9$k!#(B
+// サーバーを用意するタイプの対戦ゲームのサンプル。このアプレットは
+// 表示のみを行なう。
+// アプレットの中に、複数のプレイヤーが動きまわるというもの。
+// キー入力で4方向に動きまわるだけのもの。
+// 要求が来しだい、位置を変更する。
 
 import java.applet.Applet;
 import java.awt.*;
@@ -14,7 +14,7 @@ import java.util.*;
 
 public class client extends Applet implements Runnable
 {
-	Socket clisock;		// $B%/%i%$%"%s%HMQ(B
+	Socket clisock;		// クライアント用
 	Thread thread;
 	Socket so;
 	InputStream in;
@@ -26,7 +26,7 @@ public class client extends Applet implements Runnable
 	int width , height;
 
 	int num;
-	int x[] = new int[100];		// $B$?$/$5$sMQ0U$7$F$*$/(B
+	int x[] = new int[100];		// たくさん用意しておく
 	int y[] = new int[100];
 	Color colortable[] = new Color[100];
 
@@ -37,7 +37,7 @@ public class client extends Applet implements Runnable
 		offscr = createImage( width = size().width , height = size().height );
 		offscrg = offscr.getGraphics();
 
-		// $B?'$r=i4|2=$7$F$*$/(B
+		// 色を初期化しておく
 		
 		for(int i=0;i<100;i++){
 			colortable[i] = new Color( (i*105)&255,(i*54)&255,(i*202)&255);

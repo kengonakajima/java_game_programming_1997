@@ -42,10 +42,10 @@ public class multi extends java.applet.Applet
 						 20 , 20 + i*20  );
 		}
 		try{      
-			Thread.sleep(50);    // $B$3$3$G(B50$B%_%jICBT$D!#(B
+			Thread.sleep(50);    // ここで50ミリ秒待つ。
 		}catch( InterruptedException e ){}
 
-		repaint();   // $BIA2h$,=*$o$C$?$i$b$&$$$A$IIA2h$9$k$?$a$N<jH4$-%3!<%I(B
+		repaint();   // 描画が終わったらもういちど描画するための手抜きコード
 	}
 	public boolean mouseDown( Event e , int x , int y)
 	{

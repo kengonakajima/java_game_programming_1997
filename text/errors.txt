@@ -1,585 +1,585 @@
 
-���顼��å������ꥹ��
+エラーメッセージリスト
 
-���顼�μ���ϡ����Υ����ߥ󥰤ˤ�äơ�����ѥ��뤹����ȡ��¹Ԥ��Ƥ������
-��� ��ʬ���뤳�Ȥ��Ǥ��ޤ�������ѥ��뤷�����˥��顼���ʤ��Ƥ⡢�¹���˲�
-�餫�� �Х��ˤ�ä��㳰��ȯ������Ȥ���¿������ޤ�������ѥ�����Υ��顼
-�ϡ��ץ������ ��񤭤����ơ���Ĥ�Фʤ��ʤ�ޤǺ����褯��Ժ������Ƥ�����
-�����¹Ի��Υ��顼�ϡ����㳰�פޤ��ϡ֥��顼�פȸƤФ���ΤǤ���
-�����ϡ��褯ȯ�������ΤˤĤ��Ƥϡ֥饤�֥���ե���󥹡פ��������Ƥ��ޤ�
-�Τǡ��褯�狼��ʤ����ϡ�������򻲾Ȥ��Ƥ���������
+エラーの種類は、そのタイミングによって、コンパイルする時と、実行している時の
+もの に分けることができます。コンパイルした時にエラーがなくても、実行中に何
+らかの バグによって例外が発生するときは多くあります。コンパイル時のエラー
+は、プログラム を書きかえて、一つも出なくなるまで根気よく試行錯誤してくださ
+い。実行時のエラーは、「例外」または「エラー」と呼ばれるものです。
+これらは、よく発生するものについては「ライブラリリファレンス」で説明しています
+ので、よくわからない場合は、そちらを参照してください。
 
 
 
 ----------------------------------------------------------------------------
 
-����ѥ��뤹����Υ��顼
+コンパイルする時のエラー
 
-���Υ��顼��å������ϡ�JDK�����ۥѥå����������lib�ǥ��쥯�ȥ����ˤ��롢
-javac.properties�Ȥ����ե���������ܸ첽������Τ�
-http://www.sun.co.jp/smi.jp/tech/java/index.html����
-��äƤ���¿���ѹ�������ΤǤ���javac.properties�����ܸ��Ǥ����줫����ȡ�
-javac�Υ��顼���Ϥ����ܸ�ˤʤ�ޤ������Τ���Υե����뤬CD-ROM�˼�����
-�Ƥ��ޤ����ʲ��Υ�å������ϡ�JDK1.1��javac�Τ�ΤǤ���1.0.2����������ʬ��
-�ؤ��Ƥϡ�����ɮ�Ԥ������ޤ������������Ǥ�Sun����ȯɽ����뤳�Ȥ�ꤤ�ޤ���
-ʸ������ˡ�%s���ФƤ��ޤ����������ϡ��Ѹ���ν��֤Ȱ��פ����ơ��ʲ��Τ褦
-���ɤ�Ǥ���������
+このエラーメッセージは、JDKの配布パッケージの中のlibディレクトリの中にある、
+javac.propertiesというファイルを日本語化したものを、
+http://www.sun.co.jp/smi.jp/tech/java/index.htmlから
+取ってきて多少変更したものです。javac.propertiesを日本語版と入れかえると、
+javacのエラー出力が日本語になります。そのためのファイルがCD-ROMに収められ
+ています。以下のメッセージは、JDK1.1のjavacのものです。1.0.2から増えた分に
+関しては、仮に筆者が訳しました。正式な版がSunから発表されることを願います。
+文字列中に、%sが出てきますが、それらは、英語中の順番と一致させて、以下のよう
+に読んでください。
 
-�㡧
+例：
 
-Your girlfriend %s is very %s.  -> ���������%s�Ϥ����ؤ�%s�Ǥ���
+Your girlfriend %s is very %s.  -> 君の彼女の%sはたいへん%sです。
 
 ----------------------------------------------------------------------------
 * Internal error.
-        �������顼.
+        内部エラー.
 * Comment not terminated at end of input.
-        �����Ȥ��Ĥ����Ƥ��ޤ���.
+        コメントが閉じられていません.
 * String not terminated at end of input.
-        ʸ���󤬥ե����������ޤǤ��Ĥ����Ƥ��ޤ���.
+        文字列がファイル末尾までに閉じられていません.
 * String not terminated at end of line.
-        ʸ���󤬹����ޤǤ��Ĥ����Ƥ��ޤ���.
+        文字列が行末までに閉じられていません.
 * Invalid character constant.
-        ������ʸ������Ǥ�.
+        不当な文字定数です.
 * Unbalanced parentheses.
-        ��̤��б����Ƥ��ޤ���.
+        括弧が対応していません.
 * Invalid escape character.
-        �����ʥ���������ʸ���Ǥ�. JIS/SJIS�ǥץ�������񤤤Ƥ���ȡ�ȯ������
-		��ǽ��������ޤ���
+        不当なエスケープ文字です. JIS/SJISでプログラムを書いていると、発生する
+		可能性があります。
 * Invalid character in octal number.
-	    8�ʿ��˻Ȥ��ʤ�ʸ�����ޤޤ�Ƥ��ޤ�.
+	    8進数に使えない文字が含まれています.
 * Invalid character in number.
-        ���ͤ˻Ȥ��ʤ�ʸ�����ޤޤ�Ƥ��ޤ�.
+        数値に使えない文字が含まれています.
 * Invalid character in input.
-        ����������ʸ�����ޤޤ�Ƥ��ޤ�.���Ѥζ���䥻�ߥ����󤬴ޤޤ��
-		���ޤ��󤫡�
+        不当な入力文字が含まれています.全角の空白やセミコロンが含まれて
+		いませんか？
 * Invalid floating point format.
-		��ư������ɽ�������äƤ��ޤ�.
+		浮動小数の表記が誤っています.
 * Numeric overflow.
-        ���ͤ������С��ե������ޤ���.
+        数値がオーバーフローしました.
 * Numeric underflow.
-        ���ͤ���������ե������ޤ���.
+        数値がアンダーフローしました.
 * '%s' expected.
-		'%s'��ɬ�פǤ��� '%s'�Ȥ����Τϡ��ȡ�����Τ��ȤǤ����ʲ���'%s'�Τ褦��
-		ɽ���ϡ������˥��顼�θ����Ȥʤä�ʸ��������ޤ���
+		'%s'が必要です。 '%s'というのは、トークンのことです。以下、'%s'のような
+		表現は、そこにエラーの原因となった文字列が入ります。
 * Statement expected.
-        ʸ��ɬ�פǤ�.
+        文が必要です.
 * Type expected.
-        ������ꤷ�Ʋ�����.
+        型を指定して下さい.
 * Identifier expected.
-        ���̻Ҥ���ꤷ�Ʋ�����.
+        識別子を指定して下さい.
 * 'class' or 'interface' keyword expected.
-        'class' ���뤤�� 'interface' ����ꤷ�Ʋ�����.
+        'class' あるいは 'interface' を指定して下さい.
 * Class or interface declaration expected.
-        ���饹����ޤ��ϥ��󥿡��ե����������ɬ�פǤ�.
+        クラス定義またはインターフェース定義が必要です.
 * Missing term.
-        ��ʸ���顼�Ǥ�.
+        構文エラーです.
 * 'else' without 'if'.
-        'else' ���б����� 'if' ������ޤ���. ���̤��б������������ʤ��Ǥ�����
+        'else' に対応する 'if' がありません. 中括弧の対応がおかしくないですか？
 * 'catch' without 'try'.
-        'catch' ���б����� 'try' ������ޤ���.
+        'catch' に対応する 'try' がありません.
 * 'finally' without 'try'.
-        'finally' ���б����� 'try' ������ޤ���.
+        'finally' に対応する 'try' がありません.
 * 'try' without 'catch' or 'finally'.
-        'try' ���б����� 'catch' �ޤ��� 'finally' ������ޤ���.
+        'try' に対応する 'catch' または 'finally' がありません.
 * 'case' outside switch statement.
-        'case' ��switchʸ�γ��ǻ��Ѥ���Ƥ��ޤ�.
+        'case' がswitch文の外で使用されています.
 * 'default' outside switch statement.
-        'default' ��switchʸ�γ��ǻ��Ѥ���Ƥ��ޤ�.
+        'default' がswitch文の外で使用されています.
 * I/O error in %s.
-        %s���Ф��������ϥ��顼��ȯ�����ޤ���.
+        %sに対する入出力エラーが発生しました.
 * Array index required.
-        �����ź����ɬ�פǤ�.
+        配列の添字が必要です.
 * [] can only be applied to arrays. It can't be applied to %s.
-        [] ������Τߤ�Ŭ�Ѳ�ǽ�ǡ�%s��Ŭ�Ѥ��뤳�ȤϤǤ��ޤ���.
+        [] は配列のみに適用可能で、%sに適用することはできません.
 * Can't specify array dimension in a declaration.
-        �����������μ���������ꤹ�뤳�ȤϤǤ��ޤ���.
+        宣言時に配列の次元数を指定することはできません.
 * Can't specify array dimension in a type expression.
-        ��ɽ��������μ���������ꤹ�뤳�ȤϤǤ��ޤ���.
+        型表記に配列の次元数を指定することはできません.
 * Array constants can only be used in initializers.
-        ��������Ͻ�����Ҥˤ������ѤǤ��ޤ���.
+        配列定数は初期化子にしか使用できません.
 * Invalid initializer for type %s.
-        %s���Ф��ơ������ʽ�����Ҥ����ꤵ��Ƥ��ޤ�.
+        %sに対して、不当な初期化子が指定されています.
 * Invalid left hand side of assignment.
-        �����������ʺ����ͤ����ꤵ��Ƥ��ޤ�.
+        代入に不当な左辺値が指定されています.
 * Invalid arguments to %s.
-        %s���Ф��ơ������ʰ��������ꤵ��Ƥ��ޤ�.
+        %sに対して、不当な引数が指定されています.
 * Invalid cast from %s to %s.
-        %s����%s�ؤϥ��㥹�ȤǤ��ޤ���.
+        %sから%sへはキャストできません.
 * Impossible for %s to be instance of %s.
-        %s��%s�Υ��󥹥��󥹤Ǥ�ͭ�����ޤ���(�������פ��ޤ���).
+        %sは%sのインスタンスでは有り得ません(型が一致しません).
 * Invalid type expression.
-        �����ʷ�ɽ���Ǥ�.
+        不当な型表記です.
 * Only named classes can have 'extends' or 'implements' clauses.
-     	̾�����Ĥ����Ƥ��륯�饹����������'extends'�ޤ��� 'implements'���
-		���Ĥ��ȤϤǤ��ޤ���(JDK1.1)
+     	名前がつけられているクラスだけしか、'extends'または 'implements'節を
+		持つことはできません。(JDK1.1)
 * Attempt to reference field %s in a %s.
-	  �ե������%s(%s�����)�򻲾ȤǤ��ޤ���.
+	  フィールド%s(%sで定義)を参照できません.
 * No variable %s defined in %s.
-      �ѿ�%s��%s�ˤ��������Ƥ��ޤ���.
+      変数%sは%sには定義されていません.
 * Variable %s in %s not accessible from %s.
-		�ѿ�'%s'(%s���������Ƥ���)���������ʤΤǡ�%s����ϥ��������Ǥ��ޤ���
+		変数'%s'(%sで定義されている)は内部型なので、%sからはアクセスできません。
 		(JDK1.1)
 * Inner type %s in %s not accessible from %s.
-		'%s'(%s���������Ƥ���)���������ʤΤǡ�'%s'����ϥ��������Ǥ��ޤ���
+		'%s'(%sで定義されている)は内部型なので、'%s'からはアクセスできません。
 		(JDK1.1)
 * Can't make a static reference to nonstatic variable %s in %s.
-		��static���ѿ�%s(%s�����)��static�˻��Ȥ��뤳�ȤϤǤ��ޤ���.        
+		非staticな変数%s(%sで定義)を、staticに参照することはできません.        
 * Can't make a static reference to inner class %s.
-		�������饹%s�ؤ�static�ʻ��Ȥ򤹤뤳�ȤϤǤ��ޤ���(JDK1.1)
+		内部クラス%sへのstaticな参照をすることはできません。(JDK1.1)
 * Reference to %s is ambiguous. It is defined in %s and %s.
-        %s�ؤλ��ȤϤ����ޤ��Ǥ�(%s�����%s���������Ƥ��ޤ�).
+        %sへの参照はあいまいです(%sおよび%sで定義されています).
 * Attempt to reference method %s in %s as an instance variable.
-        �᥽�å�%s(%s�����)�򥤥󥹥����ѿ��Ȥ��ƻ��Ȥ��褦�Ȥ��Ƥ��ޤ�.
+        メソッド%s(%sで定義)をインスタンス変数として参照しようとしています.
 * Can't assign a value to a final variable: %s
-        final�ѿ����ͤ��������뤳�ȤϤǤ��ޤ���: %s
+        final変数に値を代入することはできません: %s
 * Can't assign a second value to a blank final variable: %s
-		��������줿final�ѿ���2���ܰʹߤ��ͤ��������뤳�ȤϤǤ��ޤ���:%s
+		空宣言されたfinal変数に2度目以降は値を代入することはできません:%s
 		(JDK1.1)
 * Attempt to assign a blank final %s variable in a loop. The initialization
 		must occur exactly once.
-		��������줿final�ѿ�%s��롼�פ���ǽ�������뤳�ȤϤǤ��ޤ������Τ�
-		���٤����������������ƤϤ����ޤ���(JDK1.1)
+		空宣言されたfinal変数%sをループの中で初期化することはできません。正確に
+		一度だけしか初期化されてはいけません。(JDK1.1)
 * Attempt to assign to a variable %s in a different method. From enclosing 
 blocks, only final local variables are available.
-		�ۤʤ�᥽�å������ѿ�%s���������褦�Ȥ��ޤ��������Υ֥��å�����ϡ�
-		final�ʥ��������ѿ������Ȥ��ޤ���
+		異なるメソッド注で変数%sに代入しようとしました。このブロックからは、
+		finalなローカル変数しか使えません。
 *  Attempt to use a non-final variable %s from a different method. From 
 enclosing blocks, only final local variables are available.
-		�ۤʤ�᥽�åɤ���final�Ǥʤ��ѿ�%s��Ȥ����Ȥ��ޤ��������Υ֥��å�����
-		�ϡ�final�ʥ��������ѿ������Ȥ��ޤ���
+		異なるメソッドからfinalでない変数%sを使おうとしました。このブロックから
+		は、finalなローカル変数しか使えません。
 * Access across scopes to the private member %s in %s is not implemented.  
 The reference will succeed if the member is given package scope.
-		�������׶�����ۤ��Ƥ�private����%s(%s�����)�ϼ�������Ƥ��ޤ���
-		���Ȥϡ�package�������װʾ�Ǥʤ����������ޤ���
+		スコープ境界を越えてのprivateメンバ%s(%sで定義)は実装されていません。
+		参照は、packageスコープ以上でないと成功しません。
 * Undefined variable: %s
-        �ѿ���̤����Ǥ�: %s
+        変数が未定義です: %s
 * Undefined variable or package name: %s
-		�ѿ��ޤ��ϥѥå�������̤����Ǥ�: %s
+		変数またはパッケージが未定義です: %s
 * Undefined variable, class, or package name: %s
-		�ѿ��ޤ��ϥ��饹�ޤ��ϥѥå�������̤����Ǥ�: %s
+		変数またはクラスまたはパッケージが未定義です: %s
 * Undefined variable or class name: %s
-		�ѿ��ޤ��ϥ��饹��̤����Ǥ�: %s
+		変数またはクラスが未定義です: %s
 * Variable %s may not have been initialized.
-      	�ѿ�%s�Ͻ��������ʤ���ǽ��������ޤ�.
+      	変数%sは初期化されない可能性があります.
 * Blank final variable '%s' may not have been initialized. 
 It must be assigned a value in an initializer, or in every constructor.
-		���������Ƥ���final�ѿ�'%s'�Ͻ��������ʤ���ǽ��������ޤ������˥���
-		�饤���ǽ�������뤫�����٤ƤΥ��󥹥ȥ饯���ǽ�������Ƥ���������
+		空宣言されているfinal変数'%s'は初期化されない可能性があります。イニシャ
+		ライザで初期化するか、すべてのコンストラクタで初期化してください。
 * Can't reference %s before the superclass constructor has been called.
-        �����ѡ����饹�Υ��󥹥ȥ饯�����ƤФ������%s�򻲾Ȥ��뤳�ȤϤǤ��ޤ���.
+        スーパークラスのコンストラクタが呼ばれる前に%sを参照することはできません.
 * Ambiguous class: %s and %s
-        ���饹�������ޤ��Ǥ�: %s�����%s
+        クラスがあいまいです: %sおよび%s
 * Invalid argument to %s.
-        %s���Ф��������ʰ��������ꤵ��Ƥ��ޤ�.
+        %sに対し、不当な引数が指定されています.
 * Invalid argument type %s for %s.
-        �����ʰ����η�%s��%s���Ф��ƻ��ꤵ��Ƥ��ޤ�.
+        不当な引数の型%sが%sに対して指定されています.
 * 'length' applied to %s, which is not an array.
-        ����ǤϤʤ�%s���Ф��ơ�'length' ��Ŭ�Ѥ���Ƥ��ޤ�.
+        配列ではない%sに対して、'length' が適用されています.
 * Only constructors can invoke constructors.
-        ���󥹥ȥ饯���ϥ��󥹥ȥ饯���椫�餷���ƤӽФ��ޤ���.
+        コンストラクタはコンストラクタ中からしか呼び出せません.
 * Constructor invocation must be the first thing in a method.
-        ���󥹥ȥ饯���Ǥϡ��ޤ��Ϥ���˥��󥹥ȥ饯����ƤӽФ��ʤ��ƤϤ�
-		���ޤ���.
+        コンストラクタでは、まずはじめにコンストラクタを呼び出さなくてはい
+		けません.
 * Can't invoke a method on a %s.
-        %s���Ф��ƥ᥽�åɸƤӽФ��򤹤뤳�ȤϤǤ��ޤ���.
+        %sに対してメソッド呼び出しをすることはできません.
 * Method %s not found in %s.
-        �᥽�å�%s��%s�ˤ��������Ƥ��ޤ���.
+        メソッド%sは%sには定義されていません.
 * Method %s in %s is not accessible from %s.
-        �᥽�å�%s(%s�����)��%s���饢�������Ǥ��ޤ���.
+        メソッド%s(%sで定義)は%sからアクセスできません.
 * Can't make static reference to method %s in %s.
-        �᥽�å�%s(%s�����)��static�˻��Ȥ��뤳�ȤϤǤ��ޤ���.
+        メソッド%s(%sで定義)を、staticに参照することはできません.
 * Can't access protected method %s in %s. %s is not a subclass of the 
 current class.
-        protected������줿�᥽�å�%s(%s�����)�򡢥��֥��饹�Ǥʤ����饹(%s)
-		���黲�Ȥ��뤳�ȤϤǤ��ޤ���.
+        protected宣言されたメソッド%s(%sで定義)を、サブクラスでないクラス(%s)
+		から参照することはできません.
 * Can't access protected field %s in %s. %s is not a subclass of the current
 class.
-        protected������줿�ե������%s(%s�����)�򡢥��֥��饹�Ǥʤ����饹
-		(%s)���黲�Ȥ��뤳�ȤϤǤ��ޤ���.
+        protected宣言されたフィールド%s(%sで定義)を、サブクラスでないクラス
+		(%s)から参照することはできません.
 * Can't access protected inner type %s in %s. %s is not a subclass of the 
 current class.
-		��������%s(%s�����)��protected�ʤΤǥ��������Ǥ��ޤ���%s�ϥ�����
-		���饹�Υ��֥��饹�ǤϤ���ޤ���
+		内部型の%s(%sで定義)はprotectedなのでアクセスできません。%sはカレント
+		クラスのサブクラスではありません。
 * Reference to variable %s in %s as if it were a method.
-        �ѿ�%s(%s�����)��᥽�åɤȤ��ƻ��Ȥ��褦�Ȥ��Ƥ��ޤ�.
+        変数%s(%sで定義)をメソッドとして参照しようとしています.
 * Reference to method %s in %s as if it were a variable.
-		�᥽�å�%s(%s�����)���ѿ��Τ褦�˻��Ȥ��褦�Ȥ��Ƥ��ޤ���
+		メソッド%s(%sで定義)を変数のように参照しようとしています。
 * Note: %s has been deprecated.  Please consult the documentation for a 
 better alternative.
-		%s�ϻȤ�ʤ��Ǥ������������褤���ؤ���ˡ��ɥ�����Ȥ��ɤ��Ĵ�٤�
-		����������
+		%sは使わないでください。よりよい代替の方法をドキュメントを読んで調べて
+		ください。
 * Note: The method %s in %s has been deprecated.  Please consult the 
 documentation for a better alternative.
-		�᥽�å�%s(%s�����)�ϻȤ�ʤ��Ǥ������������褤���ؤ���ˡ��ɥ���
-		���Ȥ��ɤ��Ĵ�٤Ƥ���������
+		メソッド%s(%sで定義)は使わないでください。よりよい代替の方法をドキュ
+		メントを読んで調べてください。
 * Note: The constructor %s has been deprecated.  Please consult the 
 documentation for a better alternative.
-		���󥹥ȥ饯��%s(%s�����)�ϻȤ�ʤ��Ǥ������������褤���ؤ���ˡ��
-		�ɥ�����Ȥ��ɤ��Ĵ�٤Ƥ���������
+		コンストラクタ%s(%sで定義)は使わないでください。よりよい代替の方法を
+		ドキュメントを読んで調べてください。
 * Note: The variable %s in %s has been deprecated.  Please consult the
 documentation for a better alternative.
-		�ѿ�%s(%s�����)�ϻȤ�ʤ��Ǥ������������褤���ؤ���ˡ��ɥ������
-		���ɤ��Ĵ�٤Ƥ���������
+		変数%s(%sで定義)は使わないでください。よりよい代替の方法をドキュメント
+		を読んで調べてください。
 * Invalid array dimension.
-        ���������󼡸����Ǥ�.
+        不当な配列次元数です.
 * Constructor is ambiguous: %s, %s
-        ���󥹥ȥ饯���������ޤ��Ǥ�: %s,%s
+        コンストラクタがあいまいです: %s,%s
 * Incompatible type for %s. Explicit cast needed to convert %s to %s.
-        ��%s����ߴ��Ǥ�. %s����%s���Ѵ�����ˤ�����Ū�ʥ��㥹�Ȥ�ɬ�פǤ�.
+        型%sは非互換です. %sから%sに変換するには明示的なキャストが必要です.
 * Incompatible type for %s. Can't convert %s to %s.
-        ��%s����ߴ��Ǥ�. %s����%s���Ѵ����뤳�ȤϤǤ��ޤ���.
+        型%sは非互換です. %sから%sに変換することはできません.
 * Invalid term.
-        �����ʸ��Ǥ�.
+        不当な語句です.
 * %s must be declared abstract. It does not define %s from %s.
-        %s��%s(%s���ͳ��)��������Ƥ��ʤ����ᡢabstract�������ɬ�פ�����ޤ�.
+        %sは%s(%sより由来)を定義していないため、abstract宣言する必要があります.
 * %s must be declared abstract and not final. It does not define %s from %s.
-        %s��%s(%s���ͳ��)��������Ƥ��ʤ����ᡢabstract�������ɬ�פ����ꡢ
-		���ġ�final������ƤϤ����ޤ���.
+        %sは%s(%sより由来)を定義していないため、abstract宣言する必要があり、
+		かつ、final宣言してはいけません.
 * %s is an interface. It can't be instantiated.
-        %s�ϥ��󥿡��ե������ʤΤǡ����󥹥��󥹲��Ǥ��ޤ���.
+        %sはインターフェースなので、インスタンス化できません.
 * Can't directly invoke abstract method %s in %s.
-        abstract������줿�᥽�å�%s(%s�����)��ľ�ܸƤӽФ����ȤϤǤ��ޤ���.
+        abstract宣言されたメソッド%s(%sで定義)を直接呼び出すことはできません.
 * No method matching %s found in %s.
-        %s���б�����᥽�åɤ�%s�ˤϸ��Ĥ���ޤ���.
+        %sに対応するメソッドは%sには見つかりません.
 * No constructor matching %s found in %s.
-        %s���б����륳�󥹥ȥ饯����%s�ˤϸ��Ĥ���ޤ���.
+        %sに対応するコンストラクタは%sには見つかりません.
 * Wrong number of arguments in %s.
-		%s�Ǥΰ����ο�������������
+		%sでの引数の数がおかしい。
 * Can't make forward reference to %s in %s.
-        %s(%s)���Ф��ơ��������Ȥ��뤳�ȤϤǤ��ޤ���.
+        %s(%s)に対して、前方参照することはできません.
 * Array dimension missing.
-        ����μ�������ɬ�פǤ�.
+        配列の次元数が必要です.
 * %s is an abstract class. It can't be instantiated.
-        %s����ݥ��饹�ʤΤǡ����󥹥��󥹲��Ǥ��ޤ���.
+        %sは抽象クラスなので、インスタンス化できません.
 * No label definition found for %s.
-        ��٥뤬̤����Ǥ�: %s.
+        ラベルが未定義です: %s.
 * 'break' must be in loop or switch.
-        'break' �ϥ롼���椫switchʸ��Ǥ����Ȥ��ޤ���.
+        'break' はループ中かswitch文中でしか使えません.
 * 'continue' must be in loop.
-        'continue' �ϥ롼����Ǥ����Ȥ��ޤ���.
+        'continue' はループ中でしか使えません.
 * Invalid declaration.
-        ����������Ǥ�.
+        不当な宣言です.
 * 'return' with value from %s.
-        %s�����retunʸ���ͤ���ꤹ�뤳�ȤϤǤ��ޤ���.
+        %sからのretun文に値を指定することはできません.
 * 'return' without value from %s.
-        %s�����returnʸ�ˤ��ͤ���ꤷ�ʤ��ƤϤ����ޤ���.
+        %sからのreturn文には値を指定しなくてはいけません.
 * 'return' inside static initializer.
-        static���˥���饤����ˤ�returnʸ�ϵ��ҤǤ��ޤ���.
+        staticイニシャライザ中にはreturn文は記述できません.
 * Invalid label.
-        �����ʥ�٥�Ǥ�.
+        不当なラベルです.
 * Return required at end of %s.
-        %s�κǸ��returnʸ��ɬ�פǤ�.
+        %sの最後にreturn文が必要です.
 * Duplicate case label: %s
-        case��٥�%s��¿���������Ƥ��ޤ�.
+        caseラベル%sが多重定義されています.
 * Case label %s too large for 'switch' on %s
-        case��٥�%s��%s�Ǥ�switchʸ���ϰϤ�ۤ��Ƥ��ޤ�.
+        caseラベル%sは%sでのswitch文の範囲を越えています.
 * Constant expression required.
-        ���������ꤷ�Ʋ�����.
+        定数式を指定して下さい.
 * Duplicate 'default' label.
-        default��٥뤬ʣ�����ꤵ��Ƥ��ޤ�.
+        defaultラベルが複数指定されています.
 * '%s' not supported.
-        %s�ϥ��ݡ��Ȥ���Ƥ��ޤ���.
+        %sはサポートされていません.
 * 'return' with value from constructor: %s
-        ���󥹥ȥ饯��%s���ͤ�Ȥ�ʤä�returnʸ�����ꤵ��Ƥ��ޤ�.
+        コンストラクタ%sに値をともなったreturn文が指定されています.
 * Only one package declaration allowed.
-        packageʸ�ϰ�Ĥ����������ҤǤ��ޤ���.
+        package文は一つだけしか記述できません.
 * Class %s already defined in %s.
-        ���饹%s��%s��Ǥ��Ǥ��������Ƥ��ޤ�.
+        クラス%sは%s中ですでに定義されています.
 * Class name %s clashes with imported class %s.
-        ���饹̾%s�ϥ���ݡ��Ȥ��줿���饹%s�Ⱦ��ͤ��ޤ�.
+        クラス名%sはインポートされたクラス%sと衝突します.
 * Final methods can't be overriden. Method %s is final in %s.
-        �᥽�å�%s��%s��final�������Ƥ��뤿�ᡢ������Ǥ��ޤ���.
+        メソッド%sは%sでfinal宣言されているため、再定義できません.
 * Method redefined with different return type: %s was %s
-        �᥽�åɤ�㤦���Ǻ�������뤳�ȤϤǤ��ޤ���: %s��%s
+        メソッドを違う型で再定義することはできません: %sと%s
 * Static methods can't be overridden. Method %s is static in %s.
-        �᥽�å�%s��%s��static�������Ƥ��뤿�ᡢ������Ǥ��ޤ���.
+        メソッド%sは%sでstatic宣言されているため、再定義できません.
 * Instance methods can't be overridden by a static method.Method %s is an
 instance method in %s.
-        �᥽�å�%s��%s�ǥ��󥹥��󥹥᥽�åɤȤ����������Ƥ��뤿�ᡢ
-		static�᥽�åɤȤ��ƤϺ�����Ǥ��ޤ���.
+        メソッド%sは%sでインスタンスメソッドとして定義されているため、
+		staticメソッドとしては再定義できません.
 * Methods can't be overridden to be more private. Method %s is public in %s.
-        �᥽�åɤθ����ϰϤ򶹤�ƺ�������뤳�ȤϤǤ��ޤ���.
-		%s��%s��public�������Ƥ��ޤ�.
+        メソッドの公開範囲を狭めて再定義することはできません.
+		%sは%sでpublic宣言されています.
 * Methods can't be overridden to be more private. Method %s is protected in %s.
-        �᥽�åɤθ����ϰϤ򶹤�ƺ�������뤳�ȤϤǤ��ޤ���.
-		%s��%s��protected�������Ƥ��ޤ�.
+        メソッドの公開範囲を狭めて再定義することはできません.
+		%sは%sでprotected宣言されています.
 * Methods can't be overridden to be more private. Method %s is not private in %s.
-        �᥽�åɤθ����ϰϤ򶹤�ƺ�������뤳�ȤϤǤ��ޤ���.
-		%s��%s��private�������Ƥ��ޤ���.
+        メソッドの公開範囲を狭めて再定義することはできません.
+		%sは%sでprivate宣言されていません.
 * Interfaces can't have constructors.
-        ���󥿡��ե������ˤϥ��󥹥ȥ饯��������Ǥ��ޤ���.
+        インターフェースにはコンストラクタを定義できません.
 * Constructors can't be native, abstract, static, synchronized, or final: %s
-        ���󥹥ȥ饯����native���, abstract���, static���, synchronized���,
-		���뤤�� final������뤳�ȤϤǤ��ޤ���: %s
+        コンストラクタをnative宣言, abstract宣言, static宣言, synchronized宣言,
+		あるいは final宣言することはできません: %s
 * Interfaces can't have static initializers.
-        ���󥿡��ե������ˤ�static���˥���饤��������Ǥ��ޤ���.
+        インターフェースにはstaticイニシャライザを定義できません.
 * Interface methods can't be native, static, synchronized, final, private,
 		or protected : %s
-        ���󥿡��ե������Υ᥽�åɤ�native���, static���, synchronized���,
-		final���, private���, ���뤤�� protected����Ǥ��ޤ���: %s
+        インターフェースのメソッドはnative宣言, static宣言, synchronized宣言,
+		final宣言, private宣言, あるいは protected宣言できません: %s
 * Interface fields can't be private or protected: %s
-        ���󥿡��ե������Υե�����ɤ�private������뤤��protected����Ǥ�
-		�ޤ���: %s
+        インターフェースのフィールドはprivate宣言あるいはprotected宣言でき
+		ません: %s
 * Method %s can't be transient. Only variables can be transient.
-        �᥽�åɤ�transient����Ǥ��ޤ���: %s
+        メソッドはtransient宣言できません: %s
 * Method %s can't be volatile. Only variables can be volatile.
-        �᥽�åɤ�volatile����Ǥ��ޤ���: %s
+        メソッドはvolatile宣言できません: %s
 * Static methods can't be abstract: %s
-        static�᥽�åɤ�abstract����Ǥ��ޤ���: %s
+        staticメソッドはabstract宣言できません: %s
 * Abstract and native methods can't have a body: %s
-        abstract������뤤��native������줿�᥽�åɤˤϥ᥽�å����Τ����
-		�Ǥ��ޤ���: %s
+        abstract宣言あるいはnative宣言されたメソッドにはメソッド本体を定義
+		できません: %s
 * Variables can't be synchronized, abstract or native: %s
-        �ѿ���synchronized���, abstract������뤤��native����Ǥ��ޤ���: %s
+        変数はsynchronized宣言, abstract宣言あるいはnative宣言できません: %s
 * Inner classes can't be volatile, transient, native, or synchronized: %s
-		�������饹�ϡ�volatile,transiend,native,synchronized�Τ���������Ǥ�
-		�ޤ���
+		内部クラスは、volatile,transiend,native,synchronizedのいずれも指定でき
+		ません。
 * Transient variables can't be members of interfaces: %s
-        transient������줿�ѿ���final������뤤��static����Ǥ��ޤ���: %s
-		transient������줿�ѿ��ϥ��󥿡��ե������Υ��Фˤʤ����ޤ���(ɮ����)
+        transient宣言された変数はfinal宣言あるいはstatic宣言できません: %s
+		transient宣言された変数はインターフェースのメンバになり得ません(筆者注)
 * Volatile variables can't be final or members of interfaces: %s
-		volatile���ꤵ�줿�ѿ��ϡ�final����Ǥ��ʤ���ˡ����󥿡��ե�������
-		���Фˤ�ʤ����ޤ���: %s
+		volatile指定された変数は、final指定できない上に、インターフェースの
+		メンバにもなり得ません。: %s
 * This final variable must be initialized: %s
-        final��������ѿ��Ͻ��������ɬ�פ�����ޤ�: %s
+        final宣言した変数は初期化する必要があります: %s
 * Duplicate method declaration: %s
-        �᥽�å��������ʣ���Ƥ��ޤ�: %s
+        メソッド定義が重複しています: %s
 * Methods can't be redefined with a different return type: %s was %s
-        �᥽�åɤ�ۤʤ뷿�Ǻ�������뤳�ȤϤǤ��ޤ���: %s��%s���Ȥ���
-		�������Ƥ��ޤ�
+        メソッドを異なる型で再定義することはできません: %sは%s型として
+		定義されています
 * Duplicate variable declaration: %s was %s
-        �ѿ��������ʣ���Ƥ��ޤ�: %s��%s���Ȥ����������Ƥ��ޤ�
+        変数定義が重複しています: %sは%s型として定義されています
 * Duplicate inner class declaration: %s is already defined in this scope.
-		�������饹���������ʣ���Ƥ��ޤ��� %s �ϥ���������Ǥ��Ǥ��������Ƥ�
-		�ޤ���
+		内部クラスの宣言が重複しています。 %s はスコープ内ですでに宣言されてい
+		ます。
 * Superclass of %s can't be an interface: %s
-        ���饹%s�Υ����ѡ����饹�Ȥ��ƥ��󥿡��ե���������ꤹ�뤳�Ȥ�
-		�Ǥ��ޤ���: %s
+        クラス%sのスーパークラスとしてインターフェースを指定することは
+		できません: %s
 * Can't access %s. Only public classes and interfaces in other packages
 		can be accessed.
-        %s�����������Ǥ��ޤ���. ¾�Υѥå�������public������줿���饹�ޤ���
-		���󥿡��ե������Τߤ򥢥��������뤳�Ȥ��Ǥ��ޤ�.
+        %sがアクセスできません. 他のパッケージのpublic宣言されたクラスまたは
+		インターフェースのみをアクセスすることができます.
 * Repeated modifier.
-        �����Ҥ������֤���Ƥ��ޤ�.
+        修飾子が繰り返されています.
 * Inconsistent member declaration. At most one of public, private, or
 protected may be specified.
-		������������ν����Ҥΰ����������ޤ���public,private,protected��
-		�����줫��Ĥ���ꤷ�Ƥ���������
+		アクセス制御の修飾子の一貫性がありません。public,private,protectedの
+		いずれか一つを指定してください。
 * Can't subclass final classes: %s
-        ���饹%s��final�������Ƥ��뤿�ᡢ���֥��饹������Ǥ��ޤ���.
+        クラス%sはfinal宣言されているため、サブクラスを定義できません.
 * Can't subclass interfaces: %s
-        ���󥿡��ե�����%s�Υ��֥��饹������Ǥ��ޤ���.
+        インターフェース%sのサブクラスは定義できません.
 * Cyclic class inheritance.
-        ���饹�ηѾ��ط����롼�פ��Ƥ��ޤ�.
+        クラスの継承関係がループしています.
 * Cyclic class inheritance:  A subclass cannot enclose a superclass.
-		���饹�ηѾ��ط����롼�פ��Ƥ��ޤ�.���֥��饹�ϡ������ѡ����饹��ޤ�
-		���ȤϤǤ��ޤ���
+		クラスの継承関係がループしています.サブクラスは、スーパークラスを含む
+		ことはできません。
 * Cyclic interface inheritance.
-        ���󥿡��ե������ηѾ��ط����롼�פ��Ƥ��ޤ�.
+        インターフェースの継承関係がループしています.
 * Cyclic class inheritance or scoping.
-		���󥿡��ե������ηѾ��ط����롼�פ��Ƥ��뤫���������פ��롼�פ�
-		�Ƥ��ޤ���
+		インターフェースの継承関係がループしているか、スコープがループし
+		ています。
 * %s must be an interface.
-        %s�ϥ��󥿡��ե������Ǥʤ��ƤϤ����ޤ���.
+        %sはインターフェースでなくてはいけません.
 * Interfaces can't be final: %s
-        ���󥿡��ե�������final����Ǥ��ޤ���: %s
+        インターフェースはfinal宣言できません: %s
 * An interface can't implement anything; it can only extend other interfaces.
-        ���󥿡��ե������Ϥʤˤ�������뤳�ȤϤǤ��ޤ���. extends��ȤäƲ�����.
+        インターフェースはなにも実装することはできません. extendsを使って下さい.
 * Multiple inheritance is not supported.
-        ¿�ŷѾ��ϥ��ݡ��Ȥ��Ƥ��ޤ���.
+        多重継承はサポートしていません.
 * Interface %s repeated.
-        ���󥿡��ե�����%s�������֤���Ƥ��ޤ�.
+        インターフェース%sが繰り返されています.
 * Invalid class file format: %s, %s
-        �����ʥ��饹�ե����ޥåȤǤ�: %s,%s
+        不当なクラスフォーマットです: %s,%s
 * Method %s requires a method body. Otherwise declare it as abstract.
-        abstract�������Ƥ��ʤ��᥽�å�%s������ˤ����Τ�ɬ�פǤ�.
+        abstract宣言されていないメソッド%sの定義には本体が必要です.
 * Constructor %s requires a method body.
-        ���󥹥ȥ饯��%s������ˤ����Τ�ɬ�פǤ�.
+        コンストラクタ%sの定義には本体が必要です.
 * Instance variables can't be void: %s
-        �ѿ���void���Ȥ�������Ǥ��ޤ���: %s
+        変数はvoid型として定義できません: %s
 * Invalid method declaration; return type required.
-        �᥽�å�����ˤ��ֵ��ͷ��λ��꤬ɬ�פǤ�.
+        メソッド宣言には返却値型の指定が必要です.
 * Superclass %s of %s not found.
-        ���饹%s(%s�Υ����ѡ����饹)�����Ĥ���ޤ���.
+        クラス%s(%sのスーパークラス)が見つかりません.
 * Interface %s of %s not found.
-        ���󥿡��ե�����%s(%s�Ǽ���)�����Ĥ���ޤ���.
+        インターフェース%s(%sで実装)が見つかりません.
 * Class %s can't be declared both abstract and final.
-        ���饹��abstract��������Ʊ����final������뤳�ȤϤǤ��ޤ���: %s
+        クラスをabstract宣言すると同時にfinal宣言することはできません: %s
 * Argument can't have type void: %s
-        ������void���ˤϤǤ��ޤ���: %s
+        引数はvoid型にはできません: %s
 * Invalid expression statement.
-        �����ʼ������ꤵ��Ƥ��ޤ�.
+        不当な式が指定されています.
 * catch not reached.
-        catch����ã���ޤ���. 
+        catchに到達しません. 
 * Statement not reached.
-        ʸ����ã���ޤ���.ʸ��ľ����return�����ä��ꤷ�ޤ��󤫡�
+        文に到達しません.文の直前にreturnがあったりしませんか？
 * Arithmetic exception.
-        ���ѱ黻�������Ǥ�.
+        算術演算が不当です.
 * Public %s must be defined in a file called "%s".
-        public������줿��%s�򵭽Ҥ��륽�����ե�����̾�� "%s"�Ǥʤ��Ƥ�
-		�����ޤ���.
+        public宣言された型%sを記述するソースファイル名は "%s"でなくては
+		いけません.
 * %s is defined in %s. Because it is used outside of its source file, 
 it should be defined in a file called "%s".
-		%s��%s���������Ƥ��ޤ����������ե�����γ��ǻȤ��Ƥ���Τǡ�
-		"%s"�Ȥ����ե����������������Ƥ���ɬ�פ�����ޤ���
+		%sは%sで定義されています。ソースファイルの外で使われているので、
+		"%s"というファイルの中で定義されている必要があります。
 * Possible loss of precision. Use an explicit cast to convert %s to %s.
-        ���٤������ޤ�. %s����%s������Ū�˥��㥹�Ȥ��Ƥ�������.
+        精度が失われます. %sから%sに明示的にキャストしてください.
 * Variable '%s' is used twice in the argument list of this method.
-        �ѿ�%s�Ϥ��Υ᥽�åɤΰ�����������Ѥ����Ƥ��ޤ�.
+        変数%sはこのメソッドの引数列に二度用いられています.
 * Variable '%s' is already defined in this method.
-        �ѿ�%s�ϥ᥽�å���Ǥ��Ǥ��������Ƥ��ޤ�.
+        変数%sはメソッド中ですでに定義されています.
 * Local class '%s' is already defined in this method.
-		�������륯�饹 %s�ϡ����Ǥˤ��Υ᥽�å�����������Ƥ��ޤ���
+		ローカルクラス %sは、すでにこのメソッド内で定義されています。
 * The class name '%s' is already defined in this scope.  An inner class may 
 not have the same simple name as any of its enclosing classes.
-		���饹%s�ϡ����Ǥˤ��Υ�����������������Ƥ��ޤ��� �������饹�ϡ�
-		���Υ��饹���ޤ�Ǥ��뤹�٤ƤΥ��饹��Ʊ������ץ��̾������Ĥ��Ȥ�
-		�Ǥ��ޤ���
+		クラス%sは、すでにこのスコープ内で定義されています。 内部クラスは、
+		そのクラスが含んでいるすべてのクラスと同じシンプルな名前を持つことは
+		できません。
 * Variable '%s' is inherited in %s, and hides a variable of the same name in %s.
  An explicit 'this' qualifier must be used to select the desired instance.
-		�ѿ�%s�ϡ�%s�ǷѾ�����Ƥ��ޤ����������%s���Ʊ��̾�����ѿ��򱣤��Ƥ�
-		�ޤ��ޤ���˾��Ѿ������򤹤�ˤϡ�����Ū��this�Ȥ��������Ҥ�Ȥ�ʤ���
-		�Фʤ�ޤ���
+		変数%sは、%sで継承されていますが、それは%s内の同じ名前の変数を隠してし
+		まいます。望む継承を選択するには、明示的にthisという修飾子を使わなけれ
+		ばなりません。
 * Variable '%s' is inherited in %s, and hides a local variable of the same name.
  An explicit 'this' qualifier must be used to select the variable, or the local
 must be renamed.
-		�ѿ�%s��%s�ǷѾ�����Ƥ��ޤ����������Ʊ��̾���Υ��������ѿ��򱣤��Ƥ���
-		���ޤ���˾��Ѿ������򤹤�ˤϡ�����Ū��this�Ȥ��������Ҥ�Ȥ�ʤ���
-		�Фʤ�ޤ��󡣤��뤤�ϡ����������ѿ���̾�����Ѥ���ɬ�פ�����ޤ���
+		変数%sは%sで継承されていますが、それは同じ名前のローカル変数を隠してしま
+		います。望む継承を選択するには、明示的にthisという修飾子を使わなけれ
+		ばなりません。あるいは、ローカル変数の名前を変える必要があります。
 * Method '%s' is inherited in %s, and hides a method of the same name in %s. 
 An explicit 'this' qualifier must be used to select the desired instance.
-		�᥽�å�%s�ϡ�%s�ǷѾ�����Ƥ��ޤ����������Ʊ��̾����%s���������Ƥ���
-		�᥽�åɤ򱣤��Ƥ��ޤ��ޤ�������Ū��this�Ȥ��������Ҥ�Ȥ�ʤ���
-		�Фʤ�ޤ���
+		メソッド%sは、%sで継承されていますが、それは同じ名前の%sで定義されている
+		メソッドを隠してしまいます。明示的にthisという修飾子を使わなけれ
+		ばなりません。
 * Type '%s' is inherited in %s, and hides a type of the same name in an
 enclosing scope. An explicit qualifier prefix must be used to name this type.
-		��%s�ϡ�%s�ǷѾ�����Ƥ��ޤ����������Ʊ���������פˤ���Ʊ��̾���η���
-		�����Ƥ��ޤ��ޤ�������Ū�ʽ����Ҥ�����̾���ˤ�ɬ�פȤ���ޤ���
+		型%sは、%sで継承されていますが、それは同じスコープにある同じ名前の型を
+		隠してしまいます。明示的な修飾子がこの名前には必要とされます。
 * The type %s can't be private. Package members are always accessible 
 		within the current package.
-        ���饹��private������뤳�ȤϤǤ��ޤ���. ���饹��Ʊ��ѥå�������
-		�����ɬ�����Ȥ��뤳�Ȥ��Ǥ��ޤ�.
+        クラスをprivate宣言することはできません. クラスは同一パッケージ中
+		からは必ず参照することができます.
 * The type %s can't be declared static. It is already top-level, since it is 
 a member of a package.
-		�� %s�ϡ�static������뤳�ȤϤǤ��ޤ��󡣤���ϥѥå������Υ��Фʤ�
-		�ǡ����Ǥ˥ȥåץ�٥�Ǥ���
+		型 %sは、static宣言することはできません。これはパッケージのメンバなの
+		で、すでにトップレベルです。
 * The type %s can't be made protected. Package members can either be public 
 or local to the current package.
-		��%s��protected�ˤ��뤳�ȤϤǤ��ޤ��󡣥ѥå������Υ��ФϤ���
-		�ѥå��������Ф��Ƥ�public�ޤ��ϥ�������Ǥ���
+		型%sはprotectedにすることはできません。パッケージのメンバはこの
+		パッケージに対してはpublicまたはローカルです。
 * Recursive constructor invocation: %s.
-        ���󥹥ȥ饯���ƤӽФ����Ƶ����Ƥ��ޤ�: %s.
+        コンストラクタ呼び出しが再帰しています: %s.
 * File %s does not contain %s as expected, but %s. Please remove the file.
-        �ե�����%s�ϴ��Ԥ����%s��ޤ�Ǥ��餺��������%s��ޤ�Ǥ��ޤ�.
-		�ե������õ�Ƥ�������.
+        ファイル%sは期待される%sを含んでおらず、かわりに%sを含んでいます.
+		ファイルを消去してください.
 * Class %s not found in %s.
-        ���饹%s��%s��ˤϸ��Ĥ���ޤ���.
+        クラス%sは%s中には見つかりません.
 * Package %s not found in %s.
-        �ѥå�����%s��%s��ˤϸ��Ĥ���ޤ���.
+        パッケージ%sは%s中には見つかりません.
 * Invalid exception %s in throws clause. The exception must be a subclass 
 		of an exception thrown by %s from %s.
-        �������㳰%s��throws��˻��ꤵ��Ƥ��ޤ�.throw������㳰��%s
-		(%s���ͳ��)��throw������㳰�Υ��֥��饹�Ǥʤ��ƤϤ����ޤ���.
+        不当な例外%sがthrows節に指定されています.throwされる例外は%s
+		(%sより由来)でthrowされる例外のサブクラスでなくてはいけません.
 * %s in throws clause must be a subclass of class java.lang.Throwable.
-        throws�����%s��java.lang.Throwable���饹�Υ��֥��饹�Ǥʤ���
-		�Ϥ����ޤ���.
+        throws節中の%sはjava.lang.Throwableクラスのサブクラスでなくて
+		はいけません.
 * Can't throw %s; it must be a subclass of class java.lang.Throwable.
-        java.lang.Throwable�Υ��֥��饹�ǤϤʤ����ᡢ%s��throw�Ǥ��ޤ���.
+        java.lang.Throwableのサブクラスではないため、%sをthrowできません.
 * Can't catch %s; it must be a subclass of class java.lang.Throwable.
-        java.lang.Throwable�Υ��֥��饹�ǤϤʤ����ᡢ%s��catch�Ǥ��ޤ���.
+        java.lang.Throwableのサブクラスではないため、%sをcatchできません.
 * Exception %s can't be thrown in initializer.
-        �㳰�����������throw���뤳�ȤϤǤ��ޤ���: %s
+        例外を初期化子中でthrowすることはできません: %s
 * Can't read: %s
-        �ե����뤫���ɤ߹���ޤ���: %s
+        ファイルから読み込めません: %s
 * Can't write: %s
-        �ե�����˽񤭹���ޤ���: %s
+        ファイルに書き込めません: %s
 * An error has occurred in the compiler; please file a bug report 
 		(java-bugs@java.sun.com).
-        ����ѥ��������ǥ��顼��ȯ�����ޤ���. �Х���ݡ��Ȥ򤪤��äƲ�����
+        コンパイラ内部でエラーが発生しました. バグリポートをおくって下さい
 		(java-bugs@java.sun.com).
 * An exception has occurred in the compiler; please file a bug report
 		(java-bugs@java.sun.com).
-        ����ѥ��������ǥ��顼��ȯ�����ޤ���. �Х���ݡ��Ȥ򤪤��äƲ�����
+        コンパイラ内部でエラーが発生しました. バグリポートをおくって下さい
 		(java-bugs@java.sun.com).
 * Support for inner classes has been disabled.
-		�������饹�ϥ��ݡ��Ȥ��Ƥ��ޤ���
+		内部クラスはサポートしていません。
 * Exception %s must be caught, or it must be declared in the throws clause
 		of this method.
-        �㳰%s��catch���뤫�����뤤�ϡ����Υ᥽�åɤ�throws���������ʤ��Ƥ�
-		�����ޤ���.
+        例外%sをcatchするか、あるいは、このメソッドのthrows節で宣言しなくては
+		いけません.
 * Exception %s is never thrown in the body of the corresponding try statement.
-        �㳰%s���б�����try�����throw����뤳�ȤϤ���ޤ���.
+        例外%sは対応するtry節中でthrowされることはありません.
 * No enclosing instance of %s is in scope; an explicit one must be provided 
 when creating %s, as in "outer. new Inner()" or "outer. super()".
-		%s�Υ��󥹥��󥹤ϥ������פ���ˤ���ޤ���%s��������������Ƥ�
-		��������"outer. new Inner()" or "outer. super()"�Τ褦�ˤ��ޤ���
+		%sのインスタンスはスコープの中にありません。%sを作る時に明示してく
+		ださい。"outer. new Inner()" or "outer. super()"のようにします。
 * No enclosing instance of %s is in scope; cannot create a default constructor 
 for %s.
-		%s�Υ��󥹥��󥹤ϥ������פ���ˤ���ޤ���%s�Υǥե���Ȥ�
-		���󥹥ȥ饯����������뤳�Ȥ��Ǥ��ޤ���
+		%sのインスタンスはスコープの中にありません。%sのデフォルトの
+		コンストラクタを作成することができません。
 * No enclosing instance of %s is in scope; an explicit one must be provided 
 when accessing %s, as in "outer.member".
-		%s�Υ��󥹥��󥹤ϥ������פ���ˤ���ޤ���%s�˥�����������Ȥ���
-		�������뤳�Ȥ�ɬ�פǤ���"outer.member"�Τ褦�ˤ��ޤ���
+		%sのインスタンスはスコープの中にありません。%sにアクセスするときは
+		明示することが必要です。"outer.member"のようにします。
 * The type %s can't be static.  Static members can only occur in interfaces and
 top-level classes.
-		��%s�ϡ�%s�ˤ����Ƥ�static�ˤǤ��ޤ��󡣥��󥿡��ե������Υ��Ф���
-		�ȥåץ�٥�Υ��饹�Υ��ФΤߡ�static�ˤǤ��ޤ���
+		型%sは、%sにおいてはstaticにできません。インターフェースのメンバか、
+		トップレベルのクラスのメンバのみ、staticにできます。
 * Variable %s can't be static in %s.  Only members of interfaces and top-level
 classes can be static.
-		�ѿ�%s�ϡ�%s�ˤ����Ƥ�static�ˤǤ��ޤ��󡣥��󥿡��ե������Υ��Ф���
-		�ȥåץ�٥�Υ��饹�Υ��ФΤߡ�static�ˤǤ��ޤ���
+		変数%sは、%sにおいてはstaticにできません。インターフェースのメンバか、
+		トップレベルのクラスのメンバのみ、staticにできます。
 * Method %s can't be static in %s.  Only members of interfaces and
 top-level classes can be static.
-		�᥽�å�%s��%s�ˤ����Ƥ�static�ˤǤ��ޤ��󡣥��󥿡��ե������Υ��Ф���
-		�ȥåץ�٥�Υ��饹�Υ��ФΤߡ�static�ˤǤ��ޤ���
+		メソッド%sは%sにおいてはstaticにできません。インターフェースのメンバか、
+		トップレベルのクラスのメンバのみ、staticにできます。
 * Too many errors.  (The limit on reported errors is %s.)
-	���顼��¿�����ޤ������顼�κ����%s�Ǥ���
+	エラーが多すぎます。エラーの最大は%sです。
 ----------------------------------------------------------------------------
 
 
 
 
-����ѥ�����Υ��顼�н�ˡ
+コンパイル時のエラー対処法
 
 
 
-�ץ�����ߥ󥰤��Ƥ�����ˤϡ����顼�ϤĤ���ΤǤ����������� �Υ��顼�˽в�
-���нв񤦤ۤɡ��ץ�����ޡ��ηи��������Ƥ����ޤ��� Java�Υץ�����ߥ󥰤�
-�����Ƥ⡢���顼�Ϥ�������ФƤ��ޤ��������Ǥ� ���顼��å��������Ф��Ȥ���
-�б��Τ������ˤĤ����������ޤ���
-Java�ϥ���ꥫ���ޤ�θ���ʤΤǡ����顼��å������ϱѸ�Ǥ��� �ä˺ǿ��Ǥ�
-���ܸ첽����Ƥ��ʤ���礬¿���Ǥ�������ϻ��� �ʤ����ȤǤ�������Ū�ˤϱѸ�
-���ɤळ�Ȥ��Ǥ���Ф����ΤǤ������񤷤� �Ȥ�������¿���Ǥ��礦������������
-����å��������ɤߤ����ˤϥ��Ĥ����ꡢ �����ޥ���������С��Ѹ줬���Ǥ�
-����פǤ���
+プログラミングしている時には、エラーはつきものです。たくさん のエラーに出会
+えば出会うほど、プログラマーの経験は増していきます。 Javaのプログラミングに
+おいても、エラーはたくさん出てきます。ここでは エラーメッセージが出たときの
+対応のしかたについて説明します。
+Javaはアメリカ生まれの言語なので、エラーメッセージは英語です。 特に最新版は
+日本語化されていない場合が多いです。これは仕方 ないことです。理想的には英語
+を読むことができればいいのですが、難しい という方も多いでしょう。しかしエラ
+ーメッセージの読みかたにはコツがあり、 それをマスターすれば、英語が苦手でも
+大丈夫です。
 
-���Ĥ���1���ޤ����顼�ξ���õ����
+コツその1、まずエラーの場所を探せ！
 
-���顼��å������ˤϡ��ɤ��ǥ��顼�������ä��Τ����狼��褦�ˡ� ���ֹ椬��
-���Ƥ��ޤ������Υ��顼����򸫤Ƥ���������
+エラーメッセージには、どこでエラーが起こったのかがわかるように、 行番号がつ
+いています。次のエラーの例を見てください。
 
 game.java:42: Identifier expected.
         poblic void init()
               ^
 1 error
 
-���Υ��顼��å������κǽ�ιԤˡ�game.java:42: Identifier expected. �Ȥ���
-�ޤ����������
-��game.java�Ȥ����ץ������Υե������42���ܤǥ��顼�����ꡢ���� ���顼�ϡ�
-"Identifier expected."�Ȥ������ƤǤ����פȤ�����̣�Ǥ��� ���μ���2�Ԥǡ�����
-�Ԥ���ξ��򤵤�˾ܤ��������Ƥ���Ƥ���櫓�Ǥ��� ��poblic�θ�ˡ�
-Identifier(���̻�)������Ϥ������ɡ��ʤ��衣�ס� �Ȥ�����̣�Ǥ������̻ҤȤ�
-���Τϡ��ѿ�̾�Τ��ȤǤ��� ���Υ��顼�ϡ�poblic����public���֤�ޤ����� ����
-������������ޤ��������ξ����ȡ����顼���������������������ˤ狼��ޤ��͡�
-���ǥ�����ư���ơ�42���ܤ�ľ���Ф����ΤǤ����顣
-�������ºݤ˴ְ㤨�Ƥ�����ʬ�ȥ��顼��å������ιԿ��Ϥ��ĤǤ���פ��Ƥ���
-�Ȥϸ¤�ʤ��Τǡ����դ��Ƥ���������
+このエラーメッセージの最初の行に、game.java:42: Identifier expected. とあり
+ますが、これは
+「game.javaというプログラムのファイルの42行目でエラーがあり、その エラーは、
+"Identifier expected."という内容です。」という意味です。 その次の2行で、その
+行の中の場所をさらに詳しく教えてくれているわけです。 「poblicの後に、
+Identifier(識別子)があるはずだけど、ないよ。」、 という意味です。識別子とい
+うのは、変数名のことです。 このエラーは、poblicが、publicの綴りまちがい だっ
+たために生じました。この場合だと、エラーが生じた原因が、すぐにわかりますね。
+エディタを起動して、42行目を直せばいいのですから。
+ただ、実際に間違えている部分とエラーメッセージの行数はいつでも一致している
+とは限らないので、注意してください。
 
 
 
 
-�¹Ի��Υ��顼�н�ˡ
+実行時のエラー対処法
 
 
 
@@ -592,7 +592,7 @@ public class aho extends java.applet.Applet
     }
 }
 ------------------------------------------
-���Τ褦�ʥ��ץ�åȤ�¹Ԥ�����ȡ�ɸ����Ϥ˥��顼���Фޤ���
+このようなアプレットを実行させると、標準出力にエラーが出ます。
 
 ------------------------------------------
 java.lang.ArrayIndexOutOfBoundsException: 11
@@ -600,18 +600,18 @@ java.lang.ArrayIndexOutOfBoundsException: 11
         at sun.applet.AppletPanel.run(AppletPanel.java:251)
         at java.lang.Thread.run(Thread.java)
 ------------------------------------------
-����ɽ���ϡ��֥����å��ȥ졼���פȸƤФ�ޤ�����ȤΥץ������β����ܤ�
-���顼��ȯ�������Τ��Ȥ������Ȥޤǡ������Ƥ����ΤǤ��������ξ��ϡ�
-java.lang.Thread.run()�Ȥ����᥽�åɤ��椫��ƤӤ����줿��AppletPanel.java
-�Ȥ����ץ�������run()�Ȥ����᥽�åɤ����251���ܤ���ƤӤ����줿��
-aho.java��5���ܤǥ��顼��ȯ�����Ƥ���Ȥ������Ȥˤʤ�ޤ���5���ܤϡ�
+この表示は、「スタックトレース」と呼ばれます。もとのプログラムの何行目で
+エラーが発生したのかということまで、教えてくれるのです。上の例の場合は、
+java.lang.Thread.run()というメソッドの中から呼びだされた、AppletPanel.java
+というプログラムのrun()というメソッドの中の251行目から呼びだされた、
+aho.javaの5行目でエラーが発生しているということになります。5行目は、
 a[11]= 299;
-�Ȥ���ʸ�ǡ�����Ϥ����餫�˰۾�Ǥ��͡��������ä� 
-ArrayIndexOutOfBoundsException��ȯ���������ξܤ�������Ȥ��ơ�11�Ȥ���
-����ǥ����Ǥ��롢�Ȥ������Ȥ򼨤��Ƥ��ޤ���
-�㳰��ȯ���������ˤϡ������å��ȥ졼���򸫤�С��ۤ���ͳ���狼��ޤ���
-��ʬ�ǥ����å��ȥ졼����ɽ�������뤳�Ȥ�Ǥ��ޤ�������ˤϼ��Τ褦�ˤ�
-�ޤ����������㳰��ȯ�������Ƥߤޤ��礦�����ץꥱ�������Ǥ���
+という文で、これはあきらかに異常ですね。したがって 
+ArrayIndexOutOfBoundsExceptionが発生し、その詳しい情報として、11という
+インデクスである、ということを示しています。
+例外が発生した時には、スタックトレースを見れば、ほぼ理由がわかります。
+自分でスタックトレースを表示させることもできます。それには次のようにし
+ます。強引に例外を発生させてみましょう。アプリケーションです。
 ------------------------------------------
 class aho
 {
@@ -624,16 +624,16 @@ class aho
     }
 }
 ------------------------------------------
-�¹Է��
+実行結果
 ------------------------------------------
 java.lang.Exception: ringo made it
         at aho.main(aho.java:5)
 ------------------------------------------
-�¹Ԥ�main()����Ϥޤ�Τǡ������å��ȥ졼���ϰ��ʤ�������ޤ���
-�������������ȡ��Կ��ޤ�ɽ������Ƥ��ޤ��͡�printStackTrace()��Ȥ�
-�С����顼��ʬ�ΰջ֤�ɽ��������Ǥ���ΤǤ���
-printStackTrace(PrintStream)�Ȥ�����Τ⤢��ޤ��������Ȥ��С��ե���
-�����¸������Ǥ��ޤ���
+実行はmain()から始まるので、スタックトレースは一段しかありません。
+しかし、ちゃんと、行数まで表示されていますね。printStackTrace()を使え
+ば、エラーを自分の意志で表示したりできるのです。
+printStackTrace(PrintStream)というものもあります。それを使えば、ファイ
+ルに保存したりできます。
 
 
 

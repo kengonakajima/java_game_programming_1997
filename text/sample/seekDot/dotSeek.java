@@ -18,15 +18,15 @@ public class dotSeek extends Applet implements Runnable
 	double sndx[] = new double[snn];
 	double sndy[] = new double[snn];
 
-	Color snowcolor = new Color( 0xffffff );   // $B@c$N?'(B
-	Color bgcolor = new Color( 0x000011 );     // $B%P%C%/$N?'(B
+	Color snowcolor = new Color( 0xffffff );   // 雪の色
+	Color bgcolor = new Color( 0x000011 );     // バックの色
 
 	public void init()
 	{
 		ofscr = createImage( width , height );
 		ofscr_g = ofscr.getGraphics();
 
-		// $BI,MW$JJ,$N%a%b%j!<$r3NJ]!#MWAG?t$O(B ($B=D%I%C%H?t(B)$B!_(B($B2#%I%C%H?t(B) $B$G$9!#(B 
+		// 必要な分のメモリーを確保。要素数は (縦ドット数)×(横ドット数) です。 
 
 		for( int i=0;i<snn;i++) initSnow( i );
 
@@ -42,7 +42,7 @@ public class dotSeek extends Applet implements Runnable
 		g.drawImage( ofscr , 0 , 0 , this );
 		drawAllSnow(g);
 	}
-	// $B2hA|$N$"$kE@$N?'$r5a$a$k!#(B
+	// 画像のある点の色を求める。
 	PixelGrabber pg;
 	int getPixelColor( Image img , int x , int y )
 	{

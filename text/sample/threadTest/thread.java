@@ -12,14 +12,14 @@ public class thread extends Applet implements Runnable
 	}
 	public void paint(Graphics g)
 	{
-		// $B?t;z$rJ8;z$KJQ49$9$k$K$O!"(BInteger$B%/%i%9$r;H$$$^$9!#(B
+		// 数字を文字に変換するには、Integerクラスを使います。
 		g.drawString( Integer.toString( i ) , 100 , 100 );
 	}
 	int i=0;
 
 	public void run()
 	{
-		while(true){       // $B$:$C$HB3$1$k>l9g$O!"%k!<%W$5$;$kI,MW$,$"$j$^$9!#(B
+		while(true){       // ずっと続ける場合は、ループさせる必要があります。
 			i++;
 			try{
 				Thread.sleep(100 );

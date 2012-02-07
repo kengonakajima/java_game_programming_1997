@@ -17,7 +17,7 @@ public class memSrc extends Applet
 		img = getImage( getDocumentBase() , "kawai.jpg");
 		mt.addImage( img, 0 );
 		try{
-			mt.waitForAll();         // $BFI$_$3$_$,=*N;$9$k$^$GBT$D!#(B
+			mt.waitForAll();         // 読みこみが終了するまで待つ。
 		}catch( InterruptedException e ){}
 
 		
@@ -25,7 +25,7 @@ public class memSrc extends Applet
 		width = img.getWidth(null);
 		height = img.getHeight(null);
 
-		// $BI,MW$JJ,$N%a%b%j!<$r3NJ]!#MWAG?t$O(B ($B=D%I%C%H?t(B)$B!_(B($B2#%I%C%H?t(B) $B$G$9!#(B 
+		// 必要な分のメモリーを確保。要素数は (縦ドット数)×(横ドット数) です。 
 		pix = new int[width*height];   
 
 		resize( width*2 , height );
@@ -35,9 +35,9 @@ public class memSrc extends Applet
 		} catch ( InterruptedException e ){
 			System.out.println(e );
 		}
-		// $B$3$3$G2hA|$r9%$-$J$h$&$K=hM}!#(B
+		// ここで画像を好きなように処理。
 		for(int i=0;i<width*height;i++){
-				pix[i]= pix[i]& 0x55ff0000;  //$BNP@.J,$rA4It;&$9=hM}(B
+				pix[i]= pix[i]& 0x55ff0000;  //緑成分を全部殺す処理
 		}
 		nimg = createImage(
 				new MemoryImageSource( width,height,pix ,0,width ));

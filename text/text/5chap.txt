@@ -1,128 +1,128 @@
 
 
-$BBh(B5$B>O(B $B%9%?%s%I%"%m!<%s$N%2!<%`$r:n$k(B
+第5章 スタンドアローンのゲームを作る
 
-$B!V%9%?%s%I%"%m!<%s!W$H$O!"%M%C%H%o!<%/$rDL$7$FBP@o$7$?$j$G$-$J$$!"(B $B$"$k%Q%=(B
-$B%3%s0lBf$NCf$@$1$G407k$7$F$$$k%2!<%`$N$3$H$G$9!#Nc$($PIaDL$N2HDmMQ%2!<%`5!MQ(B
-$B$N%2!<%`$O!"$[$H$s$I$9$Y$F$,!"%9%?%s%I%"%m!<%s$N%2!<%`$G$9!#%M%C%H%o!<%/$rMx(B
-$BMQ$7$?(B $B%2!<%`$O!"Cf5i0J>e$NFbMF$G$"$k$?$a!"Bh(B6$B>O$G@bL@$9$k$3$H$K$7$^$9!#(B
-
-
-5.1 $B>.$5$$%2!<%`$r<B:]$K:n$k(B
-
-     $B$3$N@a0J9_$G!"<B:]$K%2!<%`$r:n$j$^$9!#$3$3$G:n$k%2!<%`$O!">.5,LO$J$b$N(B
-     $B$G$9!#Bg5,LO$J%2!<%`$O!"2hA|$NNL$,B?$$$H$+!"LL$N%G!<%?$,K-IY$H$+$N(B $BM}M3(B
-     $B$K$h$C$F%5%$%:$,KD$i$s$G$$$k$@$1$G!"%W%m%0%i%`$N4pK\$O>.$5$$%2!<%`$H(B $BJQ(B
-     $B$o$j$"$j$^$;$s!#%W%m%0%i%`$NFbMF$b!"(B $B$3$3$G>R2p$9$kNc$N%W%m%0%i%`$H!"4p(B
-     $BK\E*$K$OJQ$o$k$b$N$G$O$"$j$^$;$s!#(B $B>.$5$$%2!<%`$O!"MWAG$,6E=L$5$l$F$$$^(B
-     $B$9!#%5%s%W%k%W%m%0%i%`(B $B$r!"$7$C$+$jM}2r$7$F$/$@$5$$!#(B
-     $B%5%s%W%k%W%m%2!<%`$O!"(B2$B<oN`$G$9!#$=$l$i$K$O!"$=$l$>$l!"%2!<%`%W%m%0%i(B
-	 $B%_%s%0$K$*$$$F$h$/;H$o$l$k<jK!$r<h$jF~$l$F$$$^$9!#$^$?!"<h$j$3$_$-$l$J$$(B
-	 $B$b$N$K$D$$$F$O!"Bh(B5$B@a0J9_$G%2!<%`$H$OJL$K>R2p$7$F$$$^$9!#(B
+「スタンドアローン」とは、ネットワークを通して対戦したりできない、 あるパソ
+コン一台の中だけで完結しているゲームのことです。例えば普通の家庭用ゲーム機用
+のゲームは、ほとんどすべてが、スタンドアローンのゲームです。ネットワークを利
+用した ゲームは、中級以上の内容であるため、第6章で説明することにします。
 
 
-5.2 $B%b%0%iC!$-(B
+5.1 小さいゲームを実際に作る
+
+     この節以降で、実際にゲームを作ります。ここで作るゲームは、小規模なもの
+     です。大規模なゲームは、画像の量が多いとか、面のデータが豊富とかの 理由
+     によってサイズが膨らんでいるだけで、プログラムの基本は小さいゲームと 変
+     わりありません。プログラムの内容も、 ここで紹介する例のプログラムと、基
+     本的には変わるものではありません。 小さいゲームは、要素が凝縮されていま
+     す。サンプルプログラム を、しっかり理解してください。
+     サンプルプロゲームは、2種類です。それらには、それぞれ、ゲームプログラ
+	 ミングにおいてよく使われる手法を取り入れています。また、取りこみきれない
+	 ものについては、第5節以降でゲームとは別に紹介しています。
+
+
+5.2 モグラ叩き
 
 	 
-     $B$5$F!"$^$:%F!<%^$r7h$a$^$9!#$+$J$jG:$_$^$9$,!"!V$b$0$iC!$-!W$K$7$^$9!#(B
-     $B$I$A$i$+$H$$$&$H!"!V$b$0$iC!$-!W$O!"%W%l%$%d!<$KBP$7$FO"B3E*$KLdBj(B($B?7$7(B
-     $B$$(B $B%b%0%i(B)$B$,M?$($i$l$F!"%W%l%$%d!<$O$=$l$r$?$@H?<M?@7P$KG$$;$FC!$$$F$$(B
-     $B$/$H$$$&!"(B $B%9%H%l%9$N9b$$!"$=$7$FBN$,;qK\$J%2!<%`$G$9!#$3$N<j$N%2!<%`(B
-     $B$O!"%@%i%@%i$7$?(B $B%2!<%`E83+$K$J$j$d$9$$$b$N$G$9!#B?>/$G$b$=$N798~$r$d$o(B
-     $B$i$2$k$?$a$K!"(B $BMM!9$J9)IW$,$G$-$^$9$,!"$=$N9)IW$O3'$5$s$K$*$^$+$;$7$F!"(B
-     $B@dBP$K7g$+$9$3$H(B $B$N$G$-$J$$ItJ,$@$1$r<($7$^$9!#(B
-     $B$=$l$+$i!"%W%l%$%d!<$N5;=Q$,@5Ev$KH?1G$5$l$k$h$&$K!"$G$-$k$@$1%i%s%@%`(B
-     $B$J(B $BMWAG$r$J$/$7$^$9!#6qBNE*$K$O!"$I$N%b%0%i$b0lDj;~4V$?$D$H$^$?7j$NCf$K(B
-     $BLa$C$F$7$^$&$h$&$K$7$^$9!#$b$A$m$s=P8=0LCV$O%i%s%@%`$G$9(B($B$3$l$b!"0LCV$r(B
-     $BHyL/$KD4@0$9$k$3$H$G!"LLGr$$8z2L$r@8$`$3$H$,$G$-$k$+$b$7$l$^$;$s(B)
-     $B$@$$$?$$4pK\E*$J%G%6%$%s$,$G$-$?$N$G!"$"$H$OI=<($N$7$+$?$H$+!"%b%0%i$N(B
-     $B=P$F$/$k(B $B7j$N?t$H$+!"E@?t$NG[J,$J$I$r7h$a$kI,MW$,$"$j$^$9!#$3$N$X$s$O!"(B
-     $B%F%9%H%W%l%$$r$7$F(B $BD4@0$7$F$$$/$3$H$,Hs>o$K=EMW$G$9!#$G$9$+$i!"%W%m%0%i(B
-     $B%`$9$k;~$NCm0U$H$7$F$O!"(B $B!V8e$+$iD4@0$G$-$k$h$&$K!"?tCME*$J$3$H$O!"FHN)(B
-     $B$5$;$F%W%m%0%i%`$9$k!W$H$$$&$3$H$,(B $BI,MW$K$J$C$F$-$^$9!#7j$N?t$rJQ99$9$k(B
-     $B$N$,BgJQ$@!"$H$$$&$3$H$K$J$k$H!"D4@0$9$k(B $B$N$b0l6lO+$G$9!#%2!<%`$NLLGr$5(B
-     $B$O!":G8e$ND4@0$GBg$-$/A0?J$9$k$b$N$G$9!#(B($BG$E7F2$N(B $B%2!<%`$J$I$O!"3+H/4|(B
-     $B4V$N8e$mH>J,$O!"$[$H$s$ID4@0$K3d$j$"$F$F$$$^$9!#(B) $B$3$N$"$?$j$N%N%&%O%&(B
-     $B$b!"%5%s%W%k%W%m%0%i%`$+$i!"5[<}$7$F$/$@$5$$!#(B
-     $B$H$j$"$($:$N?tCM@_Dj$H$7$F!"2#(B6$B!_=D(B5$B$H$7$^$9!#$5$i$K!"7j$NBg$-$5$O!"(B $BE,(B
-     $BEY$KC!$-$d$9$$$h$&$K!"(B64$B%I%C%H;MJ}$K$7$^$9!#%^%&%9$GA`:n$9$k%"%/%7%g%s(B
-     $B%2!<%`$N>l9g!"(B $B$"$^$j>.$5$JNN0h$K$7$F$*$/$H!"A`:n$,:$Fq$G$"$k$3$H$,%2!<(B
-     $B%`$rI,MW0J>e$KFq$7$/$7$^$9!#(B ($BNc$($P!"%7%e!<%F%#%s%0%2!<%`$G!"$A$g$C$H(B
-     $B4JC1$9$.$k$H$$$&%"%s%1!<%H7k2L$K$J$C$?(B $B$H$7$^$9!#$=$N>l9g!"%8%g%$%9%F%#(B
-     $B%C%/$r(B8$BJ}8~$+$i(B4$BJ}8~A`:n$KJQ99$9$k$H$$$&FqEYD4@0(B $B$G$O$J$/!"E($N967b$r7c(B
-     $B$7$/$9$k$H$$$&J}K!$r$H$k$Y$-$G$9!#$7$+$7!"309q$N%2!<%`$G$O(B $B$3$NE@$r$+$s(B
-     $B$A$,$$$7$F$$$k%=%U%H$b$?$/$5$s$"$j$^$9!#(B) $B$=$7$F!"!V0lDj;~4V!W$H$$$&$N(B
-     $B$O!"(B4$BIC$K$7$^$7$g$&!#E@?t$O!"0lI$$d$C$D$1$k$4$H$K%l%Y%k(B $B$NJ,$NE@?t$,2C(B
-     $B;;$5$l$k$h$&$K$7$^$9!#%l%Y%k$O!"0lDj?t$d$C$D$1$k$H>e>:$7$F$$$-$^$9!#(B
-     $B%b%0%iC!$-$N%2!<%`$O!"%9%H!<%j!<$,$"$k$o$1$G$O$J$$$N$G!"$$$D$^$G$b=*$o(B
-     $B$i$J$$(B $B%2!<%`$K$7$^$9!#%(%s%G%#%s%0$J$I$b:n$j$^$;$s!#(B($BL5M}LpM}:n$k$3$H(B
-     $B$O$G$-$^$9$,!#(B) $B$G$9$+$i!"E@?t>!Ii$N%2!<%`$K$J$j$^$9!#$*8_$$$K6%$&$?$a(B
-     $B$K$OE@?t%i%s%-%s%0$OI,?\$G$9!#(B $BE@?t%i%s%-%s%0$K$O!"A4BN$G2?IC$+$+$C$?$+(B
-     $B$H$$$&$3$H$bI=<($7$?$i$$$$$+$b$7$l$^$;$s!#(B
-     $B:G8e$K$J$j$^$9$,!"A`:n$O!"%H%s%+%A$NBeMQ$H$7$F!"%^%&%9%+!<%=%k$r;H$$$^(B
-     $B$9!#(B $B%^%&%9%+!<%=%k$r%b%0%i$K9g$o$;$F%\%?%s$r2!$9$H!"C!$$$?$3$H$K$J$k$h(B
-     $B$&$K$7$^$9!#(B $B$=$7$F!"%W%l%$%d!<$,!":#%\%?%s$r2!$9$H$I$N%b%0%i$rC!$$$?$3(B
-     $B$H$K$J$k$N$+$r(B $BGD0.$7$d$9$$$h$&$K!"8=:_%^%&%9%+!<%=%k$,9g$o$5$C$F$$$k7j(B
-     $B$K$O!"OH$rI=<($9$k(B $B$h$&$K$7$^$7$g$&!#(B
+     さて、まずテーマを決めます。かなり悩みますが、「もぐら叩き」にします。
+     どちらかというと、「もぐら叩き」は、プレイヤーに対して連続的に問題(新し
+     い モグラ)が与えられて、プレイヤーはそれをただ反射神経に任せて叩いてい
+     くという、 ストレスの高い、そして体が資本なゲームです。この手のゲーム
+     は、ダラダラした ゲーム展開になりやすいものです。多少でもその傾向をやわ
+     らげるために、 様々な工夫ができますが、その工夫は皆さんにおまかせして、
+     絶対に欠かすこと のできない部分だけを示します。
+     それから、プレイヤーの技術が正当に反映されるように、できるだけランダム
+     な 要素をなくします。具体的には、どのモグラも一定時間たつとまた穴の中に
+     戻ってしまうようにします。もちろん出現位置はランダムです(これも、位置を
+     微妙に調整することで、面白い効果を生むことができるかもしれません)
+     だいたい基本的なデザインができたので、あとは表示のしかたとか、モグラの
+     出てくる 穴の数とか、点数の配分などを決める必要があります。このへんは、
+     テストプレイをして 調整していくことが非常に重要です。ですから、プログラ
+     ムする時の注意としては、 「後から調整できるように、数値的なことは、独立
+     させてプログラムする」ということが 必要になってきます。穴の数を変更する
+     のが大変だ、ということになると、調整する のも一苦労です。ゲームの面白さ
+     は、最後の調整で大きく前進するものです。(任天堂の ゲームなどは、開発期
+     間の後ろ半分は、ほとんど調整に割りあてています。) このあたりのノウハウ
+     も、サンプルプログラムから、吸収してください。
+     とりあえずの数値設定として、横6×縦5とします。さらに、穴の大きさは、 適
+     度に叩きやすいように、64ドット四方にします。マウスで操作するアクション
+     ゲームの場合、 あまり小さな領域にしておくと、操作が困難であることがゲー
+     ムを必要以上に難しくします。 (例えば、シューティングゲームで、ちょっと
+     簡単すぎるというアンケート結果になった とします。その場合、ジョイスティ
+     ックを8方向から4方向操作に変更するという難度調整 ではなく、敵の攻撃を激
+     しくするという方法をとるべきです。しかし、外国のゲームでは この点をかん
+     ちがいしているソフトもたくさんあります。) そして、「一定時間」というの
+     は、4秒にしましょう。点数は、一匹やっつけるごとにレベル の分の点数が加
+     算されるようにします。レベルは、一定数やっつけると上昇していきます。
+     モグラ叩きのゲームは、ストーリーがあるわけではないので、いつまでも終わ
+     らない ゲームにします。エンディングなども作りません。(無理矢理作ること
+     はできますが。) ですから、点数勝負のゲームになります。お互いに競うため
+     には点数ランキングは必須です。 点数ランキングには、全体で何秒かかったか
+     ということも表示したらいいかもしれません。
+     最後になりますが、操作は、トンカチの代用として、マウスカーソルを使いま
+     す。 マウスカーソルをモグラに合わせてボタンを押すと、叩いたことになるよ
+     うにします。 そして、プレイヤーが、今ボタンを押すとどのモグラを叩いたこ
+     とになるのかを 把握しやすいように、現在マウスカーソルが合わさっている穴
+     には、枠を表示する ようにしましょう。
 
-     $B0J>e$N%"%$%G%"$r!"@0M}$9$k$H!"<!$N$h$&$K$J$k$G$7$g$&$+!#(B
+     以上のアイデアを、整理すると、次のようになるでしょうか。
 
-        o $B4pK\$O!"%b%0%iC!$-$G$"$k!#(B
-        o $B=P$F$-$?%b%0%i$O!"0lDj;~4V(B(4$BIC(B)$B$?$D$H!"$^$?7j$KLa$k!#(B
-        o $B7j$KLa$kA0$K%^%&%9%+!<%=%k$r9g$o$;$F%/%j%C%/$9$k$H!"C!$$$?$3$H$K$J(B
-          $B$k!#(B
-        o 10$B2s%_%9$9$k$H!"%2!<%`%*!<%P!<(B
-        o $B0lDj?t$d$C$D$1$k$H!"%l%Y%k$,>e>:$9$k!#(B
-        o $B:G8e$KD4@0$7$d$9$$$h$&$J%W%m%0%i%`$r$9$k!#(B
-        o $BE@?t$NF~$j$+$?$O!"(B $B0lI$$"$?$j%l%Y%kE@$H$9$k!#(B
-        o $B7j$N?t$O!"2#(B6$B!"=D(B5$B$H$9$k!#7j$NBg$-$5$O!"(B64$B%I%C%H;MJ}$H$9$k!#(B
-        o $BC!$/$H!"2;$,$G$k!#(B
+        o 基本は、モグラ叩きである。
+        o 出てきたモグラは、一定時間(4秒)たつと、また穴に戻る。
+        o 穴に戻る前にマウスカーソルを合わせてクリックすると、叩いたことにな
+          る。
+        o 10回ミスすると、ゲームオーバー
+        o 一定数やっつけると、レベルが上昇する。
+        o 最後に調整しやすいようなプログラムをする。
+        o 点数の入りかたは、 一匹あたりレベル点とする。
+        o 穴の数は、横6、縦5とする。穴の大きさは、64ドット四方とする。
+        o 叩くと、音がでる。
 
-     $B$"$H$O!"%0%i%U%#%C%/$G$9!#%b%0%i$r%"%K%a!<%7%g%s$5$;$k$+$I$&$+$K$h$j$^(B
-     $B$9$,!"(B $B%^%&%9%+!<%=%k$G%H%s%+%A$NBeMQ$K$7$^$9$+$i!"%b%0%i$N%0%i%U%#%C%/(B
-     $B$@$1$G$h$5$=$&$G$9!#(B $B2;@<$b!"C!$$$?2;$@$1$G$h$5$=$&$G$9!#(B($B$b$A$m$s!"%l(B
-     $B%Y%k%"%C%W$H$+F1;~>C$7$H$+(B $BF($,$7$?;~$H$+$K!"$$$m$$$m2;$r=P$9$N$b$$$$$G(B
-     $B$9$M!#$3$l$i$O8e$G9M$($^$7$g$&!#(B)
-     $B$$$+$,$G$9$+!)%2!<%`$r:n$k$K$O!":GDc$G$b$3$l$/$i$$$N8+DL$7$r$?$F$F$_$^(B
-     $B$7$g$&!#(B $B47$l$J$$$&$A$O$=$l$bBgJQ$J$N$G!"8+DL$7$rN)$F$kEXNO$@$1$G$b$7$F(B
-     $B$_$^$7$g$&!#$=$&$9$k(B $B$3$H$G!"F,$NCf$K!"40@.$7$?%2!<%`$NA|$rIA$-$J$,$i3+(B
-     $BH/$9$k$3$H$,$G$-$^$9!#8=CJ3,$G$N(B $B40@.M=A[?^$O!"<!$N$h$&$J46$8$G$9!#$^$@(B
-     $B$G$-$F$$$J$$$N$G!"40@.?^$G$O$"$j$^$;$s!#(B
+     あとは、グラフィックです。モグラをアニメーションさせるかどうかによりま
+     すが、 マウスカーソルでトンカチの代用にしますから、モグラのグラフィック
+     だけでよさそうです。 音声も、叩いた音だけでよさそうです。(もちろん、レ
+     ベルアップとか同時消しとか 逃がした時とかに、いろいろ音を出すのもいいで
+     すね。これらは後で考えましょう。)
+     いかがですか？ゲームを作るには、最低でもこれくらいの見通しをたててみま
+     しょう。 慣れないうちはそれも大変なので、見通しを立てる努力だけでもして
+     みましょう。そうする ことで、頭の中に、完成したゲームの像を描きながら開
+     発することができます。現段階での 完成予想図は、次のような感じです。まだ
+     できていないので、完成図ではありません。
 
-#$B?^(B5.2-1 <NOT YET>     $B40@.M=A[?^(B
+#図5.2-1 <NOT YET>     完成予想図
 
-     $B$G$O!"<B:]$K:n$j$^$7$g$&!#(B
+     では、実際に作りましょう。
 
-5.3 $B<B:]$K:n$k(B
+5.3 実際に作る
 
-     $B$^$:!"%2!<%`$r:n$j47$l$F$$$J$$?M$O!"!V$5$"!":n$k$>!W$H$J$C$?$H$-$K!"$^(B
-     $B$:!"2?$r(B $B$9$k$+$H$$$&$H!"%b%0%i$N3($rIA$-$O$8$a$k$N$G$9!#$=$7$F!"$"!<$@(B
-     $B$3!<$@8@$C$F$$$k(B $B$"$$$@$K!":,5$$,?T$-$?$j!"B>$N$3$H$K6=L#$,0\$C$?$j!"K;(B
-     $B$7$/$J$C$?$j$7$F!"L$40@.$N(B $B$^$^=*$o$k$N$G$9!#%=%U%H%O%&%9$K$*$$$F$O!"%W(B
-     $B%m%0%i%`$H%0%i%U%#%C%/$N:n6H$,(B $B6(D4$7$FF1;~$K?J$a$i$l$k$?$a!"$=$&$$$&Ld(B
-     $BBj$OH/@8$7$K$/$$$G$9(B($B$H$$$&$+!";E;v$@$+$i(B $B$=$s$J$3$H$,5/$3$k$O$:$O$J$$(B
-     $B$N$G$9$,(B)$B!#5~Bg%^%$%3%s%/%i%V$N$h$&$J%5!<%/%k$K$*$$$F$O!"(B $B$=$&$$$&7P0^(B
-     $B$r$?$I$C$F%]%7%c$C$F$7$^$&%W%m%8%'%/%H$,8e$r$?$A$^$;$s!#(B
-     $B%2!<%`$r:n$j$"$2$k%3%D$O!"$^$::G=i$K!"K\<AE*$K=EMW$JItJ,$r:n$C$F$7$^$&(B
-     $B$3$H$G$9!#I=<($K(B $B6E$k$N$O!"8e$G$b$G$-$k$3$H$G$9$+$i!#(B
-     $BA0@a$G$3$N%2!<%`$N%G%6%$%s$r$7$^$7$?$,!"$=$NCf$+$i!"$I$l$,K\<AE*$K=EMW(B
-     $B$JItJ,$J$N$+(B $B$r@v$$$@$7$F$_$^$7$g$&!#(B
-     $B$=$l$O$:$P$j!"!V$b$0$i$r=P$7$F!"$R$C$3$a$k!W$H$$$&ItJ,$G$9!#$b$A$m$s!"(B
-     $B:G=i$+$i(B $B!V$b$0$i!W$G$"$kI,MW$O$J$/!"!VGr$$;M3Q!W$G$b$$$$$o$1$G$9!#<B(B
-     $B:]!"%W%m$N:n6H$G$O!"(B $B%2!<%`$N3+H/$N8eH>$K$+$+$k$^$G!"2hLL$KGr$$;M3Q$,F0(B
-     $B$$$F$$$F!":G8e$K5^$K308+$,(B $B@0$$$O$8$a$k!"$H$$$&$3$H$b$"$j$^$9!#(B
-     $B$3$N@a$G$O!"%W%m%0%i%`$O!"A0$K>R2p$7$?!"!V%9%1%k%H%s!W$r;H$$!"$=$l$rH/(B
-     $BE8$5$;$F$$$-$^$9!#(B $B$^$:$O!"%W%m%0%i%`$rBG$A$3$s$G!"<B9T$7$F$_$F$/$@$5(B
-     $B$$!#(B($B$+$J$jBgJQ$G$9$,!"(B $B$,$s$P$C$F$/$@$5$$$M!#(B) $B%W%m%0%i%`Cf$K!"%3%a%s(B
-     $B%H$,$"$j$^$9$N$G!"FI$_?J$a$k;29M$K$7$F$/$@$5$$!#(B
+     まず、ゲームを作り慣れていない人は、「さあ、作るぞ」となったときに、ま
+     ず、何を するかというと、モグラの絵を描きはじめるのです。そして、あーだ
+     こーだ言っている あいだに、根気が尽きたり、他のことに興味が移ったり、忙
+     しくなったりして、未完成の まま終わるのです。ソフトハウスにおいては、プ
+     ログラムとグラフィックの作業が 協調して同時に進められるため、そういう問
+     題は発生しにくいです(というか、仕事だから そんなことが起こるはずはない
+     のですが)。京大マイコンクラブのようなサークルにおいては、 そういう経緯
+     をたどってポシャってしまうプロジェクトが後をたちません。
+     ゲームを作りあげるコツは、まず最初に、本質的に重要な部分を作ってしまう
+     ことです。表示に 凝るのは、後でもできることですから。
+     前節でこのゲームのデザインをしましたが、その中から、どれが本質的に重要
+     な部分なのか を洗いだしてみましょう。
+     それはずばり、「もぐらを出して、ひっこめる」という部分です。もちろん、
+     最初から 「もぐら」である必要はなく、「白い四角」でもいいわけです。実
+     際、プロの作業では、 ゲームの開発の後半にかかるまで、画面に白い四角が動
+     いていて、最後に急に外見が 整いはじめる、ということもあります。
+     この節では、プログラムは、前に紹介した、「スケルトン」を使い、それを発
+     展させていきます。 まずは、プログラムを打ちこんで、実行してみてくださ
+     い。(かなり大変ですが、 がんばってくださいね。) プログラム中に、コメン
+     トがありますので、読み進める参考にしてください。
 
-     $B%W%m%0%i%`(B
+     プログラム
 
 
 File name: game.java
 ----------------------------------------------------------
 import java.applet.Applet;
-import java.applet.AudioClip;  // AudioClip$B$r;H$&$?$a$N(Bimport
+import java.applet.AudioClip;  // AudioClipを使うためのimport
 import java.awt.*;
 import java.awt.image.*;
 import java.util.*;
@@ -138,28 +138,28 @@ public class game extends Applet implements Runnable
 
 	int cron=0;
 
-	// $BJQ992DG=8D=j!"?tCM$N$H$3$m$@$1?'$rJQ$($k!#(B 
+	// 変更可能個所、数値のところだけ色を変える。 
 	int width , height;
 
-	final int holesize = 64;  // $B7j$N%5%$%:(B($B@5J}7A(B)
+	final int holesize = 64;  // 穴のサイズ(正方形)
 
-	// $B$b$0$iC!$-$rD4@0$9$k$?$a$NJQ99ItJ,(B 
-	final int yokosize = 5; // $B7j$N?t(B
+	// もぐら叩きを調整するための変更部分 
+	final int yokosize = 5; // 穴の数
 	final int tatesize = 4; 
-	public final int interval = 100;	// $B%2!<%`$N?J9TB.EY(B
-	final int mogtime = 40;   // $B%b%0%i$N<wL?(B
-	final int misstime = 4;   // $B%_%9I=<($N;~4V(B
-	final int hittime = 4;    // $B%R%C%H$7$?I=<($N;~4V(B
-	final int mogblank = 8;   // $BF1$87j$KB3$1$F=P$k;~$N4V(B
-	final int rate = 10;      // $B%b%0%i$,=P8=$9$kIQEY(B
-	final int life_max = 10;  // 10$B2s%_%9$7$?$i=*$o$j(B
-	final int levelunit = 10; // 10$BI$$d$C$D$1$k$4$H$K%l%Y%k%"%C%W(B
+	public final int interval = 100;	// ゲームの進行速度
+	final int mogtime = 40;   // モグラの寿命
+	final int misstime = 4;   // ミス表示の時間
+	final int hittime = 4;    // ヒットした表示の時間
+	final int mogblank = 8;   // 同じ穴に続けて出る時の間
+	final int rate = 10;      // モグラが出現する頻度
+	final int life_max = 10;  // 10回ミスしたら終わり
+	final int levelunit = 10; // 10匹やっつけるごとにレベルアップ
 
 
-	int mog[][] = new int[yokosize][tatesize ]; // $B$b$0$i$r!"I,MW$J?t$@$1MQ0U$9$k(B
-	int mogstate[][] = new int[yokosize][tatesize];  // $B%b%0%i$N>uBV(B
+	int mog[][] = new int[yokosize][tatesize ]; // もぐらを、必要な数だけ用意する
+	int mogstate[][] = new int[yokosize][tatesize];  // モグラの状態
 
-	final int ALIVE = 1;  // $B$b$0$i$N>uBV$O!"$3$l$i$NCM$rF~$l$F$*$/!#(B
+	final int ALIVE = 1;  // もぐらの状態は、これらの値を入れておく。
 	final int MISS = 2;
 	final int HIT = 3;
 	final int OUT = 0;
@@ -167,14 +167,14 @@ public class game extends Applet implements Runnable
 
 	int score,level,life, hitno;
 
-	MediaTracker mt; // $B2hA|%m!<%I$N$?$a$K;H$&(BMediaTracker
-	Image aliveimg;  // $B%b%0%i$N2hA|(B($B=P8=$7$F$$$k;~$N(B)
-	Image hitimg;    // $B%b%0%i$N2hA|(B($BC!$$$?=V4V$N(B)
-	AudioClip hitsound,hellosound; // $BC!$$$?2;$H=P$F$/$k2;(B
+	MediaTracker mt; // 画像ロードのために使うMediaTracker
+	Image aliveimg;  // モグラの画像(出現している時の)
+	Image hitimg;    // モグラの画像(叩いた瞬間の)
+	AudioClip hitsound,hellosound; // 叩いた音と出てくる音
 	
 
 	int mode;  
-	final int TITLE= 1;       //mode$B$KF~$l$kCM(B
+	final int TITLE= 1;       //modeに入れる値
 	final int GAME = 2;
 	final int GAMEOVER = 3;
 
@@ -189,25 +189,25 @@ public class game extends Applet implements Runnable
 
 		thread.start();
 
-		/* $B$3$3$+$i$b$0$iC!$-$N$?$a$NJQ99ItJ,(B */
+		/* ここからもぐら叩きのための変更部分 */
 		dg.setColor( Color.black );
 		dg.fillRect( 0 , 0 , width , height );
 
 
-		// $B;H$&2hA|$r%m!<%I$9$k!#%m!<%I$,=*$o$k$^$G!"(BMediaTracker$B$r;H$C$FBT$D(B
+		// 使う画像をロードする。ロードが終わるまで、MediaTrackerを使って待つ
 		aliveimg = getImage( getDocumentBase() , "alive.gif" );
 		hitimg = getImage( getDocumentBase() , "hit.gif" );
 		
-		mt = new MediaTracker( this ); // $BF1$8(BID$B$GBT$D(B
+		mt = new MediaTracker( this ); // 同じIDで待つ
 		mt.addImage( aliveimg, 1 );
 		mt.addImage( hitimg , 1 );
 		try{
-			mt.waitForID( 1 ); // $B%m!<%I3+;O$7!";XDj$7$?(BID$B$N2hA|$,A4It%m!<%I$5$l$k$^$GBT$D!#(B
+			mt.waitForID( 1 ); // ロード開始し、指定したIDの画像が全部ロードされるまで待つ。
 		}catch( InterruptedException ie ){}
 
 		hitsound = getAudioClip( getDocumentBase() , "yahoo.au");
 		hellosound = getAudioClip( getDocumentBase() , "hi.au");
-		// $B%?%$%H%k2hLL$rI=<((B
+		// タイトル画面を表示
 		mode = TITLE;
 
 
@@ -247,10 +247,10 @@ public class game extends Applet implements Runnable
 			dg.drawString( "press mouse button" , 30 , height/2+50);
 		} else if( mode == GAME ){
 
-		/* $BJQ992DG=8D=j(B */
+		/* 変更可能個所 */
 		
-			// $B0lDj;~4V$4$H$K!"%b%0%i$r=P8=$5$;$k(B
-			// $B%l%Y%k$K1~$8$F!"=P$F$/$k%b%0%i$,A}$($F$$$/!#(B
+			// 一定時間ごとに、モグラを出現させる
+			// レベルに応じて、出てくるモグラが増えていく。
 
 			if( ( cron % rate ) == 0 ){
 				int kazu;
@@ -261,15 +261,15 @@ public class game extends Applet implements Runnable
 					putMogura();
 				}
 			}
-			// $B%b%0%i$N<wL?$r8:$i$7$F$$$/!#(B
+			// モグラの寿命を減らしていく。
 			moveMogura();
 
-			// $BL?$,$J$/$J$C$?$i!"%2!<%`%*!<%P!<(B
+			// 命がなくなったら、ゲームオーバー
 			if( life < 0 ){
 				mode = GAMEOVER;
 			}
 			
-			// $BE@?t$J$I$rI=<(!">C$7$F$+$i=q$/$3$H$KCm0U(B
+			// 点数などを表示、消してから書くことに注意
 			dg.setColor( Color.black );
 			dg.fillRect( yokosize * holesize+10,0, width - yokosize*holesize , 100);
 
@@ -287,7 +287,7 @@ public class game extends Applet implements Runnable
 	}
 	void moveMogura( )
 	{
-		// $B;`$L$^$G$N;~4V$r(B1$B8:$i$9!#;`$s$@$b$N$O!">C$7$F$7$^$&!#(B
+		// 死ぬまでの時間を1減らす。死んだものは、消してしまう。
 		for(int i = 0 ; i < tatesize ; i++){
 			for(int j = 0 ; j < yokosize ;j++ ){
 				mog[j][i]--;
@@ -305,18 +305,18 @@ public class game extends Applet implements Runnable
 	}
 
 
-	// $B$b$0$i$r0lI$=P8=$5$;$k(B
+	// もぐらを一匹出現させる
 	void putMogura( ){
 		
 		int r = new Random().nextInt();
-		r = r & 255; // $B@5$NCM$KLa$9!#$3$N7k2L!"(Br$B$K$O!"(B0$B$+$i(B255$B$NCM$,F~$k!#(B
+		r = r & 255; // 正の値に戻す。この結果、rには、0から255の値が入る。
 		r = r % (yokosize * tatesize );
 		int yoko = r % yokosize;
 		int tate = r / yokosize;
 
-		// $B%b%0%i$,>C$($F$+$i0lDj;~4V$?$?$J$$$HF1$87j$K$OEP>l$G$-$J$$(B
+		// モグラが消えてから一定時間たたないと同じ穴には登場できない
 		if( mog[yoko][tate] > -mogblank ) return;
-		hellosound.play(); // $B=P8=;~$N2;$r=P$9(B
+		hellosound.play(); // 出現時の音を出す
 		mogstate[ yoko ][ tate ] = ALIVE;
 		mog[ yoko ][ tate ] = mogtime;
 
@@ -324,7 +324,7 @@ public class game extends Applet implements Runnable
 		dg.fillRect( yoko * holesize , tate*holesize , holesize , holesize );
 		dg.drawImage( aliveimg , yoko * holesize , tate*holesize ,null);
 	}
-	// $B%b%0%i$r>C$9!#(B
+	// モグラを消す。
 	void outMogura( int x , int y ){
 		
 		dg.setColor( Color.black );
@@ -332,7 +332,7 @@ public class game extends Applet implements Runnable
 		dg.setColor( Color.white );
 		dg.drawRect( x * holesize , y * holesize , holesize , holesize );
 	}
-	// $BF($2>uBV$N%b%0%i$rI=<($9$k!#(B
+	// 逃げ状態のモグラを表示する。
 	void missMogura( int x , int y ){
 
 		dg.setColor( Color.black );
@@ -342,19 +342,19 @@ public class game extends Applet implements Runnable
 
 
 	}
-	//$B$d$i$l>uBV$N%b%0%i$rI=<($9$k!#(B
+	//やられ状態のモグラを表示する。
 	void yarareMogura( int x , int y ){
 		dg.setColor( Color.red );
 		dg.drawLine( x * holesize , y* holesize , x*holesize + holesize , y*holesize + holesize );
 		dg.drawLine( x * holesize + holesize , y * holesize , x * holesize , y * holesize + holesize );
 		dg.drawImage( hitimg , x*holesize, y*holesize ,null);
 	}
-	// $B%^%&%9$,2!$5$l$?$H$-$N=hM}(B
+	// マウスが押されたときの処理
 	public boolean mouseDown( Event e , int x , int y )
 	{
 		if( mode == TITLE ){
 		
-			// $B$b$0$i$r=i4|2=(B
+			// もぐらを初期化
 			for(int i = 0 ; i < yokosize ; i++){
 				for(int j = 0 ; j < tatesize ; j++){
 					mogstate[i][j] = OUT;
@@ -367,12 +367,12 @@ public class game extends Applet implements Runnable
 			hitno = 0;
 			mode = GAME;
 		} else if( mode == GAME ){
-			// $B$I$N%b%0%i$rC!$$$?$N$+$rH=Dj$9$k(B
-			int yoko ,tate; // $B%b%0%i$N7j$N0LCV(B
+			// どのモグラを叩いたのかを判定する
+			int yoko ,tate; // モグラの穴の位置
 			yoko = x / holesize;
 			tate = y / holesize;
 			
-			// $B%b%0%i$,@8$-$F$$$k$H$-$@$1%R%C%H!#(B
+			// モグラが生きているときだけヒット。
 		
 			if( yoko>=0 && yoko < yokosize &&
 			    tate>=0 && tate < tatesize &&
@@ -381,9 +381,9 @@ public class game extends Applet implements Runnable
 				mogstate[yoko][tate] = HIT;
 				yarareMogura( yoko , tate );
 				score = score + level;
-				hitsound.play();  // $B2;$r$@$9(B
+				hitsound.play();  // 音をだす
 				hitno++;
-				// $B%l%Y%k(B
+				// レベル
 				if( (hitno % levelunit ) == 0 ){
 					level++;
 				}
@@ -402,309 +402,309 @@ File name: test.html
 <applet code=game.class width=500 height=400></applet>
 ----------------------------------------------------------
 
-#$B?^(B5.3-1 <DONE> 	$B$b$0$i$?$?$-$N<B9T7k2L(B(game.java)
+#図5.3-1 <DONE> 	もぐらたたきの実行結果(game.java)
 
 
-	$B$3$N%W%m%0%i%`$,F0:n$9$k$K$O!"(Bgame.class$B$,CV$+$l$F$$$k%G%#%l%/%H%j$HF1$8(B
-	$B%G%#%l%/%H%j$K!"(Balive.gif, hit.gif, hi.au, yahoo.au
-	$B$N(B4$B$D$N%U%!%$%k$,I,MW$G$9!#$3$l$i$O(BCD-ROM$B$K<}O?$5$l$F$$$^$9!#%3%T!<$7$F(B
-	$B;HMQ$7$F$/$@$5$$!#(B
+	このプログラムが動作するには、game.classが置かれているディレクトリと同じ
+	ディレクトリに、alive.gif, hit.gif, hi.au, yahoo.au
+	の4つのファイルが必要です。これらはCD-ROMに収録されています。コピーして
+	使用してください。
 
 
-     $B%W%m%0%i%`$r=q(B
-     $B$-$O$8$a$kA0$K!"(B $B8+DL$7$rN)$F$F$*$-$^$7$g$&!#%W%m%0%i%_%s%0$N=ON}<T$H=i(B
-     $B?4<T$H$G$O!"%W%m%0%i%`$r;O$a$kA0$N(B $B8+DL$7$NCJ3,$G:G$b:9$,=P$^$9!#=ON}<T(B
-     $B$O!"<B8=$7$?$$;vJA$KI,MW$J%G!<%?9=B$$d%W%m%0%i%`$N(B $B9=B$$rE*3N$K8+DL$9$3(B
-     $B$H$,$G$-$k$H$3$m$,=i?4<T$H0c$$$^$9!#=ON}<T$O$^$:!"%W%m%0%i%`$N:G$bBg@Z(B
-     $B$JCf(B $B?uItJ,(B($B$3$l$,$G$-$J$$$HA4BN$,@.N)$7$J$$$H$$$&ItJ,(B)$B$rE*3N$K<h$j$@(B
-     $B$7!"$=$l$KI,MW$J%G!<%?9=B$$r(B $B%G%6%$%s$7$^$9!#$=$7$F!"$=$l$rA`:n$9$k4X?t(B
-     ($B%a%=%C%I(B)$B72$r5-=R$7$F$$$-$^$9!#$3$N$h$&$JJ}K!$r$H$k$H!"(B $B>o$KA4BN$r8+<:(B
-     $B$o$J$$$G%W%m%0%i%`$r?J$a$k$3$H$,$G$-$k$N$G$9!#$7$+$7=i?4<T$N$&$A$O$=$N(B
-     $B$h$&$J(B $B$3$H$O$J$+$J$+$G$-$J$$$N$G!"?J$s$@$jLa$C$?$j$7$J$,$i!";~$K$O:G=i(B
-     $B$+$i:n$j$J$*$7$?$j$7$J$,$i(B($B$3$l$,(B $B$J$+$J$+$?$a$K$J$k$N$G$9(B)$B$f$C$/$j?J$a(B
-     $B$F$$$-$^$7$g$&!#(B
+     プログラムを書
+     きはじめる前に、 見通しを立てておきましょう。プログラミングの熟練者と初
+     心者とでは、プログラムを始める前の 見通しの段階で最も差が出ます。熟練者
+     は、実現したい事柄に必要なデータ構造やプログラムの 構造を的確に見通すこ
+     とができるところが初心者と違います。熟練者はまず、プログラムの最も大切
+     な中 枢部分(これができないと全体が成立しないという部分)を的確に取りだ
+     し、それに必要なデータ構造を デザインします。そして、それを操作する関数
+     (メソッド)群を記述していきます。このような方法をとると、 常に全体を見失
+     わないでプログラムを進めることができるのです。しかし初心者のうちはその
+     ような ことはなかなかできないので、進んだり戻ったりしながら、時には最初
+     から作りなおしたりしながら(これが なかなかためになるのです)ゆっくり進め
+     ていきましょう。
 
-     $B$G$O!"%b%0%iC!$-%2!<%`$r:n$k;~$N8+DL$7$rI.<T$J$j$KN)$F$F$_$^$9!#(B
-     $B$^$:!"=EMW$JItJ,$O!"A`:n!"I=<(!"%b%0%i$NF0:n$KJ,$1$k$3$H$,$G$-$^$9!#A`(B
-     $B:n$K$D$$$F$O!"%^%&%9$G$d$k(B $B$H$$$&$3$H$,7h$^$C$F$$$F!"%b%0%i$NF0:n$K4XO"(B
-     $B$9$k$N$O!"%^%&%9$r2!$7$?$H$-$@$1$G$9!#(B $B$G$9$+$i!"(BmouseDown$B%a%=%C%I$NCf(B
-     $B$K2?$+%W%m%0%i%`$r=q$1$P$G$-$k$H$$$&$3$H$,$o$+$j$^$9!#(B $B<!$KI=<($K$D$$(B
-     $B$F!#I=<($O!"%b%0%i$r3($GI=<($7$^$9!#%b%0%i$,@8$-$F$$$k>uBV$N;~$H!"(B $B;`$K(B
-     $B$+$+$C$F$$$k>uBV$rJL$NI=<($K$9$k$N$G!"2hA|$O(B2$B<oN`I,MW$J$3$H$,$o$+$j$^(B
-     $B$9!#$=$N$?$a$K!"(B Image$B%/%i%9$NJQ?t$r(B2$B8DMQ0U$7$^$9!#$=$l$i$r%2!<%`$,;O$^(B
-     $B$k$^$G$K%m!<%I$9$k$?$a$K!"(B MediaTracker$B$r;H$$$^$7$g$&!#<!$K%b%0%i$NF0:n(B
-     $B$G$9!#%b%0%i$O!"0lDj;~4V=P8=$7$F!">C$($^$9!#(B $B=P8=$7$F$$$k4V$KC!$+$l$?>l(B
-     $B9g$O!"$=$N>l$GC!$+$l$F$$$k3($KJQ2=$5$;$^$9!#%b%0%i$N;~4V$r4IM}$9$k(B $B$?$a(B
-     $B$K!"(Brun$B%a%=%C%I$NCf$GDj4|E*$K%b%0%i$r=P8=$5$;$?$j>C$7$?$j$9$k%W%m%0%i%`(B
-     $B$r(B $B<B9T$9$kI,MW$,$"$j$^$9!#(B
+     では、モグラ叩きゲームを作る時の見通しを筆者なりに立ててみます。
+     まず、重要な部分は、操作、表示、モグラの動作に分けることができます。操
+     作については、マウスでやる ということが決まっていて、モグラの動作に関連
+     するのは、マウスを押したときだけです。 ですから、mouseDownメソッドの中
+     に何かプログラムを書けばできるということがわかります。 次に表示につい
+     て。表示は、モグラを絵で表示します。モグラが生きている状態の時と、 死に
+     かかっている状態を別の表示にするので、画像は2種類必要なことがわかりま
+     す。そのために、 Imageクラスの変数を2個用意します。それらをゲームが始ま
+     るまでにロードするために、 MediaTrackerを使いましょう。次にモグラの動作
+     です。モグラは、一定時間出現して、消えます。 出現している間に叩かれた場
+     合は、その場で叩かれている絵に変化させます。モグラの時間を管理する ため
+     に、runメソッドの中で定期的にモグラを出現させたり消したりするプログラム
+     を 実行する必要があります。
 
-     $B0J>e$N$h$&$J8+DL$7$,$G$-$?$N$G!"%W%m%0%i%`$KF~$j$^$9!#$^$:%/%i%9$NL>A0(B
-     $B$r7h$a$^$9!#(B $B$3$3$G!"!V%*%V%8%'%/%H;X8~!W$rE0DlE*$KDI5Z$9$k$J$i!"!V%b%0(B
-     $B%i%/%i%9!W$H!V%2!<%`%/%i%9!W$K(B $B%/%i%9$rJ,$1$?$j$9$k$N$G$9$,!"L5M}$KDI5Z(B
-     $B$9$k$3$H$b$"$j$^$;$s!#A4BNA|$rGD0.$7$d$9$$(B $B$h$&$K%/%i%9$O0l$D$K$7$F$7$^(B
-     $B$$$^$7$g$&!#L>A0$O(Bgame$B$G$9!#(B $B$=$l$+$iI,MW$J%Q%C%1!<%8$r(Bimport$B$7$^$9!#$3(B
-     $B$l$O!":#$^$G$K(B $B=P$F$-$?%5%s%W%k%W%m%0%i%`$N$h$&$K$7$^$9!#(B
+     以上のような見通しができたので、プログラムに入ります。まずクラスの名前
+     を決めます。 ここで、「オブジェクト指向」を徹底的に追及するなら、「モグ
+     ラクラス」と「ゲームクラス」に クラスを分けたりするのですが、無理に追及
+     することもありません。全体像を把握しやすい ようにクラスは一つにしてしま
+     いましょう。名前はgameです。 それから必要なパッケージをimportします。こ
+     れは、今までに 出てきたサンプルプログラムのようにします。
 
-     $B<!$K%9%1%k%H%s%W%m%0%i%`$r%3%T!<$7$^$9!#$3$3$G!"$^$?%b%0%i$N>pJs$r$I$&(B
-     $B4IM}$9$k$+$r7h$a$F$$$J$$$N$G!"%b%0%i$N%G!<%?9=B$$K$D$$$F9M$($^$9!#(B
-     $B2hLL>e$N%b%0%i$O!"$-$l$$$K=D2#$KJB$s$G$$$k$N$G!"(B2$B<!85$NG[Ns$K$7$F4IM}$9(B
-     $B$k$N$,(B $B$h$5$=$&$G$9!#%b%0%i$N>uBV$O!V=P8=!W$H!VC!$+$l!W$H!V>C$(!W$H!VF((B
-     $B$2!W$N(B4$B<oN`$,$"$j!"(B $B$=$l$>$l$N;}B3;~4V$b$^$A$^$A$J$N$G!";~4V$r4IM}$9$k(B
-     $BJQ?t$H>uBV$r4IM}$9$kJQ?t$N(B2$B<oN`$r(B $B@k8@$7$^$9!#$=$l$,!"(Bmog[][]$B$H(B
-     mogstate[][]$B$G$9!#(B $B%b%0%i$rF0$+$9%W%m%0%i%`$NItJ,$G$O!"$3$N(B2$B<oN`$NJQ?t(B
-     $B$rA}8:$7$?$j!"HO0O$rD4$Y$?$j$9$k(B $B$o$1$G$9!#$=$&$$$&=hM}$r$9$k%a%=%C%I$r(B
-     $B0l$DMQ0U$7$^$7$g$&!#(BmoveMogura() $B%a%=%C%I$G$=$N=hM}$r$7$^$9!#$3$N%a%=%C(B
-     $B%I$O!"(BdoIt$B%a%=%C%I$NCf$K=q$+$l!"(B $B0lDj;~4V$4$H$K<B9T$5$l$^$9!#$3$l$K$h$C(B
-     $B$F!"%b%0%i$,<+H/E*$K>C$($?$j=P8=$7$?$j$7$^$9!#(B $B%W%m%0%i%`$9$k>e$G$N%]%$(B
-     $B%s%H$O!"%b%0%i$r4IM}$9$k$N$G$O$J$/!"!V%b%0%i$N7j$r4IM}(B $B$9$k!W$H$$$&$3$H(B
-     $B$G$9!#;~4V$d>uBV$O!"!V%b%0%i$N7j!W$K$D$$$F$N$b$N$G$"$k$H$$$&$3$H(B $B$KCm0U(B
-     $B$7$F$/$@$5$$!#(B($B$G$9$+$i!"%b%0%i$,$$$J$$!">C$($F$$$k;~$G$b!"7j$K$D$$$F$N(B
-     $B;~4V$O(B $B7W;;$7B3$1$^$9!#(B)
-     $B0J2<$K!"0l$D$N%b%0%i$N7j$N>uBV$H;~4V$N4X78$r?^$K$7$F$_$^$9!#(B
+     次にスケルトンプログラムをコピーします。ここで、またモグラの情報をどう
+     管理するかを決めていないので、モグラのデータ構造について考えます。
+     画面上のモグラは、きれいに縦横に並んでいるので、2次元の配列にして管理す
+     るのが よさそうです。モグラの状態は「出現」と「叩かれ」と「消え」と「逃
+     げ」の4種類があり、 それぞれの持続時間もまちまちなので、時間を管理する
+     変数と状態を管理する変数の2種類を 宣言します。それが、mog[][]と
+     mogstate[][]です。 モグラを動かすプログラムの部分では、この2種類の変数
+     を増減したり、範囲を調べたりする わけです。そういう処理をするメソッドを
+     一つ用意しましょう。moveMogura() メソッドでその処理をします。このメソッ
+     ドは、doItメソッドの中に書かれ、 一定時間ごとに実行されます。これによっ
+     て、モグラが自発的に消えたり出現したりします。 プログラムする上でのポイ
+     ントは、モグラを管理するのではなく、「モグラの穴を管理 する」ということ
+     です。時間や状態は、「モグラの穴」についてのものであるということ に注意
+     してください。(ですから、モグラがいない、消えている時でも、穴についての
+     時間は 計算し続けます。)
+     以下に、一つのモグラの穴の状態と時間の関係を図にしてみます。
 
-#$B?^(B5.3-2 <DRAFT>	$B%b%0%i$N>uBV(B
+#図5.3-2 <DRAFT>	モグラの状態
 
 ------------------------------------------------------
-     $BC!$+$l$:$KF($2$k>l9g(B
+     叩かれずに逃げる場合
             *----mogtime----*-misstime-*--mogblank-*.........*--mogtime--~~
      .......+---------------+----------+..............~~.....+-----~~~
-            $B=P8=(B            $BF($2(B       $B>C$((B                  $B=P8=(B
+            出現            逃げ       消え                  出現
      OUT    ALIVE           MISS       OUT                   ALIVE
 
-     $B=P8=$7$F$$$kESCf$KC!$+$l$?>l9g(B
+     出現している途中に叩かれた場合
                *-------*hittime*--mogblank-*............*-mogtime-~~
      ..........+-------+-------+...............~~.......+------~~~
-               $B=P8=(B    $BC!$+$l(B  $B>C$((B                     $B=P8=(B
+               出現    叩かれ  消え                     出現
      OUT       ALIVE   HIT     OUT                      ALIVE
 ------------------------------------------------------
 
-     $B;~4V$r4IM}$9$kJQ?t(Bmog[][]$B$O!">uBV$rJQ2=$5$;$k7@5!$H$7$F;H$C$F$$$^$9!#(B
-     $B$=$l$+$i!"%W%m%0%i%`$NCf$K$O!"%2!<%`$NB.EY$r7h$a$kDj?t$d(B $B%?%F%h%3$N7j$N(B
-     $BBg$-$5(B $B$J$I!"8e$+$iJQ99$G$-$k$h$&$K$7$F$*$/$3$H$,=EMW$G$9!#FC$K%2!<%`$G(B
-     $B$O!"BgBN40@.$7$F$+$i(B $BHyL/$J%2!<%`%P%i%s%9$rD4@0$9$k$3$H$,Hs>o$K=EMW$G$9(B
-     $B$N$G!"%2!<%`$NCf$G;H$&$h$&$J(B $BCM$O!"JQ?t$KF~$l$F$*$/$h$&$K$7$^$9!#Nc$($P(B
-     $B7j$N=D2#$N?t$d%b%0%i$,>C$($k$^$G$N;~4V(B $B$J$I$O8e$GJQ99$7$?$/$J$k3NN($,9b(B
-     $B$$$G$9!#(B $B%W%m%0%i%`Cf$G$O<!$N$h$&$K$7$F!"!VJQ99$7$?$/$J$k$G$"$m$&!WCM$r(B
-     $B:G=i$+$iJQ?t$K$7$F(B $B$$$^$9!#$b$A$m$s!":G=i$+$i$3$l$i$NJQ?t$rA4It;W$$$D$$(B
-     $B$?$o$1$G$O$J$/$F!"ESCf$G(B $B!VI,MW$=$&$@$J!W$H;W$C$?$H$-$K2C$($k$h$&$K$7$F(B
-     $B$$$^$9!#(B
+     時間を管理する変数mog[][]は、状態を変化させる契機として使っています。
+     それから、プログラムの中には、ゲームの速度を決める定数や タテヨコの穴の
+     大きさ など、後から変更できるようにしておくことが重要です。特にゲームで
+     は、大体完成してから 微妙なゲームバランスを調整することが非常に重要です
+     ので、ゲームの中で使うような 値は、変数に入れておくようにします。例えば
+     穴の縦横の数やモグラが消えるまでの時間 などは後で変更したくなる確率が高
+     いです。 プログラム中では次のようにして、「変更したくなるであろう」値を
+     最初から変数にして います。もちろん、最初からこれらの変数を全部思いつい
+     たわけではなくて、途中で 「必要そうだな」と思ったときに加えるようにして
+     います。
 
-     final int yokosize = 5; // $B7j$N?t(B
+     final int yokosize = 5; // 穴の数
      final int tatesize = 4;
-     public final int interval = 100;        // $B%2!<%`$N?J9TB.EY(B
-     final int mogtime = 40;   // $B%b%0%i$N<wL?(B
-     final int misstime = 4;   // $B%_%9I=<($N;~4V(B
-     final int hittime = 4;    // $B%R%C%H$7$?I=<($N;~4V(B
-     final int mogblank = 8;   // $BF1$87j$KB3$1$F=P$k;~$N4V(B
-     final int rate = 10;      // $B%b%0%i$,=P8=$9$kIQEY(B
-     final int life_max = 10;  // 10$B2s%_%9$7$?$i=*$o$j(B
-     final int levelunit = 10; // 10$BI$$d$C$D$1$k$4$H$K%l%Y%k%"%C%W(B
+     public final int interval = 100;        // ゲームの進行速度
+     final int mogtime = 40;   // モグラの寿命
+     final int misstime = 4;   // ミス表示の時間
+     final int hittime = 4;    // ヒットした表示の時間
+     final int mogblank = 8;   // 同じ穴に続けて出る時の間
+     final int rate = 10;      // モグラが出現する頻度
+     final int life_max = 10;  // 10回ミスしたら終わり
+     final int levelunit = 10; // 10匹やっつけるごとにレベルアップ
 
-     $B$3$l$i$NCM$O$9$Y$F!"%2!<%`463P$K1F6A$rM?$($k%Q%i%a!<%?$G$9$M!#(B
-     $B%b%0%i$NF0:n$N>\:Y$K$D$$$F9M$($F$_$^$9!#(B $B%b%0%i$O!"0lDj;~4V$?$D$H>C$($^(B
-     $B$9!#>C$($k;~4V$O!"(B mogtime=40$B$H$7$FJQ?t$K(B $B$7$^$7$?!#$3$NCM$rG[NsJQ?t(B
-     mog[][]$B$KF~$l$F!"(Brun$B%a%=%C%I$NCf$G(B 1$B$E$D8:$i$7$F$f$-!"Ii$NCM$K$J$C$?$i(B
-     $B>C$($k$H$$$&$h$&$K$7$^$9!#:G=i$N@_DjCM$G$O!"(B 0.1$BIC$4$H$K%2!<%`$N;~4V$,(B
-     $B?J$_$^$9$+$i!":G=i$K(B40$B$H$$$&CM$rF~$l$F$*$1$P!"(B4$BIC$G%b%0%i$,>C$($k(B $B$h$&(B
-     $B$K$J$j$^$9!#(B
-     $B$5$i$K!"%b%0%i(B($B$N7j(B)$B$K$O(B4$B$D$N>uBV$,$"$k$H=R$Y$^$7$?$,!"$=$NCf$K!"!VF((B
-     $B$2!W$H!VC!$+$l!W$H$$$&(B2$B$D$N>uBV$,$"$k(B $B$3$H$,%W%l%$463P$N>e$G=EMW$G$9!#(B
-     $B$3$l$i$N>uBV$O!"%/%j%C%/$7$?;~$K$A$g$&$I%b%0%i$,>C$((B $B$?>l9g!"$=$l$,<+J,(B
-     $B$N967b$K$h$k$b$N$J$N$+!";~4V@Z$l$K$h$k$b$N$J$N$+$N6hJL$,$D$+$J$$$3$H$r(B
-     $BKI$0$?$a$KF3F~$7$^$9!#967b$,%R%C%H$7$F$$$?>l9g$O!"!VC!$+$l!W%0%i%U%#%C(B
-     $B%/$K$J$j!"(B $B;~4V@Z$l$,860x$G%b%0%i$,>C$($?>l9g$O!VF($2!W%0%i%U%#%C%/$K$J(B
-     $B$k$H$$$&$h$&$K$9$l$P!"(B $B%W%l%$%d!<$OIT0B$K$J$i$:$K$9$_$^$9!#<B:]$K$=$NIT(B
-     $B0B$rBN83$9$k$?$a$K!"%W%m%0%i%`$r2~B$$7$F!"(B $BC!$$$?%0%i%U%#%C%/$HF($,$7$?(B
-     $B%0%i%U%#%C%/$,>JN,$5$l$F$$$k%P!<%8%g%s$r:n$C$F$_$F$/$@$5$$!#(B $BHs>o$K%W%l(B
-     $B%$$7$K$/$/$J$C$F$$$k$O$:$G$9!#(B
+     これらの値はすべて、ゲーム感覚に影響を与えるパラメータですね。
+     モグラの動作の詳細について考えてみます。 モグラは、一定時間たつと消えま
+     す。消える時間は、 mogtime=40として変数に しました。この値を配列変数
+     mog[][]に入れて、runメソッドの中で 1づつ減らしてゆき、負の値になったら
+     消えるというようにします。最初の設定値では、 0.1秒ごとにゲームの時間が
+     進みますから、最初に40という値を入れておけば、4秒でモグラが消える よう
+     になります。
+     さらに、モグラ(の穴)には4つの状態があると述べましたが、その中に、「逃
+     げ」と「叩かれ」という2つの状態がある ことがプレイ感覚の上で重要です。
+     これらの状態は、クリックした時にちょうどモグラが消え た場合、それが自分
+     の攻撃によるものなのか、時間切れによるものなのかの区別がつかないことを
+     防ぐために導入します。攻撃がヒットしていた場合は、「叩かれ」グラフィッ
+     クになり、 時間切れが原因でモグラが消えた場合は「逃げ」グラフィックにな
+     るというようにすれば、 プレイヤーは不安にならずにすみます。実際にその不
+     安を体験するために、プログラムを改造して、 叩いたグラフィックと逃がした
+     グラフィックが省略されているバージョンを作ってみてください。 非常にプレ
+     イしにくくなっているはずです。
 
 
-     $B$G$O!"%W%m%0%i%`3+;O$G$9!#(B
+     では、プログラム開始です。
 
-     $B$^$:%9%1%k%H%s%W%m%0%i%`$r%3%T!<$7$^$9!#(B $B$=$l$+$i!"@dBP$KI,MW$J(B
-     mouseDown$B$r30B&$@$1=q$$$F$_$^$7$g$&!#(B
-     $B$=$l$+$i!"0lDj;~4V$4$H$K8F$P$l$k(BmoveMogura$B$b=q$$$F$*$-$^$9!#(B
-     run,paint,init,doIt$B$O(B $B%9%1%k%H%s$N$b$N$rN.MQ$7$^$9!#(B
-     $B$3$l$@$1$G%W%m%0%i%`$N30B&$O$@$$$?$$$G$-$^$7$?!#$b$A$m$s!"%W%m%0%i%`$7(B
-     $B$F$$$/(B $B;~$K!"I,MW$K1~$8$F!"MM!9$J%a%=%C%I$dJQ?t$r2C$($F$$$/$3$H$b$?$a$i(B
-     $B$C$F$O$J$j$^$;$s!#(B
-     $BI.<T$O!"0J>e$N%a%=%C%I$K2C$($F!"$"$i$+$8$a(B $B%b%0%i$N(B4$B$D$N>uBV$KBP1~$7$F(B
-     $B$$$k(B 
+     まずスケルトンプログラムをコピーします。 それから、絶対に必要な
+     mouseDownを外側だけ書いてみましょう。
+     それから、一定時間ごとに呼ばれるmoveMoguraも書いておきます。
+     run,paint,init,doItは スケルトンのものを流用します。
+     これだけでプログラムの外側はだいたいできました。もちろん、プログラムし
+     ていく 時に、必要に応じて、様々なメソッドや変数を加えていくこともためら
+     ってはなりません。
+     筆者は、以上のメソッドに加えて、あらかじめ モグラの4つの状態に対応して
+     いる 
 
      putMogura
      missMogura
      yarareMogura
      outMogura
-     $B$N(B4$B$D$N%a%=%C%I$r:n$j$^$7$?!#(B($B$b$A$m$s:G=i$OFbMF$O$"$j$^$;$s!#(B) $B$b$A$m(B
-     $B$sI,$:$3$l$i$N(B4$B$D$N%a%=%C%I$K$7$J$1$l$P$J$i$J$$$H$$$&$3$H$O$"$j$^$;$s!#(B
-     $B9M$($+$?<!Bh$G!"$b$C$H%9%^!<%H$J$d$j$+$?$b$"$k$O$:$G$9!#$3$N%W%m%0%i%`(B
-     $B$O$[$s$N0lNc$@(B $B$H$$$&$3$H$rM}2r$7$F$/$@$5$$!#(B
+     の4つのメソッドを作りました。(もちろん最初は内容はありません。) もちろ
+     ん必ずこれらの4つのメソッドにしなければならないということはありません。
+     考えかた次第で、もっとスマートなやりかたもあるはずです。このプログラム
+     はほんの一例だ ということを理解してください。
 
-     $B$=$l$>$l$N%a%=%C%I$NCf?H(B
+     それぞれのメソッドの中身
 
-     $B$G$O!"%W%m%0%i%`Cf$G;H$C$F$$$kJQ?t$H!"$=$l$>$l$N%a%=%C%I$NCf?H$r2r@b$7(B
-     $B$^$9!#(B $B%W%m%0%i%`$NJ8K!E*$JLL$N@bL@0J30$K$b!"$J$<$=$N%a%=%C%I$r:n$C$?$N(B
-     $B$+!"$J$<$=$N$h$&$J(B $B5-=R$r$9$k$N$+$H$$$&L\E*$r5b$_$H$k$h$&$KCm0U$7$F$/$@(B
-     $B$5$$$M!#(B $B%a%=%C%I$NCf?H$N@bL@$G$O!"%W%m%0%i%`$N%3%a%s%H$J$I$H>H$i$7$"$o(B
-     $B$;$J$,$iFI$s$G$/$@$5$$!#(B
+     では、プログラム中で使っている変数と、それぞれのメソッドの中身を解説し
+     ます。 プログラムの文法的な面の説明以外にも、なぜそのメソッドを作ったの
+     か、なぜそのような 記述をするのかという目的を汲みとるように注意してくだ
+     さいね。 メソッドの中身の説明では、プログラムのコメントなどと照らしあわ
+     せながら読んでください。
 
-       1. $BJQ?t(B
-          $B$3$N%W%m%0%i%`$G;H$C$F$$$kJQ?t$OB?$$$G$9$,!"$9$Y$FI,MW$,$"$C$?$b$N(B
-          $B$G$9!#(B $BBgBN$O%W%m%0%i%`$N%3%a%s%H$H$7$F@bL@$7$F$$$^$9$,!"$b$&>/$7(B
-          $B@bL@$r2C$($^$9!#(B
+       1. 変数
+          このプログラムで使っている変数は多いですが、すべて必要があったもの
+          です。 大体はプログラムのコメントとして説明していますが、もう少し
+          説明を加えます。
              + Thread thread
-               $B$3$N%"%W%l%C%H$O<+H/E*$KF0:n$9$k(B($B2?$bF/$-$+$1$J$/$F$bF0$$$F$$(B
-               $B$k(B)$B$b$N$K(B $B$9$k$?$a$KI,MW$G$9!#(B
+               このアプレットは自発的に動作する(何も働きかけなくても動いてい
+               る)ものに するために必要です。
              + Image double_buffer,Graphics dg
-               $B%*%U%9%/%j!<%s$r;H$C$F!"2hLL$N$A$i$D$-$rKI$.$^$9!#$3$l$O!V$A(B
-               $B$i$D$-KI;_!W$N@a$G(B $B@bL@$7$?DL$j$G$9!#(B
+               オフスクリーンを使って、画面のちらつきを防ぎます。これは「ち
+               らつき防止」の節で 説明した通りです。
              + int cron
-               $B%2!<%`A4BN$N;~4V$r4IM}$7$^$9!#$?$@A}$($F$$$/$@$1$N%+%&%s%?$G(B
-               $B$9!#$3$NJQ?t$r;H$C$F!"(B $B%b%0%i$r=P8=$5$;$kItJ,$O!"5-21$KCM$7$^(B
-               $B$9!#3d$j;;$NM>$j$NE57?E*$J;HMQK!$G$9!#$3$l$O(B doIt$B%a%=%C%I$NCf(B
-               $B$r;2>H$7$F$/$@$5$$!#(B
+               ゲーム全体の時間を管理します。ただ増えていくだけのカウンタで
+               す。この変数を使って、 モグラを出現させる部分は、記憶に値しま
+               す。割り算の余りの典型的な使用法です。これは doItメソッドの中
+               を参照してください。
              + int width,height
-               $B$3$l$O%"%W%l%C%H$NBg$-$5$rBeF~$7$F8e!9$NLr$KN)$F$F$$$^$9!#(B
-               init$B%a%=%C%I(B $B$NCf$G=i4|2=$5$l$F$$$^$9!#(B
+               これはアプレットの大きさを代入して後々の役に立てています。
+               initメソッド の中で初期化されています。
              + final int holesize
-               $B7j$N%5%$%:$G$9!#D9J}7A$K$9$k$J$i!"=D$NBg$-$5$H2#$NBg$-$5$N(B2$B<o(B
-               $BN`$NJQ?t$,I,MW$G$9$,!"(B $B$3$N%2!<%`$G$O@5J}7A$G$9$N$G!"JQ?t$O0l(B
-               $B$D$G(BOK$B$G$9!#@k8@;~$K(B64$B$K=i4|2=$7$F$$$^$9!#(B
+               穴のサイズです。長方形にするなら、縦の大きさと横の大きさの2種
+               類の変数が必要ですが、 このゲームでは正方形ですので、変数は一
+               つでOKです。宣言時に64に初期化しています。
              + final int yokosize,final int tatesize
-               $B7j$N=D2#$N?t$N@_Dj$G$9!#(Bfinal$B$,$D$$$F$$$k$N$O!"%W%m%0%i%`<B9T(B
-               $BCf$K$O(B $BJQ2=$7$J$$$H$$$&0UL#$G$9!#%W%l%$Cf$K@_Dj$rJQ99$G$-$k$h(B
-               $B$&$K$9$k$N$G$"$l$P!"(B final$B$O30$5$J$1$l$P$J$j$^$;$s!#(B
+               穴の縦横の数の設定です。finalがついているのは、プログラム実行
+               中には 変化しないという意味です。プレイ中に設定を変更できるよ
+               うにするのであれば、 finalは外さなければなりません。
              + final int interval
-               $B%2!<%`A4BN$N?J9T$NC10L;~4V$G$9!#$3$N;~4V4V3V(B($B%_%jIC(B)$B$h$j:Y$+(B
-               $B$$%?%$%_%s%0$G$O(B $B%b%0%i$,>C$($?$j=P$?$j$9$k$3$H$O$"$j$^$;$s!#(B
+               ゲーム全体の進行の単位時間です。この時間間隔(ミリ秒)より細か
+               いタイミングでは モグラが消えたり出たりすることはありません。
              + final int mogtime
-               $B%b%0%i$N<wL?$G$9!#$3$N<wL?$O@0?t$G!"(Binterval$BJQ?t$K$h$C$F7h$^(B
-               $B$k(B $B%2!<%`$NC10L;~4V$NC10L?t$G$9!#(Binterval$BJQ?t$NCM$,(B100$B$N>l(B
-               $B9g!"$3$NJQ?t$N(B $BCM$,(B40$B$J$i!"(B40$B!_(B100=4000(ms)$B$D$^$j(B4$BIC$G%b%0%i(B
-               $B$,F($2$k$3$H$K$J$j$^$9!#(B
+               モグラの寿命です。この寿命は整数で、interval変数によって決ま
+               る ゲームの単位時間の単位数です。interval変数の値が100の場
+               合、この変数の 値が40なら、40×100=4000(ms)つまり4秒でモグラ
+               が逃げることになります。
              + final int misstime
-               $B%b%0%i$rF($,$7$?;~$K!"!VF($2!W%0%i%U%#%C%/$,I=<($5$l$F$$$k;~(B
-               $B4V$G$9!#$3$l$b%2!<%`$NC10L(B $B;~4V$NC10L?t$K$J$j$^$9!#(B
+               モグラを逃がした時に、「逃げ」グラフィックが表示されている時
+               間です。これもゲームの単位 時間の単位数になります。
              + final int hittime
-               $B!V$d$i$l!W%0%i%U%#%C%/$NI=<(;~4V$G$9!#C10L$OB>$HF1$8!"C10L;~(B
-               $B4V?t$G$9!#(B
+               「やられ」グラフィックの表示時間です。単位は他と同じ、単位時
+               間数です。
              + final int mogblan
-               $B$3$l$O!"F1$87j$K<!$N%b%0%i$,=P8=$G$-$k$h$&$K$J$k$^$G$N;~4V$G(B
-               $B$9!#$3$l$bC10L;~4V?t$G$9!#(B
+               これは、同じ穴に次のモグラが出現できるようになるまでの時間で
+               す。これも単位時間数です。
              + final int rate
-               $B$3$l$O!"%b%0%i$N=P8=$9$kIQEY$rI=$7$F$$$^$9!#(BdoIt$B%a%=%C%I$NCf(B
-               $B$G$O!"(B $BJQ?t(Bcron$B$r$3$NCM$G3d$C$F(B 0$B$@$C$?>l9g$K=P8=$N=hM}$r$9$k(B
-               $B$H$$$&Iw$K$7$F$$$^$9!#(B
+               これは、モグラの出現する頻度を表しています。doItメソッドの中
+               では、 変数cronをこの値で割って 0だった場合に出現の処理をする
+               という風にしています。
              + final int life_max
-               $B%2!<%`%*!<%P!<$^$G$K5v$5$l$k%_%9$N?t$G$9!#(B
+               ゲームオーバーまでに許されるミスの数です。
              + final int levelunit
-               $B$3$NJQ?t$NCM$N?t$@$1%b%0%i$r$d$C$D$1$k$H!"<!$N%l%Y%k$K?J$_$^(B
-               $B$9!#(B
+               この変数の値の数だけモグラをやっつけると、次のレベルに進みま
+               す。
              + int mog[][] = new int[yokosize][tatesize ]
-               $B$=$l$>$l$N%b%0%i$N(B($B7j$N(B)$B;~4V$r4IM}$7$^$9!#=D!_2#$N7j$N?t$@$1(B
-               $BG[Ns$rMQ0U$7$^$9!#(B
+               それぞれのモグラの(穴の)時間を管理します。縦×横の穴の数だけ
+               配列を用意します。
              + int mogstate[][] = new int[yokosize][tatesize]
-               $B$=$l$>$l$N%b%0%i$N(B($B7j$N(B)$B>uBV$r4IM}$7$^$9!#(Bmog[][]$B$HF1$8Bg$-$5(B
-               $B$N(B $BG[Ns$G$9!#(B
+               それぞれのモグラの(穴の)状態を管理します。mog[][]と同じ大きさ
+               の 配列です。
              + final int ALIVE = 1;
                final int MISS = 2;
                final int HIT = 3;
                final int OUT = 0;
 
-               $BG[NsJQ?t(Bmogstate[][]$B$K$O!"$3$l$i$NCM$N$I$l$+$,F~$C$F$$$F!"(B $B$3(B
-               $B$l$i$NJQ?t$HHf3S$9$l$P!"%b%0%i$N>uBV$,$o$+$k$h$&$K$J$C$F$$$^(B
-               $B$9!#$3$N$h$&$K(B $B$=$l$>$l$NDj?t$KL>A0$r$D$1$F$*$/$H!"%W%m%0%i%`(B
-               $BCf$K(B0$B$H$+(B2$B$J$I$H$$$C$?CM$rKd$a(B $B$3$s$G$*$/$h$j$bM}2r$7$d$9$/!"(B
-               $B%G%P%C%0$7$d$9$$%W%m%0%i%`$K$J$j$^$9!#(B
+               配列変数mogstate[][]には、これらの値のどれかが入っていて、 こ
+               れらの変数と比較すれば、モグラの状態がわかるようになっていま
+               す。このように それぞれの定数に名前をつけておくと、プログラム
+               中に0とか2などといった値を埋め こんでおくよりも理解しやすく、
+               デバッグしやすいプログラムになります。
              + int score,level,life, hitno
-               $B$=$l$>$l!"E@?t!"%l%Y%k!";D$j%_%9!"$d$C$D$1$??t$G$9!#(B
+               それぞれ、点数、レベル、残りミス、やっつけた数です。
              + MediaTracker mt
-               $B2hA|%m!<%I$K;H$$$^$9!#%2!<%`$,;O$^$C$F$b2hA|$,40@.$7$F$$$J(B
-               $B$$!"$H$$$&$3$H$,$J$$$h$&$K(B $B$9$k$?$a$G$9!#>\$7$/$O!"!V2hA|%m!<(B
-               $B%I$N%a%+%K%:%`!W$r;2>H$7$F$/$@$5$$!#(B
+               画像ロードに使います。ゲームが始まっても画像が完成していな
+               い、ということがないように するためです。詳しくは、「画像ロー
+               ドのメカニズム」を参照してください。
              + Image aliveimg,Image hitimg
-               $B%b%0%i$,=P8=$7$F$$$k;~$N2hA|$H!"!V$d$i$l!W>uBV$N2hA|$rF~$l$F(B
-               $B$*$-$^$9!#07$&2hA|(B $B$N<oN`$,B?$$>l9g$O!"(BImage images[] = new
-               Image[$B?t(B]$B$H$$$&$h$&$K$7$F(B $BG[NsJQ?t$K$7$F4IM}$9$k$N$b$h$$$+$b(B
-               $B$7$l$^$;$s!#$3$3$G$O(B2$B<oN`$7$+$J$$$N$GIaDL$N(B $BJQ?t$K$7$F$$$^(B
-               $B$9!#(B
+               モグラが出現している時の画像と、「やられ」状態の画像を入れて
+               おきます。扱う画像 の種類が多い場合は、Image images[] = new
+               Image[数]というようにして 配列変数にして管理するのもよいかも
+               しれません。ここでは2種類しかないので普通の 変数にしていま
+               す。
              + AudioClip hitsound,hellosound
-               $B$=$l$>$l!"(B $BC!$$$?;~$N2;$H=P$F$/$k;~$N2;$rF~$l$F$*$-$^$9!#$3$l(B
-               $B$O(BJDK$B$N%G%b$K$D$$$F$$$k2;$G$9!#(B
+               それぞれ、 叩いた時の音と出てくる時の音を入れておきます。これ
+               はJDKのデモについている音です。
              + int mode
-               $B%2!<%`$N%b!<%I$G$9!#%2!<%`$N%b!<%I$K$O<!$NCM$rF~$l$^$9!#(B
+               ゲームのモードです。ゲームのモードには次の値を入れます。
 
                final int TITLE= 1;
                final int GAME = 2;
                final int GAMEOVER = 3;
 
-               $B%2!<%`$N?J9T$O!"(B
-               $B=i4|2=(B -> $B%?%$%H%k(B -> $B%2!<%`(B -> $B%2!<%`%*!<%P!<(B -> $B%?%$%H%k$K(B
-               $BLa$k(B
-               $B$H$$$&$h$&$K$J$C$F$$$^$9$,!"$=$l$>$l$N%b!<%I$KBP1~$7$F$$$^(B
-               $B$9!#%9%1%k%H%s%W%m%0%i%`$O(B run$B%a%=%C%I$NCf$,$G$-$k$@$1C1=c$K(B
-               $B$J$k$h$&$K$J$C$F$$$^$9$,!"$=$N$h$&$J(B $B9=B$$N$^$^>e$N$h$&$J%b!<(B
-               $B%I$r<B8=$9$k$?$a$K!"(Bmode$BJQ?t$rF3F~$7$?$o$1$G$9!#(B $B$3$&$J$C$F$$(B
-               $B$k$H!"%2!<%`%W%l%$Cf$G$b!"(Bmode$B$KCM$rBeF~$9$k$@$1$G%?%$%H%k$K(B
-               $BLa$C$?$j!"$H$$$C$?$3$H$,4JC1$K$G$-$^$9!#$"$k%-!<$r2!$9$H%?%$(B
-               $B%H%k$KLa$k!"$H$$$&$h$&$J5!G=(B $B$r2~B$$7$FIU$1$F$_$F$/$@$5$$!#(B
+               ゲームの進行は、
+               初期化 -> タイトル -> ゲーム -> ゲームオーバー -> タイトルに
+               戻る
+               というようになっていますが、それぞれのモードに対応していま
+               す。スケルトンプログラムは runメソッドの中ができるだけ単純に
+               なるようになっていますが、そのような 構造のまま上のようなモー
+               ドを実現するために、mode変数を導入したわけです。 こうなってい
+               ると、ゲームプレイ中でも、modeに値を代入するだけでタイトルに
+               戻ったり、といったことが簡単にできます。あるキーを押すとタイ
+               トルに戻る、というような機能 を改造して付けてみてください。
 
        2. public void init()
-          $B$3$N%a%=%C%I$N%]%$%s%H$O(B
+          このメソッドのポイントは
 
-            1. size()$B$r;H$C$F%"%W%l%C%H$N%5%$%:$r5-21$9$k(B($B%9%1%k%H%sDL$j(B)
-            2. Thread(this)$B$H(Bthread.start()$B$K$h$j!"%9%l%C%I$r=i4|2=$9$k(B($B%"%K(B
-               $B%a!<%7%g%s$9$k(B $B%"%W%l%C%H$G$OI,?\!#%9%1%k%H%sDL$j(B)
-            3. createImage(width,height)$B$r;H$C$F%*%U%9%/%j!<%s%$%a!<%8(B($B%@%V(B
-               $B%k%P%C%U%!(B)$B$r:n$k(B($B%9%1%k%H%sDL$j(B)
-            4. fillRect()$B$G:n$C$?%@%V%k%P%C%U%!$r9u$/EI$k(B
-            5. getImage()$B$7$?8e!"(BMediaTracker$B%/%i%9$KEPO?$9$k$3$H$K$h$j!"2h(B
-               $BA|$r%m!<%I$9$k(B
-            6. getAudioClip()$B$7$F!"2;@<$r%m!<%I$9$k(B
-            7. mode$B$r(BTITLE$B$K%;%C%H$9$k(B
+            1. size()を使ってアプレットのサイズを記憶する(スケルトン通り)
+            2. Thread(this)とthread.start()により、スレッドを初期化する(アニ
+               メーションする アプレットでは必須。スケルトン通り)
+            3. createImage(width,height)を使ってオフスクリーンイメージ(ダブ
+               ルバッファ)を作る(スケルトン通り)
+            4. fillRect()で作ったダブルバッファを黒く塗る
+            5. getImage()した後、MediaTrackerクラスに登録することにより、画
+               像をロードする
+            6. getAudioClip()して、音声をロードする
+            7. modeをTITLEにセットする
 
-          $B>e5-$N$h$&$J=hM}$N2t$K$o$1$k$3$H$,$G$-$^$9!#$=$l$>$l$O!"JL$N@a$G@b(B
-          $BL@$7$?$3$H$NAH$_$"$o$;$K$J$C$F$$$^$9$N$G!"(B $BFC$KLdBj$O$J$$$G$7$g(B
-          $B$&!#Cm0UE@$H$7$F$O!"(BgetImage$B$d(BgetAudioClip$B$G%m!<%I$9$k(B $B%U%!%$%k(B
-          $B$O!"%"%W%l%C%H$N%/%i%9%U%!%$%k$,CV$+$l$F$$$k$N$HF1$8%G%#%l%/%H%j(B
-          ($B%U%)%k%@(B)$B$KCV$$$F$*$/(B $B$3$H$,I,MW$G$9!#$=$&$G$J$$$H!"2;$O=P$J$$(B
-          $B$7!"2hA|$b??$C9u(B($BGr$N>l9g$b$"$k(B)$B$K$J$C$F$7$^$$$^$9!#(B($B%(%i!<$O=P$J(B
-          $B$$(B)
+          上記のような処理の塊にわけることができます。それぞれは、別の節で説
+          明したことの組みあわせになっていますので、 特に問題はないでしょ
+          う。注意点としては、getImageやgetAudioClipでロードする ファイル
+          は、アプレットのクラスファイルが置かれているのと同じディレクトリ
+          (フォルダ)に置いておく ことが必要です。そうでないと、音は出ない
+          し、画像も真っ黒(白の場合もある)になってしまいます。(エラーは出な
+          い)
        3. public void paint(Graphics g)
-          $B%9%1%k%H%s$=$N$^$^$G$9!#(B
+          スケルトンそのままです。
        4. public void update(Graphics g)
-          $B%9%1%k%H%s$=$N$^$^$G$9!#(B
+          スケルトンそのままです。
        5. public void run()
-          $B$3$N%a%=%C%I$b%9%1%k%H%s$=$N$^$^$G$9!#(B
+          このメソッドもスケルトンそのままです。
        6. void doIt()
-          $BIA2h$O$9$Y$F$3$N%a%=%C%I$NCf$G9T$o$l$^$9!#(B mode$B$NCM$K$h$jBg$-$/(B3$B$D(B
-          $B$NItJ,$KJ,$+$l$^$9!#(B if$BJ8$NCf?H$r>JN,$9$k$H<!$N$h$&$K$J$C$F$$$^(B
-          $B$9!#(B
+          描画はすべてこのメソッドの中で行われます。 modeの値により大きく3つ
+          の部分に分かれます。 if文の中身を省略すると次のようになっていま
+          す。
 
           if( mode == TITLE ) {
           } else if( mode == GAME ){
           } else if( mode == GAMEOVER ){
           }
 
-            1. mode == TITLE $B$N;~(B
-               $BKh2s%*%U%9%/%j!<%s$r9u$G>C5n$7!"$=$N>e$K%?%$%H%k$NJ8;z$rI=<((B
-               $B$7$F$$$^$9!#(BGraphics$B%/%i%9$N(B $B4pK\E*$JIA2h%a%=%C%I$r;HMQ$7$F$$(B
-               $B$^$9$N$G!"LdBj$O$J$$$O$:$G$9!#$3$3$K%?%$%H%k2hLLMQ$N2hA|$r(B
-               dg.drawImage $B$J$I$H$9$l$P!"N)GI$J%?%$%H%k2hLL$r:n$k$3$H$,$G$-(B
-               $B$^$9!#$3$NNc$G$OJ8;z$@$1$K$J$C$F$$$^$9!#(B
+            1. mode == TITLE の時
+               毎回オフスクリーンを黒で消去し、その上にタイトルの文字を表示
+               しています。Graphicsクラスの 基本的な描画メソッドを使用してい
+               ますので、問題はないはずです。ここにタイトル画面用の画像を
+               dg.drawImage などとすれば、立派なタイトル画面を作ることができ
+               ます。この例では文字だけになっています。
 
-            2. mode == GAME $B$N;~(B
-               $B$3$N%a%=%C%I$N=hM}$O!"(B
-                 1. $B%b%0%i$r=P8=$5$;$k!#(B
-                 2. $B%b%0%i$rF0$+$9(B($B<wL?$r=L$a$k(B)
-                 3. $B%2!<%`%*!<%P!<$NH=Dj$r$9$k!#(B
-                 4. $B;(I=<((B
-               $B0J>e$N(B4$B$D$NItJ,$KJ,$1$k$3$H$,$G$-$^$9!#%b%0%i$r=P8=$5$;$kItJ,(B
-               $B$G$O!"KhC10L;~4V$4$H$KA}$($k(Bint$B$N(B $BJQ?t(Bcron$B$r(Brate$B$G3d$C$?M>$j(B
-               $B$r(B0$B$HHf3S$9$k$3$H$K$h$C$F!"%b%0%i$N=P8=%?%$%_%s%0$r7h$a$F(B $B$$(B
-               $B$^$9!#(Brate$B$NCM$,@5$G>.$5$$$[$I!"3d$j;;$NM>$j$,(B0$B$K$J$kIQEY$,9b(B
-               $B$/$J$k$N$G!"%b%0%i$N=P8=IQEY$b(B $B9b$/$J$j$^$9!#$3$N5;$O!"0lDj<~(B
-               $B4|$GJ*;v$r5/$3$9$K$OBgJQJXMx$G$o$+$j$d$9$$J}K!$G$9!#(B
+            2. mode == GAME の時
+               このメソッドの処理は、
+                 1. モグラを出現させる。
+                 2. モグラを動かす(寿命を縮める)
+                 3. ゲームオーバーの判定をする。
+                 4. 雑表示
+               以上の4つの部分に分けることができます。モグラを出現させる部分
+               では、毎単位時間ごとに増えるintの 変数cronをrateで割った余り
+               を0と比較することによって、モグラの出現タイミングを決めて い
+               ます。rateの値が正で小さいほど、割り算の余りが0になる頻度が高
+               くなるので、モグラの出現頻度も 高くなります。この技は、一定周
+               期で物事を起こすには大変便利でわかりやすい方法です。
 
                if( ( cron % rate ) == 0 ){
                        int kazu;
@@ -715,33 +715,33 @@ File name: test.html
                        }
                }
 
-               $B$b$&$R$H$D$3$NItJ,$G=EMW$J$N$O!"(BRandom$B%/%i%9$N;H$$$+$?$G$9!#(B
-               Random$B%/%i%9$O(B $BMp?t$rF@$k$?$a$N%/%i%9$G!"(BnextInt()$B$H$$$&%a%=(B
-               $B%C%I$r8F$S$@$9$H!"?7$7$$(Bint $B7?$N%i%s%@%`$JCM$rF@$k$3$H$,$G$-(B
-               $B$^$9!#(BnextInt$B$O!"(B-2147483648$B$+$i(B2147483647$B$^$G$NCM$r(B $BJV$7$^(B
-               $B$9!#$3$3$G$O$3$N%i%s%@%`CM$r!"F1;~$K%b%0%i$r$$$/$D=P8=$5$;$k(B
-               $B$+$r7h$a$k$?$a$K;H$C$F$$$^$9!#%l%Y%k$,(B $B>e>:$7$F$b=P8=$NIQEY$O(B
-               $BJQ2=$7$^$;$s$+$i!"F1;~$K=P$k?t$rA}$d$9$3$H$K$h$C$FFqEY$r>e>:(B
-               $B$5$;$h$&$H$7$F$$$k(B $B$N$G$9!#$^$:Ii$NCM$G$J$/$9$k$?$a$K!"(Bkazu$B$K(B
-               $B$O!"(BnextInt()$B$NJV$jCM$K(B255$B$r%"%s%I(B $B1i;;$7$FF@$i$l$kCM$rBeF~$7(B
-               $B$F$$$^$9!#(Bkazu$B$K$O!"(B0$B$+$i(B255$B$^$G$NCM$,F~$j$^$9!#$J$<%"%s%I1i(B
-               $B;;$G$=$N(B $B$h$&$JHO0O$NCM$,F@$i$l$k$N$+$r<!$N?^$G<($7$^$9!#(B
+               もうひとつこの部分で重要なのは、Randomクラスの使いかたです。
+               Randomクラスは 乱数を得るためのクラスで、nextInt()というメソ
+               ッドを呼びだすと、新しいint 型のランダムな値を得ることができ
+               ます。nextIntは、-2147483648から2147483647までの値を 返しま
+               す。ここではこのランダム値を、同時にモグラをいくつ出現させる
+               かを決めるために使っています。レベルが 上昇しても出現の頻度は
+               変化しませんから、同時に出る数を増やすことによって難度を上昇
+               させようとしている のです。まず負の値でなくするために、kazuに
+               は、nextInt()の返り値に255をアンド 演算して得られる値を代入し
+               ています。kazuには、0から255までの値が入ります。なぜアンド演
+               算でその ような範囲の値が得られるのかを次の図で示します。
 
-#$B?^(B5.3-3 <NOT YET>               $B%S%C%H1i;;(B
+#図5.3-3 <NOT YET>               ビット演算
 
 
-               0$B$+$i(B255$B$^$G$NHO0O$K9J$i$l$?$i!":#EY$O$5$i$K(B0$B$+$i(Blevel$B$^$G$N(B
-               $BCM$K$9$k$?$a$K!"$^$?(B%($B>jM>5-9f(B) $B$r;H$C$F$$$^$9!#(B%$B$OK\Ev$K?'!9(B
-               $B$K;H$($k$H$$$&$3$H$,$o$+$k$H;W$$$^$9!#(B $B$"$H$O!"0lI$$N%b%0%i$r(B
-               $B=P8=$5$;$k$?$a$N(BputMogura$B$r!"(Bfor$B%k!<%W$r;H$C$F@h$[$I7h$a$?(B $B2s(B
-               $B?t$@$17+$j$+$($7$^$9!#$3$l$G!"%l%Y%k$K1~$8$FA}2C$9$k%b%0%i$r(B
-               $B<B8=$9$k$3$H$,$G$-$^$7$?!#(B
+               0から255までの範囲に絞られたら、今度はさらに0からlevelまでの
+               値にするために、また%(剰余記号) を使っています。%は本当に色々
+               に使えるということがわかると思います。 あとは、一匹のモグラを
+               出現させるためのputMoguraを、forループを使って先ほど決めた 回
+               数だけ繰りかえします。これで、レベルに応じて増加するモグラを
+               実現することができました。
 
-               $B<!$K%b%0%i$rF0$+$9ItJ,$G$9!#$3$3$G$N%]%$%s%H$O!"$I$N%b%0%i$b(B
-               $B0lDj;~4V2hLL$K8=$l$?8e$K$OF($2$k$H$$$&$3$H(B $B$G$9!#$3$&$$$&>l9g(B
-               $B$O$=$l$>$l$N%b%0%i$K$H$C$F$N<wL?$,Ey$7$/8:$C$F$$$/$h$&$K$9$l(B
-               $B$P!"(B $B$3$l$r<B8=$G$-$^$9!#<wL?$rEy$7$/8:$i$9ItJ,$N%3!<%I$O<!$N(B
-               $B$h$&$K$J$C$F$$$^$9!#(B(moveMogura$B%a%=%C%I$N(B $BCf?H$G$9!#(B
+               次にモグラを動かす部分です。ここでのポイントは、どのモグラも
+               一定時間画面に現れた後には逃げるということ です。こういう場合
+               はそれぞれのモグラにとっての寿命が等しく減っていくようにすれ
+               ば、 これを実現できます。寿命を等しく減らす部分のコードは次の
+               ようになっています。(moveMoguraメソッドの 中身です。
 
 ------------------------------------------------------------
 for(int i = 0 ; i < tatesize ; i++){
@@ -758,17 +758,17 @@ for(int i = 0 ; i < tatesize ; i++){
 }
 ------------------------------------------------------------
 
-               2$B<!85G[Ns$NCf?H$r$9$Y$F8:;;$9$k$?$a$K!"(B2$B=E$N%k!<%W$rAH$s$G$$(B
-               $B$^$9!#$=$7$F(Bmog[j][i]--; $B$H$$$&%3!<%I$G(B1$B8:$i$7$F$$$^$9!#(B1$B$r8:(B
-               $B$i$7$?7k2L!"<wL?$,@Z$l$?(B($BCM$,Ii$K$J$C$?(B)$B>l9g$O>C$9=hM}$r(B $B$9$k(B
-               $B$?$a$K(BoutMogura(...)$B$r8F$S$^$9!#Ii$K$J$i$J$/$F$b!"<wL?$NCM(B
-               $B$,!"F($2$k%?%$%_%s%0$K(B $B@_Dj$5$l$?CM(B(misstime)$B$K$J$l$P!";D$j$N(B
-               life$B$r8:$i$7$F!VF($2%0%i%U%#%C%/!W(B $B$rI=<($9$k=hM}$r8F$S$@$7$^(B
-               $B$9!#(B
+               2次元配列の中身をすべて減算するために、2重のループを組んでい
+               ます。そしてmog[j][i]--; というコードで1減らしています。1を減
+               らした結果、寿命が切れた(値が負になった)場合は消す処理を する
+               ためにoutMogura(...)を呼びます。負にならなくても、寿命の値
+               が、逃げるタイミングに 設定された値(misstime)になれば、残りの
+               lifeを減らして「逃げグラフィック」 を表示する処理を呼びだしま
+               す。
 
-               $B<!$K%2!<%`%*!<%P!<$NH=Dj$G$9!#$3$N%2!<%`$G$O!"%2!<%`%*!<%P!<(B
-               $B$N%k!<%k$O!";D$j%i%$%U$,$J$/$J$C$?;~(B $B$H$$$&$3$H$G$7$?$N$G$=$l(B
-               $B$r$=$N$^$^%W%m%0%i%`$K$9$k$H<!$N$h$&$K$J$j$^$9!#(B
+               次にゲームオーバーの判定です。このゲームでは、ゲームオーバー
+               のルールは、残りライフがなくなった時 ということでしたのでそれ
+               をそのままプログラムにすると次のようになります。
 
 ------------------------------------------------------------
 if( life < 0 ){
@@ -776,94 +776,94 @@ if( life < 0 ){
 }
 ------------------------------------------------------------
 
-               $B%W%l%$Cf$N%b!<%I$+$i!"%2!<%`%*!<%P!<$N%b!<%I$K0\9T$9$k$@$1$G(B
-               $B$9!#$3$l$,<B9T$5$l$?0J9_$O!"(BdoIt $B%a%=%C%I$NCf$G$O!"(BGAMEOVER$B%b(B
-               $B!<%I$N=j$@$1$,<B9T$5$l$k$h$&$K$J$j$^$9!#(B
-               $B;D$j$NItJ,$G$O!"%W%l%$%d!<$K$H$C$FLr$K$?$D>pJs$rI=<($7$F$$$^(B
-               $B$9!#$3$l$i$O%W%m%0%i%`$r8+$?J}$,(B $B$o$+$j$d$9$$$G$7$g$&!#%]%$%s(B
-               $B%H$O!"9u$$EI$j$D$V$7$N;M3Q$G!"A0$KIA$$$?J8;z$r>C$7$F$$$k(B $B$H$3(B
-               $B$m$G$9!#$3$&$7$J$$$HLLGr$$$3$H$K$J$C$F$7$^$$$^$9!#(B
+               プレイ中のモードから、ゲームオーバーのモードに移行するだけで
+               す。これが実行された以降は、doIt メソッドの中では、GAMEOVERモ
+               ードの所だけが実行されるようになります。
+               残りの部分では、プレイヤーにとって役にたつ情報を表示していま
+               す。これらはプログラムを見た方が わかりやすいでしょう。ポイン
+               トは、黒い塗りつぶしの四角で、前に描いた文字を消している とこ
+               ろです。こうしないと面白いことになってしまいます。
 
-            3. mode == GAMEOVER $B$N;~(B
-               $B%2!<%`%*!<%P!<$NI=<($@$1$r9T$C$F$$$^$9!#(B
+            3. mode == GAMEOVER の時
+               ゲームオーバーの表示だけを行っています。
 
        7. void moveMogura()
 
-          doIt$B%a%=%C%I$N=j$G@bL@$7$F$$$^$9!#$=$A$i$r;2>H$7$F$/$@$5$$!#(B
-          moveMogura$B$O(B $B0l2U=j$G$7$+8F$S$@$5$l$F$$$J$$$N$G!"$o$6$o$6%a%=%C%I(B
-          $B$K$9$kI,MW$O$"$j$^$;$s$,!"%W%m%0%i%`$r8+$d$9$/(B $B$9$k$?$a$K$3$&$7$F(B
-          $B$$$^$9!#(B
+          doItメソッドの所で説明しています。そちらを参照してください。
+          moveMoguraは 一箇所でしか呼びだされていないので、わざわざメソッド
+          にする必要はありませんが、プログラムを見やすく するためにこうして
+          います。
 
        8. void putMogura()
 
-          $B%b%0%i$r0lI$?7$7$/EP>l$5$;$^$9!#0LCV$r7h$a$k$H$-$K!"A0=R$7$?(BRandom
-          $B$r;H$C$F$$$^$9!#(B $BJQ?t(Btate$B$H(Byoko$B$K!"EP>l$5$;$?$$0LCV$r5a$a$^$9!#$H(B
-          $B$3$m$,!"%W%l%$%d!<(B $B$r:.Mp$5$;$J$$$?$a$K!"!V>C$($F$+$i0lDj;~4V$OEP(B
-          $B>l$5$;$J$$!W$H$$$&%k!<%k$rF3F~$7$F$$$^$9$+$i!"(B if( mog[yoko][tate]
-          > -mogblank ) return;$B$H$$$&%3!<%I$G$b$C$F$=$N=hM}$r$7$F$$$^$9!#(B $B$3(B
-          $B$N%3!<%I$O!"%b%0%i$N<wL?$,Ii$K$J$C$F$b$^$@8:$C$F$$$/$H$$$&$3$H$r;H(B
-          $B$C$F!"%b%0%i$N7j$N;~4V(B $B$,(Bmogblank*-1$B$h$jBg$-$$>l9g$OEP>l$5$;$J$$(B
-          (return$B$7$F8e$m$r<B9T$7$J$$(B) $B$h$&$K$7$F$$$^$9!#(B
+          モグラを一匹新しく登場させます。位置を決めるときに、前述したRandom
+          を使っています。 変数tateとyokoに、登場させたい位置を求めます。と
+          ころが、プレイヤー を混乱させないために、「消えてから一定時間は登
+          場させない」というルールを導入していますから、 if( mog[yoko][tate]
+          > -mogblank ) return;というコードでもってその処理をしています。 こ
+          のコードは、モグラの寿命が負になってもまだ減っていくということを使
+          って、モグラの穴の時間 がmogblank*-1より大きい場合は登場させない
+          (returnして後ろを実行しない) ようにしています。
 
        9. void outMogura(int x , int y)
 
-          $B%b%0%i$N>uBV$r(BMISS$B$^$?$O(BHIT$B$+$i!"(BOUT$B$N>uBV$KJQ99$7!"(B $B$=$l$KH<$C$F(B
-          $BI=<($bJQ2=$5$;$F$$$^$9!#I=<($K4X$7$F$O%W%m%0%i%`$r8+$l$P$o$+$k$O$:(B
-          $B$G$9!#(B
+          モグラの状態をMISSまたはHITから、OUTの状態に変更し、 それに伴って
+          表示も変化させています。表示に関してはプログラムを見ればわかるはず
+          です。
 
       10. void missMogura(int x , int y)
-          outMogura$B$H$[$H$s$IF1$8$h$&$J%3!<%I$G$9$M!#F($,$7$?$i(BMiss $B$H$$$&J8(B
-          $B;z$rI=<($7$^$9!#(B $B$3$N%a%=%C%I$K$h$C$F!"%b%0%i$N7j$N>uBV$O!"(BALIVE$B$N(B
-          $B>uBV$+$i!"(BMISS$B$N>uBV$K(B $BJQ2=$7$^$9!#(B
+          outMoguraとほとんど同じようなコードですね。逃がしたらMiss という文
+          字を表示します。 このメソッドによって、モグラの穴の状態は、ALIVEの
+          状態から、MISSの状態に 変化します。
 
       11. void yarareMogura(int x , int y)
-          $B$3$l$b(BoutMogura$B$HF1$8$h$&$J%3!<%I$G$9!#$3$l$i(B3$B$D$O!"$I$&$K$+$7$F$^(B
-          $B$H$a$F$7$^$&$3$H$,(B $B$G$-$k$+$b$7$l$^$;$s!#%b%0%i$N7j$N>uBV$O!"(BALIVE
-          $B$N>uBV$+$i!"(BHIT$B$N>uBV(B $B$KJQ2=$7$^$9!#(B
+          これもoutMoguraと同じようなコードです。これら3つは、どうにかしてま
+          とめてしまうことが できるかもしれません。モグラの穴の状態は、ALIVE
+          の状態から、HITの状態 に変化します。
 
       12. public boolean mouseDown(Event e , int x , int y )
-          $B$3$N%a%=%C%I$b!"(BdoIt$B%a%=%C%I$N$h$&$K!"%2!<%`$N%b!<%I$K$h$C$F(B3$B$D$K(B
-          $BJ,$+$l$F$$$^$9!#(B
+          このメソッドも、doItメソッドのように、ゲームのモードによって3つに
+          分かれています。
 
-      13. mode==TITLE$B$N;~(B
-          $B%?%$%H%k2hLL%b!<%I$G$O!"(B1$B2s$G$b%^%&%9$,2!$5$l$?$i%2!<%`$,;O$^$j$^(B
-          $B$9!#(B $B$3$N%a%=%C%I$N$3$NItJ,$b(B1$B%2!<%`$"$?$j(B1$B2s$@$1$N<B9T$K$J$k$N(B
-          $B$G!"%b%0%i$N7j$N=i4|2=$r9T$$$^$9!#(B 2$B=E%k!<%W$r;H$C$F$9$Y$F$N%b%0%i(B
-          $B$N7j$N>uBV$r(BOUT$B$K$7!";~4V$r(B0$B$K@_Dj$7$^$9!#(B
+      13. mode==TITLEの時
+          タイトル画面モードでは、1回でもマウスが押されたらゲームが始まりま
+          す。 このメソッドのこの部分も1ゲームあたり1回だけの実行になるの
+          で、モグラの穴の初期化を行います。 2重ループを使ってすべてのモグラ
+          の穴の状態をOUTにし、時間を0に設定します。
 
-      14. mode==GAME$B$N;~(B
-          $B%2!<%`Cf$O%^%&%9$r%/%j%C%/$9$k$3$H$O%b%0%i$KBP$9$k967b$N0UL#$K$J$j(B
-          $B$^$9$+$i!"$^$:%W%l%$%d!<$,(B $B$I$N%b%0%i$rC!$$$?$N$+$rD4$Y$^$9!#(B
-          mouseDown$B%a%=%C%I$G$O!"JQ?t(Bx$B$HJQ?t(By $B$K!"%^%&%9%/%j%C%/$N0LCV$rF@$k(B
-          $B$3$H$,$G$-$^$9$+$i!"$=$l$r7j$NHV9f$KD>$9$?$a$K!"$=$l$>$l(Bholesize
-          $B$G3d$C$F$$$^$9!#0lHL$K$3$N$h$&$J%^%9L\$NHV9f$r$b$C$H:Y$+$$C10L$N0L(B
-          $BCV$+$iF@$?$$>l9g$K$O!"%^%9$NBg$-$5(B $B$rI=$9Dj?t$G3d$k$3$H$K$h$C$FF@(B
-          $B$k$3$H$,$G$-$^$9!#(B
-          $B<!$K!"C!$$$?BP>]$N7j$K!"@8$-$F$$$k>uBV$N%b%0%i$,=P$F$$$k$+$I$&$+$r(B
-          $BD4$Y$^$9!#$=$l$K$O(Bif$B$N>r7o(B $B$NCf$K!"(Bmogstate[yoko][tate] == ALIVE$B$r(B
-          $B4^$a$l$P$$$$$@$1$G$9!#(B $B0J>e$G!"%b%0%i$r$d$C$D$1$k>r7o$NH=CG$O$G$-(B
-          $B$^$7$?!#$"$H$O@h$[$I>R2p$7$?(ByarareMogura$B$r8F$S$@$7$F(B $B!V$d$i$l!W>u(B
-          $BBV$N%b%0%i$rI=<($7!"E@?t$r2C;;$7!"2;$r=P$9$@$1$G$9!#(B
-          $B%l%Y%k$r>e>:$5$;$kItJ,$G$O!"$^$?$^$?>jM>1i;;;R(B"%"$B$r;H$C$F$$$^$9!#(B
+      14. mode==GAMEの時
+          ゲーム中はマウスをクリックすることはモグラに対する攻撃の意味になり
+          ますから、まずプレイヤーが どのモグラを叩いたのかを調べます。
+          mouseDownメソッドでは、変数xと変数y に、マウスクリックの位置を得る
+          ことができますから、それを穴の番号に直すために、それぞれholesize
+          で割っています。一般にこのようなマス目の番号をもっと細かい単位の位
+          置から得たい場合には、マスの大きさ を表す定数で割ることによって得
+          ることができます。
+          次に、叩いた対象の穴に、生きている状態のモグラが出ているかどうかを
+          調べます。それにはifの条件 の中に、mogstate[yoko][tate] == ALIVEを
+          含めればいいだけです。 以上で、モグラをやっつける条件の判断はでき
+          ました。あとは先ほど紹介したyarareMoguraを呼びだして 「やられ」状
+          態のモグラを表示し、点数を加算し、音を出すだけです。
+          レベルを上昇させる部分では、またまた剰余演算子"%"を使っています。
 
-      15. mode==GAMEOVER$B$N;~(B
-          $B%^%&%9$,2!$5$l$?$i%?%$%H%k%b!<%I$K0\9T$7$^$9!#(B
-     $B$$$+$,$G$7$?$+!)%^%&%9$r;HMQ$9$k%?%$%W$N%2!<%`$N$&$AE57?E*$J$b$N$N0l$D(B
-     $B$K$3$N%b%0%i(B $BC!$-$,$"$j$^$9!#>.$5$J%2!<%`$J$,$iMM!9$JMWAG$r;}$C$F$$$^$7(B
-     $B$?!#(B
+      15. mode==GAMEOVERの時
+          マウスが押されたらタイトルモードに移行します。
+     いかがでしたか？マウスを使用するタイプのゲームのうち典型的なものの一つ
+     にこのモグラ 叩きがあります。小さなゲームながら様々な要素を持っていまし
+     た。
 
 
 
-5.4 $B%9%M!<%/%2!<%`(B
+5.4 スネークゲーム
 
-     $B$5$F!"<!$K5s$2$k%2!<%`$O!"E57?E*$J!V%9%M!<%/%2!<%`!W$G$9!#(B $B<+J,$,D9$/(B
-     $B@8$-$N$3$k$H!"$I$s$I$sD9$/$J$C$F$f$-!":G8e$K(B
-     $B<+J,<+?H$KEv$?$k$H(B $B%2!<%`%*!<%P!<$K$J$C$F$7$^$&$H$$$&C1=c$J%2!<%`$G$9!#(B
-     $B$I$l$@$1D9$/$G$-$k$+$r(B $B6%$$$^$9!#$3$NNc$G$O0lDj;~4V$4$H$KD9$/$J$C$F$$$/(B
-     $B$H$$$&Iw$K@_Dj$7$F$$$^$9!#(B $B%9%M!<%/$O;_$^$k$3$H$,$G$-$^$;$s!#$^$?!"1&$K(B
-     $B6J$k$+:8$K6J$k$+!"$H$$$&(B $BA`:n$7$+$G$-$^$;$s!#(B $B$3$NNc$G<($7$?$$$N$O!"(B
-     $B!V1s$$5-21$OG[Ns$r;H$(!W$H!"!V2sE>7O!W$G$9!#(B $B%9%M!<%/$N?,Hx$N%W%m%0(B
-     $B%i%`$H!"%-!<A`:n$N=hM}$,%O%$%i%$%H$G$9!#(B
+     さて、次に挙げるゲームは、典型的な「スネークゲーム」です。 自分が長く
+     生きのこると、どんどん長くなってゆき、最後に
+     自分自身に当たると ゲームオーバーになってしまうという単純なゲームです。
+     どれだけ長くできるかを 競います。この例では一定時間ごとに長くなっていく
+     という風に設定しています。 スネークは止まることができません。また、右に
+     曲るか左に曲るか、という 操作しかできません。 この例で示したいのは、
+     「遠い記憶は配列を使え」と、「回転系」です。 スネークの尻尾のプログ
+     ラムと、キー操作の処理がハイライトです。
 
 
 File name: snake.java
@@ -875,13 +875,13 @@ import java.util.*;
 
 public class snake extends Applet implements Runnable
 {
-	Thread thread;		// $B$3$N$"$?$j$O!"%9%1%k%H%s$N$^$^!#(B
+	Thread thread;		// このあたりは、スケルトンのまま。
 	Image double_buffer;
 	Graphics dg;
 	int cron=0;
 
 	int width ,height;
-	int interval = 30;	// $B$3$3$O!"%9%1%k%H%s$G$O(B500$B%_%jIC$K$J$C$F$$$^$9!#(B
+	int interval = 30;	// ここは、スケルトンでは500ミリ秒になっています。
 
 	public void init()
 	{
@@ -921,39 +921,39 @@ public class snake extends Applet implements Runnable
 	}
 
 	int snake_max=1000;
-	int snake_unit=12;		// $B4X@a$O(B12$B%k!<%W$E$DAw$l$F0\F0(B
-	int snake_len=5;		// $B<X$N8=:_$ND9$5(B
-	int snake_start_len=5;	// $B<X$N:G=i$ND9$5(B
-	int snake_dir;  // $BJ}8~$O??>e$,(B0$B$G1&<~$j$K(B7$B$^$G$N(B8$BJ}8~$H$7$^$9!#(B
-	double dx[] = { 0,1.41,2,1.41,0,-1.41,-2,-1.41};  // $B$=$l$>$l$NJ}8~$N0\F0NL(B
-	double dy[] = { -2,-1.41,0,1.41,2,1.41,0,-1.41};  // $B2sE>7O$N?4B!It!#(B
-	double snake_x[] = new double[snake_max];	// $B<X$NBN$N4V@\$N0LCV5-21MQ(B
+	int snake_unit=12;		// 関節は12ループづつ送れて移動
+	int snake_len=5;		// 蛇の現在の長さ
+	int snake_start_len=5;	// 蛇の最初の長さ
+	int snake_dir;  // 方向は真上が0で右周りに7までの8方向とします。
+	double dx[] = { 0,1.41,2,1.41,0,-1.41,-2,-1.41};  // それぞれの方向の移動量
+	double dy[] = { -2,-1.41,0,1.41,2,1.41,0,-1.41};  // 回転系の心臓部。
+	double snake_x[] = new double[snake_max];	// 蛇の体の間接の位置記憶用
 	double snake_y[] = new double[snake_max];	
-	double snakehead_x , snakehead_y;			// $B<X$NF,$N0LCV(B
-	int score = 0;						// $BE@?t(B
-	double snake_xsiz = 36;				// $B<X$NBN$N4V@\$N$=$l$>$l$NBg$-$5(B
+	double snakehead_x , snakehead_y;			// 蛇の頭の位置
+	int score = 0;						// 点数
+	double snake_xsiz = 36;				// 蛇の体の間接のそれぞれの大きさ
 	double snake_ysiz = 36;
-	final double SNAKE_SPEED = 3;		// dx$B$d(Bdy$B$K$3$NCM$r$+$1$FB.EY$H$9$k(B
+	final double SNAKE_SPEED = 3;		// dxやdyにこの値をかけて速度とする
 
 	void initSnake(){
 		for(int i=0;i<snake_max;i++){
-			snake_x[i] = snake_y[i] = -1000;   //$B@$3&$N2L$F$K$7$F$*$/(B
+			snake_x[i] = snake_y[i] = -1000;   //世界の果てにしておく
 		}
-		snakehead_x = width/2;		// $B:G=i$O??$sCf$+$i;O$^$k(B
+		snakehead_x = width/2;		// 最初は真ん中から始まる
 		snakehead_y = height/2;
-		snake_dir = 2;				// $B1&8~$-$+$i(B
-		snake_len = snake_start_len;	// $B:G=i$ND9$5$O(Bsnake_start_len
+		snake_dir = 2;				// 右向きから
+		snake_len = snake_start_len;	// 最初の長さはsnake_start_len
 	}
 
-	// $B%-!<$r2!$7$?;~$N=hM}(B
+	// キーを押した時の処理
 	public boolean keyDown(Event e , int c ){
 		if( c == 'h' ){ 
-			snake_dir--;  // $B:82sE>(B
+			snake_dir--;  // 左回転
 		}
 		if( c == 'j' ){
-			snake_dir++;  // $B1&2sE>(B
+			snake_dir++;  // 右回転
 		}
-		// $B>o$KCM$,(B0$B$+$i(B7$B$N4V$K$J$k$h$&$K$9$k(B
+		// 常に値が0から7の間になるようにする
 		if( snake_dir >= 7 ) snake_dir-=8;
 		if( snake_dir < 0 )snake_dir +=8;
 		
@@ -964,9 +964,9 @@ public class snake extends Applet implements Runnable
 		snakehead_y += dy[snake_dir] * SNAKE_SPEED;
 		if( snakehead_x < 0 || snakehead_y < 0 || snakehead_x > width ||
 		   snakehead_y > height ){
-			snakeDie();	// $B30OH$KEv$?$C$F$b;`$L(B
+			snakeDie();	// 外枠に当たっても死ぬ
 		}
-		// $B0LCV5-21MQ$NG[Ns$KF,$N0LCV$r=g<!BeF~$7$F$$$/!#(B
+		// 位置記憶用の配列に頭の位置を順次代入していく。
 		snake_x[cron % snake_max ] = snakehead_x;
 		snake_y[cron % snake_max ] = snakehead_y;
 		
@@ -979,7 +979,7 @@ public class snake extends Applet implements Runnable
 		score = 0;
 		snake_len = 5;
 	}
-	double tmpx[] = new double[ 200];   // $B4V@\F1;N$NEv$?$jH=DjMQG[Ns(B
+	double tmpx[] = new double[ 200];   // 間接同士の当たり判定用配列
 	double tmpy[] = new double[ 200];
 	void drawSnake(){
 		dg.setColor( fg );
@@ -989,12 +989,12 @@ public class snake extends Applet implements Runnable
 			int index = ( cron - (i * snake_unit) ) % snake_max;
 			tmpx[i] = snake_x[index];
 			tmpy[i] = snake_y[index];
-			// $B<X$NBN$O;M3Q$NEI$jDY$7(B
+			// 蛇の体は四角の塗り潰し
 			dg.fillRect( (int)snake_x[index],(int)snake_y[index],
 						(int)snake_xsiz , (int)snake_ysiz );
 		}
-		// $B<+J,$NBN$KEv$?$k$H;`$L!#(B
-		// $B>WFM$NH=Dj$K$D$$$F$O!"<!$N@a$G@bL@$7$^$9!#(B
+		// 自分の体に当たると死ぬ。
+		// 衝突の判定については、次の節で説明します。
 		for(int j=1;j<snake_len;j++){
 			if( snakehead_x+snake_xsiz > tmpx[j] && 
 			    snakehead_x < tmpx[j]+snake_xsiz  &&
@@ -1017,12 +1017,12 @@ public class snake extends Applet implements Runnable
 		moveSnake();
 		drawSnake();
 
-		// $BFq0WEYD4@0!#D9$5$ND4@a$r$9$k(B
+		// 難易度調整。長さの調節をする
 		if( (cron % 200 )==0){
 			snake_len++;
 		}
 		dg.setColor( fg );
-		// $BE@?t$NI=<((B
+		// 点数の表示
 		dg.drawString( "Score: " + score , 30,30);
 
 		score += snake_len-snake_start_len;
@@ -1035,155 +1035,155 @@ File name: test.html
 <applet code=snake.class width=400 height=300></applet>
 ------------------------------------------------------------
 
-#$B?^(B5.4-1 <DONE>	$BF0:nCf$N%9%M!<%/%2!<%`(B
+#図5.4-1 <DONE>	動作中のスネークゲーム
 
-     $B%9%1%k%H%s%W%m%0%i%`$K$I$N$h$&$KJQ99$r2C$($F$$$/$+!"=g$rDI$C$F$_$^$7$g(B
-     $B$&!#(B
+     スケルトンプログラムにどのように変更を加えていくか、順を追ってみましょ
+     う。
 
-       1. $B%9%1%k%H%s$r%3%T!<$7$^$9!#(B
-       2. $B%/%i%9$NL>A0$r(Bgame$B$+$i(Bsnake$B$KJQ99$7$^$9!#(B
-       3. $B%9%1%k%H%s$O<~4|$,(B500$B%_%jIC$J$N$G!"(B30$B%_%jIC$KJQ99$7$F$$$^$9!#<~4|(B
-          $B$O(B interval$B$H$$$&JQ?t$K3JG<$5$l$F$$$^$9!#$=$N=i4|2=ItJ,$rJQ99$7$^$9!#(B
-       4. $B<X$NBN$r4IM}$9$k$?$a$K!"(Bdouble$B7?$NG[Ns$r@k8@$7$^$9!#(Bsnake_x,snake_y
-       5. $B<X$NB.EY$dF,$N0LCV$r$"$i$o$9JQ?t$r@k8@$7$^$9!#(B
+       1. スケルトンをコピーします。
+       2. クラスの名前をgameからsnakeに変更します。
+       3. スケルトンは周期が500ミリ秒なので、30ミリ秒に変更しています。周期
+          は intervalという変数に格納されています。その初期化部分を変更します。
+       4. 蛇の体を管理するために、double型の配列を宣言します。snake_x,snake_y
+       5. 蛇の速度や頭の位置をあらわす変数を宣言します。
 		snake_dir,snakehead_x,snakehead_y
-       6. $B<X$N%5%$%:$r$"$i$o$9!"(Bsnake_xsiz,snake_siz$B$r@k8@$7$^$9!#(B
-       7. $B<X$O(B4$BJ}8~$G!"1&$d:8$K2s$kA`:n$J$N$G!"2sE>7O$K$7$^$9!#(B dx$B!"(Bdy
-          $BG[Ns$r@k8@$7$^$9!#(B
-       8. keyDown$B%a%=%C%I$r:n$j$^$9!#(B
-       9. $B<X$N0\F0ItJ,(BmoveSnake()$B$r=q$-$^$9(B($BIaDL$O$3$3$G;n9T:x8m$,$"$k$G$7$g$&(B)
-      10. $B<X$NBN$rIA2h$9$kItJ,(BdrawSnake()$B$r=q$-$^$9!#(B
-      11. doIt$B$NCf$K<X$,D9$/$J$C$F$$$/=hM}$r=q$-$^$9!#$3$l$OHyD4@0$G$9!#(B
-      12. doIt$B$NCf$K%9%3%"I=<($N=hM}$r=q$-$^$9!#(B
+       6. 蛇のサイズをあらわす、snake_xsiz,snake_sizを宣言します。
+       7. 蛇は4方向で、右や左に回る操作なので、回転系にします。 dx、dy
+          配列を宣言します。
+       8. keyDownメソッドを作ります。
+       9. 蛇の移動部分moveSnake()を書きます(普通はここで試行錯誤があるでしょう)
+      10. 蛇の体を描画する部分drawSnake()を書きます。
+      11. doItの中に蛇が長くなっていく処理を書きます。これは微調整です。
+      12. doItの中にスコア表示の処理を書きます。
 
-     $B$3$N%W%m%0%i%`$r$9$k;~$K$O4pK\$KCi<B$K!"$^$:$=$N%2!<%`$,@.N)$9$k$?$a$K(B
-     $B$I$&$7$F$b(B $BI,MW$JItJ,$+$i$^$::n$j$^$9!#%9%3%"I=<($dFqEYD4@a$J$I$O:G8e$G(B
-     $B$h$$$N$G$9!#(B $B:G8e$K=@Fp$JFqEYD4@a$r$7$d$9$$$h$&$K%W%m%0%i%`$7$F$*$/$3$H$,(B
-	 $BBg@Z$G$9!#:G$b=EMW$JItJ,$O!"$d$O$j<X$N0\F0$HA`:n$G$9$+$i!"$=$l$r$^$:(B
-     $B:n$j$^$9!#(B $BI,MW$JJQ?t$O%W%m%0%i%`$r?J$a$F$$$/ESCf$K$$$/$D$+=P$F$-$^$9(B
-     $B$,!"$=$l$i$O$I$s$I$sDI2C$7$F(B $B$$$-$^$7$g$&!#(B
+     このプログラムをする時には基本に忠実に、まずそのゲームが成立するために
+     どうしても 必要な部分からまず作ります。スコア表示や難度調節などは最後で
+     よいのです。 最後に柔軟な難度調節をしやすいようにプログラムしておくことが
+	 大切です。最も重要な部分は、やはり蛇の移動と操作ですから、それをまず
+     作ります。 必要な変数はプログラムを進めていく途中にいくつか出てきます
+     が、それらはどんどん追加して いきましょう。
 
-     $B$3$N%W%m%0%i%`$G$<$R3X$s$G$[$7$$$3$H$r=g$rDI$C$F@bL@$7$^$9!#(B
+     このプログラムでぜひ学んでほしいことを順を追って説明します。
 
 
-       5.4.1 $B2sE>7O(B
+       5.4.1 回転系
 
-          $B%9%M!<%/%2!<%`$G$O!"<X$O!"?J9TJ}8~$r;}$C$F$$$^$9!#>o$K$=$NJ}8~$K?J(B
-	      $B$s$G$$$/$o$1$G$9!#(B $B$=$7$F%-!<%\!<%I$r;H$C$F1&$d:8$K2sE>$5$;$k$3$H(B
-          $B$K$h$C$FA`:n$7$^$9!#1&$d:8$K2s$k$H$$$&(B $B$3$H$r!"JQ?t$NCM$r2C$($?$j(B
-          $B8:$i$7$?$j$9$k$3$H$K$h$C$F<B8=$G$-$l$P!"4JC1$=$&$G$9!#(B $B$=$N$?$a(B
-          $B$K!"<X$NJ}8~$r5-21$7$F$*$/$?$a$N(Bsnake_dir$B$H$$$&JQ?t$r(B $BMQ0U$7(B
-          $B$^$7$?!#$3$l$O!">o$K(B0$B$+$i(B7$B$NCM$r<h$j$^$9!#1&2sE>$G(B1$BA}2C$7!":82sE>(B
-          $B$G(B1$B8:>/$7$^$9!#(B $B$3$NNc$G$O!"(B0$B$H$$$&CM$,??>e$r$"$i$o$7!"1&$K2sE>$7(B
-          $B$F$$$C$F(B3$B$,:8$K$J$j$^$9!#(B $B$3$N$h$&$K07$&$H!"<!$N$h$&$JG[Ns$rDj5A$7(B
-          $B$F$*$/$3$H$K$h$j!"J}8~$+$i:BI8$X$H(B $B4JC1$K7k$S$D$1$k$3$H$,$G$-$^(B
-          $B$9!#(B($B2sE>7O$N9M$($+$?$r$b$C$H7!$j$5$2$F!"J}8~$N?t$bL58B$K$9$k$H!"(B
-		  $B6K:BI87O$r;H$&$H$$$&OC$K$J$C$F$-$^$9!#$=$l$K$D$$$F$O!"$3$N>O$N(B
-		  $BBh(B7$B@a$G<h$j$"$D$+$C$F$$$^$9!#;29M$K$7$F$/$@$5$$!#(B)
+          スネークゲームでは、蛇は、進行方向を持っています。常にその方向に進
+	      んでいくわけです。 そしてキーボードを使って右や左に回転させること
+          によって操作します。右や左に回るという ことを、変数の値を加えたり
+          減らしたりすることによって実現できれば、簡単そうです。 そのため
+          に、蛇の方向を記憶しておくためのsnake_dirという変数を 用意し
+          ました。これは、常に0から7の値を取ります。右回転で1増加し、左回転
+          で1減少します。 この例では、0という値が真上をあらわし、右に回転し
+          ていって3が左になります。 このように扱うと、次のような配列を定義し
+          ておくことにより、方向から座標へと 簡単に結びつけることができま
+          す。(回転系の考えかたをもっと掘りさげて、方向の数も無限にすると、
+		  極座標系を使うという話になってきます。それについては、この章の
+		  第7節で取りあつかっています。参考にしてください。)
 
-#$B?^(B5.4.1 <NOT YET>         $BJ}8~$H%Y%/%H%k$NBP1~(B
+#図5.4.1 <NOT YET>         方向とベクトルの対応
 
 
 		  double dx[] = { 0,1.41,2,1.41,0,-1.41,-2,-1.41};
 		  double dy[] = { -2,-1.41,0,1.41,2,1.41,0,-1.41};
 
-          $B$3$NG[Ns$NMWAGHV9f(B($B%$%s%G%/%9(B)$B$KJ}8~(Bsnake_direction$B$rD>@\F~$l$F$d(B
-          $B$l$P!"(B
+          この配列の要素番号(インデクス)に方向snake_directionを直接入れてや
+          れば、
 
           x = dx[ snake_dir ];
           y = dy[ snake_dir ];
 
-          $B$H$$$&$h$&$K$7$F:BI8(B($B0\F0NL%Y%/%H%k(B)$B$r5a$a$k$3$H$,$G$-$^$9!#$3$N%2(B
-          $B!<%`$G$O(B8$BJ}8~$G$9$,!"(B $B4JC1$K(Bn$BJ}8~$K3HD%$G$-$^$9!#(B
-          $B%-!<A`:n$9$k$H!"(Bsnake_dir$B$,(B7$B$N;~$K$b1&$K2sE>$G(B $B$-$^$9$+(B
-          $B$i!"$=$N;~$bF1$8$h$&$K7W;;$9$k$H!"(B8$B$H$$$&CM$K$J$j!"G[Ns$N(B $B%$%s%G%/(B
-          $B%9$NHO0O$r1[$($F$7$^$$$^$9$+$i!"<!$N$h$&$J%W%m%0%i%`$G(B
-          $B@)8B$9$k(B $BI,MW$,$"$j$^$9!#(B
+          というようにして座標(移動量ベクトル)を求めることができます。このゲ
+          ームでは8方向ですが、 簡単にn方向に拡張できます。
+          キー操作すると、snake_dirが7の時にも右に回転で きますか
+          ら、その時も同じように計算すると、8という値になり、配列の インデク
+          スの範囲を越えてしまいますから、次のようなプログラムで
+          制限する 必要があります。
 
 		  if( snake_dir >= 7 ) snake_dir-=8;
 		  if( snake_dir < 0 )snake_dir +=8;
 
-          $B$3$N$d$j$+$?$O!"0lEY$K(B9$B0J>e$NJ}8~$NJQ2=$,$"$k>l9g$O@5$7$/=hM}$5$l(B
-          $B$J$$(B($B$D$^$j!"(B 7$B$H$$$&J}8~$+$i(B9$B1&$K2sE>$9$k$H!"Jd@5$7$F$b(B8$B$K$J$C$F(B
-		  $B$7$^$$$^$9!#$3$l$r!"$I$s$J$KBg$-$J3QEY(B $B2sE>$7$F$b$h$$$h$&$K$9$k$K$O!"(B
-          $BJ}8~$N?t$,(B2$B$NN_>h$K$J$C$F$$$k;~$O%S%C%H1i;;$r;HMQ$7$F(B
+          このやりかたは、一度に9以上の方向の変化がある場合は正しく処理され
+          ない(つまり、 7という方向から9右に回転すると、補正しても8になって
+		  しまいます。これを、どんなに大きな角度 回転してもよいようにするには、
+          方向の数が2の累乗になっている時はビット演算を使用して
 
           snake_dir = snake_dir & 7;
 
-          $B$H$9$k$H$h$$$G$7$g$&!#(B
+          とするとよいでしょう。
 
 
 
-       5.4.2 $B1s$$5-21$OG[Ns$KJ]B8(B
+       5.4.2 遠い記憶は配列に保存
 
-          $B$3$3$G$$$&1s$$5-21$H$O!"<X$N?,Hx$N0LCV$N$3$H$G$9!#$3$N%2!<%`$G$O!"(B
-          $B?,Hx$N$R$H$D$R$H$D$O!"<X$NF,$h$j!"(B
-		  snake_unit$B%k!<%W(B $BCY$l$F0\F0$7$F$$$/$N$G!"@NF,$,DL$C$?>l=j$r21$($F(B
-          $B$*$/I,MW$,$"$k$N$G$9!#(B $B$3$l$r4JC1$K<B8=$9$k$K$O!"G[Ns$K<X$,DL$C$F(B
-          $B$$$C$?0LCV$rO"B3E*$K5-O?(B $B$9$l$P$h$$$N$G$9!#$3$NNc$G$OG[Ns$N$I$N0L(B
-          $BCV$KF,$r5-21$7$F$$$/$+$r!"%k!<%W%+%&%s%?(Bcron$B$rMxMQ$7$F7W;;$7$F$$$^(B
-		  $B$9!#(B
+          ここでいう遠い記憶とは、蛇の尻尾の位置のことです。このゲームでは、
+          尻尾のひとつひとつは、蛇の頭より、
+		  snake_unitループ 遅れて移動していくので、昔頭が通った場所を憶えて
+          おく必要があるのです。 これを簡単に実現するには、配列に蛇が通って
+          いった位置を連続的に記録 すればよいのです。この例では配列のどの位
+          置に頭を記憶していくかを、ループカウンタcronを利用して計算していま
+		  す。
 
-#$B?^(B5.4.2-1 <NOT YET>       $B<X$N0\F0$H!"G[Ns$N%$%s%G%/%9$NBP1~(B
+#図5.4.2-1 <NOT YET>       蛇の移動と、配列のインデクスの対応
 
 
-          $BG[Ns$OA0$+$i=g$0$j$K;H$C$F$$$-$^$9!#$=$7$F:G8e$^$G$$$/$H!":G=i$K(B
-          $BLa$j$^$9!#$=$l$r7W;;$9$k$N$O<!$N<0$G$9!#(B $B$^$?$b$d>jM>1i;;;R(B
-		  '%'$B$r;H$$$^$9!#(B
+          配列は前から順ぐりに使っていきます。そして最後までいくと、最初に
+          戻ります。それを計算するのは次の式です。 またもや剰余演算子
+		  '%'を使います。
 
           ind = cron % snake_max;  
 
-		  $B0LCV5-21MQG[Ns$K%"%/%;%9$9$k;~$O$+$J$i$:$3$N$h$&$K>jM>$r;H$&$h$&$K(B
-		  $B$9$l$P!"G[Ns$ND9$5$,L58B$G$"$k$+$N$h$&$K07$&$3$H$,$G$-$^$9!#$=$l$r(B	
- 		  $B?^$K$9$k$H<!$N$h$&$K$J$j$^$9!#(B
+		  位置記憶用配列にアクセスする時はかならずこのように剰余を使うように
+		  すれば、配列の長さが無限であるかのように扱うことができます。それを	
+ 		  図にすると次のようになります。
 
-#$B?^(B5.4.2-2 <NOT YET>        $BG[Ns$NCf?H$,%k!<%W$7$F$$$k$H9M$($k(B
+#図5.4.2-2 <NOT YET>        配列の中身がループしていると考える
 
 
-          $B$3$N$h$&$K$7$F5a$a$?%$%s%G%/%9(Bind$B$r;H$C$F!"5-21MQG[Ns$K0LCV$r5-21$7$^(B
-          $B$9!#(Bind$B$O>e$G5a$a$?$b$N$H$9$k$H(B
+          このようにして求めたインデクスindを使って、記憶用配列に位置を記憶しま
+          す。indは上で求めたものとすると
 
 	  	  snake_x[ind ] = snakehead_x;
 		  snake_y[ind ] = snakehead_y;
 
-          $B$3$3$^$G$G!"<X$N(Bsnake_max$B%k!<%WA0$^$G$N0LCV$N5-21$,!"$3$NG[Ns$N(B $BCf(B
-          $B$K=gHV$K5-21$5$l$F$$$k$3$H$K$J$j$^$9$M!#?,Hx$rIA2h$9$k$H$-$K!"$3$l(B
-          $B$r$I$&$d$C$F(B $BMxMQ$9$k$+$G$9!#$?$H$($P(B50$B%k!<%WCY$l$F$$$k0LCV$O!"<!(B
-          $B$N$h$&$K$7$FCN$k$3$H$,$G$-$^$9!#(B
+          ここまでで、蛇のsnake_maxループ前までの位置の記憶が、この配列の 中
+          に順番に記憶されていることになりますね。尻尾を描画するときに、これ
+          をどうやって 利用するかです。たとえば50ループ遅れている位置は、次
+          のようにして知ることができます。
 
-          x50before = snake_x[ (cron-50)%snake_max ];  //$B$+$J$i$:(B%snake_max$B$9$k(B
+          x50before = snake_x[ (cron-50)%snake_max ];  //かならず%snake_maxする
           y50before = snake_y[ (cron-50)%snake_max ];
 
-          $B$H$$$&$3$H$O!"<X$N3F@a$N0LCV$O(B,$B@aHV9f$rA0$+$i(B0$B!"(B1$B!"(B...N$B$H?6$C$F$$$/$H(B 
-		  $B$=$l$>$l(B
+          ということは、蛇の各節の位置は,節番号を前から0、1、...Nと振っていくと 
+		  それぞれ
 		  int index = i * snake_unit;
 
-		  $B$G7W;;$5$l$k(Bindex$B%k!<%WCY$l$?0LCV$K$$$k$N$G$9$+$i!"(Bindex$B$r:#5a$a$?(B
-		  $BCM$H$9$l$P!"(B
+		  で計算されるindexループ遅れた位置にいるのですから、indexを今求めた
+		  値とすれば、
 
 		  tmpx[i] = snake_x[(cron-index)%snake_max];
 		  tmpy[i] = snake_y[(cron-index)%sbake_max-index];
 
-          $B$H$$$&$h$&$K$9$l$P$h$$$3$H$K$J$j$^$9!#(Bsnake.java$B$K$*$$$F$O!"Ev$?$j(B
-		  $BH=Dj$N;~$@$1I,MW$J>pJs$J$N$G!"$=$N;~$K7W;;$7$F$$$^$9!#$9$Y$F$N@a$N(B
-		  $B0LCV$r5a$a$F$+$i!"F,$HEv$?$C$F$$$k$+$I$&$+$rD4$Y$F$$$^$9!#$3$3$G(B
-		  $B;H$C$F$$$k>WFMH=Dj$N%"%k%4%j%:%`$K$D$$$F$O!"<!$N>O$G>\$7$/@bL@$7$^$9!#(B
+          というようにすればよいことになります。snake.javaにおいては、当たり
+		  判定の時だけ必要な情報なので、その時に計算しています。すべての節の
+		  位置を求めてから、頭と当たっているかどうかを調べています。ここで
+		  使っている衝突判定のアルゴリズムについては、次の章で詳しく説明します。
 
 
-     $B0J>e$,$3$N%5%s%W%k%2!<%`!V%9%M!<%/!W$G$N%]%$%s%H$G$9!#%2!<%`%W%m%0%i%_(B
-     $B%s%0$P$+$j$G$J$/(B $B%W%m%0%i%_%s%0A4BN$K$H$C$F!"!VG[Ns!W$O$+$/$b=EMW$G$9!#(B
-     $B$$$m$$$m$JG[Ns$N;H$$$+$?$r(B $BJY6/$7$F$/$@$5$$!#(B
+     以上がこのサンプルゲーム「スネーク」でのポイントです。ゲームプログラミ
+     ングばかりでなく プログラミング全体にとって、「配列」はかくも重要です。
+     いろいろな配列の使いかたを 勉強してください。
 
 
 
 
-5.5 $BEv$?$jH=Dj(B
+5.5 当たり判定
 
-	 $B%"%/%7%g%s%2!<%`$r:n$C$F$$$k$H!"J#?t$NJ*F1;N$,$*8_$$$K>WFM$9$k!"$H$$$&(B
-	 $B>u67$K=P$/$o$7$^$9!#E57?E*$K$O!"%7%e!<%F%#%s%0%2!<%`$N<+5!$NCF(B($BJ#?t(B)$B$H!"(B
-	 $BE($NCF(B($BJ#?t(B)$B$H$N>WFM$G$9!#$=$l$>$l$N>WFM$r$I$N$h$&$KH=Dj$7$?$i$h$$(B
-	 $B$G$7$g$&$+!#$3$N@a$G$O!"$=$NLOHO$H$J$k%W%m%0%i%`$r<($7!":#8e$NLr$KN)$F(B
-	 $B$^$9!#(B	 $B$G$O!"AaB.!"%W%m%0%i%`$NA4BN$r7G:\$7$^$9!#(B
+	 アクションゲームを作っていると、複数の物同士がお互いに衝突する、という
+	 状況に出くわします。典型的には、シューティングゲームの自機の弾(複数)と、
+	 敵の弾(複数)との衝突です。それぞれの衝突をどのように判定したらよい
+	 でしょうか。この節では、その模範となるプログラムを示し、今後の役に立て
+	 ます。	 では、早速、プログラムの全体を掲載します。
 
 
 File name: atari.java
@@ -1199,7 +1199,7 @@ public class atari extends java.applet.Applet implements Runnable
 	Graphics dg;
 	int cron=0;
 
-	// $BJQ992DG=8D=j(B
+	// 変更可能個所
 
 	int width ,height;
 	int interval = 50;	// milli second 
@@ -1233,15 +1233,15 @@ public class atari extends java.applet.Applet implements Runnable
 		}
 	}
 	
-	int maxnum=100;							// $B:GBg$NH"$N8D?t(B
-	int nownum=1;							// $B8=:_$NH"$N8D?t(B
-	double bx[] = new double[maxnum];		// $B0LCV$N(BX$B:BI8(B
-	double by[] = new double[maxnum];		// $B0LCV$N(BY$B:BI8(B
-	double bxsiz[] = new double[maxnum];	// $BH"$NI}(B
-	double bysiz[] = new double[maxnum];	// $BH"$N9b$5(B
-	double bdx[] = new double[maxnum];		// X$BJ}8~$N0\F0NL(B
-	double bdy[] = new double[maxnum];		// Y$BJ}8~$N0\F0NL(B
-	boolean bfill[] = new boolean[maxnum]; //$B2?$+$KEv$?$C$?;~$KE@LG$5$;$k%U%i%0(B
+	int maxnum=100;							// 最大の箱の個数
+	int nownum=1;							// 現在の箱の個数
+	double bx[] = new double[maxnum];		// 位置のX座標
+	double by[] = new double[maxnum];		// 位置のY座標
+	double bxsiz[] = new double[maxnum];	// 箱の幅
+	double bysiz[] = new double[maxnum];	// 箱の高さ
+	double bdx[] = new double[maxnum];		// X方向の移動量
+	double bdy[] = new double[maxnum];		// Y方向の移動量
+	boolean bfill[] = new boolean[maxnum]; //何かに当たった時に点滅させるフラグ
 
 	void initBox(){
 		for(int i=0;i<maxnum;i++){
@@ -1255,7 +1255,7 @@ public class atari extends java.applet.Applet implements Runnable
 		}
 	}
 
-	double react = 17;  // $BBg$-$$$[$I4K$d$+$JH?<M$K$J$k!#3d$j;;$NDj?t(B
+	double react = 17;  // 大きいほど緩やかな反射になる。割り算の定数
 	void moveBox(){
 		double before_x , before_y;
 		for(int i=0;i<nownum;i++){
@@ -1268,16 +1268,16 @@ public class atari extends java.applet.Applet implements Runnable
 				if( check( bx[i] , by[i], bxsiz[i] , bysiz[i] , 
 						  bx[j] , by[j] , bxsiz[j] , bysiz[j] ) ){
 					bfill[i] = true;
-					double relx , rely;   // $BH"$NCf?4$NAjBP0LCV4X78!#(B
+					double relx , rely;   // 箱の中心の相対位置関係。
 					relx = (bx[j]+bxsiz[j]/2) - (bx[i]+bxsiz[i]/2);
 					rely = (by[j]+bysiz[j]/2) - (by[i]+bysiz[i]/2);
 
-					bdx[i] = -relx / react;  // $B$*8_$$$rN%$9(B
+					bdx[i] = -relx / react;  // お互いを離す
 					bdy[i] = -rely / react;
 					bdx[j] = relx /  react;
 					bdy[j] = rely /  react;
 				}
-				// $BJI$KEv$?$C$?$i!"0\F0J}8~$NId9f$rJQ$($k!#(B
+				// 壁に当たったら、移動方向の符号を変える。
 				if( bx[i] < 0 ){ bx[i]=0;bdx[i]*=-1;bfill[i]=true;}
 				if( bx[i]+bxsiz[i] > width ){
 					bx[i]=width-bxsiz[i];bdx[i]*=-1;bfill[i]=true;
@@ -1290,13 +1290,13 @@ public class atari extends java.applet.Applet implements Runnable
 		}
 	}
 
-	// $BEv$?$jH=Dj!#?4B!It$G$9!#@53N$K;M3Q$NHO0O!#(B
+	// 当たり判定。心臓部です。正確に四角の範囲。
 	boolean check( double x1, double y1 , double x1size , double y1size ,
 				  double x2 , double y2 , double x2size , double y2size ){
 		return( x2 <= (x1+x1size) && x1 <= (x2+x2size ) &&
 			    y2 <= (y1+y1size) && y1 <= (y2+y2size) );
 	}
-	// $B%^%&%9$N%\%?%s$r2!$9$HH"$,A}$($^$9!#(B
+	// マウスのボタンを押すと箱が増えます。
 	public boolean mouseDown( Event e , int x , int y){
 		bx[nownum] = x;
 		by[nownum] = y;
@@ -1305,14 +1305,14 @@ public class atari extends java.applet.Applet implements Runnable
 	}
 	void doIt(){
 
-		// $BH"$rF0$+$9!#(B
+		// 箱を動かす。
 		moveBox();
 		
 		dg.setColor( Color.white );
 		dg.fillRect( 0 , 0 , width , height );
 		dg.setColor( Color.black  );
 
-		// $BA4ItIA2h$9$k!#(B
+		// 全部描画する。
 		for(int i=0;i<nownum;i++){
 			if( bfill[i] ){
 				dg.fillRect( (int)bx[i] , (int)by[i] ,
@@ -1336,128 +1336,128 @@ File name: test.html
 <applet code=atari.class width=400 height=300></applet>
 ----------------------------------------------------------
 
-#$B?^(B5.5-1 <DONE>	$B<B9TCf2hLL(B(atari.java)
+#図5.5-1 <DONE>	実行中画面(atari.java)
 
-	 appletviewer$B$N%&%$%s%I%&$NCf$G%^%&%9%\%?%s$r2!$9$H!"$=$N>l=j$KH"$,(B
-	$B?7$7$/=P8=$7$^$9!#$=$l$>$l$NH"$O%i%s%@%`$JJ}8~$K0\F0$r;O$a!"JI$+(B
-	$BB>$NH"$KEv$?$k$HH?<M$7$^$9!#H?<M$9$k$+$I$&$+$rH=Dj$7$F$$$k$N$,!"Ev$?$j(B
-	$BH=DjMQ$N%a%=%C%I$N!"(B boolean check( double..... )$B$G$9!#(B
-	$B$3$N%a%=%C%I$K!">WFM$7$F$$$k$+$I$&$+H=Dj$7$?$$Fs$D$NH"$N:BI8$H%5%$%:$r(B
-	$BBeF~$9$l$P!">WFM$7$F$$$k$+$I$&$+$,(Bboolean$B$NCM$H$7$FF@$i$l$^$9!#(B
-	$BCM$,(Btrue$B$@$HEv$?$C$F$$$^$9!#$3$N%a%=%C%I$,Ev$?$jH=Dj(B($B>WFMH=Dj(B)$B$N?4B!It(B
-	$B$G$9!#$J$<$3$NITEy<0$GEv$?$jH=Dj$,$G$-$k$N$+$O!"<!$N?^$r8+$l$P0lL\(B
-	$BNFA3$G$9!#(B($BI.<T$O$3$NJ}K!$r;W$$$D$/$^$G$O!"@dBPCM$N:9$r;H$C$F(B
-	$BEv$?$jH=Dj$r$7$F$$$^$7$?!#@dBPCM$N:9$G$O!"Bg$-$5$N0[$J$kE($r=P$7$?$H$-(B
-	$B$K:$$C$?$3$H$K$J$k$N$G$7$?!#(B)
+	 appletviewerのウインドウの中でマウスボタンを押すと、その場所に箱が
+	新しく出現します。それぞれの箱はランダムな方向に移動を始め、壁か
+	他の箱に当たると反射します。反射するかどうかを判定しているのが、当たり
+	判定用のメソッドの、 boolean check( double..... )です。
+	このメソッドに、衝突しているかどうか判定したい二つの箱の座標とサイズを
+	代入すれば、衝突しているかどうかがbooleanの値として得られます。
+	値がtrueだと当たっています。このメソッドが当たり判定(衝突判定)の心臓部
+	です。なぜこの不等式で当たり判定ができるのかは、次の図を見れば一目
+	瞭然です。(筆者はこの方法を思いつくまでは、絶対値の差を使って
+	当たり判定をしていました。絶対値の差では、大きさの異なる敵を出したとき
+	に困ったことになるのでした。)
 
-#$B?^(B5.5-2 <NOT YET>	$BEv$?$jH=Dj$NITEy<0$N0UL#(B
-
-
-	  $B%2!<%`%W%m%0%i%`$K$*$$$F$O!"$[$H$s$I$N>l9g(B(3D$B%]%j%4%s%2!<%`$K$*$$$F$b(B
-	$B$$$^$@$KB?MQ$5$l$^$9(B)$B;M3Q7A$NEv$?$jH=Dj%k!<%A%s$,;H$o$l$^$9!#(B
-	$B%-%c%i%/%?$N7A$K$O!"4]$d;03Q!"$b$C$HJQ$J7A$b$$$m$$$m$"$j$^$9$,!"$=$l$i$N(B
-	$B>l9g$b!"$=$NFbIt$K4^$^$l$k$h$&$J;M3Q7A$r;H$C$F>WFMH=Dj$r$7$F$$$k$N$,(B
-	$BIaDL$G$9!#(B
-
-#$B?^(B5.5-3 <NOT YET>	$BEv$?$jH=Dj$O%-%c%i$NFbIt$K@_Dj$7$^$9!#(B
-	$B%\%9$J$IJ#;($J7A$N$b$N$O;M3Q$r$$$/$D$+AH$_$"$o$;$l$P(BOK
+#図5.5-2 <NOT YET>	当たり判定の不等式の意味
 
 
-	$B%W%l%$%d!<$K$H$C$FM-Mx$J%"%$%F%`$J$I$OBg$-$a$NEv$?$jH=Dj$K$7$F$*$-!"(B
-	$BE($J$I$O308+$h$j$b>.$5$/$7$F$*$-$^$7$g$&!#(B
+	  ゲームプログラムにおいては、ほとんどの場合(3Dポリゴンゲームにおいても
+	いまだに多用されます)四角形の当たり判定ルーチンが使われます。
+	キャラクタの形には、丸や三角、もっと変な形もいろいろありますが、それらの
+	場合も、その内部に含まれるような四角形を使って衝突判定をしているのが
+	普通です。
+
+#図5.5-3 <NOT YET>	当たり判定はキャラの内部に設定します。
+	ボスなど複雑な形のものは四角をいくつか組みあわせればOK
 
 
-	$BEv$?$jH=Dj0J30$G$O!"H?<M$N=hM}$,5-21$KCM$7$^$9!#$3$NNc$G$O!"H"$NCf?4F1;N(B
-	$B$NAjBPE*$J0LCV4X78$rD4$Y$F!"$*8_$$$,H?H/$7$"$&$h$&$J8~$-$K0\F0NL$r@_Dj$7(B
-	$B$F$$$^$9!#$=$N7k2L!"$?$/$5$sH"$rF~$l$F$b!"=E$J$j$K$/$$$h$&$K$J$C$F$$$^$9!#(B
+	プレイヤーにとって有利なアイテムなどは大きめの当たり判定にしておき、
+	敵などは外見よりも小さくしておきましょう。
 
-#$B?^(B5.5-4 <NOT YET>	$B$*8_$$$NCfE@$KBP>N$K0\F0NL$,@_Dj$5$l$k(B
+
+	当たり判定以外では、反射の処理が記憶に値します。この例では、箱の中心同士
+	の相対的な位置関係を調べて、お互いが反発しあうような向きに移動量を設定し
+	ています。その結果、たくさん箱を入れても、重なりにくいようになっています。
+
+#図5.5-4 <NOT YET>	お互いの中点に対称に移動量が設定される
 
 	 
-	$B$3$N$h$&$J8z2L$r;H$($P!"%3%J%_$NL>:n!V%0%i%G%#%&%9(BII$B!W0J9_$G8+$i$l$k$h$&$J!"(B
-	$B7b$D$H3d$l$kI9$,$*8_$$$KH?<M$7$F$$$k>lLL$H$+!"JI$KEv$?$C$?I9$,$/$C$D$$$F(B
-	$B$$$/!"$H$$$C$?1i=P$,$G$-$^$9!#(B
+	このような効果を使えば、コナミの名作「グラディウスII」以降で見られるような、
+	撃つと割れる氷がお互いに反射している場面とか、壁に当たった氷がくっついて
+	いく、といった演出ができます。
 
 
-5.6 $B%-%c%i%/%?$N0\F0%"%k%4%j%:%`?'!9(B
+5.6 キャラクタの移動アルゴリズム色々
 
-     $B%W%l%$%d!<%-%c%i%/%?!"$D$^$j<g?M8x!"<+5!$J$I$,<+J,$N;W$C$?DL$j$K0\F0$7(B
-     $B$J$/$F!"(B $B%$%i%$%i$7$?7P83$O$"$j$^$;$s$+!)%W%l%$%d!<%-%c%i%/%?$N0\F0$N=P(B
-     $BMh$N$h$7$"$7(B $B$O!"%2!<%`$N=PMh$N$h$7$"$7$K?<$/1F6A$rM?$($^$9!#(B
-     java$B$K$h$k%2!<%`%W%m%0%i%_%s%0$K$*$$$F$O!"%W%l%$%d!<%-%c%i%/%?$NA`:n(B
-     $B$O!"(B $B%8%g%$%9%F%#%C%/$r;H$($J$$$?$a!"$=$NBe$o$j$K$J$k%-!<%\!<%IF~NO$H!"(B
-     $B%^%&%9F~NO$H$N(B2$B<oN`$KBgJL$G$-$^$9!#(B
-     $B%8%g%$%9%F%#%C%/$KHf$Y$k$H!"%-!<%\!<%I$O!"$+$J$jA`:n$7$E$i$$(B($B$5$i$K(Bjava
-     $B$G$O!"(B $BBh(B4$B>O!V%-!<%\!<%I$NF~NO!W$G=R$Y$?$h$&$K%-!<%j%T!<%H$NLdBj$b$"$j(B
-     $B$^$9(B)$B>e$K!"(B $B%^%&%9$H$$$&%G%P%$%9$,;H$($k$H$$$&$3$H$b$"$j!"%"%W%l%C%H$K(B
-     $B$*$$$F$O(B $B$^$:%^%&%9$r;H$C$?%2!<%`$r:n$k$3$H$r9M$($k$N$,IaDL$@$H;W$$$^(B
-     $B$9!#(B $B$7$+$7!"$d$O$j%2!<%`%W%m%0%i%_%s%0$r8l$k>e$G$O!"%8%g%$%9%F%#%C%/$K(B
-     $B$h$k(B $BA`:n$K?($l$J$$$o$1$K$O$$$-$^$;$s!#$3$N@a$G$O!"%8%g%$%9%F%#%C%/$d%-(B
-     $B!<%\!<%I(B $B$r;HMQ$9$k>l9g$K%W%l%$%d!<%-%c%i%/%?$N0\F0$K;H$o$l$k%"%k%4%j%:(B
-     $B%`$N$&$A(B $BBeI=E*$J$b$N$N2r@b$r$7$?$$$H;W$$$^$9!#(B
-     $B$3$N@a$O!"5~Bg%^%$%3%s%/%i%V$NCf@>1QG7$5$s$N4s9F$K$h$k$b$N$G$9!#(B
+     プレイヤーキャラクタ、つまり主人公、自機などが自分の思った通りに移動し
+     なくて、 イライラした経験はありませんか？プレイヤーキャラクタの移動の出
+     来のよしあし は、ゲームの出来のよしあしに深く影響を与えます。
+     javaによるゲームプログラミングにおいては、プレイヤーキャラクタの操作
+     は、 ジョイスティックを使えないため、その代わりになるキーボード入力と、
+     マウス入力との2種類に大別できます。
+     ジョイスティックに比べると、キーボードは、かなり操作しづらい(さらにjava
+     では、 第4章「キーボードの入力」で述べたようにキーリピートの問題もあり
+     ます)上に、 マウスというデバイスが使えるということもあり、アプレットに
+     おいては まずマウスを使ったゲームを作ることを考えるのが普通だと思いま
+     す。 しかし、やはりゲームプログラミングを語る上では、ジョイスティックに
+     よる 操作に触れないわけにはいきません。この節では、ジョイスティックやキ
+     ーボード を使用する場合にプレイヤーキャラクタの移動に使われるアルゴリズ
+     ムのうち 代表的なものの解説をしたいと思います。
+     この節は、京大マイコンクラブの中西英之さんの寄稿によるものです。
 
-     $B%W%l%$%d!<%-%c%i%/%?$N0\F0$H$O!"%W%l%$%d!<$+$i$N%8%g%$%9%F%#%C%/F~NO$K(B
-     $B$h$C$F!"(B $B%-%c%/%i%/%?$N:BI8$rJQ2=$5$;$k$3$H$G$9!#$I$N$h$&$K:BI8$NJQ2=$5(B
-     $B$;$F$$$/$+$O(B $B%2!<%`$K$h$C$F@i:9K|JL$G$9$,!"4pK\$H$J$kItJ,$O6&DL$G$9!#$3(B
-     $B$3$G$O!"$=$l$i$N(B $B%"%k%4%j%:%`$r(B4$B$D$KJ,N`$7$F2r@b$7$^$9!#2r@b$K$O(B2$B<!85$N(B
-     $B:BI87O$rMQ$$$^$9$,!"(B $B$=$NB>$N:BI87O$K$b4JC1$K3HD%$9$k$3$H$,$G$-$^$9!#(B
-     $B2r@b$G$O!"<!$NJQ?t$r6&DL$7$F;H$$$^$9!#(B
+     プレイヤーキャラクタの移動とは、プレイヤーからのジョイスティック入力に
+     よって、 キャクラクタの座標を変化させることです。どのように座標の変化さ
+     せていくかは ゲームによって千差万別ですが、基本となる部分は共通です。こ
+     こでは、それらの アルゴリズムを4つに分類して解説します。解説には2次元の
+     座標系を用いますが、 その他の座標系にも簡単に拡張することができます。
+     解説では、次の変数を共通して使います。
 
-      double x,y           : $B<g?M8x$N(B(x,y)$B:BI8(B
-      double dx,dy         : $B<g?M8x$N(B(x,y)$BJ}8~$NB.EY(B
-      double ddx,ddy       : $B<g?M8x$N(B(x,y)$BJ}8~$N2CB.EY(B
-      int input_x,input_y  : $B%W%l%$%d!<$+$i$NF~NO(B
+      double x,y           : 主人公の(x,y)座標
+      double dx,dy         : 主人公の(x,y)方向の速度
+      double ddx,ddy       : 主人公の(x,y)方向の加速度
+      int input_x,input_y  : プレイヤーからの入力
 
-     $B%-%c%i%/%?$N0\F0$O>o$K<!$N<0$G7W;;$5$l$^$9!#(B
+     キャラクタの移動は常に次の式で計算されます。
       x = x + dx;
       y = y + dy;
 
-     $B$3$N(Bdx$B$H(Bdy$B$r$I$N$h$&$KJQ2=$5$;$F$$$/$+$K!"(B $BIe?4$7$F$$$k$o$1$G$9!#(B $B$5(B
-     $B$F!"%-%c%i%/%?$N0\F0%"%k%4%j%:%`$O!"(B4$B$D$KJ,N`$G$-$^$9!#(B $B$=$l$>$l$K$D$$(B
-     $B$F2r@b$7!"$=$N$"$H!"$3$l$i$NA4$F$r4^$`%W%m%0%i%`Nc$r<($7$^$9!#(B
+     このdxとdyをどのように変化させていくかに、 腐心しているわけです。 さ
+     て、キャラクタの移動アルゴリズムは、4つに分類できます。 それぞれについ
+     て解説し、そのあと、これらの全てを含むプログラム例を示します。
 
-       5.6.1 $BEyB.%"%k%4%j%:%`(B
+       5.6.1 等速アルゴリズム
            dx = input_x;
            dy = input_y;
 
-          $B%-%c%i%/%?$O!"EyB.D>@~1?F0$r$7$^$9!#:G$b4pK\E*$GC1=c$G!"$h$/;H$o$l(B
-          $B$^$9!#(B $B%W%l%$%d!<$NM=B,DL$j$K%-%c%i%/%?$,@53N$K0\F0$7$J$1$l$P$J$i(B
-          $B$J$$$h$&$J(B $B%2!<%`(B($BFC$K%7%e!<%F%#%s%0(B)$B$G$O$h$/MQ$$$i$l$^$9!#(B $B%W%m%0(B
-          $B%i%`Nc$NCf$G$O!"(Binput_x$B$H(Binput_y$B$OD>@\;H$o$:!"(B $BJ}8~$r5a$a$F$+$i4V(B
-          $B@\E*$K;HMQ$7$F$$$^$9!#(B
+          キャラクタは、等速直線運動をします。最も基本的で単純で、よく使われ
+          ます。 プレイヤーの予測通りにキャラクタが正確に移動しなければなら
+          ないような ゲーム(特にシューティング)ではよく用いられます。 プログ
+          ラム例の中では、input_xとinput_yは直接使わず、 方向を求めてから間
+          接的に使用しています。
 
-#$B?^(B5.6.1 <NOT YET>         $BF~NO(BON/OFF$B$+$i$NB.EY$NN)$A$"$,$j%0%i%U(B(tousoku)
+#図5.6.1 <NOT YET>         入力ON/OFFからの速度の立ちあがりグラフ(tousoku)
 
-       5.6.2 $B47@-%"%k%4%j%:%`(B
+       5.6.2 慣性アルゴリズム
            ddx = input_x;
            ddy = input_y;
 
            dx = dx + ddx;
            dy = dy + ddy;
 
-          $B%W%l%$%d!<$,2CB.EY$rF~NO$7$J$$8B$j!"B.EY$OJQ2=$;$:!"%-%c%i%/%?$OEy(B
-          $BB.D>@~1?F0(B $B$rB3$1$^$9!#1'Ch6u4V$d6uCf$G$N!"$U$o$U$o$7$?0\F0$r:F8=(B
-          $B$G$-$^$9!#$3$N%"%k%4%j%:%`(B $B$r(BY$B:BI8$K$@$1MQ$$$F$7$+$b2CB.EY$r0lDj$K(B
-          $B$9$l$P!"%9!<%Q!<%^%j%*$J$I$N$h$&$J(B $B%8%c%s%W$K1~MQ$G$-$^$9!#(B
+          プレイヤーが加速度を入力しない限り、速度は変化せず、キャラクタは等
+          速直線運動 を続けます。宇宙空間や空中での、ふわふわした移動を再現
+          できます。このアルゴリズム をY座標にだけ用いてしかも加速度を一定に
+          すれば、スーパーマリオなどのような ジャンプに応用できます。
 
-#$B?^(B5.6.2 <NOT YET>         $BF~NO(BON/OFF$B$+$i$NB.EY$NN)$A$"$,$j%0%i%U(B(kansei)
+#図5.6.2 <NOT YET>         入力ON/OFFからの速度の立ちあがりグラフ(kansei)
 
 
-          $B$3$N<0$@$1$G$O!"%W%l%$%d!<$,F1$8J}8~$KF~NO$7B3$1$k$H!"(Bdx$B!"(Bdy $B$O:](B
-          $B8B$J$/A}2C(B/$B8:>/$7$F$7$^$&$N$G!"@)8B$9$kI,MW$,$"$j$^$9!#@)8B$N$d$j(B
-          $B$+$?$r(B 2$B<oN`>R2p$7$^$9!#(B
+          この式だけでは、プレイヤーが同じ方向に入力し続けると、dx、dy は際
+          限なく増加/減少してしまうので、制限する必要があります。制限のやり
+          かたを 2種類紹介します。
 
-            1. dx,dy$B$rJL!9$K0lDjHO0OFb$KJ]$DJ}K!(B
+            1. dx,dyを別々に一定範囲内に保つ方法
 
-               $B<!$N$h$&$KDj?t$rDj5A$7$^$9!#(B
-                XMIN : dx$B$N:G>.CM(B
-                XMAX : dx$B$N:GBgCM(B
-                YMIN : dy$B$N:G>.CM(B
-                YMAX : dy$B$N:GBgCM(B
+               次のように定数を定義します。
+                XMIN : dxの最小値
+                XMAX : dxの最大値
+                YMIN : dyの最小値
+                YMAX : dyの最大値
 
-               $B%W%m%0%i%`$O<!$N$h$&$J$b$N$K$J$j$^$9!#(Bif$BJ8$r;H$C$F!"AGD>$KHO(B
-               $B0O(B $B$r@)8B$7$F$$$^$9!#(B
+               プログラムは次のようなものになります。if文を使って、素直に範
+               囲 を制限しています。
                 if (dx < XMIN) {
                     dx = XMIN;
                 } else if (dx > XMAX) {
@@ -1469,14 +1469,14 @@ File name: test.html
                     dy = YMAX;
                 }
 
-            2. $BB.$5(B($BB.EY%Y%/%H%k$ND9$5(B)$B$r0lDjHO0OFb$KJ]$DJ}K!(B
-               $B<!$N$h$&$KDj?t$d%a%=%C%I$rDj5A$7$^$9!#(B
+            2. 速さ(速度ベクトルの長さ)を一定範囲内に保つ方法
+               次のように定数やメソッドを定義します。
 
-                speed      : $BB.$5(B
-                MAXSPEED   : $BB.$5$N:GBgCM(B
-                sqrt()     : $BJ?J}:,$r5a$a$k(BAPI$B%a%=%C%I(B
+                speed      : 速さ
+                MAXSPEED   : 速さの最大値
+                sqrt()     : 平方根を求めるAPIメソッド
 
-               $B%W%m%0%i%`$O<!$N$h$&$K$J$j$^$9!#(B
+               プログラムは次のようになります。
 
                 speed = Math.sqrt(dx * dx + dy * dy);
                 if (MAXSPEED < speed) {
@@ -1484,13 +1484,13 @@ File name: test.html
                     dy = dy * MAXSPEED / speed;
                 }
 
-               $BB.EY$,HO0O$r1[$($?>l9g!"85$N(Bdx,dy$B$NHfN($rJ]$C$?$^$^$G%Y%/%H%k(B
-               $BD9$r@)8B$7$J(B $B$1$l$P$J$i$J$$$?$a!"$+$1;;$r$9$k$3$H$K$h$C$FD4@0(B
-               $B$7$F$$$^$9!#(B
+               速度が範囲を越えた場合、元のdx,dyの比率を保ったままでベクトル
+               長を制限しな ければならないため、かけ算をすることによって調整
+               しています。
 
-       5.6.3 $B=*C<%"%k%4%j%:%`(B
+       5.6.3 終端アルゴリズム
 
-          $BDj?t(BRESIST$B$r6u5$Dq93$N$h$&$JDq9378?t$H$7$^$9!#(B
+          定数RESISTを空気抵抗のような抵抗係数とします。
 
            ddx = input_x;
            ddy = input_y;
@@ -1498,48 +1498,48 @@ File name: test.html
            dx = dx + ddx - dx * RESIST;
            dy = dy + ddy - dy * RESIST;
 
-          $B$3$NFbMF$O9b9;(B2$B!"(B3$BG/$NJ*M}$K=P$F$/$k$b$N$G$9!#(B
-          ddx$B$H(Bdx * RESIST$B$,Ey$7$/$J$k$H!"(Bdx$B$OJQ2=$7(B $B$J$/$J$j$^$9!#(Bdx$B$H(Bdy$B$,(B
-          $BN>J}$H$b$=$N>uBV$K$J$k$H!"(B $BB.EY$OJQ2=$7$J$/$J$k!"$D$^$j=*C<B.EY$K(B
-          $BC#$C$7$?$3$H$K$J$j$^$9!#(B dx$B!"(Bdy$B$O$=$l$>$l0lDjHO0OFb$KJ]$?$l!"HO0O(B
-          $B$N9-(B $B$5$ODq9378?t(BRESIST$B$NCM$K$h$C$F7h$^$j$^$9!#HO0O$N7A>u$O(Bddx
-          $B!"(Bddy$B$N7A>u$HF1$8$K$J$k$N$G!"B.$5(B($BB.EY%Y%/%H%kD9(B)$B$r0lDjHO0OFb$K(B $BJ](B
-          $B$A$?$$$H$-$O!"(Bddx$B!"(Bddy($B$9$J$o$A!"(Binput_x$B$H(B input_y$B$N%Y%/%H%kD9$,0l(B
-          $BDj$K$J$k$h$&$K$9$l$P$h$$$3$H$K$J$j$^$9!#(B) $B$3$l$O47@-%"%k%4%j%:%`$N(B
-          $B3HD%HG$H$b$$$(!"%2!<%`$NCf$GMQ$$$i$l$k>lLL$b47@-%"%k%4%j%:%`(B $B$H;w(B
-          $B$F$$$^$9!#FC$K!"6u5$Cf$d?eCf$H$$$C$?Dq93$N$"$k>lLL$G$N0\F0$K;H$o$l(B
-          $B$^$9!#(B
+          この内容は高校2、3年の物理に出てくるものです。
+          ddxとdx * RESISTが等しくなると、dxは変化し なくなります。dxとdyが
+          両方ともその状態になると、 速度は変化しなくなる、つまり終端速度に
+          達っしたことになります。 dx、dyはそれぞれ一定範囲内に保たれ、範囲
+          の広 さは抵抗係数RESISTの値によって決まります。範囲の形状はddx
+          、ddyの形状と同じになるので、速さ(速度ベクトル長)を一定範囲内に 保
+          ちたいときは、ddx、ddy(すなわち、input_xと input_yのベクトル長が一
+          定になるようにすればよいことになります。) これは慣性アルゴリズムの
+          拡張版ともいえ、ゲームの中で用いられる場面も慣性アルゴリズム と似
+          ています。特に、空気中や水中といった抵抗のある場面での移動に使われ
+          ます。
 
-#$B?^(B5.6.3 <NOT YET>       $BF~NO(BON/OFF$B$+$i$NB.EY$NN)$A$"$,$j%0%i%U(B(syuutan)
+#図5.6.3 <NOT YET>       入力ON/OFFからの速度の立ちあがりグラフ(syuutan)
 
 
-       5.6.4 $BA26a%"%k%4%j%:%`(B
+       5.6.4 漸近アルゴリズム
 
-          $BDj?t$r<!$N$h$&$KDj5A$7$^$9!#(B
+          定数を次のように定義します。
 
-           RATE : dx, dy$B$NJQ2=N($G!"(B1$BL$K~$N@5$NCM(B
+           RATE : dx, dyの変化率で、1未満の正の値
 
-          $B$=$&$9$k$H%W%m%0%i%`$O<!$N$h$&$K$J$j$^$9!#(B
+          そうするとプログラムは次のようになります。
 
            dx = dx + (input_x - dx) * RATE;
            dy = dy + (input_y - dy) * RATE;
 
-          dx$B!"(Bdy$B$NJQ2=NL$O!"$=$l$>$l(Binput_x $B!"(Binput_y$B$N:9$,Bg$-$$$[$IBg$-(B
-          $B$/!":9$,>.$5$/$J$k$[$I>.$5$/$J$j(B $B$^$9!#%-%c%i%/%?$N0\F0$O!"=y!9$K(B
-          $B%W%l%$%d$NF~NOCM$K<}B+$7$F$$$/$h$&$KJQ2=(B $B$7$^$9!#%8%g%$%9%F%#%C%/(B
-          $B$NF~NO$=$N$^$^$K%-%c%i%/%?$,0\F0$9$k$h$j$b!"%W%l%$%d(B $B$NF~NO$K3j$i(B
-          $B$+$K=>$C$F$$$/$h$&$J0\F0$r$5$;$?$$$H$-$KMQ$$$i$l$^$9!#(B
+          dx、dyの変化量は、それぞれinput_x 、input_yの差が大きいほど大き
+          く、差が小さくなるほど小さくなり ます。キャラクタの移動は、徐々に
+          プレイヤの入力値に収束していくように変化 します。ジョイスティック
+          の入力そのままにキャラクタが移動するよりも、プレイヤ の入力に滑ら
+          かに従っていくような移動をさせたいときに用いられます。
 
-#$B?^(B5.6.4 <NOT YET>       $BF~NO(BON/OFF$B$+$i$NB.EY$NN)$A$"$,$j%0%i%U(B(zenkin)
+#図5.6.4 <NOT YET>       入力ON/OFFからの速度の立ちあがりグラフ(zenkin)
 
 
-     $B%2!<%`FbMF$K9g$o$;$F!"$3$l$i$N%"%k%4%j%:%`$rE,@Z$K;H$$$o$1$F(B $B%W%l%$%d%-(B
-     $B%c%i%/%?$N0\F0$rL%NOE*$J$b$N$K$9$l$P!"$-$C$H%W%l%$%d$r%2!<%`$K0z$-$3$`(B
-     $B$3$H$,$G$-$k$G$7$g$&!#(B $B:G8e$K!"(BJava$B$G>e5-$N%"%k%4%j%:%`$r<BAu$7$?Nc$r<((B
-     $B$7$^$9!#(B input_x$B$H(Binput_y$B$O!"D>@\$K$OF~NO%G!<%?$H$7$F(B $B;H$($J$$$N$G!"(B
-     dir2X$B$H(Bdir2Y$B$H$$$&G[Ns$rG^BN$H$7$F!"(B $B7W;;$K;H$($kF~NO%G!<%?$KJQ49$7$F$$(B
-     $B$^$9!#(B $B$=$NJQ49$r$9$k$N$,!"(Bint calcDirection(boolean cursor[])$B%a%=%C%I(B
-     $B$G$9!#$=$NB>$NItJ,$O!"$@$$$?$$2r@b$HF1$8$K$J$C$F$$$^$9!#(B
+     ゲーム内容に合わせて、これらのアルゴリズムを適切に使いわけて プレイヤキ
+     ャラクタの移動を魅力的なものにすれば、きっとプレイヤをゲームに引きこむ
+     ことができるでしょう。 最後に、Javaで上記のアルゴリズムを実装した例を示
+     します。 input_xとinput_yは、直接には入力データとして 使えないので、
+     dir2Xとdir2Yという配列を媒体として、 計算に使える入力データに変換してい
+     ます。 その変換をするのが、int calcDirection(boolean cursor[])メソッド
+     です。その他の部分は、だいたい解説と同じになっています。
 
 
 
@@ -1629,7 +1629,7 @@ public class player {
 			}
 		}
 
-		// $B??>e$,(B0$B$G1&2s$j$K(B7$B$^$G!#F~NOL5$7$O(B8
+		// 真上が0で右回りに7まで。入力無しは8
 		if (input_x > 0) {
 			if (input_y > 0) {
 				return 3;
@@ -1687,11 +1687,11 @@ public class player {
 
 ------------------------------------------------------------
 
-     $B$3$N%W%m%0%i%`$O!"$=$l<+BN$K$O%"%k%4%j%:%`$7$+$J$$$N$G!"B>$NI=<($J$I$r(B
-     $B$9$k(B $B%/%i%9$H7k9g$9$kI,MW$,$"$j$^$9!#$3$N%/%i%9$r8F$S$@$7$F;H$&%/%i%9$N(B
-     $B%=!<%9$r(B $B<($7$^$9!#(B($B$b$A$m$s$3$l$b%2!<%`$N%9%1%k%H%s%W%m%0%i%`$,85$K$J(B
-     $B$C$F$$$^$9!#(B) $B4JJX$N$?$a!"DA$7$/%3%s%]!<%M%s%H$r;HMQ$7$F%"%k%4%j%:%`$r(B
-     $BA*Br$9$k$h$&$K(B $B$J$C$F$$$^$9!#(B
+     このプログラムは、それ自体にはアルゴリズムしかないので、他の表示などを
+     する クラスと結合する必要があります。このクラスを呼びだして使うクラスの
+     ソースを 示します。(もちろんこれもゲームのスケルトンプログラムが元にな
+     っています。) 簡便のため、珍しくコンポーネントを使用してアルゴリズムを
+     選択するように なっています。
 
 
 File name: game.java
@@ -1709,8 +1709,8 @@ public class game extends java.applet.Applet implements Runnable
 
 	int cron=0;
 
-	public int width,height;                        // $BC10L$O%T%/%;%k(B
-	public final int interval = 50;         // $B%_%jIC(B
+	public int width,height;                        // 単位はピクセル
+	public final int interval = 50;         // ミリ秒
 
 	MenuBar mb;
 	player p ;
@@ -1739,7 +1739,7 @@ public class game extends java.applet.Applet implements Runnable
 
 		thread.start();
 
-		//$BJQ992DG=8D=j(B
+		//変更可能個所
 
 		p = new player( width , height ,8 ,(double)4 ,(double)1,(double)0.1 );
 		mode = p.TOSOKU;
@@ -1801,8 +1801,8 @@ public class game extends java.applet.Applet implements Runnable
 	void doIt()
 	{
 
-		// $BJQ992DG=8D=j(B
-		// $B$3$3$K%W%m%0%i%`$r2C$($F$$$C$F$_$^$7$g$&!#(B
+		// 変更可能個所
+		// ここにプログラムを加えていってみましょう。
 		dg.setColor( Color.white );
 		dg.fillRect( 0 ,0, 300,50 );
 		dg.setColor( Color.black );
@@ -1853,82 +1853,82 @@ File name: test.html
 <applet code=game.class width=500 height=400></applet>
 ------------------------------------------------------------
 
-$B?^(B5.6.4-2 <DONE>    $BF0:nCf$N2hLL(B(player.java)
+図5.6.4-2 <DONE>    動作中の画面(player.java)
 
-     $BA`:n$O!"%-!<%\!<%I$N%+!<%=%k%-!<$r;HMQ$7$^$9!#%-!<%\!<%I$K%+!<%=%k%-!<(B
-     $B$,$J$$(B $B>l9g$O!"(BUP$B!"(BDOWN$B!"(BLEFT$B!"(BRIGHT $B$NDj?t$,%-!<%3!<%I(B(keyDown$B%a%=%C%I(B
-     $B$N0z?t$H$7$FF@$i$l$kCM(B) $B$K$J$C$F$$$^$9$N$G!"$=$l$rE,59JQ99$7$F$/$@$5(B
-     $B$$!#%"%k%4%j%:%`$NJQ99$O!"(B $B:82<$KI=<($5$l$F$$$k%a%K%e!<$+$i%I%i%C%0$7$F(B
-     $BA*$S$^$9!#(B
-     player.java$B$NFbMF$O!"4JC1$KN.MQ$G$-$k$h$&$K$J$C$F$$$F!"$b$A$m$s%U%j!<(B 
-	$B$G$9$N$G!"B8J,$KMxMQ$7$F$/$@$5$$!#(B
+     操作は、キーボードのカーソルキーを使用します。キーボードにカーソルキー
+     がない 場合は、UP、DOWN、LEFT、RIGHT の定数がキーコード(keyDownメソッド
+     の引数として得られる値) になっていますので、それを適宜変更してくださ
+     い。アルゴリズムの変更は、 左下に表示されているメニューからドラッグして
+     選びます。
+     player.javaの内容は、簡単に流用できるようになっていて、もちろんフリー 
+	ですので、存分に利用してください。
 
 
-5.7 $B6K:BI87O$r;H$C$F!"3Z$7$$F0$-$r!*(B
+5.7 極座標系を使って、楽しい動きを！
 	
-	$B$5$i$KH/E8E*$JFbMF$K$J$C$F$$$-$^$9$,!"$3$N@a$G$O!":#$^$G$H0c$C$?(B
-	$B%-%c%i%/%?!<$N4IM}!&A`:nJ}K!$r@bL@$7$^$9!#$J$*!"$3$N@a$b!"5~Bg%^%$%3%s(B
-	$B%/%i%V$NCf@>1QG7$5$s$N4s9F$K$h$k$b$N$G$9!#(B
+	さらに発展的な内容になっていきますが、この節では、今までと違った
+	キャラクターの管理・操作方法を説明します。なお、この節も、京大マイコン
+	クラブの中西英之さんの寄稿によるものです。
 
-	$B$^$:8@MU$N@bL@$r$7$F$*$-$^$9!#(B
+	まず言葉の説明をしておきます。
 
-	o $BD>8r:BI87O!'(B X$B<4$H(BY$B<4$,D>3Q$K8r$o$k:BI87O!#0LCV$rI=$9$K$O!"(B
-	X$B:BI8$H(BY$B:BI8$N(B2$B<oN`$N>pJs$,I,MW!#(B
+	o 直交座標系： X軸とY軸が直角に交わる座標系。位置を表すには、
+	X座標とY座標の2種類の情報が必要。
 
-#$B?^(B5.7-1 <NOT YET>	$BD>8r:BI87O(B
+#図5.7-1 <NOT YET>	直交座標系
 
-	o $B6K:BI87O!'(B $B5wN%$H3QEY$G0LCV$rI=$9:BI87O!#0LCV$rI=$9$K$O!"5wN%$H(B
-	$B3QEY$N(B2$B<oN`$N>pJs$,I,MW!#(B
+	o 極座標系： 距離と角度で位置を表す座標系。位置を表すには、距離と
+	角度の2種類の情報が必要。
 
-#$B?^(B5.7-2 <NOT YET>	$B6K:BI87O(B
+#図5.7-2 <NOT YET>	極座標系
 	
-    $B$3$l$^$G$N%5%s%W%k%W%m%0%i%`$G$O!"$9$Y$F!"%-%c%i%/%?$?$A$N0LCV$O!"(B
-	$BD>8r:BI87O$GI=$7$F$$$?$3$H$O$*$o$+$j$G$9$M!#$=$l$O$J$<$+$H$$$&$H!"(B
-	$B%W%m%0%i%`$9$k;~$K;H$&!"(B
+    これまでのサンプルプログラムでは、すべて、キャラクタたちの位置は、
+	直交座標系で表していたことはおわかりですね。それはなぜかというと、
+	プログラムする時に使う、
 	
 	 g.drawLine( x1 , y1 , x2, y2 );
 
-	$B$H$$$&$h$&$JIA2h$N$?$a$N%a%=%C%I$,D>8r:BI87O$r:NMQ$7$F$$$k$+$i$G$9!#(B
-	$B%-%c%i%/%?$N4IM}J}K!$b$=$l$K$"$o$;$F$$$?$o$1$G$9!#(B
+	というような描画のためのメソッドが直交座標系を採用しているからです。
+	キャラクタの管理方法もそれにあわせていたわけです。
 
-	$B$7$+$7!"%2!<%`$NCf$G%-%c%i%/%?$K!V%2!<%`$i$7$$!W$D$^$j3Z$7$^$;$kF0$-$r(B
-	$B$5$;$k$K$O!"D>8r:BI87O$h$j$b!"6K:BI87O$r;H$C$?$[$&$,8z2LE*$J$N$G$9!#(B
-	$B$3$3$GA[Dj$7$F$$$k3Z$7$$F0$-$K$O!"(B
-	$B!V%/%k%/%k2s$k!W!VDI$$$+$1$k!W!V$U$o$U$oHt$V!W!V%8%c%s%W!W(B
-	$B!V$H$D$<$s0z$-$+$($9!W!V9T$-$9$.$k!W!V$V$D$+$k!W!V%+%/%+%/6J$,$k!W(B
-	$B!V@p7A$KCF$r$^$-$A$i$9!W$J$I$J$I!"$$$m$$$m$J%P%j%(!<%7%g%s$,$"$j$^$9!#(B
-	$B$3$NCf$K$OA0@a$G@bL@$7$?$h$&$J!"A26a0\F0$d47@-0\F0$r;H$C$F<B8=$G$-$k(B
-	$B$b$N$b$"$j$^$9!#$7$+$7!"FC$K4X?t2=$7$K$/$$F0:n$D$^$j(BX$B$H(BY$B$,0lBP0l$K(B
-	$BBP1~$7$J$$$h$&$JF0:n$r$5$;$k$K$O!"6K:BI87O$r;H$o$J$$$H$[$\L5M}$G$9!#(B
-	$BNc$($P!"!V%O%A$,(B8$B$N;z$rIA$$$F0lDjB.EY$GHt$V!W$H$$$&F0:n$rD>8r:BI87O$r(B
-	$B;H$C$F<B8=$9$k$N$O!"Hs>o$K:$Fq$G$9!#(B
+	しかし、ゲームの中でキャラクタに「ゲームらしい」つまり楽しませる動きを
+	させるには、直交座標系よりも、極座標系を使ったほうが効果的なのです。
+	ここで想定している楽しい動きには、
+	「クルクル回る」「追いかける」「ふわふわ飛ぶ」「ジャンプ」
+	「とつぜん引きかえす」「行きすぎる」「ぶつかる」「カクカク曲がる」
+	「扇形に弾をまきちらす」などなど、いろいろなバリエーションがあります。
+	この中には前節で説明したような、漸近移動や慣性移動を使って実現できる
+	ものもあります。しかし、特に関数化しにくい動作つまりXとYが一対一に
+	対応しないような動作をさせるには、極座標系を使わないとほぼ無理です。
+	例えば、「ハチが8の字を描いて一定速度で飛ぶ」という動作を直交座標系を
+	使って実現するのは、非常に困難です。
 
-#$B?^(B5.7-3 <NOT YET>	$B%O%A$,(B8$B$N;z$rIA$$$FHt$V(B
+#図5.7-3 <NOT YET>	ハチが8の字を描いて飛ぶ
 
-	$B$H$3$m$,!"6K:BI87O$r;H$&$H!"%O%A$NB.EY$H8~$-$KCmL\$7$^$9$+$i!"%O%A$N(B	
-	$BF0$-$O!"!VB.EY$O0lDj$G!":G=i$N0l<~J,$O8~$-$KBP$7$F1&$K@{2s!"(B
-	$B<!$N0l<~J,$O:8@{2s!#2sE>NL$O>o$K0lDj!#!W$H$$$&C1=c$J7W;;$G:Q$`$N$G$9!#(B
-	$B$3$N$h$&$K6K:BI87O$r;H$&2ACM$O==J,$K$"$j$^$9!#6K:BI87O$HD>8r:BI87O$r(B
-	$B$&$^$/AH$_$"$o$;$F!"$h$jLLGr$$F0$-$r:n$j$@$7$^$7$g$&!#(B
+	ところが、極座標系を使うと、ハチの速度と向きに注目しますから、ハチの	
+	動きは、「速度は一定で、最初の一周分は向きに対して右に旋回、
+	次の一周分は左旋回。回転量は常に一定。」という単純な計算で済むのです。
+	このように極座標系を使う価値は十分にあります。極座標系と直交座標系を
+	うまく組みあわせて、より面白い動きを作りだしましょう。
 	
-	$B$5$F!"<B:]$N%W%m%0%i%`$K$*$$$F$O!"$I$N$h$&$K$9$l$P$h$$$N$+$r!"0J2<$G(B
-	$B2r@b$7$F$$$-$^$9!#(B
+	さて、実際のプログラムにおいては、どのようにすればよいのかを、以下で
+	解説していきます。
 
-	* $B;H$&5-9f(B
+	* 使う記号
 
 --------------------------
- dx , dy     : $BB.EY(B($BD>8r:BI87O(B)
- r , theta   : $BB.EY(B($B6K:BI87O(B)
+ dx , dy     : 速度(直交座標系)
+ r , theta   : 速度(極座標系)
 --------------------------
-	$B$?$@$7!"(Btheta$B$O<!$N>r7o$rK~$?$9$b$N$H$7$^$9!#(B(theta$B$K@)8B$r$D$1$k$?$a$N(B
-	$B%a%=%C%I$rMQ0U$9$k$H$$$&$3$H$G$9!#(B)
+	ただし、thetaは次の条件を満たすものとします。(thetaに制限をつけるための
+	メソッドを用意するということです。)
 
 
-	5.7.1 $B:BI87O$N4V$G$NJQ49J}K!(B
+	5.7.1 座標系の間での変換方法
 
-	$B!&D>8r:BI87O(B(dx, dy) $B!]!d(B $B6K:BI87O(B(r, theta)
+	・直交座標系(dx, dy) −＞ 極座標系(r, theta)
 
-	   (dx, dy)$B$+$i(Btheta$B$r7W;;$9$k%a%=%C%I$r0J2<$N$h$&$KDj5A$7$^$9!#(B
+	   (dx, dy)からthetaを計算するメソッドを以下のように定義します。
 -------------------------------   
     double   Delta2Theta(double dx, double dy)
     {
@@ -1945,89 +1945,89 @@ File name: test.html
 		}
     }
 -------------------------------   
-   $B$9$k$H!"JQ49$O<!$N(B2$B<0$GI=$5$l$^$9!#(B
+   すると、変換は次の2式で表されます。
 
    r = Math.sqrt(dx * dx + dy * dy);
    theta = Delta2Theta(dx, dy);
 
-   $B!&6K:BI87O(B(r, theta) $B!]!d(B $BD>8r:BI87O(B(dx, dy)
+   ・極座標系(r, theta) −＞ 直交座標系(dx, dy)
 	
-	$B$3$N>l9g$O4JC1$G!";03Q4X?t$r;H$($P<!$N(B2$B<0$GJQ49$9$k$3$H$,$G$-$^$9!#(B
+	この場合は簡単で、三角関数を使えば次の2式で変換することができます。
 -------------------------------   
    dx = r * Math.cos(theta);
    dy = r * Math.sin(theta);
 -------------------------------   
 
-	$B$3$3$^$G$NCN<1$G!"%7%e!<%F%#%s%0%2!<%`$GB?MQ$5$l$k!"<+5!$K8~$+$C$F(B
-	$B$^$C$9$0$KHt$s$G$/$kCF$,<B8=$G$-$^$9!#$G$O!"E($,<+5!$K8~$+$C$FCF$r(B
-	$BH/<M$7$F967b$7$F$/$k>l9g$r9M$($F$_$^$7$g$&!#$3$l$O!"CF$rH/<M$9$k=hM}(B
-	$B$H!"$=$N8eCF$,Ht$s$G$$$/=hM}$KJ,$+$l$^$9!#(B
+	ここまでの知識で、シューティングゲームで多用される、自機に向かって
+	まっすぐに飛んでくる弾が実現できます。では、敵が自機に向かって弾を
+	発射して攻撃してくる場合を考えてみましょう。これは、弾を発射する処理
+	と、その後弾が飛んでいく処理に分かれます。
 
 
-    $B$3$3$G;HMQ$9$k3FJQ?t$N0UL#$O<!$NDL$j$G$9!#(B
+    ここで使用する各変数の意味は次の通りです。
 
 -------------------------------   
-   $B<+J,$N:BI8(B           : mx, my
-   $BE($N:BI8(B             : ex, ey
-   $BCF$N:BI8(B             : sx, sy
-   $BCF$NB.EY(B($BD>8r:BI87O(B) : dx, dy
-   $BCF$NB.EY(B($B6K:BI87O(B)   : s_r($BB.$5(B), s_theta($B3QEY(B)
+   自分の座標           : mx, my
+   敵の座標             : ex, ey
+   弾の座標             : sx, sy
+   弾の速度(直交座標系) : dx, dy
+   弾の速度(極座標系)   : s_r(速さ), s_theta(角度)
 -------------------------------   
 
-    $B$^$:$OCF$rH/<M$9$k=hM}$G$9$,!"CF$OE($+$iH/<M$5$l$^$9$+$i!"CF$N:BI8$O(B
-    $B:G=i$OE($N:BI8$HF1$8$G$9!#(B
+    まずは弾を発射する処理ですが、弾は敵から発射されますから、弾の座標は
+    最初は敵の座標と同じです。
 
     sx = ex;
     sy = ey;
 
-    $BCF$,<+5!$NJ}8~$KH/<M$5$l$k$h$&$KD>8r:BI87O$+$i6K:BI87O$X$NJQ49$rMQ$$(B
-    $B$F3QEY$r7W;;$7$^$9!#<+J,$HE($N:BI8$,J,$+$C$F$$$k$H$9$k$H!"CF$rH/<M$9(B
-    $B$k3QEY$O<!$N$h$&$K7W;;$7$^$9!#(B
+    弾が自機の方向に発射されるように直交座標系から極座標系への変換を用い
+    て角度を計算します。自分と敵の座標が分かっているとすると、弾を発射す
+    る角度は次のように計算します。
 
     s_theta = Delta2Theta(mx - ex, my - ey);
 
-    $BCF$NB.$5$ODj?t(BSHOT_SPEED$B$H$7$FDj5A$5$l$F$$$k$b$N$H$9$k$H!"(B
+    弾の速さは定数SHOT_SPEEDとして定義されているものとすると、
 
     s_r = SHOT_SPEED;
 
-	$B$H=i4|2=$G$-$^$9!#(B
-    $B8e$N!"CF$,Ht$V=hM}$N$?$a$K6K:BI87O$+$iD>8r:BI87O$X$NJQ49$rMQ$$$F:BI8(B
-    $BA}J,$r7W;;$7$^$9!#(B
+	と初期化できます。
+    後の、弾が飛ぶ処理のために極座標系から直交座標系への変換を用いて座標
+    増分を計算します。
 
     dx = s_r * Math.cos(theta);
     dy = s_r * Math.sin(theta);
 
-	$B$3$N=hM}$b!"=i4|2=;~$K0lEY9T$J$&$@$1$G$9!#(B
-    $B<!$KCF$,Ht$V=hM}$G$9$,!"CF$,EyB.D>@~1?F0$9$k>l9g$O0\F0$9$kEY$K<!$N7W;;$r(B
-	$B9T$&$@$1$G$9!#0\F0NL$,0lDj$H$J$j$^$9!#(Bdx$B$H(Bdy$B$O!"ESCf$GJQ2=$7$J$$$+$i$G$9!#(B
+	この処理も、初期化時に一度行なうだけです。
+    次に弾が飛ぶ処理ですが、弾が等速直線運動する場合は移動する度に次の計算を
+	行うだけです。移動量が一定となります。dxとdyは、途中で変化しないからです。
 
     sx += dx;
     sy += dy;
 
-    $B$b$7!"CF$,ESCf$G6J$,$k>l9g$d2C8:B.$9$k>l9g$O!"(Bs_theta$B$d(Bs_r$B$r99?7$7!"(B
-    dx, dy$B$r7W;;$7D>$7$?8e!">e$N7W;;$r$9$k$3$H$K$J$j$^$9!#Nc$($P!"CF$,<+(B
-    $BJ,$rDI$$$+$1$F$/$k$h$&$K$7$?$$>l9g$O!"Dj4|E*$K<!$N7W;;$K$h$C$F(B
-    s_theta$B$r99?7$7$F$d$j$^$9!#(B
+    もし、弾が途中で曲がる場合や加減速する場合は、s_thetaやs_rを更新し、
+    dx, dyを計算し直した後、上の計算をすることになります。例えば、弾が自
+    分を追いかけてくるようにしたい場合は、定期的に次の計算によって
+    s_thetaを更新してやります。
 
     s_theta = Delta2Theta(mx - sx, my - sy);
 
 
-	5.7.2 $B3QEY$r07$&$?$a$NH=Dj4X?t72(B
+	5.7.2 角度を扱うための判定関数群
 
-    $BB.$5(B(r)$B$KHf$Y$F!"3QEY(B(theta)$B$r07$&$K$O$A$g$C$H$7$?%3%D$,I,MW$G$9!#3QEY(B
-    (theta)$B$r07$&$H$-$KCN$C$F$*$/$HJXMx$J%a%=%C%I$r(B3$B$D$[$I5s$2$^$9!#$3$N$"$?$j(B
-	$B$N%a%=%C%I$O!"8e$G:FMxMQ$7$d$9$$$h$&$K$7$F$*$/$H!"%2!<%`$r?7$7$/:n$k$H$-(B
-	$B$KHs>o$KJXMx$G$9!#(B
+    速さ(r)に比べて、角度(theta)を扱うにはちょっとしたコツが必要です。角度
+    (theta)を扱うときに知っておくと便利なメソッドを3つほど挙げます。このあたり
+	のメソッドは、後で再利用しやすいようにしておくと、ゲームを新しく作るとき
+	に非常に便利です。
 
-    * $B%a%=%C%I(B InRange
+    * メソッド InRange
 
-	$B=hM}FbMF(B : $BAj<j$,<+J,$NA0J}$N$"$k0lDjHO0O$N3QEY$K$$$k$+$I$&$+H=Dj$9$k(B
-    $BJV$jCM(B   : $BHO0OFb$K$$$k>l9g$O(B1$B!"$=$&$G$J$$>l9g$O(B0
-    $B0z?t(B     : me   ...  $B<+J,$N3QEY(B
-	         : you  ...  $BAj<j$N3QEY(B
-		     : range ... $B3QEY$NHO0O(B
+	処理内容 : 相手が自分の前方のある一定範囲の角度にいるかどうか判定する
+    返り値   : 範囲内にいる場合は1、そうでない場合は0
+    引数     : me   ...  自分の角度
+	         : you  ...  相手の角度
+		     : range ... 角度の範囲
 
-#$B?^(B5.7.2-1 <NOT YET>	$B<+J,$N3QEY$HAj<j$N3QEY(B
+#図5.7.2-1 <NOT YET>	自分の角度と相手の角度
 
 ------------------------
 int InRange(double me, double you, double range)
@@ -2038,14 +2038,14 @@ int InRange(double me, double you, double range)
 }
 ------------------------
 
-	* $B%a%=%C%I(B RightLeft
+	* メソッド RightLeft
 
-  	$B=hM}FbMF(B : $BL\I8$N3QEY$r8~$/$K$O:81&$N$I$A$i$K2sE>$9$k$Y$-$+H=Dj$9$k(B
-    $BJV$jCM(B   : $B1&2sE>(B($B@5$NJ}8~(B)$B$N>l9g$O(B1$B!":82sE>(B($BIi$NJ}8~(B)$B$N>l9g$O(B-1
-    $B0z?t(B     : now   ...  $B8=:_$N3QEY(B
-             : target ..  $BL\I8$KBP$9$k3QEY(B
+  	処理内容 : 目標の角度を向くには左右のどちらに回転するべきか判定する
+    返り値   : 右回転(正の方向)の場合は1、左回転(負の方向)の場合は-1
+    引数     : now   ...  現在の角度
+             : target ..  目標に対する角度
 
-#$B?^(B5.7.2-2 <NOT YET>	$B8=:_$N3QEY$HL\I8$X$N3QEY(B
+#図5.7.2-2 <NOT YET>	現在の角度と目標への角度
 
 ------------------------
 int RightLeft(double now, double target)
@@ -2060,14 +2060,14 @@ int RightLeft(double now, double target)
 }
 ------------------------
 
-    * $B%a%=%C%I(B  ForBack
+    * メソッド  ForBack
 
-    $B=hM}FbMF(B : $BAj<j$,<+J,$NA0J}$K$$$k$N$+8eJ}$K$$$k$N$+H=Dj$9$k(B
-    $BJV$jCM(B   : $BA0J}$K$$$k>l9g$O(B1$B!"8eJ}$K$$$k>l9g$O(B-1
-    $B0z?t(B     : me   ...  $B<+J,$N3QEY(B
-	         : you  ...  $BAj<j$KBP$9$k3QEY(B
+    処理内容 : 相手が自分の前方にいるのか後方にいるのか判定する
+    返り値   : 前方にいる場合は1、後方にいる場合は-1
+    引数     : me   ...  自分の角度
+	         : you  ...  相手に対する角度
 
-#$B?^(B5.7.2-3 <NOT YET>	forback$B$NCM(B
+#図5.7.2-3 <NOT YET>	forbackの値
 
 ------------------------
 int ForBack(double me, double you)
@@ -2078,31 +2078,31 @@ int ForBack(double me, double you)
 }
 ------------------------
 
-   5.7.3 $B6K:BI87O$rMQ$$$?0\F0%"%k%4%j%:%`$NNc!'CvFMLT?J%-%c%i(B
+   5.7.3 極座標系を用いた移動アルゴリズムの例：猪突猛進キャラ
 
 
-   $B$3$3$G$O<B:]$K6K:BI87O$rMQ$$$?0\F0%"%k%4%j%:%`$NNc$H$7$F!"%^%&%9%+!<%=(B
-   $B%k$K8~$+$C$FCvFMLT?J$7$F$/$k%-%c%i%/%?(B(Mario64$B$N!V%\%`$X$$!W$NF0$-$r(B
-	$B;W$$$&$+$Y$F$/$@$5$$!#(B)$B$N%W%m%0%i%`$r<($7$^$9!#@h$K>e$2(B
-   $B$?(B3$B$D$N4X?t$r$=$l$>$lMQ$$$F$$$^$9$N$G;29M$K$7$F$/$@$5$$!#(B
+   ここでは実際に極座標系を用いた移動アルゴリズムの例として、マウスカーソ
+   ルに向かって猪突猛進してくるキャラクタ(Mario64の「ボムへい」の動きを
+	思いうかべてください。)のプログラムを示します。先に上げ
+   た3つの関数をそれぞれ用いていますので参考にしてください。
 
-    $B%/%i%9(Bmoshin$B$O!"0\F0$N%"%k%4%j%:%`$@$1$rCj=P$7$?$b$N$J$N$G!"$=$l$r(B
-    $BI=<($K7k$S$D$1$k$b$N$,I,MW$G$9!#$=$N$?$a$K!"Bh(B4$B>O$G>R2p$7$?(B
-    $B%2!<%`$N%9%1%k%H%s%W%m%0%i%`$r;H$$$^$9!#$3$l$i$N%U%!%$%k$OJL!9$K$J$C$F(B
-    $B$$$^$9!#JL!9$K%3%s%Q%$%k$7$F!"<B9T$9$k;~$K(Bjava$B$,<+F0E*$KFI$_$3$_$^$9!#(B
-	$B%9%1%k%H%s%W%m%0%i%`$O!"(Bgame.java$B$G!"%-%c%i%/%?$N%"%k%4%j%:%`$O!"(B
-	moshin.java$B$NCf$K5-=R$5$l$F$$$^$9!#(B
+    クラスmoshinは、移動のアルゴリズムだけを抽出したものなので、それを
+    表示に結びつけるものが必要です。そのために、第4章で紹介した
+    ゲームのスケルトンプログラムを使います。これらのファイルは別々になって
+    います。別々にコンパイルして、実行する時にjavaが自動的に読みこみます。
+	スケルトンプログラムは、game.javaで、キャラクタのアルゴリズムは、
+	moshin.javaの中に記述されています。
 
-	$B$3$N%W%m%0%i%`$r=q$/$K$"$?$C$F$O!"I=<(ItJ,$rI.<T$,=q$-!"$=$l$H$OA4$/JL$K(B
-	$B%"%k%4%j%:%`ItJ,$rCf@>1QG7$5$s$,%W%m%0%i%`$7$^$7$?!#$=$7$F$=$l$>$l$N(B
-	$B%W%m%0%i%`$NO"MmItJ,!"$D$^$j(B 
+	このプログラムを書くにあたっては、表示部分を筆者が書き、それとは全く別に
+	アルゴリズム部分を中西英之さんがプログラムしました。そしてそれぞれの
+	プログラムの連絡部分、つまり 
 	getX() , getY() , getTheta() , Move()
-	$B$H$$$C$?%a%=%C%I$N;EMM$@$1$r$7$C$+$j7h$a$F$*$1$P!"$"$H$O$*8_$$!"Cf?H(B
-	$B$N$3$H$K$D$$$F$O0l@ZCN$i$J$/$F$h$$$o$1$G$9!#$3$N$"$?$j$,!"%*%V%8%'%/%H;X8~(B
-	$B$N8@8l$r;H$&$3$H$K$h$C$FJ,C4$,$d$j$d$9$/$J$k!"E57?E*$JNc$G$7$g$&!#(B
+	といったメソッドの仕様だけをしっかり決めておけば、あとはお互い、中身
+	のことについては一切知らなくてよいわけです。このあたりが、オブジェクト指向
+	の言語を使うことによって分担がやりやすくなる、典型的な例でしょう。
 	
 
-	$B0J2<$K!"(Bmoshin.java , game.java , test.html $B$N(B3$B$D$rO"B3$G<($7$^$9!#(B
+	以下に、moshin.java , game.java , test.html の3つを連続で示します。
 
 
 File name: moshin.java
@@ -2129,7 +2129,7 @@ class moshin {
     public double getY() {return y;}
     public double getTheta() {return theta;}
 
-    void LimitTheta() { /* theta$B$NCM$r(B0$B$+$i(B2$B&P$N4V$KJ]$D(B */
+    void LimitTheta() { /* thetaの値を0から2πの間に保つ */
 		if (theta < 0.0) {
 			theta += 2 * Math.PI;
 		} else if (theta >= 2 * Math.PI) {
@@ -2203,7 +2203,7 @@ class moshin {
 		double	target = Delta2Theta(cx - x, cy - y);
 
 		switch (phase) {
-			case	SEARCH: /* $B2sE>$7$F%^%&%9%+!<%=%k$NJ}$r8~$/(B */
+			case	SEARCH: /* 回転してマウスカーソルの方を向く */
 			++count;
 			if (0 != InRange(theta, target, MUKU)) {
 				if (WAIT < count) {
@@ -2215,11 +2215,11 @@ class moshin {
 				LimitTheta();
 			}
 			break;
-			case	ATTACK: /* $B??$CD>$KLT?J$7$F$$$/(B */
-			if (0 < ForBack(theta, target)) { /* $BA0J}$K$$$l$P2CB.(B */
+			case	ATTACK: /* 真っ直に猛進していく */
+			if (0 < ForBack(theta, target)) { /* 前方にいれば加速 */
 				r += ACCEL;
 				if (r > MAXSPEED) r = MAXSPEED;
-			} else { /* $B8eJ}$K$$$l$P8:B.Dd;_(B */
+			} else { /* 後方にいれば減速停止 */
 				if (r > ACCEL) {
 					r -= ACCEL;
 				} else {
@@ -2227,7 +2227,7 @@ class moshin {
 					phase = SEARCH;
 				}
 			}
-			if (0 != NextStep()) { /* $B30OH$K>WFM$7$?$H$-$ODd;_(B */
+			if (0 != NextStep()) { /* 外枠に衝突したときは停止 */
 				r = 0;
 				phase = SEARCH;
 			}
@@ -2254,7 +2254,7 @@ public class game extends java.applet.Applet implements Runnable
 
 	int cron=0;
 
-	// $BJQ992DG=8D=j!"?tCM$N$H$3$m$@$1?'$rJQ$($k!#(B 
+	// 変更可能個所、数値のところだけ色を変える。 
 
 	int width ,height;
 	int interval = 100;	// milli second 
@@ -2325,25 +2325,25 @@ File name: test.html
 <applet code=game.class width=400 height=400></applet>
 ----------------------------------------------------
 
-#$B?^(B5.7.3-1 <DONE>	$BF0:n7k2L(B(moshin.java,game.java)
+#図5.7.3-1 <DONE>	動作結果(moshin.java,game.java)
 	
-	$B4]$NCf?4$,0LCV$r$"$i$o$7!"D>@~$,8~$-$r0UL#$7$F$$$^$9!#%^%&%9%+!<%=%k(B
-	$B$K$`$+$C$FFM?J$7$F$/$k%-%c%i%/%?$,8+;v$KI=8=$5$l$F$$$^$9!#>/$79T$-$9$.$k(B
-	$B$"$?$j$,!"!VLLGr$5!W$r=P$7$F$$$^$9!#$=$&$9$k$3$H$G!"%-%c%i%/%?$K!V%9%-!W(B
-	$B$,$G$-$F!"$d$C$D$1$k%A%c%s%9$,@8$^$l$k$+$i$G$9!#(B
+	丸の中心が位置をあらわし、直線が向きを意味しています。マウスカーソル
+	にむかって突進してくるキャラクタが見事に表現されています。少し行きすぎる
+	あたりが、「面白さ」を出しています。そうすることで、キャラクタに「スキ」
+	ができて、やっつけるチャンスが生まれるからです。
 
 
-	($BH/E8(B)
+	(発展)
 
-	$B$3$N%/%i%9$O!"J#?t$N%$%s%9%?%s%9$r:n$k$3$H$G!"F1$8F0$-$r$9$k(B
-	$B%-%c%i%/%?!<$rF1;~$KJ#?t=P8=$5$;$k$3$H$,$G$-$^$9!#$=$l$K$O(B
+	このクラスは、複数のインスタンスを作ることで、同じ動きをする
+	キャラクターを同時に複数出現させることができます。それには
 	
 	for(int i=0;i<c_number;i++){
 		moshin mm[i] = new moshin( width ,height,size );	
 	}	
 	
-	$B$H$$$&$h$&$K$7$F=i4|2=$7$?8e!"0\F0%k!<%A%s$b%-%c%i%/%?!<$N?t$@$1J?Ey$K8F$S(B
-	$B$@$7$^$9!#$=$l$K$D$$$F$O<+J,$G$d$C$F$_$F$/$@$5$$!#(B
+	というようにして初期化した後、移動ルーチンもキャラクターの数だけ平等に呼び
+	だします。それについては自分でやってみてください。
 
 
 

@@ -34,7 +34,7 @@ class MyWindow extends Frame
     xsize = x;
     ysize = y;
     resize( xsize,ysize);
-    show();  // createImage¤¹¤ë¤è¤êÀè¤Ëshow¤¬¤¢¤ëÉ¬Í×¤¬¤¢¤ë¡£
+    show();  // createImageã™ã‚‹ã‚ˆã‚Šå…ˆã«showãŒã‚ã‚‹å¿…è¦ãŒã‚ã‚‹ã€‚
     offscr = createImage( xsize , ysize );
     offscr_g = offscr.getGraphics();
   }

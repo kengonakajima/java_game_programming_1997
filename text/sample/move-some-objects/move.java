@@ -1,5 +1,5 @@
-// Grphics$B%/%i%9$N4pK\E*$JIA2h%a%=%C%I$r;H$C$??^7A$,$$$/$D$+(B
-// $BF0$-$^$o$j!"2hLL$NC<$GD7$M$+$($k!#(B
+// Grphicsクラスの基本的な描画メソッドを使った図形がいくつか
+// 動きまわり、画面の端で跳ねかえる。
 //
 
 
@@ -22,7 +22,7 @@ public class move extends Applet implements Runnable
                 t = new Thread( this );
                 t.start();
 
-                //$B%"%W%l%C%H$N??$sCf$N:BI8$r5a$a$k(B
+                //アプレットの真ん中の座標を求める
                 Dimension d = size();
 
                 for(int i  = 0 ; i < 6 ; i++){
@@ -49,7 +49,7 @@ public class move extends Applet implements Runnable
                         for(int i = 0 ; i < 6; i++){
                                 x[i] = x[i] + vx[i];
                                 y[i] = y[i] + vy[i];
-                                // $BC<$G$O$M$+$($k=hM}(B
+                                // 端ではねかえる処理
                                 if(x[i] <0 || x[i]>size().width) vx[i]= -vx[i];
                                 if(y[i] <0 || y[i]>size().height) vy[i]= -vy[i];
                         }

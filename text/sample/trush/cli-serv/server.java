@@ -3,10 +3,10 @@ import java.io.*;
 import java.net.*;
 import java.awt.*;
 
-// UNIX$B$G$O!"(Bappletviewer$B$N(Bproperties$B$G!"(Bnetwork: Unrestricted$B$K$9$l$P(B
-// server.class$B!"(Bclient.class$B$H$bLdBj$J$/F0$/!#(B
-// windows95$B$G$O!"(B10000$B$H$$$&%]!<%H$r(Blisten$B$7$h$&$H$7$?$H$-$K(B
-// SecurityException $B$,=P$k!#(B Windows $B$,%/%i%$%"%s%H$G(B UNIX$B$,%5!<%P!<$J$i2DG=!#(B
+// UNIXでは、appletviewerのpropertiesで、network: Unrestrictedにすれば
+// server.class、client.classとも問題なく動く。
+// windows95では、10000というポートをlistenしようとしたときに
+// SecurityException が出る。 Windows がクライアントで UNIXがサーバーなら可能。
 //
 public class server extends Applet implements Runnable
 {
@@ -18,12 +18,12 @@ public class server extends Applet implements Runnable
 	Thread t;
 	int port = 10000;
 
-	int x , y;	// $B;M3Q$N0LCV(B
+	int x , y;	// 四角の位置
 
 	public void init()
 	{
 		port = Integer.parseInt(getParameter( "port") );
-		x = size().width/2;		// $B;M3Q$N:G=i$N0LCV$O??Cf(B
+		x = size().width/2;		// 四角の最初の位置は真中
 		y = size().height/2;
 
 		try{
@@ -44,7 +44,7 @@ public class server extends Applet implements Runnable
 	{
 		g.fillRect( x ,y , 10 ,10 );
 	}
-	void shikakumove( int dx, int dy )	// $B;M3Q$rF0$+$9%a%=%C%I(B
+	void shikakumove( int dx, int dy )	// 四角を動かすメソッド
 	{
 		x += dx;
 		y += dy;
@@ -66,7 +66,7 @@ public class server extends Applet implements Runnable
 			}catch( InterruptedException e ){ }
 			try{
 				
-				if( in.available()>0 ){  // $B$b$7$b!"FI$_$3$`$3$H$,$G$-$l$P(Bread$B$9$k(B
+				if( in.available()>0 ){  // もしも、読みこむことができればreadする
 					c = in.read();
 					//System.out.println( (char)c);
 				}

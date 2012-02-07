@@ -1,44 +1,44 @@
 /*
-$B"#%W%l%$%d%-%c%i%/%?0\F0%"%k%4%j%:%`$N?'!9(B
+■プレイヤキャラクタ移動アルゴリズムの色々
 
-$B%W%l%$%d%-%c%i%/%?!"$9$J$o$A<g?M8x!"<+5!$J$I$,<+J,$N;W$C$?DL$j$K0\F0$7(B
-$B$J$/$F%$%i%$%i$7$?7P83$OL5$$$@$m$&$+!#%W%l%$%d%-%c%i%/%?$N0\F0$N=PMh$N(B
-$BNI$70-$7$O%2!<%`$N=PMh$NNI$70-$7$K?<$/1F6A$rM?$($k!#%2!<%`%W%m%0%i%_%s(B
-$B%0$K$*$$$F!"%W%l%$%d%-%c%i%/%?$N0\F0%"%k%4%j%:%`$OHs>o$K=EMW$G$"$k!#(B
+プレイヤキャラクタ、すなわち主人公、自機などが自分の思った通りに移動し
+なくてイライラした経験は無いだろうか。プレイヤキャラクタの移動の出来の
+良し悪しはゲームの出来の良し悪しに深く影響を与える。ゲームプログラミン
+グにおいて、プレイヤキャラクタの移動アルゴリズムは非常に重要である。
 
-$B%W%l%$%d%-%c%i%/%?$N0\F0$H$O!"%W%l%$%d$+$i$N%8%g%$%9%F%#%C%/$NF~NO$K$h$C(B
-$B$F!"%-%c%i%/%?$N:BI8$rJQ2=$5$;$k$3$H$G$"$k!#$3$N:BI8$NJQ2=$N%"%k%4%j%:(B
-$B%`$O%2!<%`$4$H$K$h$C$F@i:9K|JL$G$"$k$,!"4pK\$H$J$kItJ,$O6&DL$G$"$k!#$3(B
-$B$3$G$O$=$l$i$N%"%k%4%j%:%`$r(B4$B$D$KJ,N`$7$F2r@b$9$k!#2r@b$K$O(B2$B<!85$N:BI8(B
-$B7O$rMQ$$$k$,!"$=$NB>$N:BI87O$K$b4JC1$K3HD%2DG=$G$"$k!#(B
+プレイヤキャラクタの移動とは、プレイヤからのジョイスティックの入力によっ
+て、キャラクタの座標を変化させることである。この座標の変化のアルゴリズ
+ムはゲームごとによって千差万別であるが、基本となる部分は共通である。こ
+こではそれらのアルゴリズムを4つに分類して解説する。解説には2次元の座標
+系を用いるが、その他の座標系にも簡単に拡張可能である。
 
-$B0J2<$N2r@b$G6&DL$7$F;HMQ$9$kJQ?t$N0UL#$O<!$NDL$j$G$"$k!#(B
+以下の解説で共通して使用する変数の意味は次の通りである。
 
- x, y             : $B:BI8(B
- dx, dy           : $BB.EY%Y%/%H%k(B
- ddx, ddy         : $B2CB.EY%Y%/%H%k(B
- input_x, input_y : $B%W%l%$%d$+$i$NF~NO(B
+ x, y             : 座標
+ dx, dy           : 速度ベクトル
+ ddx, ddy         : 加速度ベクトル
+ input_x, input_y : プレイヤからの入力
 
-$B%-%c%i%/%?$N0\F0$O<!$N<0$GI=$5$l$k!#(B
+キャラクタの移動は次の式で表される。
 
  x = x + dx;
  y = y + dy;
 
-$B%-%c%i%/%?$N0\F0%"%k%4%j%:%`$O!"(Bdx, dy$B$NJQ2=%"%k%4%j%:%`$K$h$C$F!"<!$N(B
-4$B$D$KJ,N`$G$-$k!#(B
+キャラクタの移動アルゴリズムは、dx, dyの変化アルゴリズムによって、次の
+4つに分類できる。
 
 
-1. $BEyB.%"%k%4%j%:%`(B
+1. 等速アルゴリズム
 
   dx = input_x;
   dy = input_y;
 
- $B%-%c%i%/%?$OEyB.D>@~0\F0$9$k!#:G$b4pK\E*$GC1=c$J%"%k%4%j%:%`$G$"$j!"F1(B
- $B;~$K:G$b$h$/MQ$$$i$l$k%"%k%4%j%:%`$G$"$k!#%W%l%$%d$NM=B,DL$j$K%-%c%i%/(B
- $B%?$,@53N$K0\F0$7$J$1$l$P$J$i$J$$$h$&$J%2!<%`$G$OFC$K$h$/MQ$$$i$l$k!#(B
+ キャラクタは等速直線移動する。最も基本的で単純なアルゴリズムであり、同
+ 時に最もよく用いられるアルゴリズムである。プレイヤの予測通りにキャラク
+ タが正確に移動しなければならないようなゲームでは特によく用いられる。
 
 
-2. $B47@-%"%k%4%j%:%`(B
+2. 慣性アルゴリズム
 
   ddx = input_x;
   ddy = input_y;
@@ -46,20 +46,20 @@
   dx += ddx;
   dy += ddy;
 
- $B%W%l%$%d$,2CB.EY$rF~NO$7$J$$8B$j!"B.EY$OJQ2=$;$:%-%c%i%/%?$OEyB.D>@~0\(B
- $BF0$7B3$1$k!#1'Ch6u4V$d6uCf$G$N!"$U$o$U$o$7$?0\F0$r:F8=$G$-$k!#(B
+ プレイヤが加速度を入力しない限り、速度は変化せずキャラクタは等速直線移
+ 動し続ける。宇宙空間や空中での、ふわふわした移動を再現できる。
 
- $B%8%c%s%W$9$k$H$-$N(By$B:BI8$K$bMQ$$$i$l!"$=$N$H$-(Bddy$B$O=ENO2CB.EY$H$J$k!#(B
+ ジャンプするときのy座標にも用いられ、そのときddyは重力加速度となる。
 
- $B$3$N<0$@$1$G$O!"%W%l%$%d$,F1$8J}8~$KF~NO$7B3$1$k$H!"(Bdx, dy$B$O:]8BL5$/A}(B
- $B2C$^$?$O8:>/$7$F$7$^$&!#$=$3$G0J2<$K!"B.EY$r@)8B$9$kJ}K!$r(B2$B$D>R2p$9$k!#(B
+ この式だけでは、プレイヤが同じ方向に入力し続けると、dx, dyは際限無く増
+ 加または減少してしまう。そこで以下に、速度を制限する方法を2つ紹介する。
 
- (1) dx, dy$B$r$=$l$>$l0lDjHO0OFb$KJ]$DJ}K!(B
+ (1) dx, dyをそれぞれ一定範囲内に保つ方法
 
-  XMIN : dx$B$N:G>.CM(B
-  XMAX : dx$B$N:GBgCM(B
-  YMIN : dy$B$N:G>.CM(B
-  YMAX : dy$B$N:GBgCM(B
+  XMIN : dxの最小値
+  XMAX : dxの最大値
+  YMIN : dyの最小値
+  YMAX : dyの最大値
 
   if (dx < XMIN) {
       dx = XMIN;
@@ -73,11 +73,11 @@
   }
 
 
- (2) $BB.$5(B($BB.EY%Y%/%H%kD9(B)$B$r0lDjHO0OFb$KJ]$DJ}K!(B
+ (2) 速さ(速度ベクトル長)を一定範囲内に保つ方法
 
-  speed    : $BB.$5(B
-  MAXSPEED : $BB.$5$N:GBgCM(B
-  sqrt     : $BJ?J}:,$r5a$a$k%i%$%V%i%j4X?t(B
+  speed    : 速さ
+  MAXSPEED : 速さの最大値
+  sqrt     : 平方根を求めるライブラリ関数
 
   speed = Math.sqrt(dx * dx + dy * dy);
 
@@ -87,9 +87,9 @@
   }
 
 
-3. $B=*C<%"%k%4%j%:%`(B
+3. 終端アルゴリズム
 
-  RESIST : $BDq9378?t(B
+  RESIST : 抵抗係数
 
   ddx = input_x;
   ddy = input_y;
@@ -97,39 +97,39 @@
   dx = dx + ddx - dx * RESIST;
   dy = dy + ddy - dy * RESIST;
 
- ddx $B$H(B dx * RESIST $B$,Ey$7$/$J$k$H(Bdx$B$OJQ2=$7$J$/$J$k!#(B
- ddx $B$H(B dx * RESIST $B$,Ey$7$J$j!"$+$D(B ddy $B$H(B dy * RESIST$BEy$7$/$J$k$H(B
- $BB.EY$,JQ2=$7$J$/$J$k!"$9$J$o$A=*C<B.EY$KC#$C$7$?$3$H$K$J$k!#(B
+ ddx と dx * RESIST が等しくなるとdxは変化しなくなる。
+ ddx と dx * RESIST が等しなり、かつ ddy と dy * RESIST等しくなると
+ 速度が変化しなくなる、すなわち終端速度に達っしたことになる。
 
- $B47@-%"%k%4%j%:%`$N3HD%HG$H$b$$$(!"MQ$$$i$l$k>lLL$b47@-%"%k%4%j%:%`$H;w(B
- $BDL$C$F$$$k$,!"FC$K6u5$Cf$d?eCf$J$IDq93$N$"$k>lLL$G$N0\F0$KMQ$$$k!#(B
+ 慣性アルゴリズムの拡張版ともいえ、用いられる場面も慣性アルゴリズムと似
+ 通っているが、特に空気中や水中など抵抗のある場面での移動に用いる。
 
- dx, dy$B$O$=$l$>$l0lDjHO0OFb$KJ]$?$l!"HO0O$N9-$5$ODq9378?t(BRESIST$B$NCM$K$h$C(B
- $B$F7h$^$k!#HO0O$N7A>u$O(Bddx, ddy$B$N7A>u$HF10l$K$J$k!#$h$C$F!"B.$5(B($BB.EY%Y(B
- $B%/%H%kD9(B)$B$r0lDjHO0OFb$KJ]$A$?$$$H$-$O!"(Bddx, ddy($B$9$J$o$A!"(Binput_x,
- input_y)$B$N%Y%/%H%kD9$,0lDj$K$J$k$h$&$K$9$l$P$h$$!#(B
+ dx, dyはそれぞれ一定範囲内に保たれ、範囲の広さは抵抗係数RESISTの値によっ
+ て決まる。範囲の形状はddx, ddyの形状と同一になる。よって、速さ(速度ベ
+ クトル長)を一定範囲内に保ちたいときは、ddx, ddy(すなわち、input_x,
+ input_y)のベクトル長が一定になるようにすればよい。
 
 
-4. $BA26a%"%k%4%j%:%`(B
+4. 漸近アルゴリズム
 
-  RATE : dx, dy$B$NJQ2=N($G!"(B1$BL$K~$N@5$NCM(B
+  RATE : dx, dyの変化率で、1未満の正の値
 
   dx = dx + (input_x - dx) * RATE;
   dy = dy + (input_y - dy) * RATE;
 
- dx, dy$B$NJQ2=NL$O$=$l$>$l(Binput_x, input_y$B$H$N:9$,Bg$-$$$[$IBg$-$/!"6a$E(B
- $B$/$K$D$l$F$@$s$@$s$H>.$5$/$J$k!#%-%c%i%/%?$N0\F0B.EY$O=y!9$K%W%l%$%d$N(B
- $BF~NOCM$K<}B+$7$F$$$/$h$&$KJQ2=$9$k!#(B
+ dx, dyの変化量はそれぞれinput_x, input_yとの差が大きいほど大きく、近づ
+ くにつれてだんだんと小さくなる。キャラクタの移動速度は徐々にプレイヤの
+ 入力値に収束していくように変化する。
 
- $B%8%g%$%9%F%#%C%/$NF~NO$=$N$^$^$K%-%c%i%/%?$,0\F0$9$k$h$j$b!"%W%l%$%d$N(B
- $BF~NO$K3j$i$+$K=>$C$F$$$/$h$&$J0\F0$r$5$;$?$$$H$-$KMQ$$$i$l$k!#(B
+ ジョイスティックの入力そのままにキャラクタが移動するよりも、プレイヤの
+ 入力に滑らかに従っていくような移動をさせたいときに用いられる。
 
 
-$B%2!<%`FbMF$K9g$o$;$F!"$3$l$i$N%"%k%4%j%:%`$rE,@Z$K;H$$J,$1$k$3$H$G!"%W(B
-$B%l%$%d%-%c%i%/%?$N0\F0$rL%NOE*$J$b$N$K$7!"%W%l%$%d$r%2!<%`$K0z$-9~$`$3(B
-$B$H$,$G$-$k$@$m$&!#(B
+ゲーム内容に合わせて、これらのアルゴリズムを適切に使い分けることで、プ
+レイヤキャラクタの移動を魅力的なものにし、プレイヤをゲームに引き込むこ
+とができるだろう。
 
-$B0J2<$K!"$3$l$i$N%"%k%4%j%:%`$r4^$`%W%l%$%d%-%c%i$N%/%i%9$r<($9!#(B
+以下に、これらのアルゴリズムを含むプレイヤキャラのクラスを示す。
 
 */
 
@@ -218,7 +218,7 @@ public class player {
 			}
 		}
 		
-		// $B??>e$,(B0$B$G1&2s$j$K(B7$B$^$G!#F~NOL5$7$O(B8
+		// 真上が0で右回りに7まで。入力無しは8
 		if (input_x > 0) {
 			if (input_y > 0) {
 				return 3;

@@ -1,6 +1,6 @@
 
 import java.applet.Applet;
-import java.applet.AudioClip;  // AudioClip$B$r;H$&$?$a$N(Bimport
+import java.applet.AudioClip;  // AudioClipを使うためのimport
 import java.awt.*;
 import java.awt.image.*;
 import java.util.*;
@@ -16,28 +16,28 @@ public class game extends Applet implements Runnable
 
 	int cron=0;
 
-	// $BJQ992DG=8D=j!"?tCM$N$H$3$m$@$1?'$rJQ$($k!#(B 
+	// 変更可能個所、数値のところだけ色を変える。 
 	int width , height;
 
-	final int holesize = 64;  // $B7j$N%5%$%:(B($B@5J}7A(B)
+	final int holesize = 64;  // 穴のサイズ(正方形)
 
-	// $B$b$0$iC!$-$rD4@0$9$k$?$a$NJQ99ItJ,(B 
-	final int yokosize = 5; // $B7j$N?t(B
+	// もぐら叩きを調整するための変更部分 
+	final int yokosize = 5; // 穴の数
 	final int tatesize = 4; 
-	public final int interval = 100;	// $B%2!<%`$N?J9TB.EY(B
-	final int mogtime = 40;   // $B%b%0%i$N<wL?(B
-	final int misstime = 4;   // $B%_%9I=<($N;~4V(B
-	final int hittime = 4;    // $B%R%C%H$7$?I=<($N;~4V(B
-	final int mogblank = 8;   // $BF1$87j$KB3$1$F=P$k;~$N4V(B
-	final int rate = 10;      // $B%b%0%i$,=P8=$9$kIQEY(B
-	final int life_max = 10;  // 10$B2s%_%9$7$?$i=*$o$j(B
-	final int levelunit = 10; // 10$BI$$d$C$D$1$k$4$H$K%l%Y%k%"%C%W(B
+	public final int interval = 100;	// ゲームの進行速度
+	final int mogtime = 40;   // モグラの寿命
+	final int misstime = 4;   // ミス表示の時間
+	final int hittime = 4;    // ヒットした表示の時間
+	final int mogblank = 8;   // 同じ穴に続けて出る時の間
+	final int rate = 10;      // モグラが出現する頻度
+	final int life_max = 10;  // 10回ミスしたら終わり
+	final int levelunit = 10; // 10匹やっつけるごとにレベルアップ
 
 
-	int mog[][] = new int[yokosize][tatesize ]; // $B$b$0$i$r!"I,MW$J?t$@$1MQ0U$9$k(B
-	int mogstate[][] = new int[yokosize][tatesize];  // $B%b%0%i$N>uBV(B
+	int mog[][] = new int[yokosize][tatesize ]; // もぐらを、必要な数だけ用意する
+	int mogstate[][] = new int[yokosize][tatesize];  // モグラの状態
 
-	final int ALIVE = 1;  // $B$b$0$i$N>uBV$O!"$3$l$i$NCM$rF~$l$F$*$/!#(B
+	final int ALIVE = 1;  // もぐらの状態は、これらの値を入れておく。
 	final int MISS = 2;
 	final int HIT = 3;
 	final int OUT = 0;
@@ -45,14 +45,14 @@ public class game extends Applet implements Runnable
 
 	int score,level,life, hitno;
 
-	MediaTracker mt; // $B2hA|%m!<%I$N$?$a$K;H$&(BMediaTracker
-	Image aliveimg;  // $B%b%0%i$N2hA|(B($B=P8=$7$F$$$k;~$N(B)
-	Image hitimg;    // $B%b%0%i$N2hA|(B($BC!$$$?=V4V$N(B)
-	AudioClip hitsound,hellosound; // $BC!$$$?2;$H=P$F$/$k2;(B
+	MediaTracker mt; // 画像ロードのために使うMediaTracker
+	Image aliveimg;  // モグラの画像(出現している時の)
+	Image hitimg;    // モグラの画像(叩いた瞬間の)
+	AudioClip hitsound,hellosound; // 叩いた音と出てくる音
 	
 
 	int mode;  
-	final int TITLE= 1;       //mode$B$KF~$l$kCM(B
+	final int TITLE= 1;       //modeに入れる値
 	final int GAME = 2;
 	final int GAMEOVER = 3;
 
@@ -69,25 +69,25 @@ public class game extends Applet implements Runnable
 
 		thread.start();
 
-		/* $B$3$3$+$i$b$0$iC!$-$N$?$a$NJQ99ItJ,(B */
+		/* ここからもぐら叩きのための変更部分 */
 		dg.setColor( Color.black );
 		dg.fillRect( 0 , 0 , width , height );
 
 
-		// $B;H$&2hA|$r%m!<%I$9$k!#%m!<%I$,=*$o$k$^$G!"(BMediaTracker$B$r;H$C$FBT$D(B
+		// 使う画像をロードする。ロードが終わるまで、MediaTrackerを使って待つ
 		aliveimg = getImage( getDocumentBase() , "alive.gif" );
 		hitimg = getImage( getDocumentBase() , "hit.gif" );
 		
-		mt = new MediaTracker( this ); // $BF1$8(BID$B$GBT$D(B
+		mt = new MediaTracker( this ); // 同じIDで待つ
 		mt.addImage( aliveimg, 1 );
 		mt.addImage( hitimg , 1 );
 		try{
-			mt.waitForID( 1 ); // $B%m!<%I3+;O$7!";XDj$7$?(BID$B$N2hA|$,A4It%m!<%I$5$l$k$^$GBT$D!#(B
+			mt.waitForID( 1 ); // ロード開始し、指定したIDの画像が全部ロードされるまで待つ。
 		}catch( InterruptedException ie ){}
 
 		hitsound = getAudioClip( getDocumentBase() , "yahoo.au");
 		hellosound = getAudioClip( getDocumentBase() , "hi.au");
-		// $B%?%$%H%k2hLL$rI=<((B
+		// タイトル画面を表示
 		mode = TITLE;
 
 
@@ -127,10 +127,10 @@ public class game extends Applet implements Runnable
 			dg.drawString( "press mouse button" , 30 , height/2+50);
 		} else if( mode == GAME ){
 
-		/* $BJQ992DG=8D=j(B */
+		/* 変更可能個所 */
 		
-			// $B0lDj;~4V$4$H$K!"%b%0%i$r=P8=$5$;$k(B
-			// $B%l%Y%k$K1~$8$F!"=P$F$/$k%b%0%i$,A}$($F$$$/!#(B
+			// 一定時間ごとに、モグラを出現させる
+			// レベルに応じて、出てくるモグラが増えていく。
 
 			if( ( cron % rate ) == 0 ){
 				int kazu;
@@ -141,15 +141,15 @@ public class game extends Applet implements Runnable
 					putMogura();
 				}
 			}
-			// $B%b%0%i$N<wL?$r8:$i$7$F$$$/!#(B
+			// モグラの寿命を減らしていく。
 			moveMogura();
 
-			// $BL?$,$J$/$J$C$?$i!"%2!<%`%*!<%P!<(B
+			// 命がなくなったら、ゲームオーバー
 			if( life < 0 ){
 				mode = GAMEOVER;
 			}
 			
-			// $BE@?t$J$I$rI=<(!">C$7$F$+$i=q$/$3$H$KCm0U(B
+			// 点数などを表示、消してから書くことに注意
 			dg.setColor( Color.black );
 			dg.fillRect( yokosize * holesize+10,0, width - yokosize*holesize , 100);
 
@@ -167,7 +167,7 @@ public class game extends Applet implements Runnable
 	}
 	void moveMogura( )
 	{
-		// $B;`$L$^$G$N;~4V$r(B1$B8:$i$9!#;`$s$@$b$N$O!">C$7$F$7$^$&!#(B
+		// 死ぬまでの時間を1減らす。死んだものは、消してしまう。
 		for(int i = 0 ; i < tatesize ; i++){
 			for(int j = 0 ; j < yokosize ;j++ ){
 				mog[j][i]--;
@@ -185,18 +185,18 @@ public class game extends Applet implements Runnable
 	}
 
 
-	// $B$b$0$i$r0lI$=P8=$5$;$k(B
+	// もぐらを一匹出現させる
 	void putMogura( ){
 		
 		int r = new Random().nextInt();
-		r = r & 255; // $B@5$NCM$KLa$9!#$3$N7k2L!"(Br$B$K$O!"(B0$B$+$i(B255$B$NCM$,F~$k!#(B
+		r = r & 255; // 正の値に戻す。この結果、rには、0から255の値が入る。
 		r = r % (yokosize * tatesize );
 		int yoko = r % yokosize;
 		int tate = r / yokosize;
 
-		// $B%b%0%i$,>C$($F$+$i0lDj;~4V$?$?$J$$$HF1$87j$K$OEP>l$G$-$J$$(B
+		// モグラが消えてから一定時間たたないと同じ穴には登場できない
 		if( mog[yoko][tate] > -mogblank ) return;
-		hellosound.play(); // $B=P8=;~$N2;$r=P$9(B
+		hellosound.play(); // 出現時の音を出す
 		mogstate[ yoko ][ tate ] = ALIVE;
 		mog[ yoko ][ tate ] = mogtime;
 
@@ -204,7 +204,7 @@ public class game extends Applet implements Runnable
 		dg.fillRect( yoko * holesize , tate*holesize , holesize , holesize );
 		dg.drawImage( aliveimg , yoko * holesize , tate*holesize ,null);
 	}
-	// $B%b%0%i$r>C$9!#(B
+	// モグラを消す。
 	void outMogura( int x , int y ){
 		
 		dg.setColor( Color.black );
@@ -212,7 +212,7 @@ public class game extends Applet implements Runnable
 		dg.setColor( Color.white );
 		dg.drawRect( x * holesize , y * holesize , holesize , holesize );
 	}
-	// $BF($2>uBV$N%b%0%i$rI=<($9$k!#(B
+	// 逃げ状態のモグラを表示する。
 	void missMogura( int x , int y ){
 
 		dg.setColor( Color.black );
@@ -222,19 +222,19 @@ public class game extends Applet implements Runnable
 
 
 	}
-	//$B$d$i$l>uBV$N%b%0%i$rI=<($9$k!#(B
+	//やられ状態のモグラを表示する。
 	void yarareMogura( int x , int y ){
 		dg.setColor( Color.red );
 		dg.drawLine( x * holesize , y* holesize , x*holesize + holesize , y*holesize + holesize );
 		dg.drawLine( x * holesize + holesize , y * holesize , x * holesize , y * holesize + holesize );
 		dg.drawImage( hitimg , x*holesize, y*holesize ,null);
 	}
-	// $B%^%&%9$,2!$5$l$?$H$-$N=hM}(B
+	// マウスが押されたときの処理
 	public boolean mouseDown( Event e , int x , int y )
 	{
 		if( mode == TITLE ){
 		
-			// $B$b$0$i$r=i4|2=(B
+			// もぐらを初期化
 			for(int i = 0 ; i < yokosize ; i++){
 				for(int j = 0 ; j < tatesize ; j++){
 					mogstate[i][j] = OUT;
@@ -247,12 +247,12 @@ public class game extends Applet implements Runnable
 			hitno = 0;
 			mode = GAME;
 		} else if( mode == GAME ){
-			// $B$I$N%b%0%i$rC!$$$?$N$+$rH=Dj$9$k(B
-			int yoko ,tate; // $B%b%0%i$N7j$N0LCV(B
+			// どのモグラを叩いたのかを判定する
+			int yoko ,tate; // モグラの穴の位置
 			yoko = x / holesize;
 			tate = y / holesize;
 			
-			// $B%b%0%i$,@8$-$F$$$k$H$-$@$1%R%C%H!#(B
+			// モグラが生きているときだけヒット。
 		
 			if( yoko>=0 && yoko < yokosize &&
 			    tate>=0 && tate < tatesize &&
@@ -261,9 +261,9 @@ public class game extends Applet implements Runnable
 				mogstate[yoko][tate] = HIT;
 				yarareMogura( yoko , tate );
 				score = score + level;
-				hitsound.play();  // $B2;$r$@$9(B
+				hitsound.play();  // 音をだす
 				hitno++;
-				// $B%l%Y%k(B
+				// レベル
 				if( (hitno % levelunit ) == 0 ){
 					level++;
 				}

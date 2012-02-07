@@ -10,7 +10,7 @@ public class game extends Applet implements Runnable
 	Graphics dg;
 	int cron=0;
 
-	// $BJQ992DG=8D=j(B
+	// 変更可能個所
 
 	int width ,height;
 	int interval = 500;	// milli second 

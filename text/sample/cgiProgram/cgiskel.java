@@ -2,7 +2,7 @@ import java.io.*;
 
 class cgimain
 {
-	// ¥á¥¤¥ó¡¦¥ë¡¼¥Á¥ó¤Ç¤Ï¡¢¼«Ê¬¤Î¥¤¥ó¥¹¥¿¥ó¥¹¤òºî¤ë¤À¤±¡£
+	// ãƒ¡ã‚¤ãƒ³ãƒ»ãƒ«ãƒ¼ãƒãƒ³ã§ã¯ã€è‡ªåˆ†ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ä½œã‚‹ã ã‘ã€‚
 	public static void main( String args[] )
 	{
 		cgimain c = new cgimain( args);
@@ -11,13 +11,13 @@ class cgimain
 	public final int MAXBYTE = 2000;
 	byte b[] = new byte[MAXBYTE];
 
-	String topdir;    // ¥¢¥¯¥»¥¹¤¹¤ë¥Õ¥¡¥¤¥ë¤¬¤¢¤ë¥Ç¥£¥ì¥¯¥È¥ê¡£°ú¿ô¤Ç»ØÄê
+	String topdir;    // ã‚¢ã‚¯ã‚»ã‚¹ã™ã‚‹ãƒ•ã‚¡ã‚¤ãƒ«ãŒã‚ã‚‹ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã€‚å¼•æ•°ã§æŒ‡å®š
 
 	cgimain( String args[] )
 	{
 		int querylen = 0;
 
-		// ¤Ş¤ºGET¤«¤É¤¦¤«Ä´¤Ù¡¢¤½¤¦¤Ç¤Ê¤±¤ì¤ĞPOST¤«¤é¤À¤È¤·¤ÆÆşÎÏ
+		// ã¾ãšGETã‹ã©ã†ã‹èª¿ã¹ã€ãã†ã§ãªã‘ã‚Œã°POSTã‹ã‚‰ã ã¨ã—ã¦å…¥åŠ›
 		String getquery = System.getProperty("QUERY");
 		if( getquery != null && !getquery.equals("")){
 			//b = getquery.getBytes();  // JDK1.1
@@ -31,16 +31,16 @@ class cgimain
 		URLDecoder ud = new URLDecoder( b );
 
 
-		// ¥Ö¥é¥¦¥¶¤ËÁ÷¤êÊÖ¤¹ÆâÍÆ¤ò½ñ¤¯¡£
-		// ºÇ½é¤ËHTTP¥Ø¥Ã¥À¤òÁ÷¿®¤¹¤ë¡£¶õ¹Ô¤òºî¤ë¤¿¤á¤ÎºÇ¸å¤Î'\n'¤¬ÂçÀÚ¡£
-		// ¤³¤³¤Ç¤Ïprintln¤ò»È¤¦¤Î¤Ç¡¢'\n' ¤Ï°ì¸Ä¤Ç¤è¤¤¡£
+		// ãƒ–ãƒ©ã‚¦ã‚¶ã«é€ã‚Šè¿”ã™å†…å®¹ã‚’æ›¸ãã€‚
+		// æœ€åˆã«HTTPãƒ˜ãƒƒãƒ€ã‚’é€ä¿¡ã™ã‚‹ã€‚ç©ºè¡Œã‚’ä½œã‚‹ãŸã‚ã®æœ€å¾Œã®'\n'ãŒå¤§åˆ‡ã€‚
+		// ã“ã“ã§ã¯printlnã‚’ä½¿ã†ã®ã§ã€'\n' ã¯ä¸€å€‹ã§ã‚ˆã„ã€‚
 		System.out.println("Content-type: text/html\n");     
 		System.out.println("<html>");
 		System.out.println("<title>QUERY RESULT</title>");
 		System.out.println("<body>");
 
 
-		// ¤É¤Î¥Õ¥¡¥¤¥ë¤òÁàºî¤¹¤ë¤Î¤«¡©
+		// ã©ã®ãƒ•ã‚¡ã‚¤ãƒ«ã‚’æ“ä½œã™ã‚‹ã®ã‹ï¼Ÿ
 		if( args.length == 0 ){
 			System.out.println("ERROR: top directory was not set.");
 			return;
@@ -52,8 +52,8 @@ class cgimain
 
 
 
-		// ¼Âºİ¤Î¥Õ¥¡¥¤¥ë¤Î½èÍı¤ò¤¹¤ë¡£¼Â¸½¤·¤¿¤¤ÆâÍÆ¤Ë¤è¤Ã¤Æ¡¢¤³¤³¤Ï
-		// ÊÑ¹¹¤¹¤ëÉ¬Í×¤¬¤¢¤ê¤Ş¤¹¡£
+		// å®Ÿéš›ã®ãƒ•ã‚¡ã‚¤ãƒ«ã®å‡¦ç†ã‚’ã™ã‚‹ã€‚å®Ÿç¾ã—ãŸã„å†…å®¹ã«ã‚ˆã£ã¦ã€ã“ã“ã¯
+		// å¤‰æ›´ã™ã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚
 		RandomAccessFile f = null;
 
 		if( ud.getValue("method" ).equals("append") ){
@@ -66,7 +66,7 @@ class cgimain
 
 				f.seek( f.length());
 				f.write( valbyte ,0,valbyte.length) ;
-				f.write( '\n'); // ²ş¹Ô¤òÆş¤ì¤ë
+				f.write( '\n'); // æ”¹è¡Œã‚’å…¥ã‚Œã‚‹
 				System.out.println("OK: append successful.");
 				f.close();
 			}catch( IOException e ){
@@ -80,7 +80,7 @@ class cgimain
 				f.close();
 				System.out.println("OK: read successful.");
 				System.out.write( fileb , 0 , fileb.length );
-				System.out.println("");   // ºÇ¸å¤Ë¶õ¹Ô¤òÆş¤ì¤ë
+				System.out.println("");   // æœ€å¾Œã«ç©ºè¡Œã‚’å…¥ã‚Œã‚‹
 				
 			}catch( IOException e ){
 				System.out.println( "ERROR: Error while reading." + e);
@@ -92,9 +92,9 @@ class cgimain
 	}
 }
 
-// URLDecoder¤¬Java¥³¥¢¤Ë¤¢¤ì¤Ğ¤¤¤¤¤Î¤Ç¤¹¤¬¡£
-// »ØÄê¤µ¤ì¤¿Ì¾Á°¤Î¹àÌÜ¤¬¤Ê¤¤¾ì¹ç¤Ï¡¢¶õ¤ÎÊ¸»úÎó¤òÊÖ¤·¤Ş¤¹¡£
-// asciiÊ¸»ú°Ê³°¤Ë¤ÏÂĞ±ş¤·¤Æ¤¤¤Ş¤»¤ó¡£
+// URLDecoderãŒJavaã‚³ã‚¢ã«ã‚ã‚Œã°ã„ã„ã®ã§ã™ãŒã€‚
+// æŒ‡å®šã•ã‚ŒãŸåå‰ã®é …ç›®ãŒãªã„å ´åˆã¯ã€ç©ºã®æ–‡å­—åˆ—ã‚’è¿”ã—ã¾ã™ã€‚
+// asciiæ–‡å­—ä»¥å¤–ã«ã¯å¯¾å¿œã—ã¦ã„ã¾ã›ã‚“ã€‚
 class URLDecoder
 {
 	int valuenum=0;
@@ -104,8 +104,8 @@ class URLDecoder
 	URLDecoder( byte linebuf[] )
 	{
 		length = linebuf.length;
-		// byteToCharConverter¤ÏÆâÉô¤ÇÍ¿¤¨¤é¤ì¤¿¥Ğ¥Ã¥Õ¥¡¤ò»È¤¦
-		// ¤Î¤Ç¡¢¥Ğ¥Ã¥Õ¥¡¤ÏÄ¹¤á¤Ë¤È¤Ã¤Æ¤ª¤¯(2ÇÜ)¡£
+		// byteToCharConverterã¯å†…éƒ¨ã§ä¸ãˆã‚‰ã‚ŒãŸãƒãƒƒãƒ•ã‚¡ã‚’ä½¿ã†
+		// ã®ã§ã€ãƒãƒƒãƒ•ã‚¡ã¯é•·ã‚ã«ã¨ã£ã¦ãŠã(2å€)ã€‚
 		newbuf= new byte[ length*2]; 
 		int counter=0;
 		

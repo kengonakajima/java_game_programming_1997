@@ -6,9 +6,9 @@ class enemyClass
 	int score;
 	int hp;
 
-	// $B%3%s%9%H%i%/%?(B
+	// コンストラクタ
 	enemyClass(int x , int y ,int xsiz , int ysiz ,int hp,int score){
-		// $B$H$K$+$/=i4|2=$r$9$k(B
+		// とにかく初期化をする
 		this.x = x;            
 		this.y = y;
 		this.xsiz = xsiz;
@@ -18,7 +18,7 @@ class enemyClass
 		this.hp = hp;
 	}
 
-	// $B%/%i%9$N%a%=%C%I(B
+	// クラスのメソッド
 	public void moveOnce()
 	{
 		x += dx;

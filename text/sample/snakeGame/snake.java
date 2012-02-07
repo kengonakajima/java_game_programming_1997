@@ -54,8 +54,8 @@ public class snake extends Applet implements Runnable
 	int snake_unit=12;
 	int snake_len=5;
 	int snake_start_len=5;
-	int snake_dir;  // $BJ}8~$O??>e$,(B0$B$G1&<~$j$K(B7$B$^$G$N(B8$BJ}8~$H$7$^$9!#(B
-	double dx[] = { 0,1.41,2,1.41,0,-1.41,-2,-1.41};  // $B$=$l$>$l$NJ}8~$N0\F0NL(B
+	int snake_dir;  // 方向は真上が0で右周りに7までの8方向とします。
+	double dx[] = { 0,1.41,2,1.41,0,-1.41,-2,-1.41};  // それぞれの方向の移動量
 	double dy[] = { -2,-1.41,0,1.41,2,1.41,0,-1.41};
 	double snake_x[] = new double[snake_max];
 	double snake_y[] = new double[snake_max];
@@ -67,7 +67,7 @@ public class snake extends Applet implements Runnable
 
 	void initSnake(){
 		for(int i=0;i<snake_max;i++){
-			snake_x[i] = snake_y[i] = -1000;   //$B@$3&$N2L$F$K$7$F$*$/(B
+			snake_x[i] = snake_y[i] = -1000;   //世界の果てにしておく
 		}
 		snakehead_x = width/2;
 		snakehead_y = height/2;
@@ -77,12 +77,12 @@ public class snake extends Applet implements Runnable
 
 	public boolean keyDown(Event e , int c ){
 		if( c == 'h' ){ 
-			snake_dir--;  // $B:82sE>(B
+			snake_dir--;  // 左回転
 		}
 		if( c == 'j' ){
-			snake_dir++;  // $B1&2sE>(B
+			snake_dir++;  // 右回転
 		}
-		// $B>o$KCM$,(B0$B$+$i(B7$B$N4V$K$J$k$h$&$K$9$k(B
+		// 常に値が0から7の間になるようにする
 		if( snake_dir >= 7 ) snake_dir-=8;
 		if( snake_dir < 0 )snake_dir +=8;
 		
@@ -120,7 +120,7 @@ public class snake extends Applet implements Runnable
 			dg.fillRect( (int)snake_x[index],(int)snake_y[index],
 						(int)snake_xsiz , (int)snake_ysiz );
 		}
-		// $B<+J,$NBN$KEv$?$k$H;`$L!#(B
+		// 自分の体に当たると死ぬ。
 		for(int j=1;j<snake_len;j++){
 			if( snakehead_x+snake_xsiz > tmpx[j] && 
 			    snakehead_x < tmpx[j]+snake_xsiz  &&
@@ -143,7 +143,7 @@ public class snake extends Applet implements Runnable
 		moveSnake();
 		drawSnake();
 
-		// $BFq0WEYD4@0(B
+		// 難易度調整
 		if( (cron % 200 )==0){
 			snake_len++;
 		}

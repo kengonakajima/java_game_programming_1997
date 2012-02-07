@@ -4,8 +4,8 @@ public class OffScr extends Applet implements Runnable
 {
         Thread t;
         int x = 0;
-        Image ofscr;            // $B2>A[2hLL(B
-        Graphics ofscr_g;       // $B2>A[2hLL$rA`:n$9$k$?$a$N(BGraphics
+        Image ofscr;            // 仮想画面
+        Graphics ofscr_g;       // 仮想画面を操作するためのGraphics
 
         public void init()
         {
@@ -24,7 +24,7 @@ public class OffScr extends Applet implements Runnable
         }
         public void update( Graphics g )
         {
-                // $B2?$b<j$r2C$($J$$$H!"$3$3$K>C5n$9$k%W%m%0%i%`$,4^$^$l$k$N$G$9!#(B
+                // 何も手を加えないと、ここに消去するプログラムが含まれるのです。
                 paint( g );
         }
         public void run()

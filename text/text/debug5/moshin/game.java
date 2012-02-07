@@ -10,7 +10,7 @@ public class game extends java.applet.Applet implements Runnable
 
 	int cron=0;
 
-	// $BJQ992DG=8D=j!"?tCM$N$H$3$m$@$1?'$rJQ$($k!#(B 
+	// 変更可能個所、数値のところだけ色を変える。 
 
 	int width ,height;
 	int interval = 100;	// milli second 

@@ -1,107 +1,107 @@
 
-���饹�饤�֥��
+クラスライブラリ
 
-���Υ�ե���󥹤Ǥϡ�JDK1.1�Υ���API(�ɤ�ʼ¹ԴĶ��Ǥ�Ȥ��뤳�Ȥ��� �㤵
-��Ƥ���API)��١����˲��⤷�ޤ���JDK1.0.2�Υ饤�֥��˴ޤޤ�Ƥ��ʤ� ���
-�ˤϡ�(Not available on 1.0.2�ޡ���)��Ĥ��Ƥ���ޤ��� (�ʲ���HTML�Ǥϡ�����
-���ꥹ����Ĥ��Ƥ����ޤ���) �ѥå������ϥ���ե��٥åȽ�ǡ�������Υ��饹��
-����ե��٥åȽ�Ǥ��� ���줾��Υ��饹�Τ褯�Ȥ��᥽�åɤ�Ҳ𤷤Ƥ��ޤ���
+このリファレンスでは、JDK1.1のコアAPI(どんな実行環境でも使えることが保 障さ
+れているAPI)をベースに解説します。JDK1.0.2のライブラリに含まれていない もの
+には、(Not available on 1.0.2マーク)をつけてあります。 (以下のHTMLでは、アス
+タリスクをつけていきます。) パッケージはアルファベット順で、その中のクラスも
+アルファベット順です。 それぞれのクラスのよく使うメソッドを紹介しています。
 
    * java.applet
 
-     ���Υѥå������ˤϡ����ץ�åȤμ¹Ԥ˴�Ϣ���뵡ǽ���ͤޤäƤ��ޤ��� ��
-     �ץ�åȥץ�����ߥ󥰤Ȥϡ��Ĥޤꤳ�Υѥå������ˤ��륯�饹��Ȥä� ��
-     ������ߥ󥰤��뤳�Ȥ��ȸ����ޤ���
+     このパッケージには、アプレットの実行に関連する機能が詰まっています。 ア
+     プレットプログラミングとは、つまりこのパッケージにあるクラスを使って プ
+     ログラミングすることだと言えます。
 
-     ���󥿡��ե�����
+     インターフェイス
 
         o AppletContext
-          AppletViewer�䤽��¾�����ץ�åȤ򲼰̤����ʤȤ��ƻȤ��褦�� ����
-          �ꥱ����������Ȥ��˻Ȥ����󥿡��ե������Ǥ������������ʬ��
-          �ϻȤ� ���ȤϤʤ��Ǥ��礦��
+          AppletViewerやその他、アプレットを下位の部品として使うような アプ
+          リケーションを作るときに使うインターフェイスです。ゲームを作る分に
+          は使う ことはないでしょう。
         o AppletStub
-          �����AppletViewer�ʤɤ��Ȥ���ΤǤ������ʤϻȤ����ȤϤ� ��ޤ�
-          ��
+          これもAppletViewerなどが使うものです。普段は使うことはあ りませ
+          ん。
         o AudioClip
-          ���ץ�åȤ˥����ǥ�������դ�������˻Ȥ��ޤ������פʥ᥽�åɤȤ�
-          �Ƥ�
-             + loop() �����֤��Ʊ��դ����ޤ���
-             + play() ���������դ����ޤ���
-             + stop() ������β�������ȡ��ߤ�ޤ���
-               �Ťͤ�play���Ƥ������ĤäƤ������Ͼä������ŤͤƱ��դ����
-               ����
+          アプレットにオーディオを演奏させる時に使います。重要なメソッドとし
+          ては
+             + loop() 繰り返して演奏させます。
+             + play() 一回だけ演奏させます。
+             + stop() 演奏中の音があると、止めます。
+               重ねてplayしても前に鳴っていた音は消えず、重ねて演奏されま
+               す。
 
-     ���饹
+     クラス
 
         o Applet extends Panel
-          ���ץ�åȤδ��ܥ��饹�Ǥ���
-          �褯�Ȥ��᥽�å�
-             + destroy() ���Υ᥽�åɤ�¹Ԥ���ȡ����ץ�åȤ����Ѥ��Ƥ���
-               �񸻤�������ޤ���
-             + getAudioClip(URL),getAudioClip(URL,String) URL����ꤷ�ơ���
-               �ץ�åȤǻȤ� AudioClip�򥵡��Ф����äƤ��ޤ���
-               �㡧 getAudioClip( getCodeBase(), "./bang.au");
-             + getCodeBase() getAudioClip�� getImage�򤹤�Ȥ��������Ǥ�����
-               �ץ�åȤΥ��饹���Τ�� URL����ޤ���getDocumentBase�Ȥ���
-               �Τ⤢�� �ޤ���
-             + getImage(URL),getImage(URL,String) ���ץ�åȤǻȤ������Υե�
-               ������ɤߤ����Ÿ������Image�� �饹�����뤳�Ȥ��Ǥ��ޤ���
-             + getParameter(String) <applet>������ޤ�HTML�˽񤫤��
-			   ����<param>���������Ƥ� ̾�����ɤߤ����ޤ���
-             + init() ���ץ�åȤ��������륳���ɤ򤳤Υ᥽�åɤ���˽񤭤�
-               ����
-             + play(URL),play(URL,String) AudioClip����դ��ޤ���
-             + resize(Demension),resize(int,int) ���ץ�åȤΥ��������ѹ���
-               �ޤ���
-             + start() ���ץ�åȤ������(init)���줿��䡢¾�Υڡ���������
-               �ä� �����Ȥ��ʤɤ˸ƤӤ�����ޤ���
-             + stop() �֥饦����ǥ��ץ�åȰʳ��Υڡ����˰�ư�����Ȥ��ʤɤ�
-               �ƤӤ�����ޤ��� �������appletviewer��λ��������ˤ�ƤӤ�
-               ����ޤ���
+          アプレットの基本クラスです。
+          よく使うメソッド
+             + destroy() このメソッドを実行すると、アプレットが使用している
+               資源を解放します。
+             + getAudioClip(URL),getAudioClip(URL,String) URLを指定して、ア
+               プレットで使う AudioClipをサーバから取ってきます。
+               例： getAudioClip( getCodeBase(), "./bang.au");
+             + getCodeBase() getAudioClipや getImageをするときに便利です。ア
+               プレットのクラスそのもの URLを求めます。getDocumentBaseという
+               のもあり ます。
+             + getImage(URL),getImage(URL,String) アプレットで使う画像のファ
+               イルを読みこんで展開し、Imageク ラスを得ることができます。
+             + getParameter(String) <applet>タグを含むHTMLに書かれて
+			   いる<param>タグの内容を 名前で読みだします。
+             + init() アプレットを初期化するコードをこのメソッドの中に書きま
+               す。
+             + play(URL),play(URL,String) AudioClipを演奏します。
+             + resize(Demension),resize(int,int) アプレットのサイズを変更し
+               ます。
+             + start() アプレットが初期化(init)された後や、他のページから戻
+               って きたときなどに呼びだされます。
+             + stop() ブラウザ上でアプレット以外のページに移動したときなどに
+               呼びだされます。 もちろんappletviewerを終了させる時にも呼びだ
+               されます。
 
    * java.awt
 
-     Java�ǥ���ե�����ʥ桼�����󥿡��ե�����(GUI)��¸����뤿���API����
-     ���� ���ƤΥ������ƥ�����˰��̲��Ǥ��뵡ǽ���Ž̤���Ƥ��ޤ���JDK1.1��
-     �ϡ� �絬�Ϥʥ��ץꥱ���������ưפ˳�ȯ�Ǥ���褦�˳�ĥ����Ƥ��ޤ���
+     Javaでグラフィカルなユーザインターフェース(GUI)を実現するためのAPI群で
+     す。 全てのアーキテクチャに一般化できる機能が凝縮されています。JDK1.1で
+     は、 大規模なアプリケーションも容易に開発できるように拡張されています。
 
-     ���󥿡��ե�����
+     インターフェイス
 
         o Adjustable
-		�Ϥ���ޤäƤ��롢Ϣ³Ū�ʿ��ͤ��ͤȤ��ƻ��Ĥ褦�ʥ��֥�������(ŵ��Ū
-		�ˤϡ�Scrollbar�ʤ�)�ϡ������implements���ޤ���
+		囲が決まっている、連続的な数値を値として持つようなオブジェクト(典型的
+		には、Scrollbarなど)は、これをimplementsします。
         o EventSource
-		¾�Υ��֥������Ȥˤ�äƻȤ���褦�ʥ��٥�Ȥ�ȯ������褦��
-		���֥������ȡ�
+		他のオブジェクトによって使われるようなイベントを発生するような
+		オブジェクト。
         o ItemSelectable
-		0�İʾ�ι��ܤ�����Ǥ���褦�ʥ��֥������ȡ�
+		0個以上の項目を選択できるようなオブジェクト。
         o LayoutManager
-		Container��쥤�����Ȥ��륯�饹�Τ���Υ��󥿡��ե�������
+		Containerをレイアウトするクラスのためのインターフェイス。
         o LayoutManager2
-		�쥤�����Ȥ�«�������褦��Container��쥤�����Ȥ��륯�饹�Τ����
-		���󥿡��ե�������
+		レイアウトに束縛されるようなContainerをレイアウトするクラスのための
+		インターフェイス。
         o MenuContainer
-		��˥塼�˴ط����뤹�٤ƤΥ��饹�ϡ������implements���ޤ���
+		メニューに関係するすべてのクラスは、これをimplementsします。
         o PrintGraphics
-		�����Τ���Υ���ե��å�������ƥ����Ȥ��󶡤��륤�󥿡��ե�������
+		印刷のためのグラフィックスコンテキストを提供するインターフェイス。
         o Shape
-		����޷���ɽ�����륪�֥������ȤΤ���Υ��󥿡��ե�������
+		ある図形を表現するオブジェクトのためのインターフェイス。
 
-     ���饹
+     クラス
 
         o AWTEvent
-          awt���٥�Ȥδ��ܤˤʤ륯�饹�Ǥ���
+          awtイベントの基本になるクラスです。
         o BorderLayout
-          "North","South","East","West","Center"�Τ����줫����ꤷ�� ������
-          �����󤵤���쥤�������Ǥ���
+          "North","South","East","West","Center"のいずれかを指定して 部品類
+          を整列させるレイアウタです。
         o Button
-          ̾���ΤĤ����ܥ����¸����ޤ���
-          �㡧add( new Button("OK!") );
+          名前のついたボタンを実現します。
+          例：add( new Button("OK!") );
         o Canvas
-          �����Х�������̾�ΤȤ��ꡢ���ξ�˳����������Ȥ��Ǥ��ޤ��� ����
-          ���饹��extends���ơ����򤤸��̤���ĥܥ��� �ʤɤ��뤳�Ȥ��Ǥ���
-          ����extends�������饹�Ǥϡ� paint(Graphics)�᥽�åɤ��(�����С�
-          �饤��)���� ���Ȥˤ�äơ������ʳ��򤫤����Ȥ��Ǥ��ޤ��� �㡧
+          キャンバス、その名のとおり、この上に絵を描くことができます。 この
+          クラスをextendsして、面白い効果を持つボタン などを作ることができま
+          す。extendsしたクラスでは、 paint(Graphics)メソッドを書く(オーバー
+          ライド)する ことによって、好きな絵をかくことができます。 例：
 
           class FunnyButton extends Canvas
           {
@@ -111,100 +111,100 @@
           }
 
         o CardLayout
-          ��ˤ�1��Υ����ɤ��������ʤ��褦��UI��¸����� ����Υ쥤��������
-          ����
+          常には1枚のカードしか見えないようなUIを実現する ためのレイアウタで
+          す。
         o Checkbox
-          �����å�����Ƥ��뤫�����Ǥʤ����Ȥ����� boolean���ͤ����GUI��
-          �ʡ�
+          チェックされているかそうでないかという、 booleanの値を持つGUI部
+          品。
         o CheckboxGroup
-          CheckBox��ޤȤ�ƴ������롣
+          CheckBoxをまとめて管理する。
         o CheckboxMenuItem
-          ��˥塼����ˤ���������ɽ����������å��ܥå�����
+          メニューの中にある選択肢を表示するチェックボックス。
         o Choice
-          ����å�����ȥݥåץ��åפ����˥塼���ɥ�å��������֤ȡ� ����
-          ����Ǥ�����ܤ�����˥塼�Υ����ȥ�ˤʤ롣
+          クリックするとポップアップするメニュー。ドラッグして選ぶと、 現在
+          選んでいる項目が、メニューのタイトルになる。
         o Color
-          RGB��Ȥäƴ�ñ�˿����ä���Ǥ��롣 �㡧 g.setColor( new
+          RGBを使って簡単に色を作ったりできる。 例： g.setColor( new
           Color(100,100,100) );
         o Component
-          awt�δ���Ū�ʥ��饹��awt���¾��¿����GUI���ʤϡ����Υ��饹��
-          extends���Ƥ��롣
+          awtの基本的なクラス。awt内の他の多くのGUI部品は、このクラスを
+          extendsしている。
         o Container
-          ¾��awt����ݡ��ͥ�Ȥ�ޤळ�Ȥ��Ǥ��륳��ݡ��ͥ�ȡ� �㡧
+          他のawtコンポーネントを含むことができるコンポーネント。 例：
           myContainer.add( new Button(...
         o Cursor
-          �ޥ���������������ꤹ�뤿��Υ��饹��
+          マウスカーソルを設定するためのクラス。
         o Dialog
-          �桼����������Ϥ��׵᤹�륦����ɥ���
+          ユーザからの入力を要求するウインドウ。
         o Dimension
-          ���ȹ⤵��������Ǥ��륯�饹��¿���Υ��饹�Υ᥽�åɤΰ����ˤʤ�
-          �Ƥ��ޤ���
+          幅と高さを一括管理できるクラス。多くのクラスのメソッドの引数になっ
+          ています。
         o Event
-          �ץ�åȥե�����˰�¸���ʤ�GUI���٥�Ƚ�����¸����뤿��Υ���
-          ���� id�Ȥ����ե�������ѿ�����äƤ��ơ������ͤ򸫤� �����򿶤��
-          �����ꤹ�롣
+          プラットフォームに依存しないGUIイベント処理を実現するためのクラ
+          ス。 idというフィールド変数を持っていて、その値を見て 処理を振りわ
+          けたりする。
         o EventQueue*
-          ʣ���Υ��٥�Ȥ���ˤ��ƴ������䤹�����륯�饹��JDK1.1�Ǥϡ� �絬
-          �Ϥʥ��ץꥱ�������κ������ưפˤ��뤿��ˡ�Event�δ�����ˡ ����
-          ĥ����Ƥ��ޤ���
+          複数のイベントを列にして管理しやすくするクラス。JDK1.1では、 大規
+          模なアプリケーションの作成も容易にするために、Eventの管理方法 が拡
+          張されています。
         o FileDialog
-          ���ץꥱ�������ˤ����ƥե���������򤹤�����Ϥ��Ĥ�����褦�ʤ�
-          �� �ˤʤ롣���ν�������̲����ƻȤ���褦�ˤ������饹���ե������
-          ���֤ޤ� �ϥ֥��å����ޤ���
+          アプリケーションにおいてファイルを選択する処理はいつも似たようなも
+          の になる。その処理を一般化して使えるようにしたクラス。ファイルを
+          選ぶまで はブロックします。
         o FlowLayout
-          �����鱦�إ���ݡ��ͥ�Ȥ��¤٤�쥤��������
+          左から右へコンポーネントを並べるレイアウタ。
         o Font
-          �ե���Ȥ����롣
+          フォントを操作する。
         o FontMetrics
-          ����⤵�ʤɡ��ե���Ȥ˴ؤ����������������
+          幅や高さなど、フォントに関する情報を引きだす。
         o Frame
-          �����ȥ�Ĥ��Υ�����ɥ������Τ褦�ˤ���п����ʥ�����ɥ���Ф���
-          �Ȥ� �Ǥ��ޤ���
-          �㡧
+          タイトルつきのウインドウ。次のようにすれば新たなウインドウを出すこ
+          とが できます。
+          例：
 
           Frame f = new Frame("Title");
           f.show();
 
         o Graphics
-          Canvas��Image������¾�ˤ� ���������ʥ��֥������Ȥ��Ф��ƤΤ��ޤ���
-          �������¸����롣
+          CanvasやImage、その他にも いろいろなオブジェクトに対してのさまざま
+          な描画を実現する。
         o GridBagConstraints
-          GridBagLayout�Τ��������饹��
+          GridBagLayoutのお助けクラス。
         o GridBagLayout
-          ����ݡ��ͥ�Ȥ�ʣ�������֤��뤿��Υ쥤������������ݡ��ͥ�Ȥ�
-          ��������Ʊ���Ǥʤ��Ƥ�褯�������˽�������֤��Ǥ��롣
+          コンポーネントを複雑に配置するためのレイアウタ。コンポーネントの
+          サイズは同じでなくてもよく、相当に柔軟な配置ができる。
         o GridLayout
-          ����ݡ��ͥ�Ȥ�ޥ����ͤ����֤���쥤��������
+          コンポーネントをマス目様に配置するレイアウタ。
         o Image
-          Image��ľ�ܤ˥��󥹥��󥹲�(new)���뤳�ȤϤǤ��ޤ��� createImage
-          ��getImage������Τ����̡�
-          �㡧
+          Imageは直接にインスタンス化(new)することはできません。 createImage
+          やgetImageで得るのが普通。
+          例：
 
           Image myimg = getImage( getDocumentBase() , "hoge.gif" );
-          Image ofscr = createImage( 100,100 );  // ���ե����꡼�󥤥᡼������
-          Graphics ofscrg = ofscr.getGraphics(); // �ʹ�ofscrg��Ȥä����褹��
+          Image ofscr = createImage( 100,100 );  // オフスクリーンイメージを作る
+          Graphics ofscrg = ofscr.getGraphics(); // 以降ofscrgを使って描画する
 
         o Insets
 
-          Container�ξ岼������������������Υ�������������롣 ����������
-          ��ɥ��򳫤��Ƥ��Ρ���ȤΡ��������礭��������ˤϼ��� �褦�ˤ�
-          �롣
-          �㡧
+          Containerの上下左右に挿入される空白のサイズを管理する。 新しくウイ
+          ンドウを開いてその「中身の」本当の大きさを得るには次の ようにす
+          る。
+          例：
 
           Frame f = new Frame("title");
-          f.resize(200,200);    // resize��˺�����礭�����륦����ɥ����Ǥ���
-          f.show();             // ���show���뤳��
-          Insets ins = f.insets(); // ����ǥ����ȥ�С����Ȥ�������������
+          f.resize(200,200);    // resizeを忘れると大きすぎるウインドウができる
+          f.show();             // 先にshowすること
+          Insets ins = f.insets(); // これでタイトルバーや枠の太さが求められる
 
         o Label
-          �ɤळ�ȤϤǤ��뤬�ѹ��Ǥ��ʤ���٥�򤢤�魯����ݡ��ͥ�ȡ� ��
-          ���å��ܥå����β��ʤɤ�ɽ�������ꤹ�롣
+          読むことはできるが変更できないラベルをあらわすコンポーネント。 チ
+          ェックボックスの横などに表示したりする。
         o List
-          ���������뤹�������˥塼��
+          スクロールする選択メニュー。
         o MediaTracker
-          �����䲻��������ɤ�����ˡ����줬��λ����ޤ��Ԥä��ꡢ������ Ĵ
-          �٤��ꤹ�륯�饹���㤨�в����ξ��ϼ��Τ褦�ˤ������Ƥ� �����ɤ�
-          �콪���ޤ��ԤĤ��Ȥ��Ǥ��롣 �㡧
+          画像や音声をロードする時に、それが終了するまで待ったり、状況を 調
+          べたりするクラス。例えば画像の場合は次のようにして全てが ロードさ
+          れ終わるまで待つことができる。 例：
 
           public void init()
           {
@@ -213,69 +213,69 @@
               tracker = new MediaTracker(this);
               img = getImage( getDocumentBase() , "hoge.gif");
               tracker.addImage(img , 0 );
-              tracker.waitForAll(); // �����ɤ������ޤ�init()�Ͻ����ʤ�
+              tracker.waitForAll(); // ロードが終わるまでinit()は終わらない
           }
 
         o Menu
-          MenuBar�����ʡ�
+          MenuBarの部品。
         o MenuBar
-          ��˥塼�С�����˥塼�С��ϡ�ư��Ķ��ˤ�äưۤʤ뤬�����줾���
-          ������ �����Υ�˥塼�С��ˤʤ롣
+          メニューバー。メニューバーは、動作環境によって異なるが、それぞれに
+          応じた 形式のメニューバーになる。
         o MenuComponent
-          ��˥塼�ط��Υ��饹�ϡ����٤Ƥ��Υ��饹��extends���Ƥ��롣
+          メニュー関係のクラスは、すべてこのクラスをextendsしている。
         o MenuItem
-          ��˥塼��������ܤˤʤ�ʸ��������ƤȤ����Ĥι��ܡ�
+          メニューの選択項目になる文字列を内容とする一つの項目。
         o MenuShortcut*
-          JDK1.1�Ǥϡ�������Ū�ʥ��ץꥱ������������Ǥ���褦�ˡ� ���
-          �塼�򥭡��ܡ������Ǥ���褦�ˤʤä����������¸����뤿��� ��
-          �饹��java.awt.Event��extends���Ƥ��롣
+          JDK1.1では、より一般的なアプリケーションを作成できるように、 メニ
+          ューをキーボード操作できるようになったが、それを実現するための ク
+          ラス。java.awt.Eventをextendsしている。
         o Panel
-          Container�ΰ��ǡ�����Ū�ʵ�ǽ����ĥ���ƥʤ� �¸����롣���ץ��
-          �Ȥ򤤤��Ĥ���GUI���ˤ櫓�������ʤɤ� Panel�򷲤ο�������äƤ���
-          �˺٤���GUI���ʤ��֤� �Ȥ����褦�ˤ��뤳�Ȥ�¿����
+          Containerの一種で、一般的な機能を持つコンテナを 実現する。アプレッ
+          トをいくつかのGUI群にわけたい時などは Panelを群の数だけ作ってそこ
+          に細かいGUI部品を置く というようにすることが多い。
         o Point
-          x,y�Ȥ���2�Ĥ��ͤ򤢤�魯���饹�� Point�����Ρְ��֡פ򤢤�魯��
-          ���Ф��ơ�Dimension �ϡ������ȹ⤵�פ򤢤�魯���Ȥ����ա�Ʊ��int
-          ��2�ͤ����� �虜�虜��̣��ʬ���Ƥ���Τˤ���Ū�����롣
+          x,yという2つの値をあらわすクラス。 Pointが点の「位置」をあらわすの
+          に対して、Dimension は、「幅と高さ」をあらわすことに注意。同じint
+          の2値だが、 わざわざ意味を分けているのには目的がある。
         o Polygon
-          ʣ�������ΰ��֤�����ǽ���������¿�ѷ��򤢤�魯�� Graphics����
-          ����drawPolygon�Ȥ����᥽�åɤ� �Ϥ��ƥݥꥴ������褹�뤳�Ȥ��Ǥ�
-          �롣
+          複数の点の位置の配列で初期化される多角形をあらわす。 Graphicsクラ
+          スのdrawPolygonというメソッドに 渡してポリゴンを描画することができ
+          る。
         o PopupMenu*
-          �ޥ������������ǡ����ξ�˱�������˥塼��Ф���Netscape��
-          ������å��Τ褦�ʴ����Ǥ���
+          マウスを操作した場所で、その場に応じたメニューを出す。Netscapeの
+          右クリックのような感じです。
         o PrintJob*
-          �ץ�󥿤����뤿��Υ��饹��Toolkit��Ȥä����롣
+          プリンタを操作するためのクラス。Toolkitを使って得る。
         o Rectangle
-          �ͳѷ��򤢤�魯����������������⤵���ġ�
+          四角形をあらわす。左上の点と幅、高さをもつ。
         o ScrollPane*
-          JDK1.1�����ϡ�����������ν������ճ��ˤ�䤳������ˡ� �����ƥ��
-          �����С��إåɤ��礭�����ѥե����ޥ�Ū���㤫�ä� ����ˡ�
-          Container���饹��extends���Ƥ��� ���������饹����������ޤ�����¾
-          ��Container�Τ褦�ˡ� add���Ǥ��ޤ���
+          JDK1.1以前は、スクロールの処理が意外にややこしい上に、 システムの
+          オーバーヘッドが大きく、パフォーマンス的も低かった ために、
+          Containerクラスをextendsしている 新しいクラスが実装されました。他
+          のContainerのように、 addができます。
         o Scrollbar
-          ñ��ʥ���������С���¸����ޤ���JDK1.1�ʹߤǤϡ��ۤ� ScrollPane
-          ��Ȥ��Ȥ��������ˤʤäƤ����Ǥ��礦����
+          単純なスクロールバーを実現します。JDK1.1以降では、ほぼ ScrollPane
+          を使うという方向になっていくでしょうが。
         o SystemColor*
-          Java���ץ�å�/���ץꥱ�������ʳ���ư����Υ��ץꥱ�������䡢
-          �����ƥ༫�Τȿ���ͭ���뤿��Υ��饹�Ǥ���GUI�Τ��줾�����ʬ��
-          �Ȥ� ������������ꤹ�뤳�Ȥˤ�äơ��������촶������GUI���ۤ�
-          �뤳�Ȥ� �Ǥ��ޤ���
+          Javaアプレット/アプリケーション以外の動作中のアプリケーションや、
+          システム自体と色を共有するためのクラスです。GUIのそれぞれの部分ご
+          との 色を取りだしたりすることによって、色の統一感があるGUIを構築す
+          ることが できます。
         o TextArea
-          ʣ���Ԥˤޤ�����ƥ��������ϥ��ꥢ���ߤ��ޤ����ѹ����Ǥ��ʤ��褦��
-          ����С����ץꥱ�������ε�ư���˥桼�����ɤޤ������ս񤭤ʤɤˤ�
-          �Ȥ��ޤ���
+          複数行にまたがるテキスト入力エリアを設けます。変更ができないように
+          すれば、アプリケーションの起動時にユーザに読ませる注意書きなどにも
+          使えます。
         o TextComponent
-          �ƥ����Ȥ��Խ�����褦�ʥ��饹 (TextArea,TextField) �Ϥ��Υ��饹��
-          extends���ޤ����ΰ�����䥫�������ư �ʤɡ������ǰ���Ū�ʵ�ǽ���
-          �äƤ��뤫��Ǥ���
+          テキストを編集するようなクラス (TextArea,TextField) はこのクラスを
+          extendsします。領域選択やカーソル移動 など、便利で一般的な機能を持
+          っているからです。
         o TextField
-          TextArea�Ȱۤʤꡢ1�Ԥ����ϥե�����ɤ��Ѱդ��ޤ���
+          TextAreaと異なり、1行の入力フィールドを用意します。
         o Toolkit
-          awt�������ݥ��饹(Image��Graphics) �򡢼ºݤ�ư��Ķ��˱�������
-          �Τ˷�ӤĤ��ޤ���Toolkit ������ˤϡ�����ݡ��ͥ�Ȥ�extends����
-          ���륯�饹����� getToolkit()�Ȥ����᥽�åɤ�Ȥ��ޤ���
-          �㡧
+          awtの中の抽象クラス(ImageやGraphics) を、実際の動作環境に応じたも
+          のに結びつけます。Toolkit を得るには、コンポーネントをextendsして
+          いるクラスの中で getToolkit()というメソッドを使います。
+          例：
 
           import java.awt.*;
           public class myAplt extends java.applet.Applet
@@ -291,428 +291,428 @@
               }
           }
 
-          Toolkit�ˤ�createImage�Ȥ����� �ץ������Ū�˲�����������᥽��
-          �ɤ����äơ����줬�Ȥ���������� ��Ǽ������褦����ˡ���뤳�Ȥ�
-          ¿���Ǥ���
+          ToolkitにはcreateImageという、 プログラム的に画像を作りだすメソッ
+          ドがあって、それが使いたいために 上で示したような方法を取ることも
+          多いです。
         o Window
-          ���ʤϤۤȤ�ɻȤ�ʤ��Ǥ��礦��API�ޥ˥奢��ˤϡ��ݥåץ��åץ�
-          �˥塼���� �Ȥ��˻Ȥ���Ȥ������Ȥ��񤤤Ƥ���ޤ�����������ɥ�
-          ����ΤǤ���� Frame���饹��Ȥ��٤��Ǥ���
+          普段はほとんど使わないでしょう。APIマニュアルには、ポップアップメ
+          ニューを作る ときに使えるということが書いてありますが、ウインドウ
+          を作るのであれば Frameクラスを使うべきです。
 
-     �㳰
+     例外
 
         o AWTException
-          awt������㳰Ū�ʾ�����ȯ�����������ꤲ���ޤ���
+          awtの中で例外的な状況が発生した場合に投げられます。
         o IllegalComponentStateException*
-          ���륳��ݡ��ͥ�Ȥˡ��������׵�(�Ĥޤ�᥽�åɸƤӤ���)�������ˡ�
-          ���ޤ��ޤ��Υ���ݡ��ͥ�Ȥ��׵������Ǥ��ʤ����֤Ǥ��ä�����
-          ȯ�����ޤ���
+          あるコンポーネントに、処理を要求(つまりメソッド呼びだし)した時に、
+          たまたまそのコンポーネントが要求を処理できない状態であった場合に
+          発生します。
 
-     ���顼
+     エラー
 
         o AWTError
-          awt�����Υ��顼�Ǥ������θ����Ϥʤ��ʤ��Ĥ��Ȥ�뤳�Ȥ��Ǥ��ޤ�
-          �� ư��Ķ��ˤ�ä��͡��ʸ��������ꤨ�ޤ����ɤ����Ƥ⤳�Υ��顼
-          �˶줷���� ��褦�ʾ��ϡ��������ƾ����㤦¾�Τ�꤫���ˤ���
-          ��ľ�ä��ꤷ�ޤ���
+          awt内部のエラーです。この原因はなかなかつきとめることができませ
+          ん。 動作環境によって様々な原因がありえます。どうしてもこのエラー
+          に苦しめられ るような場合は、あきらめて少し違う他のやりかたにする
+          と直ったりします。
 
    * java.awt.datatransfer*
 
-     ���ץꥱ�������Ʊ�Τξ���Τ��Ȥ��¸����뤿���API���Ǥ���
+     アプリケーション同士の情報のやりとりを実現するためのAPI群です。
 
-	  ���󥿡��ե�����
+	  インターフェイス
 
 		 o ClipboardOwner*
-		   ����åץܡ��ɤ˾�����Ϥ����Ȥ��Ǥ��륪�֥������Ȥϡ������
-		   implements���ޤ���
+		   クリップボードに情報を渡すことができるオブジェクトは、これを
+		   implementsします。
 		 o Transferable*
-		   �ºݤ˥���åץܡ��ɤȤδ֤Ǿ������Ȥꤹ�뤿��˻Ȥ��륯�饹
-		   �Ϥ����implements���ޤ���
+		   実際にクリップボードとの間で情報をやりとりするために使われるクラス
+		   はこれをimplementsします。
 
-	  ���饹
+	  クラス
 
 		 o Clipboard*
-		   ���å�/���ԡ�/�ڡ����ȤȤ��ä�������ݡ��ͥ�ȴ֤��뤤��¾�Υ��ץ�
-		   ��������� �Ȥδ֤ǰ���Ū�ʾ���Τ��Ȥ�򤹤뤿�������¸���
-		   �ޤ��� ����Ȥ��ơ����ƤȤ���̾���Ƚ�ͭ��(��ͭ����ݡ��ͥ��)���
-		   �äƤ��ޤ���
+		   カット/コピー/ペーストといった、コンポーネント間あるいは他のアプリ
+		   ケーション との間で一般的な情報のやりとりをするための操作を実現し
+		   ます。 情報として、内容とその名前と所有者(所有コンポーネント)を持
+		   っています。
 		 o DataFlavor*
-		   ����åץܡ��ɤȤ��Ȥꤹ����󤬤ɤΤ褦�ʥ����פΤ�ΤǤ��뤫��
-		   ���������ޤ���
+		   クリップボードとやりとりする情報がどのようなタイプのものであるかを
+		   管理・操作します。
 		 o StringSelection*
-		   ����åץܡ��ɤȤΤ��Ȥ�ǡ�ñ���ʸ����(�ץ쥤��ƥ�����)����
-		   �Ȥ� ����ñ��ʤ�꤫����¸����ޤ���
+		   クリップボードとのやりとりで、単純な文字列(プレインテキスト)をやり
+		   とり する単純なやりかたを実現します。
 
-	  �㳰
+	  例外
 
 		 o UnsupportedFlavorException*
-		   ����DataFlovor�����׵ᤵ�줿�ǡ������б����Ƥ��ʤ���� ��ȯ������
-		   ����
+		   当該DataFlovorが、要求されたデータに対応していない場合 に発生しま
+		   す。
 
 	* java.awt.event*
 
-	  JDK1.1�Ǥϡ��絬�Ϥʥ��ץꥱ�������γ�ȯ���ưפˤ��뤿��ˡ��ޤ�����
-	  ��ȴ�Ϣ �λ��ͤ���ĥ����ޤ�����JDK1.0�����Υ��٥�Ƚ�������ˡ���顢
-	  JDK1.1�ʹߤ���ˡ�ؤ��ѹ�������ˡ�ˤĤ��Ƥϡ���4�Ϥ�1�ᡢ17�ǰ��äƤ��ޤ���
+	  JDK1.1では、大規模なアプリケーションの開発を容易にするために、まずイベ
+	  ント関連 の仕様が拡張されました。JDK1.0形式のイベント処理の方法から、
+	  JDK1.1以降の方法へと変更する方法については、第4章の1節、17で扱っています。
 
-	  ���󥿡��ե�����
+	  インターフェイス
 
 		 o ActionListener*
-		   Button,List,MenuItem,TextField,Checkbox,Choice�ʤɤ�ȯ������
-		   ���٥�Ȥ�������륯�饹�Τ���Υ��󥿡��ե�������
+		   Button,List,MenuItem,TextField,Checkbox,Choiceなどが発生する
+		   イベントを処理するクラスのためのインターフェイス。
 		 o AdjustmentListener*
-		   Scrollbar�ʤɤ�ȯ�����륤�٥�Ȥ�������륯�饹�Τ���Υ���
-		   �����ե�������
+		   Scrollbarなどが発生するイベントを処理するクラスのためのイン
+		   ターフェイス。
 		 o ComponentListener*
-		   Dialog,Frame�ʤɤ���ư�����ꡢ�ꥵ�������줿��Ȥ��ä����٥�Ȥ�
-		   �������륯�饹�Τ���Υ��󥿡��ե�������
+		   Dialog,Frameなどが移動したり、リサイズされたりといったイベントを
+		   処理するクラスのためのインターフェイス。
 		 o FocusListener*
-		   ����ݡ��ͥ�Ȥ��ե��������������ꡢ���ʤä��ꡢ�Ȥ��ä����٥�Ȥ�
-		   �������륯�饹�Τ���Υ��󥿡��ե�������
+		   コンポーネントがフォーカスを得たり、失なったり、といったイベントを
+		   処理するクラスのためのインターフェイス。
 		 o ItemListener*
-		   Checkbox,Choice�ʤɡ����ܤξ��ּ��Τ��Ѳ��������Ȥ������٥�Ȥ�
-	       �������륯�饹�Τ���Υ��󥿡��ե�������
+		   Checkbox,Choiceなど、項目の状態自体が変化した、というイベントを
+	       処理するクラスのためのインターフェイス。
 		 o KeyListener*
-		   �����ܡ��ɤ˴�Ϣ���륤�٥�Ȥ�������륯�饹�Τ���Υ��󥿡�
-		   �ե�������
+		   キーボードに関連するイベントを処理するクラスのためのインター
+		   フェイス。
 		 o MouseListener*
-		   �ޥ����Υܥ���˴ؤ��륤�٥�Ȥ�������륯�饹�Τ����
-		   ���󥿡��ե�������
+		   マウスのボタンに関するイベントを処理するクラスのための
+		   インターフェイス。
 		 o MouseMotionListener*
-		   �ޥ�����ư���˴ؤ��륤�٥�Ȥ�������륯�饹�Τ���Υ��󥿡�
-		   �ե�������
+		   マウスの動きに関するイベントを処理するクラスのためのインター
+		   フェイス。
 		 o WindowListener *
-		   Dialog,Frame�ʤɤ�ȯ�����롢������ɥ��γ����Ĥ�˴ؤ��륤�٥�Ȥ�
-           �������륯�饹�Τ���Υ��󥿡��ե�������
+		   Dialog,Frameなどが発生する、ウインドウの開け閉めに関するイベントを
+           処理するクラスのためのインターフェイス。
 
-	  ���饹
+	  クラス
 
 		 o ActionEvent*
-		   ActionListener�������Ȥ륤�٥�ȡ�Button,List,MenuItem,TextField,
-		   Checkbox,Choice�ʤɤ�ȯ����
+		   ActionListenerが受けとるイベント。Button,List,MenuItem,TextField,
+		   Checkbox,Choiceなどが発生。
 		 o AdjustmentEvent*
-		   AdjustmentListener�������Ȥ륤�٥�ȡ�Scrollbar��ȯ����
+		   AdjustmentListenerが受けとるイベント。Scrollbarが発生。
 		 o ComponentAdapter*
-		   ���᥽�åɤ�ץ��������Ǥ��������������Τ��˻��ʤΤǡ�
-		   �������򤹤뤿��ˡ����Υ᥽�åɤ�������Ƥ���륯�饹��
-		   ���Υ��饹��extends����С��Ȥꤢ����ɬ�פʤ�������񤫤ʤ��Ƥ�
-		   �褯�ʤ�ޤ��� ComponentListener�ѤΥ��饹��
+		   空メソッドをプログラム中でたくさん定義するのは繁雑なので、
+		   それを回避するために、空のメソッドを定義してくれるクラス。
+		   このクラスをextendsすれば、とりあえず必要ない処理を書かなくても
+		   よくなります。 ComponentListener用のクラス。
 		 o ComponentEvent*
-		   ComponentListener�������Ȥ륤�٥�ȡ�Dialog,Frame�ʤɤ�ȯ����
+		   ComponentListenerが受けとるイベント。Dialog,Frameなどが発生。
 		 o FocusAdapter*
-		   FocusListener�Υ��饹�Υץ������򥷥�ץ�ˤ��뤿��Υ��饹��
+		   FocusListenerのクラスのプログラムをシンプルにするためのクラス。
 		 o FocusEvent*
-		   FocusListener�������Ȥ륤�٥�ȡ������륳��ݡ��ͥ�Ȥ�ȯ������
-			���٥�ȡ�
+		   FocusListenerが受けとるイベント。あらゆるコンポーネントが発生する
+			イベント。
 		 o InputEvent*
-		   ����ݡ��ͥ�Ȥ��Ф������Ϥδ��ܥ��饹��
+		   コンポーネントに対する入力の基本クラス。
 		 o ItemEvent*
-		   ItemListener�������Ȥ륤�٥�ȡ�Checkbox,Choice�ʤɤ�ȯ����
+		   ItemListenerが受けとるイベント。Checkbox,Choiceなどが発生。
 		 o KeyAdapter*
-		   KeyListener�Υ��饹�Υץ������򥷥�ץ�ˤ��뤿��Υ��饹��
+		   KeyListenerのクラスのプログラムをシンプルにするためのクラス。
 		 o KeyEvent*
-		   KeyListener�������Ȥ륤�٥�ȡ������륳��ݡ��ͥ�Ȥ�ȯ������
-		   ��ǽ��������ޤ���
+		   KeyListenerが受けとるイベント。あらゆるコンポーネントが発生する
+		   可能性があります。
 		 o MouseAdapter*
-	       MouseListener�Υ��饹�Υץ������򥷥�ץ�ˤ��뤿��Υ��饹��
+	       MouseListenerのクラスのプログラムをシンプルにするためのクラス。
 		 o MouseEvent*
-		   MouseListener�������Ȥ륤�٥�ȡ�Canvas,Dialog,Frame,Panel,Window
-		   �ʤɤ�ȯ����
+		   MouseListenerが受けとるイベント。Canvas,Dialog,Frame,Panel,Window
+		   などが発生。
 		 o MouseMotionAdapter*
-		   MouseMotinListener�Υ��饹�Υץ������򥷥�ץ�ˤ��뤿��Υ��饹��
+		   MouseMotinListenerのクラスのプログラムをシンプルにするためのクラス。
 		 o PaintEvent*
-		   ����ݡ��ͥ�Ȥ����襤�٥�ȡ����Υ��٥�Ȥϡ������̤�Υץ������
-		   �򤹤�Ф褯��Listener�Ϥ���ޤ���
+		   コンポーネントの描画イベント。このイベントは、従来通りのプログラム
+		   をすればよく、Listenerはありません。
 		 o WindowAdapter*
-		   WindowListener�Υ��饹�Υץ������򥷥�ץ�ˤ��뤿��Υ��饹��
+		   WindowListenerのクラスのプログラムをシンプルにするためのクラス。
 		 o WindowEvent*
-		   WindowListener�������Ȥ륤�٥�ȡ�Dialog��Frame��ȯ����
+		   WindowListenerが受けとるイベント。DialogやFrameが発生。
 
 	* java.awt.image
 
-	  awt�ǲ����򰷤����˰���դߤ���������򤹤뤿��Υѥå������Ǥ��� ����
-	  �����򤹤���ˤ�ɬ���ʤǤ���
+	  awtで画像を扱う時に一歩ふみこんだ処理をするためのパッケージです。 画像
+	  処理をする時には必需品です。
 
-	  ���󥿡��ե�����
+	  インターフェイス
 
 		 o ImageConsumer
-		   �����ImageProducer�Τ��������Ȥʤ륤�󥿡��ե������Ǥ���
-		   ImageProducer��implements���Ƥ��륯�饹�ϡ� ���������Ǿ�������뤿
-		   ���ImageConsumer���������Ƥ��� �᥽�åɤ�Ȥ��ޤ���
+		   いわばImageProducerのしたうけとなるインターフェイスです。
+		   ImageProducerをimplementsしているクラスは、 その内部で情報を得るた
+		   めにImageConsumerで定義されている メソッドを使います。
 		 o ImageObserver
-		   ���᡼������Ʊ���˥����ɤ����������������Ƥ����ޤ���������
-		   ������Ĵ�٤뤿��Υ��󥿡��ե������Ǥ���
+		   イメージは非同期にロードされメモリ上に生成されていきますが、その
+		   状況を調べるためのインターフェイスです。
 		 o ImageProducer
-		   Image�򤢤��餷����������ǽ�Ϥ���ĤȤ������Ȥ� ����魯���󥿡�
-		   �ե������Ǥ������Υ��󥿡��ե������� implements���Ƥ��륯�饹�ϡ�
-		   ���Ȥ���Toolkit �Υ᥽�åɤǤ���createImage(ImageProducer)�� ����
-		   �Ȥ���Ϳ�����뤳�Ȥ��Ǥ��ޤ����ɤ�Image�⡢������ ���β���������
-		   ���뤿���ImageProducer��ɬ�פȤ��ޤ���
+		   Imageをあたらしく作りだせる能力を持つということを あらわすインター
+		   フェースです。このインターフェイスを implementsしているクラスは、
+		   たとえばToolkit のメソッドであるcreateImage(ImageProducer)の 引数
+		   として与えられることができます。どのImageも、内部に その画像を生成
+		   するためのImageProducerを必要とします。
 
-	  ���饹
+	  クラス
 
 		 o AverageScaleFilter*
-		   ñ��ʥ��ࡼ���󥰥��르�ꥺ���ȤäƲ��������̾����ޤ��� ����
-		   �Ϥ����ֱ�Ӥ���������Ǥ�����
+		   単純なスムージングアルゴリズムを使って画像を拡大縮小します。 従来
+		   はただ間延びさせるだけでした。
 		 o ColorModel
-		   Java�ǤϿ���RGBA�ȸƤФ���ǥ�����줵��Ƥ��ޤ�����Java�ʳ�����
-		   �ԥ�����Υǡ������ɤߤ������Ϥޤ�Java�η������Ѵ����ʤ���Фʤ�
-		   �ޤ� �󡣤��ν���������ޤ���
+		   Javaでは色はRGBAと呼ばれるモデルで統一されていますが、Java以外から
+		   ピクセルのデータを読みだす場合はまずJavaの形式に変換しなければなり
+		   ませ ん。その処理を助けます。
 		 o CropImageFilter
-		   ���᡼������ʬŪ���ΰ���ڤ�����ޤ���
+		   イメージの部分的な領域を切りだします。
 		 o DirectColorModel
-		   �ԥ������ͤ��鿧��ľ��Ū���Ѵ����ޤ���
+		   ピクセル値から色へ直接的に変換します。
 		 o FilteredImageSource
-		   ��������Υե��륿�򤫤���褦��ImageProducer�Ǥ���
+		   ある特定のフィルタをかけるようなImageProducerです。
 		 o ImageFilter
-		   �����˥ե��륿������Ϥ��Υ��饹��extends�������줾�� �Υ᥽��
-		   �ɤ򥪡��С��饤�ɤ��ޤ����������뤳�Ȥˤ�ä� ImageConsumer����
-		   ImageProducer�ؤξ���� �Ϥ��������Ѥ����ե��륿�򤫤���ΤǤ���
+		   新たにフィルタを作る場合はこのクラスをextendsし、それぞれ のメソッ
+		   ドをオーバーライドします。そうすることによって ImageConsumerから
+		   ImageProducerへの情報の 渡しかたを変え、フィルタをかけるのです。
 		 o IndexColorModel
-		   ���줾��ο����ֹ�ǻ��ꤹ��褦�ʥ��顼��ǥ�Ǥ������뿧��Ʃ����
-		   �˻��� ���뤳�Ȥ�Ǥ��ޤ���
+		   それぞれの色を番号で指定するようなカラーモデルです。ある色を透明色
+		   に指定 することもできます。
 		 o MemoryImageSource
-		   int�������󤫤鿷����Image��������ޤ��� ���ˤ狼��䤹������
-		   �ץ�ץ�����ब��API�ޥ˥奢���Ʊ����˷Ǻܤ� ��Ƥ��ޤ���
+		   int型の配列から新しいImageを作りだします。 非常にわかりやすいサン
+		   プルプログラムが、APIマニュアルの同じ項に掲載さ れています。
 		 o PixelGrabber
-		   Image����int��������ؾ����������ޤ��� ���礦�ɾ嵭�Ρ�
-		   MemoryImageSource�εդν����ˤʤ�ޤ���
+		   Imageからint型の配列へ情報を取りだします。 ちょうど上記の、
+		   MemoryImageSourceの逆の処理になります。
 		 o RGBImageFilter
-		   ɸ���RGB���顼��ǥ��Ȥä�ñ��ʥե��륿����Τ�����륯�饹
-		   �Ǥ��� �����ޤ�abstract���饹�ǡ�filterRGB�Ȥ��� �᥽�åɤ����
-		   ���뤳�ȤǴ�ñ�˥ե��륿������Ǥ��ޤ���
+		   標準のRGBカラーモデルを使った単純なフィルタを作るのを助けるクラス
+		   です。 これもまたabstractクラスで、filterRGBという メソッドを実装
+		   することで簡単にフィルタを作成できます。
 		 o ReplicateScaleFilter*
-		   �Ǥ�ñ�����ˡ�ǲ��������̾����ޤ���
+		   最も単純な方法で画像を拡大縮小します。
 
 	* java.awt.peer
 
-	  ư��Ķ��˰�¸������ʬ��Java���ӤĤ��ޤ����ܽ���ϰϤ�ۤ��Ƥ���Τ�
-	  ��ά���ޤ���
+	  動作環境に依存する部分とJavaを結びつけます。本書の範囲を越えているので
+	  省略します。
 
 	* java.io
 
-	  Java�ι�ݲ��ˤȤ�ʤäơ������InputStream��OutputStream ���б�����
-	  Unicode���ȥ꡼��򰷤���Reader��Writer�� �Ѱդ���ޤ�����
+	  Javaの国際化にともなって、従来のInputStreamやOutputStream に対応する
+	  Unicodeストリームを扱う、Reader、Writerが 用意されました。
 
-	  ���󥿡��ե�����
+	  インターフェイス
 
 		o DataInput
-		  �ޥ���˰�¸���ʤ����Ǿ���򥹥ȥ꡼�फ�����Ϥ��뤿��Υ��󥿡���
-		  �������� Java�ˤ������͡��ʷ����ѿ��ء�ľ���ɤߤ��ळ�Ȥ��Ǥ��롣
+		  マシンに依存しない形で情報をストリームから入力するためのインターフ
+		  ェイス。 Javaにおける様々な型の変数へ、直接読みこむことができる。
 		o DataOutput
-	      DataInput�εա����Ϥ��뤿��Υ��󥿡��ե�������
+	      DataInputの逆、出力するためのインターフェイス。
 	    o Externalizable*
-	      VM���������ɤߤ�����ꡢVM��������¸������Ǥ��륯�饹�Τ����
-          ���󥿡��ե�������
+	      VM外部から読みこんだり、VM外部に保存したりできるクラスのための
+          インターフェイス。
         o FilenameFilter
-          ̾���ǻ��ꤹ��ե�����̾���ǥ��쥯�ȥ��¸�ߤ��뤫�ɤ�����Ĵ�٤롣
+          名前で指定するファイル名がディレクトリに存在するかどうかを調べる。
         o ObjectInput*
-          Java�Υ��֥������Ȥ򥹥ȥ꡼�फ���ɤߤ��ि��Υ��󥿡��ե�������
+          Javaのオブジェクトをストリームから読みこむためのインターフェイス。
         o ObjectInputValidation*
-		  ���ȥ꡼�फ���ɤߤ�������֥������Ȥ�ͭ���ˤ��ޤ���
+		  ストリームから読みこんだオブジェクトを有効にします。
         o ObjectOutput*
-          Java�Υ��֥������Ȥ򥹥ȥ꡼��˽񤭤�������Υ��󥿡��ե�������
+          Javaのオブジェクトをストリームに書きだすためのインターフェイス。
         o Serializable*
-          JDK1.1���顢���֥������Ȥ�Х�����ˤ���(���ꥢ�饤������Ȥ���)��
-          �������� ���������ꤹ��API�������ޤ����������Τ褦�ʤ��Ȥ���ǽ�Ǥ�
-          �륯�饹����ˤϡ� ���Υ��饹��Serializable��implements���ʤ���
-          �Фʤ� �ޤ���
+          JDK1.1から、オブジェクトをバイト列にして(シリアライズするという)送
+          信したり 受信したりするAPIが増えましたが、そのようなことが可能であ
+          るクラスを作るには、 そのクラスはSerializableをimplementsしなけれ
+          ばなり ません。
 
-     ���饹
+     クラス
 
         o BufferedInputStream
-          �ɤߤ��ߤ�Хåե���󥰤��Ƥ���ޤ�������ˤ�ä��ɤߤ��ߤΥѥե�
-          ���ޥ󥹤� �徺���ޤ���JDK1.0.2�Ǥϡ��֥��å��󥰤��ʤ��Ȥ����Х�
-          ������ޤ�����
+          読みこみをバッファリングしてくれます。それによって読みこみのパフォ
+          ーマンスが 上昇します。JDK1.0.2では、ブロッキングしないというバグ
+          がありました。
         o BufferedOutputStream
-          �񤭤��ߤ�Хåե���󥰤��ޤ����񤭤��ߤΥѥե����ޥ󥹤��徺����
-          ����
+          書きこみをバッファリングします。書きこみのパフォーマンスが上昇しま
+          す。
         o BufferedReader*
-          �Х�����ǤϤʤ���Unicode��ʸ������ɤߤ��ߤޤ���Java�ι�ݲ��ˤ�
-          ��ʤä� ���ޤ�ޤ�����
+          バイト列ではなく、Unicodeの文字列を読みこみます。Javaの国際化にと
+          もなって 生まれました。
         o BufferedWriter*
-          Unicode��ʸ�����񤭤��ߤޤ���
+          Unicodeの文字列を書きこみます。
         o ByteArrayInputStream
-          ���Ǥˤ���Х����������ˤ��ơ����ΥХ�����Υǡ��������ϤΥǡ���
-          �� �ʤäƤ���褦�ʥ��ȥ꡼���������ޤ������ȥ꡼���Ϣ�Υ롼
-          ����ΥǥХå� �˻Ȥ��ޤ���read(),read(byte[],int,int)�ʤɡ����ȥ�
-          ����餷�� �롼���󤬤��Τޤ޻Ȥ��ޤ���
+          すでにあるバイト列を材料にして、そのバイト列のデータが入力のデータ
+          に なっているようなストリームを作りだします。ストリーム関連のルー
+          チンのデバッグ に使えます。read(),read(byte[],int,int)など、ストリ
+          ームらしい ルーチンがそのまま使えます。
         o ByteArrayOutputStream
-          �Х�������Ф��ƽ��Ϥ��ޤ����ҤȤ�������Ϥ����顢 toString�䡢
-          toByteArray�ʤɤΥ᥽�åɤ�Ȥä� �ǡ��������ޤ���
+          バイト列に対して出力します。ひとしきり出力したら、 toStringや、
+          toByteArrayなどのメソッドを使って データを得ます。
         o ByteToCharConverter*
-          Unicode�ʳ���ʸ���ե����ޥå�(JIS��EUC�ʤɤǤ�)����Unicode�ؤ��Ѵ�
-          �� �Ԥʤ��ޤ���
+          Unicode以外の文字フォーマット(JISやEUCなどでも)からUnicodeへの変換
+          を 行ないます。
         o CharArrayReader*
-          Char����������ˤ��ơ�Reader����ޤ���
+          Char型の配列を基にして、Readerを作ります。
         o CharArrayWriter*
-          Char������إǡ�������Ϥ��ޤ���
+          Charの配列へデータを出力します。
         o CharToByteConverter*
-          Unicodeʸ����¾��ʸ��������(���ܸ����JIS��EUC�ʤ�)���Ѵ����ޤ���
+          Unicode文字を他の文字コード(日本語だとJISやEUCなど)へ変換します。
         o DataInputStream
-          Java�δ��ܷ���ľ�ܤ˥��ȥ꡼�फ���ɤߤ��ळ�Ȥ��Ǥ��������� ����
-          �꡼��Ǥ����ͥåȥ���Ķ��ˤ����Ƥ⡢�񤭤��ߤ��ɤߤ��� ������
-          ���Υ᥽�åɤ�Ȥ����Ȥˤ�äơ��Х��ȥ������ΰۤʤ� �������ƥ���
-          ��֤Ǥ�����˾������Ȥ�Ǥ��ޤ���
+          Javaの基本型を直接にストリームから読みこむことができる便利な スト
+          リームです。ネットワーク環境においても、書きこみと読みこみ が双方
+          このメソッドを使うことによって、バイトオーダの異なる アーキテクチ
+          ャ間でも安全に情報をやりとりできます。
         o DataOutputStream
-          DataInputStream���Ф�ʤ����ϤǤ���
+          DataInputStreamと対をなす出力です。
         o File
-          ���Υ��饹�ϡ�Java����Ǥΰ���Ū�ʥե�����̾(���Фޤ������Хѥ���
-          �ޤ�) ���顢���줾���ư��Ķ����б������ե�����̾�ؤ��Ѵ���Ԥʤ�
-          �ޤ��� JDK1.1�ˤ����ƤϤޤ������˼�������ƤϤ��ޤ��󡣻Ȥ�����Ĵ
-          �����Ƥ��� �ˤ��Ƥ���������
+          このクラスは、Javaの中での一般的なファイル名(絶対または相対パスも
+          含む) から、それぞれの動作環境に対応したファイル名への変換を行ない
+          ます。 JDK1.1においてはまだ完全に実装されてはいません。使う時は調
+          査してから にしてください。
         o FileDescriptor
-          ɸ����Ϥ�ɸ�����Ϥʤɤ�ե�����Τ褦�˰�������Υ��饹�Ǥ��� ��
-          ������ؤν��Ϥ�ɸ����Ϥ˿��꤫�����ꤹ�뤳�Ȥ��Ǥ��ޤ���
+          標準出力や標準入力などをファイルのように扱うためのクラスです。 フ
+          ァイルへの出力を標準出力に振りかえたりすることができます。
         o FileInputStream
-          �ե����뤫������ϤǤ����֥饦�����ư��Ƥ��륢�ץ�åȤ���ϻ�
-          ���ޤ��� appletviewer��Ȥ����Ǥ⡢properties�ι��ܤ����꤬ɬ
-          �פǤ���
+          ファイルからの入力です。ブラウザ上で動作しているアプレットからは使
+          えません。 appletviewerを使う場合でも、propertiesの項目で設定が必
+          要です。
         o FileOutputStream
-          �ե����뤫��ν��ϤǤ���FileInputStream��Ʊ���������ץ�åȤ� �Ȥ�
-          �������դ�ɬ�פǤ���
+          ファイルからの出力です。FileInputStreamと同じく、アプレットで 使う
+          時は注意が必要です。
         o FileReader*
-          �ե����뤫��Unicodeʸ������ɤߤ��ߤޤ������ץ�åȤ���Ȥ�������
-          �դ� ɬ�פǤ���(FileInputStream�ι��ܤ򻲾�)
+          ファイルからUnicode文字列を読みこみます。アプレットから使う時は注
+          意が 必要です。(FileInputStreamの項目を参照)
         o FileWriter*
-          �ե������Unicodeʸ�����񤭤��ߤޤ������ץ�åȤ���Ȥ���������
-          ��ɬ�� �Ǥ���
+          ファイルへUnicode文字列を書きこみます。アプレットから使う時は注意
+          が必要 です。
         o FilterInputStream
-          InputSream�ξ�ˤ��֤��뤳�Ȥˤ�äơ�InputStream �ε�ǽ���ĥ����
-          ����DataInputStream�䡢BufferedInputStream �ʤɤ����Υ��饹��
-          extends���Ƥ��ޤ�����ʬ���ȼ��������ʥ� �ȥ꡼����ꤿ�����Ϥ�
-          �Υ��饹��extends�������줾��� �᥽�åɤ򥪡��С��饤�ɤ��ޤ���
+          InputSreamの上にかぶせることによって、InputStream の機能を拡張しま
+          す。DataInputStreamや、BufferedInputStream などがこのクラスを
+          extendsしています。自分で独自の便利なス トリームを作りたい場合はこ
+          のクラスをextendsし、それぞれの メソッドをオーバーライドします。
         o FilterOutputStream
-          FilterInputStream���Ф�ʤ����ϤǤ���
+          FilterInputStreamと対をなす出力です。
         o FilterReader*
-          Reader�ˤ��֤��뤳�Ȥˤ�äƤ��ⵡǽ��Reader ����ޤ������礦
-          ��InputStream���Ф��� FilterInputStream�δط���Ʊ���Ǥ������ܸ��
-          �����ʤ顢 ʸ��򤯤��ä����Ϥ���Ȥ�������Ȥ��������å����б���
-          �롢������������ �ˤ���ʤɤȤ��ä���ĥ���ͤ����ޤ���
+          Readerにかぶせることによってより高機能なReader を作ります。ちょう
+          どInputStreamに対する FilterInputStreamの関係と同じです。日本語で
+          言うなら、 文節をくぎって入力するとか、段落とかカギカッコに対応す
+          る、全部カタカナ にするなどといった拡張が考えられます。
         o FilterWriter*
-          Writer�ˤ��֤��뤳�Ȥˤ�äƤ��ⵡǽ�� Writer��¸����ޤ���
-          FilterReader���Ф�ʤ��� �ϤǤ���
+          Writerにかぶせることによってより高機能な Writerを実現します。
+          FilterReaderと対をなす出 力です。
         o InputStream
-          ���ϥ��ȥ꡼��򤢤�路�ޤ��� ���ȥ꡼�����ϥ��饹�Ϥ��Υ��饹��
-          extends���ޤ���abstract ���饹�Ǥ������Υ��饹�ǡ�����Ū���ɤߤ���
-          �᥽�åɤǤ���
-             + int read(int) 1ʸ���ɤߤ��ߤޤ����֤��ͤ�0����255�ǥ��顼�ξ�
-               ���-1.
-             + int read(byte[]) byte������ˡ������Ĺ�������ɤߤ��ߤޤ���
-             + int read(byte[],int ofs,int len) byte[]������ˡ��Ϥ�ΰ��֤�
-               Ĺ������ꤷ���ɤߤ��ߤޤ���
-             + close()���ȥ꡼����Ĥ��ޤ���
-          �ʤɤȤ��ä��᥽�åɤ���������Ƥ���ΤǤ������錄���������Ȥ��ʳ�
-          �Ǥϡ� ��äȾ�̤Υ��ȥ꡼�९�饹��Ȥ��Τǡ������С��饤�ɤ���
-          �� �����Υ᥽�åɤ�Ȥ����Ȥ�¿���Ϥ��Ǥ������ξ��Ǥ�嵭�Υ�
-          ���åɤϴ���Ū�� Ʊ���Ȥ��������Ǥ���褦�ˤʤäƤ��ޤ���������
-          �᥽�åɤϡ��ºݤ��ɤߤ��ߤ������ޤ� �֥��å�(���ä��Ԥ�)����
-          ����
+          入力ストリームをあらわします。 ストリーム入力クラスはこのクラスを
+          extendsします。abstract クラスです。このクラスで、基本的な読みこみ
+          メソッドである
+             + int read(int) 1文字読みこみます。返り値は0から255でエラーの場
+               合は-1.
+             + int read(byte[]) byteの配列に、配列の長さだけ読みこみます。
+             + int read(byte[],int ofs,int len) byte[]の配列に、始めの位置と
+               長さを指定して読みこみます。
+             + close()ストリームを閉じます。
+          などといったメソッドが実装されているのですが、わたしたちが使う段階
+          では、 もっと上位のストリームクラスを使うので、オーバーライドされ
+          た これらのメソッドを使うことが多いはずです。その場合でも上記のメ
+          ソッドは基本的に 同じ使いかたができるようになっています。これらの
+          メソッドは、実際に読みこみが終わるまで ブロック(ずっと待つ)しま
+          す。
         o InputStreamReader*
-          ���̤Υ��ȥ꡼�फ�顢�Х������Unicodeʸ������Ѵ����ʤ����ɤߤ�
-          �ߤޤ��� ���Υ��饹��������ByteToCharConverter��Ȥ��ޤ���
+          普通のストリームから、バイト列をUnicode文字列へ変換しながら読みこ
+          みます。 このクラスは内部でByteToCharConverterを使います。
         o LineNumberInputStream
-          JDK1.1�ˤ����Ƥϡ����Υ��饹�ϡָŤᤫ�����ץ��饹�Ǥ�����������
-          �Ƥ��ޤ��� �Ԥ�����ʤ������Ϥ��륹�ȥ꡼��Ǥ���JDK1.1�ʹߤǤϡ�
-          ����LineNumberReader ��Ȥ��Ȥ����褦�˻ؼ�����Ƥ��ޤ���
+          JDK1.1においては、このクラスは「古めかしい」クラスであると宣言され
+          ています。 行を数えながら入力するストリームです。JDK1.1以降では、
+          次のLineNumberReader を使えというように指示されています。
         o LineNumberReader*
-          �Ԥ�����ʤ���Unicodeʸ��������Ϥ򤷤ޤ���LineNumberInputStream��
-          �֤��������ޤ�����
+          行を数えながらUnicode文字列の入力をします。LineNumberInputStreamに
+          置きかえられました。
         o ObjectInputStream*
-          ���ꥢ�饤�����줿Java���֥������Ȥ��ɤߤ����ƥ��֥������Ȥ��ᤷ��
-          ���� RMI(��֥᥽�åɸƤӤ���)�ǻȤ��ޤ��� ���ȥ꡼�फ�饪�֥���
-          ���Ȥ��ɤߤ����ˤϡ�readObject�� �Ȥ��ޤ���
+          シリアライズされたJavaオブジェクトを読みだしてオブジェクトに戻しま
+          す。 RMI(遠隔メソッド呼びだし)で使います。 ストリームからオブジェ
+          クトを読みだすには、readObjectを 使います。
         o ObjectOutputStream*
-          ���֥������Ȥ򥷥ꥢ�饤�����ƥ��ȥ꡼��˽��Ϥ��ޤ���Serializable
-          ���󥿡��ե�������implements���Ƥ��륯�饹���������Υ��饹��
-          writeObject�ΰ����Ȥ����Ϥ���뤳�Ȥ��Ǥ��ޤ���
+          オブジェクトをシリアライズしてストリームに出力します。Serializable
+          インターフェイスをimplementsしているクラスだけがこのクラスの
+          writeObjectの引数として渡されることができます。
         o ObjectStreamClass*
-          ���ȥ꡼��ˤǤ��륯�饹��ɽ�����ޤ������Υ��饹�ϡ����ȥ꡼��ˤ�
-          ���륯�饹��̾���ȡ� �����ֹ���ݻ����ޤ���
+          ストリームにできるクラスを表現します。このクラスは、ストリームにで
+          きるクラスの名前と、 その番号を保持します。
         o OutputStream
-          InputStream���Ф�ʤ����ϤǤ����褯�Ȥ��᥽�åɤ��������ޤ���
-             + write(int) ��ʸ���񤭤��ߤޤ���
-             + write(byte[]) byte������򤽤�Ĺ�������񤭤��ߤޤ���
-             + write(byte[],int ofs,int len) byte������λ��ꤷ�����֤��� ��
-               �ꤷ��Ĺ�������񤭤��ߤޤ���
-             + close() ���ȥ꡼����Ĥ��ޤ���
-          �����Υ᥽�åɤϡ��ºݤ˽񤭤��ߤ���λ����ޤǥ֥��å�(���ä���
-          ��)�� �ޤ���
+          InputStreamと対をなす出力です。よく使うメソッドを説明します。
+             + write(int) 一文字書きこみます。
+             + write(byte[]) byteの配列をその長さだけ書きこみます。
+             + write(byte[],int ofs,int len) byteの配列の指定した位置から 指
+               定した長さだけ書きこみます。
+             + close() ストリームを閉じます。
+          これらのメソッドは、実際に書きこみが終了するまでブロック(ずっと待
+          つ)し ます。
         o OutputStreamWriter*
-          InputStreamReader���Ф�ʤ����ϤǤ��� write(char[],int ofs,int
-          len)�Ȥ����᥽�åɤ�Ȥä� Unicode��ʸ�����񤭤���ȡ����줬
-          CharToByteConverter�� �̤��졢�̤�ʸ���ե����ޥåȤΥХ�����Ȥ���
-          ���Ϥ���ޤ���
+          InputStreamReaderと対をなす出力です。 write(char[],int ofs,int
+          len)というメソッドを使って Unicodeの文字列を書きこむと、それが
+          CharToByteConverterに 通され、別な文字フォーマットのバイト列として
+          出力されます。
         o PipedInputStream
-          PipedOutputStream�ˤĤʤ��ǻȤ��ޤ��� ����åɴ֤ξ���Τ��Ȥ��
-          �Ȥ����Ȥ�¿���Ǥ���ʣ���Υ���åɤ���� ��褦�ʥץ������ξ�
-          �硢���ȥ꡼��Ǥ��뤳�Ȥ���ħ���������ơ� ư���Ʊ�������뤿���
-          �Ȥ����Ȥ��Ǥ��ޤ���
+          PipedOutputStreamにつないで使います。 スレッド間の情報のやりとりに
+          使うことが多いです。複数のスレッドが錯綜す るようなプログラムの場
+          合、ストリームであることの特徴を生かして、 動作を同期させるために
+          使うことができます。
         o PipedOutputStream
-          PipedInputStream�ȤĤʤ��ǻȤ��ޤ���
+          PipedInputStreamとつないで使います。
         o PipedReader*
-          Unicodeʸ�����Ǥ�PipedInputStream�Ǥ���
+          Unicode文字列版のPipedInputStreamです。
         o PipedWriter*
-          Unicodeʸ�����Ǥ�PipedOutputStream�Ǥ���
+          Unicode文字列版のPipedOutputStreamです。
         o PrintStream
-          JDK1.1�ˤ����Ƥϡ����Υ��饹�ϡָŤᤫ�����פ�ΤȤ����������Ƥ�
-          �ޤ��� �ǥХå��Τ���ȡ�����Ȥθߴ������ݤĤ���˻Ĥ���Ƥ����
-          ���Ǥ��� ���Τ����ˡ�PrintWriter��Ȥ��ޤ����褯�Ȥ�(�Ȥä�)�᥽
-          �åɤ� ���Τ褦�ʤ�Τ�����ޤ���
-             + print(���Ǥ�) �����Υ��֥������Ȥ�ʸ����η��ˤ��ƥ��ȥ꡼��
-               �˽��Ϥ��ޤ���
-             + println(���Ǥ�) print��Ʊ���Ǥ�������ʸ �����ղä���ޤ���
-          pintln���ƤӤ������ޤǤϥ֥��å����ޤ���
+          JDK1.1においては、このクラスは「古めかしい」ものとして宣言されてい
+          ます。 デバッグのためと、従来との互換性を保つために残されているだ
+          けです。 このかわりに、PrintWriterを使います。よく使う(使った)メソ
+          ッドは 次のようなものがあります。
+             + print(何でも) 引数のオブジェクトを文字列の形にしてストリーム
+               に出力します。
+             + println(何でも) printと同じですが改行文 字が付加されます。
+          pintlnが呼びだされるまではブロックします。
         o PrintWriter*
-          Unicode���б����Ƥ��ޤ��� PrintStream�Ǽ¸�����Ƥ����᥽�åɤϤ�
-          �٤ưܿ�����Ƥ��ޤ��� PrintStream��Ʊ���褦�˻Ȥ��ޤ��� println��
-          �ƤӤ������ޤǤϥ֥��å����ޤ���
+          Unicodeに対応しています。 PrintStreamで実現されていたメソッドはす
+          べて移植されています。 PrintStreamと同じように使えます。 printlnが
+          呼びだされるまではブロックします。
         o PushbackInputStream
-          ���ȥ꡼���ȤäƤ���ȥǡ��������ɤߤ�������礬�褯�ФƤ��ޤ���
-          �㤨�С� ��Ԥ�Ĺ��������Τꤿ���Ȥ����¿�����������Ƚ�̤�������
-          ���Ȥ��ä����Ǥ��� ���ȥ꡼����̾��������ή��ʤΤǤ���������
-          �纤��ΤǤ����� ���Υ��饹��Ȥ��ȡ��ǡ������᤹(�ץå���Хå�)
-          ���Ȥ��Ǥ��ޤ����Ĥޤꡢ����ɤ���ǡ����� �⤦�����᤹���Ȥˤ��
-          �ơ����ɤߤ�¸�����櫓�Ǥ������ΤȤ��˻Ȥ� �᥽�åɤϡ�
-             + unread(int) ��ʸ���ᤷ�ޤ���
-             + unread(byte[]) byte�������Ĺ��ʬ�����ᤷ�ޤ���
-             + unread(byte[],int ofs,int len) byte������� �Ϥ�ΰ��֤�Ĺ��
-               ����ꤷ���ᤷ�ޤ���
-          ����������ɬ�׾塢PushbackOutputStream�Ϥ���ޤ���
+          ストリームを使っているとデータを先読みしたい場合がよく出てきます。
+          例えば、 一行の長さを先に知りたいとか、実数か整数かを判別したいと
+          かといった場合です。 ストリームは通常一方向の流れなのでそういう場
+          合困るのですが、 このクラスを使うと、データを戻す(プッシュバック)
+          ことができます。つまり、先に読んだデータを もう一度戻すことによっ
+          て、先読みを実現するわけです。そのときに使う メソッドは：
+             + unread(int) 一文字戻します。
+             + unread(byte[]) byteの配列の長さ分だけ戻します。
+             + unread(byte[],int ofs,int len) byteの配列の 始めの位置と長さ
+               を指定して戻します。
+          その性質と必要上、PushbackOutputStreamはありません。
         o PushbackReader*
-          Unicodeʸ��ñ�̤Υץå���Хå��򤹤륯�饹�Ǥ���
-             + unread(int)��ʸ�����ᤷ�ޤ���
-             + unread(char[]) char�����Ĺ�������ᤷ�ޤ���
-             + unread(char[],int ofs,int len) char������ΰ��֤�Ĺ������ꤷ
-               �� �ᤷ�ޤ���
+          Unicode文字単位のプッシュバックをするクラスです。
+             + unread(int)一文字を戻します。
+             + unread(char[]) char配列の長さだけ戻します。
+             + unread(char[],int ofs,int len) char配列中の位置の長さを指定し
+               て 戻します。
         o RandomAccessFile
-          �����ʰ��֤򥢥������Ǥ���ե�����򳫤��ޤ��������ˤϥ��󥹥ȥ饯
-          ���ǥե�����̾�ޤ��� File���饹����ꤷ�ޤ����ե�����˥���������
-          ��Τǡ����ץ�åȤǻȤ� ���ˤ����դ�ɬ�פǤ���
-             + RandomAccessFile(File,String mode) File����ꤷ�ޤ���
-             + RandomAccessFile(String,String mode) �ե�����̾����ꤷ�ޤ���
-          mode�ˤϡ�"r"(�ɤߤ��ߤΤ�) �ޤ���"rw"(�ɤ߽񤭤Ǥ���)����ꤷ��
-          ���� ������������ˤϼ��Υ᥽�åɤ�褯�Ȥ��ޤ���
-             + seek(long) �ե�����λ��ꤷ�����֤˥��������ݥ���Ȥ��ư����
-               �����ʹߤ� �ɤ߽񤭤Ϥ�������Ϥޤ�ޤ���
+          好きな位置をアクセスできるファイルを開きます。開くにはコンストラク
+          タでファイル名または Fileクラスを指定します。ファイルにアクセスす
+          るので、アプレットで使う 時には注意が必要です。
+             + RandomAccessFile(File,String mode) Fileを指定します。
+             + RandomAccessFile(String,String mode) ファイル名を指定します。
+          modeには、"r"(読みこみのみ) または"rw"(読み書きできる)を指定しま
+          す。 アクセスするには次のメソッドをよく使います。
+             + seek(long) ファイルの指定した位置にアクセスポイントを移動しま
+               す。以降の 読み書きはここから始まります。
              + read(),read(byte[]),read(byte[],int,int),readInt(),....
-               InputStream��DataInputStream�Ǽ¸�����Ƥ��� �᥽�åɷ���·��
-               ���Ƥ��ޤ���
+               InputStreamやDataInputStreamで実現されている メソッド群が揃え
+               られています。
              + write(int),write(byte[]),write(byte[],int,int),writeInt(int),....
-               �ʤɡ�OutputStream��DataOutputStream�Ǽ¸�����Ƥ��� �᥽�å�
-               ����·�����Ƥ��ޤ���
-             + close()�����ץ󤷤Ƥ���ե�������Ĥ��ޤ���
+               など、OutputStreamやDataOutputStreamで実現されている メソッド
+               群が揃えられています。
+             + close()オープンしているファイルを閉じます。
         o Reader*
-          Unicodeʸ����Υ��ȥ꡼����ɤߤ��९�饹��extends���� abstract ��
-          �饹�Ǥ�����ʬ��Unicode�б����̤ʥ��ȥ꡼�९�饹���ꤿ�����Ϥ�
-          �� ���饹��extends���ơ��᥽�åɤ�������ޤ���
+          Unicode文字列のストリームを読みこむクラスがextendsする abstract ク
+          ラスです。自分でUnicode対応の別なストリームクラスを作りたい時はこ
+          の クラスをextendsして、メソッドを実装します。
         o SequenceInputStream
-          ʣ���Υ��ȥ꡼���Ϣ³���ư����������˻Ȥ����饹�Ǥ������ץ�åȤ�
-          �Ϥ� �ޤ�ɬ�פǤϤ���ޤ��󤬡����ץꥱ�������ǡ������Ȥ���Ϳ��
-          ��줿¿�� �Υե������Ϣ³������Ū�˽�������������¿����Τ�
-          ���������Ĥ� ���ȥ꡼�ब�����ˤʤ�ȡ����Υ��ȥ꡼��˥�����
-          �����ޤ�������ץ�� �������򼨤��ޤ����¹Ԥ��Ƥߤ��Ư���ϰ���
-          �����Ǥ���
+          複数のストリームを連続して扱いたい時に使うクラスです。アプレットで
+          はあ まり必要ではありませんが、アプリケーションで、引数として与え
+          られた多く のファイルを連続で統一的に処理したい場合は多いもので
+          す。ある一つの ストリームが終わりになると、次のストリームにスイッ
+          チします。サンプルプ ログラムを示します。実行してみると働きは一目
+          瞭然です。
 
           import java.util.*;
           import java.io.*;
@@ -721,10 +721,10 @@
                   try{
                       FileInputStream f1 = new FileInputStream("aho.txt");
                       FileInputStream f2 = new FileInputStream("hoge.txt");
-                      Vector v = new Vector();   // �ޤ�Vector����
+                      Vector v = new Vector();   // まずVectorを作る
                       v.addElement( f1 );
                       v.addElement( f2 );
-                      v.addElement( System.in ); // ����ʤΤ�ä��Ƥ�褤��
+                      v.addElement( System.in ); // こんなのを加えてもよい。
                       Enumeration enum = v.elements();
                       SequenceInputStream sin = new SequenceInputStream( enum );
                       while(true) System.out.print( (char) sin.read() );
@@ -733,647 +733,647 @@
           }
 
         o StreamTokenizer
-          ���ȥ꡼�फ������Ϥ򡢥ȡ����󤴤Ȥ��ڤ�櫓������򤹤륯�饹��
-          ����
+          ストリームからの入力を、トークンごとに切りわける助けをするクラスで
+          す。
         o StringBufferInputStream
-          JDK1.1�ˤ����Ƥϡ����Υ��饹�ϡָŤᤫ�����פ��������Ƥ��ޤ�����
-          ���� ���ˡ������StringReader��Ȥ��٤����Ȥ���Ƥ��ޤ��� ʸ����
-          �򥹥ȥ꡼��Ȥ��ƻȤ���褦�ˤ��ޤ���
+          JDK1.1においては、このクラスは「古めかしい」と宣言されています。こ
+          の代 わりに、次項のStringReaderを使うべきだとされています。 文字列
+          をストリームとして使えるようにします。
         o StringReader*
-          Unicodeʸ����(String)����󸻤Ȥ��륹�ȥ꡼�����ޤ���
+          Unicode文字列(String)を情報源とするストリームを作ります。
         o StringWriter*
-          Unicodeʸ����˽��Ϥ��륹�ȥ꡼��Ǥ���
+          Unicode文字列に出力するストリームです。
         o Writer*
-          Reader���Ф�ʤ����ϤǤ���Unicodeʸ����ñ�̤ν��Ϥ�¸��� �ޤ���
-          abstract���饹�ʤΤǡ����Υ��饹��extends ����ˤϡ����ʤ��Ƥ�
-          write(char[],int,int)��flush()��close() ��������ʤ��ƤϤʤ�ޤ�
-          ��
+          Readerと対をなす出力です。Unicode文字列単位の出力を実現し ます。
+          abstractクラスなので、このクラスをextends するには、少なくても
+          write(char[],int,int)とflush()とclose() を実装しなくてはなりませ
+          ん。
 
-     �㳰
+     例外
 
         o CharConversionException*
-          ʸ������Ѵ�����Ȥ����㳰�Ǥ���
+          文字列を変換するときの例外です。
         o ConversionBufferFullException*
-          �Ѵ�������˻Ȥ��Хåե���­��ʤ��ʤ�ޤ�����
+          変換する時に使うバッファが足りなくなりました。
         o EOFException
-          ���Ϥκ���ˡ��ե�����ν�����ã�ä��Ƥ��ޤ��ޤ�����
+          入力の最中に、ファイルの終わりに達っしてしまいました。
         o FileNotFoundException
-          �ե����뤬���Ĥ���ޤ���Ǥ�����
+          ファイルが見つかりませんでした。
         o IOException
-          �����Ϥ򤷤褦�Ȥ��������⤷���Ϻ�����㳰��ȯ�����ޤ����� ¾��
-          java.io�㳰�δ��äˤʤ��㳰��
+          入出力をしようとした時、もしくは最中に例外が発生しました。 他の
+          java.io例外の基礎になる例外。
         o InterruptedIOException
-          �����Ϥ˳�ꤳ�ߤ��������ޤ�����
+          入出力に割りこみがかけられました。
         o InvalidClassException*
-          ���֥������Ȥ򥷥ꥢ�饤������������꤬ȯ�����ޤ�����
+          オブジェクトをシリアライズする時に問題が発生しました。
         o InvalidObjectException*
-          ���饹�����ꥢ�饤������뤳�Ȥ�ػߤ��Ƥ�����˥��ꥢ�饤�����褦
-          �Ȥ��ޤ�����
+          クラスがシリアライズされることを禁止している時にシリアライズしよう
+          としました。
         o MalformedInputException*
-          ���Ϥ�ʸ���ե����ޥåȤ�����������
+          入力の文字フォーマットがおかしい。
         o NotActiveException*
-          ���ꥢ�饤���ε�ǽ��Ư���ʤ��ʤäƤ��ޤ���
+          シリアライズの機能が働かなくなっています。
         o NotSerializableException*
-          ���ꥢ�饤�����褦�Ȥ��Ƥ��륯�饹��Serializable���󥿡� �ե�����
-          ��implements���Ƥ��ʤ���
+          シリアライズしようとしているクラスがSerializableインター フェイス
+          をimplementsしていない。
         o ObjectStreamException*
-          ���ꥢ�饤����Ϣ���㳰�δ��äˤʤ��㳰��
+          シリアライズ関連の例外の基礎になる例外。
         o OptionalDataException*
-          readObject��ȯ�������㳰��
+          readObjectが発生する例外。
         o StreamCorruptedException*
-          ���֥������ȥ��ȥ꡼��ΰ���������ˤҤä�����ޤ�����
+          オブジェクトストリームの一貫性検査にひっかかりました。
         o SyncFailedException*
-          ���ȥ꡼���sync���褦�Ȥ��������㳰�Ǥ���
+          ストリームをsyncしようとした時の例外です。
         o UTFDataFormatException
-          DataInputStream��readUTF()���ꤲ�ޤ���
+          DataInputStreamのreadUTF()が投げます。
         o UnknownCharacterException*
-          ʸ�������ɤ��۾�Ǥ���
+          文字コードが異常です。
         o UnsupportedEncodingException*
-          �׵ᤵ��Ƥ���ʸ���ե����ޥåȤϥ��ݡ��Ȥ���Ƥ��ޤ���
+          要求されている文字フォーマットはサポートされていません。
         o WriteAbortedException*
-          ¾�Υ��ꥢ�饤����Ϣ���㳰���񤭤������ȯ�����Ƥ�������ɤߤ����
-          �����硢�ꤲ���ޤ���
+          他のシリアライズ関連の例外が書きこみ中に発生している時に読みこんで
+          いる場合、投げられます。
 
    * java.lang
 
-     Java�δ��ܤȤʤ륯�饹���Ǥ����Ȥ⤫���⤳�Υѥå��������ʤ��ȻϤޤ��
-     ���� �Ȥ������Ȥǡ����Υѥå�����������import���ʤ��Ƥ�褤�褦�ˤʤ�
-     �Ƥ��ޤ���
+     Javaの基本となるクラス群です。ともかくもこのパッケージがないと始まりま
+     せん。 ということで、このパッケージだけはimportしなくてもよいようになっ
+     ています。
 
-     ���󥿡��ե�����
+     インターフェイス
 
         o Cloneable
-		Cloneable�ʥ��֥������Ȥϡ����ԡ�������clone()�����ꤹ�뤳�Ȥ��Ǥ�
-		�ޤ���
+		Cloneableなオブジェクトは、コピーしたりclone()したりすることができ
+		ます。
         o Runnable
-		Thread�Υ��֥��饹���餺�ˡ�����åɤ��뤳�Ȥ��Ǥ��ޤ���
-	 	public void run()�򥪡��С��饤�ɤ������Υ᥽�åɤ���˥���åɤȤ���
-		�¹Ԥ������������ɤ�񤭤ޤ���Thread.sleep()���뤳�Ȥ�˺�줺�ˡ�
+		Threadのサブクラスを作らずに、スレッドを作ることができます。
+	 	public void run()をオーバーライドし、そのメソッドの中にスレッドとして
+		実行させたいコードを書きます。Thread.sleep()することを忘れずに！
 
-     ���饹
+     クラス
 
         o Bignum*
-		��������Ѥʿ��Ǥ��������礭���ͤ򰷤����Ȥ��Ǥ��ޤ���
+		桁数が可変な数です。非常に大きな値を扱うことができます。
         o Boolean
-		���ܷ�boolean�Υ�åѡ����饹���᥽�åɤ��Ф���boolean�ؤλ��Ȥ�
-		�Ϥ��������˻Ȥ��ޤ���
+		基本型booleanのラッパークラス。メソッドに対してbooleanへの参照を
+		渡したい時に使います。
         o Byte*
-		���ܷ�byte�Υ�åѡ����饹��
+		基本型byteのラッパークラス。
         o Character
-		���ܷ�char�Υ�åѡ����饹��
+		基本型charのラッパークラス。
         o Class
-		VM���¸�ߤ��륯�饹�μ¹Ի�ɽ�����ݴɤ��Ƥ��륯�饹�Ǥ������줾���
-		���饹��̾������¾�ξ�������������˻Ȥ��ޤ���
+		VM上に存在するクラスの実行時表現を保管しているクラスです。それぞれの
+		クラスの名前その他の情報を得たい時に使えます。
         o ClassLoader
-		�ե������ͥåȥ������VM�˥��饹������ɤ�����ˡ������ɤ�����ˡ
-		��������륯�饹�Ǥ���
+		ファイルやネットワークからVMにクラスをロードする時に、ロードする方法
+		を定義するクラスです。
         o Compiler
-		����ѥ��顣
+		コンパイラ。
         o Double
-		���ܷ�double�Υ�åѡ����饹��
+		基本型doubleのラッパークラス。
         o Float
-		���ܷ�float�Υ�åѡ����饹��
+		基本型floatのラッパークラス。
         o Integer
-		���ܷ�int�Υ�åѡ����饹��
+		基本型intのラッパークラス。
         o Long
-		���ܷ�long�Υ�åѡ����饹��
+		基本型longのラッパークラス。
 		o Math
-		ɸ����إ饤�֥�ꡣ���٤ƤΥ᥽�åɤ��ѿ���static�ʤΤǡ����󥹥���
-		���뤳�ȤϤǤ��ޤ��󡣥�����ץ������Ǥ褯�Ȥ��᥽�åɤ�󤲤ޤ���
-		* Math.abs(x)  �����ͤ���ޤ����ɤ�ʷ��Ǥ�Ȥ��ޤ���
-		* double Math.sin(double)  sin����ޤ���������rad�ǡ��֤��ͤ�-1����1.
-		* double Math.cos(double)	cos����ޤ���
-		* double Math.atan(double)	���������󥸥���ȡ��֤��ͤϡަ�/2�Ǥ���
-		* Math.min(a,b)	�����������֤��ޤ����ɤ�ʷ��Ǥ�Ȥ��ޤ���
-		* Math.max(a,b)	�礭�������֤��ޤ���
-		* double Math.sqrt(double)	ʿ�������֤��ޤ���
-		* double Math.tan(double)	���󥸥���Ȥ��֤��ޤ��������ϥ饸����Ǥ���
-		* double Math.random()		0.0����1.0�δ֤�������֤��ޤ���
+		標準数学ライブラリ。すべてのメソッドや変数がstaticなので、インスタンス
+		を作ることはできません。ゲームプログラムでよく使うメソッドを挙げます。
+		* Math.abs(x)  絶対値を求めます。どんな型でも使えます。
+		* double Math.sin(double)  sinを求めます。引数はradで、返り値は-1から1.
+		* double Math.cos(double)	cosを求めます。
+		* double Math.atan(double)	アークタンジェント。返り値は±π/2です。
+		* Math.min(a,b)	小さい方を返します。どんな型でも使えます。
+		* Math.max(a,b)	大きい方を返します。
+		* double Math.sqrt(double)	平方根を返します。
+		* double Math.tan(double)	タンジェントを返します。引数はラジアンです。
+		* double Math.random()		0.0から1.0の間の乱数を返します。
 		o Number
-		���ͤ򤢤�魯���ƤΥ��饹�Υ����ѡ����饹�Ǥ���
+		数値をあらわす全てのクラスのスーパークラスです。
         o Object
-		���٤ƤΥ��饹�Υ����ѡ����饹�Ǥ������饹������λ���extends Object��
-		��ά����ȡ���ưŪ��extends���ޤ���
+		すべてのクラスのスーパークラスです。クラスの定義の時にextends Objectを
+		省略すると、自動的にextendsします。
         o Process
-		Java���鵯ư���Ƥ���¾�Υץ������˴ؤ������䡢ɸ�����/ɸ�����Ϥʤ�
-		�����뤳�Ȥ��Ǥ��ޤ���¾�Υץ������ϡ�java.lang.Runtime.exec()��Ȥä�
-		��ư���뤳�Ȥ��Ǥ��ޤ���
+		Javaから起動している他のプロセスに関する情報や、標準出力/標準入力など
+		を得ることができます。他のプロセスは、java.lang.Runtime.exec()を使って
+		起動することができます。
         o Runtime
-		Java��VM��ư������˴ؤ������������ꡢ�����ꤷ�ޤ���
-		* Runtime.exec(String,String[]) ¾�Υץ�����������Ĥ��ǵ�ư����
-		* Runtime.exit(int) �����ƥ��λ����
-		* Runtime.freeMemory() ���������̤�����
-		* Runtime.totalMemory() �����ѥ����̤�����
-		* pRuntime.gc() ���١������쥯����ư����
+		JavaのVMの動作状況に関する情報を得たり、操作したりします。
+		* Runtime.exec(String,String[]) 他のプロセスを引数つきで起動する
+		* Runtime.exit(int) システムを終了する
+		* Runtime.freeMemory() 空きメモリ量を得る
+		* Runtime.totalMemory() 全使用メモリ量を得る
+		* pRuntime.gc() ガベージコレクタを起動する
         o SecurityManager
-		VM�˥��饹�������ɤ������˥����å���Ԥʤ��ޤ���
+		VMにクラスがロードされる時にチェックを行ないます。
         o Short*
-		���ܷ�short�Υ�åѡ����饹��
+		基本型shortのラッパークラス。
         o String
-		ʸ���󷿡��褯�Ȥ����󥹥ȥ饯�����᥽�åɤˤϼ��Τ褦�ʤ�Τ�
-		����ޤ���
-		* String(byte[])		�Х����󤫤�ʸ�������
-		* String(byte[],int ofs,int len) �Х�����λ��ꤷ�����֤���ʸ�������
-		* String(byte[],int HB,int ofs , int len ) (JDK1.0�Τ�)
-		* String(char[])		char�������󤫤�ʸ�������
-		char charAt( int index) (index-1)ʸ���ܤ�ʸ�����֤��ޤ���
+		文字列型。よく使うコンストラクタ・メソッドには次のようなものが
+		あります。
+		* String(byte[])		バイト列から文字列を作る
+		* String(byte[],int ofs,int len) バイト列の指定した位置から文字列を作る
+		* String(byte[],int HB,int ofs , int len ) (JDK1.0のみ)
+		* String(char[])		char型の配列から文字列を作る
+		char charAt( int index) (index-1)文字目の文字を返します。
 		* void getChars(int srcBgn,int srcEnd,char carray[],int begin)
-		ʸ���󤫤顢char���������������ޤ���
+		文字列から、char型の配列を取りだします。
 		* void getBytes( int srcBgn,int srcEnd, byte barray[] , int begin)
-		ʸ���󤫤顢byte���������������ޤ���(1.0�Τ�)
-		* byte[] getBytes() ʸ���󤫤������������Τˤϡ����줬�Ǥ�
-		�����Ǥ��礦�����Υ᥽�åɤ�ƤӤ�������new byte[..]���Ƥ���ɬ�פ�
-		����ޤ���
-		* int indexOf(int ch)���ꤷ��ʸ�����ǽ�˸������֤��֤��ޤ���
-		* int lastIndexOf( int ch ) �Ǹ�˸������֤��֤��ޤ���
-		* String substring( int begin,int end ) ��ʬŪ��ʸ������֤��ޤ���
-		* String toLowerCase() ���ƾ�ʸ���ˤ��ޤ���
+		文字列から、byte型の配列を取りだします。(1.0のみ)
+		* byte[] getBytes() 文字列から配列を取りだすのには、これが最も
+		便利でしょう。このメソッドを呼びだす前にnew byte[..]しておく必要は
+		ありません。
+		* int indexOf(int ch)指定した文字が最初に現れる位置を返します。
+		* int lastIndexOf( int ch ) 最後に現れる位置を返します。
+		* String substring( int begin,int end ) 部分的な文字列を返します。
+		* String toLowerCase() 全て小文字にします。
 
-		* String��Ȥ����ˤϡ�
-		*StringIndexOutOfBoundsException �˵���Ĥ��ޤ��礦��
+		* Stringを使う時には、
+		*StringIndexOutOfBoundsException に気をつけましょう。
 	
         o StringBuffer
-		Java�Ǥ�ʸ�����­�����Ǥ��ޤ����������¸����뤿��Υ��饹�Ǥ���
-		����ѥ��餬���Ѥ������٤ǡ�ľ�ܤ˻Ȥ����ȤϤʤ��Ǥ��礦��
+		Javaでは文字列を足し算できますが、それを実現するためのクラスです。
+		コンパイラが活用する程度で、直接に使うことはないでしょう。
         o System
-		VM��ư��Ƥ���Ķ��˰�¸���ʤ��������ƥൡǽ���󶡤��ޤ���
-		�褯�Ȥ��ѿ����᥽�åɡ�
-		* System.out   ɸ�����
-		* System.in    ɸ������
-		* System.err   ɸ�२�顼����
+		VMが動作している環境に依存しない、システム機能を提供します。
+		よく使う変数、メソッド：
+		* System.out   標準出力
+		* System.in    標準入力
+		* System.err   標準エラー出力
 		* System.arraycopy(Object src,int sbgn,Object dest,int dbgn, int len)
-		��®���󥳥ԡ���ArrayIndexOutOfBoundsException,ArrayStoreException.
-		* System.currentTimeMillis() �ߥ���ñ�̤Ǹ��ߤλ��֤�Ĵ�٤ޤ���������
-		* System.exit(int code);		Java VM���Τμ¹Ԥ�λ���ޤ���
-		* System.gc()  ���١������쥯����¹Ԥ��ޤ���
-		* System.getProperty(String name) �����ƥ����������ޤ���
+		高速配列コピー。ArrayIndexOutOfBoundsException,ArrayStoreException.
+		* System.currentTimeMillis() ミリ秒単位で現在の時間を調べます。重宝。
+		* System.exit(int code);		Java VM全体の実行を終了します。
+		* System.gc()  ガベージコレクタを実行します。
+		* System.getProperty(String name) システムの設定を得ます。
 		o Thread
-		ʣ��Ʊ���˼¹Ԥ��줦�롢��Ϣ�ν�����ή��Ǥ�������åɤ򿷤������ˤ�
-		* Thread( Runnable )�Τ褦�ˤ��ޤ���
-		* Thread.sleep(long millisec)	�ߥ��ä���ꤷ�ơ����δ�¾�Υ���åɤ�
-		�¹Ԥ��ޤ���
-		* start()		��ư���ޤ���
-		* stop()		�ߤ�ޤ���
-		* run()		���줾��Υ���åɤμ��ΤǤ���
-		* interrupt() ��ꤳ�ߤޤ���
+		複数同時に実行されうる、一連の処理の流れです。スレッドを新しく作るには
+		* Thread( Runnable )のようにします。
+		* Thread.sleep(long millisec)	ミリ秒を指定して、その間他のスレッドを
+		実行します。
+		* start()		起動します。
+		* stop()		止めます。
+		* run()		それぞれのスレッドの実体です。
+		* interrupt() 割りこみます。
         o ThreadGroup
-		����åɤ򥰥롼�ײ����ޤ���
+		スレッドをグループ化します。
         o Throwable
-		�㳰�䥨�顼�ʤɡ�throw�Ǥ��륪�֥������ȤϤ��٤ơ����Υ��饹
-		��extends���ޤ���
-		* printStackTrace()    �����å��ξ��֤�ɽ�����ޤ���
+		例外やエラーなど、throwできるオブジェクトはすべて、このクラス
+		をextendsします。
+		* printStackTrace()    スタックの状態を表示します。
         o Void*
-		���ܷ�void���̣���륯�饹�ؤλ��Ȥ��뤳�Ȥ��Ǥ��ޤ���
+		基本型voidを意味するクラスへの参照を作ることができます。
 
-     �㳰
+     例外
 
         o ArithmeticException
-		0�ǳ�껻���ޤ�����
+		0で割り算しました。
         o ArrayIndexOutOfBoundsException
-		����������ֹ���ϰϤ�ۤ��ޤ�����
+		配列の要素番号の範囲を越えました。
         o ArrayStoreException
-		����ˡ��ְ�ä����Υ��֥������Ȥ���¸���褦�Ȥ��ޤ�����
+		配列に、間違った型のオブジェクトを保存しようとしました。
         o ClassCastException
-		���㥹�ȤǤ��ʤ����˥��㥹�Ȥ��褦�Ȥ��ޤ�����
+		キャストできない型にキャストしようとしました。
         o ClassNotFoundException
-		���饹�����Ĥ���ʤ��ä�(�Τǡ��ɤߤ���ޤ���Ǥ�����)
+		クラスが見つからなかった(ので、読みこめませんでした。)
         o CloneNotSupportedException
-		���Υ��饹�ϡ�clone()���뤳�Ȥ��Ǥ��ޤ���Ǥ�����
+		そのクラスは、clone()することができませんでした。
         o Exception
-		���̤Υץ������ˤ�ä�try��catch�����٤��㳰�Ǥ���(Error�ϡ�
-		try��catch�����٤����Ȥϻؼ�����Ƥ��ޤ���)
+		普通のプログラムによってtry〜catchされるべき例外です。(Errorは、
+		try〜catchされるべきだとは指示されていません。)
         o IllegalAccessException
-		�᥽�åɤ����Ĥ���ޤ���
+		メソッドが見つかりません。
         o IllegalArgumentException
-		�������۾�Ǥ���
+		引数が異常です。
         o IllegalMonitorStateException
-		��˥���ͭ���Ǥʤ����˻��Ѥ��褦�Ȥ��ޤ�����
+		モニタが有効でない時に使用しようとしました。
         o IllegalStateException*
-		�᥽�åɤ򡢻��Ѥ���٤����Ǥʤ��Τ˻��Ѥ��褦�Ȥ��ޤ�����
+		メソッドを、使用するべき時でないのに使用しようとしました。
         o IllegalThreadStateException
-		����åɤ��Ф�������������ѤǤ��ʤ����ˡ����Ѥ��褦�Ȥ��ޤ�����
+		スレッドに対する特定の操作が使用できない時に、使用しようとしました。
         o IndexOutOfBoundsException
-		���󤽤�¾�Ρ�����ǥ������ϰϤ�ۤ��ޤ�����
+		配列その他の、インデクスが範囲を越えました。
         o InstantiationException
-		abstract���饹�䥤�󥿡��ե������򥤥󥹥��󥹲����褦�Ȥ��ޤ�����
+		abstractクラスやインターフェイスをインスタンス化しようとしました。
         o InterruptedException
-		����åɤ��Ф��Ƴ�ꤳ�ߤ�ȯ�����ޤ�����
+		スレッドに対して割りこみが発生しました。
         o NegativeArraySizeException
-		����Υ���������Ǥ���
+		配列のサイズが負です。
         o NoSuchFieldException*
-		���ꤵ�줿̾�����ѿ��ϡ����Υ��饹�ˤ�¸�ߤ��ޤ���
+		指定された名前の変数は、このクラスには存在しません。
         o NoSuchMethodException
-		���ꤵ�줿̾���Υ᥽�åɤϡ����Υ��饹�ˤ�¸�ߤ��ޤ���
+		指定された名前のメソッドは、このクラスには存在しません。
         o NullPointerException
-		�̥뻲�Ȥ��Ф��ƥ����������褦�Ȥ��ޤ�����
+		ヌル参照に対してアクセスしようとしました。
         o NumberFormatException
-		ʸ���󤫤���ͤ��Ѵ��Ǥ��ʤ�������ʸ����Ǥ�����
+		文字列から数値に変換できない形式の文字列でした。
         o RuntimeException
-		Java VM�μ¹���˵������ǽ���Τ����㳰�Υ����ѡ����饹��
+		Java VMの実行中に起こる可能性のある例外のスーパークラス。
         o SecurityException
-		�������ƥ���ȿ��
+		セキュリティ違反。
         o StringIndexOutOfBoundsException
-		ʸ�����ʸ�������ϰϤ�ۤ������Ԥʤ��ޤ�����
+		文字列の文字数の範囲を越えた操作が行なわれました。
 
-     ���顼
+     エラー
 
         o AbstractMethodError
-		abstract�ʥ᥽�åɤ�ƤӤ������Ȥ��ޤ�����
+		abstractなメソッドを呼びだそうとしました。
         o ClassCircularityError
-		���饹������������ˡ��Ƶ�Ū�ʹ�¤�ˤʤäƤ��뤳�Ȥ��狼��ޤ�����
+		クラスを初期化する時に、再帰的な構造になっていることがわかりました。
         o ClassFormatError
-		�ɤߤ��⤦�Ȥ��Ƥ��륯�饹�η���������������
+		読みこもうとしているクラスの形式がおかしい。
         o Error
-		�¹���ˡ����赯����٤��Ǥʤ����������ä����Ȥ��̣�����㳰�Ǥ���
-		���̤Υץ������ϡ�Error��try��catch���褦�Ȥ��ƤϤ����ޤ���
+		実行中に、本来起こるべきでない事が起こったことを意味する例外です。
+		普通のプログラムは、Errorをtry〜catchしようとしてはいけません。
         o ExceptionInInitializerError*
-		���˥���饤���ǥ��顼��ȯ�����ޤ�����
+		イニシャライザでエラーが発生しました。
         o IllegalAccessError
-		���������㳰
+		アクセス例外
         o IncompatibleClassChangeError
-		�ߴ����Τʤ����饹�ѹ���ȯ��������
+		互換性のないクラス変更が発生した。
         o InstantiationError
-		���󥿥ץ꥿����abstract�ʥ��饹�ޤ���interface�򥤥󥹥��󥹲���
-		�褦�Ȥ�����
+		インタプリタが、abstractなクラスまたはinterfaceをインスタンス化し
+		ようとした。
         o InternalError
-		�������顼��
+		内部エラー。
         o LinkageError
-		¾�Υ��饹�˰�¸�������륯�饹���θߴ������ʤ��ʤä���
+		他のクラスに依存性があるクラス群の互換性がなくなった。
         o NoClassDefFoundError
-		���饹���ߤĤ���ʤ��ä���
+		クラスがみつからなかった。
         o NoSuchFieldError
-		����Υե������(�ѿ�)���ߤĤ���ʤ��ä���
+		特定のフィールド(変数)がみつからなかった。
         o NoSuchMethodError
-		����Υ᥽�åɤ����Ĥ���ʤ��ä���
+		特定のメソッドが見つからなかった。
         o OutOfMemoryError
-		������­
+		メモリ不足
         o StackOverflowError
-		�����å����
+		スタック溢れ
         o ThreadDeath
-		thread.stop()���ƤӤ����줿��
+		thread.stop()が呼びだされた。
         o UnknownError
-		�����ʡ�����������ʥ��顼��ȯ��������
+		不明な、しかし重大なエラーが発生した。
         o UnsatisfiedLinkError
-		���ɤʥ�󥯡�
+		不良なリンク。
         o VerifyError
-		���饹�����ƥ����å������顼��
+		クラスの内容チェック時エラー。
         o VirtualMachineError
-		���ۥޥ���(VM)������Ƥ��뤫���񸻤�Ȥ��̤�����
+		仮想マシン(VM)が壊れているか、資源を使い果した。
 
    * java.lang.reflect*
 
-	���饹��᥽�åɼ��Τ򰷤�����Υѥå������Ǥ������󥪥֥������Ȥ�
-	���󥹥��󥹤�ľ�ܺ�ä��ꡢ���饹����᥽�åɤ���Ф�����Ǥ��ޤ���
-	�ץ�����ब�¹�����Ѳ����Ƥ����褦�ʸ��̤�Ф��ޤ���Ũ�Υ��르�ꥺ��
-	���Ѳ����Ƥ����Ȥ���������ˤ���Ѥ��Ǥ������Ǥ���Method���饹�ˤ�����
-	�Ƥϡ�C�Ǥ����ؿ��ݥ��󥿤Τ褦�˻Ȥ��ޤ���
+	クラスやメソッド自体を扱うためのパッケージです。配列オブジェクトの
+	インスタンスを直接作ったり、クラスからメソッドを抽出したりできます。
+	プログラムが実行中に変化していくような効果を出せます。敵のアルゴリズム
+	が変化していくとか、ゲームにも応用ができそうです。Methodクラスにいたっ
+	ては、Cでいう関数ポインタのように使えます。
 
-     ���󥿡��ե�����
+     インターフェイス
 
         o Member*
-		���륯�饹�Υ��С�(�ѿ����뤤�ϥ᥽�å�)�ޤ��ϥ��󥹥ȥ饯���Ǥ�
-		��Ȥ������Ȥ��ꤹ�륤�󥿡��ե�������
+		あるクラスのメンバー(変数あるいはメソッド)またはコンストラクタであ
+		るということを規定するインターフェース。
 
-     ���饹
+     クラス
 
         o Array*
-		���󥪥֥������ȼ��Τ����ޤ����㤨�м��Τդ��ĤΥ����ɤ�Ʊ��
-		��̣�Ǥ���
+		配列オブジェクト自体を操作します。例えば次のふたつのコードは同じ
+		意味です。
 		1) String sa[] = new String[20];
 		2) String sa[] = Array.newInstance( new String().getClass(), 20 )
 
         o Constructor*
-		���줾��Υ��饹�Υ��󥹥ȥ饯����ɽ���ޤ���Constructor�Υ��󥹥���
-		����ϡ������佤���Ҥʤɡ������ʾ��󤬰��������ޤ������󥹥��󥹤�
-		��뤳�Ȥ�Ǥ��ޤ���(newInstance)
+		それぞれのクラスのコンストラクタを表します。Constructorのインスタンス
+		からは、引数や修飾子など、色々な情報が引きだせます。インスタンスを
+		作ることもできます。(newInstance)
 		1) Class cl = new String().getClass();
 		2) Constructor ccc[] = cl.getConstructors();
 		3) Class ptypes[] = ccc[0].getParameterTypes();
         o Field*
-		���줾��Υ��饹�Υե�������ѿ��򤢤�路�ޤ����Ȥ�������Constructor
-		�Ȥۤ�Ʊ���Ǥ���
+		それぞれのクラスのフィールド変数をあらわします。使いかたはConstructor
+		とほぼ同じです。
         o Method*
-		���줾��Υ��饹�Υ᥽�åɤ򤢤�路�ޤ���
+		それぞれのクラスのメソッドをあらわします。
         o Modifier*
-		���줾��Υ��饹��ե�����ɡ��᥽�åɡ��ʤɤν����Ҥ��̤��뤿��
-		�Υ᥽�åɤ�ޤ�Ǥ��ޤ���
-		�㤨�С�String���饹��final���ɤ����ϡ����Τ褦��
-		����Ĵ�٤뤳�Ȥ��Ǥ��ޤ���
+		それぞれのクラスやフィールド、メソッド、などの修飾子を識別するため
+		のメソッドを含んでいます。
+		例えば、Stringクラスがfinalかどうかは、次のように
+		して調べることができます。
 		1) Class cl = new String().getClass();
 		2) boolean fflg = Modifier.isFinal( cl.getModifiers() );
 	
 
-     �㳰
+     例外
 
         o InvocationTargetException*
-		�᥽�åɸƤӤ������оݥ��֥������Ȥ�����ˡ�ʤ�Τ��ä���
+		メソッド呼びだしの対象オブジェクトが、違法なものだった。
 
 
    * java.net
 
-     �ͥåȥ����ǽ��¸�����ѥå������Ǥ���JDK1.1�Ǥ��㳰���٤��� ʬ����
-     �줿�Τȡ��ޥ�����㥹�Ȥ���ǽ�ˤʤä����ȡ�Socket ���饹��final�ǤϤ�
-     ���ʤä����Ȥ����פ��Ѳ��Ǥ��礦����
+     ネットワーク機能を実現するパッケージです。JDK1.1では例外が細かく 分けら
+     れたのと、マルチキャストが可能になったこと、Socket クラスがfinalではな
+     くなったことが重要な変化でしょうか。
 
-     ���󥿡��ե�����
+     インターフェイス
 
         o ContentHandlerFactory
-		Ŭ�ڤ�ContentHandler��ƤӤ�����URLConnection��������Ϥ�
-		�Ѵ���������򤷤ޤ���
+		適切なContentHandlerを呼びだしてURLConnectionからの入力を
+		変換する助けをします。
 
         o FileNameMap*
-		�ե�����̾�ȡ�MIME�����פδ֤Υ���ץ���б��դ��򤹤뤿���
-		���󥿡��ե�������
+		ファイル名と、MIMEタイプの間のシンプルな対応付けをするための
+		インターフェース。
 
         o SocketImplFactory
-		SocketImpl�Υ��󥹥��󥹤��͡�����ˡ�Ǻ�뤿��Υ��󥿡��ե�������
+		SocketImplのインスタンスを様々な方法で作るためのインターフェース。
 
         o URLStreamHandlerFactory
-		URL���饹�ϡ��ץ��ȥ���μ���ˤ�ä��͡���URLStreamHandler��������뤬��
-		���Τ���˻��Ѥ���ޤ���
+		URLクラスは、プロトコルの種類によって様々なURLStreamHandlerを作成するが、
+		そのために使用されます。
 
-     ���饹
+     クラス
 
         o ContentHandler
-		URLConnection��������Ϥ򥪥֥������Ȥ��Ѵ����뤿��Υ��饹��
+		URLConnectionからの入力をオブジェクトに変換するためのクラス。
 
         o DatagramPacket
-		�ѥ��åȤ�Ĺ�������ơ�IP���ɥ쥹���ݡ��Ȥ��ֹ���������ѥ��åȡ�
+		パケットの長さ、内容、IPアドレス、ポートの番号を備えたパケット。
 	
         o DatagramSocket
-		����η�»�������뤫�⤷��ʤ��ǡ��������ѥ��åȤ��̿�ϩ��ɽ���ޤ���
-		* DatagramSocket( in port ) ���󥹥ȥ饯��
-		* void send( DatagramPacket p )		����
-		* void receive( DatagramPacket p )	����
-		* void close()		�Ĥ���
+		情報の欠損が生じるかもしれないデータグラムパケットの通信路を表します。
+		* DatagramSocket( in port ) コンストラクタ
+		* void send( DatagramPacket p )		送信
+		* void receive( DatagramPacket p )	受信
+		* void close()		閉じる
 
         o DatagramSocketImpl*
-		�ǡ�������ॽ���åȤȥޥ�����㥹�ȥ����åȤμ����Τ����
-		���ܥ��饹��
+		データグラムソケットとマルチキャストソケットの実装のための
+		基本クラス。
 
         o HttpURLConnection*
-		HTTP����ħ���б�����URLConnection��
+		HTTPの特徴に対応したURLConnection。
 
         o InetAddress
-		��ĤΥ��󥿡��ͥåȥ��ɥ쥹(IP���ɥ쥹)��ɽ�����饹��
-		* byte[] getAddress()  4�Х��Ȥ�IP���ɥ쥹�򡢥ͥåȥ���Х���
-		�����������ޤ���
-		* InetAddress.getByName(String) �ۥ���̾����IP���ɥ쥹�����ޤ���
+		一つのインターネットアドレス(IPアドレス)を表すクラス。
+		* byte[] getAddress()  4バイトのIPアドレスを、ネットワークバイト
+		オーダで得ます。
+		* InetAddress.getByName(String) ホスト名からIPアドレスを得ます。
 
         o MulticastSocket*
-		IP��ǥޥ�����㥹�ȥ�å����������ä�������Ȥä��ꤷ�ޤ������ߤϡ�
-		���ץ�åȤ���ϡ����Υ����åȤ�Ȥ��ޤ���
-		* MulticastSocket( int port )		���󥹥ȥ饯����
-		* send( DatagramPacket, byte ttl)  �������ޤ���
+		IP上でマルチキャストメッセージを送ったり受けとったりします。現在は、
+		アプレットからは、このソケットを使えません。
+		* MulticastSocket( int port )		コンストラクタ。
+		* send( DatagramPacket, byte ttl)  送信します。
 		
         o ServerSocket
-		�����С��Υ����åȤ�ɽ�����饹��
-		* ServerSocket( int port )	���󥹥ȥ饯����
+		サーバーのソケットを表すクラス。
+		* ServerSocket( int port )	コンストラクタ。
 
         o Socket
-		���饤����ȤΥ����åȤ�ɽ�����饹���ºݤΥ����å����ˤϡ�SocketImpl
-		���饹��ȤäƤ��ޤ���
-		* Socket(String hostname , int port ) �����åȤ�������ޤ���
-		���饤����Ȥ��饽���åȤ򳫤��ơ������Ϥ򳫻Ϥ���ˤϼ��μ���
-		Ƨ�ߤޤ���
+		クライアントのソケットを表すクラス。実際のソケット操作には、SocketImpl
+		クラスを使っています。
+		* Socket(String hostname , int port ) ソケットを作成します。
+		クライアントからソケットを開いて、入出力を開始するには次の手順を
+		踏みます。
 		1) Socket so = new Socket( hostname , port );
 		2) OutputStream out = so.getOutputStream();
 		3) InputStream in = so.getInputStream();
-		4) .....����
+		4) .....処理
 		5) so.close();
 
         o SocketImpl
-		Socket,ServerSocket�μºݤ����ϡ����Υ��饹�ˤ�äƹԤʤ��ޤ���
+		Socket,ServerSocketの実際の操作は、このクラスによって行なわれます。
 
         o URL
-		WWW��λ񸻤��դ�����Ǥ��륪�֥������ȤǤ�������Ǥ��ꡢ��ö����
-		�����ȡ��ѹ��ϤǤ��ޤ���
-		* URL(String urlstring) (MalformedURLException) ���󥹥ȥ饯���� 
-		* Object getContent() (IOEx)  URL�ǻ��ꤵ������μ���˱����ơ�
-		Image�ʤɤΥ��֥������Ȥ��Ѵ����ޤ���
+		WWW上の資源を一意に特定できるオブジェクトです。定数であり、一旦作成
+		されると、変更はできません。
+		* URL(String urlstring) (MalformedURLException) コンストラクタ。 
+		* Object getContent() (IOEx)  URLで指定される情報の種類に応じて、
+		Imageなどのオブジェクトに変換します。
 		* URLConnection openConnection() (IOEx)
-		URL���饹��Ȥäơ����륵���Ȥξ��������ˤϡ����μ���Ƨ�ߤޤ���
+		URLクラスを使って、あるサイトの情報を得るには、次の手順を踏みます。
 		1) URL url = new URL(...);
 		2) URLConnection uc = url.openConnection();
-		3) uc.setDoInput();   // ���Ϥ������uc.setDoOutput()
+		3) uc.setDoInput();   // 出力する場合はuc.setDoOutput()
 		4) InputStream in = uc.getInputStream();
 		5) in.close();
 
         o URLConnection
-		URL�ˤ�äƼ�����륪�֥������ȤؤΥ����ƥ��֤���³��ɽ���ޤ���
-		* getContent() URL�ˤ�äƼ�����륪�֥������Ȥ����Ƥ����ޤ���
+		URLによって示されるオブジェクトへのアクティブな接続を表します。
+		* getContent() URLによって示されるオブジェクトの内容を得ます。
 
         o URLEncoder
-		���̤�ʸ����� x-www-form-urlencoded�ե����ޥåȤ��Ѵ����ޤ���
-		* String URLEncoder.encode( String )   �Ѵ����ޤ���
+		普通の文字列を、 x-www-form-urlencodedフォーマットに変換します。
+		* String URLEncoder.encode( String )   変換します。
 		
         o URLStreamHandler
-		URL�Υ��ȥ꡼��򳫤������abstract���饹��
+		URLのストリームを開くためのabstractクラス。
 
-     �㳰
+     例外
 
         o BindException*
-		�ݡ��Ȥ�������Ǥ���Ȥ������ɥ쥹�������������Ȥ�����ͳ�ˤ�ꡢ�Х����
-		�Ǥ��ʤ��ä���
+		ポートが使用中であるとか、アドレスがおかしい、という理由により、バインド
+		できなかった。
         o ConnectException*
-		��⡼�ȤΥ��ɥ쥹�ȥݡ��Ȥ���³�Ǥ��ʤ��ä������Υݡ��Ȥ�listen�����
-		���ʤ��ä���
+		リモートのアドレスとポートに接続できなかった。相手のポートはlistenされて
+		いなかった。
         o MalformedURLException
-		URL��ɽ���˸��꤬���ä��� new URL( String..)�������ȯ�����ޤ���������
-		ʸ���������å����ޤ��礦��
+		URLの表記に誤りがあった。 new URL( String..)する時に発生します。引数の
+		文字列をチェックしましょう。
         o NoRouteToHostException*
-		��³��ޤǤδ֤ˤ���롼��������Ƥ��뤫���⤷���ϡ��ե��������������
-		��ä���³�����ݤ��줿���ᡢ��ã�Ǥ��ʤ��ä���
+		接続先までの間にあるルータが落ちているか、もしくは、ファイアウォールに
+		よって接続が拒否されたため、到達できなかった。
         o ProtocolException
-		�ץ��ȥ����㳰��Socket���饹��ȯ����
+		プロトコル例外。Socketクラスで発生。
         o SocketException
-		�����åȤ�Ȥ����Ȥ������˲��餫�����㳰����������
+		ソケットを使おうとした時に何らかたの例外が生じた。
         o UnknownHostException
-		���ɥ쥹����IP���ɥ쥹�����뤳�Ȥ��Ǥ��ʤ��ä���
+		アドレスからIPアドレスを得ることができなかった。
         o UnknownServiceException
-		�����ʥ����ӥ�����Ѥ��褦�Ȥ�����
+		不明なサービスを使用しようとした。
 
    * java.rmi*
 
-     ���֥������ȥ��ꥢ�饤������פȤ��롢�ֱ�֥᥽�åɸƤӤ����פ�¸���
-     �� �ѥå������Ǥ���¾�ΥС������ޥ����¸�ߤ��륪�֥������ȤΥ᥽�å�
-     �� ���Ρ������פ�𤹤뤳�Ȥˤ�äƸƤӤ����ޤ������Τ���ˤϥ����С�
-     �� ��Ϣ����������Ͽ���Ƥ���ɬ�פ�����ޤ��������Τ��Ȥ򤹤뤿��ˤ�
-     �̤� java.rmi.registry�䡢java.rmi.server�ʤɤȤ��ä� �ѥå�������Ȥ�
-     ɬ�פ�����ޤ���
+     オブジェクトシリアライズを基盤とする、「遠隔メソッド呼びだし」を実現す
+     る パッケージです。他のバーチャルマシンに存在するオブジェクトのメソッド
+     を、 その「代理」を介することによって呼びだします。そのためにはサーバー
+     に 関連する情報を登録しておく必要があります。それらのことをするためには
+     別の java.rmi.registryや、java.rmi.serverなどといった パッケージを使う
+     必要があります。
 
-     ���󥿡��ե�����
+     インターフェイス
 
         o Remote*
-		���֥������Ȥ�����⡼�Ȥ�¸�ߤ��뤳�Ȥ�ؼ����륤�󥿡��ե�������
-		��⡼�ȥ��֥������Ȥϡ����٤Ƥ��Υ��󥿡��ե�������implements���ʤ���
-		�Фʤ�ޤ���
+		オブジェクトが、リモートに存在することを指示するインターフェース。
+		リモートオブジェクトは、すべてこのインターフェースをimplementsしなけれ
+		ばなりません。
 
-     ���饹
+     クラス
 
         o Naming*
-		URL�ˤ�äƼ�������⡼�ȥ��֥������Ȥؤλ��Ȥ����뤿��˻Ȥ��ޤ���
+		URLによって示されるリモートオブジェクトへの参照を得るために使われます。
         o RMISecurityManager*
-		��⡼�Ȥ�������ɤ���륹���֥��饹�ϡ�RMISecurityManager���̤��ʤ�
-		�¤�ϥ����ɤ���ޤ��󡣥��饤����Ȥ�main()�᥽�åɤˡ�
+		リモートからロードされるスタブクラスは、RMISecurityManagerを通さない
+		限りはロードされません。クライアントのmain()メソッドに、
 		System.setSecurityManager( new RMISecurityManager());
-		�ΰ�Ԥ�ä����OK�Ǥ���
+		の一行を加えればOKです。
 
 
-     �㳰
+     例外
 
         o AccessException*
-		��⡼�ȥ��֥������ȤΥ��������㳰��
+		リモートオブジェクトのアクセス例外。
         o AlreadyBoundException*
-		��⡼�ȥ��֥������Ȥ����Ǥ˥Х���ɤ���Ƥ�����
+		リモートオブジェクトがすでにバインドされていた。
         o ConnectException*
-		���饤�����->�����Ф���³�˴ؤ����㳰��
+		クライアント->サーバの接続に関する例外。
         o ConnectIOException*
-		���饤�����->�����Ф���³�˴ؤ����㳰��
+		クライアント->サーバの接続に関する例外。
         o MarshalException*
-		���ꥢ�饤�������㳰
+		シリアライズ時の例外
         o NoSuchObjectException*
-		���Τ褦�ʥ��֥������ȤϤʤ���
+		そのようなオブジェクトはない。
         o NotBoundException*
-		lookup()��������̾�����Х���ɤ���Ƥ��ʤ��ä���
+		lookup()した時に名前がバインドされていなかった。
         o RMISecurityException*
-		�������ƥ������å��ˤҤä����ä���
+		セキュリティチェックにひっかかった。
         o RemoteException*
-		RMI�쥸���ȥ����³�Ǥ��ʤ��ä���
+		RMIレジストリに接続できなかった。
         o ServerError*
-		�����С����顼��
+		サーバーエラー。
         o ServerException*
-		�����С���̤�Τ��㳰��ȯ��������
+		サーバーで未知の例外が発生した。
         o ServerRuntimeException*
-		�����С��μ¹Ի����顼��
+		サーバーの実行時エラー。
         o StubNotFoundException*
-		�����֥��饹�����Ĥ���ʤ���
+		スタブクラスが見つからない。
         o UnexpectedException*
-		ͽ�������㳰��
+		予期せぬ例外。
         o UnknownHostException*
-		�ۥ���̾���饢�ɥ쥹��é��ʤ���
+		ホスト名からアドレスを辿れない。
         o UnknownServiceException*
-		̤�ΤΥ����ӥ�����Ѥ��褦�Ȥ�����
+		未知のサービスを使用しようとした。
         o UnmarshalException*
-		���ꥢ�饤�������㳰
+		シリアライズ時の例外
 
    * java.rmi.dgc*
 
-     �ͥåȥ����ˤϤ��������Java�С������ޥ���¸�ߤ��ޤ����������
-     �� ����Ū��ID�Ǵ����������١��������쥯�����(����Τ��ߤ��Ĥ�)�򤹤�
-     ����Υѥå������Ǥ���������¦�����ޤ���RMI��Ȥ������ʤ顢�̾��
-     ���Υѥå������ϻȤ��ޤ��������Ͼ�ά���ޤ���
+     ネットワーク上にはたくさんのJavaバーチャルマシンが存在しますが、それら
+     を 統一的なIDで管理し、ガベージ・コレクション(メモりのごみあつめ)をする
+     ためのパッケージです。サーバ側で操作します。RMIを使うだけなら、通常は
+     このパッケージは使いません。説明は省略します。
 
-     ���󥿡��ե�����
+     インターフェイス
 
         o DGC*
 
-     ���饹
+     クラス
 
         o Lease*
         o VMID*
 
    * java.rmi.registry*
 
-     �ͥåȥ����𤷤�Java�Υ��ץꥱ������󥵡��С�����³����ˤϡ� �쥸
-     ���ȥ����Ͽ���Ƥ���ɬ�פ�����ޤ������Υѥå���������Ͽ�ȥ��֥��� ����
-     õ���ν����򤹤뤿��˻Ȥ��ޤ���RMI��Ȥ������ʤ顢���Υѥå������ϻ�
-     ���ޤ��������Ͼ�ά���ޤ���
+     ネットワークを介してJavaのアプリケーションサーバーと接続するには、 レジ
+     ストリに登録しておく必要があります。このパッケージは登録とオブジェ クト
+     探しの処理をするために使われます。RMIを使うだけなら、このパッケージは使
+     いません。説明は省略します。
 
-     ���󥿡��ե�����
+     インターフェイス
 
         o Registry*
         o RegistryHandler*
 
-     ���饹
+     クラス
 
         o LocateRegistry*
 
    * java.rmi.server*
 
-     RMI�Υ��ץꥱ������󥵡��С�������˻Ȥ��ޤ���
+     RMIのアプリケーションサーバーを作る時に使います。
 
-     ���󥿡��ե�����
+     インターフェイス
 
         o LoaderHandler*
-		RMI���饹�������򰷤�����Υ��󥿡��ե�������
+		RMIクラスローダを扱うためのインターフェース。
         o RMIFailureHandler*
-		�����С����饤����Ȥ���³���Ǥ��ʤ��ä��Ȥ���ư����ꤹ�뤿���
-		���󥿡��ե�������
+		サーバ・クライアントの接続ができなかったときの動作を規定するための
+		インターフェース。
         o RemoteCall*
-		��⡼�ȥ��֥������ȤθƤӤ�����������뤿��Υ��󥿡��ե�������
+		リモートオブジェクトの呼びだしを実装するためのインターフェース。
         o RemoteRef*
-		��⡼�ȥ��֥������Ȥؤλ��Ȥ�ɽ���ޤ���
+		リモートオブジェクトへの参照を表します。
         o ServerRef*
-		��⡼�ȥ��֥������ȤΥ�����¦�λ��Ȥ�ɽ���ޤ���
+		リモートオブジェクトのサーバ側の参照を表します。
         o Skeleton*
-		rmic�ˤ�äƺ���륹����ȥ󥯥饹�ϡ����٤Ƥ��Υ��󥿡��ե�������
-		impelements���ޤ���������¦�Υ�����ȥ�ϡ���⡼�ȥ��֥������Ȥؤ�
-		�ƤӤ�����ºݤ��������ޤ���
+		rmicによって作られるスケルトンクラスは、すべてこのインターフェースを
+		impelementsします。サーバ側のスケルトンは、リモートオブジェクトへの
+		呼びだしを実際に送信します。
         o Unreferenced*
-		��⡼�ȥ��֥������Ȥؤλ��Ȥ��ʤ��ʤä��Ȥ��ˡ��������Τ�����Ȥ�
-		���Ȥ��Ǥ���褦�ˡ���⡼�ȥ��֥������Ȥϡ����Υ��󥿡��ե�������
-		implements���Ƥ����٤��Ǥ���
+		リモートオブジェクトへの参照がなくなったときに、その通知を受けとる
+		ことができるように、リモートオブジェクトは、このインターフェースを
+		implementsしておくべきです。
 
-     ���饹
+     クラス
 
         o LogStream*
-		RMI��Ȥä������ƥ�ΥǥХå��˻Ȥ��ޤ���
+		RMIを使ったシステムのデバッグに使います。
         o ObjID*
-		VM��ǡ����֤�ФƤ��դ˥��֥������Ȥ�����Ǥ���ID�Ǥ���
+		VM内で、時間を経ても一意にオブジェクトを特定できるIDです。
         o Operation*
-		Java�Υ᥽�åɤε��Ҥ��ݻ����ޤ���
+		Javaのメソッドの記述を保持します。
         o RMIClassLoader*
-		�ͥåȥ�����̤��ƥ��饹������ɤ��뵡�����󶡤��ޤ���
+		ネットワークを通じてクラスをロードする機構を提供します。
         o RMISocketFactory*
-		RMI�ƤӤ�����¸����뤿��Ρ����饤����ȡ������С���³��¸����뤿���
-		�Ȥ��ޤ���
+		RMI呼びだしを実現するための、クライアント・サーバー接続を実現するために
+		使われます。
         o RemoteObject*
-		��⡼�ȥ��֥������Ȥ���java.lang.Object�Τ褦�ʿ��񤤤��Ǥ���褦��
-		���뤿��Υ��饹�Ǥ���
+		リモートオブジェクトが、java.lang.Objectのような振舞いができるように
+		するためのクラスです。
         o RemoteServer*
-		��⡼�Ȼ��Ȥ��󶡤��뤿������Ȥ��󶡤��ޤ��������С����������ˤϡ�
-		���Υ��饹��extends���ޤ���
+		リモート参照を提供するための枠組を提供します。サーバーを実装するには、
+		このクラスをextendsします。
         o RemoteStub*
-		���饤����ȤΥ����֥��饹�ΰ���Ū�ʥ����ѡ����饹�Ǥ��������֤Ȥϡ�
-		��⡼�ȥ��֥������Ȥ�����Ʊ��������Ǥ���
+		クライアントのスタブクラスの一般的なスーパークラスです。スタブとは、
+		リモートオブジェクトと全く同一な代理です。
         o UID*
-		����ۥ��Ⱦ��ͣ���ID����ޤ���ͣ��ˤ��뤿��ˡ����֤ξ���
-		���Ȥ��ޤ���
+		あるホスト上で唯一なIDを作ります。唯一にするために、時間の情報
+		が使われます。
         o UnicastRemoteObject*
-		�����Ф��Ԥ��Ƥ���֤���ͭ���ʡ������ҤȤĤ����ʤ���⡼�ȥ��֥�������
-		��������ޤ���
+		サーバが行きている間だけ有効な、ただひとつしかないリモートオブジェクト
+		を定義します。
 				
 
-     �㳰
+     例外
 
         o ExportException*
-		export�Ǥ��ʤ��ä���
+		exportできなかった。
         o ServerCloneException*
-		�����Ф�¿�Ų����Ƥ��ޤ���
+		サーバが多重化しています。
         o ServerNotActiveException*
-		�����Ф������ƥ��֤ǤϤ���ޤ���
+		サーバがアクティブではありません。
         o SkeletonMismatchException*
-		������ȥ�ȥ�⡼�ȥ��֥������Ȥ��б����Ȥ�Ƥ��ޤ���
+		スケルトンとリモートオブジェクトの対応がとれていません。
         o SkeletonNotFoundException*
-		������ȥ󥯥饹�����Ĥ���ޤ���
+		スケルトンクラスが見つかりません。
         o SocketSecurityException *
-		�������ƥ��㳰��
+		セキュリティ例外。
 
    * java.security*
 
-     ���Υѥå������ϡ��ѥ���ɤ��Ȥξ�������ʤɡ������٤� ��������
-     ����ǽ��ɬ�פʥ��ץꥱ��������ȯ���뤿��˻Ȥ��ޤ��� JDK1.1�Υ١�
-     ���ǤǤϤޤ��������Դ����Ǥ������Υѥå����������Ƥϡ�	
-     �ܽ�����Ƥ���ϳ���Ƥ��뤿�ᡢ�������ά���ޤ���
+     このパッケージは、パスワードや企業の情報管理など、より高度な セキュリテ
+     ィ機能が必要なアプリケーションを開発するために使われます。 JDK1.1のベー
+     タ版ではまだ実装が不完全です。このパッケージの内容は、	
+     本書の内容からは外れているため、説明を省略します。
 
-     ���󥿡��ե�����
+     インターフェイス
 
         o Certificate*
         o KeyParams*
         o Principal*
 
-     ���饹
+     クラス
 
         o DigestInputStream*
         o DigestOutputStream*
@@ -1390,7 +1390,7 @@
         o Signature*
         o Signer*
 
-     �㳰
+     例外
 
         o DigestException*
         o InvalidKeyException*
@@ -1404,9 +1404,9 @@
 
    * java.security.acl*
 
-     java.security��Ʊ�ͤ���ͳ�ǡ���ά���ޤ���
+     java.securityと同様の理由で、省略します。
 
-     ���󥿡��ե�����
+     インターフェイス
 
         o Acl*
         o AclEntry*
@@ -1414,9 +1414,9 @@
         o Owner*
         o Permission*
 
-     ���饹
+     クラス
 
-     �㳰
+     例外
 
         o AclNotFoundException*
         o LastOwnerException*
@@ -1424,9 +1424,9 @@
 
    * java.security.interfaces*
 
-     java.security��Ʊ�ͤ���ͳ�ǡ���ά���ޤ���
+     java.securityと同様の理由で、省略します。
 
-     ���󥿡��ե�����
+     インターフェイス
 
         o DSAKey*
         o DSAParams*
@@ -1434,14 +1434,14 @@
 
    * java.sql*
 
-     java���ץꥱ�������/���ץ�åȤ�������ͭ�Ѥʥǡ����١�����������ü��
-     �ˤʤꤦ�� ���Ȥ�����ˤ�ä����餫�ˤʤäƤ������Ȥ��鳫ȯ���줿�ѥå�
-     �����Ǥ����᥽�å� ��ȯ��SQL�Υǡ����١��������Ф˥����������뤳�Ȥ���
-     ���ޤ��������Ȥ��� ��������뤳�Ȥ��Ǥ��뤫�⤷��ޤ��󤬡������Ф�
-     ������ץ��ȥ���ʤɤ� ������ɬ�פǤ�����ܽ���ϰϤ�ۤ��Ƥ��ޤ��ޤ���
-     �������ä������Ͼ�ά���ޤ���
+     javaアプリケーション/アプレットが、非常に有用なデータベースアクセス端末
+     になりうる ことが研究によって明らかになってきたことから開発されたパッケ
+     ージです。メソッド 一発でSQLのデータベースサーバにアクセスすることがで
+     きます。これを使えば ゲームも作ることができるかもしれませんが、サーバの
+     管理やプロトコルなどの 説明が必要でそれは本書の範囲を越えてしまいます。
+     したがって説明は省略します。
 
-     ���󥿡��ե�����
+     インターフェイス
 
         o CallableStatement*
         o Connection*
@@ -1452,7 +1452,7 @@
         o ResultSetMetaData*
         o Statement *
 
-     ���饹
+     クラス
 
         o Date*
         o DriverManager*
@@ -1461,7 +1461,7 @@
         o Timestamp*
         o Types*
 
-     �㳰
+     例外
 
         o DataTruncation*
         o SQLException*
@@ -1469,14 +1469,14 @@
 
    * java.text*
 
-     ��ݲ����줿ʸ����򰷤�����Υѥå������Ǥ����ܽ�����Ƥȴ�Ϣ������
-	 �Τǡ������Ͼ�ά���ޤ���
+     国際化された文字列を扱うためのパッケージです。本書の内容と関連が薄い
+	 ので、説明は省略します。
 
-     ���󥿡��ե�����
+     インターフェイス
 
         o CharacterIterator*
 
-     ���饹
+     クラス
 
         o ChoiceFormat*
         o CollatedString*
@@ -1498,117 +1498,117 @@
         o TableCollation*
         o TextBoundary*
 
-     �㳰
+     例外
 
         o FormatException*
 
    * java.util
 
-     ¾�Υѥå������ˤ϶��̤Ǥ��ʤ��褦�ʡ�����Ǥ���ɬ�פʥ��饹���� �ޤޤ�
-     �Ƥ��ޤ���JDK1.1�ǤϹ�ݲ��䥤�٥�ȴ�Ϣ�Ǥ��ʤ��ĥ����ޤ�����
+     他のパッケージには区別できないような、それでいて必要なクラス群が 含まれ
+     ています。JDK1.1では国際化やイベント関連でかなり拡張されました。
 
-     ���󥿡��ե�����
+     インターフェイス
 
         o Enumeration
-		���Ȥ��ͤ��¤٤��ꡢ�������ꤹ�뤿��Υ᥽�åɤ�������륤��
-		�����ե������Ǥ���
-		* boolean hasMoreElements()  �������Ǥ�¸�ߤ��뤫�ɤ�����Ĵ�٤ޤ���
-		* Object nextElement()		�������Ǥ�������ޤ���
+		一組の値を並べたり、数えたりするためのメソッドを定義するイン
+		ターフェースです。
+		* boolean hasMoreElements()  次の要素が存在するかどうかを調べます。
+		* Object nextElement()		次の要素を取りだします。
         o EventListener*
-		���ƤΥ��٥�ȥꥹ�ʤϡ����Υ��󥿡��ե�������extends���ޤ���
+		全てのイベントリスナは、このインターフェースをextendsします。
         o Observer
-		���Υ��󥿡��ե�������implements����ȡ�Observer�ˤ�äƴƻ�Ǥ���
-		�褦�ˤʤ�ޤ���
+		このインターフェースをimplementsすると、Observerによって監視できる
+		ようになります。
 
-     ���饹
+     クラス
 
         o BitSet
-		���ȤΥӥåȤΥ��åȡ�ɬ�פ˱����ƥ������Ͽ��ӤƤ����ޤ���
+		一組のビットのセット。必要に応じてサイズは伸びていきます。
         o Calendar*
-		Date���֥������Ȥȡ�ǯ�����򤢤�魯int�ͤȤδ֤��Ѵ���Ԥʤ��ޤ���
-		�Ѵ��Ϥ��ޤ��ޤʥե����ޥåȤ���ꤹ�뤳�Ȥ��Ǥ��ޤ���HTML�ǤΥ���
-		�饤��ޥ˥奢��˾ܤ����Τǡ�������򻲾Ȥ��Ƥ���������
+		Dateオブジェクトと、年や月、日をあらわすint値との間の変換を行ないます。
+		変換はさまざまなフォーマットを指定することができます。HTML版のオン
+		ラインマニュアルに詳しいので、そちらを参照してください。
         o Date
-		�ߥ��ä�ñ�̤ǡ����֤�������ޤ���
+		ミリ秒の単位で、時間を管理します。
         o Dictionary
-		Hashtable�Υ����ѡ����饹�Ǥ���
+		Hashtableのスーパークラスです。
         o EventObject*
-		���٥�Ȥ򤢤�魯���֥������ȤǤ���java.awt.event�β��Υ��٥�ȷ��⡢
-		���٤Ƥ��Υ��֥������Ȥ�extends���Ƥ��ޤ���
+		イベントをあらわすオブジェクトです。java.awt.eventの下のイベント群も、
+		すべてこのオブジェクトをextendsしています。
 		o GregorianCalendar*
-		Calender��extends���Ƥ��ޤ������쥴�ꥢ�������Ѥ���Date�����Ѵ����ޤ���
+		Calenderをextendsしています。グレゴリアン暦を使用してDateから変換します。
         o Hashtable
-		�����ʥϥå��塦�ơ��֥�Ǥ��������ʸ���������Ʊ�Τ���Ӥ򤹤���
-		�ʤɤˤϡ���ö�ϥå���ơ��֥����ȹ�®�˽������뤳�Ȥ��Ǥ��ޤ���
+		便利なハッシュ・テーブルです。巨大な文字列の配列同士の比較をする場合
+		などには、一旦ハッシュテーブルを作ると高速に処理することができます。
         o ListResourceBundle*
-		����֤������ʸ������б��Υꥹ�Ȥ�������륯�饹�Ǥ���
+		言語間の特定の文字列の対応のリストを定義するクラスです。
         o Locale*
-		��ݲ��᥽�åɤǻ��Ѥ�������̾���Ǥ���
+		国際化メソッドで使用する言語の名前です。
         o Observable
-		Model-View�ѥ������ˤ����롢�ִѻ������ǡ����פϡ����Υ��饹��
-		extends���ޤ����ǡ����ϼ�ʬ���Ȥ��Ѳ��������Ȥ�Observer����������
-		����update�᥽�åɤ�ƤӤ������Ȥˤ�äơ��Τ餻�ޤ���
+		Model-Viewパラダイムにおける、「観察されるデータ」は、このクラスを
+		extendsします。データは自分自身が変化したことを、Observerで定義されて
+		いるupdateメソッドを呼びだすことによって、知らせます。
         o Properties
-		���ȥ꡼��ǥ�����/�����ɤǤ���ϥå���ơ��֥롣
+		ストリームでセーブ/ロードできるハッシュテーブル。
         o PropertyResourceBundle*
-		���ȥ꡼�����¸����������ɤ�����Ǥ���꥽������
+		ストリームに保存したりロードしたりできるリソース。
         o Random
-		���ȯ������Ĥ�Ʊ��������ȯ�������������ϡ� new Random( 100);
-		�Ȥ����褦�ˡ�long�ͤ���ꤷ�ޤ������󥹥��󥹤�ɬ�פǤ���
+		乱数発生器。いつも同じ乱数列を発生させたい場合は、 new Random( 100);
+		というように、long値を指定します。インスタンスが必要です。
 		1) Random r = new Random(n);
-		2) r.nextInt();   int�ͤκ����ͤ���Ǿ��ͤޤǡ����ޤߤޤ���
+		2) r.nextInt();   int値の最大値から最小値まで、負も含みます。
 		
         o ResourceBundle*
-		ʣ���θ�����б������ץ���������䤹�����뤿��Υ��饹�Ǥ��������
-		���������ȤΥ��֥������Ȥ˥����������ޤ���
+		複数の言語に対応したプログラムを作りやすくするためのクラスです。言語に
+		応じた一組のオブジェクトにアクセスします。
         o SimpleTimeZone*
-		���쥴�ꥢ����˱�ä�ñ��ʥ����ॾ������������ޤ���
+		グレゴリアン暦に沿った単純なタイムゾーンを生成します。
         o Stack*
-		LIFO(Last-In-First-Out)�Υ����å����֥������ȤǤ���
+		LIFO(Last-In-First-Out)のスタックオブジェクトです。
 
         o StringTokenizer
-		ʸ�����ȡ������ʬ�򤷤ޤ���CGI�Υץ������򤹤���ʤɤˤϽ�������
-		�Ǥ��礦���ǥե���ȤǤ� " \n\r\t"��ȡ�����ʬ��ʸ���Ȥ��ޤ���
+		文字列をトークンに分解します。CGIのプログラムをする時などには重宝する
+		でしょう。デフォルトでは " \n\r\t"をトークン分割文字とします。
 		1) StringTokenizer st = new StringTokenizer( "this is a test" ," " );
-		2) String next = st.nextToken() ....Ϣ³Ū�ˤ��Υ᥽�åɤ�ƤӤ����ޤ���
+		2) String next = st.nextToken() ....連続的にこのメソッドを呼びだします。
 
         o TimeZone*
-		�Ͱ�ˤ������򤢤�路�ޤ���
+		値域による時差をあらわします。
 
         o Vector
-		ɬ�פ˱�����Ĺ�������Ӥ�����Ǥ���������������Ǥ���������Ȥ��ϡ�
-		setSize(int)����˼¹Ԥ����ۤ�����®�Ǥ���ŵ��Ū�ʻ����㡧
+		必要に応じて長さが伸びる配列です。たくさんの要素を挿入するときは、
+		setSize(int)を先に実行したほうが高速です。典型的な使用例：
 		1) Vector v = new Vector();
 		2) v.addElement( Object);
 		3) Enumeration enm = v.elements();
 
-     �㳰
+     例外
 
         o EmptyStackException
-		�����å������ʤΤ�pop���褦�Ȥ�����
+		スタックが空なのにpopしようとした。
         o MissingResourceException*
-		���ꤵ�줿�꥽������¸�ߤ��ʤ���
+		指定されたリソースが存在しない。
         o NoSuchElementException
-		���Τ褦�����Ǥ�¸�ߤ��ʤ���
+		そのような要素は存在しない。
         o TooManyListenersException *
-		���٥�ȥꥹ�ʤ�¿�����롣
+		イベントリスナが多すぎる。
 
    * java.util.zip*
 
-     zip��gzip����ɽ����롢����򰵽̤��뤿��Υѥå������Ǥ���
-	 JDK1.1beta2���ʳ��Ǥϡ�¿���Х�������褦�Ǥ���
-	����Ū�ˤϡ�
+     zipやgzipに代表される、情報を圧縮するためのパッケージです。
+	 JDK1.1beta2の段階では、多少バグがあるようです。
+	基本的には、
 	1) GZIPInputStream gin = new GZIPInputStream( new FileInputStream(..));
 	2) gin.write( byte[],...);
-	�Ȥ����褦�ˤ���С�GZIP���̤��줿�ե�������ɤߤ��ळ�Ȥ��Ǥ��ޤ���
-	(���������Х�������褦�ǡ��������ɤߤ���ޤ���)
-	�Ȥ����褦�˻Ȥ��ޤ����ܤ����ѥå������������Ͼ�ά���ޤ���
+	というようにすれば、GZIP圧縮されたファイルを読みこむことができます。
+	(しかし、バグがあるようで、正しく読みこめません。)
+	というように使います。詳しいパッケージの説明は省略します。
 
-     ���󥿡��ե�����
+     インターフェイス
 
         o Checksum*
 
-     ���饹
+     クラス
 
         o Adler32*
         o CRC32*
@@ -1625,7 +1625,7 @@
         o ZipInputStream*
         o ZipOutputStream*
 
-     �㳰
+     例外
 
         o DataFormatException*
         o ZipException*

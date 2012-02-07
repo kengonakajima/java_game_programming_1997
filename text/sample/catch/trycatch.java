@@ -2,7 +2,7 @@ import java.applet.Applet;
 public class trycatch extends Applet
 {
 
-	int array[] = new int[5];    // 10$B8D$NMWAG$r;}$DG[Ns(B
+	int array[] = new int[5];    // 10個の要素を持つ配列
 
 	public void init()
 	{

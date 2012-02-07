@@ -1,17 +1,17 @@
-// server$B$N7hDj%P!<%8%g%s!#$3$l$KJQ99$r2C$($?$i!"J8>O$NJ}$K$bJQ99$r2C$($kI,MW$,$"$k!#(B
-// $BCm0U$;$h!#(B
+// serverの決定バージョン。これに変更を加えたら、文章の方にも変更を加える必要がある。
+// 注意せよ。
 
 
-// $B2?$G$b$h$$$+$i!"%W%m%H%3%k$r7h$a$kI,MW$,$"$k!#(B
-// $BF~NO$O!"%-!<F~NO$@$+$i!"(B1$B%P%$%HAw?.$9$l$P$h$$!#$3$l$O?^$K$7$F@bL@$9$k$3$H!#(B
-// $B=PNO$O!"(Bshort$B$NCM(B2$B8D%;%C%H$N:BI8$r?M?tJ,Aw?.$7$F!":G8e$K(B(-1,-1)$B$rAw$C$F=*$j$H$9$k!#(B
-// $B%/%i%$%"%s%H$NB&$G$O!"(B-1$B$,$/$k$^$GBT$C$F!"Mh$?$iA4BN$r0l5$$K99?7$9$k!#(B
-// $B%5!<%P$O!"C/$+$,2?$+$rF~NO$9$kEY$KA4BN$rAw?.$9$k!#$@$+$i?M?t$,B?$$$HBgJQ$@!#(B
-// $BF~NO$@$1$r$d$j$H$j$9$k$h$&$J%G%6%$%s$b$"$k$H$$$&$3$H$r@bL@$9$k!#$7$+$7!"CY1d$NBg$-$$(B
-// $B%7%9%F%`$G$O!"$=$l$O?I$$$H$$$&$3$H$b@bL@$9$k!#%5!<%P!<$O!"@$3&$NF14|$r<h$k$?$a$K(B
-// $B;H$&$3$H$,$G$-$k$H$$$&$3$H$@!#(B
+// 何でもよいから、プロトコルを決める必要がある。
+// 入力は、キー入力だから、1バイト送信すればよい。これは図にして説明すること。
+// 出力は、shortの値2個セットの座標を人数分送信して、最後に(-1,-1)を送って終りとする。
+// クライアントの側では、-1がくるまで待って、来たら全体を一気に更新する。
+// サーバは、誰かが何かを入力する度に全体を送信する。だから人数が多いと大変だ。
+// 入力だけをやりとりするようなデザインもあるということを説明する。しかし、遅延の大きい
+// システムでは、それは辛いということも説明する。サーバーは、世界の同期を取るために
+// 使うことができるということだ。
 
-// $BF0:n<B83$O!"(BNetscape$B$O$b$A$m$s%@%a$G!"(Bappletviewer$B$@$H!"(B
+// 動作実験は、Netscapeはもちろんダメで、appletviewerだと、
 /*
 
  server     client
@@ -20,8 +20,8 @@
  windows95  UNIX	 .... TOtally ok
  windows95  windows95    .... totally ok
 
-$B4D6-$O!"(BEtherNet$B$G(BIP$B@\B3$5$l$F$$$k%^%7%sF1;N!#%$%s%?!<%M%C%H>e$G$b(Bproxy$B$,$J$$8B$j(B
-$BF1$87k2L$K$J$k$H;W$o$l$k!#(B
+環境は、EtherNetでIP接続されているマシン同士。インターネット上でもproxyがない限り
+同じ結果になると思われる。
 
 */
 
@@ -75,16 +75,16 @@ class server implements Runnable
 	int playerno = 5;
 	Thread thread;
 	ServerSocket servsock;
-	Socket sock[] = new Socket[playerno];		// $B?M?tJ,$@$1MQ0U$9$k!#(B
-	boolean using[] = new boolean[playerno];        // $B%=%1%C%H$,;HMQCf$+$I$&$+(B 
+	Socket sock[] = new Socket[playerno];		// 人数分だけ用意する。
+	boolean using[] = new boolean[playerno];        // ソケットが使用中かどうか 
 	InputStream in[] = new InputStream[playerno];
 	OutputStream out[] = new OutputStream[playerno];
-	int timeout[] = new int[playerno];		// $B0lDj;~4VA`:n$,$J$$;~$O%?%$%`%"%&%H$9$k!#(B
+	int timeout[] = new int[playerno];		// 一定時間操作がない時はタイムアウトする。
 	int timeout_max = 300;
 
 	acceptor ac;
 
-	// $B%W%l%$%d!<$N>pJs(B
+	// プレイヤーの情報
 	int x[] = new int[playerno];
 	int y[] = new int[playerno];
 	
@@ -99,14 +99,14 @@ class server implements Runnable
 		
 		for(int i = 0 ; i < playerno ; i++){
 			using[i] = false;
-			x[i] = y[i] = 50;  // $B=i4|0LCV$OE,Ev(B
+			x[i] = y[i] = 50;  // 初期位置は適当
 			timeout[i] = 0;
 		}
 		thread = new Thread(this);
 		thread.start();
 	}
 	
-	// acceptor$B$+$i8F$S$@$5$l$k!#%=%1%C%H$N6u$-$rC5$7$FEPO?$9$k(B
+	// acceptorから呼びだされる。ソケットの空きを探して登録する
 	public void addSocket( Socket soc )
 	{
 		if( soc == null ) return;
@@ -143,7 +143,7 @@ class server implements Runnable
 		System.out.println("Closed socket. player="+index);
 	}
 	
-	// $BF~NO$K1~$8$F0\F0$5$;$k(B
+	// 入力に応じて移動させる
 	void playerMove( int index , int key)
 	{
 		int dx , dy;
@@ -163,12 +163,12 @@ class server implements Runnable
 		y[index] += dy;
 		if( y[index] < 0 ) y[index] = 0;
 		if( y[index] > 200) y[index] = 200;
-		timeout[index] = 0;			// $B%?%$%`%"%&%H$^$G$N;~4V$r85$KLa$9(B
+		timeout[index] = 0;			// タイムアウトまでの時間を元に戻す
 	}
-	// $BA40w$KBP$7$F0LCV$N>pJs$rAw?.$9$k(B
+	// 全員に対して位置の情報を送信する
 	void sendForAll()
 	{
-		// $B$^$:!"Aw$k>pJs$r:n$k!#%P%C%U%!$N%5%$%:$O%W%m%H%3%k$r;2>H(B
+		// まず、送る情報を作る。バッファのサイズはプロトコルを参照
 		
 		short sendbuf[] = new short[(playerno+1)*2*2];
 		int counter = 0;
@@ -178,7 +178,7 @@ class server implements Runnable
 				sendbuf[counter++] = (short)y[i];
 			}
 		}
-		sendbuf[counter++] = -1; // $B%G!<%?$N:G8e$H$$$&0UL#(B
+		sendbuf[counter++] = -1; // データの最後という意味
 		sendbuf[counter++] = -1;
 		
 		
@@ -194,7 +194,7 @@ class server implements Runnable
 					dout.flush();
 					//dout.close();
 				}catch( IOException e ){
-					// $B=q$-$3$_$,$&$^$/$$$+$J$+$C$?$i!"$=$N%W%l%$%d!<$rKu>C(B
+					// 書きこみがうまくいかなかったら、そのプレイヤーを抹消
 					System.out.println("dout ex.");
 					deletePlayer( i );
 				}
@@ -209,7 +209,7 @@ class server implements Runnable
 				Thread.sleep(200);
 			}catch( InterruptedException e){}
 
-			// $B%5!<%P!<$N>uBV$rI=<((B
+			// サーバーの状態を表示
 			for(int i=0;i < playerno ;i++){
 				
 				if(using[i])System.out.print("ON"); else System.out.print("OFF");
@@ -220,7 +220,7 @@ class server implements Runnable
 			}
 			System.out.println("");
 			
-			// $B$=$l$>$l$N@\B3$N=hM}(B
+			// それぞれの接続の処理
 
 			for(int i = 0  ; i < playerno ; i++){
 				if( using[i] == true ){
@@ -231,7 +231,7 @@ class server implements Runnable
 					
 					try{
 						if( in[i].available() > 0 ){
-							// $B2?$+>pJs$rAw$C$F$-$?$>(B
+							// 何か情報を送ってきたぞ
 							int r;
 							
 							r = in[i].read();
@@ -241,7 +241,7 @@ class server implements Runnable
 						}
 					}catch( IOException e)
 					{
-						// $B%=%1%C%H$,$b$&;H$($J$$(B
+						// ソケットがもう使えない
 						deletePlayer( i );
 					}
 				}
