@@ -1,0 +1,20 @@
+
+ ドライブ C: のボリュームラベルは 主DISK     
+ ボリュームシリアル番号は 1F25-BADD
+ ディレクトリは C:\jdk1.1
+
+.              <DIR>        97-02-26  17:11 .
+..             <DIR>        97-02-26  17:11 ..
+LIB            <DIR>        97-02-26  17:11 lib
+CHANGES             75,829  97-02-13  21:07 CHANGES
+COPYRI~1               916  97-02-13  21:07 COPYRIGHT
+LICENSE              6,095  97-02-14  10:07 LICENSE
+README              26,885  97-02-18  10:40 README
+INDEX~1  HTM         2,497  97-02-18  10:42 index.html
+BIN            <DIR>        97-02-26  17:11 bin
+INCLUDE        <DIR>        97-02-26  17:12 include
+DEMO           <DIR>        97-02-26  17:12 demo
+SRC            <DIR>        97-02-26  17:12 src
+HOGE                     0  97-02-26  17:17 hoge
+         6 個             112,222 バイトのファイルがあります 
+         7 ﾃﾞｨﾚｸﾄﾘ     35,028,992 バイトの空きがあります 

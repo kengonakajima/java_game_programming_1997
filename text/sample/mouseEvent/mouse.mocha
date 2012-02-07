@@ -1,0 +1,70 @@
+/* Decompiled by Mocha from mouse.class */
+/* Originally compiled from mouse.java */
+
+import java.awt.*;
+import java.applet.Applet;
+import java.io.PrintStream;
+
+public class mouse extends Applet
+{
+    Image offscreen;
+    Graphics og;
+
+    public void init()
+    {
+        offscreen = createImage(size().width, size().height);
+        og = offscreen.getGraphics();
+    }
+
+    public void paint(Graphics g)
+    {
+        g.drawImage(offscreen, 0, 0, null);
+    }
+
+    public void update(Graphics g)
+    {
+        paint(g);
+    }
+
+    public boolean mouseDown(Event event, int i, int j)
+    {
+        System.out.println("Mouse down! X:" + i + " Y:" + j);
+        return true;
+    }
+
+    public boolean mouseUp(Event event, int i, int j)
+    {
+        System.out.println("Mouse up X:" + i + " Y:" + j);
+        return true;
+    }
+
+    public boolean mouseDrag(Event event, int i, int j)
+    {
+        System.out.println("Mouse drag X:" + i + " Y:" + j);
+        return true;
+    }
+
+    public boolean mouseMove(Event event, int i, int j)
+    {
+        System.out.println("Mouse move X:" + i + " Y:" + j);
+        og.fillRect(i, j, 10, 10);
+        repaint();
+        return true;
+    }
+
+    public boolean mouseEnter(Event event, int i, int j)
+    {
+        System.out.println("Mouse enter X:" + i + " Y:" + j);
+        return true;
+    }
+
+    public boolean mouseExit(Event event, int i, int j)
+    {
+        System.out.println("Mouse exit X:" + i + " Y:" + j);
+        return true;
+    }
+
+    public mouse()
+    {
+    }
+}

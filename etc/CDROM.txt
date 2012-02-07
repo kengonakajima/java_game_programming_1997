@@ -1,0 +1,123 @@
+
+Macintosh
+
+
+●WodenDotEditor 0.5β
+フリー。Macで数少ないドットエディタ。主な特長は：アニメーション機能、拡大縮小、回転、反転、ぼかし、マスク機能。出入力はPICT形式。
+
+READMEからの引用------------------------------------------
+○Woden Dot Editorとは？○
+１、一つのPICTに複数のキャラクターをエディットできる
+２、サイズ、拡大率自由のエディター
+３、ショートカットキーによる色選択
+４、アニメーションの確認
+５、便利なフィルター（マスクパターンも簡単につくれる）
+
+---------入手先-----------
+ニフティサーブ
+---------作者情報-----------
+住所　　〒050　北海道室蘭市水元町40-16　M6マンション203
+名前　　橋本　勇気
+
+Nifty : BXH05550
+Internet : BXH05550.niftyserve.or.jp
+
+
+●GraphicConverter 2.7　
+シェアウェア。ほとんどの画像形式を網羅する高性能グラフィックコンバータ。
+拡大縮小、回転、反転、など基本変形機能、マスキング、各種フィルターも装備している。
+
+---------入手先-----------
+http://www.shareware.com
+---------作者情報-----------
+Thorsten Lemke
+
+E-Mail: 
+100102.1304@compuserve.com
+lemkesoft@aol.com
+
+Phone:
++49-5171-72200　or
++49-172-9333595
+
+Fax: +49-5171-72201
+
+
+●YooEdit1.63
+フリー。お手軽文章エディタ。emacs操作系をサポートする。
+
+---------入手先-----------
+ftp://ftp.csis.oita-u.ac.jp/pub/mac/Editor
+---------作者情報-----------
+y.tagawa@mix.or.jp
+
+
+●SoundApp2.2.1
+フリー。.au, .wav, Mac sndファイルなど、ほとんどのフォーマットをサポートするサウンドプレーヤー・コンバーター。
+
+Aboutから--------
+If you wish to include SoundApp on a CD-ROM as part of a freeware/shareware collection, Web browser or book, I ask that you send me a complimentary copy of the product to the address in the Notes topic of this dialog. Also, if you are interested in licensing all of or part of the SoundApp playback and conversion routines see the ﾒLicensingﾓ section of the Notes topic.
+
+---------入手先-----------
+http://www.shareware.com
+---------作者情報-----------
+franke1@llnl.gov
+Norman Franke
+1885 Paseo Laguna Seco
+Livermore, CA 94550
+
+
+●SoundHack 0.868
+$30シェアウェア。サウンドのプレイ、加工、あらゆるフォーマットへのコンバートができる。
+
+---------入手先-----------
+ftp://music.calarts.edu/pub/SoundHack/
+---------作者情報-----------
+Tom Erbe
+25908 Tournament Road #276
+Valencia, CA 91355
+tre@music.calarts.edu
+
+
+
+
+Windows
+
+・Sound Gadget Pro (sgpro)
+
+＄２０シェアウェア。 
+.WAV, .AU形式で入出力可能なサウンドサンプラー・エディタ。
+マイクから録音もできる。
+音の波形を編集できる。
+作者情報--------
+
+
+・PolyView (polyv270)
+ 入手先 http:.//www.shareware.com
+ シェアウェア。
+　BMP, GIF, JPEGを扱うことのできるグラフィックエフェクタ・コンバータ。
+　描画することはできない。
+email: polybytes@kagi.com
+
+・JoeIs Player(Jp)
+シェアウェア。
+サウンドエディタ・コンバータ。.WAV, .AUをサポートする。
+入手先 http:.//www.shareware.com
+作者：Jochen Willinghoefer
+e-mail:   willi@uni-paderborn.de
+　
+・Waveform Hold and Modify (Wham)
+フリーウェア（だが２５ドルの寄付をお願いしている）。
+サウンドサンプラー・エディタ・コンバータ。.WAV, .AUをサポートする。
+入手先 http:.//www.shareware.com
+email: acb@yoyo.cc.monash.edu.au
+作者：Andrew Bulhak
+
+・LVier Pro 1.B
+シェアウェア。
+Jpeg, BMP, GIFを含みあらゆるフォーマットに対応するグラフィックエフェクタ・コンバータ。
+入手先 http:.//www.shareware.com
+email: mmedia@world.std.com
+作者：Leonardo Haddad Loureiro
+
+

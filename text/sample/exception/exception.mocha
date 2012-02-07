@@ -1,0 +1,25 @@
+/* Decompiled by Mocha from exception.class */
+/* Originally compiled from exception.java */
+
+import java.applet.Applet;
+import java.io.PrintStream;
+
+public class exception extends Applet
+{
+    int array[];
+
+    public void init()
+    {
+        for (int i = 0; i < 10; i++)
+        {
+            System.out.println("loop");
+            array[i] = 500;
+        }
+        System.out.println("end.");
+    }
+
+    public exception()
+    {
+        array = new int[5];
+    }
+}

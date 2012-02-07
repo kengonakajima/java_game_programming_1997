@@ -1,0 +1,158 @@
+\documentstyle[a4j,12pt]{jarticle}
+\title{JavaScriptでゲームを作ろう!?}
+\author{井伊 亮太}
+\begin{document}
+\maketitle
+JavaScript というのを聞いたことのある人も多いと思います。
+Netscape Navigator ではバージョン2.0 から塔載されるようになった機能なのですが、
+最近は Microsoft Internet Explorer でも使えるようになりました。
+Java と名前に付いているくらいだからきっと Java に似てるに違いない！と思ったら
+半分は当たりだけど、半分は外れです。
+たしかに JavaScript はちょっとみると、文法など似ているように思えます。
+だけど、JavaScript にはクラスの定義もないし(もちろん継承とかもありません)、
+変数の型をきちんと宣言することもありません。
+
+プログラムの作り方も大きく違ってきます。
+Java で動くソフトを作ろうと思えば、
+プログラムを書いたあとコンパイルして、
+その後でブラウザかアプレットビューアで実行してやる必要があります。
+ところが JavaScript の場合は、
+普通にウェブのページを書く時と同じように HTML ファイルの中にプログラムを書くだけで、
+あとはブラウザが勝手にプログラムを解釈して実行してくれることです。
+だからJavaScript でプログラムを書くには、わざわざ JDK とかをインストールする必要もないし、
+ブラウザさえあればどんなパソコンでもプログラムを作ることができます。
+それにプログラムを書いたらすぐにブラウザで試してみれるところも魅力です。
+
+JavaScript は Java ほど強力な機能を持っているわけではありません。
+だから本格的なプログラムを作るよりは、
+ホームページをちょっと派手に飾ってみたり、
+フォームに入力された値が正しい範囲にあるかどうかチェックしたりといった使い方が向いています。
+いわば魅力的なページにするためのスパイスといったところでしょうか。
+JavaScript を使えば、ユーザがホームページを訪れた時間にあわせて
+背景の絵を変えたりするのも簡単に実現できます。
+
+この本では、JavaScirpt の詳しい説明はしませんが、
+JavaScript で書いた簡単なゲームのリストと解説をつけました(リストXX)ので、
+これをみればイメージがつかめると思います。
+
+JavaScript についてはネットスケープ社のホームページからたどって、\\
+{\tt http://home.netscape.com/comprod/products/navigator/version\_2.0/script/index.html}\\
+に簡単な紹介があります(ただし英語です)。また\\
+{\tt http://home.netscape.com/eng/mozilla/2.0/handbook/javascript/index.html}\\
+をチェックしてみましょう。JavaScript のハンドブックのページです。
+
+日本だったら、例えば古籏 一浩さん\footnote{ホームページは
+{\tt http://user.cnet.or.jp/o/openspc/}}
+の\\
+{\tt http://user.cnet.or.jp/o/openspc/OpenSpace/JavaScript/JavaRef.html}\\
+には、JavaScript の解説の他、JavaScript で作ったたくさんのプログラムや関連リンクが紹介してあります。
+また、小川 幸泰さんのホームページ\footnote{
+{\tt http://may.csse.muroran-it.ac.jp/$\tilde{}$ogawa/}}
+からたどって\\
+{\tt http://may.csse.muroran-it.ac.jp/$\tilde{}$ogawa/JSTEST/}\\
+では
+色々な JavaScript の機能を自分のブラウザで確認しながら試してみることができます。
+JavaScriptでグラフを(無理矢理)書いてしまうテクニックなどには驚かされますね。
+JavaScript は機能も限られていますし、ブラウザによっては上手く動作しなかったりするなど、
+必ずしも凝ったプログラムを作るのには向いていませんが、
+このような厳しい制約のある中でのプログラム作りに倒錯するのも、
+アマチュアプログラマならではの違った楽しみ方といえます。
+\end{document}
+--- (本文ここまで) ---
+
+あと、この時点でのリストを付けます。単なる数当てです。
+もっと複雑な方がいいのなら、別のを用意します。
+(でも、これだけの解説でも結構ボリュームあると思う。)
+
+========== example.html ==============
+<FRAMESET COLS="35%,65%">
+ <FRAME SRC=question.html NAME="question">
+ <FRAME SRC=answer.html NAME="answer">
+</FRAMESET>
+
+========== question.html =============
+<HEAD>
+<SCRIPT LANGUAGE="JavaScript">
+<!--- hide script from old browsers
+var ans = Math.round(Math.random()*99+0.5)
+var trial = 0
+// end hiding from old browsers -->
+</SCRIPT>
+</HEAD>
+
+<BODY BGCOLOR="#3080c0" TEXT="#702070">
+<SCRIPT LANGUAGE="JavaScript">
+<!--- hide script from old browsers
+// document.writeln("答え=", ans)
+// end hiding from old browsers -->
+</SCRIPT>
+<H2>数当てゲーム</H2>
+1から99までの数を当ててください。<P>
+答えを右上のフィールドに入力して Try ボタンを押します。<P>
+まちがったときのヒントをみながら、
+できるだけ少ない回数で当ててみてください。
+</BODY>
+
+============ answer.html ===============
+<HEAD>
+<SCRIPT LANGUAGE="JavaScript">
+<!--- hide script from old browsers
+function checkNumber(str) {
+    if (str == "") {
+        alert("Enter a number in the field, please.")
+        return 2
+    }
+    var val = parseInt(str, 10)
+    for (var i = 0; i < str.length; i++) {
+        var ch = str.substring(i, i + 1)
+        if (ch < "0" || ch > "9") {
+            alert("Try a number, please.")
+            return 3
+        }
+    }
+    if ((val < 1) || (val > 99)) {
+        alert("Try a number from 1 to 99.")
+        return 4
+    }
+   top.frames[0].trial++
+   if (val > top.frames[0].ans) return 1
+   if (val < top.frames[0].ans) return -1
+   return 0
+}
+
+function hit() {
+   if (confirm("Hit for " + top.frames[0].trial + " times!\n" + "\nDou you want to replay?"))
+       top.location.reload()
+   else
+       top.close()
+}
+
+function miss(flag) {
+    if (flag == 1) {
+         document.guess.response.value = "Too Big!"
+    } else if (flag == -1) {
+         document.guess.response.value = "Too Small!"
+    }
+    document.guess.userInput.focus()
+}
+
+// end hiding from old browsers -->
+</SCRIPT>
+</HEAD>
+
+<BODY>
+<SCRIPT LANGUAGE="JavaScript">
+<!--- hide script from old browsers
+document.bgColor="teal"
+//--->
+</SCRIPT>
+
+<FORM NAME="guess">
+答えは
+<INPUT TYPE="text" NAME="userInput" SIZE="5" VALUE="">
+です。
+<INPUT TYPE="button" NAME="try" VALUE="Try!" onClick="ret=checkNumber(document.guess.userInput.value); if (ret==0) {hit()} else {miss(ret)}">
+<BR><BR>
+ヒント：<INPUT TYPE="text" NAME="response" SIZE=10 VALUE="???">
+</FORM>
+</BODY>

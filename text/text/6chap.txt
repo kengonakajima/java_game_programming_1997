@@ -1,0 +1,2643 @@
+
+第6章 ネットワークゲームを作る
+
+この章では、ネットワークを利用したゲームを作ってみましょう。ここでいうネッ
+トワークというのは、あなたも利用している、インターネットのことです。 インタ
+ーネットを利用したゲームを作る時には、Javaは本領を発揮します。 スタンドアロ
+ーンのゲームを作れるようになったあなたなら、すぐに、ネットワーク ゲームを作
+れるようになります。今までは、ネットワークプログラミングは、専門家 だけのも
+のだったのですが、Javaのおかげで、私達のような普通の人にも ネットワークプロ
+グラミングの面白さが体験できるようになりました。
+まずは、インターネットのしくみを解説し、その仕組から生じる特徴について 考え
+ます。そして、その特徴を、どのようにしてゲームデザインに反映させ るかが、最
+終目標です。そしてさらに、ネットワークゲームの実例として、最近流行の
+MUD(Multi User Dungeon)の基礎になる部分を作ってみましょう。
+
+
+6.1 インターネットのしくみ
+
+     普段何気なく利用しているインターネットは、実は非常に巧妙なしくみになっ
+     て います。実在のシステムに例えるなら、郵便システムのイメージに近いかも
+     しれません。
+     インターネットの中では、あらゆる情報は、パケットと呼ばれている、数十か
+     ら 数キロバイトのデータの塊の形で流れています。それぞれのパケットは、
+     電気的に線(電話線やイーサネットやATMやその他) で繋がっている隣りのマシ
+     ン(ホストということが多い)に渡されて いきます。それぞれのマシンは、隣り
+     のマシンにわたす、ということしか 行なわないわけです。郵便で言えば、小包
+     は、まずは送り主に最も近い 郵便局(この場合はマシン)に届けられ、その郵便
+     局から、宛先に近くて、しかも 最もその郵便局に近い別の郵便局に届けられ、
+     ということを繰りかえして、 小包を受けわたしていくわけです。それを繰りか
+     えせば、最後には、目的地 に到達する、というわけです。インターネットに繋
+     がっているマシン、という のは、こうやって、「隣りのマシンにパケットを渡
+     す」という能力を 持っているマシンのことです。もちろん、隣りというのは、
+     物理的に隣り というわけではなく、「インターネット的に隣り」という意味で
+     す。
+
+#図6.1-1 <NOT YET>     インターネットの概念図
+
+     実際に、パケットがどのようにして流れていくのかを調べるための、
+     tracerouteというプログラムが あります。それを使って、見てみます。
+     tracerouteは次のような 出力をしました。京大マイコンクラブの部室のUNIXマ
+     シン(hasuという名前です) から、アメリカのネットスケープ社のマシンにたど
+     りつくまでのルートが 示されています。
+
+-------------------------------------------------------------
+traceroute to www1.netscape.com (198.95.251.30), 30 hops max, 40 byte packets
+1  calico (130.54.23.62)  3198.43 ms
+2  imelgw.imel.kyoto-u.ac.jp (130.54.23.254)  2908.93 ms
+3  y21-c03.gw.kyoto-u.ac.jp (130.54.6.83)  2849.58 ms
+4  192.50.8.50 (192.50.8.50)  2908.91 ms 
+5  new-kyoto.bb.sinet.ad.jp (150.99.6.1)  2889.09 ms 
+6  new-osaka.bb.sinet.ad.jp (150.99.115.4)  2878.96 ms 
+7  new-nacsis.bb.sinet.ad.jp (150.99.104.1)  2888.99 ms 
+8  nacsis-gate3.sinet.ad.jp (150.99.90.3)  2832.44 ms  
+9  sl-stk-7-S4/0-4xT1.sprintlink.net (144.228.47.113)  3508.97 ms
+10  sl-stk-1-F0/0.sprintlink.net (144.228.40.1)  3328.96 ms   
+11  core4-hssi-1.SanFrancisco.mci.net (206.157.77.65)  2864.49 ms 
+12  core2.SanFrancisco.mci.net (204.70.4.201)  3008.86 ms  
+13  borderx2-fddi-1.SanFrancisco.mci.net (204.70.158.68)  3419.45 ms 
+14  netscape-ds3.SanFrancisco.mci.net (204.70.158.122)  2999.34 ms
+15  www1.netscape.com (198.95.251.30)  2271.26 ms  
+-------------------------------------------------------------
+
+     実に、15段階中継されていますね。気軽にネットスケープ社のホームページを
+     見ることができるのも、間に10以上のルータやゲートウェイマシンが仕事を し
+     ているからこそ、可能になることなのです。
+
+
+6.2 プロトコル
+
+     この聞きなれない言葉の意味は、「やりとりのときの決め事」です。現実の世
+     界でも、 プロトコルが存在します。例えば、電車に乗るときなら、
+
+       1. 機械にお金を入れて、
+       2. 目的地のボタンを押し、
+       3. 出てきたおつりと切符を受けとり、
+       4. それを改札機に通して、
+       5. 以上に間違いがなければ、乗ることができる。
+
+     このようにしなければ、電車には乗ることができません。1から5の順番は変え
+     ることが できない上に、それぞれは正しく行わなければなりません。このよう
+     な、通信や 操作の手順を決めているものが、プロトコルです。
+     インターネットの上を情報がうまく流れていくのも、ルート上にあるそれぞれ
+     のマシンが 色々なプロトコルを守っているからなのです。
+     インターネットの最も基本的なプロトコルは、IP(Internet Protocol)です。こ
+     のプロト コルは、ある大きさまでの情報パケットを、とりあえず他のホストま
+     でバケツリレー式に 伝達しようとするプロトコルです。確実に届くわけではあ
+     りませんし、 順番が逆になることもあり得ます。 これは郵便と同じですね。
+     しかし、このプロトコルだけだと、普通に 文章を送っても、前後が入れかわっ
+     たり、途中が抜けたりしてしまうので使いものになり ません。そこで、このIP
+     プロトコルの上に、「もしも抜けたりしたらもう一回やりなおす」 という機能
+     を加えたプロトコルが、TCP(Transmission Control Protocol)です。この プロ
+     トコルを使うと、送信したバイト列は、正しい順番で確実に送信されます。(そ
+     のかわり 多少速度は落ちます。)
+     ところが、もっと、用途に特化した、使いやすいプロトコルが欲しくなってく
+     るものです。 例えば遠隔地のファイルを取ってくるのに便利なFTP(File
+     Transfer Protocol)や、コンピューターを遠隔操作するTelnet、世界中のドキ
+     ュメントをリンクさせる HTTP(Hyper Text Transfer Protocol)、複数のマシン
+     でファイルを共有するのに便利な NFS(Network File System)など、用途によっ
+     て使いわけられています。これらの概念を 図にすると次のようになるでしょう
+     か。
+
+#図6.2-1 <DRAFT>     ネットワークのプロトコル階層
+
+
+     高レベル  FTP HTTP Telnet SMTP | NFS TFTP BOOTP
+              ---------------------------------------
+                       TCP          |        UDP
+              ---------------------------------------
+                                    IP
+              ---------------------------------------
+     低レベル           電気的接続(ハードウェア)
+
+     それぞれPで終わっているものは、"Protocol"が最後についているためです。上
+     にあるもの ほど、目的に特化していて、下にあるものほど、一般的な機能を提
+     供しています。 上にあるプロトコルは、それより下のプロトコルがないと、機
+     能しないことが重要です。
+
+
+6.3 ソケット
+
+     インターネットに繋がっているマシンには、それぞれ、 32768個づつの、入出
+     力口があります。それらは論理的にそう決めてある だけで、物理的に存在して
+     いるわけではありません。(マシンに32768個も コネクターをつける場所はあり
+     ませんよね。) インターネットに繋ぐため には、常にそれらのうちのいくつか
+     を働かせておく必要があります。 この入出力口は、ポートと呼ばれています。
+     このポートを通って、インターネット からの情報が流れこんでくるわけです
+     (入力)。もちろん、あなたがNetscapeなどを 使って、URLを入力すれば、その
+     URLがポートを通って送信されていきます(出力)。 メイルやtelnet、WWWのサー
+     ビス(http)、ファイル転送(ftp)など、インターネット のサービスを使う時に
+     は、必ず情報はポートを通ります。 32768個の入出力口には、それぞれ番号が
+     振られています。そして、 どのサービスがどの ポートを使うかは、あらかじ
+     め決められていて、例えばメイルなら25番のポート、 telnetなら23番、 ftpな
+     ら21番、httpなら80番、というようになっています。 世界中でこれが統一され
+     ているからこそ、素晴しいネットワーク環境ができている わけですね。ホスト
+     名とポート番号がわかれば、世界中のどのマシンの間でも 自由に、好きなやり
+     かたで(やりかたというのは、プロトコルのこと。telnet,ftp,http,...) 通信
+     できるということです。
+
+#図6.3-1 <NOT YET>     32768個のポート
+
+     さて、実際にネットワークのゲームを作るには、インターネット上で情報を や
+     りとりする必要があるわけですから、何とかしてソケットを使う必要がありま
+     す。 Javaでは、先ほどのネットワーク概念図でいうと、TCPやUDPのレベルのプ
+     ロトコル を直接扱うクラス群と、その上のHTTPを直接扱うクラス群が標準で用
+     意されています。 TCPやUDPを駆使すれば、その上のプロトコルであるHTTPをシ
+     ミュレートすることは できますが、せっかく用意されているのですから、HTTP
+     のクラス群を活用しましょう。 (HTTPが特別扱いされているのは、やはり、ア
+     プレットがページ上に置かれることを 念頭に置いているからです。)実際、
+     HTTPを扱うクラスは、目的に特化されているので、 使いやすくなっています。
+     というわけで、本章では、まずHTTPのクラス群を使って、ネットワークゲーム
+     の可能性 を追及し、その次に、それだけではできない(できにくい)ことを、
+     TCP/UDPのクラス 群を使って 実現することを試みます。
+
+
+6.4. HTTPを使って情報を取ってくる
+
+     まずは、HTTPのクラス群に慣れるために、簡単なサンプルプログラムを作成し
+     て みることにします。このプログラムは、URLを指定して、適当なHTTPサーバ
+     ーから 情報を取ってきます。
+
+
+File name: http.java
+--------------------------------------------------------
+import java.net.*;
+import java.io.*;
+import java.awt.*;
+
+public class http extends java.applet.Applet
+{
+	URL u;
+	URLConnection uc;
+	OutputStream out;
+	InputStream in;
+	TextField tf;
+	Button btn;
+
+	public void init()
+	{
+		tf = new TextField( 50 );
+		setLayout( new BorderLayout() );
+		add("South" , tf );
+		btn = new Button("load");
+		add("Center" , btn );
+	}
+	public boolean action( Event ev , Object o )
+	{
+
+		if( o.toString() == "load" ){
+			System.out.println( tf.getText());
+			try{
+				u = new URL( tf.getText());
+			}catch( MalformedURLException e ){
+				System.out.println("exit 1");
+				return true;
+			}
+			try{
+				uc = u.openConnection();
+				uc.setDoInput(true);
+			}catch( IOException e ){
+				System.out.println("exit 2");
+				return true;
+			}
+			try{
+				in = uc.getInputStream();
+				int c;
+				while(( c = in.read()) != -1)
+				{
+					System.out.print( (char)c );
+				}
+			}catch( IOException e ){
+				System.out.println("exit 3");
+			}
+		}
+		return true;
+	}
+}
+--------------------------------------------------------
+
+File name: test.html
+--------------------------------------------------------
+<applet code=http.class width=400 height=200></applet>
+--------------------------------------------------------
+
+#図6.4-1 <DONE>     動作結果(http.java)
+
+     テキスト入力フィールドにURLを入力してボタンを押すと、そのサイトに接続し
+     て ドキュメントを取りだします。
+     取ってきたバイト列は、そのまま標準出力に吐きだします。日本語のページの
+     場合は、 環境によっては文字化けする可能性もあります。
+     このプログラムのポイントは、クラスURLと、URLConnectionを 使うところで
+     す。URL(Uniform Reference Locator)という言葉ははこれまでにも何回か 出て
+     きていますが、これは、主にWWW(World Wide Web)上で、使用するプロトコル、
+     ホスト、 そのサービス上におけるファイルのアドレスまでを含む表現のことで
+     す。典型的には 次のような一連の文字列です。
+
+     http://www.kuis.kyoto-u.ac.jp:80/~kmc/index.html
+
+     この文字列のhttp:の部分が使用するプロトコルを表します。
+     www.kuis.kyoto-u.ac.jp の部分は、アクセスしたいマシンのIPアドレスです。
+     もちろん、 130.54.23.35のような 10進数表記を使うことも可能です。:80の部
+     分は、アクセス先のマシンのポート 番号を指定します。(ポートの概念は、
+     socketの節で説明しましたね。) HTTPの場合は80番、 ftpの場合は21番が、通
+     常使うポート(Well known port)として知られていますので、 省略が可能で
+     す。/~kmc/index.htmlの部分は、HTTPのサーバーが この文字列を解釈して、指
+     定された 位置にあるファイルを取りだすために使います。もしもあなたが、
+     telnetプログラム を使うことができる環境にあって、現在インターネットに接
+     続されているなら、 次のコマンドを試してみてください。
+
+     telnet www.kuis.kyoto-u.ac.jp 80
+
+     このように80というポート番号を指定してtelnetすると、 HTTPと「手で」話を
+     することができます。HTTPは、
+
+       1. クライアントからコマンド列を送信する。
+       2. 送信に空行を確認すると、
+       3. サーバーから、要求された情報を送信する。
+
+     というプロトコルになっています(すごく大雑把な表現です！) ので、telnet
+     コマンドから次のように 打てば、何か反応が返ってくるはずです。次の例は、
+     コマンドラインの例です。
+
+------------------------------------------------------
+ringo@hasu:/home/ringo % telnet www.kuis.kyoto-u.ac.jp 80
+Trying 130.54.23.35...
+Connected to polyester.
+Escape character is '^]'.
+GET /~kmc/hoge HTTP/1.0           <--この1行だけ入力すればよい。
+
+HTTP/1.0 404 Not found
+Date: Mon, 21 Oct 1996 04:21:59 GMT
+Server: Apache/1.0.0
+Content-type: text/html
+
+<HEAD><TITLE>File Not found</TITLE></HEAD>
+<BODY><H1>File Not found</H1>
+The requested URL /~kmc/hoge was not found on this server.<P>
+</BODY>
+Connection closed by foreign host.
+ringo@hasu:/home/ringo %
+------------------------------------------------------
+
+     hogeというファイルがなかったため、サーバーはエラーメッセージを 返してき
+     ています。サーバーは、GETというメソッドの後に続く 文字列をファイル名と
+     認識するわけです。HTTP/1.0というのは、 HTTPのバージョン指定です。サーバ
+     ーには、これら以外の指定もたくさんできますが、最低 これだけあれば、サー
+     バーからファイルを取ってくることができます。
+     サンプルプログラムの中で使っている、URLクラスや URLConnection クラス
+     は、内部でこれらの文字列を送信/受信するという処理をしているわけです。
+     (注意)
+     appletviewerの設定に注意が必要です。標準の設定では、ネットワーク アクセ
+     ス制限があって、アプレットをロードしてきたサイト以外とは通信できません
+     ので、 Appletと書かれているメニューから、propertiesを選んで、 network
+     accessの項目を、Unrestrictedに選択します。 さらに、proxyサーバーを使っ
+     ている場合は、そのアドレスも同じウインドウで設定する 必要があります。
+     (Netscape 3.xでは、このような設定ができないので、このアプレット は動作
+     しません。)さらに、Windows95用のJDK1.1beta2に含まれるappletviewerは、
+	 この設定をしようとすると例外を発生して止まってしまいます。これはバグの
+	 ようです。新しいバージョンでは、直っていることを期待します。
+
+#図6.4-2 <DONE> appletviewerの設定ウインドウ
+    
+6.5 HTTPを使って情報を送りこむ
+
+     HTTPは、ただ情報を取ってくるだけでなく、情報をクライアントからサーバー
+     に 送りこむやりかたも規定しています。最も広く使われているのは、CGI
+     (Common Gateway Interface)を使うものです。CGIは、CGIプログラムを HTTPの
+     サーバが起動し、そのプログラムへの入力と出力をブラウザにつなぐ しくみで
+     す。CGIを活用することにより、WWW上でよく見られるような、フォームを使った
+	 ページや、常に変化するページを作ることが可能になりました。(常に変化する
+     という点ではSSI(Server Side Include)を思いつく方もいるかもしれません。
+	 しかし、SSIはCGIよりもインタラクティブ性が大分低いので、ここでは説明を
+	 省略します。)
+
+#図6.5-1 <DONE>	 フォームがあるページ
+
+
+#図6.5-2 <NOT YET>     CGIとHTTPサーバとブラウザ
+
+     CGIを使えば、リアルタイムなもの は難しいですが、カードゲームやボードゲ
+     ームのようなものなら、十分に作ること ができます。実際この種のゲームは多
+     くのサイトで試されています。SCEIのページは チェックしておくべきです
+     (http://www.scei.co.jp/love/lm/) このサイトは、恐らくC言語もしくはPerl
+     言語で書かれているCGIを使っています。 CGIを使っているかどうかは、
+     Webページに入力スペースが用意されているかどうか でわかります。
+	 CGIは、どんどん膨らんでいくブラウザの機能を貪欲に生かせる手段です。
+	 Javaアプレットの枠を越えて、Shockwaveやフレーム、Quicktime、チャット
+	 などといった他の技術と融合させることによって、幅の広い表現が可能に
+	 なるのです。
+
+     CGIを使う場合の情報の流れは、次のようになっています。
+
+       1. 入力スペース(フォーム)のあるページをサーバーに置く。
+       2. そのページには、あるCGIプログラムによって処理されると記述されてい
+          る。
+       3. ユーザーがそのページ上で入力して、送信ボタンを押す。
+       4. ブラウザーが入力の内容を解釈して、サーバーに送る。
+       5. それを受信したサーバーは、その内容を、あなたのCGIプログラムに流し
+          こむ。
+       6. あなたのプログラムでその内容を処理する。
+       7. 処理した結果をサーバーに返す。
+       8. サーバーは、それをブラウザーに送りかえす。(そのページに、 また入力
+          スペースがあれば、質問や答えに応じたやりとりを続けるができます。)
+
+
+     Javaしか知らないあなたがCGIを使うには一つ問題点があります。 CGIは一種の
+     プログラムなのですが、そのプログラムは、 常にWWWのサービスをするサーバ
+     ーのマシンに入れておかなければなりません。 個人で契約している多くのプロ
+     バイダでは、CGIを置いておくことができるようになって います(ftp等で、CGI
+     プログラムを自分のディレクトリに転送することによって行ないます。) が、
+     そのマシンでJavaが動くとは限らないのです。C言語のファイルを持っていって
+     そのマシン上でコンパイルするか、Perlなどの、どのUNIXマシンでも動くよう
+     なプログラム 言語で作るかしなければなりません。JavaでのCGIも、有効なの
+     ですが、そのマシンに javaが対応しているとは限らないのです。
+     一つの解決策は、j2cというプログラムを使って、Javaのプログラムを C言語の
+     プログラムに変換し、そのプログラムをサーバー上でコンパイルすることで
+     す。 そうすれば、Javaの知識だけでCGIを作成することができます。(C言語は
+     Javaと似ています から、この際C言語も憶えてしまうのもいいかもしれません
+     が。)
+     フォームばかりでなく、アプレットのプログラムからCGIを使うこともできま
+     す。 次の節以降では、アプレットゲームからCGIを使えるようになることを
+     目標にして、基礎知識から説明していきます。
+
+
+6.6 CGIでゲームを作る基礎技術
+
+     実際にCGIで本格的なゲームを作るのはページ数がいくらあっても足りません
+     から、 その基礎になる技術を紹介します。ここでは、アルゴリズムに注目
+     してください。きっとここで紹介するアルゴリズムは、 Java
+     以外の言語で作る時にも役に立ちます。
+
+     (注意) CGIプログラムを頻繁に呼びだすことは、サーバーに大きな負担をかけ
+     ます。 サーバーの管理者にとっては、CGIでしかもJava(重い)の プログラムを
+     1秒にいくつも起動されることは 不愉快なことです。Pentiumを塔載したかなり
+     高速なサーバーでさえ、 1秒に5回以上CGIプログラムを起動すると、マシンパ
+     ワーが足りなく なってくるほどです。
+     ゲームデザインにあたっては、できるだけ、数秒に一回程度の通信で 済むよう
+     な内容にすることを心掛けてください。具体的には、 カードゲームや将棋と
+     か、シミュレーションゲーム、テーブルトーク スタイルのRPGなどになるでし
+     ょうか。
+
+     例として示すCGIプログラムは、入力スペースを持つようなドキュメントを ブ
+     ラウザの要求に応じて送信/受信します。ユーザはこの入力スペースに、 自分
+     の判断結果を入力して、submit(送信)します。 CGIプログラムはまたこの結果
+     を受けとり、それに基づいて、新しいページ の情報を送信します。その繰りか
+     えしをゲームの入力とするのです。 サンプルの内容は、まだゲームにはなって
+     いませんが、 CGIゲームの基礎を知ることができる 内容になっています。
+     JavaによるCGIのプログラムは、普通のゲームプログラムと同じく、 多くの部
+     分が共通しています。 そこで、例によって、CGIのスケルトンを示します。 こ
+     のスケルトンに多少の変更を加えれば、 簡単にJavaによるCGIプログラム
+     ができあがります。
+
+	   httpのサーバーが起動されているマシンの多くはUNIXシステムであり、ここ
+     で示す例も、UNIXシステム上で試されることを前提にしています。(つまり、
+	 シェルスクリプトを使います。シェルスクリプトというのは、MS-DOS/Windows
+	 で言うとバッチファイルのことで、ひとつの中身が見える実行ファイルのこと
+	 です。文法事項については、今回は必要ないので、省略します。)
+	 動作確認には、Solaris2.5,JDK1.1beta2を使用しました。
+
+     以下に、javaによるCGIプログラムのスケルトンを示します。
+
+     (注意)JDK1.0.2からJDK1.1に移行する時に、文字列の扱いが国際化されたことに
+     伴なって、メソッドの使いかたが若干変更されました。JDK1.0.2のメソッド呼び
+     出しのままJDK1.1のjavacでコンパイルすると、警告が出ます。(コンパイルはで
+     きます。)以下のcgiskel.javaでは、JDK1.0.2とJDK1.1の両方でコンパイルでき
+     るコードにしてありますが、どうしても警告をなくしたい場合は、プログラム中
+     の指示にしたがって、メソッドを入れかえてください。(コメントに "//JDK1.1"
+     などと指示があります。
+
+
+File name: cgiskel.java
+----------------------------------------------------------
+import java.io.*;
+
+class cgimain
+{
+	// メイン・ルーチンでは、自分のインスタンスを作るだけ。
+	public static void main( String args[] )
+	{
+		cgimain c = new cgimain( args);
+	}
+
+	public final int MAXBYTE = 2000;	
+	byte b[] = new byte[MAXBYTE];	//ブラウザからのメッセージを保存
+
+	String topdir;    // アクセスするファイルがあるディレクトリ。引数で指定
+
+	cgimain( String args[] )
+	{
+		int querylen = 0;
+
+		// まずGETかどうか調べ、そうでなければPOSTからだとして入力
+		String getquery = System.getProperty("QUERY");
+		if( getquery != null && !getquery.equals("")){
+			//b = getquery.getBytes();  // JDK1.1
+			getquery.getBytes( 0 , getquery.length() , b,0); //JDK1.0.2
+			querylen = getquery.length();
+		} else {
+			try{
+				querylen = System.in.read( b , 0 , MAXBYTE);
+			}catch( IOException e ){System.out.println("ERROR: bad input");}
+		}
+		URLDecoder ud = new URLDecoder( b );
+
+
+		// ブラウザに送り返す内容を書く。
+		// 最初にHTTPヘッダを送信する。空行を作るための最後の'\n'が大切。
+		// ここではprintlnを使うので、'\n' は一個でよい。
+		System.out.println("Content-type: text/html\n");     
+		System.out.println("<html>");
+		System.out.println("<title>QUERY RESULT</title>");
+		System.out.println("<body>");
+
+
+		// どのファイルを操作するのか？
+		if( args.length == 0 ){
+			System.out.println("ERROR: top directory was not set.");
+			return;
+		} else {
+			topdir = args[0];
+		}
+
+		String file_fullpath = topdir + "/" + ud.getValue("filename");
+
+
+
+		// 実際のファイルの処理をする。実現したい内容によって、ここは
+		// 変更する必要があります。
+		RandomAccessFile f = null;
+
+		if( ud.getValue("method" ).equals("append") ){
+			try{
+				f = new RandomAccessFile( file_fullpath , "rw");
+				String val = ud.getValue("value");
+				//byte[]  valbyte = val.getBytes(); // JDK1.1
+				byte[] valbyte=new byte[val.length()];
+				val.getBytes( 0 , val.length() , valbyte , 0 ); // JDK1.0.2
+
+				f.seek( f.length());
+				f.write( valbyte ,0,valbyte.length) ;
+				f.write( '\n'); // 改行を入れる
+				System.out.println("OK: append successful.");
+				f.close();
+			}catch( IOException e ){
+				System.out.println("ERROR: Error while writing." + e);
+			}
+		} else if( ud.getValue("method").equals("read") ){
+			try{
+				f = new RandomAccessFile( file_fullpath , "r");
+				byte fileb[] = new byte[ (int)f.length() ];
+				System.out.println(f.read( fileb , 0 , (int)f.length() ) );
+				f.close();
+				System.out.println("OK: read successful.");
+				System.out.write( fileb , 0 , fileb.length );
+				System.out.println("");   // 最後に空行を入れる
+				
+			}catch( IOException e ){
+				System.out.println( "ERROR: Error while reading." + e);
+			}
+		} else {
+			System.out.println( "ERROR: method not specified." );
+		}
+	
+	}
+}
+
+// URLDecoderがJavaコアにあればいいのですが。
+// 指定された名前の項目がない場合は、空の文字列を返します。
+// ascii文字以外には対応していません。
+class URLDecoder
+{
+	int valuenum=0;
+	byte newbuf[];
+	int length=0;
+	
+	URLDecoder( byte linebuf[] )
+	{
+		length = linebuf.length;
+		// byteToCharConverterは内部で与えられたバッファを使う
+		// ので、バッファは長めにとっておく(2倍)。
+		newbuf= new byte[ length*2]; 
+		int counter=0;
+		
+		ByteArrayInputStream in = new ByteArrayInputStream( linebuf );
+		for(;;){
+			int c;
+			c = in.read();
+			if( c <= 0 ) break;
+			if( c == '+' ){
+				newbuf[counter++] = ' ';
+				continue;
+			}
+			if( c == '&' || c == '\n' ){
+				newbuf[counter++] = 0;
+				continue;
+			}
+			if( c == '%' ){
+				byte ib[] = new byte[2];
+				ib[0] = (byte)(in.read());
+				ib[1] = (byte)(in.read());
+				//String is = new String( ib);   //JDK1.1
+				String is = new String( ib , 0 );  //JDK1.0.2
+
+				int i = Integer.parseInt( is, 16 );
+				newbuf[counter++] = (byte)( i );
+				continue;
+			}
+			
+			newbuf[counter++] = (byte)(c);
+		}
+
+	}
+	
+	public String getValue( String name )
+	{
+		int len = name.length();
+		int partlen=0;
+
+		for(int i=0;i<length;i++){
+			String sub=null;
+			try{
+				//sub = new String( newbuf , i , len ); //JDK1.1
+				sub = new String( newbuf , 0 , i, len );  //JDK1.0.2 
+			}catch( StringIndexOutOfBoundsException e){
+				continue;
+			}
+			if( sub.equals( name )){
+				for(int j=i;j<length;j++){
+					if( newbuf[j]==0 ){
+						
+						partlen=j-i;
+						break;
+					}
+					if( j == (length-1)){
+						partlen = j-i+1;
+						break;
+					}
+				}
+				//return new String(newbuf,i+len+1,partlen-len -1);//JDK1.1
+				return new String(newbuf,0,i+len+1,partlen-len-1);//JDK1.0.2
+			}
+		}
+		return "";
+	}
+}
+----------------------------------------------------------
+
+File name: test.cgi
+----------------------------------------------------------
+#!/bin/sh
+/home/ringo/java/bin/java -DQUERY=${QUERY_STRING} cgimain /usr/local/httpd/cgi-bin/ringo/java
+----------------------------------------------------------
+
+
+	 CGIプログラムはhttpのサーバによって起動されます。サーバが起動しよう
+     とするファイルは、一つの実行ファイルです。javaを起動するには、単なる
+     実行ファイルを起動する以外のこともしてやる必要があるので、きちんと
+	 Javaのバーチャルマシンを起動するために、実行ファイルとして使えるシェル
+	 スクリプトをかまします。そのシェルスクリプトが、test.cgiというプログラム
+	 です。javaが起動されるまでには次のような処理の過程があります。
+
+#図6.6-1 <NOT YET>	javaが起動されるまで
+
+	* 準備
+	 cgimain.classが働くためには、いろいろと準備してやることが必要です。
+
+    1) CGIプログラムを作る前に、CGIプログラムをサーバーマシン上に置くことが
+    できるかどうかを調べます。
+
+	  それぞれのサーバーごとに、CGIプログラムを置く場所は決まっています。
+	筆者のサイトでは、/usr/local/httpd/cgi-bin/の下に実行ファイルを置くこと
+    になっているので、シェルスクリプトtest.cgiは、
+
+	/usr/local/httpd/cgi-bin/ringo/test.cgi
+
+	の下に置いています。(ringoというのは、筆者のログインネームです。)
+	これ以外にも、個人の 
+	
+	~/public_html/cgi-bin
+
+	というようなディレクトリの下に置くようになっていたり、いろいろと異なる
+	ので、まずそれを調べてみてください。ここで問題なのは、CGIプログラムは、
+	システムにとって危険な動作もできるほど強力なので、
+	一般ユーザはCGIプログラムを置けなくしている
+	サイトが多いということです。大学や会社などで自由に置けるという環境の人
+	はいいのですが、一般プロバイダを使っている場合はまず無理となっています。
+	ですから、CGIプログラムを置くことができるかどうか、まず確認してください。
+
+	2) CGIプログラムは、URLではどのようなアドレスになるのかを調べます。
+	実際の、サーバーのマシン上でのファイルの位置と、URLとして見える位置は異なり
+	ます。例えば筆者の環境では、ファイルのある位置は、
+	/usr/local/httpd/cgi-bin/ringo/java/test.cgi
+	となっていますが、URLだと、
+	http://your.site.or.jp/cgi-bin/ringo/java/test.cgi
+	になります。(マシン名はyourとし、ドメイン名はsite.or.jpと仮定しています。
+	URLがどのようになるのかは、サーバーの管理者に聞いてください。
+	(管理者に聞く、という時には、rootというユーザにメイルを送ってみると
+	よいでしょう。)
+
+	3) CGIプログラムを置く場所が決まったら、test.cgiを入力して、置きます。
+	エディタで入力してください。スクリプトの内容は、一般的に書くと、次のよう
+	になります。
+
+----------------------------------------------------------
+#!/bin/sh
+/home/ringo/java/bin/java -DQUERY=${QUERY_STRING} cgimain /usr/local/httpd/cgi-bin/ringo/java
+----------------------------------------------------------
+
+	このファイルが 
+	/usr/local/httpd/cgi-bin/ringo/test.cgi
+	にあるとすると、WWWサーバは、まず /usr/local/httpd/cgi-bin/ringo/
+	というディレクトリに、カレントディレクトリを移動してからこのプログラムを
+	実行します。そしておもむろに
+	/home/ringo/java/bin/java
+	というプログラムを実行します。この場合は環境変数CLASSPATHが設定されていな
+	いので、javaは、カレントディレクトリ、つまり /usr/local/httpd/cgi-bin/ringo/
+	内からcgimain.classを探します。ということは、CGIプログラムのクラスファイル
+	も、test.cgiと同じディレクトリに置いておく必要があるわけです。
+    どうしてもクラスを特定の場所に置いておきたい場合は、
+
+	export CLASSPATH;CLASSPATH=/where/your/classes/are;
+	
+	という風にあなたのクラスのあるディレクトリを書いて、2行目に挿入してください。
+
+	-DQUERY=${QUERY_STRING}
+	
+	というオプションは、サーバが自動的に設定する環境変数 QUERY_STRINGを、
+	javaが認識できるようにするためのものです。そして
+		
+	/usr/local/httpd/cgi-bin/ringo/java
+	
+	は、このCGIプログラムが読みかきするファイルの位置を、cgimain.classに対して
+	指定しています。(cgimain.javaを見れば、この文字列をどのように使っているか
+	わかります。)
+
+	3) test.cgiを、chmodして、実行ファイルにします。
+	エディタで入力したてのtest.cgiは、ただのテキストファイルで、実行ファイル
+	ではありませんので、コマンドラインから
+	
+	chmod 777 test.cgi
+	
+	として、実行ファイルに変えます。
+
+	4) cgiskel.java を入力してコンパイルする。
+	JDK1.1でコンパイルした場合は、JDK1.0.2用のコードに対して警告が出ます。
+	気になるなら、コメントアウトしてあるJDK1.1用のコードに入れかえてください。
+	
+	5) cgimain.classとURLDecoder.classを、test.cgiのあるディレクトリに移します。
+	2)でCLASSPATHを設定した場合は、そのディレクトリに移してください。
+	以上の作業で、cgimain.classはCGIプログラムとして動作するはずです。
+
+	6)動くかどうか確認する。
+	telnetを使うのが簡便です。(telnetを使って手でサーバと話をするのは、
+	この章の 第4節で説明しています)コマンドラインから、
+
+	telnet your.site.or.jp 80
+	
+	として、telnetを起動します。そして、CGIプログラムのURLが 
+	/cgi-bin/ringo/java/test.cgi
+	である場合には、
+
+	GET /cgi-bin/ringo/java/test.cgi HTTP/1.0(改行)
+	(改行)
+	
+	と入力します。空行を入力するのを忘れずに。
+	しばらく(数秒)してから、以下のような文字列が出てきたらOKです。
+
+------------------------------------------
+<html>
+<title>QUERY RESULT</title>
+<body>
+ERROR: method not specified.
+------------------------------------------
+	
+	以下に、完全なコマンドラインの例を示します。マシン名は、ここではws1です。
+
+------------------------------------------
+$
+$ telnet ws1 80								telnetを80番のポートに対して起動
+Trying 192.168.1.11...
+Connected to ws1.
+Escape character is '^]'.					telnetが出力したメッセージ
+GET /cgi-bin/ringo/java/aho.cgi HTTP/1.0	この行を入力した
+											空行
+HTTP/1.0 200 Document follows				これはサーバーがつけたす文字列
+Date: Tue, 31 Dec 1996 11:01:38 GMT
+Server: NCSA/1.5							サーバータイプはNCSA
+Content-type: text/html
+											空行
+<html>										この行以降が、cgimain.classの出力
+<title>QUERY RESULT</title>
+<body>
+ERROR: method not specified.
+Connection closed by foreign host.			接続が切れた
+$
+$
+------------------------------------------
+
+
+	* cgiskel.javaの内容
+
+     "cgiskel.java" には、ブラウザからの要求を解釈して利用しやすく
+     する部分(URLDecoderクラス)と、若干のファイル操作の部分(cgimainクラス)
+	が含まれています。実際に使う場合には、
+     もっと複雑な処理(例えば、検索や、並べかえ、計算など。)をさせる必要がある
+     でしょうから、そのためのプログラムを加える必要があります。適宜、削除した
+	 り追加したりしてください。
+
+	o URLDecoderクラス
+
+	ブラウザから送られてくる文字列は、URLエンコードされたスタイルに統一されて
+	います。それを元に戻して、内容ごとに分解します。
+	
+	タイプ=内容
+		
+	という塊の配列にして、タイプを指定すれば内容を取り出せるようにしています。
+	処理する文字列は、コンストラクタに指定します。
+	
+	URLDecoder ud = new URLDEcoder( byte[] input );
+
+	内容を取りだすには、
+	
+	String val = getValue( String type );
+	
+	というように、タイプを指定します。
+	なぜこのような動作をするようにしたかというと、それは、一般的な「フォーム」
+	を使った処理をする場合に便利だからです。参考までに次のHTMLファイルを
+	ブラウザで読みこんで送信した場合を説明します。
+
+
+File name: form.html
+--------------------------------------------------
+<html>
+<body>
+<html>
+<title>cgi test</title>
+<form method=get action="http://192.168.1.11/cgi-bin/ringo/java/test.cgi">
+<input type=text name=filename value="scorefile">
+<input type=text name=method value="append">
+<input type=text name=value value="0">
+<input type=submit value="ok">
+</form>
+</html>
+--------------------------------------------------
+
+#図6.6-2 <DONE>	form.htmlの画面
+
+	何も変更せずにokボタンを押すと、cgimainには、次のような文字列が送られて
+	きます。
+
+filename=scorefile&method=append&value=0
+
+	これは、80番にtelnetして最初の行に
+	
+GET /cgi-bin/ringo/java/test.cgi?filename=scorefile&method=append&value=0 HTTP/1.0
+
+	と書いたのと同じです。
+
+	URLDecoderを使って、 getValue("filename")とすると、 "scorefile"という
+	文字列が得られます。
+
+	o cgimainクラス
+
+	cgimainクラスで行なっている処理のポイントごとに解説します。
+
+	1) GETメソッドでもPOSTメソッドでもどちらでも反応できるようにしている
+
+	  まずGETであると仮定して、環境変数QUERY_STRINGの内容が空だったらPOST
+	であるとして標準入力を読みにいきます。環境変数を知るには、
+	System.getProperty(String key)を使います。そして、nullか空かどちらかであれ
+	ば、QUERY_STRINGには入力されなかったことになるので、POSTだと判断します。
+
+	2) どちらかの方法で得られた情報を、URLDecoderに通す。
+	
+	  URLDecoderの働きは、前述の通りです。Stringをバイト列に変換するには、
+	  JDK1.1の場合は、 byte[] getBytes()、JDK1.0.2の場合は、
+	  getBytes( int srcBegin,int length,byte[] buf , int destBegin )
+	  を使用しています。Warningを黙らせたい方は、環境に応じて、コメント
+	  アウトを入れかえてください。
+		
+	3) HTTPヘッダを書きだす。
+		
+      URLConnectionなどが使えないので、自力でバイト列を書きだしています。
+      ここでの表現は一般的に使えるものです。
+	  HTTPの要請上、"Content-type: test/html"のあとに改行文字が2個連続する必要
+	  があるので、printlnを使いながらも'\n'を送信しています。理想的には
+	  Content-Length:も送ればよいのですが、省略しています。
+	
+	4) 実際の処理。
+
+	  この例の場合は、最低限のファイル操作サービスだけを提供
+	します。この時に使うトップディレクトリは、cgimainに対する引数として、
+	シェルスクリプトの中に記述しておきます。ファイル処理の部分は、生々しい
+	コードになっています。途中でエラーなどが発生した場合は、クライアントに
+	HTMLで知らせています。
+
+	このCGIのサービスが成功した場合のメッセージは次のようになります。
+------------------------------------
+<html>
+<title>QUERY RESULT</title>
+<body>
+OK: append successful.
+------------------------------------
+	失敗した場合は次のような文字列を返します。
+------------------------------------
+<html>
+<title>QUERY RESULT</title>
+<body>
+ERROR: Error while writing.java.io.IOException: 
+/usr/local/httpd/cgi-bin/ringo/java/
+------------------------------------
+	このメッセージの"OK"か"ERROR"かを見て、クライアントは、処理を振りわければ
+	よいことになります。
+
+
+
+       CGIのプログラミングにおいて、重要なポイントは、それがアプレットでは 
+	 なくアプリケーションであること、それから、アプレット
+     プログラミング では使わなかった、ファイル入
+     出力を扱う点です。それらについて 順を追って解説します。
+
+
+     * CGIはアプリケーション
+
+     JavaでCGIプログラムを作る場合、アプレットではなくアプリケーションになり
+     ます。 標準入力、標準出力を使ってサーバと連絡を取ります。この節では、一
+     般的な Javaでのアプリケーションプログラムの特徴について見てみます。
+
+     アプリケーションプログラムは、WWWブラウザ上で動作させることが 前提にな
+     っていません。それぞれのシステム上で動作させます。そのため、 HTMLファイ
+     ルも必要ありません。
+
+     * アプリケーションプログラムの特徴
+
+        o public static void main(String[])メソッドを含む
+        o javacによって出力されるクラスを publicにする必要がないため、クラス
+          ファイルの名前と javaソースコードのファイル名は一致させなくてもよ
+          い。
+        o アプレットでできることなら何でもできる。
+        o 無制限にネットワークやマシン資源を活用できる。それには標準入出力
+		も含まれる。
+        o コマンドラインから起動でき、mainメソッドの 引数としてコマンドライ
+          ンパラメータを取得できる。
+
+     簡単な例を示します。
+
+
+
+File name: apli.java
+------------------------------------------------------
+class test
+{
+	public static void main(String args[])
+	{
+		for(int i=0 ; i < args.length ; i++ ){
+			System.out.println( args[0] );
+		}
+	}
+}
+------------------------------------------------------
+
+     実行させるには、アプレットと異なり、シェルやMS-DOSプロンプトの コマンド
+     ラインから次のように入力します。
+
+     >java test
+
+     javaというコマンドに、test.classという ファイルを読みこませています。
+
+     >java test.class
+
+     さて、実行結果ですが、そのまま実行しても何も起こらなかったはずです。 こ
+     のプログラムは、コマンドラインの引数を並べて表示するものなので、
+
+     >java test hoge 808
+
+     などとすると、
+----------
+$ java test hoge 808
+hoge
+808
+$
+$
+----------
+     のような出力が得られます。('$'は、UNIXのシェルのプロンプトです)
+
+    *  mainメソッド
+
+     アプリケーションプログラムの実行は、mainメソッドから始まり ます。mainメ
+     ソッドは、 public static void main(String args[]) と宣言する約束になっ
+     ています。ここで注意点は、mainメソッドは static指定されているので、この
+     クラスに含まれている普通の変数に アクセスすることができないということで
+     す。次の例を見てください。
+
+---------------------------------------------------------
+class hoge
+{
+	int i;
+	static int j;
+	public static void main(String args[] )
+	{
+		int k;
+		i = 100;        // このようにはできない(コンパイルエラー)
+		j = 20;         // これはできる。
+		k = 808;        // これもできる。
+	}
+}
+---------------------------------------------------------
+
+     簡単に言えばstaticなメソッドからはstaticな 変数にしかアクセスできないと
+     いうことです。ですから多くの場合、main メソッドでは、
+     自分自身のクラスをnewする だけ、というものになります。次のよ
+     うな感じです。
+
+---------------------------------------------------------
+class MyApplicationClass
+{
+	public static void main(String args[] )
+	{
+		MyApplicationClass m;
+		m = new MyApplicationClass( args);
+	}
+
+	int i;
+	MyApplicationClass(String args[])
+	{
+		i = 10; // 普通のプログラミングができる。
+	}
+	int anyMethod()  //メソッドも適当に作れる。
+	{
+	}
+
+}
+---------------------------------------------------------
+
+     初心者のうちはハマりやすいポイントです。筆者も悩みました。
+
+     * ファイル入出力
+
+     Javaアプリケーションでは、System.out.printlnのような標準 入出力は、アプ
+     レットの場合と同じように使えます。それ以外にも、ファイルを 直接操作する
+     ことも可能です。CGIを使えば他のマシンから送られてきた情報を サーバが動
+     作しているマシン上に保存することができます。 Javaでは、マシンのディスク
+     に保存されている情報を、ファイル単位で扱います。 ファイルというのはコン
+     ピュータの中に情報を 保存する時の単位になるもので、ある決まった大きさの
+     バイト列です。 それぞれのファイルには名前をつけることができます。
+     Windows95, Macintosh, 多くのUNIX など、Javaが動作するマシン上では、最高
+     200文字程度の名前 までは付けることができるようなので、名前のつけかたに
+     特にこだわる必要は ありません。名前の最後に、".gz" ".txt" ".java"
+     ".html" ".tar.gz"のように ピリオドを使ってそのファイルの中身を示唆する
+     ような文字をつけることは、 ファイルの一覧性を増すので、よい習慣です。
+
+#図6.6-5 <NOT YET>     ファイル単位でディスクに入っている
+
+     ファイルの中はきれいにバイトが並んでいます。ですから例えば文章が入って
+     いる ファイルの場合、先頭から読んでいくと、順に読むことができます。この
+     ような構造は 「ストリーム」と非常に相性がよく、ファイルを扱う時にはよく
+     前から順番に処理する 方法が使用されます。この方法を実現するクラスがJava
+     にもあり、FileInputStream やFileOutputStreamなどがこれにあたります。
+     しかし、途中を飛ばしたり、自由に好きな位置を参照したりしたい場合は、 こ
+     れらを使っていたのでは困難です。そこで、本書では、ファイルを扱う例とし
+     て、 好きな位置を参照することができるRandomAccessFileというクラスの使用
+     例を 紹介します。
+     次の例では、ファイルの文字の並びを逆にして別のファイルを作るということ
+     を行ないます。 
+
+
+File name: rfile.java
+------------------------------------------------------
+import java.io.*;
+
+class rfile
+{
+	public static void main( String args[] )
+	{
+		try{
+			RandomAccessFile rf = new RandomAccessFile("rfile.java" , "r");
+			RandomAccessFile wf = new RandomAccessFile("wrotefile" , "rw");
+
+			for(int i=0;i< rf.length(); i++){
+				rf.seek( rf.length()-i-1 ); // 最初は0だから1を引く。
+				int c = rf.read();
+				wf.write( c);
+			}
+			rf.close();
+			wf.close();
+		}catch( IOException e ){}
+	}
+}
+------------------------------------------------------
+
+     ここではseekというメソッドを使って ファイルの好きな位置にアクセスしてい
+     ます。seekの 引数はlong型で、「次にreadやwriteする時には、 ファイルの何
+     バイト目をreadやwriteするのか」ということを 指定します。また、ファイル
+     の最後にどんどん付けたしていくというような 処理は、次のようにして簡単に
+     実現できます。
+
+------------------------------------------------------
+RandomAccessFile rf =  new RandomAccessFile("hoge", "rw" );
+rf.seek( rf.length() );
+rf.write( 'a' );
+------------------------------------------------------
+
+     この場合、'hoge'という名前のファイルの末尾に、'a'という文字が付けくわえ
+     られます。
+     RandomAccessFileクラスをnewする時には、ファイル名と読み書きモード を指
+     定します。読みだしだけをする場合は例のように"r"、読みかき両方する場合は
+     "rw"と指定 します。"rw"を指定した場合は、名前で指定したファイルが 存在
+     しない場合、長さが0のファイルが自動的に作られます。 RandomAccessFileに
+     は、byte型だけでなく、int型やdouble型などの、1バイト以上ある データも、
+     一発で読みこむためのメソッドもたくさん用意されています。(詳しくは、HTML
+     版のAPI マニュアルを参照してください。)CGIを作る時には、これらのメソッ
+     ド群が威力を発揮することで しょう。
+
+
+6.7 CGIを使ってハイスコアをサーバーに登録する実例
+
+     ゲームデザインの節でも触れたように、プレイヤー同士が競うことができる 環
+     境を用意すれば、それだけでゲームにのめりこむ要素になり得ます。 レーシン
+     グゲームで、一人用でのタイムを皆で競ったりするのは、間接的な 対戦ゲーム
+     になっているということです。 おおがかりな対戦ゲームのアプレットを作るの
+     は大変ですから、 スタンドアローンのゲームに、インターネット上の他のプレ
+     イヤーの ハイスコアを見ることができる機能を付け、 登録もできるようにし
+     てみてはどうでしょうか？
+     このような目的には、CGIが適しています。この節では、 ハイスコア保存のた
+	 めに使える機能を持っているCGIプログラムを作ります。 スケルトンは前節で示
+     したものを使い、CGIプログラムに送信する アプレットは、とりあえずゲーム
+     をして獲得したはずの 点数を入力だけするものにします。(ここでゲームをま
+     た一つ作ってい ては、とても紙面が足りませんので。) Javaアーカイブ・サイ
+     トであるgamelan等には、もっと一般的な働きをしてくれる Java CGIプログラ
+     ムもたくさん登録されていますが、ここではそれらが基本的に どのようにして
+     作られているのかを理解してください。 (実際、一つのCGIゲームを作るには、
+     結局最初からプログラムした方が速かったりします。)
+
+	 ゲームの内容は、UNIXの世界では有名な、"robots"というゲームをモチーフに
+	 して、ゲームオーバーになったときにハイスコアを保存するようにします。
+     プログラムファイルは、
+
+     o Java CGIプログラム cgiskel.java(これは、前節のものそのままなので、
+     省略します。)
+     o Java CGIプログラムを呼びだすシェルスクリプト(これも前節のものそのまま
+     なので、省略します。)
+     o アプレットプログラム "robots.java" これは新しくプログラムします。
+     o robots.classを起動するためのwebページ "test.html"
+
+	 以上の4つとなっています。次に、"robots.java"の全部を掲載します。
+
+	     
+
+File name: robots.java
+-----------------------------------------------------------
+import java.awt.*;
+import java.util.*;
+import java.net.*;
+import java.awt.*;
+import java.io.*;
+
+public class robots extends java.applet.Applet
+{
+	Image double_buffer;
+	Graphics dg;
+
+	int cron=0;
+
+	Image imgs[] = new Image[4];
+	int width ,height;
+	int interval = 50;	// このアプレットでは、スレッドは使いません。
+	Image floorimg;
+	Graphics floorimg_g;
+
+	YourNameWindow win;
+
+	public void init()
+	{
+		width = size().width;
+		height = size().height;
+
+
+		imgs[ROBOT] = getImage( getDocumentBase() , "robot.gif");
+		imgs[PLAYER] = getImage( getDocumentBase() , "man.gif");
+		imgs[JUNK] = getImage( getDocumentBase() , "junk.gif");
+
+		double_buffer = createImage( width , height );
+		dg = double_buffer.getGraphics();
+
+		floorimg = createImage( width , height );  
+		floorimg_g = floorimg.getGraphics();
+		
+		fxsiz = width / xtilesize;
+		fysiz = height / ytilesize;
+
+		field =  new int[fxsiz][fysiz];
+		tmpfield = new int [fxsiz][fysiz];
+		initFloorImage();
+	
+		initField();
+	}
+
+	public void paint( Graphics g )
+	{
+		drawAll();
+		g.drawImage( double_buffer , 0 , 0 , null );
+
+	}
+	public void update( Graphics g )
+	{
+		paint( g );
+	}
+
+	int fxsiz;
+	int fysiz;
+	int field[][];
+	int tmpfield[][];
+	final int BLANK = 0;    // すべて地形の要素として管理
+	final int ROBOT = 1;
+	final int JUNK = 2;
+	final int PLAYER = 3;
+	int plx , ply;
+	int stage=0;
+	int wait_bonus=0;
+
+	Color bg1 = new Color( 0x001028 );
+	Color bg2 = new Color( 0x113322 );
+	Color fg = new Color( 0xffee44 );
+
+	int xtilesize =20,ytilesize=20;    // タイルの縦横の大きさ
+
+	int score=0;
+	String yourname = "input yourname";
+
+	Random ran = new Random();
+
+	void initFloorImage()
+	{
+		int c=0;
+		for(int i=0;i<fxsiz;i++){
+			c = i;
+			for(int j=0;j<fysiz;j++){
+				c++;
+				if( (c%2)==0){
+					floorimg_g.setColor( bg1 );
+				} else {
+					floorimg_g.setColor( bg2 );
+				}
+				floorimg_g.fillRect( i*xtilesize , j*ytilesize , 
+									xtilesize , ytilesize );
+			}
+		}
+	}
+
+	void initField()
+	{
+		int num;
+
+		// 敵の数を決める
+		if( stage < 5 ) num = stage * 5 ; else num = 25 + stage ;
+
+		// フロアを初期化
+		for(int i=0;i<fxsiz;i++){
+			for(int j=0;j<fysiz;j++){
+				field[i][j] = BLANK;
+			}
+		}
+		// 敵を配置
+		for( int i = 0 ; i < num ; i++ ){
+			int x = ( ran.nextInt() & 0xffff ) % fxsiz;
+			int y = ( ran.nextInt() & 0xffff ) % fysiz;
+			field[x][y] = ROBOT;
+		} 
+		// プレイヤーを配置
+		for(;;){
+			int x = ( ran.nextInt() & 0xffff ) % fxsiz;
+			int y = ( ran.nextInt() & 0xffff ) % fysiz;
+			if( field[x][y] != BLANK ) continue;
+			field[x][y] = PLAYER;
+			plx = x;
+			ply = y;
+			break;
+		}
+	}
+
+	// この返り値がtrue の場合は、歩けなかった。
+
+	boolean walk( int rx , int ry , boolean teleport )
+	{
+		// 調べたり、数えたり。
+		int robotno=0;
+
+
+		for(int i=0;i<fxsiz;i++){
+			for(int j=0;j<fysiz;j++){
+				if( field[i][j] == ROBOT ) robotno++;
+				if( field[i][j] == PLAYER ){ plx = i; ply = j; }
+				if( field[i][j] == JUNK) tmpfield[i][j] = JUNK; 
+				else tmpfield[i][j] =BLANK;
+			}
+		}
+		
+		// フィールドのコピーを一時的に作る。全体が一斉に新しい状態
+		// に移行するようなゲームでは、このようにテンポラリのバッファを
+		// 作る必要がある。(ライフゲームなど)
+		if( (plx+rx) < 0 || (plx+rx) >=fxsiz ){
+			return true;
+		}
+		if( (ply+ry) < 0 || (ply+ry) >=fysiz ){
+			return true;
+		}
+		if( field[plx + rx][ply+ry] == JUNK ){
+			return true;
+		}
+
+		tmpfield[plx+rx][ply+ry] = PLAYER;
+		plx += rx; ply += ry;
+
+		int score_store = score;
+
+		for(int i=0;i<fxsiz;i++){
+			for(int j=0;j<fysiz;j++){
+				if( field[i][j] == ROBOT ){
+					int relx = 0 , rely = 0;
+					if( i > plx ) relx = -1;
+					if( i < plx ) relx = 1;
+					if( j > ply ) rely = -1;
+					if( j < ply ) rely = 1;
+					switch( tmpfield[i+relx][j+rely] ){
+						case ROBOT:
+						tmpfield[i+relx][j+rely] = JUNK;
+						score += 20;
+						break;
+						case JUNK:
+						score += 10;
+						break;
+						case PLAYER:
+						if( teleport == true ){
+							die();
+						}
+						score = score_store;
+						plx -= rx;
+						ply -= ry;
+						
+						return true;
+
+						case BLANK:
+						tmpfield[i+relx][j+rely] = ROBOT;
+						break;
+					}
+				}
+			}
+		}
+
+		// できあがったバッファを元のバッファにコピーする。
+		
+		for(int i=0;i<fxsiz;i++){
+			for(int j=0;j<fysiz;j++){
+				field[i][j] = tmpfield[i][j];
+			}
+		}
+
+		// 敵を数えて誰もいなかったらクリア
+		if( countEnemy(field) ==0 ){
+			stage++;
+			initField();
+		}
+		
+		drawAll();
+		repaint();
+		
+		return false;
+	}
+	// windows95用のJDK1.1のbeta2では、過去との互換性を保つために
+	// 用意されているkeyDownメソッドばかりではなく、1.1で加わった
+	// keyListenerを使ったやりかたでもキーイベントが飛んでこないので
+	// しかたなく、マウスによる操作にしている。
+	int gridx,gridy;
+	public boolean mouseMove( Event e , int x , int y )
+	{
+		gridx = x / xtilesize;
+		gridy = y / ytilesize;
+		repaint();
+		return true;
+	}
+	// キーボードでも操作できるようにしておく。
+	public boolean keyDown( Event e , int c )
+	{
+		switch( c ){
+			case 'h': walk( -1 , 0 , false ); break;
+			case 'j': walk( 0 , 1 , false );break;
+			case 'k': walk( 0 ,-1 , false );break;
+			case 'l': walk( 1 , 0 , false );break;
+			case 'y': walk( -1,-1, false );break;
+			case 'u': walk( 1,-1,false );break;
+			case 'b': walk( -1,1,false );break;
+			case 'n': walk( 1,1,false );break;
+			case 't': 	
+				  int destx = ( ran.nextInt() &0xff)%fxsiz ;
+				  int desty = ( ran.nextInt() &0xff)%fysiz ;
+				  walk( destx-plx , desty-ply , true );
+				  break;
+			case 'w':
+				  waitRobots();
+				  break;
+			case ' ': walk(0,0,false );break;
+			
+		}
+		return true;
+	}
+	public boolean mouseDown( Event e , int x , int y)
+	{
+		gridx = x / xtilesize;
+		gridy = y / ytilesize;
+		int dx =808, dy=808;
+		boolean ret;
+
+		if( gridx == ( plx + 1) ) dx = 1;
+		else if( gridx == (plx -1 )) dx = -1;
+		else if( gridx == plx ) dx = 0;
+		if( gridy == ( ply + 1) ) dy = 1;
+		else if( gridy == (ply -1 )) dy = -1; 
+		else if( gridy == ply ) dy = 0;
+
+		// 主人公の近くをクリックすると、普通に歩く。
+		// 遠くをクリックすると、テレポートする。 
+		// シフトキーを押しながらクリックすると、「待つ」。
+		if( ( e.modifiers & Event.SHIFT_MASK ) != 0){
+			waitRobots();
+		} else
+		if( dx >= -1 && dx <= 1 && dy >= -1 && dy <= 1 ){
+			walk( dx,dy,false );
+			
+		} else {
+			int destx = ( ran.nextInt() &0xff)%fxsiz ;
+			int desty = ( ran.nextInt() &0xff)%fysiz ;
+			walk( destx-plx , desty-ply , true );
+		}
+	
+		return true;
+	}
+	void waitRobots()
+	{
+
+		int c;
+		int total_robots = countEnemy(field);
+		for(;;){
+			// イベント処理のメソッドの中で描画するにはこうする。これを使うと
+			// 好きなタイミングで描画させることができる。少々裏技的。
+			paint( getGraphics() );    
+			c = countEnemy(tmpfield);
+			if( c == 0 ){
+				wait_bonus = total_robots * stage;
+				score += wait_bonus;
+				initField();
+				break;
+			}
+
+			if( walk( 0 , 0 , false ) == true ){
+				// waitしてるのに歩けない場合、それは死だ。
+				die();
+				break;
+			}
+		}
+	}
+
+	void die()
+	{
+		win = new YourNameWindow( this , score , yourname);
+
+		stage = score = 0;
+		initField();
+	}
+	int countEnemy(int [][]f)
+	{
+		int counter=0;
+		for(int i=0;i<fxsiz;i++){
+			for(int j=0;j<fysiz;j++){
+				if( f[i][j] == ROBOT ) counter++;
+			}
+		}
+		return counter;
+	}
+
+	void drawAll()
+	{
+		// まず消す
+		dg.drawImage( floorimg , 0 , 0 , null );
+
+		// フィールドを描く
+		for(int i=0;i<fxsiz;i++){
+			for(int j=0;j<fysiz;j++){
+				if( field[i][j] != BLANK ) 
+				dg.drawImage( imgs[field[i][j]] , i*xtilesize ,j*ytilesize,this);
+			}
+		}
+		
+		// グリッドを描く
+		dg.drawRect( gridx*xtilesize , gridy*ytilesize , 
+					xtilesize-1,ytilesize-1 );
+		// 点数表示
+		dg.setColor( fg );
+		dg.drawString( "SCORE " + score + "/STAGE " +
+					  stage + "/Wait Bonus " + wait_bonus,10,30);
+	}
+}
+
+class YourNameWindow extends Frame
+{
+	Button b;
+	TextField t;
+	Label l;
+	Panel p;
+	TextArea tarea;
+
+	int score;
+	robots parent ;
+	// your.site.or.jpには、あなたがCGIを置くサイトのホスト名を書きます。
+	// HTMLからgetParamするようにしてもよいでしょうし、getDocumentBase()
+	// するのもスマートです。それは宿題ということにしておきます。
+
+	// 以下のアドレスは、CGIプログラムを置く場所に応じて変えてください。
+	String cgi_url = "http://your.site.or.jp/cgi-bin/ringo/java/aho.cgi";
+
+	YourNameWindow(robots parent , int score , String name)
+	{
+		super("Highscore table");
+		this.score = score;
+		this.parent = parent;
+		
+		setLayout( new BorderLayout() );
+		p = new Panel();
+		p.setLayout( new BorderLayout() );
+		b = new Button("Send");
+		t = new TextField(name );
+		l = new Label( "your score: " + score );
+
+		tarea = new TextArea( "now loading score list" ,10,20 );
+		p.add( "West" , l );
+		p.add( "Center" , t );
+		p.add( "East" , b );
+		add( "North" ,p );
+		add( "Center" , tarea );
+		setForeground( new Color( 0xffee44 ));
+		setBackground( new Color( 0x001028 ));
+		resize(320,250);
+		show();
+
+		// ハイスコアの表を取ってくる。
+		String args[] = { "filename=robots_score" , "method=read" };
+		
+		HTTPAccess ha=null;
+		String listcontents=null;
+		try{
+			ha = new HTTPAccess( cgi_url , "POST" , args );
+			//String listcontents  = new String( ha.getDocument() ); // JDK 1.1
+			byte buf[] = ha.getDocument();  // JDK1.0.2
+			listcontents = new String( buf , 0 , 0 , buf.length ); //JDK1.0.2
+		}catch( Exception e ){
+			System.out.println( e ); 
+			listcontents = "Network Error.\nPlease reconfigure\n" + 
+			"appletviewer network properties.\n";
+		}
+		tarea.setText( listcontents );
+	}
+
+	public boolean action(Event e, Object o )
+	{
+		if( e.target == b ){
+			if( t.getText().length() == 0 ){
+				return true;
+			}
+			// スコアをCGIに送る。ここでもHTTPAcecssを使う。
+			String args[] = 
+			{ "filename=robots_score" , 
+			  "method=append" ,"value="+  t.getText()+":"+score};
+			try{
+				HTTPAccess ha = new HTTPAccess( cgi_url , "POST" , args );
+				byte [] ret = ha.getDocument();
+				System.out.println( new String(ret ,0,0,ret.length) ); //1.0.2
+			}catch( Exception ex ){
+				System.out.println( ex );
+			}
+			parent.yourname = t.getText();
+			hide();
+		}
+		return true;
+	}
+
+	public String getName()
+	{
+		return t.getText();
+	}
+}
+// 使いかたは、まず、URLの文字列またはURLを指定して、初期化し、そのあと
+// getDocumentするだけ。そうすると結果のbyte配列が得られる。
+class HTTPAccess
+{
+	URL url;
+	URLConnection uc;
+	String request_string;
+	String method;
+
+	int read_unit = 1000;
+
+
+	HTTPAccess( String location , String method , String[] values ) 
+	throws MalformedURLException
+	{
+		this( new URL( location) , method , values );
+	}
+	HTTPAccess( String location ) throws MalformedURLException
+	{
+		this( new URL( location ) );
+	}
+	// 普通のコネクション
+	HTTPAccess( URL u )
+	{
+		method = "GET";
+		url = u;
+	}
+	// CGIを使う方
+	HTTPAccess( URL u , String method , String[] values )
+	throws MalformedURLException
+	{
+		request_string = "";
+		this.method = method;
+
+		for(int i=0;i< values.length;i++){
+			request_string += URLEncoder.encode( values[i] );
+			if( i == (values.length-1) )break;
+			request_string += "&";
+		}
+		if( method.equals("GET") ){
+			url = new URL( u.toExternalForm() + "?" +  request_string );
+
+		} else if( method.equals("POST") ){
+			url = u;
+		}
+
+	}
+
+	byte[] getDocument() throws Exception
+	{
+		
+		ByteArrayOutputStream baout=null;
+		try{
+			uc = url.openConnection();
+			uc.setUseCaches(false);
+			uc.setDoInput(true);  // これをやらないとダメ。
+
+			if( method.equals("POST") ){
+					uc.setDoOutput(true);  // これも重要
+					OutputStream out = uc.getOutputStream();
+					//byte b[] = request_string.getBytes();  // JDK1.1
+
+					byte b[] = new byte[10000]; //JDK1.0.2
+					request_string.getBytes(
+							0 , request_string.length(),b,0 );//JDK1.0.2
+					
+					out.write( b , 0 , b.length );
+					out.write( '\n' );
+					out.close();
+			}
+			DataInputStream in =
+			new DataInputStream( uc.getInputStream() );
+			baout = new ByteArrayOutputStream();
+
+			byte  b[] = new byte[read_unit];
+			while(true)
+			{
+				int nread = in.read( b, 0 , read_unit );
+				if( nread == -1 ) break;
+				baout.write( b , 0 , nread );
+			}
+			in.close();
+			baout.close();
+		
+		}catch( Exception e ){	throw e; }
+		return baout.toByteArray();
+	}
+}
+-----------------------------------------------------------
+
+File name: test.html
+-----------------------------------------------------------
+<applet code=robots.class width=400 height=400></applet>
+-----------------------------------------------------------
+
+#図6.7-1 <DONE>	動作結果(robots.java)
+
+	このアプレットが動作するには、robots.classと同じディレクトリに、
+	man.gif,robot.gif,junk.gifの3つのファイルが置かれていることが必要です。
+	これらのファイルは、CD-ROMに収録されています。
+	
+	* ゲームのルール
+	
+	o 主人公は、8方向に移動できる。
+    o ロボットは敵で、8方向に移動する。
+	o ロボットは、必ず主人公の方に近づいてこようとする。
+	o 主人公は、ロボットに囲まれると、それ以上移動できない。
+	o 主人公は、操作により、好きな時にテレポートできる。テレポートする
+    先はランダムで、そこにロボットやゴミがあるとゲームオーバー。
+    o 二つ以上のロボットが同じマスに進もうとした場合は、進んだ先のマスにゴミ
+    ができ、それらのロボットは消滅する。(点数追加)
+    o ゴミに当たったロボットは、消滅する。(点数追加)
+	o すべてのロボットを消滅させると、ステージクリア。
+	o それ以上移動しなくても全てのロボットが死ぬようなパターンになった
+    場合、「見切り待ち」することができ、その場合は、その時にやっつけた
+    ロボットの個数とステージ番号によって計算される点数が入る。
+
+#図6.7-2 <DRAFT> 	waitボーナス
+
+	*操作方法
+
+	o マウスを使う場合
+	
+#図6.7-3 <DRAFT>	マウスを使って操作
+
+	o キーボードを使う場合
+
+#図6.7-4 <DRAFT>	キーボードを使って操作
+
+	* 名前入力ウインドウの操作方法
+
+#図6.7-5 <DONE>		ウインドウで名前を入力する
+
+#図6.7-6 <DONE>		ソケットを繋ぐことができなかった
+#図6.7-7 <DONE>		CGIに接続できた
+
+
+
+	*アプレットプログラム"robots.java"の構成
+
+     "robots.java"は、4章で紹介したスケルトンプログラムを基本にしてはいます
+     が、大幅に変更していますので(何しろ、Threadも使っていません)違うものと
+     して考えたほうがよいでしょう。
+  
+     "robots.java"には、
+
+     o robots.class
+     o YourNameWindow.class
+     o HTTPAccess.class
+     
+	 以上3つのクラスが含まれています。このうち、ゲームの内容に関係するのは、
+     robots.class と、YourNameWindow.classのふたつです。HTTPAccess.classは、
+     一般的なHTTPアクセスを実現するためのもので、他のプログラムからも使い
+	 やすいようにしてありますので、CGIゲームを作る場合は、この部分を切りだ
+	 して、独立したプログラムとして流用してください。もちろん、CGIを使わな
+     くても、普通にサーバーからドキュメントを取りだすことにも使えます。
+	
+    * robots クラスと YourNameWindowクラス
+
+     ポイントごとに説明していきますが、この章はネットワークプログラミングが
+	 テーマですから、以上については非常に簡単な説明に留めておきます。
+
+     1) 画像を配列で管理している
+
+     このゲームで使う画像は3種類ありますから、それぞれの番号に応じて配列の
+	 要素を初期化しておけば、
+
+---------------------------------------
+// フィールドを描く
+for(int i=0;i<fxsiz;i++){
+	for(int j=0;j<fysiz;j++){
+		if( field[i][j] != BLANK ) 
+		dg.drawImage( imgs[field[i][j]] , i*xtilesize ,j*ytilesize,this);
+	}
+}
+---------------------------------------
+
+	 というようなコードで地形を一発で描画できます。画像の種類が増えても、
+	 描画部分のプログラムに変更を加える必要はありません。
+	
+	 2) 敵の位置などの情報は、すべて地形に持たせている。
+
+	 ゲームプログラムにおいては、ほとんどの場合、敵の位置を表すために、
+	 敵のX座標やY座標、状態などを配列にして持ちますが、このプログラムでは、
+     フィールドを表す2次元配列 int field[][]だけしかありません。必要ないから
+     です。主人公の位置もそのようにできるのですが、計算が便利になるように、
+	 plx と plyという名前で宣言して使用しています。
+	 
+     3) 床の塗りつぶし用に、Imageを一枚余分に作っている。
+
+	 これは速度を稼ぐためです。いちいち全体を描画する時に、背景の模様を描いて
+	 いたのでは、遅くてしかたがないので、こうしています。なぜ背景に模様をつけ
+	 たかというと、それはプレイヤーとロボットの位置関係が斜めの場合でもはっき
+     りわかるようにするためです。
+***  initFloorImage()メソッドで作っています。
+
+     4) 敵が移動する時に、仮のバッファを作っている。
+
+	 フィールド上の全てが一度に動くようなモデルのゲームでは、移動の処理の時に
+     このプログラムでしているような仮のバッファを作らないと、ループ処理の順番
+     の問題で、うまく動作しません。(典型例が、ライフゲームのプログラムなので
+     すが、残念ながら、説明するスペースがありません。gamelan.comなどでチェック
+	 してみてください。)
+***  walk()メソッドの中でこの処理をしています。
+
+	 5) スコア登録用に、別なウインドウを開いている。(YourNameWindow)
+
+	 robotsクラスの中では、プレイヤーが死んだ時に die()というメソッドが呼び
+     だされます。die()の中では、
+
+     win = new YourNameWindow(this , score,yourname );
+
+     というようにして、名前入力用のウインドウを生成しています。
+
+     YourNameWindow win = new YourNameWindow(.....);
+
+	 という風にせずに、変数winの宣言部分だけ外部にしてあるのは、Javaの
+	 「ガベージコレクタ」の処理をさせないようにする工夫なのですが、それについ
+     ては本書の範囲を越えますので、省略します。さて、YourNameWindowクラスの
+	 中では、コンポーネントを使っています。名前を手軽に入力するためです。
+	 コンポーネントは、このような用途には向いています。この例では、まずPanel
+	 クラスを作り、そこにLabelとTextFieldとButtonを一つづつ貼りつけ、そうして
+     できたPanelを今度はAppletに貼りつけ、さらにハイスコアリスト表示用の
+	 TextFieldを貼りつけています。それぞれの位置関係は、addメソッドに与える
+     方角で指定しています。このレイアウトをするには、APIマニュアルの
+     awt.BorderLayoutの項目を参照してください。
+
+     7) paintを直接使う裏技を使っている。
+	 アプレットにおけるrepaintは、呼びだしても、repaintを呼びだしている
+	 メソッドの処理が終わるまでは、再描画されません。これは、waitRobots()
+     のような、一つのメソッドの処理中に何回も描画したいような場合には問題
+     が生じます。それを解決するには、多少裏技的ですが、paintを直接に呼びだ
+     す方法を取ります。それには、アプレットの中なら
+
+     paint( getGraphics() );
+     
+	 という決まった書きかたをします。こうすると、好きなタイミングで描画する
+     ことができます。     
+***  waitRobots()メソッドのforループの中で行なっています。
+
+	* HTTPAccessクラス
+ 
+     この節で重要なのはこのクラスです。汎用的に使えるように作ってあります。
+     このクラスの中では、URLConnectionという、HTTPのサーバーと通信するのに
+     非常に都合のよいクラスを使用しています。このクラスを使う手順は、
+
+	 1) とにかく、通信したいサーバーのURLを得ます。HTTPAccessでは、引数として
+     呼びだし元から得るようになっています。
+***  コンストラクタの中では次のようなコードでURLを得ています。
+
+	 URL url = new URL( location);
+
+     2) URLが求まったら、
+***  getDocumentメソッドの中で、
+
+     URLConnection uc = url.openConnection();
+
+	 のようにして、URLConnectionを得ます。
+	
+	 3)
+***  URLConnectionを得た後、
+ 必要に応じて、uc.setDoInput(true); または uc.setDoOutput(true);
+     を行ないます。true を指定すると、入力または出力をする、
+     ということになります。
+	 デフォルトでは、setDoInput(true); uc.setDoOutput(false);になっています。
+
+	 4) データを取ってくる場合は、
+
+	InputStream in = uc.getInputStream();
+	
+	のようにしてストリームを用意し、読みこみの準備をします。HTTPAccessでは、
+	特に必要というわけではありませんが、DataInputStreamを通して使っています。
+
+	POSTメソッドを使う時など、出力する場合には、
+
+	OutputStream out = uc.getOutputStream();
+
+	のようにします。POSTメソッドを使う時には、HTTPサーバは、POSTメソッドの
+	入力があってからその返答として出力してきますので、先に出力してやる必要
+    があります。出力する場合は、サーバーに送信する文字列を writeしてやります。
+*** getDocumentの中では、request_stringに送信したい文字列を保存してから、
+***	request_string.getBytes( 0 , request_string.length(),b,0 );//JDK1.0.2
+***	out.write( b , 0 , b.length );
+***	out.write( '\n' );
+***	として、URLConnectionに書きこんでいます。
+
+	5)
+*** サーバからの返答を
+    実際に読みこみます。read()を使います。
+
+
+	URLConnectionを使うと、HTTPプロトコルの内部を知ることなく、アプレットや
+    アプリケーションの中からHTTPコネクションを作ることができます。
+
+	最後に、HTTPAccessのメソッドの表を示します。
+
+#表6.7-1 <DONE>	HTTPAccessのメソッドの表
+-------------------------------------------------------
+コンストラクタ
+
+o HTTPAccess( String location , String method , String[] values ) 
+	throws MalformedURLException
+o HTTPAccess( URL u , String method , String[] values )
+	throws MalformedURLException
+o HTTPAccess( String location ) throws MalformedURLException
+o HTTPAccess( URL u )
+
+ドキュメントを取りだす
+o byte[] getDocument() throws Exception
+-------------------------------------------------------
+
+	* さらに発展させる
+
+	robots.javaでは、最低限の機能だけを実現しました。テキストフィールドには、
+    サーバーから送られてくる文字がそのまま入っていますが、もっと凝った表示
+    にしたほうが効果的でしょうし、CGIにもっといろいろな機能を持たせて、
+    各プレイヤーがハイスコアを出さなかった時には登録しないとか、全体を通して
+    スコア順に並べて送信するとか、上位10人だけ送信するとか、発展形はいろいろ
+    考えられます。どのように発展させていくのかは、みなさんの自由です。ここで
+	得た知識を使えば、ハイスコア保存だけでなく、ゲームの内容にCGIを使うこと
+	もできます。
+      この章の第5節では、「カードゲームやボードゲームなど
+    のような、リアルタイムでないものなら、十分に作ることができます。」と
+	述べていますが、その理由は何でしょうか？なぜ、リアルタイムなゲームは
+	作れないのでしょうか？
+
+    まず第一に、CGIプログラムは、複数同時に起動されるので、それぞれのCGI
+    プログラム同士が情報をやりとりするには、ファイルその他の手段を使うしか
+	ないのですが、その場合、次の図に示すような、同期上の問題が発生するのです。
+
+#図6.7-8 <NOT YET>	ファイルを使うと同期できない可能性がある
+
+	これを防ぐには、同期のための情報を保管する情報ファイルを作って、
+	CGIプログラムが起動した時にはまずそのファイルにアクセスして、許可が出る
+	まで待つようにするなどといったややこしいことをする必要があります。
+	基本的にCGIプログラムは、保存されているファイルの内容以外に、状態を保存
+	しておくことができないので、ゲームに関連する全ての情報が、CGIプログラムと
+	ブラウザの間で往復するようなデザインにしておくべきです。その情報は
+	サーバーから送信されるときにはHTMLという形で、ブラウザから送信される
+    時にはGETやPOSTに指定する文字列という形で移動するのです。そして、プレイヤ
+	の入力とCGIプログラムの処理によってその情報の塊が変化していくという
+	わけです。
+
+#図6.7-9 <NOT YET>	情報のパッケージをCGIプログラムとユーザがやりとりする
+
+	カードゲームやクイズゲームやすごろく、アドベンチャーゲームなどは、まさに
+    このスタイルにぴったりあてはまります。複数参加型のアドベンチャーゲーム
+	などをWWW上に実現すればかなり面白いものになるはずです。普通のアドベン
+	チャーゲームに飽きてしまったという方、そういうゲームを作ってみませんか？
+
+
+6.8 Remote Method Invocation(RMI)
+
+     JDK 1.1から、java.rmiというパッケージのクラス群、APIが使えるようになり
+     ました。これは、ネットワークを介して、他のJavaバーチャルマシン上で動作
+     しているオブジェクトの持つメソッドを実行してしまおうというものです。実
+     際には、Javaの各種クラスの代理となるクラスをバイト列に変換して、
+	 それを送受信するというようなことをしています。
+	 このクラス群を、ゲームプログラム間の情報
+     交換に使えば、ゲームを作ることができます。Javaのsynchronizedなどの
+	 機構をゲームの同期に生かせば、かなり進んだ形でネットワークゲームを作る
+	 ことができそうですが、研究不足で、例を示すところまで達していません。
+	 ですから、この節では、概観だけに留めておきます。
+
+   
+  	 RMIの動作は基本的には次の図のようになります。
+
+#図6.8-1 <DRAFT>     rmiのサーバクライアントの関係
+
+------------------------------------------
+     アプレット/アプリケーション
+       |
+     ネットワーク アプレットは、ネットワークを通じて送信される。
+       |
+     アプリケーション・サーバ
+------------------------------------------
+
+     RMIを使って相互に通信をするには、サーバを用意する必要がありま す。そし
+     て、サーバ側のプログラムもjava.rmiを使って、 実際のサービスを提供するよ
+     うにしておきます。サーバを用意するために必要な プログラム群も、JDK1.1に
+     は附属しています。
+
+     この方法は、サーバを用意しなければならないという点で、次項の 「ゲーム用
+     の専用サーバーを用意する」と本質的には同じで、ある程度 手間もかかりま
+     す。そして、単一のサーバが存在しているわけではないため、サーバ同士の
+	 連絡の取りあいに苦労することになります。対戦ゲームでは、情報の同期が
+	 最低限必要なのですが、そのことは、サーバの設計を非常に困難にします。
+	 それはRMIを使った場合も同様です。
+	 RMIを使うことの強みは、クライアント(上の図では、アプレット/アプリ
+	 ケーション) とサーバが、「メソッド呼びだし」という、言語仕様で決定され
+	 ている堅固なプロトコルを使って通信できることです。
+	 自前でプロトコルを工夫しなくてもよいのです。
+	 通信ゲームではプロトコルの策定が面倒ですが、 その必要がないわけです。
+	 (もちろん性能の問題はありますが。)
+        また現在は、Javaのクラスライブラリを使う以外のRMIの使用方法がないので、
+	 クライアントプログラム
+     がJavaのものだけである場合以外は使えません。(つまり、 Javaのクライアン
+     トと、Windowsのアプリケーションのクライアントとが通信する ような場合は
+     無理だということです。)
+	 RMIをフルに使えば、かなりの内容のゲームを作ることができそうです。しかし
+	 CGIや、Socketを直接用いてサーバを用意する方法と並ぶ有効性を発揮できるか
+	 どうかは、検証する必要がありそうです。
+
+
+6.9 ゲーム用の専用サーバーを用意する
+
+     これは、これまでに扱ったCGIやRMIを使った通信にくらべて 最も手間のかかる
+     実装です。そして今では古めかしくもあります。 しかし、やりかたによっては
+     ゲームの内容に最も凝れる実装方法でもあります。 サーバー自体を一から作る
+     ので、パフォーマンスも優れています。 この方法は、大規模なゲームにも対応
+     できます。 本格的にサーバを運営する場合は、UNIXまたはそれに準じるシステ
+     ム (linux等)上で運営するのが現実的であると思われますが、windowsなどでも
+     十分にサーバを動作させることができます。実際に動作テストしても、 UNIXに
+     遜色ないパフォーマンスを見せます。 この節に限っては、専門用語を多用しま
+     すので、もしもわからない 単語が出てきた場合は、プレンティスホールの良著
+     「UNIXネットワークプログラミング」や、ソフトバンクの 「TCP/IPバイブル」
+     その他を参照してください。
+
+     * 専用のサーバを用意すると、どのような利点があるのか
+
+     まず、最適化したサーバを用意することで、サーバを動作させる マシンの性能
+     を生かすことができるという利点があります。 サーバの最適化とは、 UNIXシ
+     ステムにおけるsocketに最適なオプションを指定することや、 プロセス管理を
+     工夫する(forkしないようにするなど) こと、OSのカーネルに手を加えてネット
+     ワーク性能を 最適化することなどが含まれます。(もちろん、カーネルに手を
+     加える ことができるのは、ソースコードが公開されているフリーのものに 限
+     りますが。)やろうと思えばパケットの生成までコントロールする ことができ
+     ます(もちろん、このやりかたは現実的とは 思えません。)その他の利点につい
+     ては、HTTP以外のプロトコル を使うことができる(これには自作のプロトコル
+     も含みます)と いうこともあります。
+
+     * それでも残る難しい問題
+
+     サーバを最適化することによってネットワーク性能もマシンの性能も 十分に生
+     かせるようになったとして、さらに回線も十分に高速なものに なったとしまし
+     ょう。ところが、どれほどネットワークの公称性能 (最大速度性能)が上がった
+     としても、数年のうちには解決しそうにない のが、「コンスタントに速度が出
+     ない」という問題です。 リアルタイムに情報を更新したいゲームにとっては、
+     「1秒間、64kbyte/secの速度が出て、次の1秒間は止まっている」 よりも、
+     「常に0.3kbyte/sec」の方がはるかに 嬉しいのです。ところが、最近の技術
+     は、特に最大速度の性能に 興味を絞っているようで、なかなか「コンスタント
+     な転送」 の性能は上昇しません。様々な種類のデータ が飛びかっているイン
+     ターネットの、「コンスタントな転送」 の性能は、当分向上しそうにありませ
+     ん。
+     このことが、リアルタイムなゲームはインターネット上では実現 しにくい原因
+     です。 それでも、秒間2〜3回、10数バイトのデータをやりとりするという通信
+     形態は 十分可能です。その性質を最大限に利用し、 また、「最高速度は上昇
+     しつつある」 という事実を生かしていくことが重要になってくるでしょう。
+
+     * どのようなゲームに向いているか
+
+     CGIを使用する方式に比べて、上記の理由により、ネットワークの回線の太さを
+     有効に活用できます。 そのため、よりリアルタイムに、より大きな情報量をや
+     りとりする ことができます。 家庭用ゲーム機のような、秒間20から60フレー
+     ムの高速同期を取る ことはまだ無理ですが、2から5フレームまでの同期なら、
+     不可能ではないレベルです。もちろん、「時々1秒以上停止する」 という問題
+     はインターネットを使う限りは消えませんが。
+
+     * 使用言語
+
+     まず、専用のサーバーを作るために使う言語ですが、 それはJavaでもCでも
+     Perlでも構いません。 多人数での同時プレイがやりたいなど、性能を追及する
+     場合は、 Cで書くのがよいかもしれません。 サーバ自体の移植を考える場合
+     は、Javaなどがよいでしょう。 実際にhttpサーバーをJavaで実装している例も
+     あります。
+
+     * サーバを動作させるマシン
+
+     想定しているサービスの質と回線の太さにもよりますが、性能的には、普通の
+     ワークステーションやPC UNIXを塔載しているパソコンで十分です。 どうして
+     も、ネットワーク関連のソフト開発には、UNIXが適しています。 (Windows NT
+     という選択もありますが、 過去のフリーな資産が大量にあるという点でもUNIX
+     がよいのでは ないでしょうか。)
+
+     * 将来
+
+     現在は、NetscapeやInternet Explorerなどのブラウザ上で ネットワーク通信
+     アプレットを動作させた場合、Security Violation が発生して他のサーバとの
+     自由な接続を確立 することができませんが、将来的には、ユーザの設定によっ
+     て ネットワーク接続の範囲を指定することができるようになっていくでしょ
+     う。 そうなれば、ネットゲームをプレイする時だけ設定を変更するという よ
+     うにできるので、より気軽にプレイできるようになっていくはずです。
+     ただ、現在でも、アプレットのバイナリを自分で送るような サーバーの実装に
+     しておけば、そのサーバとならSocket接続が許され るので、ネットゲームを作
+     ることができます。 しかし、それはhttpdもどきを作っているのと同じで、 何
+     とももったいない努力をすることになってしまいます。
+
+     * 実装例
+
+     それでは、ネットワークゲームの核になる部分のプログラム例を紹介し、解説
+     していきます。このプログラムでは、ネットワークプログラム の基本的なテク
+     ニックが多く使われていますので、 他のアプリケーションを作る際にも、参考
+     になることと思います。
+     この例におけるネットワーク接続の概念は次のようになっています。
+
+#図6.9-1 <NOT YET>     いくつかのクライアントとサーバが接続している状況
+
+     サーバは世界の状態(全プレイヤーの位置)を管理します。 プレイヤーはクライ
+     アントのアプレットに対してキー入力をします。 そのキー入力は、そのままサ
+     ーバに送られます。 サーバは、新しく接続要求があれば、 設定されている最
+     大プレイヤー数までの接続を確立します。そして、 接続しているプレイヤーの
+     うち誰かがキー入力をすれば、それによって 変化した世界全体を送信します。
+     クライアントアプレットは、 送信されてきた世界の表示のみを行ないます。こ
+     のようなモデルを、 「世界管理型サーバー」と呼ぶことにします。
+
+#図6.9-2 <NOT YET>     世界管理サーバーの概念図
+
+     これと対照的なモデルがあります。プレイヤーの入力だけを流通させるタイプ
+     の サーバがこれにあたります。世界は、それぞれのクライアントで別々に管理
+     され ています。世界は、プレイヤーの数だけあって、ある一人のプレイヤーの
+     入力 が他のすべてのプレイヤーに送信されます。この場合は、ある一つの サ
+     ーバーがある必要もないことから、これを「入力流通型」と呼びましょう。
+
+#図6.9-3 <NOT YET>     入力流通型サーバの概念図
+
+     家庭用ゲーム機の対戦ゲームや、ゲームセンターの対戦ゲームなどでは、通信
+     回線の速度が安定でしかも高速なレスポンスが期待できるため、「入力流通
+     型」 でも秒間20回以上の同期を実現することができます。インターネット上で
+     は、 悪い時には遅延が秒単位で発生するため、それではほとんどゲームになり
+     ません。 それでも、それぞれのパケットにタイムスタンプ(日付け)をしのばせ
+     て、 さらにプレイヤーの行動の結果が後にならないとわからないようなゲーム
+     システム にしておけば、遅延がその時間よりも短い場合は同期させることはで
+     きます。 そのようなゲームを作ろうとしている人が京大マイコンクラブにいま
+     すが、 はたしてうまくいくでしょうか。新しい試みと言えるでしょう。
+
+     さて、これから例として示すサーバーは、 javaの「アプリケーション」の形で
+     実装し、JDKがインストールされている マシン上で動作させます。サーバーの
+	 モデルは、「世界管理型」です。
+
+     このプログラムの動作テストでは、 UNIXとWindows95のどの組みあわせでも正
+	 しく動作しました。 なお、それぞれのマシンは、IBM PC/AT互換機で、
+      Etherネットによって IP接続されています。Internet上でも同じように動作
+     します。
+
+#図6.9-1 <DONE>     動作確認の表
+
+--------------------------------------------------
+     server     client
+     UNIX       windows95     OK
+     UNIX       UNIX          OK
+     windows95  UNIX          OK
+     windows95  windows95     OK
+--------------------------------------------------
+
+     実際の運用では、ネットワーク関連のデバッグのやりやすさから、 UNIX環境で
+     サーバを動作させるのが賢明です。
+     プログラムリストは3つのファイルに分かれており、 server.javaにはサーバに
+     関連するコードが全て含まれています。 client.javaとtest.htmlは、 クライ
+     アントになるアプレットのコードです。 これまでに説明してきたjavaの基本に
+     ついては説明を省きます。
+
+
+File name: server.java
+-----------------------------------------------------------
+import java.net.*;
+import java.io.*;
+
+
+class acceptor implements Runnable
+{
+	ServerSocket servsock;
+	server parent;
+	Thread t;
+
+	acceptor(ServerSocket ss, server parent)
+	{
+		servsock = ss;
+		this.parent = parent;
+		t = new Thread( this );
+		t.start();
+	}
+	public void run()
+	{
+		System.out.println("wait for new connection.");
+		while(true)
+		{
+			Socket tmpsock;
+			try{
+				tmpsock = servsock.accept();
+			} catch( IOException e ){
+				System.out.println("accept error.");
+				tmpsock = null;
+			}
+			System.out.println("New socket. " + tmpsock);
+			parent.addSocket( tmpsock );
+		}
+	}
+}
+
+class server implements Runnable
+{
+
+	public static void main( String args[] )
+	{
+		if( args.length==0){
+			System.out.println("Usage: java server portno");
+			System.exit(0);
+		}
+		server serv;
+		serv = new server(Integer.parseInt(args[0]) );
+	}
+
+	int playerno = 5;
+	Thread thread;
+	ServerSocket servsock;
+	Socket sock[] = new Socket[playerno];         // 人数分だけ用意する。
+	boolean using[] = new boolean[playerno];      // ソケットが使用中かどうか
+	InputStream in[] = new InputStream[playerno];
+	OutputStream out[] = new OutputStream[playerno];
+	int timeout[] = new int[playerno]; // 一定時間操作がない時はタイムアウト
+	int timeout_max = 300;
+
+	acceptor ac;
+
+	// プレイヤーの情報
+	int x[] = new int[playerno];
+	int y[] = new int[playerno];
+
+	server(int port)
+	{
+		try{
+			ServerSocket servsock = new ServerSocket( port );
+			ac = new acceptor( servsock , this );
+		}catch( IOException e ){
+			System.out.println("Can't make ServerSocket.");
+		}
+
+		for(int i = 0 ; i < playerno ; i++){
+			using[i] = false;
+			x[i] = y[i] = 50;  // 初期位置は適当
+			timeout[i] = 0;
+		}
+		thread = new Thread(this);
+		thread.start();
+	}
+
+	// acceptorから呼びだされる。ソケットの空きを探して登録する
+	public void addSocket( Socket soc )
+	{
+		if( soc == null ) return;
+		for(int i = 0 ; i < playerno ; i++){
+			if( using[i] == false ){
+				sock[i] = soc;
+				try{
+					in[i] = soc.getInputStream();
+					out[i] = soc.getOutputStream();
+				} catch( IOException e ){
+					System.out.println( "getting IN/OUT stream error.");
+					return;
+				}
+				using[i] = true;
+				System.out.println( "player " + i + " is added.");
+				return;
+			}
+		}
+		System.out.println("player full.");
+		try{
+			soc.close();
+		}catch( IOException e ){}
+
+	}
+	void deletePlayer(int index )
+	{
+		timeout[index] = 0;
+		try{
+			sock[index].close();
+			in[index].close();
+			out[index].close();
+		}catch( IOException exc ){}
+		using[index] = false;
+		System.out.println("Closed socket. player="+index);
+	}
+
+	// 入力に応じて移動させる
+	void playerMove( int index , int key)
+	{
+		int dx , dy;
+
+		switch( key)
+		{
+			case 'h': dx = -5; dy = 0; break;
+					  case 'j': dx = 0; dy = 5; break;
+					  case 'k': dx = 0; dy = -5; break;
+					  case 'l': dx = 5; dy = 0; break;
+					  case 'q': dx=dy=0;deletePlayer( index );return;
+					  default: dx = dy = 0; break;
+				  }
+		x[index] += dx;
+		if( x[index] < 0 ) x[index] = 0;
+		if( x[index] > 200) x[index] = 200;
+		y[index] += dy;
+		if( y[index] < 0 ) y[index] = 0;
+		if( y[index] > 200) y[index] = 200;
+		timeout[index] = 0;             // タイムアウトまでの時間を元に戻す
+	}
+	// 全員に対して位置の情報を送信する
+	void sendForAll()
+	{
+		// まず、送る情報を作る。バッファのサイズはプロトコルを参照
+
+		short sendbuf[] = new short[(playerno+1)*2*2];
+		int counter = 0;
+		for(int i = 0 ;i < playerno ; i++){
+			if( using[i] == true){
+				sendbuf[counter++] = (short)x[i];
+				sendbuf[counter++] = (short)y[i];
+			}
+		}
+		sendbuf[counter++] = -1; // データの最後という意味
+		sendbuf[counter++] = -1;
+
+
+		for(int i = 0 ;i < playerno ; i++){
+			if( using[i] == true )
+			{
+				try{
+					DataOutputStream dout;
+					dout = new DataOutputStream( out[i] );
+					for(int j=0; j < counter ; j++){
+						dout.writeShort( sendbuf[j] );
+					}
+					dout.flush();
+					//dout.close();
+				}catch( IOException e ){
+					// 書きこみがうまくいかなかったら、そのプレイヤーを抹消
+					System.out.println("dout ex.");
+					deletePlayer( i );
+				}
+			}
+		}
+	}
+	public void run()
+	{
+		while(true)
+		{
+			try{
+				Thread.sleep(200);
+			}catch( InterruptedException e){}
+
+			// サーバーの状態を表示
+			for(int i=0;i < playerno ;i++){
+
+				if(using[i])System.out.print("ON");
+				else System.out.print("OFF");
+
+				System.out.print(":"+x[i]);
+				System.out.print(":"+y[i]);
+				System.out.print(":"+timeout[i]);
+				System.out.print(" ");
+			}
+			System.out.println("");
+
+			// それぞれの接続の処理
+			for(int i = 0  ; i < playerno ; i++){
+				if( using[i] == true ){
+					if( (++timeout[i]) > timeout_max){
+						deletePlayer( i );
+						continue;
+					}
+					try{
+						if( in[i].available() > 0 ){
+							// 何か情報を送ってきたぞ
+							int r;
+							r = in[i].read();
+							playerMove( i, r );
+							sendForAll();
+						}
+					}catch( IOException e)
+					{
+						// ソケットがもう使えない
+						deletePlayer( i );
+					}
+				}
+			}
+		}
+	}
+}
+-----------------------------------------------------------
+
+     サーバーの起動方法は、MS-DOSプロンプトやUNIXのシェルから、
+
+java server 9000
+
+	 というように、ポート番号を指定して起動します。何らかのエラーが発生した
+     場合は、例外が発生します。
+
+
+     このプログラムでは、エラー処理をほとんど行なっていません。すべての
+     IOExceptionは単純にtryし、何も処理を しないようになっています。現実に運
+     営するなら、エラー処理については 気をつける必要があるでしょう。基本的に
+     は、ソケットやストリーム 周辺に何か異変が起こったら、プレイヤーとの接続
+     を切るようにしておく のでよいでしょう。
+	 
+
+
+
+File name: client.java
+-----------------------------------------------------------
+import java.applet.Applet;
+import java.awt.*;
+import java.net.*;
+import java.io.*;
+import java.util.*;
+
+public class client extends Applet implements Runnable
+{
+	Socket clisock;		// クライアント用
+	Thread thread;
+	Socket so;
+	InputStream in;
+	OutputStream out;
+	DataInputStream din;
+
+	Image offscr;
+	Graphics offscrg;
+	int width , height;
+
+	int num;
+	int x[] = new int[100];		// たくさん用意しておく
+	int y[] = new int[100];
+	Color colortable[] = new Color[100];
+
+	public void init()
+	{
+		
+
+		offscr = createImage( width = size().width ,
+							 height = size().height );
+		offscrg = offscr.getGraphics();
+
+		// 色を初期化しておく
+		
+		for(int i=0;i<100;i++){
+			colortable[i] =
+			new Color( (i*105)&255,(i*54)&255,(i*202)&255);
+		}
+		
+		try{
+			so = new Socket( getParameter("host") ,
+				Integer.parseInt(getParameter("port")));
+			in = so.getInputStream();
+			din = new DataInputStream( in );
+			out = so.getOutputStream();
+		}catch( IOException e ){
+			System.out.println(
+			"Network error. Server down? or bad hostname/port?");
+		}
+		thread = new Thread( this );
+		thread.start();
+	}
+
+	public void paint( Graphics g )
+	{
+		g.drawImage( offscr , 0 , 0 ,this);
+	}
+	public void update( Graphics g)
+	{
+		paint(g);
+	}
+	void dispAll()
+	{
+		offscrg.setColor( Color.white);
+		offscrg.fillRect( 0 , 0 , width , height );
+		
+		for(int i=0;i < num ; i++){
+			offscrg.setColor( colortable[i] );	
+			offscrg.fillRect( x[i] , y[i] , 8,8);
+		}
+	}
+	public boolean keyDown(Event e , int c)
+	{
+		try{
+			out.write( c);
+		}catch( IOException ex ){}
+		return true;
+	}
+
+	public void run()
+	{
+		
+		while(true)
+		{
+			int counter = 0;
+			while(true)
+			{
+				int tmpx=0,tmpy=0;
+				try{
+					tmpx = din.readShort();
+					tmpy = din.readShort();
+				}catch( IOException e ){
+					break;
+				}
+
+				if( tmpx == -1 && tmpy == -1 ){
+					dispAll();
+					repaint();
+					break;
+				} else {
+					x[counter] = tmpx;
+					y[counter] = tmpy;
+					counter++;
+				}
+			}
+			num = counter;
+			try{
+				Thread.sleep(100);
+			}catch( InterruptedException e){}
+			
+		}
+		
+	}
+
+}	
+-----------------------------------------------------------
+
+File name: test.html
+-----------------------------------------------------------
+<applet code=client.class width=200 height=200>
+<param name=host value=squash>
+<param name=port value=9000>
+</applet>
+-----------------------------------------------------------
+#図6.9-4 <DONE>		動作結果(server.java)
+
+
+    アプレットのparamタグに書かれているポート番号は、サーバーが待ちうけている
+    ポート番号に一致させておく必要があります。squashとなっているのは、KMCの
+	部室にあるマシン名です。また、
+    appletviewerのネットワーク設定を"Unrestricted"にしておいてください。
+    (注意)windows95とSolaris用のJDK1.1beta2では、この設定変更をしようとすると
+	sunパッケージ内部で例外が発生して、変更できないようになっています。
+    このプログラムのテストをする場合には、JDK1.0.2を使用してください。
+
+
+
+6.10 ゲームに適したプロトコルを作るコツ
+
+     ネットワーク対戦ゲームを作るには、必ず、どのようなプロトコル にするのか
+     決める必要があります。ここでいうプロトコルは、通信の方式と、 その方式の
+     上でどのような情報を通信するのかということです。
+     プロトコルを作る時に注意するべき点は次のようなことです。
+
+        o コネクション指向か、コネクションレス指向か
+
+          インターネットにおけるネットワーキングは、この2つに大別できます。
+          おなじみのTCPはコネクション指向で、サーバとクライアント の間で確実
+          な一本の回線を確立し、それを使って情報を誤りなくやりとり するプロ
+          トコルです。それに対して、UDPは、ほぼIPそのままのもので、 情報パケ
+          ットを単に送りつけるだけで、確実に情報が届いているのか、送り 出し
+          た順番で届いているのか、まったく保証がありません。
+
+
+          UDPは確実性がプロトコルのレベルで保証されないかわりに、TCPよりもヘ
+          ッダも 小さく、誤りが生じたときのパケット再送などのコストもかから
+          ないので、 比較的高速に動作します。そして何より、多数のホストに向
+          かって同時にパケット を「放送」することができる点が、TCPと異なりま
+          す。これをうまく使うとさらに 効率を上げることができます。
+
+        o 拡張性はあるか
+
+          つまり、将来機能を拡張するときに、今までにそのプロトコルに対応して
+          いる ソフトウェアに変更を加えなくてもよいようにしておくということ
+          です。 例えば、「バイト列の最初の1バイトが仕事の内容を表し、そこに
+          1という値が 入っていると、それはAという仕事をするという意味にな
+          る。2以降は未定義」 というように決め、実装の段階で、2以降の要求は
+          無視するようにしておけば、 将来の機能拡張に対応できます。
+
+        o デバッグしやすいか
+
+          そのプロトコルで送受信されるバイト列が、可読な文字(0x00から0x7f)
+          だけで構成されている 場合、バイト列をそのままファイルに記録するこ
+          とによってデバッグできます。 その他にも、telnetコマンドを使ってそ
+          のプロトコルの サーバに直接接続してキーボード入力で対話することも
+          容易です。
+
+        o 効率はよいか
+
+          通信回線の幅(速度)は、無限ではありません。特に多人数でのプレイ を
+          考える場合、それぞれのプレイヤーが同じ回線を使用することにな るの
+          で、回線の幅は思ったほどは取れません。しかも、自分で決めた バイト
+          列以外にも、TCPやIPなど、下にくるプロトコルが何十バイト ものヘッダ
+          を加えます。この効果は小さいパケットを沢山発生する場合は よりいっ
+          そう厳しい制限になってきます。そしてゲームは小さいパケット を発生
+          しやすいアプリケーションです。
+
+#図6.10-2 <NOT YET>          ヘッダが加わっていく
+
+          これらのことを考えあわせると、回線が例え64kbpsだったとしても、
+          6kb/秒程度の速度が出れば最高といったことになるでしょう。
+
+     普通の商用アプリケーションの場合は、仕事の目的が、すでに研究されてきて
+     いる モデルにぴったり合っている場合が多いので、上記の点について、研究成
+     果を 使うことができます。(つまり本の写しでよいということです。) ところ
+     が、ゲームの場合は研究成果がないということもありますが、内容によって 多
+     大な影響を受けるので、最適なプロトコルを作りにくいということがありま
+     す。 以下では、筆者がプロトコルを作る時に考える順序を紹介します。
+     最初に通信方式を、次に通信内容を考えます。
+
+     * 通信方式
+
+     実現しようとしている事が、情報の確実性を必要としているかどうかをまず考
+     えます。 対戦ゲームの場合は、プレイヤーの入力がわずかに欠けてもまずいこ
+     とになるので、 確実性は必要です。普通の通信ゲームの場合は、TCPが使えな
+     いかどうかを最初に 考えてみましょう。では、確実性が必要ないアプリケーシ
+     ョンとはどのようなもの なのでしょうか？それは例えば、人工衛星「ひまわ
+     り」から1秒に一回地球の映像が 送られてくるような場合です。 一つや二つ受
+     けのがしても、すぐ次があり、また画像の順番がおかしくなっても 単純に時刻
+     を画像に書いておくだけですみます。株価の状況を刻一刻と送信する ようなソ
+     フトウェアや、交通の状況を監視するカメラ、コーヒーメーカーの状況を チェ
+     ックするためのカメラなどとの通信は、UDPが適していると言えます。
+     アプレットとしてゲームを作る場合はブラウザー上で動かすことを考えて、TCP
+     を 使うのがよい判断になるでしょう。
+
+     * 通信内容
+
+     私はデバッグしやすさが最大のポイントだと考えますので、どうしても 性能を
+     追及しなければならない場合以外は、ASCII文字のみを使った通信に できない
+     かと考えます。ASCII文字とは、16進数で0x00から0x7fまでの文字で、 英数字
+     と記号が含まれます。(付録のASCII文字コード表を参照)ASCII文字のみに よる
+     通信にした場合は、特に通信方式がTCPの場合は、telnetのような 端末アプリ
+     ケーションを使って、サーバと「手で」通信し、デバッグすることが できま
+     す。以前の節でも、HTTPサーバと「手で」通信する方法を紹介しました。 この
+     デバッグしやすさは、アプリケーションが大規模になればなるほど、 有効性を
+     増します。
+     ASCII文字のみの通信にした場合は、多少の性能低下を覚悟しなければなりませ
+     ん。 バイナリデータだと、150という数値を送るには1バイトで済むところを、
+     ASCIIテキストだと終端文字まで含めれば4バイトも消費するからです。
+
+#図6.10-3 <NOT YET>     テキストにするとデータが膨らむ
+
+     しかし、インターネットを使う場合は特に、常に回線が最高速度性能を発揮 で
+     きるわけではないし、バイナリ通信までして最大性能を求める努力は無駄に 終
+     わってしまう可能性が高いのです。ゲームの場合はftpのように高密度で 情報
+     を通信するというよりは離散的で散発的な通信になりますから、尚更の ことで
+     す。やはりテキストデータによる通信がよい選択と言えるでしょう。 この他に
+     も、バイナリデータを使って通信する場合は、「バイトオーダ」 の問題がある
+     のですが、幸い、Javaを使ってサーバもクライアントも作る 場合は、この問題
+     は回避できます。詳しくは、良著 「UNIXネットワークプログラミング」を参照
+     してください。
+     さて、 プロトコルができてきたら、それを紙に書くなり デジタルドキュメン
+     トにするなりして、文書化しておくことが重要です。 そうすることによって共
+     同作業者にそのプロトコルを周知することができ、 開発の分担がスムーズにな
+     ります。プロトコルの実装系を、全く独立 な2者が同じドキュメントに基いて
+     作ることができれば、それは「立派な」 プロトコルだと言うことができます。
+
+     * プロトコルの例
+
+     プロトコルはCやJavaのソースコードでも明確に示すことができます。 それ以
+     外でも表や図もちろん文も使って表現できます。以下に、サーバが 複数のクラ
+     イアントを一括管理するような対戦ゲームで使われるプロトコルの 例を示しま
+     す。もちろんこの例は実在のゲームのものではなく、例に出すために 架空のも
+     のです。
+
+       1. TCP上のプロトコルである。
+       2. クライアントはゲームを始める時にサーバと接続する。ゲームオーバーに
+          なれば 接続を切る。
+       3. 通信単位はASCII文字が続き、最後に0というバイト(オクテット)が収めら
+          れ ている一続きのバイト列とする。例えば次の文字列が通信単位であ
+          る。
+
+#図6.10-4 <NOT YET>   "STARTGAME name=ringo mode=normal"を意味するバイト列
+          (このように図にすると、プロトコがわかりやすくなります。)
+
+       4. 通信内容は、上記の通信単位の連続とする。
+       5. 通信単位は、コマンド、パラメータ列、終端文字(0)で構成される。
+       6. コマンドは省略できない。パラメータ列は省略できる。(なくてもよい)
+          終端文字は上記により必ず必要。パラメータ列は、'パラメータの名前=値
+          ' というようになっている。スペース文字と'='は、それぞれ'%20'と
+          '%3d' とにエスケープされる。パラメータ列の内容は、コマンドによって
+          異なる。 コマンドが必要としないパラメータは無視される。
+
+       7. コマンドは次のものがある。
+
+          クライアントからサーバへの通信
+             + 'STARTGAME name=文字列 mode=normal|timeattack'
+               nameには名前を、modeには'normal'または'timeattack'を指定す
+               る。 例：
+               'STARTGAME name=ringo mode=normal'
+             + 'MOVE dx=数値 dy=数値'
+               dx,dyにはそれぞれ10進数の移動量を指定する。 例：
+               'MOVE dx=4 dy=-4'
+             + 'SHOT type=lasergun|bomber'
+               typeには、使う武器の種類を指定する。 例：
+               'SHOT type=lasergun'
+          サーバからクライアントへの通信
+             + 'ACCEPT'
+               ゲーム開始の信号。
+             + 'OBJECT {x=数値 y=数値 type=数値 }*個数'
+               画面の指定した位置に指定した物体を表示する。 上の表現中の中括
+               弧は実際の通信単位には含まれない。 x座標、y座標、種類の情報の
+               組が個数分続く。 例：
+               'OBJECT x=100 y=200 type=1 x=50 y=82 type=3'
+             + 'GAMEOVER'
+               パラメータはない。プレイヤーに、ゲームオーバーになったという
+               通知をする。
+
+     プロトコルがこのようなものであれば、telnetを使うことによって目 に見える
+     形でデバッグできます。イメージとしては次のようになるでしょうか。
+
+------------------------------------------------------------
+> telnet server.foo.ac.jp 10000
+GAMESTART name=ringo mode=normal        <-- プレイヤーの入力
+ACCEPT                                  <-- サーバからの返答
+MOVE dx=2 dy=-2                         <-- プレイヤーの入力
+OBJECT x=100 y=100 type=1               <-- サーバからの返答
+------------------------------------------------------------
+
+     このプロトコルだと、新しいコマンドを増やすのも簡単ですね。
+
+     まとめ/h4> 対戦ゲームの数だけプロトコルが存在します。プロトコルの仕様
+     は、 開発効率に重大な影響を及ぼします。開発途中で変更したりしやすい よ
+     うに、拡張性については十分注意してください。
+
+
+

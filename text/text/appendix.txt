@@ -1,0 +1,753 @@
+付録
+
+
+*****************************************************************
+
+* Visual J++でJava Consoleを使用可能にする方法?
+
+本文では、Visual J++の標準出力がないおかげて困ると説明していますが、
+それは本当です。しかし、これといって裏技があるわけではありません。
+そこで筆者は、プログラムの変更を極力少なくしつつ、強引にウインドウに
+出力できるようにするプログラムを作りました。そのプログラムは、
+次の3つのプログラムです。
+これらを使うと、アプレットのプログラムをほとんど変更せずに、Visual J++
+でも標準出力の「ようなもの」が使えます。イメージ的には、Netscapeの
+java consoleのマネをしたものです。プログラムを示してから、使用法を
+示します。またこれらのプログラムは、Visual J++だけでなく、一般的に
+使用価値はあると思います。プログラムはJDK1.0.2ベースです。コメントを
+入れかえれば、JDK1.1用のプログラムになります。このプログラムはフリー
+ですので、自由に改変、配布、何なりと料理してください。
+
+File name: ConsoleFrame.java
+------------------------------------------------------------------------
+package ringo;
+
+import java.awt.*;
+import java.io.*;
+
+
+public class ConsoleFrame extends Frame
+{
+	private TextArea ta;
+	private Button clear_b;
+	private Button save_b;
+	private Button close_b;
+	private Panel p ;
+
+	ConsoleFrame(String name ){
+		super( name );
+		setLayout( new BorderLayout() );
+		ta = new TextArea(	"" ,20,10);
+		clear_b = new Button("Clear");
+		save_b = new Button("Save to java.log" );
+		close_b = new Button("Close");
+		p = new Panel();
+		p.setLayout( new BorderLayout() );
+		p.add( "East" , close_b );
+		p.add( "West" , save_b );
+		p.add( "Center" , clear_b );
+		add( "Center" , ta );
+		add( "South" ,  p );
+
+	}
+	public boolean action(Event e , Object o ){
+		if( e.target== clear_b ){
+			ta.replaceText( "" , 0 , ta.getText().length()  );  // JDK1.0.2
+			//ta.replaceRange( "" , 0 , ta.getText().length()  ); //JDK1.1
+		}
+		if( e.target == save_b ){
+			try{
+				FileOutputStream fout =
+				new FileOutputStream("java.log" );
+				String contents = ta.getText();
+				byte b[] = new byte[ contents.length() ];
+				//b = contents.getBytes(); // JDK1.1
+				contents.getBytes( 0 , contents.length() , b , 0 );
+				fout.write( b , 0 , b.length );
+				fout.close();
+				ta.appendText( "\nsaved to java.log\n" );
+			}catch( Throwable t ){
+				ta.appendText( "\njava console: file save error:\n" + t );
+			}
+		}
+		if( e.target == close_b ){
+			hide();
+		}
+		return true;
+	}
+	public void printText( String s){
+		//ta.append( s );     // JDK1.1
+		ta.appendText( s );   // JDK1.0.2
+	}
+}
+------------------------------------------------------------------------
+File name: Console.java
+------------------------------------------------------------------------
+ 
+package ringo;
+
+import java.awt.*;
+import java.io.*;
+
+class ConsoleFrame extends Frame
+{
+	private TextArea ta;
+	private Button clear_b;
+	private Button save_b;
+	private Button close_b;
+	private Panel p ;
+
+	ConsoleFrame(String name ){
+		super( name );
+		setLayout( new BorderLayout() );
+		ta = new TextArea(	"" ,20,10);
+		clear_b = new Button("Clear");
+		save_b = new Button("Save to java.log" );
+		close_b = new Button("Close");
+		p = new Panel();
+		p.setLayout( new BorderLayout() );
+		p.add( "East" , close_b );
+		p.add( "West" , save_b );
+		p.add( "Center" , clear_b );
+		add( "Center" , ta );
+		add( "South" ,  p );
+	}
+	public boolean action(Event e , Object o ){
+		if( e.target== clear_b ){
+			ta.replaceText( "" , 0 , ta.getText().length()  );  // JDK1.0.2
+			//ta.replaceRange( "" , 0 , ta.getText().length()  ); //JDK1.1
+		}
+		if( e.target == save_b ){
+			try{
+				FileOutputStream fout =
+				new FileOutputStream("java.log" );
+				String contents = ta.getText();
+				byte b[] = new byte[ contents.length() ];
+				//b = contents.getBytes(); // JDK1.1
+				contents.getBytes( 0 , contents.length() , b , 0 );
+				fout.write( b , 0 , b.length );
+				fout.close();
+				ta.appendText( "\nsaved to java.log\n" );
+			}catch( Throwable t ){
+				ta.appendText( "\njava console: file save error:\n" + t );
+			}
+		}
+		if( e.target == close_b ){
+			hide();
+		}
+		return true;
+	}
+	public void printText( String s){
+		//ta.append( s );     // JDK1.1
+		ta.appendText( s );   // JDK1.0.2
+	}
+
+}
+
+public class Console
+{
+	static volatile boolean initflg = false;
+	static ConsoleFrame f;
+
+	public static ConsolePrintStream stream = new ConsolePrintStream();
+	public static ConsolePrintStream out = stream;
+	public static ConsolePrintStream err = stream;
+
+}
+------------------------------------------------------------------------
+File name: ConsolePrintStream.java
+------------------------------------------------------------------------
+package ringo;
+
+import java.io.*;
+import java.awt.*;
+import ringo.ConsoleFrame;
+
+/*
+   System.setErr()などに渡すことができるコンソール。
+*/
+public class ConsolePrintStream extends PrintStream
+{
+	volatile private boolean initflg = false;
+	ConsoleFrame f;
+
+	public ConsolePrintStream(){
+		super(new ByteArrayOutputStream() );
+	}
+
+	void init(){
+		try{
+			f = new ConsoleFrame("java console");
+			f.resize(400,300);
+			f.show();
+		}catch( Throwable t ){ }
+	}
+	public  void print( String s ){
+		try{
+			if( initflg == false ){
+				initflg = true;
+				init();
+			}
+			f.printText( s ); 
+		}catch( Throwable t ){}
+	}
+  	public  void println( String s ){ print( s + "\n" );	}
+	public  void println( int x ){	println( "" + x ); }
+	public  void println( byte x ){	println( "" + x ); }
+	public  void println( float x ){	println( "" + x ); }
+	public  void println( double x ){	println( "" + x ); }
+	public  void println( boolean x ){	println( "" + x ); }
+	public  void println( char x ){	println( "" + x ); }
+	public  void println( long x ){	println( "" + x ); }
+	public  void println( Object x ){ println( "" + x ); }
+	public  void println( char[] x ){	println(new String( x ) );	}
+	public  void print( char[] x){	print( new String( x ) );	}
+	public  void print( int x ){	print( "" + x ); }
+	public  void print( byte x ){	print( "" + x ); }
+	public  void print( float x ){	print( "" + x ); }
+	public  void print( double x ){	print( "" + x ); }
+	public  void print( boolean x ){	print( "" + x ); }
+	public  void print( char x ){	print( "" + x ); }
+	public  void print( long x ){	print( "" + x ); }
+	public  void print( Object x ){	print( "" + x ); }
+
+	public  void write( byte[] buf , int si , int len ) 
+	{
+		//print( new String( buf , si , len ) ); //JDK1.1
+		print( new String( buf , 0 , si,len ) );
+	}
+	public void write( int x)
+	{
+		print( "" + (char)x );
+	}
+
+	public void close(){
+		f.hide();
+		super.close();
+	}
+}
+------------------------------------------------------------------------
+
+使用法
+
+
+ストリームに出力するのと同じやりかたで、ウインドウの中に出力
+することができます。Visual J++を使っている方は、重宝することでしょう。
+
+クラス 
+
+ConsolePrintStream.class
+Console.class
+ConsoleFrame.class
+
+普段は、Console.classを使います。
+これらのクラスは、ringoというパッケージに含まれているので、かならず
+ringoという名前のディレクトリに入れたままで、運んでください。
+
+
+サンプルプログラム：
+---------------------------------------------------------------------------
+import ringo.*;
+class hoge
+{
+	public static void main(String args[] ){
+		Console.out.println("aslkdjfalskjdf");
+	}
+}
+---------------------------------------------------------------------------
+
+  このようにすると、小さなウインドウが出て、System.outと同じように使えます。
+しかし、このままでは、例外が発生した時などに出力されるエラー出力や、
+標準出力は、ウインドウの中には表示されません。ところが、JDK1.1の場合は、
+次のようにして、標準出力や標準エラー出力もウインドウの中に出すことができ
+ます。
+---------------------------------------------------------------------------
+import ringo.*;
+class hoge
+{
+	public static void main(String args[] ){
+		System.setOut( new ConsolePrintStream() );
+		System.out.println("this message will be in window.");
+	}
+}
+---------------------------------------------------------------------------
+このようにすれば、例外などが発生した場合も、しっかりウインドウの中にエラー
+の発生した場所などが表示されます。
+標準出力も標準エラー出力も同じウインドウに出力させたい場合は、
+---------------------------------------------------------------------------
+import ringo.*;
+class hoge
+{
+	public static void main(String args[] ){
+		ConsolePrintStream cs = new ConsolePrintStream();
+		System.setOut( cs );
+		System.setErr( cs );
+
+		// 以上のようにすれば、以下はすべてウインドウの中に出力されます。
+		System.out.println("this message will be in window.");
+		throw new ArrayIndexOutOfBoundsException();
+	}
+}
+---------------------------------------------------------------------------
+アプレットの場合は、セキュリティチェックにひっかかるので、注意が必要です。
+
+このように、java.*以外のパッケージを使う場合は、そのパッケージのクラスが
+入っているディレクトリを置く場所と、環境変数CLASSPATHに注意をはらう必要が
+あります。必ずパッケージは、ディレクトリ構成を崩さないようにして運んでくだ
+さい。
+
+UNIXの場合：
+
+/home/ringo/java/classesの下に、
+/home/ringo/java/classes/ringo/Console.class
+/home/ringo/java/classes/ringo/ConsoleFrame.class
+/home/ringo/java/classes/ringo/ConsolePrintStream.class
+のように移したとすると、
+
+CLASSPATHは
+setenv CLASSPATH=${CLASSPATH}:/home/ringo/java/classes/:./
+のようにします。このようにすれば、上記のプログラムをコンパイル/実行
+できるようになります。
+
+* Macintosh(1.0.2)の場合：
+
+JDKをインストールしてできたフォルダ、つまり、Java Compilerが入っている
+フォルダの中に、MyClassesというフォルをダ作って、以下のようなファイル
+構成にしたとします。(そうするほうがよいでしょう)
+...../JDK1.0.2/JavaCompiler
+...../JDK1.0.2/MyClasses/ringo/Console.class
+...../JDK1.0.2/MyClasses/ringo/ConsoleFrame.class
+...../JDK1.0.2/MyClasses/ringo/ConsolePrintStream.class
+このようにファイルを置くことができたら、
+Java Compilerを起動して、Fileメニューからpropertiesを選びます。
+そこで、
+Class Path: /$INSTALLATION_ROOT/JDK-1.0.2:/$APPLICATION/MyClass
+と設定します。そしてOKボタンを押せば、設定は完了です。上記の
+プログラムをコンパイル、実行することができます。
+
+* windows95の場合：
+C:\USR\RINGO\CLASSES\の下にパッケージringoのディレクトリをそのまま移して、
+ファイル構成が
+C:\USR\RINGO\CLASSES\ringo\Console.class
+C:\USR\RINGO\CLASSES\ringo\ConsoleFrame.class
+C:\USR\RINGO\CLASSES\ringo\ConsolePrintStream.class
+
+のようになったとすると、コマンドラインから
+set CLASSPATH=C:\USR\RINGO\CLASSES\;.\
+というように設定します。これはAUTOEXEC.BATに書きくわえておくとよいでしょう。
+
+Visual J++を使っている場合は、このCLASSPATHという環境変数がMicrosoft
+Developer Studioの中では有効にならないので、
+メニューの「ビルド」->「設定」->「一般」を選択し、
+「クラスパスのディレクトリ」に次のように指定します。
+C:\USR\RINGO\CLASSES\
+
+このようにすれば、Microsoft Developer Studioの中で、コンパイル/実行できる
+ようになります。
+
+
+
+*****************************************************************
+* JDK1.0 -> JDK1.1 イベント対応表
+
+イベントの所にメソッド名が書いていないものは、Event.idで求められる値
+です。java.awt.Eventクラスで定義されています。
+"*"になっているものは、1.0においてはサポートされていないイベントです。
+例えば、mouseDragの場合なら、MouseMotionListenerをimplementsして、
+mouseDraggedとmouseMovedの二つを定義すればよいことになります。
+
+1.0Component    1.0Event				1.1Event/interface
+----------------------------------------------------------------------
+										ActionListener
+Button,List, 	ACTION_EVENT/action()	actionPerformed(ActionEvent)
+MenuItem,
+TextField     
+----------------------------------------------------------------------
+										ItemListener
+Choice			ACTION_EVENT/action()	itemStateChanged(ItemEvent)
+checkBox								
+----------------------------------------------------------------------
+										WindowListener
+Dialog,Frame	WINDOW_DESTROY    		windowClosing(WindowEvent)
+				WINDOW_EXPOSE 			windowOpened(WindowEvent)
+				WINDOW_ICONIFY			windowIconified(WindowEvent)
+				WINDOW_DEICONIFY		windowDeiconified(WindowEvent)
+				*						windowClosed(WindowEvent)
+----------------------------------------------------------------------
+										ComponentListener
+Dialog,Frame	WINDOW_MOVED			componentMoved(ComponentEvent)
+				*						componentHidden(ComponentEvent)
+				*						componentResized(ComponentEvent)
+				*						componentShown(ComponentEvent)
+----------------------------------------------------------------------
+										AdjustmentListener
+Scrollbar		SCROLL_LINE_UP			adjustmentValueChanged(AdjustmentEvent)
+				SCROLL_LINE_DOWN		
+				SCROLL_PAGE_UP
+				SCROLL_PAGE_DOWN	
+				SCROLL_ABSOLUTE
+				SCROLL_BEGIN
+				SCROLL_END
+----------------------------------------------------------------------
+											ItemListener
+CheckBox,			LIST_SELECT				itemStateChanged(ItemEvent)
+CheckBoxMenuItem,	LIST_DESELECT
+Choice,List
+----------------------------------------------------------------------
+											MouseMotionListener
+Canvas,Dialog,	MOUSE_DRAG/mouseDrag()		mouseDragged(MouseEvent)
+Frame,Panel,	MOUSE_MOVE/mouseMove()		mouseMoved( MouseEvent)
+Window
+----------------------------------------------------------------------
+											MouseListener
+Canvas,Dialog,	MOUSE_DOWN/mouseDown()		mousePressed(MouseEvent)
+Frame,Panel,	MOUSE_UP/mouseUp()			mouseReleased(MouseEvent)
+Window			MOUSE_ENTER/mouseEnter()	mouseEntered(MouseEvent)
+				MOUSE_EXIT/mouseExit()		mouseExited(MouseEvent)
+				*							mouseClicked(MouseEvent)
+----------------------------------------------------------------------
+											KeyListener
+Component		KEY_PRESS/keyDown()			keyPressed(KeyEvent)
+				KEY_RELEASE/keyUp()			keyReleased(KeyEvent)
+				*							keyTyped(KeyEvent)
+				KEY_ACTION/keyDown()		*						
+				KEY_ACTION_RELEASE/keyUp()	*
+----------------------------------------------------------------------
+											FocusListener
+Component		GOT_FOCUS/gotFocus()		focusGained(FocusEvent)
+				LOST_FOCUS/lostFocus()		focusLost(FocusEvent)
+----------------------------------------------------------------------
+
+
+
+
+*****************************************************************
+
+* アスキー文字配列の表
+
+
+
+Java言語では、次のようにして、英文字のコード番号をint型の変数に代入できま
+す。
+
+    int a = 'a';
+
+  この例では、変数aには、97という値が入ります。文字と数値は一対一に対応してい
+て、 Javaではその対応関係はASCII文字コードセットに準拠しています。以下にその
+表を 示します。
+----------------------------------------------------------------
+    0   1    2   3  4   5   6   7  8   9  A   B  C  D E   F
+ 0  null soh stx etxeot enq ack belbs  ht nl  vt np cr so si
+ 1  dle  dc1 dc2 dc3dc4 nak syn etbcan em sub escfs gs rs us
+ 2  sp   !   "   #  $   %   &   '  (   )  *   +  ,  -  .  /
+ 3  0    1   2   3  4   5   6   7  8   9  ;   :  <  =  >  ?
+ 4  @    A   B   C  D   E   F   G  H   I  J   K  L  M  N  O
+ 5  P    Q   R   S  T   U   V   W  X   Y  Z   [  \  ]  ^  _
+ 6  `    a   b   c  d   e   f   g  h   i  j   k  l  m  n  o
+ 7  p    q   r   s  t   u   v   w  x   y  z   {  |  }  ~  del
+----------------------------------------------------------------
+
+表の見方
+
+この表は、16進数表現になっています。最上段の0からFが、下1ケタを、左端の0から
+Fが、 上位1ケタをあらわしています。例えば、'L'の文字コードは、16進数で4Cにな
+ります。 次のコードでは、変数aと変数bと変数cには、同じ値が入ります。
+
+int a = 'L';
+int b = 0x4c;  //Javaでは、数値の前に"0X"をつけることによって16進数を表現できます。
+int c = 76;
+
+16進数の値を10進数に変換するやりかたは、上位桁を16倍したものに下位桁を加えれ
+ばOKです。 次の例では、変数aと変数bには同じ値が入ります。
+
+int a = 0xA6;
+int b = 10 * 16 + 6;
+
+プログラム中では、int a = 97;というような記述をすると、わかりにくく なるの
+で、int a = 'a';というようにしましょう。
+
+* コントロール文字に注意
+
+  アスキー文字の表で、欄の中に1文字以上の単語が書いてあるものは、コントロ
+ール文字 と呼ばれます。この文字を表示しても、画面には文字は出力されず、
+カーソルが移動 したり、ベルが鳴ったり、文字が削除されたりといった特殊効
+果が実現されます。 例えば、System.out.pritln("Hello.\nI am a boy.");と
+いうコードは、 標準出力は次のようになります。
+
+Hello.
+I am a boy.
+
+Hello.の後に改行しています。これは、\nが、「次の行の 頭にカーソルを移動
+せよ」という意味のコントロール文字だからです。コントロール 文字は、キー
+ボードから直接には入れられないので、プログラム中では \nというような表記
+をすることになっているわけです。このような手法は、 「エスケープシーケン
+ス」と呼ばれています。エスケープシーケンス\n のASCII文字配列における番
+号は、10(10進)です。表では、nlと表記されて います。 Javaでサポートされ
+ているエスケープシーケンスの一覧は、 付録のJavaの言語リファレンスを参照
+してください。
+
+* どのキーが押されたかを調べる。
+
+  public boolean keyDown(Event e , int c )などを使って、キーボードからの
+入力を調べるときに、どのキーが押されたかを、次のようなコードを使って書
+くことができます。
+----------------------------------------------------------------
+public boolean keyDown( Event e  , int c )
+{
+	if( c == 'y' || c == 'Y' ){
+		// ここに、Yesの時の処理を書く。
+	} else {
+		// ここに、Noの時の処理を書く。
+	}
+	return true;
+}
+----------------------------------------------------------------
+
+リターンキーが押されたときの処理は、次のようにしてできます。
+
+if( c == '\n' ){ 処理 }    // リターンキーが押されたよー   
+
+
+* 押されたキーの番号のサンプルアプレット
+
+次の例のプログラムをコンパイル・実行して、キーボードのどのキーを押せば
+どんなコードが返されるのかを、調べてみてください。
+
+File name: key.java
+----------------------------------------------------------------
+import java.applet.Applet;
+import java.awt.*;
+public class key extends Applet
+{
+	public boolean keyDown( Event e , int c )
+	{
+		System.out.println( c );
+		return true;
+	}
+
+}
+----------------------------------------------------------------
+File name: keytest.html
+----------------------------------------------------------------
+<applet code=key.class width=200 height=200></applet>
+----------------------------------------------------------------
+アプレットのウインドウの中でキーを押すと、標準出力にコード番号が 出てき
+ます。これと、AudioClipを応用すると、簡単に楽器が作れますね！ (実際、
+www.gamelan.comにピアノのアプレットがあります。)
+
+*****************************************************************
+* Appletで日本語を表示する方法
+
+Javaのプログラムに次のように書くのは、日本語を表示するための正しい方法
+ではありません。
+-------------------------------------------------
+public class japaneseTest extends java.applet.Applet
+{
+	public void paint(Graphics g){
+		g.drawString("い" , 40,40);
+	}
+}
+-------------------------------------------------
+Netscapeのあるバージョンや、InternetExplorerのあるバージョンにおいては
+正しく表示される場合もありますが、それは「たまたま」です。
+それはなぜかというと、プログラムに埋めこまれているこのような文字は、
+Javaが使うUnicodeではなく、JISやSJISやEUCと呼ばれているような、また違った
+形式だからです。javacがわけもわからず、そういう変な文字をプログラムの中に
+埋めこんでいくので、それが表示するときの環境とたまたま一致した場合だけ、
+表示されるのです。
+
+表示されない場合もあるけれど正しい方法は、次のようにします。
+-------------------------------------------------
+import java.awt.*;
+
+public class aho extends java.applet.Applet
+{
+    public void paint(Graphics g){
+        g.drawString( "\u3044" , 40,40);
+    }
+}
+-------------------------------------------------
+ここで表示されない場合もあるというのは、フォントがインストールされていな
+かったり、appletviewerが対応していない(JDK1.0.2)とか、そういう事が原因です。
+"い"のかわりに、"\u3044"と書いてやれば、どの環境でも正しく表示できるように
+なる、というのがJavaの目指している理想の姿です。ここで突然"\u3044"という
+数字が出てくるのは、Unicodeの0x3044番目の文字が、日本語の「い」ですよ、
+と定義されているからなのですが、
+いちいち「い」は何番、「あ」は何番、と憶えられるわけがありません。そこで
+SJISやEUCからこの変な番号にソースコードの段階で変換してしまおう、という
+便利なプログラムがフリーで公開されるに至ったのです。そのプログラムは、
+Javaで書かれていて、「J2Uc.java」という名前です。CD-ROMにも収録しています。
+
+使いかたは、Windows95やUNIXのようなコマンドラインを持つ環境の場合は、
+
+command line> javac J2Uc.java		J2Uc.javaをコンパイルします。
+command line> youreditor aho.java   ここでaho.javaはSJISのコードとします。
+command line> nkf aho.java			SJISでない場合はSJISにします。
+command line> java J2Uc aho.java > tmp.java   
+
+以上のようにすることで、Unicodeを使ったプログラムに変更できます。
+Macintoshの場合は、J2Ucmac.javaをコンパイルすると使えるものができあがります。
+Macintoshはコマンドラインがないので、とりあえず J2Ucmac.classをダブルクリック
+します。そうすると、FileDialogが出てきますので、そこでファイルを指定して開き
+ます。そうすると保存するファイルを聞いてきますので、好きな場所に保存します。
+標準出力に何か出ますが、気にしないでください。
+
+
+変換例を示します:
+-------------------------------------------------
+class aa
+{
+	String testString="僕には5つのボタン!!";
+}
+-------------------------------------------------
+SJISで書かれた上のプログラムを
+command line> java J2Uc aa.java > aatmp.java
+とすると、aatmp.javaには
+-------------------------------------------------
+class aa
+{
+    String testString="\u50d5\u306b\u306f5\u3064\u306e\u30dc\u30bf\u30f3!!";
+}
+-------------------------------------------------
+という内容が入ります。何ともすばらしいツールですね。フリーとのことですので、
+活用してください。また、デフォルトでEUCコード用にすることもできます。
+ソースプログラムをのぞいて見てください。
+
+
+
+*****************************************************************
+* 附属のグラフィックエディタの使いかた
+
+
+
+*****************************************************************
+* Java関連の情報ソース
+
+o オンラインのもの
+
+インターネット上には、Java関連の情報が山のようにあります。役にたつ
+情報を集めて みました。最近になってようやく、Java関連の情報も日本語の
+ものが増えてきましたが、それでもまだ、 最新の情報は英語しかないという
+状況です。がんばって英語を読みましょう。
+
+日本語の情報
+
+   + http://www.webcity.co.jp/info/andoh/java/javafaq.html
+     javaのFAQを集めたページ。Javaの世界では有名な、安藤という人の
+     ページの中にあります。ここで紹介している、他の情報も、ほぼすべて
+	 このページが情報源になっています。本書のこのページを読むよりも、	
+	 このFAQをチェックする方が情報量が100倍くらいありますよ。ここにある
+	 情報だけで足りなくなった時には、とっくに初心者を卒業しているはずです。
+
+   + http://www.center.nitech.ac.jp/ml/java-house/
+     JavaのプログラミングについてのMailing list. 著者も講読してい
+     ます。非常にためになります。参加するためには、このページ の
+     「案内」のところを見ればわかります。
+
+   + http://www.sun.co.jp/java.jp/docs/
+     Sunの日本支社にある、日本語化ドキュメントを集めているページ。
+
+   + http://www.hinet.cs.ritsumei.ac.jp/~nakayama/java/resource/javalink.html
+     国内のJava研究者のページ。
+
+   + http://www.webcity.co.jp/info/andoh/java/j2c-j.html
+     JavaのプログラムをC++のプログラムに変換するプログラムである、
+     "j2c"のページ。
+
+   + http://lifestorm.titan.co.jp/
+     Javaアプレットをクライアントに使った通信ゲームのページ。
+
+   + http://www.aa.cs.keio.ac.jp/members/matsu/java-j.html
+     慶應大学にある、「Javaの勉強に役に立つページへのリンク集」です。
+
+英語のもの
+
+   + http://www.javasoft.com
+     Javasoftのホームページ。
+   + http://www.gamelan.com
+     Gamelan. Javaのアプレットのコレクション。Javaをやるのだった
+     ら、ここは 必ずチェックしましょう。
+   + http://www.inter.nl.net/users/H.P.van.Vliet/mocha.htm
+     "mocha"という、超高性能なJavaの逆コンパイラ。その動作は感動
+     的。 逆コンパイルされても解読しにくいようなプログラムについて
+     の解説まであります。
+     付録のCD-ROMにも、入っています。
+   + http://imageek.york.cuny.edu/pub/java.or/docs
+     Java関連の英語ドキュメントが全部あるサイト。最新のものもある
+     ので、 マニュアルが必要になったらここへ。
+   + http://splash.javasoft.com/jdbc/
+     JDBC
+   + http://ring.etl.go.jp/openlab/horb
+     HORB RMIみたいなことを前から研究している所です。
+   + http://www.blackdown.org/~kbs/index.html
+     Free Java Tools
+   + http://java.sun.com/applets/applets.html
+     Sunのアプレットページ(全然大したことないです。)
+   + http://www.sgi.com/Fun/free/java-apps.html
+     SGIのjavaギャラリー
+   + http://substance.blackdown.org/
+     Java for Linux
+   + http://chatsubo.javasoft.com/current/
+     RMI
+   + http://www.microsoft.com/intdev
+     Active X関連
+   + http://www.crl.com/~integris/
+     JavaDeveloper Island「より優れたページを作る」とかいう謌い文
+     句がついて います。
+   + http://java.dimensionx.com/
+     java.dimensionx.com
+   + http://http.cs.berkeley.edu/~engberg/guavac
+     "guavac"は、C++で書かれた、Javaコードの高速コンパイラです。
+
+
+*****************************************************************
+* Java勉強法
+
+ Javaを効率的に勉強し、情報収集をしていくには、次のような重要なポイ
+ントがあります。 もちろん、何かを作りたいとか、勉強したいという意
+志があった上での話ですが。本書では、 どうやったら勉強する気が起こ
+るかまではサポートできません。
+
+   + Sunが出しているAPIマニュアルをよく読む。
+     まずこれが基本です。実際にプログラムしていると、マニュアルが
+     なければどうしようも なくなります。本書にもマニュアル代わりに
+     なるリファレンスがありますから、どんどん 利用してください。
+     CD-ROMにも、ひととおりのマニュアルが入っています。
+
+   + 他人の書いたソースコードを読む。
+     筆者は、これが最も重要だと思います。せっかく、他の人が自分の
+     かわりに苦労をして くれているのですから、その成果を利用しまし
+     ょう。それによって自分の知識も増えて いきます。ソースコードを
+     公開していない場合でも、付録の逆コンパイラを使えば、 次のよう
+     にしてソースを得ることができます。
+
+       1. かっこいいアプレットがあったが、ソースコードが公開されていない。
+       2. そのアプレットが置かれているページの、HTMLソースを見て、
+          クラスファイル の名前をつきとめる。Netscapeなら、viewと
+          いうメニューから、document source というメニューを選ぶ。
+       3. 例えば<applet code=Main.class width=100 height=100></applet>
+          というようなタグが、http://www.hoge.co.jp/にあったとした
+          ら、 http://www.hoge.co.jp/Main.classとURLを指定してみる。
+       4. そうすると、Netscapeは、どこにそのクラスファイルを保存す
+          るのか聞いてくる ので、ディレクトリを指定する。
+       5. 以上で、Main.classが自分の手元に保存できた。
+       6. それを、付録のmochaで、逆コンパイルして、完成。あとは、
+          足りないクラスなど があれば、そのソースコードの中に記述
+          されているはずなので、探して、同じように ダウンロードし
+          て逆コンパイルする。
+
+   + Javaを勉強している人と知りあう。
+
+     周りに、自分よりも詳しい人がいると、何かと助かります。インタ
+     ーネット上には沢山の 自分よりも詳しい人がいます。ほとんどの人
+     は、何か聞くと、親切に教えてくれるので、 遠慮せずに積極的にコ
+     ンタクトを取ってみましょう。たとえば、Java関係のページを 作っ
+     ている人は多いですが、そのページには大抵メイルアドレスが載っ
+     ていますから、 メイルしてみることも有効です。私も、できるかぎ
+     り答えたいと思っている一人です。 その他、メイリングリストも有
+     効です。日本には、Javahouseという有名なメイリングリストがあ
+     りますから、入ってみてはいかがでしょうか？
+
+   + とにかく色々作ってみる。
+     以上のような、情報収集のやりかたをマスターしたら、あとは、も
+      う経験の量しか ありません。どんどん作りましょう。

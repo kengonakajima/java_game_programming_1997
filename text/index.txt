@@ -1,0 +1,543 @@
+#
+#図の説明で、左端にPと書いてあるのは、Picture写真。
+#Cは、Capture画面取りこみ。
+#F は、Figure手書きの図。
+#CFは、画面取りこみの上から手書き。
+#Tは、実行結果がsystem.out.printlnの文字列だけだという意味。
+
+はじめに  
+
+* 概要
+* ゲームは、デジタルな総合芸術だ！
+* 本書を読むにあたっての注意点
+* 京大マイコンクラブ
+
+第1章  Javaとゲームプログラミング
+1.1 超基本
+C		pic1.1-1 webページにあるアプレットの画面写真
+C		pic1.1-2 コマンドライン javaアプリケーション
+
+1.2 Javaのよいところ
+		o インターネットとの親和性が高い。
+C		pic1.2 アプレットがあるホームページの図
+        o プログラムするのが簡単
+        o 分担するのが簡単
+        o 何といってもフリー！
+
+1.3 Javaのわるいところ
+        o 処理速度の問題
+F		pic1.3-1 インタープリタがはさまってるの図
+F		pic1.3-2 JITの図(最初の一回でコンパイルしてまう)
+
+        o CPUが自分のものではないという問題
+F		pic1.3-3 タイムスライスの説明図
+        o データサイズの問題
+F		pic1.3-4 デマンドローディングの図
+C		pic1.3-5 タイルパターンを使っている例の図。
+F		pic1.3-6 タイルを使って圧縮する図
+        o 表示色の問題
+C		pic1.3-7 減色のサンプル。Macintosh,windows,SGI
+F		pic1.3-8 256色のテーブルを取りあうの図
+
+        o 入出力に凝れない
+
+1.4 以上の特徴を、どのようにゲームデザインに生かすか
+1.5  第一章のまとめ
+
+第2章  ゲームデザイン
+
+2.1 ゲームデザインのツボ....プレイヤーの心理
+2.2 ゲームデザインのツボ....もっと具体的に
+2.3 基本テーマを決める
+
+		* 知的好奇心をくすぐるには、どうするか
+P		pic2.3-1 ドラクエ1のスタート地点の城が両方見えるの図
+        * 競争心を煽るには
+P		pic2.3-2 ぷよぷよの対戦してるの図
+        * 問題解決の満足感を与えるには
+		table2.3-1 ゲーム中の効果の分類表
+P		pic2.3-3 パックマンの無敵時間の時の画面
+F		pic2.3-4 シューティングの設定の例のグラフ
+P		pic2.3-5 ゼビウスの休みの時とそうでない時の比較
+		table2.3-2  ジャンルごとのテーマの表
+
+2.4 操作方法について
+		*入力デバイス
+		+ ジョイスティック
+P		pic 2.4-1 ジョイスティックの構造の図、写真が望ましい
+F		pic 2.4-2 アナログスティックの図
+		+ マウス
+P		pic 2.4-3 SGIのマウス、Windowsのマウス、Macのマウスの図
+        + キーボード
+P		pic 2.4-4 ASCIIキーボードとJISキーボードの図
+
+        * 実際の操作方法
+F		pic 2.4-5 Quakeの操作の方法の図
+CF		pic 2.4-6 アプレットの外に出ると操作ができないの図
+
+2.5 表示方法(出力)
+        * 出力デバイス
+		+ ブラウン管
+CF		pic 2.5-1 別なウインドウをNetscapeから出してる図
+		+ サウンド
+		* 出力デバイスをどう使うか？
+P		pic 2.5-2 ぷよで形も色も違う図
+
+2.6 プログラム
+
+2.7 データ
+F		pic 2.7 プログラムは、データを生かす道具だの図
+
+
+第3章  ゲーム作りの準備
+3.1 ソフト開発とは
+
+		prog 3.1-1 sample.java
+		prog 3.1-2 sample.class
+		prog 3.1-3 sample.class(dump)
+F		pic 3.1-1  テキスト変更-コンパイル-実行-サイクルの図
+
+3.2 開発環境をととのえる
+
+		prog.3.2-1 sample.java
+		prog.3.2-2 test.html
+C		pic.3.2-1 実行結果(sample.java)
+
+		o Windows 95(JDK)
+C		pic 3.2-2 editを使っているの図
+		prog 3.2-3 autoexec.bat
+		o Windows 95(Visual J++ 1.0)
+C		pic 3.2-3 VJ+++IEで動作しているの図
+		o Macintosh(JDK)
+
+C		pic 3.2-4    yooeditを使っているの図
+C		pic 3.2-5 javacompilerがエラーを出しているの図
+C		pic 3.2-6 ドラッグしてドロップしかけているの図
+		o Solaris(Sun OS 5.x JDK)
+		o その他のUNIX
+
+3.3 ゲーム製作はプログラマだけではできない！
+3.4 プログラミング言語をマスターするコツ
+P		pic 3.4-1 信岡にプログラム教えているの図
+
+第4章  Javaに慣れる
+4.1 最低限の文法知識
+
+		4.1.1 アプレットが動作するために必要なもの
+		prog 4.1.1-1 first.java
+		prog.4.1.1-2 test.html
+C		pic 4.1.1-1  動作結果の図(first.java)
+
+        4.1.2 Javaのプログラムとは
+F		pic 4.1.2-1      Javaのプログラムの構造の図
+		prog 4.1.2-2 hoge.java
+		prog 4.1.2-3 test.html
+C		pic 4.1.2-2    動作結果の図(hoge.java)
+F		pic 4.1.2-3    インデントの説明の図
+
+        4.1.3 プログラムの進行(メソッド)
+		prog 4.1.3-1 shinkou.java
+		prog 4.1.3-2 test.html
+C		pic 4.1.3-1   動作結果の図(shinkou.java)
+
+        4.1.4 System.out.println()
+		prog 4.1.4-1 printTest.java
+		prog 4.1.4-2 test.html
+T		pic.4.1.4-1  動作結果の図(printTest.java)
+CF		pic.4.1.4-2 	Consoleクラスを使った時の画面
+
+        4.1.5 データ構造
+		table 4.1.5    ドラクエみたいな敵のパラメータの表
+
+        4.1.6 変数
+		prog 4.1.6-1 kihon.java
+		prog 4.1.6-2 test.html
+T		pic 4.1.6-1      動作結果の図(kihon.java)
+		prog 4.1.6-3 str.java
+		prog 4.1.6-4 test.html
+T		pic 4.1.6-2   動作結果の図(str.java)
+
+        4.1.7 配列変数
+		prog 4.1.7-1 hairetu1.java
+		prog 4.1.7-2 test.html
+T		pic 4.1.7-1        動作結果の図(hairetu1.java)
+F		pic 4.1.7-2    配列ibの状況
+F  		pic 4.1.7-3 	  配列icの構造(hairetu1.java)
+		prog 4.1.7-3 hairetu2.java"
+		prog 4.1.7-4 test.html
+T		pic 4.1.7-4       実行結果の図(hairetu2.java)
+
+        4.1.8 スコープ
+			prog 4.1.8-1 scope.java
+			prog 4.1.8-2 test.html
+T		pic 4.1.8-1         動作結果の図(scope.java)
+			prog 4.1.8-3 scope2.java
+			prog 4.1.8-4 test.html
+T		pic 4.1.8-2 		実行結果の図(scope2.java)
+T		pic 4.1.8-3 	実行結果の図(scope2.java(2))
+
+        4.1.9 演算子
+			prog 4.1.9-1 keisan.java
+			prog 4.1.9-2 test.html
+T		pic 4.1.9-1         動作結果の図(keisan.java)
+
+        4.1.10 プログラムの流れを制御する(フロー制御)
+			prog 4.1.10-1 flow.java
+			prog 4.1.10-2 test.html
+T		pic 4.1.10-1       動作結果の図(flow.java)
+F		pic 4.1.10-2     このプログラムのフローチャートの図
+
+        11. 条件(boolean)
+		table 4.1.11   論理演算子とその読みかたの表
+			prog 4.1.11-1 bool.java
+			prog 4.1.11-2 test.html
+T		pic 4.1.11          動作結果の図(bool.java)
+
+        4.1.12 ビット演算
+F		pic 4.1.12-1    8個の箱のセットが4個セットになっているの図
+		table 4.1.12-1 10進数と2進数の対応
+		table 4.1.12-2 ビット演算の表
+			prog 4.1.12-1 bit.java
+			prog 4.1.12-2 test.html
+T		pic 4.1.12-2     実行結果の図(bit.java)
+
+        4.1.13 自分で新しい参照型(クラス)を作る
+		prog 4.1.13-1 enemyClass.java
+		prog 4.1.13-2 missile.java
+		prog 4.1.13-3 missilemove.java
+		prog 4.1.13-4 test.html
+C		pic 4.1.13-1 	動作結果の図(missilemove.java)
+		prog 4.1.13-5 hairetu3.java
+		prog 4.1.13-6 test.html
+
+        4.1.14 アプレットの一生
+			prog 4.1.14-1 life.java
+			prog 4.1.14-2 test.html
+T		pic 4.1.14 実行結果の図(life.java)
+
+        4.1.15 スレッド
+		prog 4.1.15-1 thread.java
+		prog 4.1.15-2 test.html
+C		pic 4.1.15-1 	動作結果の図(thread.java)
+			prog 4.1.15-3 multi.java
+			prog 4.1.15-4 test.html
+C		pic 4.1.15-2 	実行結果の図(multi.java)
+F		pic 4.1.15-3    10個のスレッドが順番に実行される図
+
+        4.1.16 例外処理
+			prog 4.1.16-1 exception.java
+			prog 4.1.16-2 test.html
+T		pic 4.1.16-1 	動作結果の図(exception.java)
+			prog 4.1.16-3 catch.java
+			prog 4.1.16-4 test.html
+T		pic 4.1.16-2 実行結果の図(trycatch.java)
+
+   	    17. JDK1.1以降のイベント処理
+		prog 4.1.17-1 meventOld.java
+		prog 4.1.17-2 test.html
+		prog 4.1.17-3 meventNew.java
+		prog 4.1.17-4 test.html
+C		pic 4.1.17-1 	動作結果の図( meventNew,meventOld.java)
+
+        4.1.18 まとめ
+
+4.2 ゲームプログラムの構造
+		prog 4.2-1 game.java
+		prog 4.2-2 test.html
+C		pic 4.2-1    動作結果の図(game.java)
+C		pic 4.2-2    メニューからquitを選ぼうとしているの図
+C		pic 4.2-3 	Ctrl-Cで止めているの図
+
+4.3 表示の基礎
+
+        4.3.1 ドット
+F		pic 4.3.1-1          TDLRの図と番号の振りかたの図
+			prog 4.3.1-1 tdlr.java
+			prog 4.3.1-2 test.html
+C		pic 4.3.1-2          動いている途中の図(tdlr.java)
+
+        4.3.2 アニメーション
+		prog 4.3.2-1 anime.java
+		prog 4.3.2-2 test.html
+C		pic 4.3.2-1       動作結果の図(anime.java)
+
+        4.3.3 ちらつき防止
+			prog 4.3.3-1 NoUpdate.java
+			prog 4.3.3-2 test.html
+C		pic 4.3.3-1 	実行結果(NoUpdate.java)
+			prog 4.3.3-3 OffScr.java
+			prog 4.3.3-4 test.html
+C		pic 4.3.3-2       動作結果の図(OffScr.java)
+F		pic 4.3.3-3         ブラウン管描画タイミングの図
+
+4.4 画面に画像を出すプログラム
+		prog 4.4-1 getimage.java
+		prog 4.4-2 test.html
+C		pic 4.4-1   表示されない場合があるの動作結果図
+F		pic 4.4-2  ロード指示、ロード開始、メモリ展開、描画の図
+		prog 4.4-3 mt.java
+		prog 4.4-4 test.html
+C		pic 4.4-3    動作結果の図(mt.java)
+		prog 4.4-5 loading.java
+		prog 4.4-6 test.html
+C		pic 4.4-4     動作結果(loading.java)
+
+4.5 図形を描画する
+		prog 4.5-1 move.java
+		prog 4.5-2 test.html
+C		pic 4.5-1     動作結果(move.java)
+F		pic 4.5-2 いくつものものを連続的に繰り返し動す図
+
+4.6 好きな色を作る
+		prog 4.6-1 color.java
+		prog 4.6-2 test.html
+C		pic 4.6-1     動作結果(color.java)
+F		pic 4.6-2 	 256段階づつの成分である図
+
+4.7 音を出す
+		prog 4.7-1 sound.java
+		prog 4.7-2 test.html
+C		pic 4.7-1    動作結果の図(sound.java)
+
+4.8 HTMLに書かれている設定を取りだす
+		prog 4.8-1 param.java
+		prog 4.8-2 test.html
+C		pic 4.8-1     動作結果の図(param.java)
+
+4.9 マウスの入力
+		table 4.9 		マウスアクションの表
+		prog 4.9-1 mouse.java
+		prog 4.9-2 test.html
+CT		pic 4.9-1     動作結果の図(mouse.java)
+
+4.10 キーボードの入力
+		table 4.10-1 キーボードイベントの表
+			prog 4.10-1 keydown.java
+			prog 4.10-2 test.html
+T		pic 4.10-1    動作結果の図(keydown.java)
+			prog 4.10-3 key.java
+			prog 4.10-4 test.html
+C		pic 4.10-2    動作結果の図(key.java)
+
+4.11 ゲームプログラミングとコンポーネント
+C		pic 4.11-1   よくあるアプレットの写真
+		prog 4.11-1 win.java
+		prog 4.11-2 test.html
+C		pic 4.11-2    動作結果の図(win.java)
+C		pic 4.11-3 アプレットはinsetsがないよの図
+C		pic 4.11-4 動作結果
+T		table 4.11  	Insetsのメンバ変数
+
+4.12 Javaでの画像処理
+		prog 4.12-1 memSrc.java
+		prog 4.12-2 test.html
+C		pic 4.12-1     動作結果(memSrc.java)
+F		pic 4.12-2 		RGBA 32ビットわりあての図
+
+4.13 フォント
+		prog 4.13-1 font.java
+		prog 4.13-2 test.html
+		pic 4.13-1 		実行結果(font.java)
+		table 4.13	フォントのスタイル表
+		pic 4.13-2	3種類のスタイルで色々に表示した画面
+		pic 4.13-3	実行結果(fmetr.java)	
+
+4.14 アプレットの後始末
+		
+
+
+
+第5章  スタンドアローンのゲームを作る
+
+5.1 小さいゲームを実際に作る
+5.2 モグラ叩き
+F		pic 5.2-1   完成予想図
+
+5.3 実際に作る
+		prog 5.3-1 game.java
+		prog 5.3-2 test.html
+C		pic 5.3-1 	もぐらたたきの実行結果(game.java)
+F		pic 5.3-2 		モグラの状態の図
+F		pic 5.3-3            ビット演算の図
+
+5.4 スネークゲーム
+		prog 5.4-1 snake.java
+		prog 5.4-2 test.html
+C		pic 5.4-1"	スネークゲームの動作結果図
+
+        5.4.1 回転系
+F		pic 5.4.1          方向とベクトルの図
+
+        5.4.2 遠い記憶は配列に保存
+F		pic 5.4.2-1  蛇の移動と、配列のインデクスの対応の図
+F		pic 5.4.2-2    配列の中身がループしているの図
+
+5.5 当たり判定
+		prog 5.5-1 atari.java
+		prog 5.5-2 test.html
+C		pic 5.5-1 実行中画面図(atari.java)
+F		pic 5.5-2 	当たり判定の不等式の意味をあらわす図
+CF		pic 5.5-3 	当たり判定がキャラの内部にある図。
+F		pic 5.5-4  	お互いの中点に対称に移動量が設定されるの図
+
+5.6 キャラクタの移動アルゴリズム色々
+        5.6.1 等速アルゴリズム
+F		pic 5.6.1 "pic.tousoku" 入力ON/OFFからの速度の立ちあがりグラフ
+        5.6.2 慣性アルゴリズム
+F		pic 5.6.2 "pic.kansei"  入力ON/OFFからの速度の立ちあがりグラフ
+        5.6.3 終端アルゴリズム
+F		pic 5.6.3 "pic.syuutan" 入力ON/OFFからの速度の立ちあがりグラフ
+        5.6.4 漸近アルゴリズム
+F		pic 5.6.4 "pic.zenkin"  入力ON/OFFからの速度の立ちあがりグラフ
+		prog 5.6.4-1 player.java
+		prog 5.6.4-2 game.java
+		prog 5.6.4-3 test.html
+C		pic 5.6.4-2    動作結果図(player.java)
+
+5.7 極座標系を使って、楽しい動きを！
+
+
+F		pic 5.7-1 		直交座標系の図
+F		pic 5.7-2 		極座標系の図
+F		pic 5.7-3 		ハチが8の字を描いて飛ぶの図
+
+		5.7.1 座標系の間での変換方法
+
+		5.7.2 角度を扱うための判定関数群
+F		pic 5.7.2-1		自分の角度と相手の角度の図
+F		pic 5.7.2-2	現在の角度と目標への角度の図
+F		pic 5.7.2-3		forbackの図
+
+		5.7.3 極座標系を用いた移動アルゴリズムの例：猪突猛進キャラ
+		prog 5.7.3-1 moshin.java
+		prog 5.7.3-2 game.java
+		prog 5.7.3-3 test.html
+C		pic 5.7.3-1			動作結果の図
+
+
+
+第6章  ネットワークゲームを作る
+
+6.1 インターネットのしくみ
+
+F		pic 6.1-1   インターネットの概念図
+
+6.2 プロトコル
+F		pic 6.2-1    ネットワークのプロトコル階層の図
+
+6.3 ソケット
+F		pic 6.3-1  32768個のポートがあってwell knownである図
+
+6.4. HTTPを使って情報を取ってくる
+
+		prog 6.4-1 http.java
+		prog 6.4-2 test.html
+CT		pic 6.4-1     動作結果図(http.java)
+
+6.5 HTTPを使って情報を送りこむ
+CF		pic 6.5-1 	 フォームがあるページの図
+F		pic 6.5-2   CGIとHTTPサーバとブラウザの概念図
+
+6.6 CGIでゲームを作る基礎技術
+		prog 6.6-1 cgiskel.java
+		prog 6.6-2 test.cgi
+F		pic 6.6-1 	javaが起動されるまでの図
+		prog 6.6-3 form.html
+C		pic 6.6-2	このHTMLファイルを読みこんだ図
+
+		* CGIはアプリケーション
+		prog 6.6-4 apli.java
+F		pic 6.6-5   ファイル単位でディスクに入っているの図
+		prog 6.6-5 rfile.java
+		
+
+6.7 CGIを使ってハイスコアをサーバーに登録する実例
+		prog 6.7-1 robots.java
+		prog 6.7-2 test.html
+C		pic 6.7-1     動作結果の図(robots.java)
+F		pic 6.7-2  	waitボーナスの図
+CF		pic 6.7-3 	マウスを使って操作するの図
+CF		pic 6.7-4 	キーボードを使って操作するの図
+CF		pic 6.7-5 ウインドウで名前を入力しているの図
+C		pic 6.7-6 	ソケットを繋ぐことができなかった。
+C		pic 6.7-7 	CGIに接続できた。
+
+		table 6.7-1	HTTPAccessのメソッドの表
+
+F		pic 6.7-8 	ファイルを使うと同期できないよーの図
+
+F		pic 6.7-9 情報のパッケージをCGIとユーザやりとり
+
+6.8 Remote Method Invocation(RMI)を使う
+
+F		pic 6.8-1    rmiのサーバクライアントの図
+
+6.9 ゲーム用の専用サーバーを用意する
+F		pic 6.9-1   いくつかのクライアントとサーバが接続る図
+F		pic 6.9-2     世界管理サーバーの概念図
+F		pic 6.9-3     入力流通型サーバの概念図
+		table 6.9-1     動作確認の表
+		prog 6.9-1 server.java
+		prog 6.9-2 client.java
+		prog 6.9-3 test.html
+CT		pic 6.9-4  	動作結果(server.java)
+CT		pic 6.9-5 動作結果( client.java)
+
+6.10 ゲームに適したプロトコルを作るコツ
+F		pic 6.10-1        TCPとUDPの比較の図
+F		pic 6.10-2         ヘッダが加わっていく図
+F		pic 6.10-3    テキストにするとデータが膨らむの図
+F		pic 6.10-4    バイト列をあらわす図
+
+リファレンス
+
+1. 予約語
+2. 名前
+3. コメント
+4. リテラル
+5. 変数の型
+6. 変数宣言
+7. 演算子
+8. 論理演算の真偽値表
+9.  文とブロック
+10. フロー制御
+11. クラスとインターフェイス定義
+12. メソッドとコンストラクタ
+13. 例外とエラー
+14. パッケージ
+15. import
+
+クラスライブラリ
+
+java.applet
+java.awt
+java.awt.datatransfer
+java.awt.event
+java.awt.image
+java.awt.peer
+java.io
+java.lang
+java.lang.reflect
+java.net
+java.rmi
+java.rmi.dgc
+java.rmi.registry
+java.rmi.server
+java.security
+java.security.acl
+java.security.interfaces
+java.sql
+java.text
+java.util
+java.util.zip
+
+ふろく
+
+* Visual J++でJava Consoleを使用可能にする方法?
+* JDK1.0 -> JDK1.1 イベント対応表
+* アスキー文字配列の表
+* Appletで日本語を表示する方法
+* Java関連の情報ソース
+* Java勉強法
+
+

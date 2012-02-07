@@ -1,0 +1,644 @@
+
+エラーメッセージリスト
+
+エラーの種類は、そのタイミングによって、コンパイルする時と、実行している時の
+もの に分けることができます。コンパイルした時にエラーがなくても、実行中に何
+らかの バグによって例外が発生するときは多くあります。コンパイル時のエラー
+は、プログラム を書きかえて、一つも出なくなるまで根気よく試行錯誤してくださ
+い。実行時のエラーは、「例外」または「エラー」と呼ばれるものです。
+これらは、よく発生するものについては「ライブラリリファレンス」で説明しています
+ので、よくわからない場合は、そちらを参照してください。
+
+
+
+----------------------------------------------------------------------------
+
+コンパイルする時のエラー
+
+このエラーメッセージは、JDKの配布パッケージの中のlibディレクトリの中にある、
+javac.propertiesというファイルを日本語化したものを、
+http://www.sun.co.jp/smi.jp/tech/java/index.htmlから
+取ってきて多少変更したものです。javac.propertiesを日本語版と入れかえると、
+javacのエラー出力が日本語になります。そのためのファイルがCD-ROMに収められ
+ています。以下のメッセージは、JDK1.1のjavacのものです。1.0.2から増えた分に
+関しては、仮に筆者が訳しました。正式な版がSunから発表されることを願います。
+文字列中に、%sが出てきますが、それらは、英語中の順番と一致させて、以下のよう
+に読んでください。
+
+例：
+
+Your girlfriend %s is very %s.  -> 君の彼女の%sはたいへん%sです。
+
+----------------------------------------------------------------------------
+* Internal error.
+        内部エラー.
+* Comment not terminated at end of input.
+        コメントが閉じられていません.
+* String not terminated at end of input.
+        文字列がファイル末尾までに閉じられていません.
+* String not terminated at end of line.
+        文字列が行末までに閉じられていません.
+* Invalid character constant.
+        不当な文字定数です.
+* Unbalanced parentheses.
+        括弧が対応していません.
+* Invalid escape character.
+        不当なエスケープ文字です. JIS/SJISでプログラムを書いていると、発生する
+		可能性があります。
+* Invalid character in octal number.
+	    8進数に使えない文字が含まれています.
+* Invalid character in number.
+        数値に使えない文字が含まれています.
+* Invalid character in input.
+        不当な入力文字が含まれています.全角の空白やセミコロンが含まれて
+		いませんか？
+* Invalid floating point format.
+		浮動小数の表記が誤っています.
+* Numeric overflow.
+        数値がオーバーフローしました.
+* Numeric underflow.
+        数値がアンダーフローしました.
+* '%s' expected.
+		'%s'が必要です。 '%s'というのは、トークンのことです。以下、'%s'のような
+		表現は、そこにエラーの原因となった文字列が入ります。
+* Statement expected.
+        文が必要です.
+* Type expected.
+        型を指定して下さい.
+* Identifier expected.
+        識別子を指定して下さい.
+* 'class' or 'interface' keyword expected.
+        'class' あるいは 'interface' を指定して下さい.
+* Class or interface declaration expected.
+        クラス定義またはインターフェース定義が必要です.
+* Missing term.
+        構文エラーです.
+* 'else' without 'if'.
+        'else' に対応する 'if' がありません. 中括弧の対応がおかしくないですか？
+* 'catch' without 'try'.
+        'catch' に対応する 'try' がありません.
+* 'finally' without 'try'.
+        'finally' に対応する 'try' がありません.
+* 'try' without 'catch' or 'finally'.
+        'try' に対応する 'catch' または 'finally' がありません.
+* 'case' outside switch statement.
+        'case' がswitch文の外で使用されています.
+* 'default' outside switch statement.
+        'default' がswitch文の外で使用されています.
+* I/O error in %s.
+        %sに対する入出力エラーが発生しました.
+* Array index required.
+        配列の添字が必要です.
+* [] can only be applied to arrays. It can't be applied to %s.
+        [] は配列のみに適用可能で、%sに適用することはできません.
+* Can't specify array dimension in a declaration.
+        宣言時に配列の次元数を指定することはできません.
+* Can't specify array dimension in a type expression.
+        型表記に配列の次元数を指定することはできません.
+* Array constants can only be used in initializers.
+        配列定数は初期化子にしか使用できません.
+* Invalid initializer for type %s.
+        %sに対して、不当な初期化子が指定されています.
+* Invalid left hand side of assignment.
+        代入に不当な左辺値が指定されています.
+* Invalid arguments to %s.
+        %sに対して、不当な引数が指定されています.
+* Invalid cast from %s to %s.
+        %sから%sへはキャストできません.
+* Impossible for %s to be instance of %s.
+        %sは%sのインスタンスでは有り得ません(型が一致しません).
+* Invalid type expression.
+        不当な型表記です.
+* Only named classes can have 'extends' or 'implements' clauses.
+     	名前がつけられているクラスだけしか、'extends'または 'implements'節を
+		持つことはできません。(JDK1.1)
+* Attempt to reference field %s in a %s.
+	  フィールド%s(%sで定義)を参照できません.
+* No variable %s defined in %s.
+      変数%sは%sには定義されていません.
+* Variable %s in %s not accessible from %s.
+		変数'%s'(%sで定義されている)は内部型なので、%sからはアクセスできません。
+		(JDK1.1)
+* Inner type %s in %s not accessible from %s.
+		'%s'(%sで定義されている)は内部型なので、'%s'からはアクセスできません。
+		(JDK1.1)
+* Can't make a static reference to nonstatic variable %s in %s.
+		非staticな変数%s(%sで定義)を、staticに参照することはできません.        
+* Can't make a static reference to inner class %s.
+		内部クラス%sへのstaticな参照をすることはできません。(JDK1.1)
+* Reference to %s is ambiguous. It is defined in %s and %s.
+        %sへの参照はあいまいです(%sおよび%sで定義されています).
+* Attempt to reference method %s in %s as an instance variable.
+        メソッド%s(%sで定義)をインスタンス変数として参照しようとしています.
+* Can't assign a value to a final variable: %s
+        final変数に値を代入することはできません: %s
+* Can't assign a second value to a blank final variable: %s
+		空宣言されたfinal変数に2度目以降は値を代入することはできません:%s
+		(JDK1.1)
+* Attempt to assign a blank final %s variable in a loop. The initialization
+		must occur exactly once.
+		空宣言されたfinal変数%sをループの中で初期化することはできません。正確に
+		一度だけしか初期化されてはいけません。(JDK1.1)
+* Attempt to assign to a variable %s in a different method. From enclosing 
+blocks, only final local variables are available.
+		異なるメソッド注で変数%sに代入しようとしました。このブロックからは、
+		finalなローカル変数しか使えません。
+*  Attempt to use a non-final variable %s from a different method. From 
+enclosing blocks, only final local variables are available.
+		異なるメソッドからfinalでない変数%sを使おうとしました。このブロックから
+		は、finalなローカル変数しか使えません。
+* Access across scopes to the private member %s in %s is not implemented.  
+The reference will succeed if the member is given package scope.
+		スコープ境界を越えてのprivateメンバ%s(%sで定義)は実装されていません。
+		参照は、packageスコープ以上でないと成功しません。
+* Undefined variable: %s
+        変数が未定義です: %s
+* Undefined variable or package name: %s
+		変数またはパッケージが未定義です: %s
+* Undefined variable, class, or package name: %s
+		変数またはクラスまたはパッケージが未定義です: %s
+* Undefined variable or class name: %s
+		変数またはクラスが未定義です: %s
+* Variable %s may not have been initialized.
+      	変数%sは初期化されない可能性があります.
+* Blank final variable '%s' may not have been initialized. 
+It must be assigned a value in an initializer, or in every constructor.
+		空宣言されているfinal変数'%s'は初期化されない可能性があります。イニシャ
+		ライザで初期化するか、すべてのコンストラクタで初期化してください。
+* Can't reference %s before the superclass constructor has been called.
+        スーパークラスのコンストラクタが呼ばれる前に%sを参照することはできません.
+* Ambiguous class: %s and %s
+        クラスがあいまいです: %sおよび%s
+* Invalid argument to %s.
+        %sに対し、不当な引数が指定されています.
+* Invalid argument type %s for %s.
+        不当な引数の型%sが%sに対して指定されています.
+* 'length' applied to %s, which is not an array.
+        配列ではない%sに対して、'length' が適用されています.
+* Only constructors can invoke constructors.
+        コンストラクタはコンストラクタ中からしか呼び出せません.
+* Constructor invocation must be the first thing in a method.
+        コンストラクタでは、まずはじめにコンストラクタを呼び出さなくてはい
+		けません.
+* Can't invoke a method on a %s.
+        %sに対してメソッド呼び出しをすることはできません.
+* Method %s not found in %s.
+        メソッド%sは%sには定義されていません.
+* Method %s in %s is not accessible from %s.
+        メソッド%s(%sで定義)は%sからアクセスできません.
+* Can't make static reference to method %s in %s.
+        メソッド%s(%sで定義)を、staticに参照することはできません.
+* Can't access protected method %s in %s. %s is not a subclass of the 
+current class.
+        protected宣言されたメソッド%s(%sで定義)を、サブクラスでないクラス(%s)
+		から参照することはできません.
+* Can't access protected field %s in %s. %s is not a subclass of the current
+class.
+        protected宣言されたフィールド%s(%sで定義)を、サブクラスでないクラス
+		(%s)から参照することはできません.
+* Can't access protected inner type %s in %s. %s is not a subclass of the 
+current class.
+		内部型の%s(%sで定義)はprotectedなのでアクセスできません。%sはカレント
+		クラスのサブクラスではありません。
+* Reference to variable %s in %s as if it were a method.
+        変数%s(%sで定義)をメソッドとして参照しようとしています.
+* Reference to method %s in %s as if it were a variable.
+		メソッド%s(%sで定義)を変数のように参照しようとしています。
+* Note: %s has been deprecated.  Please consult the documentation for a 
+better alternative.
+		%sは使わないでください。よりよい代替の方法をドキュメントを読んで調べて
+		ください。
+* Note: The method %s in %s has been deprecated.  Please consult the 
+documentation for a better alternative.
+		メソッド%s(%sで定義)は使わないでください。よりよい代替の方法をドキュ
+		メントを読んで調べてください。
+* Note: The constructor %s has been deprecated.  Please consult the 
+documentation for a better alternative.
+		コンストラクタ%s(%sで定義)は使わないでください。よりよい代替の方法を
+		ドキュメントを読んで調べてください。
+* Note: The variable %s in %s has been deprecated.  Please consult the
+documentation for a better alternative.
+		変数%s(%sで定義)は使わないでください。よりよい代替の方法をドキュメント
+		を読んで調べてください。
+* Invalid array dimension.
+        不当な配列次元数です.
+* Constructor is ambiguous: %s, %s
+        コンストラクタがあいまいです: %s,%s
+* Incompatible type for %s. Explicit cast needed to convert %s to %s.
+        型%sは非互換です. %sから%sに変換するには明示的なキャストが必要です.
+* Incompatible type for %s. Can't convert %s to %s.
+        型%sは非互換です. %sから%sに変換することはできません.
+* Invalid term.
+        不当な語句です.
+* %s must be declared abstract. It does not define %s from %s.
+        %sは%s(%sより由来)を定義していないため、abstract宣言する必要があります.
+* %s must be declared abstract and not final. It does not define %s from %s.
+        %sは%s(%sより由来)を定義していないため、abstract宣言する必要があり、
+		かつ、final宣言してはいけません.
+* %s is an interface. It can't be instantiated.
+        %sはインターフェースなので、インスタンス化できません.
+* Can't directly invoke abstract method %s in %s.
+        abstract宣言されたメソッド%s(%sで定義)を直接呼び出すことはできません.
+* No method matching %s found in %s.
+        %sに対応するメソッドは%sには見つかりません.
+* No constructor matching %s found in %s.
+        %sに対応するコンストラクタは%sには見つかりません.
+* Wrong number of arguments in %s.
+		%sでの引数の数がおかしい。
+* Can't make forward reference to %s in %s.
+        %s(%s)に対して、前方参照することはできません.
+* Array dimension missing.
+        配列の次元数が必要です.
+* %s is an abstract class. It can't be instantiated.
+        %sは抽象クラスなので、インスタンス化できません.
+* No label definition found for %s.
+        ラベルが未定義です: %s.
+* 'break' must be in loop or switch.
+        'break' はループ中かswitch文中でしか使えません.
+* 'continue' must be in loop.
+        'continue' はループ中でしか使えません.
+* Invalid declaration.
+        不当な宣言です.
+* 'return' with value from %s.
+        %sからのretun文に値を指定することはできません.
+* 'return' without value from %s.
+        %sからのreturn文には値を指定しなくてはいけません.
+* 'return' inside static initializer.
+        staticイニシャライザ中にはreturn文は記述できません.
+* Invalid label.
+        不当なラベルです.
+* Return required at end of %s.
+        %sの最後にreturn文が必要です.
+* Duplicate case label: %s
+        caseラベル%sが多重定義されています.
+* Case label %s too large for 'switch' on %s
+        caseラベル%sは%sでのswitch文の範囲を越えています.
+* Constant expression required.
+        定数式を指定して下さい.
+* Duplicate 'default' label.
+        defaultラベルが複数指定されています.
+* '%s' not supported.
+        %sはサポートされていません.
+* 'return' with value from constructor: %s
+        コンストラクタ%sに値をともなったreturn文が指定されています.
+* Only one package declaration allowed.
+        package文は一つだけしか記述できません.
+* Class %s already defined in %s.
+        クラス%sは%s中ですでに定義されています.
+* Class name %s clashes with imported class %s.
+        クラス名%sはインポートされたクラス%sと衝突します.
+* Final methods can't be overriden. Method %s is final in %s.
+        メソッド%sは%sでfinal宣言されているため、再定義できません.
+* Method redefined with different return type: %s was %s
+        メソッドを違う型で再定義することはできません: %sと%s
+* Static methods can't be overridden. Method %s is static in %s.
+        メソッド%sは%sでstatic宣言されているため、再定義できません.
+* Instance methods can't be overridden by a static method.Method %s is an
+instance method in %s.
+        メソッド%sは%sでインスタンスメソッドとして定義されているため、
+		staticメソッドとしては再定義できません.
+* Methods can't be overridden to be more private. Method %s is public in %s.
+        メソッドの公開範囲を狭めて再定義することはできません.
+		%sは%sでpublic宣言されています.
+* Methods can't be overridden to be more private. Method %s is protected in %s.
+        メソッドの公開範囲を狭めて再定義することはできません.
+		%sは%sでprotected宣言されています.
+* Methods can't be overridden to be more private. Method %s is not private in %s.
+        メソッドの公開範囲を狭めて再定義することはできません.
+		%sは%sでprivate宣言されていません.
+* Interfaces can't have constructors.
+        インターフェースにはコンストラクタを定義できません.
+* Constructors can't be native, abstract, static, synchronized, or final: %s
+        コンストラクタをnative宣言, abstract宣言, static宣言, synchronized宣言,
+		あるいは final宣言することはできません: %s
+* Interfaces can't have static initializers.
+        インターフェースにはstaticイニシャライザを定義できません.
+* Interface methods can't be native, static, synchronized, final, private,
+		or protected : %s
+        インターフェースのメソッドはnative宣言, static宣言, synchronized宣言,
+		final宣言, private宣言, あるいは protected宣言できません: %s
+* Interface fields can't be private or protected: %s
+        インターフェースのフィールドはprivate宣言あるいはprotected宣言でき
+		ません: %s
+* Method %s can't be transient. Only variables can be transient.
+        メソッドはtransient宣言できません: %s
+* Method %s can't be volatile. Only variables can be volatile.
+        メソッドはvolatile宣言できません: %s
+* Static methods can't be abstract: %s
+        staticメソッドはabstract宣言できません: %s
+* Abstract and native methods can't have a body: %s
+        abstract宣言あるいはnative宣言されたメソッドにはメソッド本体を定義
+		できません: %s
+* Variables can't be synchronized, abstract or native: %s
+        変数はsynchronized宣言, abstract宣言あるいはnative宣言できません: %s
+* Inner classes can't be volatile, transient, native, or synchronized: %s
+		内部クラスは、volatile,transiend,native,synchronizedのいずれも指定でき
+		ません。
+* Transient variables can't be members of interfaces: %s
+        transient宣言された変数はfinal宣言あるいはstatic宣言できません: %s
+		transient宣言された変数はインターフェースのメンバになり得ません(筆者注)
+* Volatile variables can't be final or members of interfaces: %s
+		volatile指定された変数は、final指定できない上に、インターフェースの
+		メンバにもなり得ません。: %s
+* This final variable must be initialized: %s
+        final宣言した変数は初期化する必要があります: %s
+* Duplicate method declaration: %s
+        メソッド定義が重複しています: %s
+* Methods can't be redefined with a different return type: %s was %s
+        メソッドを異なる型で再定義することはできません: %sは%s型として
+		定義されています
+* Duplicate variable declaration: %s was %s
+        変数定義が重複しています: %sは%s型として定義されています
+* Duplicate inner class declaration: %s is already defined in this scope.
+		内部クラスの宣言が重複しています。 %s はスコープ内ですでに宣言されてい
+		ます。
+* Superclass of %s can't be an interface: %s
+        クラス%sのスーパークラスとしてインターフェースを指定することは
+		できません: %s
+* Can't access %s. Only public classes and interfaces in other packages
+		can be accessed.
+        %sがアクセスできません. 他のパッケージのpublic宣言されたクラスまたは
+		インターフェースのみをアクセスすることができます.
+* Repeated modifier.
+        修飾子が繰り返されています.
+* Inconsistent member declaration. At most one of public, private, or
+protected may be specified.
+		アクセス制御の修飾子の一貫性がありません。public,private,protectedの
+		いずれか一つを指定してください。
+* Can't subclass final classes: %s
+        クラス%sはfinal宣言されているため、サブクラスを定義できません.
+* Can't subclass interfaces: %s
+        インターフェース%sのサブクラスは定義できません.
+* Cyclic class inheritance.
+        クラスの継承関係がループしています.
+* Cyclic class inheritance:  A subclass cannot enclose a superclass.
+		クラスの継承関係がループしています.サブクラスは、スーパークラスを含む
+		ことはできません。
+* Cyclic interface inheritance.
+        インターフェースの継承関係がループしています.
+* Cyclic class inheritance or scoping.
+		インターフェースの継承関係がループしているか、スコープがループし
+		ています。
+* %s must be an interface.
+        %sはインターフェースでなくてはいけません.
+* Interfaces can't be final: %s
+        インターフェースはfinal宣言できません: %s
+* An interface can't implement anything; it can only extend other interfaces.
+        インターフェースはなにも実装することはできません. extendsを使って下さい.
+* Multiple inheritance is not supported.
+        多重継承はサポートしていません.
+* Interface %s repeated.
+        インターフェース%sが繰り返されています.
+* Invalid class file format: %s, %s
+        不当なクラスフォーマットです: %s,%s
+* Method %s requires a method body. Otherwise declare it as abstract.
+        abstract宣言されていないメソッド%sの定義には本体が必要です.
+* Constructor %s requires a method body.
+        コンストラクタ%sの定義には本体が必要です.
+* Instance variables can't be void: %s
+        変数はvoid型として定義できません: %s
+* Invalid method declaration; return type required.
+        メソッド宣言には返却値型の指定が必要です.
+* Superclass %s of %s not found.
+        クラス%s(%sのスーパークラス)が見つかりません.
+* Interface %s of %s not found.
+        インターフェース%s(%sで実装)が見つかりません.
+* Class %s can't be declared both abstract and final.
+        クラスをabstract宣言すると同時にfinal宣言することはできません: %s
+* Argument can't have type void: %s
+        引数はvoid型にはできません: %s
+* Invalid expression statement.
+        不当な式が指定されています.
+* catch not reached.
+        catchに到達しません. 
+* Statement not reached.
+        文に到達しません.文の直前にreturnがあったりしませんか？
+* Arithmetic exception.
+        算術演算が不当です.
+* Public %s must be defined in a file called "%s".
+        public宣言された型%sを記述するソースファイル名は "%s"でなくては
+		いけません.
+* %s is defined in %s. Because it is used outside of its source file, 
+it should be defined in a file called "%s".
+		%sは%sで定義されています。ソースファイルの外で使われているので、
+		"%s"というファイルの中で定義されている必要があります。
+* Possible loss of precision. Use an explicit cast to convert %s to %s.
+        精度が失われます. %sから%sに明示的にキャストしてください.
+* Variable '%s' is used twice in the argument list of this method.
+        変数%sはこのメソッドの引数列に二度用いられています.
+* Variable '%s' is already defined in this method.
+        変数%sはメソッド中ですでに定義されています.
+* Local class '%s' is already defined in this method.
+		ローカルクラス %sは、すでにこのメソッド内で定義されています。
+* The class name '%s' is already defined in this scope.  An inner class may 
+not have the same simple name as any of its enclosing classes.
+		クラス%sは、すでにこのスコープ内で定義されています。 内部クラスは、
+		そのクラスが含んでいるすべてのクラスと同じシンプルな名前を持つことは
+		できません。
+* Variable '%s' is inherited in %s, and hides a variable of the same name in %s.
+ An explicit 'this' qualifier must be used to select the desired instance.
+		変数%sは、%sで継承されていますが、それは%s内の同じ名前の変数を隠してし
+		まいます。望む継承を選択するには、明示的にthisという修飾子を使わなけれ
+		ばなりません。
+* Variable '%s' is inherited in %s, and hides a local variable of the same name.
+ An explicit 'this' qualifier must be used to select the variable, or the local
+must be renamed.
+		変数%sは%sで継承されていますが、それは同じ名前のローカル変数を隠してしま
+		います。望む継承を選択するには、明示的にthisという修飾子を使わなけれ
+		ばなりません。あるいは、ローカル変数の名前を変える必要があります。
+* Method '%s' is inherited in %s, and hides a method of the same name in %s. 
+An explicit 'this' qualifier must be used to select the desired instance.
+		メソッド%sは、%sで継承されていますが、それは同じ名前の%sで定義されている
+		メソッドを隠してしまいます。明示的にthisという修飾子を使わなけれ
+		ばなりません。
+* Type '%s' is inherited in %s, and hides a type of the same name in an
+enclosing scope. An explicit qualifier prefix must be used to name this type.
+		型%sは、%sで継承されていますが、それは同じスコープにある同じ名前の型を
+		隠してしまいます。明示的な修飾子がこの名前には必要とされます。
+* The type %s can't be private. Package members are always accessible 
+		within the current package.
+        クラスをprivate宣言することはできません. クラスは同一パッケージ中
+		からは必ず参照することができます.
+* The type %s can't be declared static. It is already top-level, since it is 
+a member of a package.
+		型 %sは、static宣言することはできません。これはパッケージのメンバなの
+		で、すでにトップレベルです。
+* The type %s can't be made protected. Package members can either be public 
+or local to the current package.
+		型%sはprotectedにすることはできません。パッケージのメンバはこの
+		パッケージに対してはpublicまたはローカルです。
+* Recursive constructor invocation: %s.
+        コンストラクタ呼び出しが再帰しています: %s.
+* File %s does not contain %s as expected, but %s. Please remove the file.
+        ファイル%sは期待される%sを含んでおらず、かわりに%sを含んでいます.
+		ファイルを消去してください.
+* Class %s not found in %s.
+        クラス%sは%s中には見つかりません.
+* Package %s not found in %s.
+        パッケージ%sは%s中には見つかりません.
+* Invalid exception %s in throws clause. The exception must be a subclass 
+		of an exception thrown by %s from %s.
+        不当な例外%sがthrows節に指定されています.throwされる例外は%s
+		(%sより由来)でthrowされる例外のサブクラスでなくてはいけません.
+* %s in throws clause must be a subclass of class java.lang.Throwable.
+        throws節中の%sはjava.lang.Throwableクラスのサブクラスでなくて
+		はいけません.
+* Can't throw %s; it must be a subclass of class java.lang.Throwable.
+        java.lang.Throwableのサブクラスではないため、%sをthrowできません.
+* Can't catch %s; it must be a subclass of class java.lang.Throwable.
+        java.lang.Throwableのサブクラスではないため、%sをcatchできません.
+* Exception %s can't be thrown in initializer.
+        例外を初期化子中でthrowすることはできません: %s
+* Can't read: %s
+        ファイルから読み込めません: %s
+* Can't write: %s
+        ファイルに書き込めません: %s
+* An error has occurred in the compiler; please file a bug report 
+		(java-bugs@java.sun.com).
+        コンパイラ内部でエラーが発生しました. バグリポートをおくって下さい
+		(java-bugs@java.sun.com).
+* An exception has occurred in the compiler; please file a bug report
+		(java-bugs@java.sun.com).
+        コンパイラ内部でエラーが発生しました. バグリポートをおくって下さい
+		(java-bugs@java.sun.com).
+* Support for inner classes has been disabled.
+		内部クラスはサポートしていません。
+* Exception %s must be caught, or it must be declared in the throws clause
+		of this method.
+        例外%sをcatchするか、あるいは、このメソッドのthrows節で宣言しなくては
+		いけません.
+* Exception %s is never thrown in the body of the corresponding try statement.
+        例外%sは対応するtry節中でthrowされることはありません.
+* No enclosing instance of %s is in scope; an explicit one must be provided 
+when creating %s, as in "outer. new Inner()" or "outer. super()".
+		%sのインスタンスはスコープの中にありません。%sを作る時に明示してく
+		ださい。"outer. new Inner()" or "outer. super()"のようにします。
+* No enclosing instance of %s is in scope; cannot create a default constructor 
+for %s.
+		%sのインスタンスはスコープの中にありません。%sのデフォルトの
+		コンストラクタを作成することができません。
+* No enclosing instance of %s is in scope; an explicit one must be provided 
+when accessing %s, as in "outer.member".
+		%sのインスタンスはスコープの中にありません。%sにアクセスするときは
+		明示することが必要です。"outer.member"のようにします。
+* The type %s can't be static.  Static members can only occur in interfaces and
+top-level classes.
+		型%sは、%sにおいてはstaticにできません。インターフェースのメンバか、
+		トップレベルのクラスのメンバのみ、staticにできます。
+* Variable %s can't be static in %s.  Only members of interfaces and top-level
+classes can be static.
+		変数%sは、%sにおいてはstaticにできません。インターフェースのメンバか、
+		トップレベルのクラスのメンバのみ、staticにできます。
+* Method %s can't be static in %s.  Only members of interfaces and
+top-level classes can be static.
+		メソッド%sは%sにおいてはstaticにできません。インターフェースのメンバか、
+		トップレベルのクラスのメンバのみ、staticにできます。
+* Too many errors.  (The limit on reported errors is %s.)
+	エラーが多すぎます。エラーの最大は%sです。
+----------------------------------------------------------------------------
+
+
+
+
+コンパイル時のエラー対処法
+
+
+
+プログラミングしている時には、エラーはつきものです。たくさん のエラーに出会
+えば出会うほど、プログラマーの経験は増していきます。 Javaのプログラミングに
+おいても、エラーはたくさん出てきます。ここでは エラーメッセージが出たときの
+対応のしかたについて説明します。
+Javaはアメリカ生まれの言語なので、エラーメッセージは英語です。 特に最新版は
+日本語化されていない場合が多いです。これは仕方 ないことです。理想的には英語
+を読むことができればいいのですが、難しい という方も多いでしょう。しかしエラ
+ーメッセージの読みかたにはコツがあり、 それをマスターすれば、英語が苦手でも
+大丈夫です。
+
+コツその1、まずエラーの場所を探せ！
+
+エラーメッセージには、どこでエラーが起こったのかがわかるように、 行番号がつ
+いています。次のエラーの例を見てください。
+
+game.java:42: Identifier expected.
+        poblic void init()
+              ^
+1 error
+
+このエラーメッセージの最初の行に、game.java:42: Identifier expected. とあり
+ますが、これは
+「game.javaというプログラムのファイルの42行目でエラーがあり、その エラーは、
+"Identifier expected."という内容です。」という意味です。 その次の2行で、その
+行の中の場所をさらに詳しく教えてくれているわけです。 「poblicの後に、
+Identifier(識別子)があるはずだけど、ないよ。」、 という意味です。識別子とい
+うのは、変数名のことです。 このエラーは、poblicが、publicの綴りまちがい だっ
+たために生じました。この場合だと、エラーが生じた原因が、すぐにわかりますね。
+エディタを起動して、42行目を直せばいいのですから。
+ただ、実際に間違えている部分とエラーメッセージの行数はいつでも一致している
+とは限らないので、注意してください。
+
+
+
+
+実行時のエラー対処法
+
+
+
+------------------------------------------
+public class aho extends java.applet.Applet
+{
+    public void init(){
+        int[] a = new int[10];
+        a[11] = 299;
+    }
+}
+------------------------------------------
+このようなアプレットを実行させると、標準出力にエラーが出ます。
+
+------------------------------------------
+java.lang.ArrayIndexOutOfBoundsException: 11
+        at aho.init(aho.java:5)
+        at sun.applet.AppletPanel.run(AppletPanel.java:251)
+        at java.lang.Thread.run(Thread.java)
+------------------------------------------
+この表示は、「スタックトレース」と呼ばれます。もとのプログラムの何行目で
+エラーが発生したのかということまで、教えてくれるのです。上の例の場合は、
+java.lang.Thread.run()というメソッドの中から呼びだされた、AppletPanel.java
+というプログラムのrun()というメソッドの中の251行目から呼びだされた、
+aho.javaの5行目でエラーが発生しているということになります。5行目は、
+a[11]= 299;
+という文で、これはあきらかに異常ですね。したがって 
+ArrayIndexOutOfBoundsExceptionが発生し、その詳しい情報として、11という
+インデクスである、ということを示しています。
+例外が発生した時には、スタックトレースを見れば、ほぼ理由がわかります。
+自分でスタックトレースを表示させることもできます。それには次のようにし
+ます。強引に例外を発生させてみましょう。アプリケーションです。
+------------------------------------------
+class aho
+{
+    public static void main(String args[] ){
+        try{
+            throw new Exception("ringo made it");
+        }catch( Throwable t ){
+            t.printStackTrace();
+        }
+    }
+}
+------------------------------------------
+実行結果
+------------------------------------------
+java.lang.Exception: ringo made it
+        at aho.main(aho.java:5)
+------------------------------------------
+実行はmain()から始まるので、スタックトレースは一段しかありません。
+しかし、ちゃんと、行数まで表示されていますね。printStackTrace()を使え
+ば、エラーを自分の意志で表示したりできるのです。
+printStackTrace(PrintStream)というものもあります。それを使えば、ファイ
+ルに保存したりできます。
+
+
+
+
+
+
+
+

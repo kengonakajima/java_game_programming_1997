@@ -1,0 +1,199 @@
+
+	// POST でも GET でもどっちでも受けつけることができるが、そのようにするためには、
+	// このプログラムを起動するシェルスクリプトに環境変数を取りこめるように書いておく
+	// 必要がある。
+	// filename= ファイル名を指定する。
+	// method=append valueで指定される値をファイルにappendする。
+	// method=read   ファイル全体を読みだして文書として取ってくる。
+	// readの場合は、valueは必要ない。
+	// その時に色々と処理ができるのがCGIのいいところ。
+
+
+
+
+
+
+
+/*
+
+
+
+  ns2に置く場合は、
+  http://ns2.titan.co.jp/cgi-bin/ringo/java/aho.cgiでよい。それにアクセスするHTMLファイル
+  は、次のように書いておけばよい。
+
+------------------------------------------------------
+<html>
+<title>cgi test</title>
+
+<form method=get action="http://ns2.titan.co.jp/aho.cgi">
+<input type=text name=filename>
+<input type=text name=method>
+<input type=submit value="ok">
+</form>
+
+</html>
+------------------------------------------------------
+<html>
+<title>cgi test</title>
+
+<form method=post action="/cgi-bin/ringo/java/aho.cgi">
+<input type=text name=filename>
+<input type=text name=method>
+<input type=submit value="ok">
+</form>
+
+</html>
+------------------------------------------------------
+
+POSTの方のフォームには二つのテキスト入力フィールドがあるが、
+そのそれぞれに、score、readと入力してsubmitすると、
+サーバーには次のようなバイト列が送られる。
+
+--------------------
+POST /cgi-bin/ringo/java/aho.cgi HTTP/1.0
+Forwarded: by - (DeleGate/3.0.25) for -
+Forwarded: by - (DeleGate/3.0.25) for -
+Referer: http://ns2.titan.co.jp/ringo/post.html
+Proxy-Connection: Keep-Alive
+User-Agent: Mozilla/3.0 (X11; I; IRIX 5.3 IP22)
+Host: ns2.titan.co.jp:80
+Accept: image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, */*
+Content-type: application/x-www-form-urlencoded
+Content-length: 26
+
+filename=score&method=read
+
+--------------------
+サーバーは、空行の次の1行のURLエンコードされた行を、CGIプログラムの
+標準入力に書きこみます。
+CGIプログラムでは、System.inからreadすることによってこの文字列の内容を取り
+だすことができるというわけです。
+
+GETの方の場合も同じようにテキスト入力フィールドが二つでてきます。
+--------------------
+GET /cgi-bin/ringo/java/aho.cgi?filename=score&method=read HTTP/1.0
+Forwarded: by - (DeleGate/3.0.25) for -
+Forwarded: by - (DeleGate/3.0.25) for -
+Referer: http://ns2.titan.co.jp/ringo/get.html
+Proxy-Connection: Keep-Alive
+User-Agent: Mozilla/3.0 (X11; I; IRIX 5.3 IP22)
+Host: ns2.titan.co.jp:80
+Accept: image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, */*
+--------------------
+GETで同じようにsubmitすると、ファイル名の後ろに?をつけてその後にURLエ
+ンコードされた文字列をつけて送信します。サーバーはGETの場合は、環境変
+数QUERY_STRINGにこの文字列を代入してからCGIプログラムを起動します。
+CGIプログラムの中からはこの環境変数を使います。
+
+cgi.javaでは以上のふたつのやりかたに同時に対応しています。
+GETの方に対応するためには、javaのバーチャルマシンが環境変数を知ることができる
+ように、シェルスクリプトにそのための記述をしています。
+
+---------------------------------------
+#!/bin/sh
+/opt/java/bin/java -DQUERY=${QUERY_STRING} cgimain
+---------------------------------------
+どのような名前の環境変数にどのような値が入るのかは、
+使用しているサーバーによって異なります。(この例は、NCSA HTTPdaemon 1.5a の場合です。)
+
+
+
+
+*/
+
+/*
+  javaによるCGIプログラム例
+
+  フォームをWWWページに含める時は、GET/POSTの2種類がある。
+
+<form method=post action="cgi-bin/aho.cgi">
+<input type=text name=theName>
+<input type=submit value="hoge">
+</form>
+
+  というようにPOSTを使うものと、
+
+<form method=get action="cgi-bin/aho.cgi">
+<input type=text name=theName>
+<input type=submit value="hoge">
+</form>
+
+  この2つはどうちがうかというと、CGIプログラムとして働くプログラム
+への情報の伝えかたが違う。GETは起動されるシェルの環境変数に内容が
+代入されるのに対し、POSTの方は標準入力で得ることができる。
+POSTの方がGETよりもたくさんの情報を渡すこと
+ができると考えればよい。しかしどちらも同じように情報を渡すことができ
+る。渡されかたが違うのでjavaの方でも受けとりかたが異なる。
+
+<h4>GETの場合</h4>
+JDKのバージョン1.0.2からはSystem.getenv()が使えないので、
+System.getProperty(key)を使う。ところが、シェルの環境変数はそのままで
+は見えないので、javaをシェルスクリプトから起動する時に -Dオプションで
+もって、
+
+/opt/java/bin/java -DQUERY=${QUERY_STRING} myclass
+
+というように指定してやらなければならない。
+
+<h4>POSTの場合</h4>
+System.in.read()を使ってそのまま読みこむことができる。こちらのほうが
+単純でわかりやすい。
+
+  どちらの場合にも対応できるように、シェルスクリプトは前者のように
+書いておくと便利だ。例のプログラムもそうなっている。シェルスクリプト
+も書かなければならないところがつらいか。
+
+
+  どちらにせよ得られるデータはユーザが入力した値をURLエンコードした
+  ものになる。これは、フォーム中のそれぞれの入力部品の名前=値という
+  組みあわせを&で結んだもので、次のようなものである。
+
+  name=kengo+nakajima&nickname=ringo&age=22&gender=male
+
+  空白記号は'+'になり、その他の特殊記号(7ビットに収まらない日本語など)
+は%4aのように'%'記号をつけて16進数で表される。'%','=','&'も特殊記号と
+して扱われる。そしてこれは1行の値である。
+  ユーザの入力はこのように変換されてブラウザから送信されてくるので、そ
+  れを使いやすいように戻してやる必要がまずある。これは汎用のルーチンに
+しておくことが望ましいだろう。ということで、そのルーチンも掲載する。
+  普通の文字列からURLエンコードされた文字列を作るには、
+  java.net.URLEncoderを使えばよい。java.net.URLDecoderがないのは残念
+なことである。
+  URLDecoderでは、%ではじまる特殊記号はすべて、元のバイナリに戻すだけ
+とする。
+
+  javaのプログラムを起動するために、シェルスクリプトを書く必要がある。
+そのスクリプトでは、Javaの実行ファイルを絶対パスで書いておく。
+このスクリプトが実行されている時は、作業ディレクトリはこのスクリプトが
+置かれている場所になっているので、クラスファイルも見えるようになって
+いるから、
+/opt/java/bin/java cgimain
+とするだけでよい。Solarisだとこれでよかったが、他の機種ならどうなるのか
+を調べなければならない。
+
+  CGIはスケルトンがほとんどいらない。ここはURLDecoderだけにしておくのが
+いいかもしれない。
+
+CGIをドライブするサーバの設定は、ローラ・リメイ、プレンティスホールの
+続HTML入門をよむべしと書く。
+
+具体的にスコアを保存するのは、特別な処理をするというのではなく、ただの
+GETメソッドで送られてきた環境変数に入っている値を保存して後で読みこんでから
+処理すればいいという方向で説明する。
+汎用性のために、GETでファイル名を指定し、その後に続くフィールドで処理を指定する
+というようにし、情報をデータベースから取りだすこともできるようにする。
+この汎用的な機能を実現するプログラムを一つ作ればよく、その後はクライアントで
+工夫するということになる。だから、実はCGIのサンプルというが、実際はそのまま使える
+ものを提供することになる。クライアントでどのように利用するかというのも、
+例を示す。
+
+
+
+
+
+注意： C言語のようなつもりで文字列の最後に0を入れて、それをStringに渡
+すと、0というコードを持つ文字として扱ってしまうので、equalsが効かなく
+なる。
+
+*/

@@ -1,0 +1,17 @@
+
+-r--r--r--   1 ringo    jss        74011  2月 14日  12:56 CHANGES
+-r--r--r--   1 ringo    jss          896  2月 14日  05:46 COPYRIGHT
+-r--r--r--   1 ringo    jss         5992  2月 14日  13:10 LICENSE
+-r--r--r--   1 ringo    jss        26218  2月 18日  11:25 README
+drwxr-xr-x   3 ringo    jss          512  2月  7日  15:13 bin/
+drwxr-xr-x  22 ringo    jss          512  2月  8日  02:42 demo/
+drwxr-xr-x   2 ringo    jss          512  2月 18日  11:26 docs/
+-rw-r--r--   1 ringo    jss            0  3月  1日  23:01 hoge
+drwxr-xr-x   4 ringo    jss         1024  2月 14日  02:48 include/
+-r--r--r--   1 ringo    jss         2497  2月 18日  11:25 index.html
+drwxr-xr-x   4 ringo    jss          512  2月  7日  15:28 lib/
+-rw-r--r--   1 ringo    jss      1421400  2月  7日  15:21 src.zip
+
+
+
+

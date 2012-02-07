@@ -1,0 +1,39 @@
+
+シェアウェア類の分類以外についてはOKでした。分類と説明について多少
+修正したものが以下です。文章の長さについては、可能な限り短くしましたが、
+いかがでしょうか？
+
+------------------------------
+
+■エディタ
+
+・YooEdit（Macintosh） emacs操作系もサポートする、お手軽文章エディタ。
+プログラムサポート機能つき。
+
+■ペイントツール
+・WodenDotEditor	 (Macintosh)ゲーム製作に適したドット・エディタです。
+フリーウェア版とシェアウェア版の両方を収録。
+
+■画像変換ツール
+・GraphicsConverter 2.7 (Macintosh)ほとんどの画像形式を網羅する画像形式
+コンバーターです。
+・PolyView (Windows95)	BMP,GIF,JPEGを扱うことのできる画像エフェクタ・コン
+バータです。
+・LVier	(Windows95)あらゆる形式に対応しているグラフィックエフェクタコンバータ。
+■音声ツール
+・SoundApp 2.2.2 (Macintosh) AU,WAV,SNDファイルなど、ほとんどの音声
+フォーマットをサポートするサウンドプレイヤー、コンバータ。
+・SoundHack 0.868 (Macintosh) サウンドのプレイ、加工、あらゆるフォー
+マットへのコンバートができます。
+・SoundGadget Pro (Windows95)	WAV,AU形式でマイクから音声サンプリング可能。
+・JoeIs Player	(Windows95)	    WAV,AU形式をサポートするサウンドエディタ。
+・Waveform Hold and Modify(Windows95) フリーウェアで、WAV,AU形式をサポート。
+
+■その他のツール群
+
+・pat Regex			 Javaによる正規表現ライブラリ。
+・mocha decompiler   超強力な逆コンパイラです。クラスファイルからソース
+コードを復元します。Javaで書かれています。
+・stuffit Expander   Macintosh用の、超便利圧縮解凍ツールです。
+
+

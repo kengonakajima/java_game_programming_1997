@@ -1,0 +1,59 @@
+/* Decompiled by Mocha from memSrc.class */
+/* Originally compiled from memSrc.java */
+
+import java.awt.*;
+import java.applet.Applet;
+import java.awt.image.MemoryImageSource;
+import java.awt.image.PixelGrabber;
+import java.io.PrintStream;
+
+public class memSrc extends Applet
+{
+    Image img;
+    Image nimg;
+    Graphics gr;
+    PixelGrabber pg;
+    int pix[];
+    int height;
+    int width;
+
+    public void init()
+    {
+        MediaTracker mediaTracker = new MediaTracker(this);
+        img = getImage(getDocumentBase(), "kawai.jpg");
+        mediaTracker.addImage(img, 0);
+        try
+        {
+            mediaTracker.waitForAll();
+        }
+        catch (InterruptedException e1)
+        {
+        }
+        width = img.getWidth(null);
+        height = img.getHeight(null);
+        pix = new int[width * height];
+        resize(width * 2, height);
+        pg = new PixelGrabber(img, 0, 0, width, height, pix, 0, width);
+        try
+        {
+            pg.grabPixels();
+        }
+        catch (InterruptedException e2)
+        {
+            System.out.println(e2);
+        }
+        for (int i = 0; i < width * height; i++)
+            pix[i] = pix[i] & 1442775040;
+        nimg = createImage(new MemoryImageSource(width, height, pix, 0, width));
+    }
+
+    public void paint(Graphics g)
+    {
+        g.drawImage(img, 0, 0, this);
+        g.drawImage(nimg, width, 0, this);
+    }
+
+    public memSrc()
+    {
+    }
+}

@@ -1,0 +1,319 @@
+********************************************************************
+用語
+
+ページ        語句
+
+???          2の補数表現
+???          アーケードゲーム
+???          アスキー文字配列
+???          アナログジョイスティック
+???          アプリケーション(application)
+???          アプレット(applet)
+???          移動量
+???          イベント
+???          インストール(install)
+???          インターネット(Internet)
+???          インデント
+???          ウインドウ
+???          エラーメッセージ
+???          オフスクリーン
+???          仮想画面
+???          仮想マシン
+???          機械語
+???          基本型
+???          キーボード
+???          キーワード
+???          クラス宣言
+???          クリック
+???          コメント
+???          コンストラクタ
+???          コンパイル(Compile)
+???          コンパイラ
+???          参照型
+???          資源(resource )
+???          システムフォルダ
+???          四則演算
+???          実行する
+???          シフト計算
+???          ジョイスティック
+???          スケルトン
+???          スタンドアローン(standalone)
+???          精度(倍精度、単精度)
+???          速度ベクトル
+???          ソースプログラム
+???          代入
+???          ダウンロード(download)
+???          タグ
+???          ダブルバッファ
+???          ディレクトリ
+???          テキストエディタ
+???          テキストファイル
+???          データ構造
+???          ドット
+???          ドラッグ
+???          ドラッグ&ドロップ
+???          入出力(Input/Output , I/???          )
+???          ネスト(の深さ)
+???          バイトコード
+???          配列変数
+???          ピクセル
+???          左シフト
+???          ビット
+???          ビット演算
+???          否定
+???          標準入力、標準出力(Standard Input/Output )
+???          ファイル(file)
+???          フィーチャー(feature)
+???          フィールド変数
+???          フォルダ
+???          浮動小数点
+???          ブラウザ(browser)
+???          プロトコル(protocol)
+???          ホームページ(home page)
+???          マウス(mouse)
+???          マルチスレッド
+???          マルチタスク(multi task)
+???          マルチプレイヤー(multi player)
+???          右シフト
+???          メソッド
+???          ランダム
+???          ローカル変数
+???          .au
+???          .class
+???          .cshrc
+???          .gif
+???          .html,.htm
+???          .java
+???          addImage
+???          appletviewer
+???          ASCII
+???          AU形式
+???          AudioClip
+???          boolean
+???          break
+???          byte
+???          C
+???          C++
+???          catch
+???          CD-ROM
+???          CGI
+???          char
+???          Color
+???          Component
+???          continue
+???          CPU
+???          CRT
+???          destroy
+???          DOOM
+???          double
+???          DOS窓
+???          drawLine
+???          drawRect
+???          drawString
+???          Event
+???          extends
+???          false
+???          fillRect
+???          float
+???          for
+???          FreeBSD
+???          getDocumentBase
+???          getGraphics
+???          getImage
+???          getParemeter
+???          GIF形式
+???          Graphics
+???          gzip
+???          height
+???          HP-UX
+???          HSV
+???          HTML
+???          HTTP
+???          if
+???          implements
+???          import
+???          init
+???          int
+???          Integer.parseInt
+???          IP
+???          IRIX
+???          javac
+???          javasoft
+???          JDK
+???          JIT
+???          keyDown()
+???          linux
+???          long
+???          Macintosh
+???          MediaTracker
+???          mouseDown()
+???          MS-DOS(プロンプト)
+???          mule
+???          Netscape
+???          new
+???          Nintendo64
+???          OS
+???          paint
+???          play()
+???          public
+???          Random
+???          Runnable
+???          repaint
+???          RGB
+???          run
+???          setColor()
+???          short
+???          size()
+???          sleep()
+???          Solaris
+???          start()
+???          stop()
+???          String
+???          Sun(Sun Microsystems)
+???          tar
+???          TCP/IP
+???          tcsh
+???          The UNIX super text
+???          this
+???          Thread
+???          TopDownLeftRight
+???          toString
+???          true
+???          try
+???          Unicode
+???          UNIX
+???          unzip
+???          update
+???          vi
+???          Visual J++
+???          void
+???          VRAM
+???          while
+???          width
+???          Windows
+???          WWW
+???          YooEdit
+
+
+********************************************************************
+サンプルプログラム(ページ順 )
+
+ページ   プログラム名                 テーマ                   
+
+???		 sample.java         ソースプログラム、コンパイル、バイナリファイル
+???		 sample.java		 開発環境のインストールの確認用プログラム
+???      first.java          最初のアプレット
+???      hoge.java           コメントの付けかた、「ネスト」の意味  
+???      shinkou.java        メソッドの呼ばれかた                  
+???      printTest.java      標準出力とは何か。System.out.println  
+???      before.java         Consoleクラスを使う
+???      after.java          Consoleクラスを使う
+???      kihon.java          基本型の説明。   
+???      str.java            文字列型の使いかた。
+???      hairetu1.java        基本型の配列変数の使いかた。    
+???      hairetu2.java       参照型の配列変数の使いかた。例は文字列型。          
+???      scope.java          変数の見える範囲(スコープ)
+???      scope2.java         ローカルに同じ名前の変数を宣言する例
+???      keisan.java         整数型の演算子の使用例
+???      flow.java           while,if,breakを使ったフロー制御
+???      bool.java           論理演算
+???      bit.java            基本的なビット演算(<< >> & | 等)
+???      enemyClass.java     一からクラスをデザインする
+???      missile.java        他のクラスに手を加えてクラスをデザインする(extends)
+???      missilemove.java    extendsして作ったクラスを使ったアプレットを作る
+???      hairetu3.java       参照型の配列変数を初期化する。  
+???      life.java           アプレットがロードされてからのメソッド呼びだし順
+???      thread.java         スレッドを作る
+???      multi.java          マルチスレッド
+???      exception.java      例外的な状態を引きおこす
+???      trycatch.java		 例外をtry〜catchして受けとめる
+???      meventOld.java      JDK1.0.2でのマウスイベントの処理
+???      meventNew.java      JDK1.1以降でのマウスイベントの処理  
+???      game.java           ゲームのスケルトンプログラム    
+???      tdlr.java           TopDownLeftRightの実例。  
+???      anime.java          図形が動くアニメーション
+???      NoUpdate.java       自動的に消去する機能を殺す
+???      OffScr.java         仮想画面の使いかた  
+???      getimage.java       画像をロードして表示する方法    
+???      mt.java             MediaTrackerクラスを使って画像を読みこむ
+???      loading.java        画像ロードが終わるまでloadingと表示する
+???      move.java           別々に動きまわる複数の図形を表示する。
+???      color.java          画面にいろいろな色を出す
+???      sound.java          音を出す
+???      param.java          HTMLに書かれているアプレットの設定を読みだす
+???      mouse.java          マウスの入力
+???      keydown.java        キーボードからの入力
+???      key.java            キーボードでジョイスティックをまねるプログラム
+???      win.java            ブラウザーとは別にウインドウを開き、その中に描画する
+???      memSrc.java         画像処理
+???      game.java           もぐら叩き
+???      snake.java          Snakeゲーム
+???      atari.java          複数同士の衝突判定
+???      player.java         プレイヤーの移動アルゴリズム
+???      game.java           移動アルゴリズムを使って移動するサンプル
+???      moshin.java         猛突進キャラクターのアルゴリズム部分
+???      game.java           猛突進キャラクターを使ったアプレット
+???      http.java           HTTPで情報をサーバから取ってくる
+???      cgiskel.java        CGIのスケルトンプログラム
+???      apli.java           Javaアプリケーションのプログラム
+???      rfile.java          ファイルにアクセスする
+???      robots.java         CGIを使ってハイスコアを保存するゲーム「robots」
+???      scorecgi.java       ハイスコアをCGIを使ってファイルに保存する
+???      server.java         世界管理型サーバー
+???      client.java         世界管理型サーバーに接続するクライアント
+???      ConsoleFrame.java   標準出力のかわりになるConsoleFrameクラス
+???		 Console.java        Consoleクラス
+???      ConsolePrintStream.java   ConsolePrintStreamクラス
+???      key.java            キー番号を調べるプログラム
+
+
+
+********************************************************************
+参考文献
+
+o Java入門 (翔泳社)
+o Java言語入門 (プレンティスホール)
+o JDK1.1 Beta Documentation (Sun microsystems)
+
+
+********************************************************************
+CD-ROMの内容
+
+本書に添付のCD-ROMには次のものが含まれています。
+
+JDK
+
+o JDK version 1.1 beta for Solaris(86)
+o JDK version 1.1 beta for Solaris(sparc)
+o JDK version 1.1 beta for Windows 95/NT
+o JDK version 1.0.2 for Solaris(86)
+o JDK version 1.0.2 for Solaris(sparc)
+o JDK version 1.0.2 for Windows 95/NT
+o JDK version 1.0.2 for Macintosh
+o JDK version 1.0.2 for Linux
+o JDK version 1.0.2 for freeBSD
+o JDK version 1.0.2 for IRIX
+o JDK version 1.0.2 for SunOS 4.x
+
+マニュアル類
+
+o Java API Documents Version 1.0.2 (日本語)
+o Java API Documents Version 1.0.2 (英語)
+
+エディタ
+
+o yooEdit(Macintosh)
+
+ペイントツール
+
+画像変換ツール
+
+音声ツール
+
+その他のツール群
+
+o mocha decompiler   超強力な逆コンパイラです。
+
+本書のサンプルプログラム
+Java版オリジナルペイントツール
+Java版オリジナル wav -> au形式変換ツール
